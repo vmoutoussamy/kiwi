@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.root_bind &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.system.root_bind &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -249,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -395,6 +396,7 @@
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="k">import</span> <span class="n">dedent</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
@@ -402,6 +404,7 @@
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">kiwi.mount_manager</span> <span class="k">import</span> <span class="n">MountManager</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.checksum</span> <span class="k">import</span> <span class="n">Checksum</span>
 
 <span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">KiwiMountKernelFileSystemsError</span><span class="p">,</span>
@@ -528,6 +531,9 @@
                     <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
                         <span class="p">[</span><span class="s1">&#39;ln&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="n">link_target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">config</span><span class="p">]</span>
                     <span class="p">)</span>
+                    <span class="n">checksum</span> <span class="o">=</span> <span class="n">Checksum</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">config</span> <span class="o">+</span> <span class="s1">&#39;.sha&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">shasum</span><span class="p">:</span>
+                        <span class="n">shasum</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">checksum</span><span class="o">.</span><span class="n">sha256</span><span class="p">())</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
             <span class="k">raise</span> <span class="n">KiwiSetupIntermediateConfigError</span><span class="p">(</span>
@@ -567,7 +573,35 @@
         <span class="n">config_files_to_delete</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleanup_files</span><span class="p">:</span>
-            <span class="n">config_files_to_delete</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">config</span><span class="p">)</span>
+            <span class="n">config_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">config</span>
+            <span class="n">shasum_file</span> <span class="o">=</span> <span class="n">config_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.kiwi&#39;</span><span class="p">,</span> <span class="s1">&#39;.sha&#39;</span><span class="p">)</span>
+
+            <span class="n">config_files_to_delete</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+            <span class="n">config_files_to_delete</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shasum_file</span><span class="p">)</span>
+
+            <span class="n">checksum</span> <span class="o">=</span> <span class="n">Checksum</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">checksum</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="n">checksum</span><span class="o">.</span><span class="n">sha256</span><span class="p">(),</span> <span class="n">shasum_file</span><span class="p">):</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
+<span class="s1">                    Modifications to intermediate config file detected</span>
+
+<span class="s1">                    The file: </span><span class="si">{0}</span><span class="s1"></span>
+
+<span class="s1">                    is a copy from the host system and symlinked</span>
+<span class="s1">                    to its origin in the image root during build time.</span>
+<span class="s1">                    Modifications to this file by e.g script code will not</span>
+<span class="s1">                    have any effect because the file gets restored by one</span>
+<span class="s1">                    of the following actions:</span>
+
+<span class="s1">                    1. A package during installation provides it</span>
+<span class="s1">                    2. A custom version of the file is setup as overlay file</span>
+<span class="s1">                    3. The file is not provided by install or overlay and will</span>
+<span class="s1">                       be deleted at the end of the build process</span>
+
+<span class="s1">                    If you need a custom version of that file please</span>
+<span class="s1">                    provide it as an overlay file in your image</span>
+<span class="s1">                    description</span>
+<span class="s1">                &#39;&#39;&#39;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_file</span><span class="p">))</span>
 
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleanup_files</span><span class="p">[:]</span>
 
@@ -595,10 +629,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_files</span><span class="p">:</span>
             <span class="n">config_rpm_new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">config</span> <span class="o">+</span> <span class="s1">&#39;.rpmnew&#39;</span>
-            <span class="k">if</span> <span class="p">(</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_rpm_new</span><span class="p">)</span> <span class="ow">and</span>
-                <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">config</span><span class="p">)</span>
-            <span class="p">):</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_rpm_new</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> \
+               <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">config</span><span class="p">):</span>
+
                 <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">config_rpm_new</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">config</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_cleanup_mount_stack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

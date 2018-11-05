@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.runtime_checker &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.runtime_checker &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -249,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -573,7 +574,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_check_multitag_support</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">_check_multitag_support</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
         <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
 <span class="s1">            Using additionaltags attribute requires skopeo tool to be</span>
 <span class="s1">            capable to handle it, it must include the &#39;--additional-tag&#39;</span>
@@ -581,15 +581,12 @@
 <span class="s1">            --help&#39;).</span><span class="se">\n</span><span class="s1"></span>
 <span class="s1">            It is known to be present since v0.1.30</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="s1">&#39;additional_tags&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_container_config</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span>
-            <span class="n">CommandCapabilities</span><span class="o">.</span><span class="n">has_option_in_help</span><span class="p">(</span>
+        <span class="k">if</span> <span class="s1">&#39;additional_tags&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_container_config</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">CommandCapabilities</span><span class="o">.</span><span class="n">has_option_in_help</span><span class="p">(</span>
                 <span class="s1">&#39;skopeo&#39;</span><span class="p">,</span> <span class="s1">&#39;--additional-tag&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="s1">&#39;--help&#39;</span><span class="p">],</span>
                 <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
-            <span class="p">)</span>
-        <span class="p">):</span>
-            <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 
 <div class="viewcode-block" id="RuntimeChecker.check_boot_description_exists"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_boot_description_exists">[docs]</a>    <span class="k">def</span> <span class="nf">check_boot_description_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -617,8 +614,8 @@
         <span class="n">image_types_supporting_custom_boot_description</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;oem&#39;</span><span class="p">,</span> <span class="s1">&#39;pxe&#39;</span><span class="p">]</span>
         <span class="n">build_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span>
         <span class="n">initrd_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_initrd_system</span><span class="p">()</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;kiwi&#39;</span> <span class="ow">and</span>
-                <span class="n">build_type</span> <span class="ow">in</span> <span class="n">image_types_supporting_custom_boot_description</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;kiwi&#39;</span> <span class="ow">and</span> \
+           <span class="n">build_type</span> <span class="ow">in</span> <span class="n">image_types_supporting_custom_boot_description</span><span class="p">:</span>
 
             <span class="n">boot_image_reference</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_boot</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">boot_image_reference</span><span class="p">:</span>
@@ -806,8 +803,9 @@
 <span class="s1">            &lt;package name=&quot;</span><span class="si">{0}</span><span class="s1">&quot;/&gt;</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
         <span class="n">required_dracut_package</span> <span class="o">=</span> <span class="s1">&#39;dracut-kiwi-live&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;iso&#39;</span> <span class="ow">and</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_flags</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;dmsquash&#39;</span><span class="p">):</span>
+        <span class="n">type_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span>
+        <span class="n">type_flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_flags</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">type_name</span> <span class="o">==</span> <span class="s1">&#39;iso&#39;</span> <span class="ow">and</span> <span class="n">type_flag</span> <span class="o">!=</span> <span class="s1">&#39;dmsquash&#39;</span><span class="p">:</span>
             <span class="n">package_names</span> <span class="o">=</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_packages</span><span class="p">()</span> <span class="o">+</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_system_packages</span><span class="p">()</span>

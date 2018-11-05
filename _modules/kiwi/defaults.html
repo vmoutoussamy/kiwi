@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -249,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1518,6 +1519,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s1">&#39;kiwi-container&#39;</span></div>
 
+<div class="viewcode-block" id="Defaults.get_oci_archive_tool"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_oci_archive_tool">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_oci_archive_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides the default OCI archive tool name.</span>
+
+<span class="sd">        :return: name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;umoci&#39;</span></div>
+
 <div class="viewcode-block" id="Defaults.get_default_container_tag"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_container_tag">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_default_container_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1528,6 +1540,17 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s1">&#39;latest&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_container_subcommand"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_container_subcommand">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_container_subcommand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides the default container subcommand.</span>
+
+<span class="sd">        :return: command as a list of arguments</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Defaults.set_python_default_encoding_to_utf8"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.set_python_default_encoding_to_utf8">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">set_python_default_encoding_to_utf8</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1597,8 +1620,8 @@
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profile_key_list</span><span class="p">):</span>
             <span class="c1"># Do not apply default values to any variable that was</span>
             <span class="c1"># already defined in the profile instance.</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">profile</span><span class="o">.</span><span class="n">dot_profile</span> <span class="ow">or</span>
-                    <span class="n">profile</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">cur_profile</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">dot_profile</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cur_profile</span> <span class="ow">or</span> <span class="n">cur_profile</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">profile</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">))</span></div></div>
 </pre></div>
 

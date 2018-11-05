@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.package_manager.zypper &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.package_manager.zypper &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -249,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -510,8 +511,9 @@
                 <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">metadata_dir</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude_requests</span><span class="p">:</span>
                 <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;zypper&#39;</span><span class="p">]</span> <span class="o">+</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">chroot_zypper_args</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;al&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">package</span><span class="p">],</span>
+                    <span class="p">[</span>
+                        <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;zypper&#39;</span>
+                    <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">chroot_zypper_args</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;al&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">package</span><span class="p">],</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">chroot_command_env</span>
                 <span class="p">)</span>
         <span class="k">return</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>

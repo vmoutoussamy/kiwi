@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.container Package &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.container Package &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -183,6 +183,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -251,7 +252,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.16.27</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.16.31</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -362,7 +363,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.16.27</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.16.31</a> &raquo;</li>
         
       <li>kiwi.container Package</li>
     
@@ -446,27 +447,15 @@
     <span class="literal string single">‘container_name’</span><span class="punctuation">:</span> <span class="literal string single">‘name’</span><span class="punctuation">,</span>
     <span class="literal string single">‘container_tag’</span><span class="punctuation">:</span> <span class="literal string single">‘1.0’</span><span class="punctuation">,</span>
     <span class="literal string single">‘additional_tags’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘current’</span><span class="punctuation">,</span> <span class="literal string single">‘foobar’</span><span class="punctuation">],</span>
-    <span class="literal string single">‘entry_command’</span><span class="punctuation">:</span> <span class="punctuation">[</span>
-        <span class="literal string single">‘–config.entrypoint=/bin/bash’</span><span class="punctuation">,</span>
-        <span class="literal string single">‘–config.entrypoint=-x’</span>
-    <span class="punctuation">],</span>
-    <span class="literal string single">‘entry_subcommand’</span><span class="punctuation">:</span> <span class="punctuation">[</span>
-        <span class="literal string single">‘–config.cmd=ls’</span><span class="punctuation">,</span>
-        <span class="literal string single">‘–config.cmd=-l’</span>
-    <span class="punctuation">],</span>
-    <span class="literal string single">‘maintainer’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘–author=tux’</span><span class="punctuation">],</span>
-    <span class="literal string single">‘user’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘–config.user=root’</span><span class="punctuation">],</span>
-    <span class="literal string single">‘workingdir’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘–config.workingdir=/root’</span><span class="punctuation">],</span>
-    <span class="literal string single">‘expose_ports’</span><span class="punctuation">:</span> <span class="punctuation">[</span>
-        <span class="literal string single">‘–config.exposedports=80’</span><span class="punctuation">,</span>
-        <span class="literal string single">‘–config.exposedports=42’</span>
-    <span class="punctuation">],</span>
-    <span class="literal string single">‘volumes’</span><span class="punctuation">:</span> <span class="punctuation">[</span>
-        <span class="literal string single">‘–config.volume=/var/log’</span><span class="punctuation">,</span>
-        <span class="literal string single">‘–config.volume=/tmp’</span>
-    <span class="punctuation">],</span>
-    <span class="literal string single">‘environment’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘–config.env=PATH=/bin’</span><span class="punctuation">],</span>
-    <span class="literal string single">‘labels’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘–config.label=name=value’</span><span class="punctuation">]</span>
+    <span class="literal string single">‘entry_command’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘/bin/bash’</span><span class="punctuation">,</span> <span class="literal string single">‘-x’</span><span class="punctuation">],</span>
+    <span class="literal string single">‘entry_subcommand’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘ls’</span><span class="punctuation">,</span> <span class="literal string single">‘-l’</span><span class="punctuation">],</span>
+    <span class="literal string single">‘maintainer’</span><span class="punctuation">:</span> <span class="literal string single">‘tux’</span><span class="punctuation">,</span>
+    <span class="literal string single">‘user’</span><span class="punctuation">:</span> <span class="literal string single">‘root’</span><span class="punctuation">,</span>
+    <span class="literal string single">‘workingdir’</span><span class="punctuation">:</span> <span class="literal string single">‘/root’</span><span class="punctuation">,</span>
+    <span class="literal string single">‘expose_ports’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘80’</span><span class="punctuation">,</span> <span class="literal string single">‘42’</span><span class="punctuation">],</span>
+    <span class="literal string single">‘volumes’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘/var/log’</span><span class="punctuation">,</span> <span class="literal string single">‘/tmp’</span><span class="punctuation">],</span>
+    <span class="literal string single">‘environment’</span><span class="punctuation">:</span> <span class="punctuation">{</span><span class="literal string single">‘PATH’</span><span class="punctuation">:</span> <span class="literal string single">‘/bin’</span><span class="punctuation">},</span>
+    <span class="literal string single">‘labels’</span><span class="punctuation">:</span> <span class="punctuation">{</span><span class="literal string single">‘name’</span><span class="punctuation">:</span> <span class="literal string single">‘value’</span><span class="punctuation">}</span>
 <span class="punctuation">}</span>
 </pre>
 </li>

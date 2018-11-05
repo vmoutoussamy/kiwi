@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.16.27 &mdash; kiwi 9.16.27 documentation</title>
+  <title>API Documentation 9.16.31 &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -183,6 +183,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -251,7 +252,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -362,7 +363,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.16.27</li>
+      <li>API Documentation 9.16.31</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -382,7 +383,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.16.27<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.16.31<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -1204,6 +1205,22 @@ configuration or in the boot code from the kiwi initrd</p>
 </dd></dl>
 
 <dl class="classmethod">
+<dt id="kiwi.defaults.Defaults.get_default_container_subcommand">
+<em class="property">classmethod </em><code class="descname">get_default_container_subcommand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_default_container_subcommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_default_container_subcommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides the default container subcommand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">command as a list of arguments</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
 <dt id="kiwi.defaults.Defaults.get_default_container_tag">
 <em class="property">classmethod </em><code class="descname">get_default_container_tag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_default_container_tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_default_container_tag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides the default container tag.</p>
@@ -1931,6 +1948,22 @@ buildservice repositories</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">url path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kiwi.defaults.Defaults.get_oci_archive_tool">
+<em class="property">classmethod </em><code class="descname">get_oci_archive_tool</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_oci_archive_tool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_oci_archive_tool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides the default OCI archive tool name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">name</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>
@@ -2823,6 +2856,13 @@ could not be mounted.</p>
 <em class="property">exception </em><code class="descclassname">kiwi.exceptions.</code><code class="descname">KiwiNotImplementedError</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/exceptions.html#KiwiNotImplementedError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiNotImplementedError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
 <p>Exception raised if a functionality is not yet implemented.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="kiwi.exceptions.KiwiOCIArchiveToolError">
+<em class="property">exception </em><code class="descclassname">kiwi.exceptions.</code><code class="descname">KiwiOCIArchiveToolError</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/exceptions.html#KiwiOCIArchiveToolError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiOCIArchiveToolError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
+<p>Exception raised if the requested OCI archive tool is not supported</p>
 </dd></dl>
 
 <dl class="exception">
@@ -4297,6 +4337,32 @@ the Defaults class is returned</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">URL type data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.runtime_config.RuntimeConfig.get_oci_archive_tool">
+<code class="descname">get_oci_archive_tool</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_config.html#RuntimeConfig.get_oci_archive_tool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_config.RuntimeConfig.get_oci_archive_tool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return OCI archive tool which should be used on creation of
+container archives for OCI compliant images, e.g docker</p>
+<dl class="docutils">
+<dt>oci:</dt>
+<dd><ul class="first last simple">
+<li>archive_tool: umoci</li>
+</ul>
+</dd>
+</dl>
+<p>if no configuration exists the default tool from the
+Defaults class is returned</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A name</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>

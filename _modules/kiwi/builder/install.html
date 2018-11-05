@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.install &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.builder.install &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -249,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -732,7 +733,10 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_create_dracut_install_config</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_system_image_boot_options_to_boot_image</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">create_initrd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">,</span> <span class="s1">&#39;initrd_kiwi_install&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">create_initrd</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">,</span> <span class="s1">&#39;initrd_kiwi_install&#39;</span><span class="p">,</span>
+            <span class="n">install_initrd</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;mv&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">initrd_filename</span><span class="p">,</span>
@@ -763,7 +767,10 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_create_dracut_install_config</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_system_image_boot_options_to_boot_image</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">create_initrd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">,</span> <span class="s1">&#39;initrd_kiwi_install&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">create_initrd</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">,</span> <span class="s1">&#39;initrd_kiwi_install&#39;</span><span class="p">,</span>
+            <span class="n">install_initrd</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;mv&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">initrd_filename</span><span class="p">,</span>
@@ -776,7 +783,7 @@
             <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">,</span> <span class="s1">&#39;/config.bootoptions&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">include_file</span><span class="p">(</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">install_media</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_copy_system_image_initrd_to_iso_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

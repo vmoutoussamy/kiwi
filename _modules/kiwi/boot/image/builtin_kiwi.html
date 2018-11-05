@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image.builtin_kiwi &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.boot.image.builtin_kiwi &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -249,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -482,12 +483,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">call_image_script</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">create_init_link_from_linuxrc</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="BootImageKiwi.create_initrd"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.builtin_kiwi.BootImageKiwi.create_initrd">[docs]</a>    <span class="k">def</span> <span class="nf">create_initrd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mbrid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">basename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="BootImageKiwi.create_initrd"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.builtin_kiwi.BootImageKiwi.create_initrd">[docs]</a>    <span class="k">def</span> <span class="nf">create_initrd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mbrid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">basename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">install_initrd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create initrd from prepared boot system tree and compress the result</span>
 
 <span class="sd">        :param object mbrid: instance of ImageIdentifier</span>
 <span class="sd">        :param string basename: base initrd file name</span>
+<span class="sd">        :param bool install_initrd: installation media initrd</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_prepared</span><span class="p">():</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating initrd cpio archive&#39;</span><span class="p">)</span>

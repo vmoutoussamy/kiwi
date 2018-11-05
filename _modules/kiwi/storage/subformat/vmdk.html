@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.vmdk &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.storage.subformat.vmdk &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -249,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -480,10 +481,10 @@
 <span class="sd">        needed or the possibility to convert machine settings into an ovf</span>
 <span class="sd">        via VMware&#39;s proprietary ovftool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">displayname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_displayname</span><span class="p">()</span>
         <span class="n">template_record</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;display_name&#39;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_displayname</span><span class="p">()</span> <span class="ow">or</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
+                <span class="n">displayname</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
             <span class="s1">&#39;vmdk_file&#39;</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_target_file_path_for_format</span><span class="p">(</span><span class="s1">&#39;vmdk&#39;</span><span class="p">)),</span>
             <span class="s1">&#39;virtual_hardware_version&#39;</span><span class="p">:</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span>

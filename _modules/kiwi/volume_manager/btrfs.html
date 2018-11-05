@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager.btrfs &mdash; kiwi 9.16.27 documentation</title>
+  <title>kiwi.volume_manager.btrfs &mdash; kiwi 9.16.31 documentation</title>
   
 
   
@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -249,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.16.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.16.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -761,10 +762,9 @@
         <span class="n">sysconf_file</span> <span class="o">=</span> <span class="n">SysConfig</span><span class="p">(</span>
             <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">root_path</span><span class="p">,</span> <span class="s1">&#39;etc/sysconfig/snapper&#39;</span><span class="p">])</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="s1">&#39;SNAPPER_CONFIGS&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sysconf_file</span> <span class="ow">or</span>
-            <span class="nb">len</span><span class="p">(</span><span class="n">sysconf_file</span><span class="p">[</span><span class="s1">&#39;SNAPPER_CONFIGS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span>
-        <span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sysconf_file</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SNAPPER_CONFIGS&#39;</span><span class="p">)</span> <span class="ow">or</span> \
+           <span class="nb">len</span><span class="p">(</span><span class="n">sysconf_file</span><span class="p">[</span><span class="s1">&#39;SNAPPER_CONFIGS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
             <span class="n">sysconf_file</span><span class="p">[</span><span class="s1">&#39;SNAPPER_CONFIGS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&quot;root&quot;&#39;</span>
             <span class="n">sysconf_file</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sysconf_file</span><span class="p">[</span><span class="s1">&#39;SNAPPER_CONFIGS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
