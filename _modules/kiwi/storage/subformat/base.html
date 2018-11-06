@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.base &mdash; kiwi 9.16.36 documentation</title>
+  <title>kiwi.storage.subformat.base &mdash; kiwi 9.17.0 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.16.36</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -555,8 +555,9 @@
 <span class="sd">        Store result file of the format conversion into the</span>
 <span class="sd">        provided result instance.</span>
 
-<span class="sd">        By default only the converted image file will be stored.</span>
-<span class="sd">        Subformats which creates additional metadata files needs</span>
+<span class="sd">        By default only the converted image file will be stored</span>
+<span class="sd">        as compressed file. Subformats which creates additional</span>
+<span class="sd">        metadata files or want to use other result flags needs</span>
 <span class="sd">        to overwrite this method</span>
 
 <span class="sd">        :param object result: Instance of Result</span>
@@ -567,7 +568,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span>
             <span class="p">),</span>
             <span class="n">use_for_bundle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">compress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">compress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">shasum</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span></div>
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.gce &mdash; kiwi 9.16.36 documentation</title>
+  <title>kiwi.storage.subformat.gce &mdash; kiwi 9.17.0 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.16.36</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -472,6 +472,25 @@
         <span class="p">)</span>
         <span class="n">archive</span><span class="o">.</span><span class="n">create_gnu_gzip_compressed</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="DiskFormatGce.store_to_result"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.gce.DiskFormatGce.store_to_result">[docs]</a>    <span class="k">def</span> <span class="nf">store_to_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Store result file of the gce format conversion into the</span>
+<span class="sd">        provided result instance. In this case compression is unwanted</span>
+<span class="sd">        because the gce tarball is already created as a compressed</span>
+<span class="sd">        archive</span>
+
+<span class="sd">        :param object result: Instance of Result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">key</span><span class="o">=</span><span class="s1">&#39;disk_format_image&#39;</span><span class="p">,</span>
+            <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_target_file_path_for_format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span>
+            <span class="p">),</span>
+            <span class="n">use_for_bundle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">compress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">shasum</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="DiskFormatGce.get_target_file_path_for_format"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.gce.DiskFormatGce.get_target_file_path_for_format">[docs]</a>    <span class="k">def</span> <span class="nf">get_target_file_path_for_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_name</span><span class="p">):</span>
