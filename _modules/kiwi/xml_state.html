@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_state &mdash; kiwi 9.17.0 documentation</title>
+  <title>kiwi.xml_state &mdash; kiwi 9.17.1 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1270,6 +1270,9 @@
         <span class="n">container_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_match_docker_labels</span><span class="p">()</span>
         <span class="p">)</span>
+        <span class="n">container_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_match_docker_history</span><span class="p">()</span>
+        <span class="p">)</span>
         <span class="k">return</span> <span class="n">container_config</span></div>
 
 <div class="viewcode-block" id="XMLState.set_container_config_tag"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.set_container_config_tag">[docs]</a>    <span class="k">def</span> <span class="nf">set_container_config_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
@@ -2190,6 +2193,23 @@
                     <span class="n">container_labels</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">][</span><span class="n">label</span><span class="o">.</span><span class="n">get_name</span><span class="p">()]</span> <span class="o">=</span> \
                         <span class="n">label</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">container_labels</span>
+
+    <span class="k">def</span> <span class="nf">_match_docker_history</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">container_config_section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_build_type_containerconfig_section</span><span class="p">()</span>
+        <span class="n">container_history</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">container_config_section</span><span class="p">:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="n">container_config_section</span><span class="o">.</span><span class="n">get_history</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">history</span><span class="p">:</span>
+                <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">if</span> <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_created_by</span><span class="p">():</span>
+                    <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;created_by&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                        <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_created_by</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_author</span><span class="p">():</span>
+                    <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                        <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span>
+                <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_valueOf_</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">container_history</span>
 
     <span class="k">def</span> <span class="nf">_solve_profile_dependencies</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">profile</span><span class="p">,</span> <span class="n">available_profiles</span><span class="p">,</span> <span class="n">current_profiles</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.17.0 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.17.1 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -404,7 +404,10 @@
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">.path</span> <span class="k">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">.version</span> <span class="k">import</span> <span class="n">__githash__</span>
+<span class="kn">from</span> <span class="nn">.version</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">__githash__</span><span class="p">,</span>
+    <span class="n">__version__</span>
+<span class="p">)</span>
 
 
 <div class="viewcode-block" id="Defaults"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults">[docs]</a><span class="k">class</span> <span class="nc">Defaults</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1551,6 +1554,17 @@
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_container_created_by"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_container_created_by">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_container_created_by</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides the default &#39;created by&#39; history entry for containers.</span>
+
+<span class="sd">        :return: the specific kiwi version used for the build</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;KIWI </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__version__</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Defaults.set_python_default_encoding_to_utf8"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.set_python_default_encoding_to_utf8">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">set_python_default_encoding_to_utf8</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
