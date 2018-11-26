@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Workflow &mdash; kiwi 9.17.2 documentation</title>
+  <title>Basic Workflow &mdash; kiwi 9.17.3 documentation</title>
   
 
   
@@ -252,7 +252,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -399,7 +399,7 @@ software sources (repositories) available. After the installation is
 complete the system usually reboots and enters a configuration procedure
 upon start-up. The configuration may be fully automatic or it may include
 user interaction.
-This description applies for version 9.17.2.</p>
+This description applies for version 9.17.3.</p>
 </div>
 <p>A system image (usually called “image”), is a <em>complete installation</em> of a Linux
 system within a file. The image represents an operational system and,
@@ -1127,6 +1127,18 @@ write partition.</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">rd.live.overlay.cowfs</span></code></dt>
 <dd>This variable tells a live iso image which filesystem should be
 used to store data on the persistent write partition.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rd.live.cowfile.mbsize</span></code></dt>
+<dd>This variable tells a live iso image the size of the cowfile in MB.
+When using tools like <code class="xref py py-obj docutils literal notranslate"><span class="pre">live-grub-stick</span></code> the live iso will be copied
+as a file on the target device and a grub loopback setup is created
+there to boot the live system from file. In such a case the
+persistent write setup, which usually creates an extra write
+partition on the target, will fail in almost all cases because
+the target has no free and unpartitioned space available.
+Because of that a cow file(live_system.cow) instead of a partition
+is created. The cow file will be created in the same directory
+the live iso image file was read from by grub and takes the
+configured size or the default size of 500MB.</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">rd.live.dir</span></code></dt>
 <dd>This variable tells a live iso image the directory which contains
 the live OS root directory. Defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">LiveOS</span></code></dd>
