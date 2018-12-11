@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.container.oci &mdash; kiwi 9.17.3 documentation</title>
+  <title>kiwi.container.oci &mdash; kiwi 9.17.4 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.4</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -397,12 +397,10 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">mkdtemp</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">kiwi.utils.sync</span> <span class="k">import</span> <span class="n">DataSync</span>
 <span class="kn">from</span> <span class="nn">kiwi.archive.tar</span> <span class="k">import</span> <span class="n">ArchiveTar</span>
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.runtime_config</span> <span class="k">import</span> <span class="n">RuntimeConfig</span>
@@ -502,8 +500,6 @@
         <span class="n">exclude_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;sys&#39;</span><span class="p">)</span>
         <span class="n">exclude_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;proc&#39;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci_root_dir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;kiwi_oci_root_dir.&#39;</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="n">base_image</span><span class="p">:</span>
             <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">container_dir</span><span class="p">)</span>
             <span class="n">image_tar</span> <span class="o">=</span> <span class="n">ArchiveTar</span><span class="p">(</span><span class="n">base_image</span><span class="p">)</span>
@@ -511,15 +507,9 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">init_layout</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">base_image</span><span class="p">))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_root_dir</span><span class="p">)</span>
-        <span class="n">oci_root</span> <span class="o">=</span> <span class="n">DataSync</span><span class="p">(</span>
-            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">]),</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_root_dir</span><span class="p">,</span> <span class="s1">&#39;rootfs&#39;</span><span class="p">])</span>
-        <span class="p">)</span>
-        <span class="n">oci_root</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
-            <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;-H&#39;</span><span class="p">,</span> <span class="s1">&#39;-X&#39;</span><span class="p">,</span> <span class="s1">&#39;-A&#39;</span><span class="p">,</span> <span class="s1">&#39;--delete&#39;</span><span class="p">],</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude_list</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">repack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_root_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">unpack</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">sync_rootfs</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">]),</span> <span class="n">exclude_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">repack</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="s1">&#39;additional_tags&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;additional_tags&#39;</span><span class="p">]:</span>
@@ -559,11 +549,7 @@
                             <span class="s1">&#39;org.openbuildservice.disturl&#39;</span><span class="p">:</span> <span class="n">disturl</span>
                         <span class="p">}</span>
                         <span class="k">return</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Could not find BUILD_DISTURL inside .buildenv&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_root_dir</span><span class="p">:</span>
-            <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_root_dir</span><span class="p">)</span></div>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Could not find BUILD_DISTURL inside .buildenv&#39;</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
