@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi &mdash; kiwi 9.17.5 documentation</title>
+  <title>kiwi &mdash; kiwi 9.17.6 documentation</title>
   
 
   
@@ -252,7 +252,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -506,19 +506,19 @@ specific configuration file can be provided as:</p>
 <p><code class="file docutils literal notranslate"><span class="pre">~/.config/kiwi/config.yml</span></code></p>
 <p>The contents of the file is in YAML format and supports the following
 setup parameters:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">xz</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">-a -b -c</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">xz</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">options</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-a -b -c</span>
 
     <span class="c1"># Specifies XZ-compression-options</span>
     <span class="c1"># For details see man xz</span>
 
-<span class="l l-Scalar l-Scalar-Plain">obs</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">download_url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
+<span class="nt">obs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">download_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
 
     <span class="c1"># Specifies download server url of an open buildservice instance</span>
     <span class="c1"># defaults to: http://download.opensuse.org/repositories</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">public</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true|false</span>
+  <span class="p p-Indicator">-</span> <span class="nt">public</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true|false</span>
 
     <span class="c1"># Specifies if the buildservice instance is public or private</span>
     <span class="c1"># defaults to: true</span>
