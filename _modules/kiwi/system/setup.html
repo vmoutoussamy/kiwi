@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; kiwi 9.17.6 documentation</title>
+  <title>kiwi.system.setup &mdash; kiwi 9.17.7 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.7</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -617,6 +617,38 @@
         <span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">machine_id</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">):</span>
             <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="SystemSetup.setup_permissions"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_permissions">[docs]</a>    <span class="k">def</span> <span class="nf">setup_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check and Fix permissions using chkstat</span>
+
+<span class="sd">        Call chkstat in system mode which reads /etc/sysconfig/security</span>
+<span class="sd">        to determine the configured security level and applies the</span>
+<span class="sd">        appropriate permission definitions from the /etc/permissions*</span>
+<span class="sd">        files. It&#39;s possible to provide those files as overlay files</span>
+<span class="sd">        in the image description to apply a certain permission setup</span>
+<span class="sd">        when needed. Otherwise the default setup as provided on the</span>
+<span class="sd">        package level applies.</span>
+
+<span class="sd">        It&#39;s required that the image root system has chkstat installed.</span>
+<span class="sd">        If not present KIWI skips this step and continuous with a</span>
+<span class="sd">        warning.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">chkstat_search_env</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">])</span>
+        <span class="p">}</span>
+        <span class="n">chkstat</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span>
+            <span class="s1">&#39;chkstat&#39;</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="n">chkstat_search_env</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">X_OK</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">chkstat</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Check/Fix File Permissions&#39;</span><span class="p">)</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;chkstat&#39;</span><span class="p">,</span> <span class="s1">&#39;--system&#39;</span><span class="p">,</span> <span class="s1">&#39;--set&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s1">&#39;chkstat not found in image. File Permissions Check skipped&#39;</span>
+            <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemSetup.setup_keyboard_map"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_keyboard_map">[docs]</a>    <span class="k">def</span> <span class="nf">setup_keyboard_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1399,6 +1431,7 @@
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
 
   

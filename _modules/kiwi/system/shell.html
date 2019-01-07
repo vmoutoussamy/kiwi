@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.shell &mdash; kiwi 9.17.6 documentation</title>
+  <title>kiwi.system.shell &mdash; kiwi 9.17.7 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.7</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -406,7 +406,7 @@
 <span class="sd">    **Special character handling for shell evaluated code**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Shell.quote"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.shell.Shell.quote">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">quote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">quote</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Quote characters which have a special meaning for bash</span>
 <span class="sd">        but should be used as normal characters. actually I had</span>
@@ -427,7 +427,7 @@
         <span class="k">return</span> <span class="n">message</span></div>
 
 <div class="viewcode-block" id="Shell.quote_key_value_file"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.shell.Shell.quote_key_value_file">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">quote_key_value_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">quote_key_value_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Quote given input file which has to be of the form</span>
 <span class="sd">        key=value to be able to become sourced by the shell</span>
@@ -445,7 +445,7 @@
             <span class="k">return</span> <span class="n">quoted</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Shell.run_common_function"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.shell.Shell.run_common_function">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">run_common_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run_common_function</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Run a function implemented in config/functions.sh</span>
 
@@ -500,6 +500,7 @@
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
 
   

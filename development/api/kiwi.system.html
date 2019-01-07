@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system Package &mdash; kiwi 9.17.6 documentation</title>
+  <title>kiwi.system Package &mdash; kiwi 9.17.7 documentation</title>
   
 
   
@@ -252,7 +252,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.6</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.7</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -363,7 +363,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.6</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.7</a> &raquo;</li>
         
       <li>kiwi.system Package</li>
     
@@ -1401,6 +1401,22 @@ creating a new one produces an inconsistent system</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.system.setup.SystemSetup.setup_permissions">
+<code class="descname">setup_permissions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/setup.html#SystemSetup.setup_permissions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.setup_permissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check and Fix permissions using chkstat</p>
+<p>Call chkstat in system mode which reads /etc/sysconfig/security
+to determine the configured security level and applies the
+appropriate permission definitions from the /etc/permissions*
+files. It’s possible to provide those files as overlay files
+in the image description to apply a certain permission setup
+when needed. Otherwise the default setup as provided on the
+package level applies.</p>
+<p>It’s required that the image root system has chkstat installed.
+If not present KIWI skips this step and continuous with a
+warning.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.system.setup.SystemSetup.setup_plymouth_splash">
 <code class="descname">setup_plymouth_splash</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/setup.html#SystemSetup.setup_plymouth_splash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.setup_plymouth_splash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup the KIWI configured splash theme as default</p>
@@ -1889,6 +1905,7 @@ build happens inside of the Open Build Service</td>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
     
 
   

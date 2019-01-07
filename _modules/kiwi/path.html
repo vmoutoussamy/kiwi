@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.path &mdash; kiwi 9.17.6 documentation</title>
+  <title>kiwi.path &mdash; kiwi 9.17.7 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.7</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -407,7 +407,7 @@
 <span class="sd">    **Directory path helpers**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Path.sort_by_hierarchy"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.sort_by_hierarchy">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">sort_by_hierarchy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_list</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sort_by_hierarchy</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sort given list of path names by their hierachy in the tree</span>
 
@@ -440,7 +440,7 @@
         <span class="k">return</span> <span class="n">ordered_paths</span></div>
 
 <div class="viewcode-block" id="Path.create"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.create">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create path and all sub directories to target</span>
 
@@ -451,7 +451,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Path.wipe"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.wipe">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">wipe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wipe</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete path and all contents</span>
 
@@ -462,7 +462,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Path.remove"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.remove">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete empty path, causes an error if target is not empty</span>
 
@@ -473,7 +473,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Path.remove_hierarchy"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.remove_hierarchy">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">remove_hierarchy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">remove_hierarchy</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Recursively remove an empty path and its sub directories</span>
 <span class="sd">        ignore non empty or protected paths and leave them untouched</span>
@@ -503,7 +503,7 @@
 
 <div class="viewcode-block" id="Path.which"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.which">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">which</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">alternative_lookup_paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">alternative_lookup_paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">custom_env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -582,6 +582,7 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
     
 
   
