@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.17.7 &mdash; kiwi 9.17.7 documentation</title>
+  <title>API Documentation 9.17.8 &mdash; kiwi 9.17.8 documentation</title>
   
 
   
@@ -252,7 +252,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.7</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -363,7 +363,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.17.7</li>
+      <li>API Documentation 9.17.8</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -383,7 +383,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.17.7<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.17.8<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -4408,6 +4408,34 @@ Defaults class is returned</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.runtime_config.RuntimeConfig.is_bundle_compression_requested">
+<code class="descname">is_bundle_compression_requested</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_config.html#RuntimeConfig.is_bundle_compression_requested"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_config.RuntimeConfig.is_bundle_compression_requested" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return boolean value to express if the image bundle should
+contain XZ compressed image results or not.</p>
+<dl class="docutils">
+<dt>bundle:</dt>
+<dd><ul class="first last simple">
+<li>compress: true|false</li>
+</ul>
+</dd>
+</dl>
+<p>If compression of image build results is activated the size
+of the bundle is smaller and the download speed increases.
+However the image must be uncompressed before use</p>
+<p>By default the bundle won’t contain compressed results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
 </table>
