@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.template Package &mdash; kiwi 9.17.8 documentation</title>
+  <title>kiwi.bootloader.template Package &mdash; kiwi 9.17.9 documentation</title>
   
 
   
@@ -252,7 +252,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.8</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.9</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -363,7 +363,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.8</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.9</a> &raquo;</li>
         
           <li><a href="kiwi.bootloader.html">kiwi.bootloader Package</a> &raquo;</li>
         
@@ -425,7 +425,7 @@
 
 <dl class="method">
 <dt id="kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_install_template">
-<code class="descname">get_install_template</code><span class="sig-paren">(</span><em>failsafe=True</em>, <em>hybrid=True</em>, <em>terminal='gfxterm'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/grub2.html#BootLoaderTemplateGrub2.get_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_install_template" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_install_template</code><span class="sig-paren">(</span><em>failsafe=True</em>, <em>hybrid=True</em>, <em>terminal='gfxterm'</em>, <em>with_timeout=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/grub2.html#BootLoaderTemplateGrub2.get_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_install_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bootloader configuration template for install media</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -500,7 +500,7 @@ hypervisor, e.g Xen dom0</p>
 
 <dl class="method">
 <dt id="kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_multiboot_install_template">
-<code class="descname">get_multiboot_install_template</code><span class="sig-paren">(</span><em>failsafe=True</em>, <em>terminal='gfxterm'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/grub2.html#BootLoaderTemplateGrub2.get_multiboot_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_multiboot_install_template" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_multiboot_install_template</code><span class="sig-paren">(</span><em>failsafe=True</em>, <em>terminal='gfxterm'</em>, <em>with_timeout=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/grub2.html#BootLoaderTemplateGrub2.get_multiboot_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_multiboot_install_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bootloader configuration template for install media with
 hypervisor, e.g Xen dom0</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -578,7 +578,7 @@ initialized</p>
 
 <dl class="method">
 <dt id="kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux.get_install_template">
-<code class="descname">get_install_template</code><span class="sig-paren">(</span><em>failsafe=True</em>, <em>with_theme=True</em>, <em>terminal=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/isolinux.html#BootLoaderTemplateIsoLinux.get_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux.get_install_template" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_install_template</code><span class="sig-paren">(</span><em>failsafe=True</em>, <em>with_theme=True</em>, <em>terminal=None</em>, <em>with_timeout=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/isolinux.html#BootLoaderTemplateIsoLinux.get_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux.get_install_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bootloader configuration template for install media</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -619,7 +619,7 @@ displays this as menu if no graphics mode can be initialized</p>
 
 <dl class="method">
 <dt id="kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux.get_multiboot_install_template">
-<code class="descname">get_multiboot_install_template</code><span class="sig-paren">(</span><em>failsafe=True</em>, <em>with_theme=True</em>, <em>terminal=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/isolinux.html#BootLoaderTemplateIsoLinux.get_multiboot_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux.get_multiboot_install_template" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_multiboot_install_template</code><span class="sig-paren">(</span><em>failsafe=True</em>, <em>with_theme=True</em>, <em>terminal=None</em>, <em>with_timeout=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/isolinux.html#BootLoaderTemplateIsoLinux.get_multiboot_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux.get_multiboot_install_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bootloader configuration template for install media with
 hypervisor, e.g Xen dom0</p>
 <table class="docutils field-list" frame="void" rules="none">

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.isolinux &mdash; kiwi 9.17.8 documentation</title>
+  <title>kiwi.bootloader.config.isolinux &mdash; kiwi 9.17.9 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.8</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.9</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -467,6 +467,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">gfxmode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_gfxmode</span><span class="p">(</span><span class="s1">&#39;isolinux&#39;</span><span class="p">)</span>
         <span class="c1"># isolinux counts the timeout in units of 1/10 sec</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_timeout_seconds</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">continue_on_timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_continue_on_timeout</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cmdline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_cmdline</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cmdline_failsafe</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cmdline</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_failsafe_kernel_options</span><span class="p">()]</span>
@@ -533,12 +534,14 @@
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Using multiboot install template&#39;</span><span class="p">)</span>
             <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;hypervisor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hypervisor</span>
             <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">isolinux</span><span class="o">.</span><span class="n">get_multiboot_install_template</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">failsafe_boot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_have_theme</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">failsafe_boot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_have_theme</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">continue_on_timeout</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Using install template&#39;</span><span class="p">)</span>
             <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">isolinux</span><span class="o">.</span><span class="n">get_install_template</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">failsafe_boot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_have_theme</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">failsafe_boot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_have_theme</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">continue_on_timeout</span>
             <span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
