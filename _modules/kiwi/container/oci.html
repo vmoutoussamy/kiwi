@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.container.oci &mdash; kiwi 9.17.9 documentation</title>
+  <title>kiwi.container.oci &mdash; kiwi 9.17.10 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.9</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.10</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -509,7 +509,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">unpack</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">sync_rootfs</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">]),</span> <span class="n">exclude_list</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">repack</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">repack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s1">&#39;additional_tags&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;additional_tags&#39;</span><span class="p">]:</span>
