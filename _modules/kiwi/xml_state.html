@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_state &mdash; kiwi 9.17.11 documentation</title>
+  <title>kiwi.xml_state &mdash; kiwi 9.17.12 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.12</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -920,8 +920,10 @@
 <div class="viewcode-block" id="XMLState.is_xen_guest"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.is_xen_guest">[docs]</a>    <span class="k">def</span> <span class="nf">is_xen_guest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Check if build type setup specifies a Xen Guest (domX)</span>
-<span class="sd">        The check is based on the firmware and xen_loader configuration</span>
-<span class="sd">        values:</span>
+<span class="sd">        The check is based on the architecture, the firmware and</span>
+<span class="sd">        xen_loader configuration values:</span>
+
+<span class="sd">        * We only support Xen setup on the x86_64 architecture</span>
 
 <span class="sd">        * Firmware pointing to ec2 means the image is targeted to run</span>
 <span class="sd">          in Amazon EC2 which is a Xen guest</span>
@@ -933,6 +935,9 @@
 
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_architecture</span> <span class="o">!=</span> <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span>
+            <span class="c1"># We only support Xen stuff on x86_64</span>
+            <span class="k">return</span> <span class="kc">False</span>
         <span class="n">firmware</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_firmware</span><span class="p">()</span>
         <span class="n">machine_section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_build_type_machine_section</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">firmware</span> <span class="ow">and</span> <span class="n">firmware</span> <span class="ow">in</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_ec2_capable_firmware_names</span><span class="p">():</span>
@@ -940,7 +945,8 @@
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="n">machine_section</span> <span class="ow">and</span> <span class="n">machine_section</span><span class="o">.</span><span class="n">get_xen_loader</span><span class="p">():</span>
             <span class="c1"># the image provides a machine section with a guest loader setup</span>
-            <span class="k">return</span> <span class="kc">True</span></div>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="XMLState.get_build_type_system_disk_section"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_system_disk_section">[docs]</a>    <span class="k">def</span> <span class="nf">get_build_type_system_disk_section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

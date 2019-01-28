@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.17.11 &mdash; kiwi 9.17.11 documentation</title>
+  <title>API Documentation 9.17.12 &mdash; kiwi 9.17.12 documentation</title>
   
 
   
@@ -252,7 +252,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.11</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.12</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -363,7 +363,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.17.11</li>
+      <li>API Documentation 9.17.12</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -383,7 +383,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.17.11<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.17.12<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -1766,20 +1766,37 @@ of the installed grub2 tools</p>
 
 <dl class="classmethod">
 <dt id="kiwi.defaults.Defaults.get_grub_path">
-<em class="property">classmethod </em><code class="descname">get_grub_path</code><span class="sig-paren">(</span><em>lookup_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_grub_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_grub_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Provides grub install path</p>
+<em class="property">classmethod </em><code class="descname">get_grub_path</code><span class="sig-paren">(</span><em>root_path</em>, <em>filename</em>, <em>raise_on_error=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_grub_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_grub_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides grub path to given search file</p>
 <p>Depending on the distribution grub could be installed below
-a grub2 or grub directory. Therefore this information needs
+a grub2 or grub directory. grub could also reside in /usr/lib
+as well as in /usr/share. Therefore this information needs
 to be dynamically looked up</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lookup_path</strong> (<em>string</em>) – path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>root_path</strong> (<em>string</em>) – root path to start the lookup from</li>
+<li><strong>filename</strong> (<em>string</em>) – filename to search</li>
+<li><strong>raise_on_error</strong> (<em>bool</em>) – raise on not found, defaults to True</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">grub2 install directory path name</td>
+</tbody>
+</table>
+<p>The method returns the path to the given grub search file.
+By default it raises a KiwiBootLoaderGrubDataError exception
+if the file could not be found in any of the search locations.
+If raise_on_error is set to False and no file could be found
+the function returns None</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">filepath</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>
 </tbody>
 </table>
@@ -4189,6 +4206,15 @@ for x86 platforms.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.runtime_checker.RuntimeChecker.check_minimal_required_preferences">
+<code class="descname">check_minimal_required_preferences</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_minimal_required_preferences"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_minimal_required_preferences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kiwi requires some of the elements of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> element
+to be present at least in one of the preferences section. This
+runtime check validates &lt;version&gt; and &lt;packagemanager&gt; are
+provided.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.runtime_checker.RuntimeChecker.check_repositories_configured">
 <code class="descname">check_repositories_configured</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_repositories_configured"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_repositories_configured" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verify that that there are repositories configured</p>
@@ -5866,9 +5892,10 @@ is set the volume name is used as data path.</li>
 <dt id="kiwi.xml_state.XMLState.is_xen_guest">
 <code class="descname">is_xen_guest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.is_xen_guest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.is_xen_guest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if build type setup specifies a Xen Guest (domX)
-The check is based on the firmware and xen_loader configuration
-values:</p>
+The check is based on the architecture, the firmware and
+xen_loader configuration values:</p>
 <ul class="simple">
+<li>We only support Xen setup on the x86_64 architecture</li>
 <li>Firmware pointing to ec2 means the image is targeted to run
 in Amazon EC2 which is a Xen guest</li>
 <li>Machine setup with a xen_loader attribute also indicates a

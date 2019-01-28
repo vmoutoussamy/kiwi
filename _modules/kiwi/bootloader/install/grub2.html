@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.install.grub2 &mdash; kiwi 9.17.11 documentation</title>
+  <title>kiwi.bootloader.install.grub2 &mdash; kiwi 9.17.12 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.12</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -574,17 +574,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">sysfs_mount</span><span class="o">.</span><span class="n">bind_mount</span><span class="p">()</span>
 
         <span class="c1"># check if a grub installation could be found in the image system</span>
-        <span class="n">grub_directory</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_path</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/usr/lib&#39;</span>
+        <span class="n">module_directory</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_path</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">grub_directory</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">module_directory</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiBootLoaderGrubDataError</span><span class="p">(</span>
-                <span class="s1">&#39;No grub2 installation found in </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span>
+                <span class="s1">&#39;No grub2 installation found in </span><span class="si">{0}</span><span class="s1"> for target </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span>
+                <span class="p">)</span>
             <span class="p">)</span>
-        <span class="n">grub_directory</span> <span class="o">=</span> <span class="n">grub_directory</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="n">module_directory</span> <span class="o">=</span> <span class="n">module_directory</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
         <span class="p">)</span>
-        <span class="n">module_directory</span> <span class="o">=</span> <span class="n">grub_directory</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span>
         <span class="n">boot_directory</span> <span class="o">=</span> <span class="s1">&#39;/boot&#39;</span>
 
         <span class="c1"># wipe existing grubenv to allow the grub installer to create a new one</span>

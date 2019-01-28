@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.17.11 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.17.12 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.12</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -408,6 +408,8 @@
     <span class="n">__githash__</span><span class="p">,</span>
     <span class="n">__version__</span>
 <span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">KiwiBootLoaderGrubDataError</span>
 
 
 <div class="viewcode-block" id="Defaults"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults">[docs]</a><span class="k">class</span> <span class="nc">Defaults</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -810,24 +812,45 @@
         <span class="k">return</span> <span class="n">modules</span></div>
 
 <div class="viewcode-block" id="Defaults.get_grub_path"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_path">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">get_grub_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_grub_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">root_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Provides grub install path</span>
+<span class="sd">        Provides grub path to given search file</span>
 
 <span class="sd">        Depending on the distribution grub could be installed below</span>
-<span class="sd">        a grub2 or grub directory. Therefore this information needs</span>
+<span class="sd">        a grub2 or grub directory. grub could also reside in /usr/lib</span>
+<span class="sd">        as well as in /usr/share. Therefore this information needs</span>
 <span class="sd">        to be dynamically looked up</span>
 
-<span class="sd">        :param string lookup_path: path name</span>
+<span class="sd">        :param string root_path: root path to start the lookup from</span>
+<span class="sd">        :param string filename: filename to search</span>
+<span class="sd">        :param bool raise_on_error: raise on not found, defaults to True</span>
 
-<span class="sd">        :return: grub2 install directory path name</span>
+<span class="sd">        The method returns the path to the given grub search file.</span>
+<span class="sd">        By default it raises a KiwiBootLoaderGrubDataError exception</span>
+<span class="sd">        if the file could not be found in any of the search locations.</span>
+<span class="sd">        If raise_on_error is set to False and no file could be found</span>
+<span class="sd">        the function returns None</span>
+
+<span class="sd">        :return: filepath</span>
 
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">install_dirs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;usr/share&#39;</span><span class="p">,</span> <span class="s1">&#39;usr/lib&#39;</span>
+        <span class="p">]</span>
+        <span class="n">lookup_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">grub_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;grub2&#39;</span><span class="p">,</span> <span class="s1">&#39;grub&#39;</span><span class="p">]:</span>
-            <span class="n">grub_path</span> <span class="o">=</span> <span class="n">lookup_path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">grub_name</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">grub_path</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">grub_path</span></div>
+            <span class="k">for</span> <span class="n">install_dir</span> <span class="ow">in</span> <span class="n">install_dirs</span><span class="p">:</span>
+                <span class="n">grub_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">root_path</span><span class="p">,</span> <span class="n">install_dir</span><span class="p">,</span> <span class="n">grub_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">grub_path</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">grub_path</span>
+                <span class="n">lookup_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grub_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raise_on_error</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">KiwiBootLoaderGrubDataError</span><span class="p">(</span>
+                <span class="s1">&#39;grub path </span><span class="si">{0}</span><span class="s1"> not found in </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">lookup_list</span><span class="p">)</span>
+            <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Defaults.get_preparer"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_preparer">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_preparer</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
@@ -866,6 +889,7 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">shim_file_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/usr/share/efi/*/shim.efi&#39;</span><span class="p">,</span>
             <span class="s1">&#39;/usr/lib64/efi/shim.efi&#39;</span><span class="p">,</span>
             <span class="s1">&#39;/boot/efi/EFI/*/shim.efi&#39;</span>
         <span class="p">]</span>
@@ -888,6 +912,7 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">unsigned_grub_file_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/usr/share/grub*/*-efi/grub.efi&#39;</span><span class="p">,</span>
             <span class="s1">&#39;/usr/lib/grub*/*-efi/grub.efi&#39;</span>
         <span class="p">]</span>
         <span class="k">for</span> <span class="n">unsigned_grub_file_pattern</span> <span class="ow">in</span> <span class="n">unsigned_grub_file_patterns</span><span class="p">:</span>
@@ -911,6 +936,7 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">signed_grub_file_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/usr/share/efi/*/grub.efi&#39;</span><span class="p">,</span>
             <span class="s1">&#39;/usr/lib64/efi/grub.efi&#39;</span><span class="p">,</span>
             <span class="s1">&#39;/boot/efi/EFI/*/grub*.efi&#39;</span>
         <span class="p">]</span>

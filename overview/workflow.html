@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Workflow &mdash; kiwi 9.17.11 documentation</title>
+  <title>Basic Workflow &mdash; kiwi 9.17.12 documentation</title>
   
 
   
@@ -252,7 +252,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.12</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -399,7 +399,7 @@ software sources (repositories) available. After the installation is
 complete the system usually reboots and enters a configuration procedure
 upon start-up. The configuration may be fully automatic or it may include
 user interaction.
-This description applies for version 9.17.11.</p>
+This description applies for version 9.17.12.</p>
 </div>
 <p>A system image (usually called “image”), is a <em>complete installation</em> of a Linux
 system within a file. The image represents an operational system and,
@@ -493,7 +493,9 @@ to support the installation of packages into the new root tree.</p>
 may install unwanted packages. Removing such packages can be accomplished by
 marking them for deletion in the configuration file. To do so specify a
 configuration entry like:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;package</span> <span class="na">type=</span><span class="s">&quot;delete&quot;</span><span class="nt">&gt;</span>package_to_be_deleted<span class="nt">&lt;/package&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;delete&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;package_to_be_deleted&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
 </pre></div>
 </div>
 </li>
@@ -712,9 +714,10 @@ example:</p>
 </div>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">baseStripRPM</span></code></dt>
-<dd>Remove rpms defined in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> in the image type=delete section.</dd>
+<dd>Remove rpms defined in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> in the packages <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=delete</span></code>
+section.</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">suseRemovePackagesMarkedForDeletion</span></code></dt>
-<dd>Remove rpms defined in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> in the image <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=delete</span></code>
+<dd>Remove rpms defined in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> in the packages <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=delete</span></code>
 section. The difference compared to <code class="xref py py-obj docutils literal notranslate"><span class="pre">baseStripRPM</span></code> is that the suse
 variant checks if the package is really installed prior to passing it
 to rpm to uninstall it. The suse rpm exits with an error exit code

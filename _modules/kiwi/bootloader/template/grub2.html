@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.template.grub2 &mdash; kiwi 9.17.11 documentation</title>
+  <title>kiwi.bootloader.template.grub2 &mdash; kiwi 9.17.12 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.12</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -452,7 +452,7 @@
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">fonts</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            set font=($$root)$</span><span class="si">{bootpath}</span><span class="s1">/unicode.pf2</span>
+<span class="s1">            set font=($$root)$</span><span class="si">{bootpath}</span><span class="s1">/$</span><span class="si">{boot_directory_name}</span><span class="s1">/fonts/unicode.pf2</span>
 <span class="s1">            set ascii_font=$</span><span class="si">{boot_directory_name}</span><span class="s1">/themes/$</span><span class="si">{theme}</span><span class="s1">/ascii.pf2</span>
 <span class="s1">            set sans_bold_14_font=$</span><span class="si">{boot_directory_name}</span><span class="s1">/themes/$</span><span class="si">{theme}</span><span class="s1">/DejaVuSans-Bold14.pf2</span>
 <span class="s1">            set sans_10_font=$</span><span class="si">{boot_directory_name}</span><span class="s1">/themes/$</span><span class="si">{theme}</span><span class="s1">/DejaVuSans10.pf2</span>
