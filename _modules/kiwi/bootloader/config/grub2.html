@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.17.12 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.17.13 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.12</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1105,8 +1105,10 @@
         <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">boot_fonts_dir</span><span class="p">)</span>
         <span class="n">boot_unicode_font</span> <span class="o">=</span> <span class="n">boot_fonts_dir</span> <span class="o">+</span> <span class="s1">&#39;/unicode.pf2&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">boot_unicode_font</span><span class="p">):</span>
-            <span class="n">unicode_font</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_path</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;unicode.pf2&#39;</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
+                <span class="n">unicode_font</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_path</span><span class="p">(</span>
+                    <span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;unicode.pf2&#39;</span>
+                <span class="p">)</span>
                 <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
                     <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">unicode_font</span><span class="p">,</span> <span class="n">boot_unicode_font</span><span class="p">]</span>
                 <span class="p">)</span>
@@ -1122,12 +1124,12 @@
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">:</span>
             <span class="n">theme_dir</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_path</span><span class="p">(</span>
-                <span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;themes/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span>
+                <span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;themes/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">)</span>
             <span class="n">boot_theme_background_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_theme_background_file</span><span class="p">(</span>
                 <span class="n">lookup_path</span>
             <span class="p">)</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">theme_dir</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">theme_dir</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">theme_dir</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">boot_theme_background_file</span><span class="p">:</span>
                     <span class="c1"># A background file was found. Preserve a copy of the</span>
                     <span class="c1"># file which was created at install time of the theme</span>
