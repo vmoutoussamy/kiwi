@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.runtime_config &mdash; kiwi 9.17.13 documentation</title>
+  <title>kiwi.runtime_config &mdash; kiwi 9.17.15 documentation</title>
   
 
   
@@ -250,7 +250,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.13</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.15</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -481,7 +481,7 @@
 <span class="sd">        of the bundle is smaller and the download speed increases.</span>
 <span class="sd">        However the image must be uncompressed before use</span>
 
-<span class="sd">        By default the bundle won&#39;t contain compressed results.</span>
+<span class="sd">        By default the bundle will contain compressed results.</span>
 
 <span class="sd">        :return: True or False</span>
 
@@ -492,8 +492,8 @@
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">bundle_compress</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if the bundle compression is not set,</span>
-            <span class="c1"># the default is to not compress image results</span>
-            <span class="n">bundle_compress</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="c1"># the default is compress image results</span>
+            <span class="n">bundle_compress</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">bundle_compress</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeConfig.get_xz_options"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_config.RuntimeConfig.get_xz_options">[docs]</a>    <span class="k">def</span> <span class="nf">get_xz_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
