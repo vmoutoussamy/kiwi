@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository Package &mdash; kiwi 9.17.15 documentation</title>
+  <title>kiwi.repository Package &mdash; kiwi 9.17.16 documentation</title>
   
 
   
@@ -184,6 +184,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_partitions.html">Custom Disk Partitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -252,7 +257,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.15</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.16</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -363,7 +368,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.15</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.16</a> &raquo;</li>
         
       <li>kiwi.repository Package</li>
     
@@ -536,6 +541,13 @@ are allowed to be active when building</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.repository.base.RepositoryBase.setup_package_database_configuration">
+<code class="descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/base.html#RepositoryBase.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup package database configuration</p>
+<p>Implementation in specialized repository class</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.repository.base.RepositoryBase.use_default_location">
 <code class="descname">use_default_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/base.html#RepositoryBase.use_default_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.use_default_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call repository operations with default repository manager setup</p>
@@ -684,6 +696,13 @@ and environment</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.repository.yum.RepositoryYum.setup_package_database_configuration">
+<code class="descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure for bootstrapping the rpm database location
+matches the host rpm database setup</p>
 </dd></dl>
 
 <dl class="method">
@@ -865,6 +884,13 @@ and environment</p>
 <dt id="kiwi.repository.zypper.RepositoryZypper.runtime_config">
 <code class="descname">runtime_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/zypper.html#RepositoryZypper.runtime_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.runtime_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>zypper runtime configuration and environment</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.repository.zypper.RepositoryZypper.setup_package_database_configuration">
+<code class="descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/zypper.html#RepositoryZypper.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure for bootstrapping the rpm database location
+matches the host rpm database setup</p>
 </dd></dl>
 
 <dl class="method">

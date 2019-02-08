@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.17.15 &mdash; kiwi 9.17.15 documentation</title>
+  <title>API Documentation 9.17.16 &mdash; kiwi 9.17.16 documentation</title>
   
 
   
@@ -184,6 +184,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_partitions.html">Custom Disk Partitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -252,7 +257,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.15</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.16</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -363,7 +368,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.17.15</li>
+      <li>API Documentation 9.17.16</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -383,7 +388,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.17.15<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.17.16<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -1010,6 +1015,11 @@ raise on error and log output</p>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="kiwi.command_process.CommandProcess.returncode">
+<code class="descname">returncode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/command_process.html#CommandProcess.returncode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.command_process.CommandProcess.returncode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -1151,6 +1161,39 @@ configuration or in the boot code from the kiwi initrd</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">container names</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kiwi.defaults.Defaults.get_custom_rpm_bootstrap_macro_name">
+<em class="property">classmethod </em><code class="descname">get_custom_rpm_bootstrap_macro_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_custom_rpm_bootstrap_macro_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_custom_rpm_bootstrap_macro_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rpm bootstrap macro file name created
+in the custom rpm macros path</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">filename</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kiwi.defaults.Defaults.get_custom_rpm_macros_path">
+<em class="property">classmethod </em><code class="descname">get_custom_rpm_macros_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_custom_rpm_macros_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_custom_rpm_macros_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the custom macros directory for the rpm database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">path name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>
 </tbody>
 </table>
@@ -1413,22 +1456,6 @@ relevant for inode based filesystems</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">mbsize value</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="kiwi.defaults.Defaults.get_default_rpmdb_path">
-<em class="property">classmethod </em><code class="descname">get_default_rpmdb_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_default_rpmdb_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_default_rpmdb_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the default path of the rpm database.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">rpmdb default path</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>
 </tbody>
 </table>
@@ -2970,14 +2997,6 @@ to create a raid array on the specified storage device.</p>
 </dd></dl>
 
 <dl class="exception">
-<dt id="kiwi.exceptions.KiwiRepoTypeUnknown">
-<em class="property">exception </em><code class="descclassname">kiwi.exceptions.</code><code class="descname">KiwiRepoTypeUnknown</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/exceptions.html#KiwiRepoTypeUnknown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiRepoTypeUnknown" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
-<p>Exception raised if an unsupported repository type is specified
-for the corresponding package manager.</p>
-</dd></dl>
-
-<dl class="exception">
 <dt id="kiwi.exceptions.KiwiRepositorySetupError">
 <em class="property">exception </em><code class="descclassname">kiwi.exceptions.</code><code class="descname">KiwiRepositorySetupError</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/exceptions.html#KiwiRepositorySetupError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiRepositorySetupError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
@@ -3047,13 +3066,6 @@ procedure.</p>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
 <p>Exception raised if the initialization of a new image root
 directory has failed.</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="kiwi.exceptions.KiwiRpmDatabaseReloadError">
-<em class="property">exception </em><code class="descclassname">kiwi.exceptions.</code><code class="descname">KiwiRpmDatabaseReloadError</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/exceptions.html#KiwiRpmDatabaseReloadError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiRpmDatabaseReloadError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
-<p>Exception raised on error of an rpm DB dump -&gt; reload process.</p>
 </dd></dl>
 
 <dl class="exception">

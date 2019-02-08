@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.package_manager Package &mdash; kiwi 9.17.15 documentation</title>
+  <title>kiwi.package_manager Package &mdash; kiwi 9.17.16 documentation</title>
   
 
   
@@ -184,6 +184,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_partitions.html">Custom Disk Partitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -252,7 +257,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.15</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.16</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -363,7 +368,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.15</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.16</a> &raquo;</li>
         
       <li>kiwi.package_manager Package</li>
     
@@ -422,21 +427,30 @@ packages and collections using a package manager</strong></p>
 <dl class="method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.database_consistent">
 <code class="descname">database_consistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/base.html#PackageManagerBase.database_consistent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.database_consistent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if package database is consistent</p>
-<p>Implementation in specialized package manager class</p>
+<dd><p>OBSOLETE: Will be removed 2019-06-05</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.dump_reload_package_database">
 <code class="descname">dump_reload_package_database</code><span class="sig-paren">(</span><em>version=45</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/base.html#PackageManagerBase.dump_reload_package_database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.dump_reload_package_database" title="Permalink to this definition">¶</a></dt>
-<dd><p>For rpm based package managers, dump and reload the database
-to match the desired rpm db version</p>
-<p>Implementation in specialized package manager class</p>
+<dd><p>OBSOLETE: Will be removed 2019-06-05</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.package_manager.base.PackageManagerBase.has_failed">
+<code class="descname">has_failed</code><span class="sig-paren">(</span><em>returncode</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/base.html#PackageManagerBase.has_failed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.has_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate given result return code</p>
+<p>Any returncode != 0 is considered an error unless
+overwritten in specialized package manager class</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<em>str</em>) – unused</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>returncode</strong> (<em>int</em>) – return code number</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True|False</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
 </tr>
 </tbody>
 </table>
@@ -493,6 +507,13 @@ to match the desired rpm db version</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.package_manager.base.PackageManagerBase.post_process_install_requests_bootstrap">
+<code class="descname">post_process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/base.html#PackageManagerBase.post_process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.post_process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process extra code required after bootstrapping</p>
+<p>Implementation in specialized package manager class</p>
 </dd></dl>
 
 <dl class="method">
@@ -587,8 +608,8 @@ to match the desired rpm db version</p>
 <dt id="kiwi.package_manager.base.PackageManagerBase.request_package_lock">
 <code class="descname">request_package_lock</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_package_lock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_package_lock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package exclusion(skip) request</p>
-<p>Obsolete method, only kept for API compatbility
-Method calls: request_package_exclusion</p>
+<p>OBSOLETE: Will be removed 2019-06-05</p>
+<p>Kept for API compatbility Method calls: request_package_exclusion</p>
 </dd></dl>
 
 <dl class="method">
@@ -637,37 +658,6 @@ configuration</li>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.database_consistent">
-<code class="descname">database_consistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.database_consistent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.database_consistent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if rpm package database is consistent</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.dump_reload_package_database">
-<code class="descname">dump_reload_package_database</code><span class="sig-paren">(</span><em>version=45</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.dump_reload_package_database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.dump_reload_package_database" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dump and reload the rpm database to match the desired rpm db version</p>
-<p>For the supported RHEL versions there is no dump/reload cycle required</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<em>str</em>) – unused</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="method">
 <dt id="kiwi.package_manager.yum.PackageManagerYum.match_package_deleted">
 <code class="descname">match_package_deleted</code><span class="sig-paren">(</span><em>package_name</em>, <em>yum_output</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.match_package_deleted" title="Permalink to this definition">¶</a></dt>
@@ -733,6 +723,13 @@ the same base package name</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.package_manager.yum.PackageManagerYum.post_process_install_requests_bootstrap">
+<code class="descname">post_process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.post_process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.post_process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the rpm database to the place as it is expected by the
+rpm package installed during bootstrap phase</p>
 </dd></dl>
 
 <dl class="method">
@@ -899,35 +896,23 @@ runtime configuration</li>
 </tbody>
 </table>
 <dl class="method">
-<dt id="kiwi.package_manager.zypper.PackageManagerZypper.database_consistent">
-<code class="descname">database_consistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.database_consistent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.database_consistent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if rpm package database is consistent</p>
+<dt id="kiwi.package_manager.zypper.PackageManagerZypper.has_failed">
+<code class="descname">has_failed</code><span class="sig-paren">(</span><em>returncode</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.has_failed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.has_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate given result return code</p>
+<p>In zypper any return code == 0 or &gt;= 100 is considered success.
+Any return code different from 0 and &lt; 100 is treated as an
+error we care for. Return codes &gt;= 100 indicates an issue
+like ‘new kernel needs reboot of the system’ or similar which
+we don’t care in the scope of image building</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>returncode</strong> (<em>int</em>) – return code number</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True|False</td>
 </tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.package_manager.zypper.PackageManagerZypper.dump_reload_package_database">
-<code class="descname">dump_reload_package_database</code><span class="sig-paren">(</span><em>version=45</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.dump_reload_package_database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.dump_reload_package_database" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dump and reload the rpm database to match the desired rpm db version
-Supported target rpm database db versions are</p>
-<ul class="simple">
-<li>45 (db45_load)</li>
-<li>48 (db48_load)</li>
-</ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<em>str</em>) – target rpm db version</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
 </tr>
 </tbody>
 </table>
@@ -998,6 +983,13 @@ the same base package name</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.package_manager.zypper.PackageManagerZypper.post_process_install_requests_bootstrap">
+<code class="descname">post_process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.post_process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.post_process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the rpm database to the place as it is expected by the
+rpm package installed during bootstrap phase</p>
 </dd></dl>
 
 <dl class="method">

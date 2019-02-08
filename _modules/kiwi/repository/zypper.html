@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository.zypper &mdash; kiwi 9.17.15 documentation</title>
+  <title>kiwi.repository.zypper &mdash; kiwi 9.17.16 documentation</title>
   
 
   
@@ -182,6 +182,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_partitions.html">Custom Disk Partitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -250,7 +255,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.15</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.16</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -405,11 +410,7 @@
 <span class="kn">from</span> <span class="nn">kiwi.repository.base</span> <span class="k">import</span> <span class="n">RepositoryBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.uri</span> <span class="k">import</span> <span class="n">Uri</span>
 <span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
-
-<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
-    <span class="n">KiwiRepoTypeUnknown</span>
-<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.rpm_database</span> <span class="k">import</span> <span class="n">RpmDataBase</span>
 
 
 <div class="viewcode-block" id="RepositoryZypper"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper">[docs]</a><span class="k">class</span> <span class="nc">RepositoryZypper</span><span class="p">(</span><span class="n">RepositoryBase</span><span class="p">):</span>
@@ -525,6 +526,14 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_write_runtime_config</span><span class="p">()</span></div>
 
+<div class="viewcode-block" id="RepositoryZypper.setup_package_database_configuration"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.setup_package_database_configuration">[docs]</a>    <span class="k">def</span> <span class="nf">setup_package_database_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Make sure for bootstrapping the rpm database location</span>
+<span class="sd">        matches the host rpm database setup</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rpmdb</span> <span class="o">=</span> <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
+        <span class="n">rpmdb</span><span class="o">.</span><span class="n">set_database_to_host_path</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="RepositoryZypper.use_default_location"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.use_default_location">[docs]</a>    <span class="k">def</span> <span class="nf">use_default_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Setup zypper repository operations to store all data</span>
@@ -595,20 +604,31 @@
             <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">repo_file</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_backup_package_cache</span><span class="p">()</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;zypper&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">zypper_args</span> <span class="o">+</span> <span class="p">[</span>
-                <span class="s1">&#39;--root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
-                <span class="s1">&#39;addrepo&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;--refresh&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;--type&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_translate_repo_type</span><span class="p">(</span><span class="n">repo_type</span><span class="p">),</span>
-                <span class="s1">&#39;--keep-packages&#39;</span> <span class="k">if</span> <span class="n">Uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">is_remote</span><span class="p">()</span> <span class="k">else</span>
-                <span class="s1">&#39;--no-keep-packages&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;-C&#39;</span><span class="p">,</span>
-                <span class="n">uri</span><span class="p">,</span>
-                <span class="n">name</span>
-            <span class="p">],</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
-        <span class="p">)</span>
+        <span class="n">zypper_addrepo_command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zypper&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">zypper_args</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="s1">&#39;--root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+            <span class="s1">&#39;addrepo&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--refresh&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--keep-packages&#39;</span> <span class="k">if</span> <span class="n">Uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">is_remote</span><span class="p">()</span> <span class="k">else</span>
+            <span class="s1">&#39;--no-keep-packages&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--no-check&#39;</span><span class="p">,</span>
+            <span class="n">uri</span><span class="p">,</span>
+            <span class="n">name</span>
+        <span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="n">zypper_addrepo_command</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># for whatever reason zypper sometimes failes with</span>
+            <span class="c1"># a &#39;failed to cache rpm database&#39; error. I could not</span>
+            <span class="c1"># find any reason why and a simple recall of the exact</span>
+            <span class="c1"># same command in the exact same environment works.</span>
+            <span class="c1"># Thus the stupid but simple workaround to this problem</span>
+            <span class="c1"># is try one recall before really failing</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="n">zypper_addrepo_command</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
+            <span class="p">)</span>
+
         <span class="k">if</span> <span class="n">prio</span> <span class="ow">or</span> <span class="n">repo_gpgcheck</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">pkg_gpgcheck</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">repo_config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">()</span>
             <span class="n">repo_config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">repo_file</span><span class="p">)</span>
@@ -635,10 +655,8 @@
 <span class="sd">        :param list signing_keys: list of the key files to import</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">signing_keys</span><span class="p">:</span>
-            <span class="c1"># Including --dbpath flag is a workaround for bsc#1112357</span>
             <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
-                <span class="s1">&#39;rpm&#39;</span><span class="p">,</span> <span class="s1">&#39;--root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;--import&#39;</span><span class="p">,</span>
-                <span class="n">key</span><span class="p">,</span> <span class="s1">&#39;--dbpath&#39;</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_default_rpmdb_path</span><span class="p">()</span>
+                <span class="s1">&#39;rpm&#39;</span><span class="p">,</span> <span class="s1">&#39;--root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;--import&#39;</span><span class="p">,</span> <span class="n">key</span>
             <span class="p">])</span></div>
 
 <div class="viewcode-block" id="RepositoryZypper.delete_repo"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.delete_repo">[docs]</a>    <span class="k">def</span> <span class="nf">delete_repo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
@@ -717,23 +735,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">runtime_zypper_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">runtime_zypp_config_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">runtime_zypp_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_translate_repo_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Translate kiwi supported common repo type names from the schema</span>
-<span class="sd">            into the name the zyper package manager understands</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">zypper_type_for</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;rpm-md&#39;</span><span class="p">:</span> <span class="s1">&#39;YUM&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;rpm-dir&#39;</span><span class="p">:</span> <span class="s1">&#39;Plaindir&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;yast2&#39;</span><span class="p">:</span> <span class="s1">&#39;YaST&#39;</span>
-        <span class="p">}</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">zypper_type_for</span><span class="p">[</span><span class="n">repo_type</span><span class="p">]</span>
-        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">KiwiRepoTypeUnknown</span><span class="p">(</span>
-                <span class="s1">&#39;Unsupported zypper repo type: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">repo_type</span>
-            <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_backup_package_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
