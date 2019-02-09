@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.17.16 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.17.17 documentation</title>
   
 
   
@@ -255,7 +255,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.16</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.17</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1635,6 +1635,18 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s1">&#39;macros.kiwi-bootstrap-config&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_custom_rpm_image_macro_name"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_custom_rpm_image_macro_name">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_custom_rpm_image_macro_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the rpm image macro file name created</span>
+<span class="sd">        in the custom rpm macros path</span>
+
+<span class="sd">        :return: filename</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;macros.kiwi-image-config&#39;</span></div>
 
 <div class="viewcode-block" id="Defaults.get_default_packager_tool"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_packager_tool">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_default_packager_tool</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">package_manager</span><span class="p">):</span>

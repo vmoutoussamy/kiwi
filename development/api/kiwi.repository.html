@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository Package &mdash; kiwi 9.17.16 documentation</title>
+  <title>kiwi.repository Package &mdash; kiwi 9.17.17 documentation</title>
   
 
   
@@ -257,7 +257,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.16</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.17</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -368,7 +368,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.16</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.17</a> &raquo;</li>
         
       <li>kiwi.repository Package</li>
     
@@ -701,8 +701,13 @@ and environment</p>
 <dl class="method">
 <dt id="kiwi.repository.yum.RepositoryYum.setup_package_database_configuration">
 <code class="descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make sure for bootstrapping the rpm database location
-matches the host rpm database setup</p>
+<dd><p>Setup rpm macros for bootstrapping and image building</p>
+<ol class="arabic simple">
+<li>Create the rpm image macro which persists during the build</li>
+<li>Create the rpm bootstrap macro to make sure for bootstrapping
+the rpm database location matches the host rpm database setup.
+This macro only persists during the bootstrap phase</li>
+</ol>
 </dd></dl>
 
 <dl class="method">
@@ -889,8 +894,13 @@ and environment</p>
 <dl class="method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.setup_package_database_configuration">
 <code class="descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/zypper.html#RepositoryZypper.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make sure for bootstrapping the rpm database location
-matches the host rpm database setup</p>
+<dd><p>Setup rpm macros for bootstrapping and image building</p>
+<ol class="arabic simple">
+<li>Create the rpm image macro which persists during the build</li>
+<li>Create the rpm bootstrap macro to make sure for bootstrapping
+the rpm database location matches the host rpm database setup.
+This macro only persists during the bootstrap phase</li>
+</ol>
 </dd></dl>
 
 <dl class="method">

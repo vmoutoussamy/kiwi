@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.tasks.system_prepare &mdash; kiwi 9.17.16 documentation</title>
+  <title>kiwi.tasks.system_prepare &mdash; kiwi 9.17.17 documentation</title>
   
 
   
@@ -255,7 +255,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.16</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.17</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -477,6 +477,7 @@
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.profile</span> <span class="k">import</span> <span class="n">Profile</span>
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.rpm</span> <span class="k">import</span> <span class="n">Rpm</span>
 
 
 <div class="viewcode-block" id="SystemPrepareTask"><a class="viewcode-back" href="../../../development/api/kiwi.tasks.html#kiwi.tasks.system_prepare.SystemPrepareTask">[docs]</a><span class="k">class</span> <span class="nc">SystemPrepareTask</span><span class="p">(</span><span class="n">CliTask</span><span class="p">):</span>
@@ -621,6 +622,11 @@
         <span class="c1"># handle delete package requests, forced uninstall without</span>
         <span class="c1"># any dependency resolution</span>
         <span class="n">system</span><span class="o">.</span><span class="n">pinch_system</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># delete any custom rpm macros created</span>
+        <span class="n">Rpm</span><span class="p">(</span>
+            <span class="n">abs_root_path</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_custom_rpm_image_macro_name</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">wipe_config</span><span class="p">()</span>
 
         <span class="c1"># make sure system instance is cleaned up now</span>
         <span class="k">del</span> <span class="n">system</span></div>

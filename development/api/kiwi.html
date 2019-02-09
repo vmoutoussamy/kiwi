@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.17.16 &mdash; kiwi 9.17.16 documentation</title>
+  <title>API Documentation 9.17.17 &mdash; kiwi 9.17.17 documentation</title>
   
 
   
@@ -257,7 +257,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.16</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.17</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -368,7 +368,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.17.16</li>
+      <li>API Documentation 9.17.17</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -388,7 +388,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.17.16<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.17.17<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -1170,6 +1170,23 @@ configuration or in the boot code from the kiwi initrd</p>
 <dt id="kiwi.defaults.Defaults.get_custom_rpm_bootstrap_macro_name">
 <em class="property">classmethod </em><code class="descname">get_custom_rpm_bootstrap_macro_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_custom_rpm_bootstrap_macro_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_custom_rpm_bootstrap_macro_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the rpm bootstrap macro file name created
+in the custom rpm macros path</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">filename</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kiwi.defaults.Defaults.get_custom_rpm_image_macro_name">
+<em class="property">classmethod </em><code class="descname">get_custom_rpm_image_macro_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_custom_rpm_image_macro_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_custom_rpm_image_macro_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rpm image macro file name created
 in the custom rpm macros path</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5394,6 +5411,24 @@ XML type setup</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.xml_state.XMLState.get_locale">
+<code class="descname">get_locale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.get_locale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_locale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets list of locale names if configured. Takes
+the first locale setup from the existing preferences
+sections into account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of names or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list|None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.xml_state.XMLState.get_oemconfig_oem_multipath_scan">
 <code class="descname">get_oemconfig_oem_multipath_scan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.get_oemconfig_oem_multipath_scan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_oemconfig_oem_multipath_scan" title="Permalink to this definition">¶</a></dt>
 <dd><p>State value to activate multipath maps. Returns a boolean
@@ -5575,6 +5610,43 @@ False if not present.</p>
 <dt id="kiwi.xml_state.XMLState.get_rpm_excludedocs">
 <code class="descname">get_rpm_excludedocs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.get_rpm_excludedocs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_rpm_excludedocs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the rpm-excludedocs configuration flag. Returns
+False if not present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.xml_state.XMLState.get_rpm_locale">
+<code class="descname">get_rpm_locale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.get_rpm_locale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_rpm_locale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets list of locale names to filter out by rpm
+if rpm-locale-filtering is switched on the
+the list always contains: [POSIX, C, C.UTF-8]
+and is extended by the optionaly configured
+locale</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of names or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list|None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.xml_state.XMLState.get_rpm_locale_filtering">
+<code class="descname">get_rpm_locale_filtering</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.get_rpm_locale_filtering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_rpm_locale_filtering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the rpm-locale-filtering configuration flag. Returns
 False if not present.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

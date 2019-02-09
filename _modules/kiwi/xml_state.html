@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_state &mdash; kiwi 9.17.16 documentation</title>
+  <title>kiwi.xml_state &mdash; kiwi 9.17.17 documentation</title>
   
 
   
@@ -255,7 +255,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.16</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.17</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -507,6 +507,56 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">initrd_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_initrd_system</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">initrd_system</span></div>
+
+<div class="viewcode-block" id="XMLState.get_locale"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_locale">[docs]</a>    <span class="k">def</span> <span class="nf">get_locale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets list of locale names if configured. Takes</span>
+<span class="sd">        the first locale setup from the existing preferences</span>
+<span class="sd">        sections into account.</span>
+
+<span class="sd">        :return: List of names or None</span>
+
+<span class="sd">        :rtype: list|None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">preferences</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_preferences_sections</span><span class="p">():</span>
+            <span class="n">locale_section</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_locale</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">locale_section</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">locale_section</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="XMLState.get_rpm_locale"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_rpm_locale">[docs]</a>    <span class="k">def</span> <span class="nf">get_rpm_locale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets list of locale names to filter out by rpm</span>
+<span class="sd">        if rpm-locale-filtering is switched on the</span>
+<span class="sd">        the list always contains: [POSIX, C, C.UTF-8]</span>
+<span class="sd">        and is extended by the optionaly configured</span>
+<span class="sd">        locale</span>
+
+<span class="sd">        :return: List of names or None</span>
+
+<span class="sd">        :rtype: list|None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rpm_locale_filtering</span><span class="p">():</span>
+            <span class="n">rpm_locale</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POSIX&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C.UTF-8&#39;</span><span class="p">]</span>
+            <span class="n">configured_locale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_locale</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">configured_locale</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">locale</span> <span class="ow">in</span> <span class="n">configured_locale</span><span class="p">:</span>
+                    <span class="n">rpm_locale</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">locale</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">rpm_locale</span></div>
+
+<div class="viewcode-block" id="XMLState.get_rpm_locale_filtering"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_rpm_locale_filtering">[docs]</a>    <span class="k">def</span> <span class="nf">get_rpm_locale_filtering</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the rpm-locale-filtering configuration flag. Returns</span>
+<span class="sd">        False if not present.</span>
+
+<span class="sd">        :return: True or False</span>
+
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">preferences</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_preferences_sections</span><span class="p">():</span>
+            <span class="n">locale_filtering</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_rpm_locale_filtering</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">locale_filtering</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">locale_filtering</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="XMLState.get_rpm_excludedocs"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_rpm_excludedocs">[docs]</a>    <span class="k">def</span> <span class="nf">get_rpm_excludedocs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
