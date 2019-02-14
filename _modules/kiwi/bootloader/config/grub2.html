@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.17.17 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.17.18 documentation</title>
   
 
   
@@ -17,33 +17,35 @@
   
 
   
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -255,7 +257,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.17</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.18</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -468,7 +470,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_bootloader_console</span><span class="p">()</span> \
             <span class="ow">or</span> <span class="s1">&#39;gfxterm&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gfxmode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_gfxmode</span><span class="p">(</span><span class="s1">&#39;grub2&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bootpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_theme</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_timeout_seconds</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">continue_on_timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_continue_on_timeout</span><span class="p">()</span>
@@ -639,7 +640,7 @@
             <span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">,</span>
             <span class="s1">&#39;boot_timeout&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
             <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_menu_entry_title</span><span class="p">(),</span>
-            <span class="s1">&#39;bootpath&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bootpath</span><span class="p">,</span>
+            <span class="s1">&#39;bootpath&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">(</span><span class="s1">&#39;disk&#39;</span><span class="p">),</span>
             <span class="s1">&#39;boot_directory_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">multiboot</span><span class="p">:</span>
@@ -692,7 +693,7 @@
             <span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">,</span>
             <span class="s1">&#39;boot_timeout&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
             <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_menu_entry_install_title</span><span class="p">(),</span>
-            <span class="s1">&#39;bootpath&#39;</span><span class="p">:</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">+</span> <span class="s1">&#39;/loader&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;bootpath&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">(</span><span class="s1">&#39;iso&#39;</span><span class="p">),</span>
             <span class="s1">&#39;boot_directory_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">multiboot</span><span class="p">:</span>
@@ -748,7 +749,7 @@
             <span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">,</span>
             <span class="s1">&#39;boot_timeout&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
             <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_menu_entry_title</span><span class="p">(</span><span class="n">plain</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-            <span class="s1">&#39;bootpath&#39;</span><span class="p">:</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">+</span> <span class="s1">&#39;/loader&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;bootpath&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">(</span><span class="s1">&#39;iso&#39;</span><span class="p">),</span>
             <span class="s1">&#39;boot_directory_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">multiboot</span><span class="p">:</span>
@@ -796,7 +797,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/mbrid&#39;</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_copy_theme_data_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_copy_theme_data_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;iso&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supports_bios_modules</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_copy_bios_modules_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
@@ -835,7 +836,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">efi_boot_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_efi_path</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_copy_theme_data_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_copy_theme_data_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;disk&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">xen_guest</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supports_bios_modules</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_copy_bios_modules_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
@@ -1101,11 +1102,18 @@
         <span class="k">for</span> <span class="n">background_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">background_pattern</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">background_file</span>
 
-    <span class="k">def</span> <span class="nf">_copy_theme_data_to_boot_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_copy_theme_data_to_boot_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lookup_path</span><span class="p">:</span>
             <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
-        <span class="n">boot_fonts_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span> <span class="s1">&#39;fonts&#39;</span><span class="p">]</span>
+        <span class="n">boot_fonts_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">(</span><span class="n">target</span><span class="p">),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span>
+                    <span class="s1">&#39;fonts&#39;</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
         <span class="p">)</span>
         <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">boot_fonts_dir</span><span class="p">)</span>
         <span class="n">boot_unicode_font</span> <span class="o">=</span> <span class="n">boot_fonts_dir</span> <span class="o">+</span> <span class="s1">&#39;/unicode.pf2&#39;</span>
@@ -1266,26 +1274,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
