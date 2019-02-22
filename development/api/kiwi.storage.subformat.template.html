@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.template Package &mdash; kiwi 9.17.19 documentation</title>
+  <title>kiwi.storage.subformat.template Package &mdash; kiwi 9.17.20 documentation</title>
   
 
   
@@ -259,7 +259,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.19</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.20</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -370,7 +370,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.19</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.20</a> &raquo;</li>
         
           <li><a href="kiwi.storage.html">kiwi.storage Package</a> &raquo;</li>
         
@@ -430,6 +430,79 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Template</p>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kiwi.storage.subformat.template.vagrant_config">
+<span id="kiwi-storage-subformat-template-vagrant-config-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.template.vagrant_config" title="kiwi.storage.subformat.template.vagrant_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.vagrant_config</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.template.vagrant_config" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate">
+<em class="property">class </em><code class="descclassname">kiwi.storage.subformat.template.vagrant_config.</code><code class="descname">VagrantConfigTemplate</code><a class="reference internal" href="../../_modules/kiwi/storage/subformat/template/vagrant_config.html#VagrantConfigTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Generate a Vagrantfile configuration template</strong></p>
+<p>This class creates a simple template for the Vagrantfile that is included
+inside a vagrant box.</p>
+<p>The included Vagrantfile carries additional information for vagrant: by
+default that is just the boxes’ MAC address, but depending on the provider
+additional information need to be present. These can be passed via the
+parameter <code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> to the method <a class="reference internal" href="#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template" title="kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_template()</span></code></a>.</p>
+<p>Example usage:</p>
+<p>The default without any additional settings will result in this
+Vagrantfile:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vagrant_config</span> <span class="o">=</span> <span class="n">VagrantConfigTemplate</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">vagrant_config</span><span class="o">.</span><span class="n">get_template</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="s1">&#39;mac_address&#39;</span><span class="p">:</span> <span class="s1">&#39;deadbeef&#39;</span><span class="p">})</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Vagrant.configure(&quot;2&quot;) do |config|</span>
+<span class="go">  config.vm.base_mac = &quot;deadbeef&quot;</span>
+<span class="go">end</span>
+</pre></div>
+</div>
+<p>If your provider/box requires additional settings, provide them as follows:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extra_settings</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">config.vm.hostname = &quot;no-dead-beef&quot;</span>
+<span class="gp">... </span><span class="s1">config.vm.provider :special do |special|</span>
+<span class="gp">... </span><span class="s1">  special.secret_settings = &quot;please_work&quot;</span>
+<span class="gp">... </span><span class="s1">end</span>
+<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">vagrant_config</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">extra_settings</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="s1">&#39;mac_address&#39;</span><span class="p">:</span> <span class="s1">&#39;DEADBEEF&#39;</span><span class="p">})</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Vagrant.configure(&quot;2&quot;) do |config|</span>
+<span class="go">  config.vm.base_mac = &quot;DEADBEEF&quot;</span>
+<span class="go">  config.vm.hostname = &quot;no-dead-beef&quot;</span>
+<span class="go">  config.vm.provider :special do |special|</span>
+<span class="go">    special.secret_settings = &quot;please_work&quot;</span>
+<span class="go">  end</span>
+<span class="go">end</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template">
+<code class="descname">get_template</code><span class="sig-paren">(</span><em>custom_settings=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/storage/subformat/template/vagrant_config.html#VagrantConfigTemplate.get_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new template with <code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> included and
+indented appropriately.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_settings</strong> (<em>str</em>) – String of additional settings that get
+pasted into the Vagrantfile template. The string is put at the
+correct indentation level for you, but the internal indentation has
+to be provided by the caller.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A template with <code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> inserted at the
+appropriate position. The template has one the variable
+<code class="docutils literal notranslate"><span class="pre">mac_address</span></code> that must be substituted.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string.Template</td>
 </tr>
 </tbody>
 </table>

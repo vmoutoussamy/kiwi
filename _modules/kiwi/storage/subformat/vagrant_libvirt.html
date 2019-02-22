@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.vagrant_libvirt &mdash; kiwi 9.17.19 documentation</title>
+  <title>kiwi.storage.subformat.vagrant_libvirt &mdash; kiwi 9.17.20 documentation</title>
   
 
   
@@ -257,7 +257,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -403,142 +403,59 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
-<span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="k">import</span> <span class="n">dedent</span>
-<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">mkdtemp</span>
 
 <span class="c1"># project</span>
-<span class="kn">from</span> <span class="nn">kiwi.storage.subformat.base</span> <span class="k">import</span> <span class="n">DiskFormatBase</span>
+<span class="kn">from</span> <span class="nn">kiwi.storage.subformat.vagrant_base</span> <span class="k">import</span> <span class="n">DiskFormatVagrantBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.storage.subformat.qcow2</span> <span class="k">import</span> <span class="n">DiskFormatQcow2</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
 
-<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
-    <span class="n">KiwiFormatSetupError</span>
-<span class="p">)</span>
 
-
-<div class="viewcode-block" id="DiskFormatVagrantLibVirt"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt">[docs]</a><span class="k">class</span> <span class="nc">DiskFormatVagrantLibVirt</span><span class="p">(</span><span class="n">DiskFormatBase</span><span class="p">):</span>
+<div class="viewcode-block" id="DiskFormatVagrantLibVirt"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt">[docs]</a><span class="k">class</span> <span class="nc">DiskFormatVagrantLibVirt</span><span class="p">(</span><span class="n">DiskFormatVagrantBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    **Create vagrant box for libvirt provider**</span>
+<span class="sd">    **Create a vagrant box for the libvirt provider**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="DiskFormatVagrantLibVirt.post_init"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.post_init">[docs]</a>    <span class="k">def</span> <span class="nf">post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        vagrant disk format post initialization method</span>
-
-<span class="sd">        store vagrantconfig information provided via custom_args</span>
-
-<span class="sd">        :param dict custom_args:</span>
-<span class="sd">            Contains instance of xml_parse::vagrantconfig</span>
-
-<span class="sd">            .. code:: python</span>
-
-<span class="sd">                {&#39;vagrantconfig&#39;: object}</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">custom_args</span> <span class="ow">or</span> <span class="s1">&#39;vagrantconfig&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">custom_args</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">KiwiFormatSetupError</span><span class="p">(</span>
-                <span class="s1">&#39;object init requires custom_args hash with a vagrantconfig&#39;</span>
-            <span class="p">)</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;vagrantconfig&#39;</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="n">KiwiFormatSetupError</span><span class="p">(</span>
-                <span class="s1">&#39;no vagrantconfig provided&#39;</span>
-            <span class="p">)</span>
-
+<div class="viewcode-block" id="DiskFormatVagrantLibVirt.vagrant_post_init"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.vagrant_post_init">[docs]</a>    <span class="k">def</span> <span class="nf">vagrant_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span> <span class="o">=</span> <span class="s1">&#39;vagrant.libvirt.box&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vagrantconfig</span> <span class="o">=</span> <span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;vagrantconfig&#39;</span><span class="p">]</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">=</span> <span class="s1">&#39;libvirt&#39;</span></div>
 
-<div class="viewcode-block" id="DiskFormatVagrantLibVirt.create_image_format"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.create_image_format">[docs]</a>    <span class="k">def</span> <span class="nf">create_image_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DiskFormatVagrantLibVirt.create_box_img"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.create_box_img">[docs]</a>    <span class="k">def</span> <span class="nf">create_box_img</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp_image_dir</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Create vagrant box for libvirt provider. This includes</span>
-
-<span class="sd">        * creation of qcow2 disk image format as box.img</span>
-<span class="sd">        * creation of box metadata.json</span>
-<span class="sd">        * creation of box Vagrantfile</span>
-<span class="sd">        * creation of result format tarball from the files created above</span>
+<span class="sd">        Creates the qcow2 disk image box for libvirt vagrant provider</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;kiwi_vagrant_box.&#39;</span><span class="p">)</span>
-
         <span class="n">qcow</span> <span class="o">=</span> <span class="n">DiskFormatQcow2</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_dir</span>
         <span class="p">)</span>
         <span class="n">qcow</span><span class="o">.</span><span class="n">create_image_format</span><span class="p">()</span>
-        <span class="n">box_img</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span><span class="p">,</span> <span class="s1">&#39;box.img&#39;</span><span class="p">])</span>
+        <span class="n">box_img</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">temp_image_dir</span><span class="p">,</span> <span class="s1">&#39;box.img&#39;</span><span class="p">])</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;mv&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_target_file_path_for_format</span><span class="p">(</span><span class="n">qcow</span><span class="o">.</span><span class="n">image_format</span><span class="p">),</span>
                 <span class="n">box_img</span>
             <span class="p">]</span>
         <span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">box_img</span><span class="p">]</span></div>
 
-        <span class="n">metadata_json</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span><span class="p">,</span> <span class="s1">&#39;metadata.json&#39;</span><span class="p">])</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata_json</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">meta</span><span class="p">:</span>
-            <span class="n">meta</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_box_metadata</span><span class="p">())</span>
-
-        <span class="n">vagrantfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span><span class="p">,</span> <span class="s1">&#39;Vagrantfile&#39;</span><span class="p">])</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">vagrantfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vagrant</span><span class="p">:</span>
-            <span class="n">vagrant</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_box_vagrantconfig</span><span class="p">())</span>
-
-        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="s1">&#39;tar&#39;</span><span class="p">,</span> <span class="s1">&#39;-C&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span><span class="p">,</span>
-                <span class="s1">&#39;-czf&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_target_file_path_for_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image_format</span><span class="p">),</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">box_img</span><span class="p">),</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">metadata_json</span><span class="p">),</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">vagrantfile</span><span class="p">)</span>
-            <span class="p">]</span>
-        <span class="p">)</span></div>
-
-<div class="viewcode-block" id="DiskFormatVagrantLibVirt.store_to_result"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.store_to_result">[docs]</a>    <span class="k">def</span> <span class="nf">store_to_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+<div class="viewcode-block" id="DiskFormatVagrantLibVirt.get_additional_metadata"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">get_additional_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Store result file of the vagrant format conversion into the</span>
-<span class="sd">        provided result instance. In this case compression is unwanted</span>
-<span class="sd">        because the box is already created as a compressed tarball</span>
-
-<span class="sd">        :param object result: Instance of Result</span>
+<span class="sd">        Returns a dictionary containing the virtual image format and the size</span>
+<span class="sd">        of the image.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">key</span><span class="o">=</span><span class="s1">&#39;disk_format_image&#39;</span><span class="p">,</span>
-            <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_target_file_path_for_format</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span>
-            <span class="p">),</span>
-            <span class="n">use_for_bundle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">compress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">shasum</span><span class="o">=</span><span class="kc">True</span>
-        <span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="nf">_create_box_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;provider&#39;</span><span class="p">:</span> <span class="s1">&#39;libvirt&#39;</span><span class="p">,</span>
+        <span class="k">return</span> <span class="p">{</span>
             <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;qcow2&#39;</span><span class="p">,</span>
             <span class="s1">&#39;virtual_size&#39;</span><span class="p">:</span> <span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vagrantconfig</span><span class="o">.</span><span class="n">get_virtualsize</span><span class="p">()</span> <span class="ow">or</span> <span class="mi">42</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
-            <span class="n">metadata</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;: &#39;</span><span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">}</span></div>
 
-    <span class="k">def</span> <span class="nf">_create_box_vagrantconfig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">vagrantconfig</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            Vagrant::Config.run do |config|</span>
-<span class="s1">              config.vm.base_mac = &quot;</span><span class="si">{mac_address}</span><span class="s1">&quot;</span>
+<div class="viewcode-block" id="DiskFormatVagrantLibVirt.get_additional_vagrant_config_settings"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_vagrant_config_settings">[docs]</a>    <span class="k">def</span> <span class="nf">get_additional_vagrant_config_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns settings for the libvirt provider telling vagrant to use kvm.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            config.vm.provider :libvirt do |libvirt|</span>
+<span class="s1">              libvirt.driver = &quot;kvm&quot;</span>
 <span class="s1">            end</span>
-<span class="s1">            include_vagrantfile = File.expand_path(</span>
-<span class="s1">              &quot;../include/_Vagrantfile&quot;, __FILE__</span>
-<span class="s1">            )</span>
-<span class="s1">            load include_vagrantfile if File.exist?(include_vagrantfile)</span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">vagrantconfig</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">mac_address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_random_mac</span><span class="p">()</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_random_mac</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%02x%02x%02x%02x%02x%02x</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x16</span><span class="p">,</span> <span class="mh">0x3e</span><span class="p">,</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0x7e</span><span class="p">),</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">),</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">)</span>
-        <span class="p">)</span></div>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div></div>
 </pre></div>
 
            </div>

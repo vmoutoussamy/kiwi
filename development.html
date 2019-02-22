@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Development and Contributing &mdash; kiwi 9.17.19 documentation</title>
+  <title>Development and Contributing &mdash; kiwi 9.17.20 documentation</title>
   
 
   
@@ -259,7 +259,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -394,12 +394,12 @@
 <p><strong>Abstract</strong></p>
 <p class="last">This document describes the development process of KIWI
 and how you can be part of it. This description applies
-for version 9.17.19.</p>
+for version 9.17.20.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.19</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.20</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/schema.html">Schema Documentation 6.9</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/schema_extensions.html">Extending KIWI with Custom Operations</a></li>
 </ul>
@@ -514,6 +514,17 @@ the following command:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ tox
 </pre></div>
 </div>
+<p>We also include <code class="docutils literal notranslate"><span class="pre">pytest-xdist</span></code> in the development virtualenv which allows
+to run the unit tests in parallel. It is turned of by default but can be
+enabled via:</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ tox &quot;-n NUMBER_OF_PROCESSES&quot;
+</pre></div>
+</div>
+<p>where you can insert an arbitrary number as <code class="docutils literal notranslate"><span class="pre">NUMBER_OF_PROCESSES</span></code> (or a
+shell command like <code class="docutils literal notranslate"><span class="pre">$(nproc)</span></code>). Please also note that the double quotes
+around <code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">NUMBER_OF_PROCESSES</span></code> are required (otherwise <strong class="command">tox</strong>
+will consume this command line flag instead of forwarding it to
+<strong class="command">pytest</strong>).</p>
 <p>The previous call would run <strong class="command">tox</strong> for different Python versions,
 checks the source code for errors, and builds the documentation.</p>
 <p>If you want to see the target, use the option <code class="xref py py-obj docutils literal notranslate"><span class="pre">-l</span></code> to print a list:</p>

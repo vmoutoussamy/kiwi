@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; kiwi 9.17.19 documentation</title>
+  <title>Index &mdash; kiwi 9.17.20 documentation</title>
   
 
   
@@ -258,7 +258,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -690,6 +690,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.storage.html#kiwi.storage.disk.Disk.create_boot_partition">create_boot_partition() (kiwi.storage.disk.Disk method)</a>
 </li>
+      <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_box_img">create_box_img() (kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase method)</a>
+
+      <ul>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.create_box_img">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
+</li>
+      </ul></li>
       <li><a href="development/api/kiwi.storage.html#kiwi.storage.luks_device.LuksDevice.create_crypto_luks">create_crypto_luks() (kiwi.storage.luks_device.LuksDevice method)</a>
 </li>
       <li><a href="development/api/kiwi.storage.html#kiwi.storage.luks_device.LuksDevice.create_crypttab">create_crypttab() (kiwi.storage.luks_device.LuksDevice method)</a>
@@ -731,7 +737,7 @@
 </li>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.qcow2.DiskFormatQcow2.create_image_format">(kiwi.storage.subformat.qcow2.DiskFormatQcow2 method)</a>
 </li>
-        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.create_image_format">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_image_format">(kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase method)</a>
 </li>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vdi.DiskFormatVdi.create_image_format">(kiwi.storage.subformat.vdi.DiskFormatVdi method)</a>
 </li>
@@ -886,10 +892,10 @@
       </ul></li>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.delete_repository_sections">delete_repository_sections() (kiwi.xml_state.XMLState method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.delete_repository_sections_used_for_build">delete_repository_sections_used_for_build() (kiwi.xml_state.XMLState method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.storage.html#kiwi.storage.device_provider.DeviceProvider">DeviceProvider (class in kiwi.storage.device_provider)</a>
 </li>
       <li><a href="development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.disable_cleanup">disable_cleanup() (kiwi.boot.image.base.BootImageBase method)</a>
@@ -907,6 +913,8 @@
       <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.ova.DiskFormatOva">DiskFormatOva (class in kiwi.storage.subformat.ova)</a>
 </li>
       <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.qcow2.DiskFormatQcow2">DiskFormatQcow2 (class in kiwi.storage.subformat.qcow2)</a>
+</li>
+      <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase">DiskFormatVagrantBase (class in kiwi.storage.subformat.vagrant_base)</a>
 </li>
       <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt">DiskFormatVagrantLibVirt (class in kiwi.storage.subformat.vagrant_libvirt)</a>
 </li>
@@ -1032,6 +1040,18 @@
 
       <ul>
         <li><a href="development/api/kiwi.utils.html#kiwi.utils.sysconfig.SysConfig.get">(kiwi.utils.sysconfig.SysConfig method)</a>
+</li>
+      </ul></li>
+      <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_metadata">get_additional_metadata() (kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase method)</a>
+
+      <ul>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_metadata">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
+</li>
+      </ul></li>
+      <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_vagrant_config_settings">get_additional_vagrant_config_settings() (kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase method)</a>
+
+      <ul>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_vagrant_config_settings">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
 </li>
       </ul></li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_archive_image_types">get_archive_image_types() (kiwi.defaults.Defaults class method)</a>
@@ -1266,12 +1286,12 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_boot_directory_name">get_grub_boot_directory_name() (kiwi.defaults.Defaults class method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_efi_modules">get_grub_efi_modules() (kiwi.defaults.Defaults class method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_ofw_modules">get_grub_ofw_modules() (kiwi.defaults.Defaults class method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_path">get_grub_path() (kiwi.defaults.Defaults class method)</a>
 </li>
       <li><a href="development/api/kiwi.repository.template.html#kiwi.repository.template.apt.PackageManagerTemplateAptGet.get_host_template">get_host_template() (kiwi.repository.template.apt.PackageManagerTemplateAptGet method)</a>
@@ -1464,6 +1484,8 @@
 
       <ul>
         <li><a href="development/api/kiwi.bootloader.template.html#kiwi.bootloader.template.zipl.BootLoaderTemplateZipl.get_template">(kiwi.bootloader.template.zipl.BootLoaderTemplateZipl method)</a>
+</li>
+        <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template">(kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate method)</a>
 </li>
         <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate.get_template">(kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate method)</a>
 </li>
@@ -1886,7 +1908,11 @@
 </li>
       <li><a href="development/api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template">kiwi.storage.subformat.template (module)</a>
 </li>
+      <li><a href="development/api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vagrant_config">kiwi.storage.subformat.template.vagrant_config (module)</a>
+</li>
       <li><a href="development/api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vmware_settings">kiwi.storage.subformat.template.vmware_settings (module)</a>
+</li>
+      <li><a href="development/api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_base">kiwi.storage.subformat.vagrant_base (module)</a>
 </li>
       <li><a href="development/api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_libvirt">kiwi.storage.subformat.vagrant_libvirt (module)</a>
 </li>
@@ -1926,10 +1952,10 @@
 </li>
       <li><a href="development/api/kiwi.system.html#module-kiwi.system.users">kiwi.system.users (module)</a>
 </li>
-      <li><a href="development/api/kiwi.tasks.html#module-kiwi.tasks">kiwi.tasks (module)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="development/api/kiwi.tasks.html#module-kiwi.tasks">kiwi.tasks (module)</a>
+</li>
       <li><a href="development/api/kiwi.tasks.html#module-kiwi.tasks.base">kiwi.tasks.base (module)</a>
 </li>
       <li><a href="development/api/kiwi.tasks.html#module-kiwi.tasks.result_bundle">kiwi.tasks.result_bundle (module)</a>
@@ -2395,7 +2421,7 @@
 </li>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.qcow2.DiskFormatQcow2.post_init">(kiwi.storage.subformat.qcow2.DiskFormatQcow2 method)</a>
 </li>
-        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.post_init">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.post_init">(kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase method)</a>
 </li>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vdi.DiskFormatVdi.post_init">(kiwi.storage.subformat.vdi.DiskFormatVdi method)</a>
 </li>
@@ -2807,7 +2833,7 @@
 </li>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.ova.DiskFormatOva.store_to_result">(kiwi.storage.subformat.ova.DiskFormatOva method)</a>
 </li>
-        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.store_to_result">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.store_to_result">(kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase method)</a>
 </li>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.store_to_result">(kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed method)</a>
 </li>
@@ -2922,14 +2948,22 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.vagrant_post_init">vagrant_post_init() (kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase method)</a>
+
+      <ul>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.vagrant_post_init">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
+</li>
+      </ul></li>
+      <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate">VagrantConfigTemplate (class in kiwi.storage.subformat.template.vagrant_config)</a>
+</li>
       <li><a href="development/api/kiwi.system.html#kiwi.system.result.Result.verify_image_size">verify_image_size() (kiwi.system.result.Result method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate">VmwareSettingsTemplate (class in kiwi.storage.subformat.template.vmware_settings)</a>
 </li>
       <li><a href="development/api/kiwi.volume_manager.html#kiwi.volume_manager.VolumeManager">VolumeManager (class in kiwi.volume_manager)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.volume_manager.html#kiwi.volume_manager.base.VolumeManagerBase">VolumeManagerBase (class in kiwi.volume_manager.base)</a>
 </li>
       <li><a href="development/api/kiwi.volume_manager.html#kiwi.volume_manager.btrfs.VolumeManagerBtrfs">VolumeManagerBtrfs (class in kiwi.volume_manager.btrfs)</a>

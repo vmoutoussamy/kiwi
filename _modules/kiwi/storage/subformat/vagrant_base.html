@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.solver.repository.rpm_md &mdash; kiwi 9.17.20 documentation</title>
+  <title>kiwi.storage.subformat.vagrant_base &mdash; kiwi 9.17.20 documentation</title>
   
 
   
@@ -368,9 +368,9 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-          <li><a href="../repository.html">kiwi.solver.repository</a> &raquo;</li>
+          <li><a href="../subformat.html">kiwi.storage.subformat</a> &raquo;</li>
         
-      <li>kiwi.solver.repository.rpm_md</li>
+      <li>kiwi.storage.subformat.vagrant_base</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -385,8 +385,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for kiwi.solver.repository.rpm_md</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright (c) 2015 SUSE Linux GmbH.  All rights reserved.</span>
+  <h1>Source code for kiwi.storage.subformat.vagrant_base</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2019 SUSE Linux GmbH.  All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1"># This file is part of kiwi.</span>
 <span class="c1">#</span>
@@ -403,98 +403,223 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
-<span class="c1"># project</span>
-<span class="kn">from</span> <span class="nn">kiwi.solver.repository.base</span> <span class="k">import</span> <span class="n">SolverRepositoryBase</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">mkdtemp</span>
+
+<span class="kn">from</span> <span class="nn">kiwi.storage.subformat.base</span> <span class="k">import</span> <span class="n">DiskFormatBase</span>
+<span class="kn">from</span> <span class="nn">kiwi.storage.subformat.template.vagrant_config</span> <span class="k">import</span> <span class="n">VagrantConfigTemplate</span>
+<span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
+
+<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">KiwiFormatSetupError</span>
+<span class="p">)</span>
 
 
-<div class="viewcode-block" id="SolverRepositoryRpmMd"><a class="viewcode-back" href="../../../../development/api/kiwi.solver.repository.html#kiwi.solver.repository.rpm_md.SolverRepositoryRpmMd">[docs]</a><span class="k">class</span> <span class="nc">SolverRepositoryRpmMd</span><span class="p">(</span><span class="n">SolverRepositoryBase</span><span class="p">):</span>
+<div class="viewcode-block" id="DiskFormatVagrantBase"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase">[docs]</a><span class="k">class</span> <span class="nc">DiskFormatVagrantBase</span><span class="p">(</span><span class="n">DiskFormatBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    **Class for SAT solvable creation for rpm-md type repositories.**</span>
+<span class="sd">    Base class for creating vagrant boxes.</span>
+
+<span class="sd">    The documentation of the vagrant box format can be found here:</span>
+<span class="sd">    https://www.vagrantup.com/docs/boxes/format.html</span>
+<span class="sd">    In a nutshell, a vagrant box is a tar, tar.gz or zip archive of the</span>
+<span class="sd">    following:</span>
+
+<span class="sd">    1. ``metadata.json``:</span>
+<span class="sd">       A json file that contains the name of the provider</span>
+<span class="sd">       and arbitrary additional data (that vagrant doesn&#39;t care about).</span>
+<span class="sd">    2. ``Vagrantfile``:</span>
+<span class="sd">       A Vagrantfile which defines the boxes&#39; MAC address. It</span>
+<span class="sd">       can be also used to define other settings of the box, e.g.</span>
+<span class="sd">       the method via which the ``/vagrant/`` directory is shared.</span>
+<span class="sd">    3. The actual virtual disk image: this is provider specific and</span>
+<span class="sd">       vagrant simply forwards it to your virtual machine provider.</span>
+
+<span class="sd">    Required methods/variables that child classes must implement:</span>
+
+<span class="sd">    * :meth:`vagrant_post_init`</span>
+
+<span class="sd">      post initializing method that has to specify the vagrant</span>
+<span class="sd">      provider name in :attr:`provider` and the box name in</span>
+<span class="sd">      :attr:`image_format`. Note: new providers also needs to</span>
+<span class="sd">      be specified in the schema and the box name needs to be</span>
+<span class="sd">      registered to :func:`kiwi.defaults.Defaults.get_disk_format_types`</span>
+
+<span class="sd">    * :meth:`create_box_img`</span>
+
+<span class="sd">    Optional methods:</span>
+
+<span class="sd">    * :meth:`get_additional_metadata`</span>
+<span class="sd">    * :meth:`get_additional_vagrant_config_settings`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">_setup_repository_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DiskFormatVagrantBase.post_init"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.post_init">[docs]</a>    <span class="k">def</span> <span class="nf">post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Download repo metadata for rpm-md specific repositories</span>
-<span class="sd">        and create SAT solvables from all solver relevant files</span>
+<span class="sd">        vagrant disk format post initialization method</span>
+
+<span class="sd">        store vagrantconfig information provided via custom_args</span>
+
+<span class="sd">        :param dict custom_args:</span>
+<span class="sd">            Contains instance of xml_parse::vagrantconfig</span>
+
+<span class="sd">            .. code:: python</span>
+
+<span class="sd">                {&#39;vagrantconfig&#39;: object}</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Download rpm-md metadata for the rpmmd2solv solvable</span>
-        <span class="c1"># creation. This includes the files marked as primary</span>
-        <span class="c1"># and pattern in the repo definition</span>
-        <span class="n">rpm_md_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_temporary_metadata_dir</span><span class="p">()</span>
-        <span class="n">rpm_md_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_repomd_files</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;primary&#39;</span><span class="p">,</span> <span class="s1">&#39;patterns&#39;</span><span class="p">],</span> <span class="s1">&#39;rpmmd2solv&#39;</span>
-        <span class="p">)</span>
-        <span class="k">for</span> <span class="n">rpm_md_file</span> <span class="ow">in</span> <span class="n">rpm_md_data</span><span class="o">.</span><span class="n">metadata_files</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">download_from_repository</span><span class="p">(</span>
-                <span class="n">rpm_md_file</span><span class="p">,</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">rpm_md_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">rpm_md_file</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">custom_args</span> <span class="ow">or</span> <span class="s1">&#39;vagrantconfig&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">custom_args</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">KiwiFormatSetupError</span><span class="p">(</span>
+                <span class="s1">&#39;object init requires custom_args hash with a vagrantconfig&#39;</span>
             <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_create_solvables</span><span class="p">(</span>
-            <span class="n">rpm_md_dir</span><span class="p">,</span> <span class="n">rpm_md_data</span><span class="o">.</span><span class="n">solv_tool</span>
-        <span class="p">)</span>
 
-        <span class="c1"># Download rpm-md metadata for the comps2solv solvable</span>
-        <span class="c1"># creation. This includes the files marked as group_gz</span>
-        <span class="c1"># This component information is like the SUSE pattern</span>
-        <span class="c1"># information but for RHEL. In order to allow resolving</span>
-        <span class="c1"># yum group id names this information needs to be present</span>
-        <span class="n">rpm_comps_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_temporary_metadata_dir</span><span class="p">()</span>
-        <span class="n">rpm_comps_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_repomd_files</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;group_gz&#39;</span><span class="p">],</span> <span class="s1">&#39;comps2solv&#39;</span>
-        <span class="p">)</span>
-        <span class="k">for</span> <span class="n">rpm_comps_file</span> <span class="ow">in</span> <span class="n">rpm_comps_data</span><span class="o">.</span><span class="n">metadata_files</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">download_from_repository</span><span class="p">(</span>
-                <span class="n">rpm_comps_file</span><span class="p">,</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">rpm_comps_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">rpm_comps_file</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;vagrantconfig&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">KiwiFormatSetupError</span><span class="p">(</span>
+                <span class="s1">&#39;no vagrantconfig provided&#39;</span>
             <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_create_solvables</span><span class="p">(</span>
-            <span class="n">rpm_comps_dir</span><span class="p">,</span> <span class="n">rpm_comps_data</span><span class="o">.</span><span class="n">solv_tool</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vagrantconfig</span> <span class="o">=</span> <span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;vagrantconfig&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vagrant_post_init</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="SolverRepositoryRpmMd.timestamp"><a class="viewcode-back" href="../../../../development/api/kiwi.solver.repository.html#kiwi.solver.repository.rpm_md.SolverRepositoryRpmMd.timestamp">[docs]</a>    <span class="k">def</span> <span class="nf">timestamp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DiskFormatVagrantBase.vagrant_post_init"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.vagrant_post_init">[docs]</a>    <span class="k">def</span> <span class="nf">vagrant_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get timestamp from the first primary metadata</span>
+<span class="sd">        Vagrant provider specific post initialization method</span>
 
-<span class="sd">        :return: time value as text</span>
+<span class="sd">        Setup vagrant provider and box name. This information must</span>
+<span class="sd">        be set by the specialized provider class implementation to</span>
+<span class="sd">        make the this base class methods effective</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">=</span> <span class="kc">None</span></div>
 
+<div class="viewcode-block" id="DiskFormatVagrantBase.create_box_img"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_box_img">[docs]</a>    <span class="k">def</span> <span class="nf">create_box_img</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp_image_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provider specific image creation step: this function creates the actual</span>
+<span class="sd">        box image. It must be implemented by a child class.</span>
+
+<span class="sd">        :param str temp_image_dir:</span>
+<span class="sd">            path to a temporary directory inside which the image</span>
+<span class="sd">            should be built</span>
+<span class="sd">        :return:</span>
+<span class="sd">            A list of files that were created by this function</span>
+<span class="sd">            and that should be included in the vagrant box</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="DiskFormatVagrantBase.create_image_format"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_image_format">[docs]</a>    <span class="k">def</span> <span class="nf">create_image_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a vagrant box for any provider. This includes:</span>
+
+<span class="sd">        * creation of box metadata.json</span>
+<span class="sd">        * creation of box Vagrantfile</span>
+<span class="sd">        * creation of result format tarball from the files created above</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s1">&#39;vagrant_post_init: Missing provider and/or box name setup&#39;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;kiwi_vagrant_box.&#39;</span><span class="p">)</span>
+
+        <span class="n">box_img_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_box_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span><span class="p">)</span>
+
+        <span class="n">metadata_json</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span><span class="p">,</span> <span class="s1">&#39;metadata.json&#39;</span><span class="p">])</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata_json</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">meta</span><span class="p">:</span>
+            <span class="n">meta</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_box_metadata</span><span class="p">())</span>
+
+        <span class="n">vagrantfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span><span class="p">,</span> <span class="s1">&#39;Vagrantfile&#39;</span><span class="p">])</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">vagrantfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vagrant</span><span class="p">:</span>
+            <span class="n">vagrant</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_box_vagrantconfig</span><span class="p">())</span>
+
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">&#39;tar&#39;</span><span class="p">,</span> <span class="s1">&#39;-C&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_image_dir</span><span class="p">,</span>
+                <span class="s1">&#39;-czf&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_target_file_path_for_format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span>
+                <span class="p">),</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">metadata_json</span><span class="p">),</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">vagrantfile</span><span class="p">)</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">box_img_file</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">box_img_file</span> <span class="ow">in</span> <span class="n">box_img_files</span>
+            <span class="p">]</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="DiskFormatVagrantBase.store_to_result"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.store_to_result">[docs]</a>    <span class="k">def</span> <span class="nf">store_to_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Store result file of the vagrant format conversion into the</span>
+<span class="sd">        provided result instance. In this case compression is unwanted</span>
+<span class="sd">        because the box is already created as a compressed tarball</span>
+
+<span class="sd">        :param object result: Instance of Result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s1">&#39;vagrant_post_init: Missing box name setup&#39;</span>
+            <span class="p">)</span>
+
+        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">key</span><span class="o">=</span><span class="s1">&#39;disk_format_image&#39;</span><span class="p">,</span>
+            <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_target_file_path_for_format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span>
+            <span class="p">),</span>
+            <span class="n">use_for_bundle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">compress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">shasum</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="DiskFormatVagrantBase.get_additional_metadata"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">get_additional_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provide :meth:`create_image_format` with additional metadata</span>
+<span class="sd">        that will be included in ``metadata.json``.</span>
+
+<span class="sd">        The default implementation returns an empty dictionary.</span>
+
+<span class="sd">        :return: A dictionary that is serializable to JSON</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DiskFormatVagrantBase.get_additional_vagrant_config_settings"><a class="viewcode-back" href="../../../../development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_vagrant_config_settings">[docs]</a>    <span class="k">def</span> <span class="nf">get_additional_vagrant_config_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Supply additional configuration settings for vagrant to be included in</span>
+<span class="sd">        the resulting box.</span>
+
+<span class="sd">        This function can be used by child classes to customize the behavior</span>
+<span class="sd">        for different providers: the supplied configuration settings get</span>
+<span class="sd">        forwarded to :func:`VagrantConfigTemplate.get_template` as the</span>
+<span class="sd">        parameter ``custom_settings`` and included in the ``Vagrantfile``.</span>
+
+<span class="sd">        The default implementation returns nothing.</span>
+
+<span class="sd">        :return: additional vagrant settings</span>
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_repomd_xpath</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_get_repomd_xml</span><span class="p">(),</span>
-            <span class="s1">&#39;repo:data[@type=&quot;primary&quot;]/repo:timestamp&#39;</span>
-        <span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span></div>
+        <span class="k">pass</span></div>
 
-    <span class="k">def</span> <span class="nf">_find_repomd_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_list</span><span class="p">,</span> <span class="n">tool</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Lookup repodata/repomd.xml and the metadata files for the</span>
-<span class="sd">        specified type list. Assign the found entries to the given</span>
-<span class="sd">        tool</span>
-
-<span class="sd">        :param list type_list:</span>
-<span class="sd">            Value of type attribute in the repomd.xml definition</span>
-<span class="sd">        :param str tool:</span>
-<span class="sd">            Tool to create a solvable from this data</span>
-
-<span class="sd">        :return: str:solv_tool, list:metadata_files</span>
-
-<span class="sd">        :rtype: tuple</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">result_type</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
-            <span class="s1">&#39;result_type&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;solv_tool&#39;</span><span class="p">,</span> <span class="s1">&#39;metadata_files&#39;</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">_create_box_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_additional_metadata</span><span class="p">()</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;provider&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+            <span class="n">metadata</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;: &#39;</span><span class="p">)</span>
         <span class="p">)</span>
-        <span class="n">metadata_files</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">metadata_type</span> <span class="ow">in</span> <span class="n">type_list</span><span class="p">:</span>
-            <span class="n">metadata_locations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_repomd_xpath</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_get_repomd_xml</span><span class="p">(),</span>
-                <span class="s1">&#39;repo:data[@type=&quot;</span><span class="si">{0}</span><span class="s1">&quot;]/repo:location&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">)</span>
-            <span class="p">)</span>
-            <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">metadata_locations</span><span class="p">:</span>
-                <span class="n">metadata_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">location</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">result_type</span><span class="p">(</span>
-            <span class="n">solv_tool</span><span class="o">=</span><span class="n">tool</span><span class="p">,</span> <span class="n">metadata_files</span><span class="o">=</span><span class="n">metadata_files</span>
+    <span class="k">def</span> <span class="nf">_create_box_vagrantconfig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">VagrantConfigTemplate</span><span class="p">()</span>
+        <span class="n">vagrant_config</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span>
+            <span class="n">custom_settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_additional_vagrant_config_settings</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">vagrant_config</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span>
+            <span class="p">{</span><span class="s1">&#39;mac_address&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_mac</span><span class="p">()}</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_random_mac</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%02x%02x%02x%02x%02x%02x</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x16</span><span class="p">,</span> <span class="mh">0x3e</span><span class="p">,</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0x7e</span><span class="p">),</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">),</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">)</span>
         <span class="p">)</span></div>
 </pre></div>
 
