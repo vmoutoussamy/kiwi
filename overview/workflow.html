@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Workflow &mdash; kiwi 9.17.22 documentation</title>
+  <title>Basic Workflow &mdash; kiwi 9.17.23 documentation</title>
   
 
   
@@ -259,7 +259,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.22</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.23</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -406,7 +406,7 @@ software sources (repositories) available. After the installation is
 complete the system usually reboots and enters a configuration procedure
 upon start-up. The configuration may be fully automatic or it may include
 user interaction.
-This description applies for version 9.17.22.</p>
+This description applies for version 9.17.23.</p>
 </div>
 <p>A system image (usually called “image”), is a <em>complete installation</em> of a Linux
 system within a file. The image represents an operational system and,
@@ -1131,6 +1131,12 @@ image on a remote location specified in rd.kiwi.install.image</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">rd.kiwi.install.image=URI</span></code></dt>
 <dd>This variable specifies the remote location of the system image in
 a pxe based oem installation</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rd.kiwi.install.pass.bootparam</span></code></dt>
+<dd>This variable tells an oem installation image to pass on additional
+boot parameters to the kernel used to boot the installed image. This
+can be used e.g. to pass on first boot configuration for a PXE image.
+Note that options starting with <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.kiwi</span></code> are not passed on to avoid
+side effects.</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">rd.live.overlay.persistent</span></code></dt>
 <dd>This variable tells a live iso image to prepare a persistent
 write partition.</dd>
