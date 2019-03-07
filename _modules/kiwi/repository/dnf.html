@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository.yum &mdash; kiwi 9.17.23 documentation</title>
+  <title>kiwi.repository.dnf &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -80,13 +80,22 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -105,19 +114,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../building.html">Building Images</a><ul>
@@ -154,7 +159,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -257,7 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -370,7 +385,7 @@
         
           <li><a href="../repository.html">kiwi.repository</a> &raquo;</li>
         
-      <li>kiwi.repository.yum</li>
+      <li>kiwi.repository.dnf</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -385,7 +400,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for kiwi.repository.yum</h1><div class="highlight"><pre>
+  <h1>Source code for kiwi.repository.dnf</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (c) 2015 SUSE Linux GmbH.  All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1"># This file is part of kiwi.</span>
@@ -404,44 +419,45 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">from</span> <span class="nn">six.moves.configparser</span> <span class="k">import</span> <span class="n">ConfigParser</span>
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">NamedTemporaryFile</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
-<span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.repository.base</span> <span class="k">import</span> <span class="n">RepositoryBase</span>
-<span class="kn">from</span> <span class="nn">kiwi.utils.rpm_database</span> <span class="k">import</span> <span class="n">RpmDataBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.rpm_database</span> <span class="k">import</span> <span class="n">RpmDataBase</span>
 
 
-<div class="viewcode-block" id="RepositoryYum"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum">[docs]</a><span class="k">class</span> <span class="nc">RepositoryYum</span><span class="p">(</span><span class="n">RepositoryBase</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf">[docs]</a><span class="k">class</span> <span class="nc">RepositoryDnf</span><span class="p">(</span><span class="n">RepositoryBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    **Implements repository handling for yum package manager**</span>
+<span class="sd">    **Implements repository handling for dnf package manager**</span>
 
-<span class="sd">    :param str shared_yum_dir: shared directory between image root and</span>
-<span class="sd">        build system root</span>
-<span class="sd">    :param str runtime_yum_config_file: yum runtime config file name</span>
-<span class="sd">    :param dict command_env: customized os.environ for yum</span>
-<span class="sd">    :param object runtime_yum_config: instance of :class:`ConfigParser`</span>
+<span class="sd">    :param str shared_dnf_dir: shared directory between image root</span>
+<span class="sd">        and build system root</span>
+<span class="sd">    :param str runtime_dnf_config_file: dnf runtime config file name</span>
+<span class="sd">    :param dict command_env: customized os.environ for dnf</span>
+<span class="sd">    :param str runtime_dnf_config: instance of :class:`ConfigParser`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="RepositoryYum.post_init"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.post_init">[docs]</a>    <span class="k">def</span> <span class="nf">post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.post_init"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.post_init">[docs]</a>    <span class="k">def</span> <span class="nf">post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Post initialization method</span>
 
-<span class="sd">        Store custom yum arguments and create runtime configuration</span>
+<span class="sd">        Store custom dnf arguments and create runtime configuration</span>
 <span class="sd">        and environment</span>
 
-<span class="sd">        :param list custom_args: yum arguments</span>
+<span class="sd">        :param list custom_args: dnf arguments</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">=</span> <span class="n">custom_args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exclude_docs</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">custom_args</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="c1"># extract custom arguments not used in yum call</span>
+        <span class="c1"># extract custom arguments not used in dnf call</span>
         <span class="k">if</span> <span class="s1">&#39;exclude_docs&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;exclude_docs&#39;</span><span class="p">)</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;rpm-excludedocs not supported for yum: ignoring&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">exclude_docs</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="k">if</span> <span class="s1">&#39;check_signatures&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;check_signatures&#39;</span><span class="p">)</span>
@@ -457,35 +473,35 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">repo_names</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="c1"># yum support is based on creating repo files which contains</span>
+        <span class="c1"># dnf support is based on creating repo files which contains</span>
         <span class="c1"># path names to the repo and its cache. In order to allow a</span>
         <span class="c1"># persistent use of the files in and outside of a chroot call</span>
         <span class="c1"># an active bind mount from RootBind::mount_shared_directory</span>
         <span class="c1"># is expected and required</span>
-        <span class="n">manager_base</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_location</span> <span class="o">+</span> <span class="s1">&#39;/yum&#39;</span>
+        <span class="n">manager_base</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_location</span> <span class="o">+</span> <span class="s1">&#39;/dnf&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;reposd-dir&#39;</span><span class="p">:</span> <span class="n">manager_base</span> <span class="o">+</span> <span class="s1">&#39;/repos&#39;</span><span class="p">,</span>
             <span class="s1">&#39;cache-dir&#39;</span><span class="p">:</span> <span class="n">manager_base</span> <span class="o">+</span> <span class="s1">&#39;/cache&#39;</span><span class="p">,</span>
             <span class="s1">&#39;pluginconf-dir&#39;</span><span class="p">:</span> <span class="n">manager_base</span> <span class="o">+</span> <span class="s1">&#39;/pluginconf&#39;</span>
         <span class="p">}</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config_file</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config_file</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span>
             <span class="nb">dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;-y&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;-y&#39;</span>
         <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_yum_runtime_environment</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_dnf_runtime_environment</span><span class="p">()</span>
 
-        <span class="c1"># config file parameters for yum tool</span>
+        <span class="c1"># config file parameters for dnf tool</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_create_runtime_config_parser</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_create_runtime_plugin_config_parser</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write_runtime_config</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.setup_package_database_configuration"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.setup_package_database_configuration">[docs]</a>    <span class="k">def</span> <span class="nf">setup_package_database_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.setup_package_database_configuration"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.setup_package_database_configuration">[docs]</a>    <span class="k">def</span> <span class="nf">setup_package_database_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Setup rpm macros for bootstrapping and image building</span>
 
@@ -503,47 +519,47 @@
 
         <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span><span class="o">.</span><span class="n">set_database_to_host_path</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.use_default_location"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.use_default_location">[docs]</a>    <span class="k">def</span> <span class="nf">use_default_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.use_default_location"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.use_default_location">[docs]</a>    <span class="k">def</span> <span class="nf">use_default_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Setup yum repository operations to store all data</span>
+<span class="sd">        Setup dnf repository operations to store all data</span>
 <span class="sd">        in the default places</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span> <span class="o">=</span> \
             <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/yum.repos.d&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;cache-dir&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/var/cache/yum&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;pluginconf-dir&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/yum/pluginconf.d&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;cache-dir&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/var/cache/dnf&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;pluginconf-dir&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/dnf/plugins&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_create_runtime_config_parser</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_create_runtime_plugin_config_parser</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write_runtime_config</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.runtime_config"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.runtime_config">[docs]</a>    <span class="k">def</span> <span class="nf">runtime_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.runtime_config"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.runtime_config">[docs]</a>    <span class="k">def</span> <span class="nf">runtime_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        yum runtime configuration and environment</span>
+<span class="sd">        dnf runtime configuration and environment</span>
 
-<span class="sd">        :return: yum_args:list, command_env:dict</span>
+<span class="sd">        :return: dnf_args:list, command_env:dict</span>
 
 <span class="sd">        :rtype: dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s1">&#39;yum_args&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span><span class="p">,</span>
+            <span class="s1">&#39;dnf_args&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span><span class="p">,</span>
             <span class="s1">&#39;command_env&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
         <span class="p">}</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.add_repo"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.add_repo">[docs]</a>    <span class="k">def</span> <span class="nf">add_repo</span><span class="p">(</span>
+<div class="viewcode-block" id="RepositoryDnf.add_repo"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.add_repo">[docs]</a>    <span class="k">def</span> <span class="nf">add_repo</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">repo_type</span><span class="o">=</span><span class="s1">&#39;rpm-md&#39;</span><span class="p">,</span>
         <span class="n">prio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">secret</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">credentials_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">repo_gpgcheck</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pkg_gpgcheck</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Add yum repository</span>
+<span class="sd">        Add dnf repository</span>
 
 <span class="sd">        :param str name: repository base file name</span>
 <span class="sd">        :param str uri: repository URI</span>
 <span class="sd">        :param repo_type: repostory type name</span>
-<span class="sd">        :param int prio: yum repostory priority</span>
+<span class="sd">        :param int prio: dnf repostory priority</span>
 <span class="sd">        :param dist: unused</span>
 <span class="sd">        :param components: unused</span>
 <span class="sd">        :param user: unused</span>
@@ -552,10 +568,10 @@
 <span class="sd">        :param bool repo_gpgcheck: enable repository signature validation</span>
 <span class="sd">        :param bool pkg_gpgcheck: enable package signature validation</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">repo_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.repo&#39;</span>
+        <span class="n">repo_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.repo&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">repo_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.repo&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
-            <span class="c1"># yum requires local paths to take the file: type</span>
+            <span class="c1"># dnf requires local paths to take the file: type</span>
             <span class="n">uri</span> <span class="o">=</span> <span class="s1">&#39;file://&#39;</span> <span class="o">+</span> <span class="n">uri</span>
         <span class="n">repo_config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">()</span>
         <span class="n">repo_config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -564,9 +580,6 @@
         <span class="p">)</span>
         <span class="n">repo_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;baseurl&#39;</span><span class="p">,</span> <span class="n">uri</span>
-        <span class="p">)</span>
-        <span class="n">repo_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-            <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;enabled&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">prio</span><span class="p">:</span>
             <span class="n">repo_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
@@ -581,9 +594,9 @@
                 <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;gpgcheck&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span> <span class="k">if</span> <span class="n">pkg_gpgcheck</span> <span class="k">else</span> <span class="s1">&#39;0&#39;</span>
             <span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">repo_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">repo</span><span class="p">:</span>
-            <span class="n">repo_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">RepositoryYumSpaceRemover</span><span class="p">(</span><span class="n">repo</span><span class="p">))</span></div>
+            <span class="n">repo_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.import_trusted_keys"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.import_trusted_keys">[docs]</a>    <span class="k">def</span> <span class="nf">import_trusted_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signing_keys</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.import_trusted_keys"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.import_trusted_keys">[docs]</a>    <span class="k">def</span> <span class="nf">import_trusted_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signing_keys</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Imports trusted keys into the image</span>
 
@@ -593,156 +606,119 @@
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">signing_keys</span><span class="p">:</span>
             <span class="n">rpmdb</span><span class="o">.</span><span class="n">import_signing_key_to_image</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.delete_repo"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.delete_repo">[docs]</a>    <span class="k">def</span> <span class="nf">delete_repo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.delete_repo"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.delete_repo">[docs]</a>    <span class="k">def</span> <span class="nf">delete_repo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete yum repository</span>
+<span class="sd">        Delete dnf repository</span>
 
 <span class="sd">        :param str name: repository base file name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.repo&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.repo&#39;</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.delete_all_repos"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.delete_all_repos">[docs]</a>    <span class="k">def</span> <span class="nf">delete_all_repos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.delete_all_repos"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.delete_all_repos">[docs]</a>    <span class="k">def</span> <span class="nf">delete_all_repos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete all yum repositories</span>
+<span class="sd">        Delete all dnf repositories</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">])</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">])</span></div>
+        <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">])</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.delete_repo_cache"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.delete_repo_cache">[docs]</a>    <span class="k">def</span> <span class="nf">delete_repo_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.delete_repo_cache"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.delete_repo_cache">[docs]</a>    <span class="k">def</span> <span class="nf">delete_repo_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete yum repository cache</span>
+<span class="sd">        Delete dnf repository cache</span>
 
 <span class="sd">        The cache data for each repository is stored in a directory</span>
-<span class="sd">        of the same name as the repository name. The method deletes</span>
-<span class="sd">        this directory to cleanup the cache information</span>
+<span class="sd">        and additional files all starting with the repository name.</span>
+<span class="sd">        The method glob deletes all files and directories matching</span>
+<span class="sd">        the repository name followed by any characters to cleanup</span>
+<span class="sd">        the cache information</span>
 
 <span class="sd">        :param str name: repository name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;cache-dir&#39;</span><span class="p">],</span> <span class="n">name</span><span class="p">])</span>
-        <span class="p">)</span></div>
+        <span class="n">dnf_cache_glob_pattern</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;cache-dir&#39;</span><span class="p">],</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">dnf_cache_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">dnf_cache_glob_pattern</span><span class="p">):</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">dnf_cache_file</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RepositoryYum.cleanup_unused_repos"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.cleanup_unused_repos">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup_unused_repos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryDnf.cleanup_unused_repos"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.cleanup_unused_repos">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup_unused_repos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete unused yum repositories</span>
+<span class="sd">        Delete unused dnf repositories</span>
 
 <span class="sd">        Repository configurations which are not used for this build</span>
 <span class="sd">        must be removed otherwise they are taken into account for</span>
 <span class="sd">        the package installations</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">repos_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span>
+        <span class="n">repos_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span>
         <span class="n">repo_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">repos_dir</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">repo_file</span> <span class="ow">in</span> <span class="n">repo_files</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">repo_file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo_names</span><span class="p">:</span>
                 <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">repos_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">repo_file</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_create_yum_runtime_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">yum_dir</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-            <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">yum_dir</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_create_dnf_runtime_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">dnf_dir</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">dnf_dir</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">,</span> <span class="n">LANG</span><span class="o">=</span><span class="s1">&#39;C&#39;</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_create_runtime_config_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-            <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;cachedir&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;cache-dir&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+            <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;cachedir&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;cache-dir&#39;</span><span class="p">]</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-            <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;reposdir&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+            <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;reposdir&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;reposd-dir&#39;</span><span class="p">]</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-            <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;pluginconfpath&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;pluginconf-dir&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+            <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;pluginconfpath&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;pluginconf-dir&#39;</span><span class="p">]</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;keepcache&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;debuglevel&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;pkgpolicy&#39;</span><span class="p">,</span> <span class="s1">&#39;newest&#39;</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;tolerant&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;exactarch&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;obsoletes&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;plugins&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;gpgcheck&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gpg_check</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-            <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;metadata_expire&#39;</span><span class="p">,</span> <span class="s1">&#39;1800&#39;</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-            <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;group_command&#39;</span><span class="p">,</span> <span class="s1">&#39;compat&#39;</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude_docs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+                <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;tsflags&#39;</span><span class="p">,</span> <span class="s1">&#39;nodocs&#39;</span>
+            <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_create_runtime_plugin_config_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_plugin_config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_plugin_config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_plugin_config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_plugin_config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_plugin_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_plugin_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;enabled&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_write_runtime_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                <span class="n">RepositoryYumSpaceRemover</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-            <span class="p">)</span>
-        <span class="n">yum_plugin_config_file</span> <span class="o">=</span> \
-            <span class="bp">self</span><span class="o">.</span><span class="n">shared_yum_dir</span><span class="p">[</span><span class="s1">&#39;pluginconf-dir&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/priorities.conf&#39;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yum_plugin_config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pluginconfig</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">runtime_yum_plugin_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                <span class="n">RepositoryYumSpaceRemover</span><span class="p">(</span><span class="n">pluginconfig</span><span class="p">)</span>
-            <span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="RepositoryYumSpaceRemover"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYumSpaceRemover">[docs]</a><span class="k">class</span> <span class="nc">RepositoryYumSpaceRemover</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Yum is not able to deal with key = value pairs if there are</span>
-<span class="sd">    spaces around the &#39;=&#39; delimiter.</span>
-
-<span class="sd">    This is a helper class to eliminate spaces around delimiters</span>
-<span class="sd">    when writing out the data of a ConfigParser instance. In Python 3</span>
-<span class="sd">    :py:func:`ConfigParser.write` supports the parameter::</span>
-
-<span class="sd">       ConfigParser.write(file_object, space_around_delimiters=False)</span>
-
-<span class="sd">    Unfortunately, in Python 2 the spaces are hard coded and can&#39;t be</span>
-<span class="sd">    configured. In order to still support both Python versions this</span>
-<span class="sd">    helper class provides a custom :py:meth:`write()` method which</span>
-<span class="sd">    deletes the unwanted spaces.</span>
-
-<span class="sd">    Instead of passing an instance of a :py:attr:`file_object` to</span>
-<span class="sd">    :py:class:`ConfigParser` we pass an instance of a</span>
-<span class="sd">    :py:class:`RepositoryYumSpaceRemover` object::</span>
-
-<span class="sd">       ConfigParser.write(RepositoryYumSpaceRemover(file_object))</span>
-
-<span class="sd">    It is expected that :py:func:`ConfigParser.write` only calls</span>
-<span class="sd">    the :py:meth:`write`</span>
-<span class="sd">    method of the usually provided file object. Thus this helper</span>
-<span class="sd">    class only provides a custom version of this :py:meth:`write`</span>
-<span class="sd">    method.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_object</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">file_object</span> <span class="o">=</span> <span class="n">file_object</span>
-
-<div class="viewcode-block" id="RepositoryYumSpaceRemover.write"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYumSpaceRemover.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">file_object</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; = &#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span></div></div>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">dnf_plugin_config_file</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">shared_dnf_dir</span><span class="p">[</span><span class="s1">&#39;pluginconf-dir&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/priorities.conf&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dnf_plugin_config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pluginconfig</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">runtime_dnf_plugin_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pluginconfig</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

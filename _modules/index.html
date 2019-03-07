@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview: module code &mdash; kiwi 9.17.23 documentation</title>
+  <title>Overview: module code &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -80,13 +80,22 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -105,19 +114,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../building.html">Building Images</a><ul>
@@ -154,7 +159,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -257,7 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -444,7 +459,7 @@
 <li><a href="kiwi/mount_manager.html">kiwi.mount_manager</a></li>
 <li><a href="kiwi/package_manager.html">kiwi.package_manager</a></li>
 <ul><li><a href="kiwi/package_manager/base.html">kiwi.package_manager.base</a></li>
-<li><a href="kiwi/package_manager/yum.html">kiwi.package_manager.yum</a></li>
+<li><a href="kiwi/package_manager/dnf.html">kiwi.package_manager.dnf</a></li>
 <li><a href="kiwi/package_manager/zypper.html">kiwi.package_manager.zypper</a></li>
 </ul><li><a href="kiwi/partitioner.html">kiwi.partitioner</a></li>
 <ul><li><a href="kiwi/partitioner/base.html">kiwi.partitioner.base</a></li>
@@ -455,8 +470,8 @@
 <li><a href="kiwi/privileges.html">kiwi.privileges</a></li>
 <li><a href="kiwi/repository.html">kiwi.repository</a></li>
 <ul><li><a href="kiwi/repository/base.html">kiwi.repository.base</a></li>
+<li><a href="kiwi/repository/dnf.html">kiwi.repository.dnf</a></li>
 <li><a href="kiwi/repository/template/apt.html">kiwi.repository.template.apt</a></li>
-<li><a href="kiwi/repository/yum.html">kiwi.repository.yum</a></li>
 <li><a href="kiwi/repository/zypper.html">kiwi.repository.zypper</a></li>
 </ul><li><a href="kiwi/runtime_checker.html">kiwi.runtime_checker</a></li>
 <li><a href="kiwi/runtime_config.html">kiwi.runtime_config</a></li>
@@ -479,9 +494,11 @@
 <li><a href="kiwi/storage/subformat/ova.html">kiwi.storage.subformat.ova</a></li>
 <li><a href="kiwi/storage/subformat/qcow2.html">kiwi.storage.subformat.qcow2</a></li>
 <li><a href="kiwi/storage/subformat/template/vagrant_config.html">kiwi.storage.subformat.template.vagrant_config</a></li>
+<li><a href="kiwi/storage/subformat/template/virtualbox_ovf.html">kiwi.storage.subformat.template.virtualbox_ovf</a></li>
 <li><a href="kiwi/storage/subformat/template/vmware_settings.html">kiwi.storage.subformat.template.vmware_settings</a></li>
 <li><a href="kiwi/storage/subformat/vagrant_base.html">kiwi.storage.subformat.vagrant_base</a></li>
 <li><a href="kiwi/storage/subformat/vagrant_libvirt.html">kiwi.storage.subformat.vagrant_libvirt</a></li>
+<li><a href="kiwi/storage/subformat/vagrant_virtualbox.html">kiwi.storage.subformat.vagrant_virtualbox</a></li>
 <li><a href="kiwi/storage/subformat/vdi.html">kiwi.storage.subformat.vdi</a></li>
 <li><a href="kiwi/storage/subformat/vhd.html">kiwi.storage.subformat.vhd</a></li>
 <li><a href="kiwi/storage/subformat/vhdfixed.html">kiwi.storage.subformat.vhdfixed</a></li>

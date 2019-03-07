@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.17.23 &mdash; kiwi 9.17.23 documentation</title>
+  <title>API Documentation 9.17.24 &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -82,13 +82,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -107,19 +116,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../building.html">Building Images</a><ul>
@@ -156,7 +161,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -259,7 +274,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -370,7 +385,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.17.23</li>
+      <li>API Documentation 9.17.24</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -390,7 +405,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.17.23<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.17.24<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -506,7 +521,7 @@
 <li class="toctree-l1"><a class="reference internal" href="kiwi.package_manager.html">kiwi.package_manager Package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.package_manager.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.package_manager.html#module-kiwi.package_manager.base"><code class="docutils literal notranslate"><span class="pre">kiwi.package_manager.base</span></code> Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kiwi.package_manager.html#module-kiwi.package_manager.yum"><code class="docutils literal notranslate"><span class="pre">kiwi.package_manager.yum</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kiwi.package_manager.html#module-kiwi.package_manager.dnf"><code class="docutils literal notranslate"><span class="pre">kiwi.package_manager.dnf</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.package_manager.html#module-kiwi.package_manager.zypper"><code class="docutils literal notranslate"><span class="pre">kiwi.package_manager.zypper</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.package_manager.html#module-kiwi.package_manager">Module Contents</a></li>
 </ul>
@@ -532,7 +547,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.repository.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.repository.html#module-kiwi.repository.base"><code class="docutils literal notranslate"><span class="pre">kiwi.repository.base</span></code> Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kiwi.repository.html#module-kiwi.repository.yum"><code class="docutils literal notranslate"><span class="pre">kiwi.repository.yum</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kiwi.repository.html#module-kiwi.repository.dnf"><code class="docutils literal notranslate"><span class="pre">kiwi.repository.dnf</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.repository.html#module-kiwi.repository.zypper"><code class="docutils literal notranslate"><span class="pre">kiwi.repository.zypper</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.repository.html#module-kiwi.repository">Module Contents</a></li>
 </ul>
@@ -545,6 +560,7 @@
 <li class="toctree-l6"><a class="reference internal" href="kiwi.storage.subformat.template.html#submodules">Submodules</a></li>
 <li class="toctree-l6"><a class="reference internal" href="kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vmware_settings"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.vmware_settings</span></code> Module</a></li>
 <li class="toctree-l6"><a class="reference internal" href="kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vagrant_config"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.vagrant_config</span></code> Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.virtualbox_ovf"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.virtualbox_ovf</span></code> Module</a></li>
 <li class="toctree-l6"><a class="reference internal" href="kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template">Module contents</a></li>
 </ul>
 </li>
@@ -557,6 +573,7 @@
 <li class="toctree-l4"><a class="reference internal" href="kiwi.storage.subformat.html#module-kiwi.storage.subformat.qcow2"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.qcow2</span></code> Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_base"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_base</span></code> Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_libvirt"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_libvirt</span></code> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kiwi.storage.subformat.html#kiwi-storage-subformat-vagrant-virtualbox-module"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_virtualbox</span></code> Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.storage.subformat.html#module-kiwi.storage.subformat.vdi"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vdi</span></code> Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.storage.subformat.html#module-kiwi.storage.subformat.vhd"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vhd</span></code> Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.storage.subformat.html#module-kiwi.storage.subformat.vhdfixed"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vhdfixed</span></code> Module</a></li>
@@ -2279,6 +2296,24 @@ below the given root path</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">file path or None</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kiwi.defaults.Defaults.get_vagrant_config_virtualbox_guest_additions">
+<em class="property">classmethod </em><code class="descname">get_vagrant_config_virtualbox_guest_additions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_vagrant_config_virtualbox_guest_additions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_vagrant_config_virtualbox_guest_additions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides the default value for
+<code class="docutils literal notranslate"><span class="pre">vagrantconfig.virtualbox_guest_additions_present</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">whether guest additions are expected to be present in the
+vagrant box</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
 </table>
@@ -4281,6 +4316,14 @@ labels which can be applied per volume</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.runtime_checker.RuntimeChecker.check_volume_setup_defines_multiple_fullsize_volumes">
+<code class="descname">check_volume_setup_defines_multiple_fullsize_volumes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_volume_setup_defines_multiple_fullsize_volumes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_defines_multiple_fullsize_volumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The volume size specification ‘all’ makes this volume to
+take the rest space available on the system. It’s only
+allowed to specify one all size volume</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.runtime_checker.RuntimeChecker.check_volume_setup_has_no_root_definition">
 <code class="descname">check_volume_setup_has_no_root_definition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_volume_setup_has_no_root_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_has_no_root_definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>The root volume in a systemdisk setup is handled in a special
@@ -5917,6 +5960,23 @@ description file.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of &lt;users&gt; section reference(s)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.xml_state.XMLState.get_vagrant_config_virtualbox_guest_additions">
+<code class="descname">get_vagrant_config_virtualbox_guest_additions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.get_vagrant_config_virtualbox_guest_additions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_vagrant_config_virtualbox_guest_additions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attribute virtualbox_guest_additions_present from the first
+vagrantconfig section.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">&lt;vagrantconfig</span> <span class="pre">virtualbox_guest_additions_present=&gt;</span></code> value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
 </table>

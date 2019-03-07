@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>KIWI Documentation &mdash; kiwi 9.17.23 documentation</title>
+  <title>KIWI Documentation &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview" href="overview.html" /> 
+    <link rel="next" title="Quick Start" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,13 +81,22 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -106,19 +115,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="building.html">Building Images</a><ul>
@@ -155,7 +160,17 @@
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -258,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -388,8 +403,8 @@
             
   <div class="section" id="kiwi-documentation">
 <h1>KIWI Documentation<a class="headerlink" href="#kiwi-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Welcome to the documentation for KIWI 9.17.23- the command line utility to
-build linux system appliances.</p>
+<p>Welcome to the documentation for KIWI 9.17.24- the command line utility to
+build Linux system appliances.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Links</p>
 <ul class="last simple">
@@ -403,9 +418,9 @@ build linux system appliances.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="building.html">Building Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">KIWI Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a></li>
@@ -414,13 +429,39 @@ build linux system appliances.</p>
 <div class="section" id="appliance">
 <h2>Appliance ?<a class="headerlink" href="#appliance" title="Permalink to this headline">¶</a></h2>
 <p>An appliance is a ready to use image of an operating system including
-a preconfigured application for a specific use case. The appliance is
+a pre-configured application for a specific use case. The appliance is
 provided as an image file and needs to be deployed to, or activated in
 the target system or service.</p>
-<p>In KIWI the appliance is specified by a collection of human readable files
-in a directory, also called as the <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span> <span class="pre">description</span></code>. At least one XML
-file <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> or <code class="file docutils literal notranslate"><span class="pre">.kiwi</span></code> is required. In addition
-there may be as well other files like scripts or configuration data.</p>
+<p>KIWI can create appliances in various forms: beside classical installation
+ISOs and images for virtual machines it can also build images that boot via
+PXE or Vagrant boxes.</p>
+<p>In KIWI, the appliance is specified via a collection of human readable files
+in a directory, also called the <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span> <span class="pre">description</span></code>. At least one XML file
+<code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> or <code class="file docutils literal notranslate"><span class="pre">.kiwi</span></code> is required. In addition there may as
+well be other files like scripts or configuration data.</p>
+</div>
+<div class="section" id="use-cases">
+<h2>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h2>
+<p>Not convinced yet? You can find a selection of the possible uses cases
+below:</p>
+<ul class="simple">
+<li>You are a system administrator and wish to create a customized installer
+for your network that includes additional software and your organizations
+certificates? KIWI allows you to select which packages will be included
+in the final image. On top of that you can add files to arbitrary
+locations in the filesystem, for example to include SSL or SSH keys. You
+can also tell KIWI to create an image that can be booted via PXE, so that
+you don’t even have to leave your desk to reinstall a system.</li>
+<li>You want to create a custom spin of your favorite Linux distribution with
+additional repositories and packages that are not present by default?
+With KIWI you can configure the repositories of your final image via the
+image description and tweak the list of packages that are going to be
+installed to match your target audience.</li>
+<li>The Raspberry Pi that is coordinating your home’s Internet of Thing (IoT)
+devices got very popular among your friends and every single one of them
+wants a copy of that? KIWI will build you ready to deploy images for your
+Raspberry Pi, tweaked to your needs.</li>
+</ul>
 </div>
 <div class="section" id="contact">
 <h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
@@ -431,10 +472,9 @@ there may be as well other files like scripts or configuration data.</p>
 even if you do not have a Google account.</p>
 </li>
 <li><p class="first"><a class="reference external" href="https://matrix.org/blog/home/">Matrix</a></p>
-<p>An open network for secure, decentralized communication. Please find
-the <a class="reference internal" href="development/api/kiwi.html#module-kiwi" title="kiwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi</span></code></a> room via <a class="reference external" href="https://riot.im/app/">Riot</a> on the web or by
-using the <a class="reference external" href="https://matrix.org/docs/projects/client/weechat.html">WeeChat</a>
-client.</p>
+<p>An open network for secure, decentralized communication. Please find the
+<a class="reference internal" href="development/api/kiwi.html#module-kiwi" title="kiwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi</span></code></a> room via <a class="reference external" href="https://riot.im/app/">Riot</a> on the web or by using
+the supported <a class="reference external" href="https://matrix.org/docs/projects/clients-matrix">clients</a>.</p>
 </li>
 </ul>
 </div>
@@ -448,7 +488,7 @@ client.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.runtime_checker &mdash; kiwi 9.17.23 documentation</title>
+  <title>kiwi.runtime_checker &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -80,13 +80,22 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -105,19 +114,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../building.html">Building Images</a><ul>
@@ -154,7 +159,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -257,7 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -446,10 +461,13 @@
 <span class="sd">        can be resolved into a http based web URL</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
-<span class="s1">            Repository: </span><span class="si">%s</span><span class="s1"> is not publicly available.</span>
-<span class="s1">            Therefore it can&#39;t be included into the system image</span>
-<span class="s1">            repository configuration. Please check the setup of</span>
-<span class="s1">            the &lt;imageinclude&gt; attribute for this repository.</span>
+<span class="s1">            The use of imageinclude=&quot;true&quot; in the repository definition</span>
+<span class="s1">            for the Repository: </span><span class="si">{0}</span><span class="s1"> requires the repository to by publicly</span>
+<span class="s1">            available. The source locator of the repository however</span>
+<span class="s1">            indicates it is private to your local system. Therefore it</span>
+<span class="s1">            can&#39;t be included into the system image repository configuration.</span>
+<span class="s1">            Please define a publicly available repository in your image</span>
+<span class="s1">            XML description: </span><span class="si">{1}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
 
         <span class="n">repository_sections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_repository_sections</span><span class="p">()</span>
@@ -461,7 +479,11 @@
                 <span class="n">repo_type</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_type</span><span class="p">()</span>
                 <span class="n">uri</span> <span class="o">=</span> <span class="n">Uri</span><span class="p">(</span><span class="n">repo_source</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="o">.</span><span class="n">is_public</span><span class="p">():</span>
-                    <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span> <span class="o">%</span> <span class="n">repo_source</span><span class="p">)</span></div>
+                    <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
+                        <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">repo_source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">description</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeChecker.check_target_directory_not_in_shared_cache"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_target_directory_not_in_shared_cache">[docs]</a>    <span class="k">def</span> <span class="nf">check_target_directory_not_in_shared_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -520,6 +542,29 @@
                     <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
                         <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">volume_management</span><span class="p">)</span>
                     <span class="p">)</span></div>
+
+<div class="viewcode-block" id="RuntimeChecker.check_volume_setup_defines_multiple_fullsize_volumes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_defines_multiple_fullsize_volumes">[docs]</a>    <span class="k">def</span> <span class="nf">check_volume_setup_defines_multiple_fullsize_volumes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The volume size specification &#39;all&#39; makes this volume to</span>
+<span class="sd">        take the rest space available on the system. It&#39;s only</span>
+<span class="sd">        allowed to specify one all size volume</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
+<span class="s1">            Multiple all size volumes found but only one is allowed</span>
+
+<span class="s1">            The volume size specification &#39;all&#39; makes this volume to</span>
+<span class="s1">            take the rest space available on the system. It&#39;s only</span>
+<span class="s1">            allowed to specify one all size volume</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">all_size_volume_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">systemdisk_section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_system_disk_section</span><span class="p">()</span>
+        <span class="n">volumes</span> <span class="o">=</span> <span class="n">systemdisk_section</span><span class="o">.</span><span class="n">get_volume</span><span class="p">()</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">volumes</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">volume</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span> <span class="ow">or</span> <span class="n">volume</span><span class="o">.</span><span class="n">get_freespace</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">size</span> <span class="ow">and</span> <span class="s1">&#39;all&#39;</span> <span class="ow">in</span> <span class="n">size</span><span class="p">:</span>
+                <span class="n">all_size_volume_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">all_size_volume_count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeChecker.check_volume_setup_has_no_root_definition"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_has_no_root_definition">[docs]</a>    <span class="k">def</span> <span class="nf">check_volume_setup_has_no_root_definition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

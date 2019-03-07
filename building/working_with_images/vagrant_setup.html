@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>KIWI Image Description for Vagrant &mdash; kiwi 9.17.23 documentation</title>
+  <title>KIWI Image Description for Vagrant &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -82,13 +82,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -107,19 +116,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../building.html">Building Images</a><ul class="current">
@@ -156,7 +161,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2 current"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -259,7 +274,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -407,15 +422,16 @@ implement consistent processing/testing work environments based on
 Virtualization technologies. To run a system, Vagrant needs so-called
 <strong>boxes</strong>. A box is a TAR archive containing a virtual disk image and
 some metadata.</p>
-<p>To build Vagrant boxes, use
+<p>To build Vagrant boxes, you can use
 <a class="reference external" href="https://github.com/jedi4ever/veewee">veewee</a> which builds boxes
-based on AutoYaST. As an alternative, use <a class="reference external" href="https://www.packer.io">Packer</a>,
-which is providedby Vagrant itself.</p>
+based on AutoYaST. As an alternative, <a class="reference external" href="https://www.packer.io">Packer</a> can
+be utilized, which is provided by Hashicorp itself.</p>
 <p>Both tools are based on the official installation media (DVDs) as shipped
 by the distribution vendor.</p>
-<p>The KIWI way of building images might be helpful, if such a media does
-not exist. For example, if the distribution is still under development or
-you want to use a collection of your own repositories.</p>
+<p>The KIWI way of building images might be helpful, if such a media does not
+exist or does not suit your needs. For example, if the distribution is
+still under development or you want to use a collection of your own
+repositories.</p>
 <p>In addition, you can use the KIWI image description as source for the
 <a class="reference external" href="https://openbuildservice.org">Open Build Service</a> which allows
 building and maintaining boxes.</p>
@@ -450,19 +466,34 @@ optional, but recommended to provide some free space on disk.</p>
 </pre></div>
 </div>
 <p>This adds the <strong>vagrant</strong> user to the system and applies the
-name of the user as the password for login. Change this as you
-see fit.</p>
+name of the user as the password for login.</p>
 </li>
 <li><p class="first">Integrate public SSH key</p>
-<p>Reach out to
-<a class="reference external" href="https://github.com/hashicorp/vagrant/tree/master/keys">Insecure Keys</a>
-for details on this keys. Add the public key to the
-box as overlay file in your image description at
-<code class="file docutils literal notranslate"><span class="pre">home/vagrant/.ssh/authorized_keys</span></code></p>
+<p>Vagrant requires an insecure public key pair <a class="footnote-reference" href="#f1" id="id1">[1]</a> to be added to the
+authorized keys for the user <code class="docutils literal notranslate"><span class="pre">vagrant</span></code> so that Vagrant itself can
+connect to the box via ssh.
+The key can be obtained from <a class="reference external" href="https://github.com/hashicorp/vagrant/blob/master/keys/vagrant.pub">GitHub</a>
+and should be inserted into the file
+<code class="file docutils literal notranslate"><span class="pre">home/vagrant/.ssh/authorized_keys</span></code>, which can be added as an
+overlay file into the image description.</p>
+<p>Keep in mind to set the file system permissions of
+<code class="file docutils literal notranslate"><span class="pre">home/vagrant/.ssh/</span></code> and <code class="file docutils literal notranslate"><span class="pre">home/vagrant/.ssh/authorized_keys</span></code>
+correctly, otherwise Vagrant will not be able to connect to your
+box. The following snippet can be added to <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code>:</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">0600</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span>
+<span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">vagrant</span><span class="p">:</span><span class="n">vagrant</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create the default shared folder</p>
+<p>Vagrant boxes usually provide a default shared folder under
+<code class="file docutils literal notranslate"><span class="pre">/vagrant</span></code>. Consider adding this empty folder to your overlay
+files and ensure that the user <code class="docutils literal notranslate"><span class="pre">vagrant</span></code> has write permissions to
+it.</p>
 </li>
 <li><p class="first">Setup and start SSH daemon</p>
-<p>In <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> add the start of the sshd and the initial
-creation of machine keys as follows:</p>
+<p>In <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code>, add the start of sshd and the initial creation of
+machine keys as follows:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#======================================</span>
 <span class="c1"># Create ssh machine keys</span>
 <span class="c1">#--------------------------------------</span>
@@ -474,14 +505,25 @@ creation of machine keys as follows:</p>
 <span class="n">suseInsertService</span> <span class="n">sshd</span>
 </pre></div>
 </div>
-<p>Also make sure to setup <strong>UseDNS=no</strong> in <code class="file docutils literal notranslate"><span class="pre">etc/ssh/sshd_config</span></code>
-This can be done by an overlay file or clever patching of
-the file in the above mentioned <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> file.</p>
+<p>Also make sure to add the line <strong>UseDNS=no</strong> into
+<code class="file docutils literal notranslate"><span class="pre">/etc/ssh/sshd_config</span></code>. This can be done by an overlay file or by
+patching the file in the above mentioned <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> file.</p>
 </li>
-<li><p class="first">Configure sudo for Vagrant user</p>
-<p>Add the <code class="file docutils literal notranslate"><span class="pre">etc/sudoers</span></code> file to the box as overlay file and make
-sure the user: <strong>vagrant</strong> is configured to allow passwordless root
-permissions.</p>
+<li><p class="first">Configure sudo for the Vagrant user</p>
+<p>Vagrant expects to have passwordless root permissions via <code class="docutils literal notranslate"><span class="pre">sudo</span></code> to be
+able to setup your box. Add the following line to <code class="file docutils literal notranslate"><span class="pre">/etc/sudoers</span></code>
+or add it into a new file <code class="file docutils literal notranslate"><span class="pre">/etc/sudoers.d/vagrant</span></code>:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vagrant</span> <span class="n">ALL</span><span class="o">=</span><span class="p">(</span><span class="n">ALL</span><span class="p">)</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="n">ALL</span>
+</pre></div>
+</div>
+<p>You can also use <strong class="command">visudo</strong> to verify that the resulting
+<code class="file docutils literal notranslate"><span class="pre">/etc/sudoers</span></code> or <code class="file docutils literal notranslate"><span class="pre">/etc/sudoers.d/vagrant</span></code> are valid:</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>visudo -cf /etc/sudoers
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+</pre></div>
+</div>
 </li>
 </ol>
 <p>An image built with the above setup creates a box file with the
@@ -492,8 +534,9 @@ added to vagrant with the command:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Using the box requires a correct Vagrant installation on your machine.
-The libvirtd daemon and the libvirt default network need to be running.</p>
+<p class="last">Using the box requires a correct Vagrant installation on your machine,
+the plugin <code class="docutils literal notranslate"><span class="pre">vagrant-libvirt</span></code> to be installed and the libvirtd daemon
+to be running.</p>
 </div>
 <p>Once added to Vagrant, boot the box and log in
 with the following sequence of <strong class="command">vagrant</strong> commands:</p>
@@ -506,9 +549,16 @@ with the following sequence of <strong class="command">vagrant</strong> commands
 <p class="first admonition-title">Note</p>
 <p>Vagrant Providers</p>
 <p class="last">Currently, KIWI only supports the libvirt provider. There are
-other providers like virtualbox and also vmware available which
-requires a different box layout currently not supported by KIWI.</p>
+also other providers available, like virtualbox and vmware, which
+require a different box layout (currently not supported by KIWI).</p>
 </div>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The insecure key is removed from the box when the it is first
+booted via Vagrant.</td></tr>
+</tbody>
+</table>
 </div>
 
 

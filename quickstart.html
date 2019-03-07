@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; kiwi 9.17.23 documentation</title>
+  <title>Quick Start &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Building Images" href="building.html" />
-    <link rel="prev" title="Installation" href="installation.html" /> 
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="KIWI Documentation" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,13 +82,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -107,19 +116,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="building.html">Building Images</a><ul>
@@ -156,7 +161,17 @@
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -259,7 +274,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -392,37 +407,67 @@
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p><strong>Abstract</strong></p>
-<p class="last">This document describes how to start with KIWI, an OS appliance builder.
-This description applies for version 9.17.23.</p>
+<p class="last">This document describes how to start working with KIWI, an OS appliance
+builder.
+This description applies for version 9.17.24.</p>
 </div>
 <div class="section" id="before-you-start">
 <h2>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this headline">¶</a></h2>
-<p>Make sure you have installed KIWI and the example collection as
-explained in <a class="reference internal" href="installation.html#kiwi-installation"><span class="std std-ref">Installation</span></a></p>
+<ol class="arabic">
+<li><p class="first">Install KIWI first, either via your distributions’ package manager (see
+<a class="reference internal" href="installation.html#kiwi-installation"><span class="std std-ref">Installation</span></a>) or via:</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install kiwi
+</pre></div>
+</div>
+</li>
+<li><p class="first">Clone the repository containing example appliances (see
+<a class="reference internal" href="installation.html#example-descriptions"><span class="std std-ref">Example Appliance Descriptions</span></a>):</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/SUSE/kiwi-descriptions
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="choose-a-first-image">
+<h2>Choose a First Image<a class="headerlink" href="#choose-a-first-image" title="Permalink to this headline">¶</a></h2>
+<p>Take a look which images are available in the example appliances repository
+and select one that matches your desired image as close as possible. Or
+just use the one given in the examples below.</p>
 </div>
 <div class="section" id="build-your-first-image">
-<h2>Build your first image<a class="headerlink" href="#build-your-first-image" title="Permalink to this headline">¶</a></h2>
+<h2>Build your First Image<a class="headerlink" href="#build-your-first-image" title="Permalink to this headline">¶</a></h2>
 <p>Your first image will be a simple system disk image which can run
-in any full virtualization system like for example QEMU. Call the following
-KIWI command in order to build it</p>
+in any full virtualization system like QEMU. Invoke the following KIWI
+command in order to build it:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo kiwi-ng --type vmx system build \
     --description kiwi-descriptions/suse/x86_64/suse-leap-42.3-JeOS \
     --target-dir /tmp/myimage
 </pre></div>
 </div>
-<p>Find the image with the suffix <code class="file docutils literal notranslate"><span class="pre">.raw</span></code> below <code class="file docutils literal notranslate"><span class="pre">/tmp/myimage</span></code>.</p>
+<p>The resulting image will be placed into the folder <code class="file docutils literal notranslate"><span class="pre">/tmp/myimage</span></code>
+with the suffix <code class="file docutils literal notranslate"><span class="pre">.raw</span></code>.</p>
+<p>If you don’t wish to create a openSUSE Leap 42.3 image, substitute the
+folder following the <code class="docutils literal notranslate"><span class="pre">--description</span></code> option with another folder that
+contains the image description which you selected.</p>
 </div>
 <div class="section" id="run-your-image">
-<h2>Run your image<a class="headerlink" href="#run-your-image" title="Permalink to this headline">¶</a></h2>
-<p>Running an image actually means booting the operating system. In order
-to do that attach the disk image to a virtual system, in our case QEMU
-is used, and boot it as follows:</p>
+<h2>Run your Image<a class="headerlink" href="#run-your-image" title="Permalink to this headline">¶</a></h2>
+<p>Running an image actually means booting the operating system. In order to
+do that attach the disk image to a virtual system. In this example we use
+QEMU and boot it as follows:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ qemu \
     -boot c
     -drive file=LimeJeOS-Leap-42.3.x86_64-1.42.3.raw,format=raw,if=virtio \
     -m 4096
 </pre></div>
 </div>
+</div>
+<div class="section" id="tweak-and-customize-your-image">
+<h2>Tweak and Customize your Image<a class="headerlink" href="#tweak-and-customize-your-image" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have successfully built and started your first image, you can
+start tweaking it to match your needs.</p>
+<p>Find the documentation of the appliance description files in the following
+sections.</p>
 </div>
 </div>
 
@@ -434,10 +479,10 @@ is used, and boot it as follows:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="building.html" class="btn btn-neutral float-right" title="Building Images" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="KIWI Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

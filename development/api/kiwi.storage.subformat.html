@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat Package &mdash; kiwi 9.17.23 documentation</title>
+  <title>kiwi.storage.subformat Package &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -82,13 +82,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -107,19 +116,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../building.html">Building Images</a><ul>
@@ -156,7 +161,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -259,7 +274,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.23</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.24</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -370,7 +385,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.23</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.24</a> &raquo;</li>
         
           <li><a href="kiwi.storage.html">kiwi.storage Package</a> &raquo;</li>
         
@@ -403,6 +418,7 @@
 <li class="toctree-l2"><a class="reference internal" href="kiwi.storage.subformat.template.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vmware_settings"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.vmware_settings</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vagrant_config"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.vagrant_config</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.virtualbox_ovf"><code class="docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.virtualbox_ovf</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template">Module contents</a></li>
 </ul>
 </li>
@@ -888,6 +904,41 @@ of the image.</p>
 <dl class="method">
 <dt id="kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.vagrant_post_init">
 <code class="descname">vagrant_post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/storage/subformat/vagrant_libvirt.html#DiskFormatVagrantLibVirt.vagrant_post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.vagrant_post_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vagrant provider specific post initialization method</p>
+<p>Setup vagrant provider and box name. This information must
+be set by the specialized provider class implementation to
+make the this base class methods effective</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kiwi-storage-subformat-vagrant-virtualbox-module">
+<h2><a class="reference internal" href="#module-kiwi.storage.subformat.vagrant_virtualbox" title="kiwi.storage.subformat.vagrant_virtualbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_virtualbox</span></code></a> Module<a class="headerlink" href="#kiwi-storage-subformat-vagrant-virtualbox-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-kiwi.storage.subformat.vagrant_virtualbox"></span><dl class="class">
+<dt id="kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox">
+<em class="property">class </em><code class="descclassname">kiwi.storage.subformat.vagrant_virtualbox.</code><code class="descname">DiskFormatVagrantVirtualBox</code><span class="sig-paren">(</span><em>xml_state</em>, <em>root_dir</em>, <em>target_dir</em>, <em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase" title="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase</span></code></a></p>
+<p><strong>Create a vagrant box for the virtualbox provider</strong></p>
+<dl class="method">
+<dt id="kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.create_box_img">
+<code class="descname">create_box_img</code><span class="sig-paren">(</span><em>temp_image_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox.create_box_img"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.create_box_img" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the virtual machine image for the Virtualbox vagrant provider.</p>
+<p>This function creates the vmdk disk image and the ovf file. The latter
+is created via the class
+<a class="reference internal" href="kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate" title="kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.get_additional_vagrant_config_settings">
+<code class="descname">get_additional_vagrant_config_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox.get_additional_vagrant_config_settings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.get_additional_vagrant_config_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the default shared folder to use rsync when guest additions
+are not present inside the box.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.vagrant_post_init">
+<code class="descname">vagrant_post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox.vagrant_post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.vagrant_post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vagrant provider specific post initialization method</p>
 <p>Setup vagrant provider and box name. This information must
 be set by the specialized provider class implementation to

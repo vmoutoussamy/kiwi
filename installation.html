@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; kiwi 9.17.23 documentation</title>
+  <title>Installation &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quick Start" href="quickstart.html" />
-    <link rel="prev" title="Basic Workflow" href="overview/workflow.html" /> 
+    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="prev" title="Quick Start" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,13 +82,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -107,19 +116,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="building.html">Building Images</a><ul>
@@ -156,7 +161,17 @@
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -259,7 +274,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -392,25 +407,45 @@
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p class="last">This document describes how to install KIWI. Apart from the preferred
-method to install KIWI via rpm, it is also provided on pypi and can
-be installed via pip.</p>
+method to install KIWI via rpm, it is also available on <a class="reference external" href="https://pypi.org/project/kiwi/">pypi</a> and can be installed via pip.</p>
 </div>
-<p>KIWI can be installed with different methods. For this guide, only the
-installation as a packages through a package manager is described.</p>
-<p>Packages for the new KIWI version are provided at the <a class="reference external" href="http://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder">openSUSE
-buildservice</a>.</p>
-<p>To install KIWI, do:</p>
+<div class="section" id="installation-from-obs">
+<h2>Installation from OBS<a class="headerlink" href="#installation-from-obs" title="Permalink to this headline">¶</a></h2>
+<p>The most up to date packages of KIWI can be found on the Open Build Service
+in the <a class="reference external" href="https://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder">Virtualization:Appliances:Builder</a>
+project.</p>
+<p>To install KIWI, follow these steps:</p>
 <ol class="arabic">
-<li><p class="first">Open the URL <a class="reference external" href="http://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder">http://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder</a>
+<li><p class="first">Open the URL <a class="reference external" href="https://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder">https://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder</a>
 in your browser.</p>
 </li>
 <li><p class="first">Right-click on the link of your preferred operating system and
 copy the URL. In Firefox it is the menu <span class="menuselection">Copy link address</span>.</p>
 </li>
-<li><p class="first">Insert the copied URL from the last step in your shell. The <code class="docutils literal notranslate"><span class="pre">DIST</span></code>
+<li><p class="first">Insert the copied URL from the last step into your shell. The <code class="docutils literal notranslate"><span class="pre">DIST</span></code>
 placeholder contains the respective distribution.
-Use <strong class="command">zypper addrepo</strong> to add it to your list of repositories:</p>
+Use <strong class="command">zypper addrepo</strong> to add it to the list of your repositories:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo zypper addrepo http://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder/&lt;DIST&gt; appliance-builder
+</pre></div>
+</div>
+<p>If your distribution is not using <strong class="command">zypper</strong>, please use your
+package manager’s appropriate command instead. For <strong class="command">dnf</strong> that
+is:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder/&lt;DIST&gt;/Virtualization:Appliances:Builder.repo
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add the repositories’ signing-key to your package manager’s
+database. For rpm run:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo rpm --import https://build.opensuse.org/projects/Virtualization:Appliances:Builder/public_key
+</pre></div>
+</div>
+<p>And verify that you got the correct key:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rpm -qi gpg-pubkey-74cbe823-* <span class="p">|</span> gpg2
+<span class="go">gpg: WARNING: no command supplied.  Trying to guess what you mean ...</span>
+<span class="go">pub   dsa1024 2009-05-04 [SC] [expires: 2020-10-09]</span>
+<span class="go">      F7E82012C74FD0B85F5334DC994B195474CBE823</span>
+<span class="go">uid           Virtualization:Appliances OBS Project &lt;Virtualization:Appliances@build.opensuse.org&gt;</span>
 </pre></div>
 </div>
 </li>
@@ -418,20 +453,49 @@ Use <strong class="command">zypper addrepo</strong> to add it to your list of re
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Multipython packages</p>
-<p class="last">This version of KIWI is provided for python 2 and python 3 versions.
-The following information is based on the installation of the
-python3-kiwi package</p>
+<p class="last">This version of KIWI is provided as packages for python 2 and
+python 3. The following assumes that you will install the python 3 package.</p>
 </div>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo zypper in python3-kiwi
 </pre></div>
 </div>
 </li>
 </ol>
+</div>
+<div class="section" id="installation-from-your-distribution-s-repositories">
+<h2>Installation from your distribution’s repositories<a class="headerlink" href="#installation-from-your-distribution-s-repositories" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There are many packages that contain the name KIWI in their name, some
+of these are even python packages. Please double check the packages’
+description whether it is actually the KIWI Appliance builder before
+installing it.</p>
+</div>
+<p>Some Linux distributions ship KIWI in their official
+repositories. These include openSUSE Tumbleweed, openSUSE Leap and Fedora
+since version 28.</p>
+<p>To install KIWI on openSUSE, run the following command:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo zypper install python3-kiwi
+</pre></div>
+</div>
+<p>On Fedora, use the following command instead:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo dnf install kiwi-cli
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation-from-pypi">
+<h2>Installation from PyPI<a class="headerlink" href="#installation-from-pypi" title="Permalink to this headline">¶</a></h2>
+<p>KIWI can be obtained from the Python Package Index (PyPi) via Python’s
+package manager pip:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install kiwi
+</pre></div>
+</div>
+</div>
 <div class="section" id="example-appliance-descriptions">
 <span id="example-descriptions"></span><h2>Example Appliance Descriptions<a class="headerlink" href="#example-appliance-descriptions" title="Permalink to this headline">¶</a></h2>
-<p>For use with the next generation KIWI there is also a GitHub project
-hosting example appliance descriptions. Users who need an example to
-start with should checkout the project as follows:</p>
+<p>There is a GitHub project hosting example appliance descriptions to be used
+with the next generation KIWI. Users who need an example to start with
+should clone the project as follows:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/SUSE/kiwi-descriptions
 </pre></div>
 </div>
@@ -446,10 +510,10 @@ start with should checkout the project as follows:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="overview/workflow.html" class="btn btn-neutral float-left" title="Basic Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

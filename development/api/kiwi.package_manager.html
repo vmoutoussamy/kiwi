@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.package_manager Package &mdash; kiwi 9.17.23 documentation</title>
+  <title>kiwi.package_manager Package &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -82,13 +82,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -107,19 +116,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../building.html">Building Images</a><ul>
@@ -156,7 +161,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -259,7 +274,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.23</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.24</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -370,7 +385,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.23</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.24</a> &raquo;</li>
         
       <li>kiwi.package_manager Package</li>
     
@@ -639,21 +654,21 @@ overwritten in specialized package manager class</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-kiwi.package_manager.yum">
-<span id="kiwi-package-manager-yum-module"></span><h2><a class="reference internal" href="#module-kiwi.package_manager.yum" title="kiwi.package_manager.yum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.package_manager.yum</span></code></a> Module<a class="headerlink" href="#module-kiwi.package_manager.yum" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-kiwi.package_manager.dnf">
+<span id="kiwi-package-manager-dnf-module"></span><h2><a class="reference internal" href="#module-kiwi.package_manager.dnf" title="kiwi.package_manager.dnf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.package_manager.dnf</span></code></a> Module<a class="headerlink" href="#module-kiwi.package_manager.dnf" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="kiwi.package_manager.yum.PackageManagerYum">
-<em class="property">class </em><code class="descclassname">kiwi.package_manager.yum.</code><code class="descname">PackageManagerYum</code><span class="sig-paren">(</span><em>repository</em>, <em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf">
+<em class="property">class </em><code class="descclassname">kiwi.package_manager.dnf.</code><code class="descname">PackageManagerDnf</code><span class="sig-paren">(</span><em>repository</em>, <em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.package_manager.base.PackageManagerBase" title="kiwi.package_manager.base.PackageManagerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.package_manager.base.PackageManagerBase</span></code></a></p>
-<p><strong>Implements base class for installation/deletion of
-packages and collections using yum</strong></p>
+<p><strong>*Implements base class for installation/deletion of
+packages and collections using dnf*</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>yum_args</strong> (<em>list</em>) – yum arguments from repository runtime configuration</li>
-<li><strong>command_env</strong> (<em>dict</em>) – yum command environment from repository runtime
+<li><strong>dnf_args</strong> (<em>doct</em>) – dnf arguments from repository runtime configuration</li>
+<li><strong>command_env</strong> (<em>dict</em>) – dnf command environment from repository runtime
 configuration</li>
 </ul>
 </td>
@@ -661,8 +676,8 @@ configuration</li>
 </tbody>
 </table>
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.match_package_deleted">
-<code class="descname">match_package_deleted</code><span class="sig-paren">(</span><em>package_name</em>, <em>yum_output</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.match_package_deleted" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.match_package_deleted">
+<code class="descname">match_package_deleted</code><span class="sig-paren">(</span><em>package_name</em>, <em>dnf_output</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.match_package_deleted" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match expression to indicate a package has been deleted</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -670,7 +685,7 @@ configuration</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>package_list</strong> (<em>list</em>) – list of all packages</li>
-<li><strong>log_line</strong> (<em>str</em>) – yum status line</li>
+<li><strong>log_line</strong> (<em>str</em>) – dnf status line</li>
 </ul>
 </td>
 </tr>
@@ -685,11 +700,11 @@ configuration</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.match_package_installed">
-<code class="descname">match_package_installed</code><span class="sig-paren">(</span><em>package_name</em>, <em>yum_output</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.match_package_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.match_package_installed" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.match_package_installed">
+<code class="descname">match_package_installed</code><span class="sig-paren">(</span><em>package_name</em>, <em>dnf_output</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.match_package_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.match_package_installed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match expression to indicate a package has been installed</p>
 <p>This match for the package to be installed in the output
-of the yum command is not 100% accurate. There might
+of the dnf command is not 100% accurate. There might
 be false positives due to sub package names starting with
 the same base package name</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -698,7 +713,7 @@ the same base package name</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>package_list</strong> (<em>list</em>) – list of all packages</li>
-<li><strong>log_line</strong> (<em>str</em>) – yum status line</li>
+<li><strong>log_line</strong> (<em>str</em>) – dnf status line</li>
 </ul>
 </td>
 </tr>
@@ -713,30 +728,29 @@ the same base package name</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.post_init">
-<code class="descname">post_init</code><span class="sig-paren">(</span><em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.post_init" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.post_init">
+<code class="descname">post_init</code><span class="sig-paren">(</span><em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
-<p>Store custom yum arguments</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>list</em>) – custom yum arguments</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>list</em>) – custom dnf arguments</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.post_process_install_requests_bootstrap">
-<code class="descname">post_process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.post_process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.post_process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.post_process_install_requests_bootstrap">
+<code class="descname">post_process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.post_process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.post_process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move the rpm database to the place as it is expected by the
 rpm package installed during bootstrap phase</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.process_delete_requests">
-<code class="descname">process_delete_requests</code><span class="sig-paren">(</span><em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.process_delete_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.process_delete_requests" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_delete_requests">
+<code class="descname">process_delete_requests</code><span class="sig-paren">(</span><em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_delete_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_delete_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package delete requests (chroot)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -745,7 +759,7 @@ rpm package installed during bootstrap phase</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>force</strong> (<em>bool</em>) – force deletion: true|false</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiRequestError" title="kiwi.exceptions.KiwiRequestError"><strong>KiwiRequestError</strong></a> – if none of the packages to delete is
-installed</td>
+installed.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">process results in command type</td>
 </tr>
@@ -756,8 +770,8 @@ installed</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.process_install_requests">
-<code class="descname">process_install_requests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.process_install_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.process_install_requests" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests">
+<code class="descname">process_install_requests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_install_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package install requests for image phase (chroot)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -772,8 +786,8 @@ installed</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.process_install_requests_bootstrap">
-<code class="descname">process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests_bootstrap">
+<code class="descname">process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package install requests for bootstrap phase (no chroot)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -788,34 +802,34 @@ installed</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.process_only_required">
-<code class="descname">process_only_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.process_only_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.process_only_required" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_only_required">
+<code class="descname">process_only_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_only_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_only_required" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package processing only for required packages</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.process_plus_recommended">
-<code class="descname">process_plus_recommended</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.process_plus_recommended"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.process_plus_recommended" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_plus_recommended">
+<code class="descname">process_plus_recommended</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_plus_recommended"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_plus_recommended" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package processing to also include recommended dependencies.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.request_collection">
-<code class="descname">request_collection</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.request_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.request_collection" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.request_collection">
+<code class="descname">request_collection</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a collection request</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – yum group name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – dnf group name</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.request_package">
-<code class="descname">request_package</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.request_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.request_package" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.request_package">
+<code class="descname">request_package</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_package" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package request</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -828,8 +842,8 @@ installed</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.request_package_exclusion">
-<code class="descname">request_package_exclusion</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.request_package_exclusion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.request_package_exclusion" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.request_package_exclusion">
+<code class="descname">request_package_exclusion</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_package_exclusion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_package_exclusion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package exclusion(skip) request</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -842,10 +856,10 @@ installed</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.request_product">
-<code class="descname">request_product</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.request_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.request_product" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.request_product">
+<code class="descname">request_product</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_product" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a product request</p>
-<p>There is no product definition in the rhel repo data</p>
+<p>There is no product definition in the fedora repo data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -857,8 +871,8 @@ installed</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.package_manager.yum.PackageManagerYum.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/yum.html#PackageManagerYum.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.yum.PackageManagerYum.update" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.package_manager.dnf.PackageManagerDnf.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package update requests (chroot)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

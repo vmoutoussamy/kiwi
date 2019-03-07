@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository.zypper &mdash; kiwi 9.17.23 documentation</title>
+  <title>kiwi.repository.zypper &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -80,13 +80,22 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -105,19 +114,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../building.html">Building Images</a><ul>
@@ -154,7 +159,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -257,7 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -543,6 +558,7 @@
 <span class="sd">        2. Create the rpm bootstrap macro to make sure for bootstrapping</span>
 <span class="sd">           the rpm database location matches the host rpm database setup.</span>
 <span class="sd">           This macro only persists during the bootstrap phase</span>
+<span class="sd">        3. Create zypper compat link</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rpmdb</span> <span class="o">=</span> <span class="n">RpmDataBase</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_custom_rpm_image_macro_name</span><span class="p">()</span>
@@ -551,7 +567,42 @@
             <span class="n">rpmdb</span><span class="o">.</span><span class="n">set_macro_from_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">locale</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">rpmdb</span><span class="o">.</span><span class="n">write_config</span><span class="p">()</span>
 
-        <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span><span class="o">.</span><span class="n">set_database_to_host_path</span><span class="p">()</span></div>
+        <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span><span class="o">.</span><span class="n">set_database_to_host_path</span><span class="p">()</span>
+        <span class="c1"># Zypper compat code:</span>
+        <span class="c1">#</span>
+        <span class="c1"># Manually adding the compat link /var/lib/rpm that points to the</span>
+        <span class="c1"># rpmdb location as it is configured in the host rpm setup. The</span>
+        <span class="c1"># host rpm setup is taken into account because import_trusted_keys</span>
+        <span class="c1"># is called during the bootstrap phase where rpm (respectively zypper)</span>
+        <span class="c1"># is called from the host</span>
+        <span class="c1">#</span>
+        <span class="c1"># Usually it is expected that the package manager reads the</span>
+        <span class="c1"># signing keys from the rpm database setup provisioned by rpm</span>
+        <span class="c1"># itself (macro level) but zypper doesn&#39;t take the rpm macro</span>
+        <span class="c1"># setup into account and relies on a hard coded path which we</span>
+        <span class="c1"># can only provide as a symlink.</span>
+        <span class="c1">#</span>
+        <span class="c1"># That symlink is usually created by the rpm package when it gets</span>
+        <span class="c1"># installed. However at that early phase when we import the</span>
+        <span class="c1"># signing keys no rpm is installed yet nor any symlink exists.</span>
+        <span class="c1"># Thus we have to create it here and hope to get rid of it in the</span>
+        <span class="c1"># future.</span>
+        <span class="c1">#</span>
+        <span class="c1"># For further details on the motivation in zypper please</span>
+        <span class="c1"># refer to bsc#1112357</span>
+        <span class="n">rpmdb</span><span class="o">.</span><span class="n">init_database</span><span class="p">()</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;lib&#39;</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">&#39;ln&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="p">[</span><span class="s1">&#39;../..&#39;</span><span class="p">,</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">rpmdb_host</span><span class="o">.</span><span class="n">expand_query</span><span class="p">(</span><span class="s1">&#39;%_dbpath&#39;</span><span class="p">)]</span>
+                <span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;lib&#39;</span><span class="p">,</span> <span class="s1">&#39;rpm&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="RepositoryZypper.use_default_location"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.use_default_location">[docs]</a>    <span class="k">def</span> <span class="nf">use_default_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -675,41 +726,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rpmdb</span> <span class="o">=</span> <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">signing_keys</span><span class="p">:</span>
-            <span class="n">rpmdb</span><span class="o">.</span><span class="n">import_signing_key_to_image</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-        <span class="c1"># Zypper compat code:</span>
-        <span class="c1">#</span>
-        <span class="c1"># Manually adding the compat link /var/lib/rpm that points to the</span>
-        <span class="c1"># rpmdb location as it is configured in the host rpm setup. The</span>
-        <span class="c1"># host rpm setup is taken into account because import_trusted_keys</span>
-        <span class="c1"># is called during the bootstrap phase where rpm (respectively zypper)</span>
-        <span class="c1"># is called from the host</span>
-        <span class="c1">#</span>
-        <span class="c1"># Usually it is expected that the package manager reads the</span>
-        <span class="c1"># signing keys from the rpm database setup provisioned by rpm</span>
-        <span class="c1"># itself (macro level) but zypper doesn&#39;t take the rpm macro</span>
-        <span class="c1"># setup into account and relies on a hard coded path which we</span>
-        <span class="c1"># can only provide as a symlink.</span>
-        <span class="c1">#</span>
-        <span class="c1"># That symlink is usually created by the rpm package when it gets</span>
-        <span class="c1"># installed. However at that early phase when we import the</span>
-        <span class="c1"># signing keys no rpm is installed yet nor any symlink exists.</span>
-        <span class="c1"># Thus we have to create it here and hope to get rid of it in the</span>
-        <span class="c1"># future.</span>
-        <span class="c1">#</span>
-        <span class="c1"># For further details on the motivation in zypper please</span>
-        <span class="c1"># refer to bsc#1112357</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;lib&#39;</span><span class="p">])</span>
-        <span class="p">)</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="s1">&#39;ln&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;../..&#39;</span><span class="p">,</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">rpmdb_host</span><span class="o">.</span><span class="n">expand_query</span><span class="p">(</span><span class="s1">&#39;%_dbpath&#39;</span><span class="p">)]</span>
-                <span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                    <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;lib&#39;</span><span class="p">,</span> <span class="s1">&#39;rpm&#39;</span><span class="p">]</span>
-                <span class="p">)</span>
-            <span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
-        <span class="p">)</span></div>
+            <span class="n">rpmdb</span><span class="o">.</span><span class="n">import_signing_key_to_image</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RepositoryZypper.delete_repo"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.delete_repo">[docs]</a>    <span class="k">def</span> <span class="nf">delete_repo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

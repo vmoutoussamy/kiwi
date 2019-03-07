@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; kiwi 9.17.23 documentation</title>
+  <title>Index &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -81,13 +81,22 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -106,19 +115,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="building.html">Building Images</a><ul>
@@ -155,7 +160,17 @@
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -258,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -439,7 +454,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.add_repo">add_repo() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.add_repo">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.add_repo">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.add_repo">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -566,6 +581,8 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_volume_label_used_with_lvm">check_volume_label_used_with_lvm() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
+      <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_defines_multiple_fullsize_volumes">check_volume_setup_defines_multiple_fullsize_volumes() (kiwi.runtime_checker.RuntimeChecker method)</a>
+</li>
       <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_has_no_root_definition">check_volume_setup_has_no_root_definition() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_xen_uniquely_setup_as_server_or_guest">check_xen_uniquely_setup_as_server_or_guest() (kiwi.runtime_checker.RuntimeChecker method)</a>
@@ -583,7 +600,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.cleanup_unused_repos">cleanup_unused_repos() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.cleanup_unused_repos">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.cleanup_unused_repos">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.cleanup_unused_repos">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -694,6 +711,8 @@
 
       <ul>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.create_box_img">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
+</li>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.create_box_img">(kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox method)</a>
 </li>
       </ul></li>
       <li><a href="development/api/kiwi.storage.html#kiwi.storage.luks_device.LuksDevice.create_crypto_luks">create_crypto_luks() (kiwi.storage.luks_device.LuksDevice method)</a>
@@ -867,7 +886,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.delete_all_repos">delete_all_repos() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.delete_all_repos">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.delete_all_repos">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.delete_all_repos">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -877,7 +896,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.delete_repo">delete_repo() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.delete_repo">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.delete_repo">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.delete_repo">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -885,7 +904,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.delete_repo_cache">delete_repo_cache() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.delete_repo_cache">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.delete_repo_cache">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.delete_repo_cache">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -917,6 +936,8 @@
       <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase">DiskFormatVagrantBase (class in kiwi.storage.subformat.vagrant_base)</a>
 </li>
       <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt">DiskFormatVagrantLibVirt (class in kiwi.storage.subformat.vagrant_libvirt)</a>
+</li>
+      <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox">DiskFormatVagrantVirtualBox (class in kiwi.storage.subformat.vagrant_virtualbox)</a>
 </li>
       <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vdi.DiskFormatVdi">DiskFormatVdi (class in kiwi.storage.subformat.vdi)</a>
 </li>
@@ -1052,6 +1073,8 @@
 
       <ul>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_vagrant_config_settings">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
+</li>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.get_additional_vagrant_config_settings">(kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox method)</a>
 </li>
       </ul></li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_archive_image_types">get_archive_image_types() (kiwi.defaults.Defaults class method)</a>
@@ -1288,10 +1311,10 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_boot_directory_name">get_grub_boot_directory_name() (kiwi.defaults.Defaults class method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_efi_modules">get_grub_efi_modules() (kiwi.defaults.Defaults class method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_ofw_modules">get_grub_ofw_modules() (kiwi.defaults.Defaults class method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_path">get_grub_path() (kiwi.defaults.Defaults class method)</a>
@@ -1489,6 +1512,8 @@
 </li>
         <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template">(kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate method)</a>
 </li>
+        <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate.get_template">(kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate method)</a>
+</li>
         <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate.get_template">(kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate method)</a>
 </li>
       </ul></li>
@@ -1512,6 +1537,12 @@
 
       <ul>
         <li><a href="development/api/kiwi.utils.html#kiwi.utils.block.BlockID.get_uuid">(kiwi.utils.block.BlockID method)</a>
+</li>
+      </ul></li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_vagrant_config_virtualbox_guest_additions">get_vagrant_config_virtualbox_guest_additions() (kiwi.defaults.Defaults class method)</a>
+
+      <ul>
+        <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_vagrant_config_virtualbox_guest_additions">(kiwi.xml_state.XMLState method)</a>
 </li>
       </ul></li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_video_mode_map">get_video_mode_map() (kiwi.defaults.Defaults class method)</a>
@@ -1599,7 +1630,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.import_trusted_keys">import_trusted_keys() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.import_trusted_keys">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.import_trusted_keys">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.import_trusted_keys">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -1834,7 +1865,7 @@
 </li>
       <li><a href="development/api/kiwi.package_manager.html#module-kiwi.package_manager.base">kiwi.package_manager.base (module)</a>
 </li>
-      <li><a href="development/api/kiwi.package_manager.html#module-kiwi.package_manager.yum">kiwi.package_manager.yum (module)</a>
+      <li><a href="development/api/kiwi.package_manager.html#module-kiwi.package_manager.dnf">kiwi.package_manager.dnf (module)</a>
 </li>
       <li><a href="development/api/kiwi.package_manager.html#module-kiwi.package_manager.zypper">kiwi.package_manager.zypper (module)</a>
 </li>
@@ -1856,11 +1887,11 @@
 </li>
       <li><a href="development/api/kiwi.repository.html#module-kiwi.repository.base">kiwi.repository.base (module)</a>
 </li>
+      <li><a href="development/api/kiwi.repository.html#module-kiwi.repository.dnf">kiwi.repository.dnf (module)</a>
+</li>
       <li><a href="development/api/kiwi.repository.template.html#module-kiwi.repository.template">kiwi.repository.template (module)</a>
 </li>
       <li><a href="development/api/kiwi.repository.template.html#module-kiwi.repository.template.apt">kiwi.repository.template.apt (module)</a>
-</li>
-      <li><a href="development/api/kiwi.repository.html#module-kiwi.repository.yum">kiwi.repository.yum (module)</a>
 </li>
       <li><a href="development/api/kiwi.repository.html#module-kiwi.repository.zypper">kiwi.repository.zypper (module)</a>
 </li>
@@ -1912,11 +1943,15 @@
 </li>
       <li><a href="development/api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vagrant_config">kiwi.storage.subformat.template.vagrant_config (module)</a>
 </li>
+      <li><a href="development/api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.virtualbox_ovf">kiwi.storage.subformat.template.virtualbox_ovf (module)</a>
+</li>
       <li><a href="development/api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vmware_settings">kiwi.storage.subformat.template.vmware_settings (module)</a>
 </li>
       <li><a href="development/api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_base">kiwi.storage.subformat.vagrant_base (module)</a>
 </li>
       <li><a href="development/api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_libvirt">kiwi.storage.subformat.vagrant_libvirt (module)</a>
+</li>
+      <li><a href="development/api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_virtualbox">kiwi.storage.subformat.vagrant_virtualbox (module)</a>
 </li>
       <li><a href="development/api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vdi">kiwi.storage.subformat.vdi (module)</a>
 </li>
@@ -1952,10 +1987,10 @@
 </li>
       <li><a href="development/api/kiwi.system.html#module-kiwi.system.uri">kiwi.system.uri (module)</a>
 </li>
-      <li><a href="development/api/kiwi.system.html#module-kiwi.system.users">kiwi.system.users (module)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="development/api/kiwi.system.html#module-kiwi.system.users">kiwi.system.users (module)</a>
+</li>
       <li><a href="development/api/kiwi.tasks.html#module-kiwi.tasks">kiwi.tasks (module)</a>
 </li>
       <li><a href="development/api/kiwi.tasks.html#module-kiwi.tasks.base">kiwi.tasks.base (module)</a>
@@ -2267,7 +2302,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.match_package_deleted">match_package_deleted() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.match_package_deleted">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.match_package_deleted">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.match_package_deleted">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2275,7 +2310,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.match_package_installed">match_package_installed() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.match_package_installed">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.match_package_installed">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.match_package_installed">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2342,9 +2377,9 @@
 </li>
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase">PackageManagerBase (class in kiwi.package_manager.base)</a>
 </li>
-      <li><a href="development/api/kiwi.repository.template.html#kiwi.repository.template.apt.PackageManagerTemplateAptGet">PackageManagerTemplateAptGet (class in kiwi.repository.template.apt)</a>
+      <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf">PackageManagerDnf (class in kiwi.package_manager.dnf)</a>
 </li>
-      <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum">PackageManagerYum (class in kiwi.package_manager.yum)</a>
+      <li><a href="development/api/kiwi.repository.template.html#kiwi.repository.template.apt.PackageManagerTemplateAptGet">PackageManagerTemplateAptGet (class in kiwi.repository.template.apt)</a>
 </li>
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper">PackageManagerZypper (class in kiwi.package_manager.zypper)</a>
 </li>
@@ -2397,7 +2432,7 @@
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.post_init">(kiwi.package_manager.base.PackageManagerBase method)</a>
 </li>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.post_init">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.post_init">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.post_init">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2411,7 +2446,7 @@
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.post_init">(kiwi.repository.base.RepositoryBase method)</a>
 </li>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.post_init">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.post_init">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.post_init">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -2447,7 +2482,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.post_process_install_requests_bootstrap">post_process_install_requests_bootstrap() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.post_process_install_requests_bootstrap">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.post_process_install_requests_bootstrap">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.post_process_install_requests_bootstrap">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2481,7 +2516,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.process_delete_requests">process_delete_requests() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_delete_requests">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_delete_requests">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.process_delete_requests">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2489,7 +2524,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.process_install_requests">process_install_requests() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_install_requests">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.process_install_requests">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2497,7 +2532,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.process_install_requests_bootstrap">process_install_requests_bootstrap() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_install_requests_bootstrap">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests_bootstrap">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.process_install_requests_bootstrap">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2505,7 +2540,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.process_only_required">process_only_required() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_only_required">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_only_required">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.process_only_required">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2513,7 +2548,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.process_plus_recommended">process_plus_recommended() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_plus_recommended">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_plus_recommended">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.process_plus_recommended">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2562,16 +2597,14 @@
 </li>
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase">RepositoryBase (class in kiwi.repository.base)</a>
 </li>
-      <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum">RepositoryYum (class in kiwi.repository.yum)</a>
-</li>
-      <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYumSpaceRemover">RepositoryYumSpaceRemover (class in kiwi.repository.yum)</a>
+      <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf">RepositoryDnf (class in kiwi.repository.dnf)</a>
 </li>
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper">RepositoryZypper (class in kiwi.repository.zypper)</a>
 </li>
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.request_collection">request_collection() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.request_collection">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.request_collection">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.request_collection">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2579,7 +2612,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.request_package">request_package() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.request_package">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.request_package">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.request_package">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2587,7 +2620,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.request_package_exclusion">request_package_exclusion() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.request_package_exclusion">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.request_package_exclusion">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.request_package_exclusion">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2597,7 +2630,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.request_product">request_product() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.request_product">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.request_product">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.request_product">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2637,7 +2670,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.runtime_config">runtime_config() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.runtime_config">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.runtime_config">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.runtime_config">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -2777,7 +2810,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.setup_package_database_configuration">setup_package_database_configuration() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.setup_package_database_configuration">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.setup_package_database_configuration">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.setup_package_database_configuration">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -2913,7 +2946,7 @@
       <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.base.PackageManagerBase.update">update() (kiwi.package_manager.base.PackageManagerBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.update">(kiwi.package_manager.yum.PackageManagerYum method)</a>
+        <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.update">(kiwi.package_manager.dnf.PackageManagerDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.update">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
@@ -2929,7 +2962,7 @@
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.use_default_location">use_default_location() (kiwi.repository.base.RepositoryBase method)</a>
 
       <ul>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYum.use_default_location">(kiwi.repository.yum.RepositoryYum method)</a>
+        <li><a href="development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.use_default_location">(kiwi.repository.dnf.RepositoryDnf method)</a>
 </li>
         <li><a href="development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.use_default_location">(kiwi.repository.zypper.RepositoryZypper method)</a>
 </li>
@@ -2955,6 +2988,8 @@
       <ul>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.vagrant_post_init">(kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt method)</a>
 </li>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.vagrant_post_init">(kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox method)</a>
+</li>
       </ul></li>
       <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate">VagrantConfigTemplate (class in kiwi.storage.subformat.template.vagrant_config)</a>
 </li>
@@ -2962,6 +2997,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate">VirtualboxOvfTemplate (class in kiwi.storage.subformat.template.virtualbox_ovf)</a>
+</li>
       <li><a href="development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate">VmwareSettingsTemplate (class in kiwi.storage.subformat.template.vmware_settings)</a>
 </li>
       <li><a href="development/api/kiwi.volume_manager.html#kiwi.volume_manager.VolumeManager">VolumeManager (class in kiwi.volume_manager)</a>
@@ -2996,8 +3033,6 @@
         <li><a href="development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux.write">(kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux method)</a>
 </li>
         <li><a href="development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.zipl.BootLoaderConfigZipl.write">(kiwi.bootloader.config.zipl.BootLoaderConfigZipl method)</a>
-</li>
-        <li><a href="development/api/kiwi.repository.html#kiwi.repository.yum.RepositoryYumSpaceRemover.write">(kiwi.repository.yum.RepositoryYumSpaceRemover method)</a>
 </li>
         <li><a href="development/api/kiwi.system.html#kiwi.system.identifier.SystemIdentifier.write">(kiwi.system.identifier.SystemIdentifier method)</a>
 </li>

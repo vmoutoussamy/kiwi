@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.package_manager.yum &mdash; kiwi 9.17.23 documentation</title>
+  <title>kiwi.package_manager.dnf &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -80,13 +80,22 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -105,19 +114,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../building.html">Building Images</a><ul>
@@ -154,7 +159,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -257,7 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -370,7 +385,7 @@
         
           <li><a href="../package_manager.html">kiwi.package_manager</a> &raquo;</li>
         
-      <li>kiwi.package_manager.yum</li>
+      <li>kiwi.package_manager.dnf</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -385,7 +400,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for kiwi.package_manager.yum</h1><div class="highlight"><pre>
+  <h1>Source code for kiwi.package_manager.dnf</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (c) 2015 SUSE Linux GmbH.  All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1"># This file is part of kiwi.</span>
@@ -403,45 +418,39 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
-<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.rpm_database</span> <span class="k">import</span> <span class="n">RpmDataBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.package_manager.base</span> <span class="k">import</span> <span class="n">PackageManagerBase</span>
-<span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
-    <span class="n">KiwiRequestError</span>
-<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="n">KiwiRequestError</span>
 
 
-<div class="viewcode-block" id="PackageManagerYum"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum">[docs]</a><span class="k">class</span> <span class="nc">PackageManagerYum</span><span class="p">(</span><span class="n">PackageManagerBase</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf">[docs]</a><span class="k">class</span> <span class="nc">PackageManagerDnf</span><span class="p">(</span><span class="n">PackageManagerBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    **Implements base class for installation/deletion of</span>
-<span class="sd">    packages and collections using yum**</span>
+<span class="sd">    ***Implements base class for installation/deletion of</span>
+<span class="sd">    packages and collections using dnf***</span>
 
-<span class="sd">    :param list yum_args: yum arguments from repository runtime configuration</span>
-<span class="sd">    :param dict command_env: yum command environment from repository runtime</span>
+<span class="sd">    :param doct dnf_args: dnf arguments from repository runtime configuration</span>
+<span class="sd">    :param dict command_env: dnf command environment from repository runtime</span>
 <span class="sd">        configuration</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="PackageManagerYum.post_init"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.post_init">[docs]</a>    <span class="k">def</span> <span class="nf">post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.post_init"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.post_init">[docs]</a>    <span class="k">def</span> <span class="nf">post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Post initialization method</span>
 
-<span class="sd">        Store custom yum arguments</span>
-
-<span class="sd">        :param list custom_args: custom yum arguments</span>
+<span class="sd">        :param list custom_args: custom dnf arguments</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">=</span> <span class="n">custom_args</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">custom_args</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="n">runtime_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repository</span><span class="o">.</span><span class="n">runtime_config</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span> <span class="o">=</span> <span class="n">runtime_config</span><span class="p">[</span><span class="s1">&#39;yum_args&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span> <span class="o">=</span> <span class="n">runtime_config</span><span class="p">[</span><span class="s1">&#39;dnf_args&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span> <span class="o">=</span> <span class="n">runtime_config</span><span class="p">[</span><span class="s1">&#39;command_env&#39;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.request_package"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.request_package">[docs]</a>    <span class="k">def</span> <span class="nf">request_package</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.request_package"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.request_package">[docs]</a>    <span class="k">def</span> <span class="nf">request_package</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Queue a package request</span>
 
@@ -449,25 +458,25 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">package_requests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.request_collection"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.request_collection">[docs]</a>    <span class="k">def</span> <span class="nf">request_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.request_collection"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.request_collection">[docs]</a>    <span class="k">def</span> <span class="nf">request_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Queue a collection request</span>
 
-<span class="sd">        :param str name: yum group name</span>
+<span class="sd">        :param str name: dnf group name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">collection_requests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.request_product"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.request_product">[docs]</a>    <span class="k">def</span> <span class="nf">request_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.request_product"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.request_product">[docs]</a>    <span class="k">def</span> <span class="nf">request_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Queue a product request</span>
 
-<span class="sd">        There is no product definition in the rhel repo data</span>
+<span class="sd">        There is no product definition in the fedora repo data</span>
 
 <span class="sd">        :param str name: unused</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.request_package_exclusion"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.request_package_exclusion">[docs]</a>    <span class="k">def</span> <span class="nf">request_package_exclusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.request_package_exclusion"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.request_package_exclusion">[docs]</a>    <span class="k">def</span> <span class="nf">request_package_exclusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Queue a package exclusion(skip) request</span>
 
@@ -475,30 +484,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">exclude_requests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_get_yum_binary_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Identify whether yum is &#39;yum&#39; or &#39;yum-deprecated&#39;</span>
-
-<span class="sd">        :param str root: lookup binary name below this root directory</span>
-
-<span class="sd">        :return: name of yum command</span>
-
-<span class="sd">        :rtype: str</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">yum_binary</span> <span class="o">=</span> <span class="s1">&#39;yum&#39;</span>
-        <span class="n">yum_search_env</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">])</span>
-        <span class="p">}</span> <span class="k">if</span> <span class="n">root</span> <span class="k">else</span> <span class="kc">None</span>
-
-        <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span>
-            <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;yum-deprecated&#39;</span><span class="p">,</span>
-            <span class="n">custom_env</span><span class="o">=</span><span class="n">yum_search_env</span><span class="p">,</span>
-            <span class="n">access_mode</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">X_OK</span>
-        <span class="p">):</span>
-            <span class="n">yum_binary</span> <span class="o">=</span> <span class="s1">&#39;yum-deprecated&#39;</span>
-        <span class="k">return</span> <span class="n">yum_binary</span>
-
-<div class="viewcode-block" id="PackageManagerYum.process_install_requests_bootstrap"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_install_requests_bootstrap">[docs]</a>    <span class="k">def</span> <span class="nf">process_install_requests_bootstrap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.process_install_requests_bootstrap"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests_bootstrap">[docs]</a>    <span class="k">def</span> <span class="nf">process_install_requests_bootstrap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Process package install requests for bootstrap phase (no chroot)</span>
 
@@ -506,27 +492,28 @@
 
 <span class="sd">        :rtype: namedtuple</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">yum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_yum_binary_name</span><span class="p">()</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">yum</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;makecache&#39;</span><span class="p">]</span>
+            <span class="p">[</span><span class="s1">&#39;dnf&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;makecache&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="n">bash_command</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">yum</span>
-        <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="s1">&#39;dnf&#39;</span>
+        <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span> <span class="o">+</span> <span class="p">[</span>
             <span class="s1">&#39;--installroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
         <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;install&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">package_requests</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection_requests</span><span class="p">:</span>
             <span class="n">bash_command</span> <span class="o">+=</span> <span class="p">[</span>
-                <span class="s1">&#39;&amp;&amp;&#39;</span><span class="p">,</span> <span class="n">yum</span>
-            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="s1">&#39;&amp;&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;dnf&#39;</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span> <span class="o">+</span> <span class="p">[</span>
                 <span class="s1">&#39;--installroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
-            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;groupinstall&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection_requests</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;install&#39;</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection_requests</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cleanup_requests</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
             <span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bash_command</span><span class="p">)],</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.process_install_requests"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_install_requests">[docs]</a>    <span class="k">def</span> <span class="nf">process_install_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.process_install_requests"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests">[docs]</a>    <span class="k">def</span> <span class="nf">process_install_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Process package install requests for image phase (chroot)</span>
 
@@ -534,44 +521,40 @@
 
 <span class="sd">        :rtype: namedtuple</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">yum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_yum_binary_name</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude_requests</span><span class="p">:</span>
-            <span class="c1"># For Yum, excluding a package means removing it from</span>
+            <span class="c1"># For DNF, excluding a package means removing it from</span>
             <span class="c1"># the solver operation. This is done by adding --exclude</span>
             <span class="c1"># to the command line. This means that if the package is</span>
             <span class="c1"># hard required by another package, it will break the transaction.</span>
             <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude_requests</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--exclude=&#39;</span> <span class="o">+</span> <span class="n">package</span><span class="p">)</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;rpm&#39;</span><span class="p">,</span> <span class="s1">&#39;--rebuilddb&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="n">chroot_yum_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_bind</span><span class="o">.</span><span class="n">move_to_root</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span>
+        <span class="n">chroot_dnf_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_bind</span><span class="o">.</span><span class="n">move_to_root</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span>
         <span class="p">)</span>
         <span class="n">bash_command</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">yum</span>
-        <span class="p">]</span> <span class="o">+</span> <span class="n">chroot_yum_args</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;dnf&#39;</span>
+        <span class="p">]</span> <span class="o">+</span> <span class="n">chroot_dnf_args</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
             <span class="s1">&#39;install&#39;</span>
         <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">package_requests</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection_requests</span><span class="p">:</span>
             <span class="n">bash_command</span> <span class="o">+=</span> <span class="p">[</span>
-                <span class="s1">&#39;&amp;&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">yum</span>
-            <span class="p">]</span> <span class="o">+</span> <span class="n">chroot_yum_args</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
-                <span class="s1">&#39;groupinstall&#39;</span>
+                <span class="s1">&#39;&amp;&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;dnf&#39;</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="n">chroot_dnf_args</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;install&#39;</span>
             <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection_requests</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cleanup_requests</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
             <span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bash_command</span><span class="p">)],</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.process_delete_requests"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_delete_requests">[docs]</a>    <span class="k">def</span> <span class="nf">process_delete_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.process_delete_requests"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_delete_requests">[docs]</a>    <span class="k">def</span> <span class="nf">process_delete_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Process package delete requests (chroot)</span>
 
 <span class="sd">        :param bool force: force deletion: true|false</span>
 
 <span class="sd">        :raises KiwiRequestError: if none of the packages to delete is</span>
-<span class="sd">            installed</span>
+<span class="sd">            installed.</span>
 <span class="sd">        :return: process results in command type</span>
 
 <span class="sd">        :rtype: namedtuple</span>
@@ -598,17 +581,17 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">chroot_yum_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_bind</span><span class="o">.</span><span class="n">move_to_root</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span><span class="p">)</span>
+            <span class="n">chroot_dnf_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_bind</span><span class="o">.</span><span class="n">move_to_root</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
                 <span class="p">[</span>
-                    <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_yum_binary_name</span><span class="p">()</span>
-                <span class="p">]</span> <span class="o">+</span> <span class="n">chroot_yum_args</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
+                    <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;dnf&#39;</span>
+                <span class="p">]</span> <span class="o">+</span> <span class="n">chroot_dnf_args</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
                     <span class="s1">&#39;autoremove&#39;</span>
                 <span class="p">]</span> <span class="o">+</span> <span class="n">delete_items</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.update"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.update"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Process package update requests (chroot)</span>
 
@@ -616,69 +599,68 @@
 
 <span class="sd">        :rtype: namedtuple</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">yum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_yum_binary_name</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
-        <span class="n">chroot_yum_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_bind</span><span class="o">.</span><span class="n">move_to_root</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">yum_args</span>
+        <span class="n">chroot_dnf_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_bind</span><span class="o">.</span><span class="n">move_to_root</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dnf_args</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
             <span class="p">[</span>
-                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">yum</span>
-            <span class="p">]</span> <span class="o">+</span> <span class="n">chroot_yum_args</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;dnf&#39;</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="n">chroot_dnf_args</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">+</span> <span class="p">[</span>
                 <span class="s1">&#39;upgrade&#39;</span>
             <span class="p">],</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">command_env</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.process_only_required"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_only_required">[docs]</a>    <span class="k">def</span> <span class="nf">process_only_required</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.process_only_required"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_only_required">[docs]</a>    <span class="k">def</span> <span class="nf">process_only_required</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Setup package processing only for required packages</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="s1">&#39;--setopt=requires_policy=strong&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--setopt=requires_policy=strong&#39;</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="s1">&#39;--setopt=install_weak_deps=False&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--setopt=install_weak_deps=False&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.process_plus_recommended"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.process_plus_recommended">[docs]</a>    <span class="k">def</span> <span class="nf">process_plus_recommended</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.process_plus_recommended"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.process_plus_recommended">[docs]</a>    <span class="k">def</span> <span class="nf">process_plus_recommended</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Setup package processing to also include recommended dependencies.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="s1">&#39;--setopt=requires_policy=strong&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;--setopt=requires_policy=strong&#39;</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="s1">&#39;--setopt=install_weak_deps=False&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;--setopt=install_weak_deps=False&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.match_package_installed"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.match_package_installed">[docs]</a>    <span class="k">def</span> <span class="nf">match_package_installed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">yum_output</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.match_package_installed"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.match_package_installed">[docs]</a>    <span class="k">def</span> <span class="nf">match_package_installed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">dnf_output</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Match expression to indicate a package has been installed</span>
 
 <span class="sd">        This match for the package to be installed in the output</span>
-<span class="sd">        of the yum command is not 100% accurate. There might</span>
+<span class="sd">        of the dnf command is not 100% accurate. There might</span>
 <span class="sd">        be false positives due to sub package names starting with</span>
 <span class="sd">        the same base package name</span>
 
 <span class="sd">        :param list package_list: list of all packages</span>
-<span class="sd">        :param str log_line: yum status line</span>
+<span class="sd">        :param str log_line: dnf status line</span>
 
 <span class="sd">        :returns: match or None if there isn&#39;t any match</span>
 
 <span class="sd">        :rtype: match object, None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
-            <span class="s1">&#39;.*Installing : &#39;</span> <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.*&#39;</span><span class="p">,</span> <span class="n">yum_output</span>
+            <span class="s1">&#39;.*Installing  : &#39;</span> <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.*&#39;</span><span class="p">,</span> <span class="n">dnf_output</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.match_package_deleted"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.match_package_deleted">[docs]</a>    <span class="k">def</span> <span class="nf">match_package_deleted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">yum_output</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.match_package_deleted"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.match_package_deleted">[docs]</a>    <span class="k">def</span> <span class="nf">match_package_deleted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">dnf_output</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Match expression to indicate a package has been deleted</span>
 
 <span class="sd">        :param list package_list: list of all packages</span>
-<span class="sd">        :param str log_line: yum status line</span>
+<span class="sd">        :param str log_line: dnf status line</span>
 
 <span class="sd">        :returns: match or None if there isn&#39;t any match</span>
 
 <span class="sd">        :rtype: match object, None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
-            <span class="s1">&#39;.*Removing: &#39;</span> <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.*&#39;</span><span class="p">,</span> <span class="n">yum_output</span>
+            <span class="s1">&#39;.*Removing: &#39;</span> <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.*&#39;</span><span class="p">,</span> <span class="n">dnf_output</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="PackageManagerYum.post_process_install_requests_bootstrap"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.yum.PackageManagerYum.post_process_install_requests_bootstrap">[docs]</a>    <span class="k">def</span> <span class="nf">post_process_install_requests_bootstrap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageManagerDnf.post_process_install_requests_bootstrap"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.dnf.PackageManagerDnf.post_process_install_requests_bootstrap">[docs]</a>    <span class="k">def</span> <span class="nf">post_process_install_requests_bootstrap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Move the rpm database to the place as it is expected by the</span>
 <span class="sd">        rpm package installed during bootstrap phase</span>

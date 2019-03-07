@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository Package &mdash; kiwi 9.17.23 documentation</title>
+  <title>kiwi.repository Package &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -82,13 +82,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -107,19 +116,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../building.html">Building Images</a><ul>
@@ -156,7 +161,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -259,7 +274,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.23</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.24</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -370,7 +385,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.23</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.24</a> &raquo;</li>
         
       <li>kiwi.repository Package</li>
     
@@ -559,32 +574,32 @@ are allowed to be active when building</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-kiwi.repository.yum">
-<span id="kiwi-repository-yum-module"></span><h2><a class="reference internal" href="#module-kiwi.repository.yum" title="kiwi.repository.yum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.yum</span></code></a> Module<a class="headerlink" href="#module-kiwi.repository.yum" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-kiwi.repository.dnf">
+<span id="kiwi-repository-dnf-module"></span><h2><a class="reference internal" href="#module-kiwi.repository.dnf" title="kiwi.repository.dnf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.dnf</span></code></a> Module<a class="headerlink" href="#module-kiwi.repository.dnf" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="kiwi.repository.yum.RepositoryYum">
-<em class="property">class </em><code class="descclassname">kiwi.repository.yum.</code><code class="descname">RepositoryYum</code><span class="sig-paren">(</span><em>root_bind</em>, <em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.repository.dnf.RepositoryDnf">
+<em class="property">class </em><code class="descclassname">kiwi.repository.dnf.</code><code class="descname">RepositoryDnf</code><span class="sig-paren">(</span><em>root_bind</em>, <em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.repository.base.RepositoryBase" title="kiwi.repository.base.RepositoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.repository.base.RepositoryBase</span></code></a></p>
-<p><strong>Implements repository handling for yum package manager</strong></p>
+<p><strong>Implements repository handling for dnf package manager</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>shared_yum_dir</strong> (<em>str</em>) – shared directory between image root and
-build system root</li>
-<li><strong>runtime_yum_config_file</strong> (<em>str</em>) – yum runtime config file name</li>
-<li><strong>command_env</strong> (<em>dict</em>) – customized os.environ for yum</li>
-<li><strong>runtime_yum_config</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></li>
+<li><strong>shared_dnf_dir</strong> (<em>str</em>) – shared directory between image root
+and build system root</li>
+<li><strong>runtime_dnf_config_file</strong> (<em>str</em>) – dnf runtime config file name</li>
+<li><strong>command_env</strong> (<em>dict</em>) – customized os.environ for dnf</li>
+<li><strong>runtime_dnf_config</strong> (<em>str</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.add_repo">
-<code class="descname">add_repo</code><span class="sig-paren">(</span><em>name</em>, <em>uri</em>, <em>repo_type='rpm-md'</em>, <em>prio=None</em>, <em>dist=None</em>, <em>components=None</em>, <em>user=None</em>, <em>secret=None</em>, <em>credentials_file=None</em>, <em>repo_gpgcheck=None</em>, <em>pkg_gpgcheck=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.add_repo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add yum repository</p>
+<dt id="kiwi.repository.dnf.RepositoryDnf.add_repo">
+<code class="descname">add_repo</code><span class="sig-paren">(</span><em>name</em>, <em>uri</em>, <em>repo_type='rpm-md'</em>, <em>prio=None</em>, <em>dist=None</em>, <em>components=None</em>, <em>user=None</em>, <em>secret=None</em>, <em>credentials_file=None</em>, <em>repo_gpgcheck=None</em>, <em>pkg_gpgcheck=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.add_repo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add dnf repository</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -593,7 +608,7 @@ build system root</li>
 <li><strong>name</strong> (<em>str</em>) – repository base file name</li>
 <li><strong>uri</strong> (<em>str</em>) – repository URI</li>
 <li><strong>repo_type</strong> – repostory type name</li>
-<li><strong>prio</strong> (<em>int</em>) – yum repostory priority</li>
+<li><strong>prio</strong> (<em>int</em>) – dnf repostory priority</li>
 <li><strong>dist</strong> – unused</li>
 <li><strong>components</strong> – unused</li>
 <li><strong>user</strong> – unused</li>
@@ -609,24 +624,24 @@ build system root</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.cleanup_unused_repos">
-<code class="descname">cleanup_unused_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.cleanup_unused_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.cleanup_unused_repos" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete unused yum repositories</p>
+<dt id="kiwi.repository.dnf.RepositoryDnf.cleanup_unused_repos">
+<code class="descname">cleanup_unused_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.cleanup_unused_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.cleanup_unused_repos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete unused dnf repositories</p>
 <p>Repository configurations which are not used for this build
 must be removed otherwise they are taken into account for
 the package installations</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.delete_all_repos">
-<code class="descname">delete_all_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.delete_all_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.delete_all_repos" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete all yum repositories</p>
+<dt id="kiwi.repository.dnf.RepositoryDnf.delete_all_repos">
+<code class="descname">delete_all_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.delete_all_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.delete_all_repos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all dnf repositories</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.delete_repo">
-<code class="descname">delete_repo</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.delete_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.delete_repo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete yum repository</p>
+<dt id="kiwi.repository.dnf.RepositoryDnf.delete_repo">
+<code class="descname">delete_repo</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.delete_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.delete_repo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete dnf repository</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -638,12 +653,14 @@ the package installations</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.delete_repo_cache">
-<code class="descname">delete_repo_cache</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.delete_repo_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.delete_repo_cache" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete yum repository cache</p>
+<dt id="kiwi.repository.dnf.RepositoryDnf.delete_repo_cache">
+<code class="descname">delete_repo_cache</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.delete_repo_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.delete_repo_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete dnf repository cache</p>
 <p>The cache data for each repository is stored in a directory
-of the same name as the repository name. The method deletes
-this directory to cleanup the cache information</p>
+and additional files all starting with the repository name.
+The method glob deletes all files and directories matching
+the repository name followed by any characters to cleanup
+the cache information</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -655,8 +672,8 @@ this directory to cleanup the cache information</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.import_trusted_keys">
-<code class="descname">import_trusted_keys</code><span class="sig-paren">(</span><em>signing_keys</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.import_trusted_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.import_trusted_keys" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.repository.dnf.RepositoryDnf.import_trusted_keys">
+<code class="descname">import_trusted_keys</code><span class="sig-paren">(</span><em>signing_keys</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.import_trusted_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.import_trusted_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imports trusted keys into the image</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -669,30 +686,30 @@ this directory to cleanup the cache information</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.post_init">
-<code class="descname">post_init</code><span class="sig-paren">(</span><em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.post_init" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.repository.dnf.RepositoryDnf.post_init">
+<code class="descname">post_init</code><span class="sig-paren">(</span><em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
-<p>Store custom yum arguments and create runtime configuration
+<p>Store custom dnf arguments and create runtime configuration
 and environment</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>list</em>) – yum arguments</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>list</em>) – dnf arguments</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.runtime_config">
-<code class="descname">runtime_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.runtime_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.runtime_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>yum runtime configuration and environment</p>
+<dt id="kiwi.repository.dnf.RepositoryDnf.runtime_config">
+<code class="descname">runtime_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.runtime_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.runtime_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>dnf runtime configuration and environment</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">yum_args:list, command_env:dict</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dnf_args:list, command_env:dict</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
@@ -701,8 +718,8 @@ and environment</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.setup_package_database_configuration">
-<code class="descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
+<dt id="kiwi.repository.dnf.RepositoryDnf.setup_package_database_configuration">
+<code class="descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup rpm macros for bootstrapping and image building</p>
 <ol class="arabic simple">
 <li>Create the rpm image macro which persists during the build</li>
@@ -713,45 +730,11 @@ This macro only persists during the bootstrap phase</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYum.use_default_location">
-<code class="descname">use_default_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYum.use_default_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYum.use_default_location" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup yum repository operations to store all data
+<dt id="kiwi.repository.dnf.RepositoryDnf.use_default_location">
+<code class="descname">use_default_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.use_default_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.use_default_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup dnf repository operations to store all data
 in the default places</p>
 </dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kiwi.repository.yum.RepositoryYumSpaceRemover">
-<em class="property">class </em><code class="descclassname">kiwi.repository.yum.</code><code class="descname">RepositoryYumSpaceRemover</code><span class="sig-paren">(</span><em>file_object</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYumSpaceRemover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYumSpaceRemover" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Yum is not able to deal with key = value pairs if there are
-spaces around the ‘=’ delimiter.</p>
-<p>This is a helper class to eliminate spaces around delimiters
-when writing out the data of a ConfigParser instance. In Python 3
-<code class="xref py py-func docutils literal notranslate"><span class="pre">ConfigParser.write()</span></code> supports the parameter:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ConfigParser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_object</span><span class="p">,</span> <span class="n">space_around_delimiters</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Unfortunately, in Python 2 the spaces are hard coded and can’t be
-configured. In order to still support both Python versions this
-helper class provides a custom <a class="reference internal" href="#kiwi.repository.yum.RepositoryYumSpaceRemover.write" title="kiwi.repository.yum.RepositoryYumSpaceRemover.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> method which
-deletes the unwanted spaces.</p>
-<p>Instead of passing an instance of a <code class="xref py py-attr docutils literal notranslate"><span class="pre">file_object</span></code> to
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code> we pass an instance of a
-<a class="reference internal" href="#kiwi.repository.yum.RepositoryYumSpaceRemover" title="kiwi.repository.yum.RepositoryYumSpaceRemover"><code class="xref py py-class docutils literal notranslate"><span class="pre">RepositoryYumSpaceRemover</span></code></a> object:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ConfigParser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">RepositoryYumSpaceRemover</span><span class="p">(</span><span class="n">file_object</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>It is expected that <code class="xref py py-func docutils literal notranslate"><span class="pre">ConfigParser.write()</span></code> only calls
-the <a class="reference internal" href="#kiwi.repository.yum.RepositoryYumSpaceRemover.write" title="kiwi.repository.yum.RepositoryYumSpaceRemover.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a>
-method of the usually provided file object. Thus this helper
-class only provides a custom version of this <a class="reference internal" href="#kiwi.repository.yum.RepositoryYumSpaceRemover.write" title="kiwi.repository.yum.RepositoryYumSpaceRemover.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a>
-method.</p>
-<dl class="method">
-<dt id="kiwi.repository.yum.RepositoryYumSpaceRemover.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/yum.html#RepositoryYumSpaceRemover.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.yum.RepositoryYumSpaceRemover.write" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -902,6 +885,7 @@ and environment</p>
 <li>Create the rpm bootstrap macro to make sure for bootstrapping
 the rpm database location matches the host rpm database setup.
 This macro only persists during the bootstrap phase</li>
+<li>Create zypper compat link</li>
 </ol>
 </dd></dl>
 

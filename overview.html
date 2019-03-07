@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview &mdash; kiwi 9.17.23 documentation</title>
+  <title>Overview &mdash; kiwi 9.17.24 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Legacy KIWI vs. Next Generation" href="overview/legacy_kiwi.html" />
-    <link rel="prev" title="KIWI Documentation" href="index.html" /> 
+    <link rel="next" title="Basic Workflow" href="overview/workflow.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,13 +82,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="overview/workflow.html#building-images">Building Images</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
@@ -107,19 +116,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#conceptual-overview">Conceptual Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your first image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="building.html">Building Images</a><ul>
@@ -156,7 +161,17 @@
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="building/working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
@@ -259,7 +274,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.23</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.24</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -395,12 +410,12 @@
 <p class="last">This document provides a conceptual overview about the steps
 of creating an image with KIWI. It also explains the terminology
 regarding the concept and process when building system images
-with KIWI 9.17.23.</p>
+with KIWI 9.17.24.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview/workflow.html">Basic Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a></li>
 </ul>
 </div>
 <div class="section" id="conceptual-overview">
@@ -426,7 +441,7 @@ provided by the image description.</p>
 <dl class="docutils">
 <dt>Appliance</dt>
 <dd>An appliance is a ready to use image of an operating system
-including a preconfigured application for a specific use case.
+including a pre-configured application for a specific use case.
 The appliance is provided as an image file and needs to be
 deployed to, or activated in the target system or service.</dd>
 <dt>Image</dt>
@@ -441,31 +456,32 @@ build process or of the initial start-up behavior of the image.</dd>
 <dt>Overlay Files</dt>
 <dd>A directory structure with files and subdirectories stored as part
 of the Image Description. This directory structure is packaged as
-a file <code class="file docutils literal notranslate"><span class="pre">root.tar.gz</span></code> or stored below a directory named
-<code class="file docutils literal notranslate"><span class="pre">root</span></code>. The content of the directory structure is copied over
-the existing file system (overlayed) of the appliance root.
-This includes permissions and attributes as a supplement.</dd>
+a file <code class="file docutils literal notranslate"><span class="pre">root.tar.gz</span></code> or stored inside a directory named
+<code class="file docutils literal notranslate"><span class="pre">root</span></code>. The content of the directory structure is copied on top of
+the the existing file system (overlayed) of the appliance root.
+This also includes permissions and attributes as a supplement.</dd>
 <dt>KIWI</dt>
 <dd>An OS appliance builder.</dd>
 <dt>Virtualization Technology</dt>
 <dd>Software simulated computer hardware. A virtual machine acts like
 a real computer, but is separated from the physical hardware.
-Within this documentation the Qemu virtualization system is used.</dd>
+Within this documentation the QEMU virtualization system is
+used. Another popular alternative is Virtualbox.</dd>
 </dl>
 </div>
 <div class="section" id="system-requirements">
 <h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
 <p>To use and run KIWI, you need:</p>
 <ul class="simple">
-<li>A recent Linux distribution, see <a class="reference internal" href="building.html#supported-distributions"><span class="std std-ref">Supported Distributions</span></a> for details.
-Alternatively a Linux distribution which supports the docker container
-system as it would be required when running KIWI in a container, see:
+<li>A recent Linux distribution, see <a class="reference internal" href="building.html#supported-distributions"><span class="std std-ref">Supported Distributions</span></a> for
+details. Alternatively a Linux distribution which supports the docker
+container system, where KIWI can be run inside a container, see:
 <a class="reference internal" href="building/build_containerized.html#container-building"><span class="std std-ref">Building in a Self-Contained Environment</span></a></li>
 <li>Enough free disk space to build and store the image. We recommend a
-minimum of 10GB.</li>
+minimum of 15GB.</li>
 <li>Python version 2.7, 3.4 or higher; as KIWI supports both Python
-versions, the information in this guide applies also to both
-packages, be it <code class="docutils literal notranslate"><span class="pre">python3-kiwi</span></code> or <code class="docutils literal notranslate"><span class="pre">python2-kiwi</span></code>.</li>
+versions, the information in this guide applies to both packages, be it
+<code class="docutils literal notranslate"><span class="pre">python3-kiwi</span></code> or <code class="docutils literal notranslate"><span class="pre">python2-kiwi</span></code>.</li>
 <li>Git (package <code class="docutils literal notranslate"><span class="pre">git-core</span></code>) to clone a repository.</li>
 <li>Virtualization technology to start the image. We recommend QEMU</li>
 </ul>
@@ -480,10 +496,10 @@ packages, be it <code class="docutils literal notranslate"><span class="pre">pyt
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="overview/legacy_kiwi.html" class="btn btn-neutral float-right" title="Legacy KIWI vs. Next Generation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="overview/workflow.html" class="btn btn-neutral float-right" title="Basic Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="KIWI Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
