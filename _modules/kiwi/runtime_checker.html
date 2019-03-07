@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.runtime_checker &mdash; kiwi 9.17.25 documentation</title>
+  <title>kiwi.runtime_checker &mdash; kiwi 9.17.26 documentation</title>
   
 
   
@@ -272,7 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.25</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.26</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -556,15 +556,16 @@
 <span class="s1">            take the rest space available on the system. It&#39;s only</span>
 <span class="s1">            allowed to specify one all size volume</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
-        <span class="n">all_size_volume_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">systemdisk_section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_system_disk_section</span><span class="p">()</span>
-        <span class="n">volumes</span> <span class="o">=</span> <span class="n">systemdisk_section</span><span class="o">.</span><span class="n">get_volume</span><span class="p">()</span> <span class="ow">or</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">volumes</span><span class="p">:</span>
-            <span class="n">size</span> <span class="o">=</span> <span class="n">volume</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span> <span class="ow">or</span> <span class="n">volume</span><span class="o">.</span><span class="n">get_freespace</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">size</span> <span class="ow">and</span> <span class="s1">&#39;all&#39;</span> <span class="ow">in</span> <span class="n">size</span><span class="p">:</span>
-                <span class="n">all_size_volume_count</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">all_size_volume_count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">systemdisk_section</span><span class="p">:</span>
+            <span class="n">all_size_volume_count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">volumes</span> <span class="o">=</span> <span class="n">systemdisk_section</span><span class="o">.</span><span class="n">get_volume</span><span class="p">()</span> <span class="ow">or</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">volumes</span><span class="p">:</span>
+                <span class="n">size</span> <span class="o">=</span> <span class="n">volume</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span> <span class="ow">or</span> <span class="n">volume</span><span class="o">.</span><span class="n">get_freespace</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">size</span> <span class="ow">and</span> <span class="s1">&#39;all&#39;</span> <span class="ow">in</span> <span class="n">size</span><span class="p">:</span>
+                    <span class="n">all_size_volume_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">all_size_volume_count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeChecker.check_volume_setup_has_no_root_definition"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_has_no_root_definition">[docs]</a>    <span class="k">def</span> <span class="nf">check_volume_setup_has_no_root_definition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
