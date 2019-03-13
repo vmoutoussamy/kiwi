@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.container.oci &mdash; kiwi 9.17.27 documentation</title>
+  <title>kiwi.container.oci &mdash; kiwi 9.17.28 documentation</title>
   
 
   
@@ -272,7 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.28</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -422,11 +422,10 @@
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
-<span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">kiwi.archive.tar</span> <span class="k">import</span> <span class="n">ArchiveTar</span>
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.runtime_config</span> <span class="k">import</span> <span class="n">RuntimeConfig</span>
 <span class="kn">from</span> <span class="nn">kiwi.oci_tools</span> <span class="k">import</span> <span class="n">OCI</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.compress</span> <span class="k">import</span> <span class="n">Compress</span>
 
 
 <div class="viewcode-block" id="ContainerImageOCI"><a class="viewcode-back" href="../../../development/api/kiwi.container.html#kiwi.container.oci.ContainerImageOCI">[docs]</a><span class="k">class</span> <span class="nc">ContainerImageOCI</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -461,9 +460,9 @@
 <span class="sd">                }</span>
 <span class="sd">            }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">transport</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">=</span> <span class="n">root_dir</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci_root_dir</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">archive_transport</span> <span class="o">=</span> <span class="n">transport</span>
         <span class="k">if</span> <span class="n">custom_args</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span> <span class="o">=</span> <span class="n">custom_args</span>
         <span class="k">else</span><span class="p">:</span>
@@ -507,8 +506,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;created_by&#39;</span><span class="p">]</span> <span class="o">=</span> \
                 <span class="n">Defaults</span><span class="o">.</span><span class="n">get_default_container_created_by</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span> <span class="o">=</span> <span class="n">OCI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;container_tag&#39;</span><span class="p">])</span>
-
 <div class="viewcode-block" id="ContainerImageOCI.create"><a class="viewcode-back" href="../../../development/api/kiwi.container.html#kiwi.container.oci.ContainerImageOCI.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">base_image</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create compressed oci system container tar archive</span>
@@ -522,44 +519,51 @@
         <span class="n">exclude_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;sys&#39;</span><span class="p">)</span>
         <span class="n">exclude_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;proc&#39;</span><span class="p">)</span>
 
+        <span class="n">oci</span> <span class="o">=</span> <span class="n">OCI</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">base_image</span><span class="p">:</span>
-            <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">container_dir</span><span class="p">)</span>
-            <span class="n">image_tar</span> <span class="o">=</span> <span class="n">ArchiveTar</span><span class="p">(</span><span class="n">base_image</span><span class="p">)</span>
-            <span class="n">image_tar</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">container_dir</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">init_layout</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">base_image</span><span class="p">))</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">unpack</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">sync_rootfs</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">]),</span> <span class="n">exclude_list</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">repack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="s1">&#39;additional_tags&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;additional_tags&#39;</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">add_tag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">base_image</span><span class="p">))</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">garbage_collect</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pack_image_to_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ContainerImageOCI.pack_image_to_file"><a class="viewcode-back" href="../../../development/api/kiwi.container.html#kiwi.container.oci.ContainerImageOCI.pack_image_to_file">[docs]</a>    <span class="k">def</span> <span class="nf">pack_image_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Packs the oci image into the given filename.</span>
-
-<span class="sd">        :param string filename: file name of the resulting packed image</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">oci_tarfile</span> <span class="o">=</span> <span class="n">ArchiveTar</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-        <span class="n">container_compressor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runtime_config</span><span class="o">.</span><span class="n">get_container_compression</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">container_compressor</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">oci_tarfile</span><span class="o">.</span><span class="n">create_xz_compressed</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">container_dir</span><span class="p">,</span>
-                <span class="n">xz_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">runtime_config</span><span class="o">.</span><span class="n">get_xz_options</span><span class="p">()</span>
+            <span class="n">oci</span><span class="o">.</span><span class="n">import_container_image</span><span class="p">(</span>
+                <span class="s1">&#39;oci-archive:</span><span class="si">{0}</span><span class="s1">:</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">base_image</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_container_base_image_tag</span><span class="p">()</span>
+                <span class="p">)</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">oci_tarfile</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">oci</span><span class="o">.</span><span class="n">container_dir</span>
-            <span class="p">)</span></div>
+            <span class="n">oci</span><span class="o">.</span><span class="n">init_container</span><span class="p">()</span>
+
+        <span class="n">image_ref</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">:</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;container_name&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;container_tag&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">oci</span><span class="o">.</span><span class="n">unpack</span><span class="p">()</span>
+        <span class="n">oci</span><span class="o">.</span><span class="n">sync_rootfs</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">]),</span> <span class="n">exclude_list</span><span class="p">)</span>
+        <span class="n">oci</span><span class="o">.</span><span class="n">repack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">)</span>
+        <span class="n">oci</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">)</span>
+        <span class="n">oci</span><span class="o">.</span><span class="n">post_process</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">archive_transport</span> <span class="o">==</span> <span class="s1">&#39;docker-archive&#39;</span><span class="p">:</span>
+            <span class="n">image_ref</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">:</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;container_name&#39;</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;container_tag&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">additional_refs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;additional_tags&#39;</span><span class="p">]:</span>
+                <span class="n">additional_refs</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;additional_tags&#39;</span><span class="p">]:</span>
+                    <span class="n">additional_refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">:</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;container_name&#39;</span><span class="p">],</span> <span class="n">tag</span>
+                    <span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">image_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oci_config</span><span class="p">[</span><span class="s1">&#39;container_tag&#39;</span><span class="p">]</span>
+            <span class="n">additional_refs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">oci</span><span class="o">.</span><span class="n">export_container_image</span><span class="p">(</span>
+            <span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">archive_transport</span><span class="p">,</span> <span class="n">image_ref</span><span class="p">,</span> <span class="n">additional_refs</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runtime_config</span><span class="o">.</span><span class="n">get_container_compression</span><span class="p">():</span>
+            <span class="n">compressor</span> <span class="o">=</span> <span class="n">Compress</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">compressor</span><span class="o">.</span><span class="n">xz</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">runtime_config</span><span class="o">.</span><span class="n">get_xz_options</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">filename</span></div>
 
     <span class="k">def</span> <span class="nf">_append_buildservice_disturl_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_buildservice_env_name</span><span class="p">())</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>

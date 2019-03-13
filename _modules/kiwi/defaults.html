@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.17.27 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.17.28 documentation</title>
   
 
   
@@ -272,7 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.27</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.28</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1582,6 +1582,18 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s1">&#39;kiwi-container&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_container_base_image_tag"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_container_base_image_tag">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_container_base_image_tag</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides the tag used to identify base layers during the build</span>
+<span class="sd">        of derived images.</span>
+
+<span class="sd">        :return: tag</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;base_layer&#39;</span></div>
 
 <div class="viewcode-block" id="Defaults.get_oci_archive_tool"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_oci_archive_tool">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_oci_archive_tool</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
