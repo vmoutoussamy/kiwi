@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Workflow &mdash; kiwi 9.17.29 documentation</title>
+  <title>Basic Workflow &mdash; kiwi 9.17.30 documentation</title>
   
 
   
@@ -274,7 +274,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.29</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.30</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -421,7 +421,7 @@ software sources (repositories) available. After the installation is
 complete the system usually reboots and enters a configuration procedure
 upon start-up. The configuration may be fully automatic or it may include
 user interaction.
-This description applies for version 9.17.29.</p>
+This description applies for version 9.17.30.</p>
 </div>
 <p>A system image (usually called “image”), is a <em>complete installation</em> of a Linux
 system within a file. The image represents an operational system and,
@@ -1152,6 +1152,15 @@ boot parameters to the kernel used to boot the installed image. This
 can be used e.g. to pass on first boot configuration for a PXE image.
 Note that options starting with <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.kiwi</span></code> are not passed on to avoid
 side effects.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rd.kiwi.oem.maxdisk=size[KMGT]</span></code></dt>
+<dd>This variable configures the maximum disk size an unattended oem
+installation should consider for image deployment. Unattended oem
+deployments default to deploying on /dev/sda (more exactly, the first
+device not filtered out by <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem-device-filter</span></code>). With RAID
+controllers, it can happen that your buch of big JBOD disks is for
+example <code class="xref py py-obj docutils literal notranslate"><span class="pre">/dev/sda</span></code> to <code class="xref py py-obj docutils literal notranslate"><span class="pre">/dev/sdi</span></code> and the 480G RAID1 configured for
+OS deployment is <code class="xref py py-obj docutils literal notranslate"><span class="pre">/dev/sdj</span></code>. With <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.kiwi.oem.maxdisk=500G</span></code> the
+deployment will land on that RAID disk.</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">rd.live.overlay.persistent</span></code></dt>
 <dd>This variable tells a live iso image to prepare a persistent
 write partition.</dd>
