@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>KIWI Image Description for Vagrant &mdash; kiwi 9.17.30 documentation</title>
+  <title>KIWI Image Description for Vagrant &mdash; kiwi 9.17.31 documentation</title>
   
 
   
@@ -274,7 +274,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.30</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.31</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -431,23 +431,17 @@ by the distribution vendor.</p>
 <p>The KIWI way of building images might be helpful, if such a media does not
 exist or does not suit your needs. For example, if the distribution is
 still under development or you want to use a collection of your own
-repositories.</p>
+repositories. Note, that in contrast to Packer KIWI only supports the
+libvirt and VirtualBox providers. Other providers require a different box
+layout that is currently not supported by KIWI.</p>
 <p>In addition, you can use the KIWI image description as source for the
 <a class="reference external" href="https://openbuildservice.org">Open Build Service</a> which allows
 building and maintaining boxes.</p>
-<p>A Vagrant box which is able to work with Vagrant has to comply with the
-constraints documented in
-<a class="reference external" href="https://www.vagrantup.com/docs/boxes/base.html">Vagrant Box Constraints</a>.
-Applied to the referenced KIWI image description from <a class="reference internal" href="../build_vmx_disk.html#vmx"><span class="std std-ref">Build a Virtual Disk Image</span></a>,
-the following changes are required:</p>
+<p>Vagrant expects boxes to be setup in a specific way (for details refer to
+the <a class="reference external" href="https://www.vagrantup.com/docs/boxes/base.html">Vagrant box documentation</a>.), applied to the
+referenced KIWI image description from <a class="reference internal" href="../build_vmx_disk.html#vmx"><span class="std std-ref">Build a Virtual Disk Image</span></a>, the following steps are
+required:</p>
 <ol class="arabic">
-<li><p class="first">Add mandatory packages</p>
-<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sudo&quot;</span><span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;openssh&quot;</span><span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;rsync&quot;</span><span class="o">/&gt;</span>
-</pre></div>
-</div>
-</li>
 <li><p class="first">Update the image type setup</p>
 <div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">type</span> <span class="n">image</span><span class="o">=</span><span class="s2">&quot;vmx&quot;</span> <span class="n">filesystem</span><span class="o">=</span><span class="s2">&quot;ext4&quot;</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;vagrant&quot;</span> <span class="n">boottimeout</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">vagrantconfig</span> <span class="n">provider</span><span class="o">=</span><span class="s2">&quot;libvirt&quot;</span> <span class="n">virtualsize</span><span class="o">=</span><span class="s2">&quot;42&quot;</span><span class="o">/&gt;</span>
@@ -458,6 +452,39 @@ the following changes are required:</p>
 <p>This modifies the type to build a Vagrant box for the libvirt
 provider including a pre-defined disk size. The disk size is
 optional, but recommended to provide some free space on disk.</p>
+<p>For the VirtualBox provider, the additional attribute
+<code class="docutils literal notranslate"><span class="pre">virtualbox_guest_additions_present</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> when the
+VirtualBox guest additions are installed in the KIWI image:</p>
+<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">type</span> <span class="n">image</span><span class="o">=</span><span class="s2">&quot;vmx&quot;</span> <span class="n">filesystem</span><span class="o">=</span><span class="s2">&quot;ext4&quot;</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;vagrant&quot;</span> <span class="n">boottimeout</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">vagrantconfig</span> <span class="n">provider</span><span class="o">=</span><span class="s2">&quot;virtualbox&quot;</span> <span class="n">virtualbox_guest_additions_present</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">virtualsize</span><span class="o">=</span><span class="s2">&quot;42&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">size</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;G&quot;</span><span class="o">&gt;</span><span class="mi">42</span><span class="o">&lt;/</span><span class="n">size</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">type</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The resulting Vagrant box then uses the <code class="docutils literal notranslate"><span class="pre">vboxfs</span></code> module for the
+synchronized folder instead of <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, that is used by default.</p>
+</li>
+<li><p class="first">Add mandatory packages</p>
+<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sudo&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;openssh&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add additional packages</p>
+<p>If you have set the attribute <code class="docutils literal notranslate"><span class="pre">virtualbox_guest_additions_present</span></code> to
+<code class="docutils literal notranslate"><span class="pre">true</span></code>, add the VirtualBox guest additions. For openSUSE the following
+packages are required:</p>
+<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;virtualbox-guest-tools&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;virtualbox-guest-x11&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;virtualbox-guest-kmp-default&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>Otherwise, you must add <code class="docutils literal notranslate"><span class="pre">rsync</span></code>:</p>
+<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">package</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;rsync&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>Note that KIWI cannot verify whether these packages are installed. If
+they are missing, the resulting Vagrant box will be broken.</p>
 </li>
 <li><p class="first">Add Vagrant user</p>
 <div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">users</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;vagrant&#39;</span><span class="o">&gt;</span>
@@ -526,17 +553,21 @@ fi
 </div>
 </li>
 </ol>
-<p>An image built with the above setup creates a box file with the
-extension <code class="file docutils literal notranslate"><span class="pre">.vagrant.libvirt.box</span></code>. That box file can now be
-added to vagrant with the command:</p>
+<p>An image built with the above setup creates a Vagrant box file with the
+extension <code class="file docutils literal notranslate"><span class="pre">.vagrant.libvirt.box</span></code> or
+<code class="file docutils literal notranslate"><span class="pre">.vagrant.virtualbox.box</span></code>. Add the box file to Vagrant with the
+command:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vagrant</span> <span class="n">box</span> <span class="n">add</span> <span class="n">my</span><span class="o">-</span><span class="n">box</span> <span class="n">image</span><span class="o">-</span><span class="n">file</span><span class="o">.</span><span class="n">vagrant</span><span class="o">.</span><span class="n">libvirt</span><span class="o">.</span><span class="n">box</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Using the box requires a correct Vagrant installation on your machine,
-the plugin <code class="docutils literal notranslate"><span class="pre">vagrant-libvirt</span></code> to be installed and the libvirtd daemon
-to be running.</p>
+<p>Using the box with the libvirt provider requires alongside a correct
+Vagrant installation:</p>
+<ul class="last simple">
+<li>the plugin <code class="docutils literal notranslate"><span class="pre">vagrant-libvirt</span></code> to be installed</li>
+<li>a running libvirtd daemon</li>
+</ul>
 </div>
 <p>Once added to Vagrant, boot the box and log in
 with the following sequence of <strong class="command">vagrant</strong> commands:</p>
@@ -544,13 +575,6 @@ with the following sequence of <strong class="command">vagrant</strong> commands
 <span class="n">vagrant</span> <span class="n">up</span> <span class="o">--</span><span class="n">provider</span> <span class="n">libvirt</span>
 <span class="n">vagrant</span> <span class="n">ssh</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Vagrant Providers</p>
-<p class="last">Currently, KIWI only supports the libvirt and virtualbox providers.
-There are also other providers available, which require a different
-box layout (currently not supported by KIWI).</p>
 </div>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
