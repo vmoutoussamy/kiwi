@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Workflow &mdash; kiwi 9.17.32 documentation</title>
+  <title>Basic Workflow &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.33</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -421,7 +422,7 @@ software sources (repositories) available. After the installation is
 complete the system usually reboots and enters a configuration procedure
 upon start-up. The configuration may be fully automatic or it may include
 user interaction.
-This description applies for version 9.17.32.</p>
+This description applies for version 9.17.33.</p>
 </div>
 <p>A system image (usually called “image”), is a <em>complete installation</em> of a Linux
 system within a file. The image represents an operational system and,
@@ -598,11 +599,13 @@ only required component, others are optional.</p>
 <p>Is the configuration shell script that runs and the end of the
 <a class="reference internal" href="#prepare-step"><span class="std std-ref">prepare step</span></a> if present. It can be used to
 fine tune the unpacked image.</p>
+<p>Note that the script is directly invoked by the operating system if its
+executable bit is set. Otherwise it is called by <code class="file docutils literal notranslate"><span class="pre">bash</span></code> instead.</p>
 </li>
 <li><p class="first"><code class="docutils literal notranslate"><span class="pre">images.sh</span></code> shell script</p>
-<p>Is the configuration shell script that runs at the begining of the
+<p>Is the configuration shell script that runs at the beginning of the
 create step. So it is expected to be used to handle image type specific
-tasks.</p>
+tasks. It is called in a similar fashion as <code class="docutils literal notranslate"><span class="pre">config.sh</span></code></p>
 </li>
 <li><p class="first">Overlay tree directory</p>
 <p>The <em>overlay tree</em> is a folder (called <code class="file docutils literal notranslate"><span class="pre">root</span></code>)

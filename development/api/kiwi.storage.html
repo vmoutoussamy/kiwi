@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage Package &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.storage Package &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.32</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.33</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -385,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.32</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.33</a> &raquo;</li>
         
       <li>kiwi.storage Package</li>
     
@@ -451,7 +452,7 @@
 <dl class="class">
 <dt id="kiwi.storage.device_provider.DeviceProvider">
 <em class="property">class </em><code class="descclassname">kiwi.storage.device_provider.</code><code class="descname">DeviceProvider</code><a class="reference internal" href="../../_modules/kiwi/storage/device_provider.html#DeviceProvider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.device_provider.DeviceProvider" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class for any class providing storage devices</strong></p>
 <dl class="method">
 <dt id="kiwi.storage.device_provider.DeviceProvider.get_byte_size">
@@ -465,7 +466,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">byte value from blockdev</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -491,7 +492,7 @@ Implementation in specialized device provider class</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">UUID from blkid</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -509,7 +510,7 @@ in the the specialized device provider class</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -531,8 +532,8 @@ in the the specialized device provider class</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>table_type</strong> (<em>string</em>) – Partition table type name</li>
-<li><strong>storage_provider</strong> (<em>object</em>) – Instance of class based on DeviceProvider</li>
-<li><strong>start_sector</strong> (<em>int</em>) – sector number</li>
+<li><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</li>
+<li><strong>start_sector</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – sector number</li>
 </ul>
 </td>
 </tr>
@@ -554,7 +555,7 @@ in the the specialized device provider class</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -569,7 +570,7 @@ in the the specialized device provider class</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -584,7 +585,7 @@ in the the specialized device provider class</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -613,7 +614,7 @@ in the the specialized device provider class</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -628,7 +629,7 @@ in the the specialized device provider class</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -644,7 +645,7 @@ boot partition is requested</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -661,7 +662,7 @@ configured to be kiwi_RaidDev(/dev/mdX)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -679,7 +680,7 @@ avoid wasting disk space</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -694,7 +695,7 @@ avoid wasting disk space</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<em>int</em>) – partition size</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</td>
 </tr>
 </tbody>
 </table>
@@ -711,7 +712,7 @@ avoid wasting disk space</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">instances of MappedDevice</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -735,7 +736,7 @@ the storage provider is loop based the disk is it too</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -772,8 +773,8 @@ For DASD disks create a new VTOC table</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>filename</strong> (<em>string</em>) – loop file name to create</li>
-<li><strong>filesize_mbytes</strong> (<em>int</em>) – size of the loop file</li>
-<li><strong>blocksize_bytes</strong> (<em>int</em>) – blocksize used in loop driver</li>
+<li><strong>filesize_mbytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – size of the loop file</li>
+<li><strong>blocksize_bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – blocksize used in loop driver</li>
 </ul>
 </td>
 </tr>
@@ -789,7 +790,7 @@ constructor unless an existing one should not be overwritten</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>overwrite</strong> (<em>bool</em>) – overwrite existing file to loop</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – overwrite existing file to loop</td>
 </tr>
 </tbody>
 </table>
@@ -805,7 +806,7 @@ constructor unless an existing one should not be overwritten</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">device node name</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -821,7 +822,7 @@ constructor unless an existing one should not be overwritten</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -841,7 +842,7 @@ constructor unless an existing one should not be overwritten</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage_provider</strong> (<em>object</em>) – Instance of class based on DeviceProvider</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</td>
 </tr>
 </tbody>
 </table>
@@ -859,7 +860,7 @@ is secure while this process runs</p>
 <li><strong>passphrase</strong> (<em>string</em>) – credentials</li>
 <li><strong>os</strong> (<em>string</em>) – distribution name to match distribution specific
 options for cryptsetup</li>
-<li><strong>options</strong> (<em>list</em>) – further cryptsetup options</li>
+<li><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – further cryptsetup options</li>
 </ul>
 </td>
 </tr>
@@ -908,7 +909,7 @@ options for cryptsetup</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -929,7 +930,7 @@ options for cryptsetup</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>device_provider</strong> (<em>object</em>) – Instance of class based on DeviceProvider</li>
+<li><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</li>
 <li><strong>device</strong> (<em>string</em>) – Device node name</li>
 </ul>
 </td>
@@ -946,7 +947,7 @@ options for cryptsetup</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">device node name</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -963,7 +964,7 @@ options for cryptsetup</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -983,7 +984,7 @@ options for cryptsetup</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage_provider</strong> (<em>object</em>) – Instance of class based on DeviceProvider</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</td>
 </tr>
 </tbody>
 </table>
@@ -1043,7 +1044,7 @@ This only works in the raid levels 0(striping) and 1(mirroring)</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -1057,7 +1058,7 @@ This only works in the raid levels 0(striping) and 1(mirroring)</p>
 <dl class="class">
 <dt id="kiwi.storage.setup.DiskSetup">
 <em class="property">class </em><code class="descclassname">kiwi.storage.setup.</code><code class="descname">DiskSetup</code><span class="sig-paren">(</span><em>xml_state</em>, <em>root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/storage/setup.html#DiskSetup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.setup.DiskSetup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implements disk setup methods</strong></p>
 <p>Methods from this class provides information required
 before building a disk image</p>
@@ -1066,7 +1067,7 @@ before building a disk image</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xml_state</strong> (<em>object</em>) – Instance of XMLState</li>
+<li><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of XMLState</li>
 <li><strong>root_dir</strong> (<em>string</em>) – root directory path name</li>
 </ul>
 </td>
@@ -1083,7 +1084,7 @@ before building a disk image</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">boot size mbytes</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1099,7 +1100,7 @@ before building a disk image</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">label name</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1115,7 +1116,7 @@ before building a disk image</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">disk size mbytes</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1131,7 +1132,7 @@ before building a disk image</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">label name</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1149,7 +1150,7 @@ root label is set to ‘ROOT’</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">label name</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1168,7 +1169,7 @@ we need a boot partition or not</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>

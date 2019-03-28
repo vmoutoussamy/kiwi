@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system Package &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.system Package &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.32</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.33</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -385,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.32</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.33</a> &raquo;</li>
         
       <li>kiwi.system Package</li>
     
@@ -416,14 +417,14 @@
 <dl class="class">
 <dt id="kiwi.system.identifier.SystemIdentifier">
 <em class="property">class </em><code class="descclassname">kiwi.system.identifier.</code><code class="descname">SystemIdentifier</code><a class="reference internal" href="../../_modules/kiwi/system/identifier.html#SystemIdentifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.identifier.SystemIdentifier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Create a random ID to identify the system</strong></p>
 <p>The information is used to create the mbrid file as an example</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>image_id</strong> (<em>str</em>) – hex identifier string</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>image_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – hex identifier string</td>
 </tr>
 </tbody>
 </table>
@@ -444,7 +445,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">hex id</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -458,7 +459,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) – file path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – file path name</td>
 </tr>
 </tbody>
 </table>
@@ -472,7 +473,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_provider</strong> (<em>object</em>) – Instance based on DeviceProvider</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance based on DeviceProvider</td>
 </tr>
 </tbody>
 </table>
@@ -486,15 +487,15 @@
 <dl class="class">
 <dt id="kiwi.system.kernel.Kernel">
 <em class="property">class </em><code class="descclassname">kiwi.system.kernel.</code><code class="descname">Kernel</code><span class="sig-paren">(</span><em>root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/kernel.html#Kernel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.kernel.Kernel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implementes kernel lookup and extraction from given root tree</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>root_dir</strong> (<em>str</em>) – root directory path name</li>
-<li><strong>kernel_names</strong> (<em>list</em>) – list of kernel names to search for
+<li><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – root directory path name</li>
+<li><strong>kernel_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of kernel names to search for
 functions.sh::suseStripKernel() provides a normalized
 file so that we do not have to search for many different
 names in this code</li>
@@ -514,8 +515,8 @@ as kernel-&lt;kernel.version&gt;.kernel</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>target_dir</strong> (<em>str</em>) – target path name</li>
-<li><strong>filename</strong> (<em>str</em>) – base filename in target</li>
+<li><strong>target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – target path name</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – base filename in target</li>
 </ul>
 </td>
 </tr>
@@ -534,8 +535,8 @@ as hypervisor-&lt;xen.name&gt;</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>target_dir</strong> (<em>str</em>) – target path name</li>
-<li><strong>filename</strong> (<em>str</em>) – base filename in target</li>
+<li><strong>target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – target path name</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – base filename in target</li>
 </ul>
 </td>
 </tr>
@@ -551,7 +552,7 @@ as hypervisor-&lt;xen.name&gt;</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>raise_on_not_found</strong> (<em>bool</em>) – sets the method to raise an exception
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>raise_on_not_found</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – sets the method to raise an exception
 if the kernel is not found</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiKernelLookupError" title="kiwi.exceptions.KiwiKernelLookupError"><strong>KiwiKernelLookupError</strong></a> – if raise_on_not_found flag is active
@@ -589,17 +590,17 @@ and kernel is not found</td>
 <dl class="class">
 <dt id="kiwi.system.prepare.SystemPrepare">
 <em class="property">class </em><code class="descclassname">kiwi.system.prepare.</code><code class="descname">SystemPrepare</code><span class="sig-paren">(</span><em>xml_state</em>, <em>root_dir</em>, <em>allow_existing=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/prepare.html#SystemPrepare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.prepare.SystemPrepare" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Implements preparation and installation of a new root system</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xml_state</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
-<li><strong>profiles</strong> (<em>list</em>) – list of configured profiles</li>
-<li><strong>root_bind</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">RootBind</span></code></li>
-<li><strong>uri_list</strong> (<em>list</em>) – a list of Uri references</li>
+<li><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
+<li><strong>profiles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of configured profiles</li>
+<li><strong>root_bind</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">RootBind</span></code></li>
+<li><strong>uri_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – a list of Uri references</li>
 </ul>
 </td>
 </tr>
@@ -617,9 +618,9 @@ is ignored.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>manager</strong> (<em>object</em>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</li>
-<li><strong>packages</strong> (<em>list</em>) – package list</li>
-<li><strong>force</strong> (<em>bool</em>) – force deletion true|false</li>
+<li><strong>manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</li>
+<li><strong>packages</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – package list</li>
+<li><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – force deletion true|false</li>
 </ul>
 </td>
 </tr>
@@ -639,7 +640,7 @@ from the host, also known as bootstrapping</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manager</strong> (<em>object</em>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiBootStrapPhaseFailed" title="kiwi.exceptions.KiwiBootStrapPhaseFailed"><strong>KiwiBootStrapPhaseFailed</strong></a> – if the bootstrapping process fails
 either installing packages or including bootstrap archives</td>
@@ -658,8 +659,8 @@ of the new root directory</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>manager</strong> (<em>object</em>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</li>
-<li><strong>packages</strong> (<em>list</em>) – package list</li>
+<li><strong>manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</li>
+<li><strong>packages</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – package list</li>
 </ul>
 </td>
 </tr>
@@ -681,7 +682,7 @@ via the bootstrap phase</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manager</strong> (<em>object</em>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiInstallPhaseFailed" title="kiwi.exceptions.KiwiInstallPhaseFailed"><strong>KiwiInstallPhaseFailed</strong></a> – if the install process fails
 either installing packages or including any archive</td>
@@ -702,8 +703,8 @@ marked with <code class="xref py py-obj docutils literal notranslate"><span clas
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>manager</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code></li>
-<li><strong>force</strong> (<em>bool</em>) – Forced deletion True|False</li>
+<li><strong>manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code></li>
+<li><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Forced deletion True|False</li>
 </ul>
 </td>
 </tr>
@@ -725,9 +726,9 @@ package manager for performing software installation tasks</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>clear_cache</strong> (<em>bool</em>) – flag the clear cache before configure
+<li><strong>clear_cache</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – flag the clear cache before configure
 anything</li>
-<li><strong>signing_keys</strong> (<em>list</em>) – keys imported to the package manager</li>
+<li><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – keys imported to the package manager</li>
 </ul>
 </td>
 </tr>
@@ -751,7 +752,7 @@ new root directory</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manager</strong> (<em>object</em>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiSystemUpdateFailed" title="kiwi.exceptions.KiwiSystemUpdateFailed"><strong>KiwiSystemUpdateFailed</strong></a> – if packages update fails</td>
 </tr>
@@ -767,7 +768,7 @@ new root directory</p>
 <dl class="class">
 <dt id="kiwi.system.profile.Profile">
 <em class="property">class </em><code class="descclassname">kiwi.system.profile.</code><code class="descname">Profile</code><span class="sig-paren">(</span><em>xml_state</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/profile.html#Profile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.profile.Profile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Create bash readable .profile environment from the XML
 description</strong></p>
 <p>The information is used by the kiwi first boot code.</p>
@@ -776,8 +777,8 @@ description</strong></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xml_state</strong> (<em>object</em>) – instance of :class`XMLState`</li>
-<li><strong>dot_profile</strong> (<em>dict</em>) – profile dictionary</li>
+<li><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of :class`XMLState`</li>
+<li><strong>dot_profile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – profile dictionary</li>
 </ul>
 </td>
 </tr>
@@ -792,8 +793,8 @@ description</strong></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>key</strong> (<em>str</em>) – profile key</li>
-<li><strong>value</strong> (<em>str</em>) – profile value</li>
+<li><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – profile key</li>
+<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – profile value</li>
 </ul>
 </td>
 </tr>
@@ -811,7 +812,7 @@ description</strong></p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">profile dump for bash</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -830,16 +831,16 @@ description</strong></p>
 <dl class="class">
 <dt id="kiwi.system.result.Result">
 <em class="property">class </em><code class="descclassname">kiwi.system.result.</code><code class="descname">Result</code><span class="sig-paren">(</span><em>xml_state</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/result.html#Result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.result.Result" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Collect image building results</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>result_files</strong> (<em>list</em>) – list of result files</li>
-<li><strong>class_version</strong> (<em>object</em>) – <a class="reference internal" href="#kiwi.system.result.Result" title="kiwi.system.result.Result"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a> class version</li>
-<li><strong>xml_state</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
+<li><strong>result_files</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of result files</li>
+<li><strong>class_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – <a class="reference internal" href="#kiwi.system.result.Result" title="kiwi.system.result.Result"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a> class version</li>
+<li><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
 </ul>
 </td>
 </tr>
@@ -854,11 +855,11 @@ description</strong></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>key</strong> (<em>str</em>) – name</li>
-<li><strong>filename</strong> (<em>str</em>) – file path name</li>
-<li><strong>use_for_bundle</strong> (<em>bool</em>) – use when bundling results true|false</li>
-<li><strong>compress</strong> (<em>bool</em>) – compress when bundling true|false</li>
-<li><strong>shasum</strong> (<em>bool</em>) – create shasum when bundling true|false</li>
+<li><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – file path name</li>
+<li><strong>use_for_bundle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – use when bundling results true|false</li>
+<li><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – compress when bundling true|false</li>
+<li><strong>shasum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – create shasum when bundling true|false</li>
 </ul>
 </td>
 </tr>
@@ -874,7 +875,7 @@ description</strong></p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) – file path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – file path name</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiResultError" title="kiwi.exceptions.KiwiResultError"><strong>KiwiResultError</strong></a> – if pickle fails to dump <a class="reference internal" href="#kiwi.system.result.Result" title="kiwi.system.result.Result"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a>
 instance</td>
@@ -889,15 +890,15 @@ instance</td>
 <dd><p>Current list of result tuples</p>
 </dd></dl>
 
-<dl class="classmethod">
+<dl class="staticmethod">
 <dt id="kiwi.system.result.Result.load">
-<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/result.html#Result.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.result.Result.load" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/result.html#Result.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.result.Result.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load pickle dumped filename into a Result instance</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) – file path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – file path name</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiResultError" title="kiwi.exceptions.KiwiResultError"><strong>KiwiResultError</strong></a> – if filename does not exist or pickle fails
 to load filename</td>
@@ -923,8 +924,8 @@ is set to None no verification is done.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>size_limit</strong> (<em>int</em>) – The size limit for filename in bytes.</li>
-<li><strong>filename</strong> (<em>str</em>) – File to verify.</li>
+<li><strong>size_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The size limit for filename in bytes.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – File to verify.</li>
 </ul>
 </td>
 </tr>
@@ -940,7 +941,7 @@ is set to None no verification is done.</p>
 <dl class="class">
 <dt id="kiwi.system.result.result_file_type">
 <em class="property">class </em><code class="descclassname">kiwi.system.result.</code><code class="descname">result_file_type</code><span class="sig-paren">(</span><em>filename</em>, <em>use_for_bundle</em>, <em>compress</em>, <em>shasum</em><span class="sig-paren">)</span><a class="headerlink" href="#kiwi.system.result.result_file_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <dl class="attribute">
 <dt id="kiwi.system.result.result_file_type.compress">
 <code class="descname">compress</code><a class="headerlink" href="#kiwi.system.result.result_file_type.compress" title="Permalink to this definition">¶</a></dt>
@@ -973,7 +974,7 @@ is set to None no verification is done.</p>
 <dl class="class">
 <dt id="kiwi.system.root_bind.RootBind">
 <em class="property">class </em><code class="descclassname">kiwi.system.root_bind.</code><code class="descname">RootBind</code><span class="sig-paren">(</span><em>root_init</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/root_bind.html#RootBind"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.root_bind.RootBind" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implements binding/copying of host system paths
 into the new root directory</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -981,13 +982,13 @@ into the new root directory</strong></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>root_dir</strong> (<em>str</em>) – root directory path name</li>
-<li><strong>cleanup_files</strong> (<em>list</em>) – list of files to cleanup, delete</li>
-<li><strong>mount_stack</strong> (<em>list</em>) – list of mounted directories for cleanup</li>
-<li><strong>dir_stack</strong> (<em>list</em>) – list of directories for cleanup</li>
-<li><strong>config_files</strong> (<em>list</em>) – list of initial config files</li>
-<li><strong>bind_locations</strong> (<em>list</em>) – list of kernel filesystems to bind mount</li>
-<li><strong>shared_location</strong> (<em>str</em>) – shared directory between image root and
+<li><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – root directory path name</li>
+<li><strong>cleanup_files</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of files to cleanup, delete</li>
+<li><strong>mount_stack</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of mounted directories for cleanup</li>
+<li><strong>dir_stack</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of directories for cleanup</li>
+<li><strong>config_files</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of initial config files</li>
+<li><strong>bind_locations</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of kernel filesystems to bind mount</li>
+<li><strong>shared_location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – shared directory between image root and
 build system root</li>
 </ul>
 </td>
@@ -1028,7 +1029,7 @@ duplicate this data</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>host_dir</strong> (<em>str</em>) – directory to share between image root and build
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>host_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – directory to share between image root and build
 system root</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiMountSharedDirectoryError" title="kiwi.exceptions.KiwiMountSharedDirectoryError"><strong>KiwiMountSharedDirectoryError</strong></a> – if mount fails</td>
@@ -1045,11 +1046,11 @@ system root</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>elements</strong> (<em>list</em>) – list of path names</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>elements</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of path names</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">changed elements</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></td>
 </tr>
 </tbody>
 </table>
@@ -1083,7 +1084,7 @@ intermediate configuration files fails</td>
 <dl class="class">
 <dt id="kiwi.system.root_init.RootInit">
 <em class="property">class </em><code class="descclassname">kiwi.system.root_init.</code><code class="descname">RootInit</code><span class="sig-paren">(</span><em>root_dir</em>, <em>allow_existing=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/root_init.html#RootInit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.root_init.RootInit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implements creation of new root directory for a linux system</strong></p>
 <p>Host system independent static default files and device nodes
 are created to initialize a new base system</p>
@@ -1091,7 +1092,7 @@ are created to initialize a new base system</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>root_dir</strong> (<em>str</em>) – root directory path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – root directory path name</td>
 </tr>
 </tbody>
 </table>
@@ -1135,7 +1136,7 @@ at some point</td>
 <dl class="class">
 <dt id="kiwi.system.setup.SystemSetup">
 <em class="property">class </em><code class="descclassname">kiwi.system.setup.</code><code class="descname">SystemSetup</code><span class="sig-paren">(</span><em>xml_state</em>, <em>root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/setup.html#SystemSetup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implementation of system setup steps supported by kiwi</strong></p>
 <p>Kiwi is not responsible for the system configuration, however
 some setup steps needs to be performed in order to provide
@@ -1146,16 +1147,16 @@ the desired image type.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>arch</strong> (<em>str</em>) – platform.machine. The 32bit x86 platform is
+<li><strong>arch</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – platform.machine. The 32bit x86 platform is
 handled as ‘ix86’</li>
-<li><strong>xml_state</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
-<li><strong>description_dir</strong> (<em>str</em>) – path to image description directory</li>
+<li><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
+<li><strong>description_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path to image description directory</li>
 <li><strong>derived_description_dir</strong> – path to derived_description_dir
 boot image descriptions inherits data from the system image
 description, thus they are derived from another image
 description directory which is needed to e.g find system
 image archives, overlay files</li>
-<li><strong>root_dir</strong> (<em>str</em>) – root directory path name</li>
+<li><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – root directory path name</li>
 </ul>
 </td>
 </tr>
@@ -1178,9 +1179,9 @@ the boot partition as parameters to the call</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>filesystem</strong> (<em>str</em>) – boot filesystem name</li>
-<li><strong>boot_part_id</strong> (<em>int</em>) – boot partition number</li>
-<li><strong>working_directory</strong> (<em>str</em>) – directory name</li>
+<li><strong>filesystem</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – boot filesystem name</li>
+<li><strong>boot_part_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – boot partition number</li>
+<li><strong>working_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – directory name</li>
 </ul>
 </td>
 </tr>
@@ -1199,9 +1200,9 @@ as parameters to the call</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>diskname</strong> (<em>str</em>) – file path name</li>
-<li><strong>boot_device_node</strong> (<em>str</em>) – boot device node name</li>
-<li><strong>working_directory</strong> (<em>str</em>) – directory name</li>
+<li><strong>diskname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – file path name</li>
+<li><strong>boot_device_node</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – boot device node name</li>
+<li><strong>working_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – directory name</li>
 </ul>
 </td>
 </tr>
@@ -1226,14 +1227,18 @@ required in the later image</p>
 <dt id="kiwi.system.setup.SystemSetup.create_fstab">
 <code class="descname">create_fstab</code><span class="sig-paren">(</span><em>entries</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/setup.html#SystemSetup.create_fstab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.create_fstab" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create etc/fstab from given list of entries</p>
-<p>Also lookup for an optional fstab.append file which allows
+<p>Also look for an optional fstab.append file which allows
 to append custom fstab entries to the final fstab. Once
 embedded the fstab.append file will be deleted</p>
+<p>Also look for an optional fstab.patch file which allows
+to patch the current contents of the fstab file with
+a given patch file. Once patched the fstab.patch file will
+be deleted</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<em>list</em>) – list of line entries for fstab</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of line entries for fstab</td>
 </tr>
 </tbody>
 </table>
@@ -1264,7 +1269,7 @@ deleted prior to the creation of a new recovery data set</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target_root_dir</strong> (<em>str</em>) – path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target_root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path name</td>
 </tr>
 </tbody>
 </table>
@@ -1279,7 +1284,7 @@ used by the open buildservice</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target_dir</strong> (<em>str</em>) – path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path name</td>
 </tr>
 </tbody>
 </table>
@@ -1294,7 +1299,7 @@ used by the open buildservice</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target_dir</strong> (<em>str</em>) – path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path name</td>
 </tr>
 </tbody>
 </table>
@@ -1310,7 +1315,7 @@ archive named config-cdroot.tar[.compression-postfix]</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target_dir</strong> (<em>str</em>) – directory to unpack archive to</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – directory to unpack archive to</td>
 </tr>
 </tbody>
 </table>
@@ -1341,8 +1346,8 @@ precedence over the tarball</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>follow_links</strong> (<em>bool</em>) – follow symlinks true|false</li>
-<li><strong>preserve_owner_group</strong> (<em>bool</em>) – preserve permissions true|false</li>
+<li><strong>follow_links</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – follow symlinks true|false</li>
+<li><strong>preserve_owner_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – preserve permissions true|false</li>
 </ul>
 </td>
 </tr>
@@ -1367,7 +1372,7 @@ information from the XML description.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>profile</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Profile</span></code></td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Profile</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -1382,7 +1387,7 @@ on the files matching the security_context_file</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_context_file</strong> (<em>str</em>) – path file name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_context_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path file name</td>
 </tr>
 </tbody>
 </table>
@@ -1468,11 +1473,11 @@ use and the tool is called in a chroot operation</p>
 <dl class="class">
 <dt id="kiwi.system.shell.Shell">
 <em class="property">class </em><code class="descclassname">kiwi.system.shell.</code><code class="descname">Shell</code><a class="reference internal" href="../../_modules/kiwi/system/shell.html#Shell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Special character handling for shell evaluated code</strong></p>
-<dl class="classmethod">
+<dl class="staticmethod">
 <dt id="kiwi.system.shell.Shell.quote">
-<em class="property">classmethod </em><code class="descname">quote</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/shell.html#Shell.quote"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell.quote" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">quote</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/shell.html#Shell.quote"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell.quote" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quote characters which have a special meaning for bash
 but should be used as normal characters. actually I had
 planned to use pipes.quote but it does not quote as I
@@ -1482,46 +1487,46 @@ so we do it on our own for the scope of kiwi</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> (<em>str</em>) – message text</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – message text</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">quoted text</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
-<dl class="classmethod">
+<dl class="staticmethod">
 <dt id="kiwi.system.shell.Shell.quote_key_value_file">
-<em class="property">classmethod </em><code class="descname">quote_key_value_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/shell.html#Shell.quote_key_value_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell.quote_key_value_file" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">quote_key_value_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/shell.html#Shell.quote_key_value_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell.quote_key_value_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quote given input file which has to be of the form
 key=value to be able to become sourced by the shell</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) – file path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – file path name</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">quoted text</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
-<dl class="classmethod">
+<dl class="staticmethod">
 <dt id="kiwi.system.shell.Shell.run_common_function">
-<em class="property">classmethod </em><code class="descname">run_common_function</code><span class="sig-paren">(</span><em>name</em>, <em>parameters</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/shell.html#Shell.run_common_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell.run_common_function" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">run_common_function</code><span class="sig-paren">(</span><em>name</em>, <em>parameters</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/shell.html#Shell.run_common_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell.run_common_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a function implemented in config/functions.sh</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) – function name</li>
-<li><strong>parameters</strong> (<em>list</em>) – function arguments</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – function name</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – function arguments</li>
 </ul>
 </td>
 </tr>
@@ -1537,13 +1542,13 @@ key=value to be able to become sourced by the shell</p>
 <dl class="class">
 <dt id="kiwi.system.size.SystemSize">
 <em class="property">class </em><code class="descclassname">kiwi.system.size.</code><code class="descname">SystemSize</code><span class="sig-paren">(</span><em>source_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/size.html#SystemSize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.size.SystemSize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Provide source tree size information</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source_dir</strong> (<em>str</em>) – source directory path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – source directory path name</td>
 </tr>
 </tbody>
 </table>
@@ -1557,7 +1562,7 @@ key=value to be able to become sourced by the shell</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">number of files</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1571,11 +1576,11 @@ key=value to be able to become sourced by the shell</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exclude</strong> (<em>list</em>) – list of paths to exclude</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of paths to exclude</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">mbytes</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1596,15 +1601,15 @@ of the customized size</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>size</strong> (<em>int</em>) – mbsize to update</li>
-<li><strong>requested_filesystem</strong> (<em>str</em>) – filesystem name</li>
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – mbsize to update</li>
+<li><strong>requested_filesystem</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – filesystem name</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">mbytes</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
 </td>
 </tr>
 </tbody>
@@ -1619,7 +1624,7 @@ of the customized size</p>
 <dl class="class">
 <dt id="kiwi.system.uri.Uri">
 <em class="property">class </em><code class="descclassname">kiwi.system.uri.</code><code class="descname">Uri</code><span class="sig-paren">(</span><em>uri</em>, <em>repo_type=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/uri.html#Uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.uri.Uri" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Normalize url types available in a kiwi configuration into
 standard mime types</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1627,13 +1632,13 @@ standard mime types</strong></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>repo_type</strong> (<em>str</em>) – repository type name. Only needed if the uri
+<li><strong>repo_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository type name. Only needed if the uri
 is not enough to determine the repository type
 e.g for yast2 vs. rpm-md obs repositories</li>
-<li><strong>uri</strong> (<em>str</em>) – URI, repository location, file</li>
-<li><strong>mount_stack</strong> (<em>list</em>) – list of mounted locations</li>
-<li><strong>remote_uri_types</strong> (<em>dict</em>) – dictionary of remote uri type names</li>
-<li><strong>local_uri_type</strong> (<em>dict</em>) – dictionary of local uri type names</li>
+<li><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – URI, repository location, file</li>
+<li><strong>mount_stack</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of mounted locations</li>
+<li><strong>remote_uri_types</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – dictionary of remote uri type names</li>
+<li><strong>local_uri_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – dictionary of local uri type names</li>
 </ul>
 </td>
 </tr>
@@ -1653,7 +1658,7 @@ configuration</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">alias name as hexdigest</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1669,7 +1674,7 @@ configuration</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">credentials file name</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1685,7 +1690,7 @@ configuration</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">fragment part of the URI if any, empty string otherwise</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1701,7 +1706,7 @@ configuration</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -1717,7 +1722,7 @@ configuration</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -1738,12 +1743,12 @@ name</p>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiUriStyleUnknown" title="kiwi.exceptions.KiwiUriStyleUnknown"><strong>KiwiUriStyleUnknown</strong></a> – if the uri scheme can’t be detected, is
 unknown or it is inconsistent with the build environment</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>check_build_environment</strong> (<em>bool</em>) – specify if the uri translation
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>check_build_environment</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – specify if the uri translation
 should depend on the environment the build is called in. As of
 today this only effects the translation result if the image
 build happens inside of the Open Build Service</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1757,13 +1762,13 @@ build happens inside of the Open Build Service</td>
 <dl class="class">
 <dt id="kiwi.system.users.Users">
 <em class="property">class </em><code class="descclassname">kiwi.system.users.</code><code class="descname">Users</code><span class="sig-paren">(</span><em>root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/users.html#Users"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.users.Users" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Operations on users and groups in a root directory</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>root_dir</strong> (<em>str</em>) – root directory path name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – root directory path name</td>
 </tr>
 </tbody>
 </table>
@@ -1776,8 +1781,8 @@ build happens inside of the Open Build Service</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>group_name</strong> (<em>str</em>) – group name</li>
-<li><strong>options</strong> (<em>list</em>) – groupadd options</li>
+<li><strong>group_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – group name</li>
+<li><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – groupadd options</li>
 </ul>
 </td>
 </tr>
@@ -1793,11 +1798,11 @@ build happens inside of the Open Build Service</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>group_name</strong> (<em>str</em>) – group name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>group_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – group name</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -1812,9 +1817,9 @@ build happens inside of the Open Build Service</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>user_name</strong> (<em>str</em>) – user name</li>
-<li><strong>group_name</strong> (<em>str</em>) – group name</li>
-<li><strong>home_path</strong> (<em>str</em>) – path name</li>
+<li><strong>user_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – user name</li>
+<li><strong>group_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – group name</li>
+<li><strong>home_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path name</li>
 </ul>
 </td>
 </tr>
@@ -1831,8 +1836,8 @@ build happens inside of the Open Build Service</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>user_name</strong> (<em>str</em>) – user name</li>
-<li><strong>options</strong> (<em>list</em>) – useradd options</li>
+<li><strong>user_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – user name</li>
+<li><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – useradd options</li>
 </ul>
 </td>
 </tr>
@@ -1848,9 +1853,9 @@ build happens inside of the Open Build Service</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>user_name</strong> (<em>str</em>) – user name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>user_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – user name</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -1865,8 +1870,8 @@ build happens inside of the Open Build Service</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>user_name</strong> (<em>str</em>) – user name</li>
-<li><strong>options</strong> (<em>list</em>) – usermod options</li>
+<li><strong>user_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – user name</li>
+<li><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – usermod options</li>
 </ul>
 </td>
 </tr>

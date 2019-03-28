@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.filesystem Package &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.filesystem Package &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.32</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.33</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -385,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.32</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.33</a> &raquo;</li>
         
       <li>kiwi.filesystem Package</li>
     
@@ -416,18 +417,18 @@
 <dl class="class">
 <dt id="kiwi.filesystem.base.FileSystemBase">
 <em class="property">class </em><code class="descclassname">kiwi.filesystem.base.</code><code class="descname">FileSystemBase</code><span class="sig-paren">(</span><em>device_provider</em>, <em>root_dir=None</em>, <em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/filesystem/base.html#FileSystemBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implements base class for filesystem interface</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>device_provider</strong> (<em>object</em>) – Instance of a class based on DeviceProvider
+<li><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of a class based on DeviceProvider
 required for filesystems which needs a block device for
 creation. In most cases the DeviceProvider is a LoopDevice</li>
 <li><strong>root_dir</strong> (<em>string</em>) – root directory path name</li>
-<li><strong>custom_args</strong> (<em>dict</em>) – custom filesystem arguments</li>
+<li><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – custom filesystem arguments</li>
 </ul>
 </td>
 </tr>
@@ -462,7 +463,7 @@ requires a data tree for creation, e.g squashfs.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>filename</strong> (<em>string</em>) – result file path name</li>
 <li><strong>label</strong> (<em>string</em>) – label name</li>
-<li><strong>exclude</strong> (<em>list</em>) – list of exclude dirs/files</li>
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of exclude dirs/files</li>
 </ul>
 </td>
 </tr>
@@ -480,7 +481,7 @@ overrides the default custom argument hash</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>dict</em>) – <p>custom arguments</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – <p>custom arguments</p>
 <pre class="code python literal-block">
 <span class="punctuation">{</span>
     <span class="literal string single">‘create_options’</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string single">‘option’</span><span class="punctuation">],</span>
@@ -504,7 +505,7 @@ overrides the default custom argument hash</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exclude</strong> (<em>list</em>) – list of exclude dirs/files</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of exclude dirs/files</td>
 </tr>
 </tbody>
 </table>
@@ -559,7 +560,7 @@ thus this parameter is not used</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>filename</strong> (<em>string</em>) – result file path name</li>
 <li><strong>label</strong> (<em>string</em>) – unused</li>
-<li><strong>exclude</strong> (<em>list</em>) – unused</li>
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – unused</li>
 </ul>
 </td>
 </tr>
@@ -577,7 +578,7 @@ clicfs embeded filesystem</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>dict</em>) – unused</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – unused</td>
 </tr>
 </tbody>
 </table>
@@ -742,7 +743,7 @@ thus this parameter is not used</p>
 <dl class="class">
 <dt id="kiwi.filesystem.setup.FileSystemSetup">
 <em class="property">class </em><code class="descclassname">kiwi.filesystem.setup.</code><code class="descname">FileSystemSetup</code><span class="sig-paren">(</span><em>xml_state</em>, <em>root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/filesystem/setup.html#FileSystemSetup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.setup.FileSystemSetup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implement filesystem setup methods</strong></p>
 <p>Methods from this class provides information
 from the root directory required before building a
@@ -752,7 +753,7 @@ filesystem image</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xml_state</strong> (<em>object</em>) – Instance of XMLState</li>
+<li><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of XMLState</li>
 <li><strong>root_dir</strong> (<em>string</em>) – root directory path</li>
 </ul>
 </td>
@@ -774,7 +775,7 @@ result</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">mbytes</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -803,7 +804,7 @@ thus this parameter is not used</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>filename</strong> (<em>string</em>) – result file path name</li>
 <li><strong>label</strong> (<em>string</em>) – unused</li>
-<li><strong>exclude</strong> (<em>list</em>) – list of exclude dirs/files</li>
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of exclude dirs/files</li>
 </ul>
 </td>
 </tr>
@@ -843,7 +844,7 @@ thus this parameter is not used</p>
 <dl class="class">
 <dt id="kiwi.filesystem.FileSystem">
 <em class="property">class </em><code class="descclassname">kiwi.filesystem.</code><code class="descname">FileSystem</code><a class="reference internal" href="../../_modules/kiwi/filesystem.html#FileSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.FileSystem" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>FileSystem factory</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -851,9 +852,9 @@ thus this parameter is not used</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>name</strong> (<em>string</em>) – filesystem name</li>
-<li><strong>device_provider</strong> (<em>object</em>) – Instance of DeviceProvider</li>
+<li><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of DeviceProvider</li>
 <li><strong>root_dir</strong> (<em>string</em>) – root directory path name</li>
-<li><strong>custom_args</strong> (<em>dict</em>) – dict of custom filesystem arguments</li>
+<li><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – dict of custom filesystem arguments</li>
 </ul>
 </td>
 </tr>

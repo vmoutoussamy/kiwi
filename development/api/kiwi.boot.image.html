@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image Package &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.boot.image Package &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.32</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.33</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -385,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.32</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.33</a> &raquo;</li>
         
           <li><a href="kiwi.boot.html">kiwi.boot Package</a> &raquo;</li>
         
@@ -418,17 +419,17 @@
 <dl class="class">
 <dt id="kiwi.boot.image.base.BootImageBase">
 <em class="property">class </em><code class="descclassname">kiwi.boot.image.base.</code><code class="descname">BootImageBase</code><span class="sig-paren">(</span><em>xml_state</em>, <em>target_dir</em>, <em>root_dir=None</em>, <em>signing_keys=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/base.html#BootImageBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class for boot image(initrd) task</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xml_state</strong> (<em>object</em>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
+<li><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
 <li><strong>target_dir</strong> (<em>string</em>) – target dir to store the initrd</li>
 <li><strong>root_dir</strong> (<em>string</em>) – system image root directory</li>
-<li><strong>signing_keys</strong> (<em>list</em>) – list of package signing keys</li>
+<li><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of package signing keys</li>
 </ul>
 </td>
 </tr>
@@ -443,9 +444,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>mbrid</strong> (<em>object</em>) – instance of ImageIdentifier</li>
+<li><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of ImageIdentifier</li>
 <li><strong>basename</strong> (<em>string</em>) – base initrd file name</li>
-<li><strong>install_initrd</strong> (<em>bool</em>) – installation media initrd</li>
+<li><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – installation media initrd</li>
 </ul>
 </td>
 </tr>
@@ -492,7 +493,7 @@ in order to preserve the generated data</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">path name</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -525,7 +526,7 @@ for kiwi boot images the method is a noop</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>filename</strong> (<em>string</em>) – file path name</li>
-<li><strong>install_media</strong> (<em>bool</em>) – include also for installation media initrd</li>
+<li><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – include also for installation media initrd</li>
 </ul>
 </td>
 </tr>
@@ -543,7 +544,7 @@ for kiwi boot images the method is a noop</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -591,9 +592,9 @@ the result into the image build target directory</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>mbrid</strong> (<em>object</em>) – unused</li>
+<li><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – unused</li>
 <li><strong>basename</strong> (<em>string</em>) – base initrd file name</li>
-<li><strong>install_initrd</strong> (<em>bool</em>) – installation media initrd</li>
+<li><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – installation media initrd</li>
 </ul>
 </td>
 </tr>
@@ -617,7 +618,7 @@ the result into the image build target directory</p>
 </pre>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a></td>
 </tr>
 </tbody>
 </table>
@@ -676,9 +677,9 @@ itself after first boot by the result of dracut.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>mbrid</strong> (<em>object</em>) – instance of ImageIdentifier</li>
+<li><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of ImageIdentifier</li>
 <li><strong>basename</strong> (<em>string</em>) – base initrd file name</li>
-<li><strong>install_initrd</strong> (<em>bool</em>) – installation media initrd</li>
+<li><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – installation media initrd</li>
 </ul>
 </td>
 </tr>
@@ -702,7 +703,7 @@ itself after first boot by the result of dracut.</p>
 </pre>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a></td>
 </tr>
 </tbody>
 </table>
@@ -731,17 +732,17 @@ the initrd from</p>
 <dl class="class">
 <dt id="kiwi.boot.image.BootImage">
 <em class="property">class </em><code class="descclassname">kiwi.boot.image.</code><code class="descname">BootImage</code><a class="reference internal" href="../../_modules/kiwi/boot/image.html#BootImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.BootImage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>BootImge Factory</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xml_state</strong> (<em>object</em>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
+<li><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></li>
 <li><strong>target_dir</strong> (<em>string</em>) – target dir to store the initrd</li>
 <li><strong>root_dir</strong> (<em>string</em>) – system image root directory</li>
-<li><strong>signing_keys</strong> (<em>list</em>) – list of package signing keys</li>
+<li><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of package signing keys</li>
 </ul>
 </td>
 </tr>

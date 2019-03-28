@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.template Package &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.storage.subformat.template Package &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.32</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.33</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -385,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.32</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.33</a> &raquo;</li>
         
           <li><a href="kiwi.storage.html">kiwi.storage Package</a> &raquo;</li>
         
@@ -420,7 +421,7 @@
 <dl class="class">
 <dt id="kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate">
 <em class="property">class </em><code class="descclassname">kiwi.storage.subformat.template.vmware_settings.</code><code class="descname">VmwareSettingsTemplate</code><a class="reference internal" href="../../_modules/kiwi/storage/subformat/template/vmware_settings.html#VmwareSettingsTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>VMware machine settings template</p>
 <dl class="method">
 <dt id="kiwi.storage.subformat.template.vmware_settings.VmwareSettingsTemplate.get_template">
@@ -431,10 +432,10 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>memory_setup</strong> (<em>bool</em>) – with main memory setup true|false</li>
-<li><strong>cpu_setup</strong> (<em>bool</em>) – with number of CPU’s setup true|false</li>
-<li><strong>network_setup</strong> (<em>bool</em>) – with network emulation true|false</li>
-<li><strong>iso_setup</strong> (<em>bool</em>) – with CD/DVD drive emulation true|false</li>
+<li><strong>memory_setup</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with main memory setup true|false</li>
+<li><strong>cpu_setup</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with number of CPU’s setup true|false</li>
+<li><strong>network_setup</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with network emulation true|false</li>
+<li><strong>iso_setup</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with CD/DVD drive emulation true|false</li>
 <li><strong>disk_controller</strong> (<em>string</em>) – add disk controller setup to template</li>
 <li><strong>iso_controller</strong> (<em>string</em>) – add CD/DVD controller setup to template</li>
 <li><strong>network_mac</strong> (<em>string</em>) – add static MAC address setup to template</li>
@@ -458,7 +459,7 @@
 <dl class="class">
 <dt id="kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate">
 <em class="property">class </em><code class="descclassname">kiwi.storage.subformat.template.vagrant_config.</code><code class="descname">VagrantConfigTemplate</code><a class="reference internal" href="../../_modules/kiwi/storage/subformat/template/vagrant_config.html#VagrantConfigTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Generate a Vagrantfile configuration template</strong></p>
 <p>This class creates a simple template for the Vagrantfile that is included
 inside a vagrant box.</p>
@@ -508,7 +509,7 @@ indented appropriately.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_settings</strong> (<em>str</em>) – String of additional settings that get
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_settings</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – String of additional settings that get
 pasted into the Vagrantfile template. The string is put at the
 correct indentation level for you, but the internal indentation has
 to be provided by the caller.</td>
@@ -517,7 +518,7 @@ to be provided by the caller.</td>
 appropriate position. The template has one the variable
 <code class="docutils literal notranslate"><span class="pre">mac_address</span></code> that must be substituted.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string.Template</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/string.html#string.Template" title="(in Python v3.7)">string.Template</a></td>
 </tr>
 </tbody>
 </table>
@@ -531,7 +532,7 @@ appropriate position. The template has one the variable
 <dl class="class">
 <dt id="kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate">
 <em class="property">class </em><code class="descclassname">kiwi.storage.subformat.template.virtualbox_ovf.</code><code class="descname">VirtualboxOvfTemplate</code><a class="reference internal" href="../../_modules/kiwi/storage/subformat/template/virtualbox_ovf.html#VirtualboxOvfTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Generate a OVF file template for a vagrant virtualbox box</strong></p>
 <p>This class provides a template for virtualbox’ ovf configuration file that
 is embedded inside the vagrant box. The template itself was extracted from

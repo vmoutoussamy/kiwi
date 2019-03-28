@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Custom Disk Volumes &mdash; kiwi 9.17.32 documentation</title>
+  <title>Custom Disk Volumes &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="KIWI Commands" href="../../commands.html" />
+    <link rel="next" title="Add or Update the Fstab File" href="custom_fstab_extension.html" />
     <link rel="prev" title="Custom Disk Partitions" href="custom_partitions.html" /> 
 </head>
 
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.33</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -417,7 +418,7 @@ subvolumes definitions for disk images using KIWI.</p>
 (LVM) for the Linux kernel or by setting volumes at filesystem level when
 filesystem supports it, like Btrfs.</p>
 <p>Volumes are defined inside the KIWI description file, <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>,
-under the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element by setting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">systemdisk</span></code> section. The
+under the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element by setting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">systemdisk</span></code> section. The
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">systemdisk</span></code> element can include <code class="xref py py-obj docutils literal notranslate"><span class="pre">volume</span></code> child elements.</p>
 <p>Additional non-root volumes are created for each <code class="xref py py-obj docutils literal notranslate"><span class="pre">volume</span></code> element. Volume
 details can be defined by setting the following <code class="xref py py-obj docutils literal notranslate"><span class="pre">volume</span></code> attributes:</p>
@@ -476,7 +477,7 @@ definition and some additional empty space for the root volume:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../commands.html" class="btn btn-neutral float-right" title="KIWI Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="custom_fstab_extension.html" class="btn btn-neutral float-right" title="Add or Update the Fstab File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="custom_partitions.html" class="btn btn-neutral float-left" title="Custom Disk Partitions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

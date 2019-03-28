@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.exceptions &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.exceptions &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -204,6 +204,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -272,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.33</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1178,6 +1179,12 @@
 <div class="viewcode-block" id="KiwiDecodingError"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.exceptions.KiwiDecodingError">[docs]</a><span class="k">class</span> <span class="nc">KiwiDecodingError</span><span class="p">(</span><span class="n">KiwiError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Exception is raised on decoding literals failure</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="KiwiFileAccessError"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.exceptions.KiwiFileAccessError">[docs]</a><span class="k">class</span> <span class="nc">KiwiFileAccessError</span><span class="p">(</span><span class="n">KiwiError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exception raised if accessing a file or its metadata failed</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 </pre></div>
 

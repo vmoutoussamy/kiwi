@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.archive Package &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.archive Package &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="kiwi.boot Package" href="kiwi.boot.html" />
-    <link rel="prev" title="API Documentation 9.17.32" href="kiwi.html" /> 
+    <link rel="prev" title="API Documentation 9.17.33" href="kiwi.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.32</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.33</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -385,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.32</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.33</a> &raquo;</li>
         
       <li>kiwi.archive Package</li>
     
@@ -416,7 +417,7 @@
 <dl class="class">
 <dt id="kiwi.archive.cpio.ArchiveCpio">
 <em class="property">class </em><code class="descclassname">kiwi.archive.cpio.</code><code class="descname">ArchiveCpio</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/archive/cpio.html#ArchiveCpio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.cpio.ArchiveCpio" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Extraction/Creation of cpio archives</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -436,7 +437,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>source_dir</strong> (<em>string</em>) – data source directory</li>
-<li><strong>exclude</strong> (<em>list</em>) – list of excluded items</li>
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of excluded items</li>
 </ul>
 </td>
 </tr>
@@ -466,7 +467,7 @@
 <dl class="class">
 <dt id="kiwi.archive.tar.ArchiveTar">
 <em class="property">class </em><code class="descclassname">kiwi.archive.tar.</code><code class="descname">ArchiveTar</code><span class="sig-paren">(</span><em>filename</em>, <em>create_from_file_list=True</em>, <em>file_list=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/archive/tar.html#ArchiveTar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Extraction/Creation of tar archives</strong></p>
 <p>The tarfile python module is not used by that class,
 since it does not provide support for some relevant features
@@ -479,8 +480,8 @@ Python v2.7.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>filename</strong> (<em>string</em>) – filename to use for archive extraction or creation</li>
-<li><strong>create_from_file_list</strong> (<em>bool</em>) – use file list not entire directory to create the archive</li>
-<li><strong>file_list</strong> (<em>list</em>) – list of files and directorie names to archive</li>
+<li><strong>create_from_file_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – use file list not entire directory to create the archive</li>
+<li><strong>file_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of files and directorie names to archive</li>
 </ul>
 </td>
 </tr>
@@ -496,8 +497,8 @@ Python v2.7.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>source_dir</strong> (<em>string</em>) – data source directory</li>
-<li><strong>files_to_append</strong> (<em>list</em>) – list of items to append</li>
-<li><strong>options</strong> (<em>list</em>) – custom options</li>
+<li><strong>files_to_append</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of items to append</li>
+<li><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – custom options</li>
 </ul>
 </td>
 </tr>
@@ -515,8 +516,8 @@ Python v2.7.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>source_dir</strong> (<em>string</em>) – data source directory</li>
-<li><strong>exclude</strong> (<em>list</em>) – list of excluded items</li>
-<li><strong>options</strong> (<em>list</em>) – custom creation options</li>
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of excluded items</li>
+<li><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – custom creation options</li>
 </ul>
 </td>
 </tr>
@@ -534,7 +535,7 @@ Python v2.7.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>source_dir</strong> (<em>string</em>) – data source directory</li>
-<li><strong>exclude</strong> (<em>list</em>) – list of excluded items</li>
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of excluded items</li>
 </ul>
 </td>
 </tr>
@@ -552,9 +553,9 @@ Python v2.7.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>source_dir</strong> (<em>string</em>) – data source directory</li>
-<li><strong>exclude</strong> (<em>list</em>) – list of excluded items</li>
-<li><strong>options</strong> (<em>list</em>) – custom tar creation options</li>
-<li><strong>xz_options</strong> (<em>list</em>) – custom xz compression options</li>
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of excluded items</li>
+<li><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – custom tar creation options</li>
+<li><strong>xz_options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – custom xz compression options</li>
 </ul>
 </td>
 </tr>
@@ -595,7 +596,7 @@ Python v2.7.</p>
         <a href="kiwi.boot.html" class="btn btn-neutral float-right" title="kiwi.boot Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="kiwi.html" class="btn btn-neutral float-left" title="API Documentation 9.17.32" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="kiwi.html" class="btn btn-neutral float-left" title="API Documentation 9.17.33" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

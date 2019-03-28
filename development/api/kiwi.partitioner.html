@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.partitioner Package &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.partitioner Package &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.32</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.33</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -385,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.32</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.33</a> &raquo;</li>
         
       <li>kiwi.partitioner Package</li>
     
@@ -416,15 +417,15 @@
 <dl class="class">
 <dt id="kiwi.partitioner.base.PartitionerBase">
 <em class="property">class </em><code class="descclassname">kiwi.partitioner.base.</code><code class="descname">PartitionerBase</code><span class="sig-paren">(</span><em>disk_provider</em>, <em>start_sector=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/partitioner/base.html#PartitionerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class for partitioners</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>disk_provider</strong> (<em>object</em>) – Instance of DeviceProvider</li>
-<li><strong>start_sector</strong> (<em>int</em>) – sector number</li>
+<li><strong>disk_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of DeviceProvider</li>
+<li><strong>start_sector</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – sector number</li>
 </ul>
 </td>
 </tr>
@@ -441,9 +442,9 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>name</strong> (<em>string</em>) – unused</li>
-<li><strong>mbsize</strong> (<em>int</em>) – unused</li>
+<li><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – unused</li>
 <li><strong>type_name</strong> (<em>string</em>) – unused</li>
-<li><strong>flags</strong> (<em>list</em>) – unused</li>
+<li><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – unused</li>
 </ul>
 </td>
 </tr>
@@ -462,7 +463,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">partition number</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -483,7 +484,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<em>int</em>) – unused</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – unused</td>
 </tr>
 </tbody>
 </table>
@@ -499,7 +500,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>partition_id</strong> (<em>int</em>) – unused</li>
+<li><strong>partition_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – unused</li>
 <li><strong>flag_name</strong> (<em>string</em>) – unused</li>
 </ul>
 </td>
@@ -542,9 +543,9 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>name</strong> (<em>string</em>) – partition name</li>
-<li><strong>mbsize</strong> (<em>int</em>) – partition size</li>
+<li><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</li>
 <li><strong>type_name</strong> (<em>string</em>) – unused</li>
-<li><strong>flags</strong> (<em>list</em>) – unused</li>
+<li><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – unused</li>
 </ul>
 </td>
 </tr>
@@ -568,7 +569,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<em>int</em>) – unused</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – unused</td>
 </tr>
 </tbody>
 </table>
@@ -594,9 +595,9 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>name</strong> (<em>string</em>) – partition name</li>
-<li><strong>mbsize</strong> (<em>int</em>) – partition size</li>
+<li><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</li>
 <li><strong>type_name</strong> (<em>string</em>) – partition type</li>
-<li><strong>flags</strong> (<em>list</em>) – additional flags</li>
+<li><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – additional flags</li>
 </ul>
 </td>
 </tr>
@@ -619,7 +620,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<em>int</em>) – number of default entries</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of default entries</td>
 </tr>
 </tbody>
 </table>
@@ -634,7 +635,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>partition_id</strong> (<em>int</em>) – partition number</li>
+<li><strong>partition_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition number</li>
 <li><strong>flag_name</strong> (<em>string</em>) – name from flag map</li>
 </ul>
 </td>
@@ -675,9 +676,9 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>name</strong> (<em>string</em>) – partition name</li>
-<li><strong>mbsize</strong> (<em>int</em>) – partition size</li>
+<li><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</li>
 <li><strong>type_name</strong> (<em>string</em>) – partition type</li>
-<li><strong>flags</strong> (<em>list</em>) – additional flags</li>
+<li><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – additional flags</li>
 </ul>
 </td>
 </tr>
@@ -701,7 +702,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<em>int</em>) – unused</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – unused</td>
 </tr>
 </tbody>
 </table>
@@ -716,7 +717,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>partition_id</strong> (<em>int</em>) – partition number</li>
+<li><strong>partition_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition number</li>
 <li><strong>flag_name</strong> (<em>string</em>) – name from flag map</li>
 </ul>
 </td>
@@ -733,7 +734,7 @@
 <dl class="class">
 <dt id="kiwi.partitioner.Partitioner">
 <em class="property">class </em><code class="descclassname">kiwi.partitioner.</code><code class="descname">Partitioner</code><a class="reference internal" href="../../_modules/kiwi/partitioner.html#Partitioner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.Partitioner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Partitioner factory</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -741,8 +742,8 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>table_type</strong> (<em>string</em>) – Table type name</li>
-<li><strong>storage_provider</strong> (<em>object</em>) – Instance of class based on DeviceProvider</li>
-<li><strong>start_sector</strong> (<em>int</em>) – sector number</li>
+<li><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</li>
+<li><strong>start_sector</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – sector number</li>
 </ul>
 </td>
 </tr>

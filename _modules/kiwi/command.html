@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.command &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.command &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -204,6 +204,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -272,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.33</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -443,8 +444,8 @@
 <span class="sd">    commands in blocking and non blocking mode. Control of</span>
 <span class="sd">    stdout and stderr is given to the caller</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Command.run"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.command.Command.run">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Command.run"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.command.Command.run">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Execute a program and block the caller. The return value</span>
 <span class="sd">        is a hash containing the stdout, stderr and return code</span>
@@ -526,8 +527,8 @@
             <span class="n">returncode</span><span class="o">=</span><span class="n">process</span><span class="o">.</span><span class="n">returncode</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Command.call"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.command.Command.call">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Command.call"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.command.Command.call">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Execute a program and return an io file handle pair back.</span>
 <span class="sd">        stdout and stderr are both on different channels. The caller</span>

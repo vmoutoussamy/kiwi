@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.system.setup &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -204,6 +204,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -272,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.33</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1013,14 +1014,20 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create etc/fstab from given list of entries</span>
 
-<span class="sd">        Also lookup for an optional fstab.append file which allows</span>
+<span class="sd">        Also look for an optional fstab.append file which allows</span>
 <span class="sd">        to append custom fstab entries to the final fstab. Once</span>
 <span class="sd">        embedded the fstab.append file will be deleted</span>
+
+<span class="sd">        Also look for an optional fstab.patch file which allows</span>
+<span class="sd">        to patch the current contents of the fstab file with</span>
+<span class="sd">        a given patch file. Once patched the fstab.patch file will</span>
+<span class="sd">        be deleted</span>
 
 <span class="sd">        :param list entries: list of line entries for fstab</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">fstab_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/fstab&#39;</span>
         <span class="n">fstab_append_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/fstab.append&#39;</span>
+        <span class="n">fstab_patch_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/fstab.patch&#39;</span>
 
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fstab_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fstab</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">:</span>
@@ -1028,7 +1035,13 @@
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fstab_append_file</span><span class="p">):</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fstab_append_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">append</span><span class="p">:</span>
                     <span class="n">fstab</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">append</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-                <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">fstab_append_file</span><span class="p">)</span></div>
+                <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">fstab_append_file</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fstab_patch_file</span><span class="p">):</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span><span class="s1">&#39;patch&#39;</span><span class="p">,</span> <span class="n">fstab_file</span><span class="p">,</span> <span class="n">fstab_patch_file</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">fstab_patch_file</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemSetup.create_init_link_from_linuxrc"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.create_init_link_from_linuxrc">[docs]</a>    <span class="k">def</span> <span class="nf">create_init_link_from_linuxrc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1266,10 +1279,13 @@
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_call_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">):</span>
-            <span class="n">config_script</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
-                <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;/image/&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">]</span>
-            <span class="p">)</span>
+        <span class="n">script_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">script_path</span><span class="p">):</span>
+            <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">):</span>
+                <span class="n">command</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">]</span>
+            <span class="n">command</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;/image/&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">]</span>
+            <span class="n">config_script</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
             <span class="n">process</span> <span class="o">=</span> <span class="n">CommandProcess</span><span class="p">(</span>
                 <span class="n">command</span><span class="o">=</span><span class="n">config_script</span><span class="p">,</span> <span class="n">log_topic</span><span class="o">=</span><span class="s1">&#39;Calling &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; script&#39;</span>
             <span class="p">)</span>

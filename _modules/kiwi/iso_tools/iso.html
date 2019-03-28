@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.iso_tools.iso &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.iso_tools.iso &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -204,6 +204,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -272,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.33</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -456,8 +457,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">header_end_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_end_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_path</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_iso_boot_path</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Iso.create_hybrid"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.create_hybrid">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">create_hybrid</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">mbrid</span><span class="p">,</span> <span class="n">isofile</span><span class="p">,</span> <span class="n">efi_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Iso.create_hybrid"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.create_hybrid">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_hybrid</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">mbrid</span><span class="p">,</span> <span class="n">isofile</span><span class="p">,</span> <span class="n">efi_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create hybrid ISO</span>
 
@@ -510,8 +511,8 @@
                     <span class="p">)</span>
                 <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Iso.set_media_tag"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.set_media_tag">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">set_media_tag</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">isofile</span><span class="p">):</span>
+<div class="viewcode-block" id="Iso.set_media_tag"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.set_media_tag">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">set_media_tag</span><span class="p">(</span><span class="n">isofile</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Include checksum tag in the ISO so it can be verified with</span>
 <span class="sd">        the mediacheck program.</span>
@@ -528,8 +529,8 @@
             <span class="p">]</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Iso.relocate_boot_catalog"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.relocate_boot_catalog">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">relocate_boot_catalog</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">isofile</span><span class="p">):</span>
+<div class="viewcode-block" id="Iso.relocate_boot_catalog"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.relocate_boot_catalog">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">relocate_boot_catalog</span><span class="p">(</span><span class="n">isofile</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Move ISO boot catalog to the standardized place</span>
 
@@ -588,8 +589,8 @@
                         <span class="n">new_boot_catalog_sector</span>
                     <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Iso.fix_boot_catalog"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.fix_boot_catalog">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">fix_boot_catalog</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">isofile</span><span class="p">):</span>
+<div class="viewcode-block" id="Iso.fix_boot_catalog"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.fix_boot_catalog">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">fix_boot_catalog</span><span class="p">(</span><span class="n">isofile</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fixup inconsistencies in boot catalog</span>
 

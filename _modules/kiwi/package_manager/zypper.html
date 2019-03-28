@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.package_manager.zypper &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.package_manager.zypper &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -204,6 +204,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -272,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.33</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -655,7 +656,8 @@
 <span class="sd">        rpm package installed during bootstrap phase</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rpmdb</span> <span class="o">=</span> <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
-        <span class="n">rpmdb</span><span class="o">.</span><span class="n">set_database_to_image_path</span><span class="p">()</span></div>
+        <span class="k">if</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">has_rpm</span><span class="p">():</span>
+            <span class="n">rpmdb</span><span class="o">.</span><span class="n">set_database_to_image_path</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="PackageManagerZypper.has_failed"><a class="viewcode-back" href="../../../development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.has_failed">[docs]</a>    <span class="k">def</span> <span class="nf">has_failed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">returncode</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

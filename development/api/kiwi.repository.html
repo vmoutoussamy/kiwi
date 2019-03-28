@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository Package &mdash; kiwi 9.17.32 documentation</title>
+  <title>kiwi.repository Package &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.32</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.33</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -385,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.32</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.33</a> &raquo;</li>
         
       <li>kiwi.repository Package</li>
     
@@ -429,7 +430,7 @@
 <dl class="class">
 <dt id="kiwi.repository.base.RepositoryBase">
 <em class="property">class </em><code class="descclassname">kiwi.repository.base.</code><code class="descname">RepositoryBase</code><span class="sig-paren">(</span><em>root_bind</em>, <em>custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/base.html#RepositoryBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Implements base class for package manager repository handling</p>
 <p>Attributes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -437,9 +438,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>root_bind</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">RootBind</span></code></li>
-<li><strong>root_dir</strong> (<em>str</em>) – root directory path name</li>
-<li><strong>shared_location</strong> (<em>str</em>) – shared directory between image root
+<li><strong>root_bind</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">RootBind</span></code></li>
+<li><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – root directory path name</li>
+<li><strong>shared_location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – shared directory between image root
 and build system root</li>
 </ul>
 </td>
@@ -456,10 +457,10 @@ and build system root</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) – unused</li>
-<li><strong>uri</strong> (<em>str</em>) – unused</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</li>
+<li><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</li>
 <li><strong>repo_type</strong> – unused</li>
-<li><strong>prio</strong> (<em>int</em>) – unused</li>
+<li><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – unused</li>
 <li><strong>dist</strong> – unused</li>
 <li><strong>components</strong> – unused</li>
 <li><strong>user</strong> – unused</li>
@@ -499,7 +500,7 @@ are allowed to be active when building</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – unused</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</td>
 </tr>
 </tbody>
 </table>
@@ -514,7 +515,7 @@ are allowed to be active when building</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – unused</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</td>
 </tr>
 </tbody>
 </table>
@@ -529,7 +530,7 @@ are allowed to be active when building</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signing_keys</strong> (<em>list</em>) – list of the key files to import</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of the key files to import</td>
 </tr>
 </tbody>
 </table>
@@ -544,7 +545,7 @@ are allowed to be active when building</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>list</em>) – unused</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – unused</td>
 </tr>
 </tbody>
 </table>
@@ -586,11 +587,11 @@ are allowed to be active when building</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>shared_dnf_dir</strong> (<em>str</em>) – shared directory between image root
+<li><strong>shared_dnf_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – shared directory between image root
 and build system root</li>
-<li><strong>runtime_dnf_config_file</strong> (<em>str</em>) – dnf runtime config file name</li>
-<li><strong>command_env</strong> (<em>dict</em>) – customized os.environ for dnf</li>
-<li><strong>runtime_dnf_config</strong> (<em>str</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></li>
+<li><strong>runtime_dnf_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – dnf runtime config file name</li>
+<li><strong>command_env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – customized os.environ for dnf</li>
+<li><strong>runtime_dnf_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></li>
 </ul>
 </td>
 </tr>
@@ -605,17 +606,17 @@ and build system root</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) – repository base file name</li>
-<li><strong>uri</strong> (<em>str</em>) – repository URI</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository base file name</li>
+<li><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository URI</li>
 <li><strong>repo_type</strong> – repostory type name</li>
-<li><strong>prio</strong> (<em>int</em>) – dnf repostory priority</li>
+<li><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – dnf repostory priority</li>
 <li><strong>dist</strong> – unused</li>
 <li><strong>components</strong> – unused</li>
 <li><strong>user</strong> – unused</li>
 <li><strong>secret</strong> – unused</li>
 <li><strong>credentials_file</strong> – unused</li>
-<li><strong>repo_gpgcheck</strong> (<em>bool</em>) – enable repository signature validation</li>
-<li><strong>pkg_gpgcheck</strong> (<em>bool</em>) – enable package signature validation</li>
+<li><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable repository signature validation</li>
+<li><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable package signature validation</li>
 </ul>
 </td>
 </tr>
@@ -646,7 +647,7 @@ the package installations</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – repository base file name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository base file name</td>
 </tr>
 </tbody>
 </table>
@@ -665,7 +666,7 @@ the cache information</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – repository name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository name</td>
 </tr>
 </tbody>
 </table>
@@ -679,7 +680,7 @@ the cache information</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signing_keys</strong> (<em>list</em>) – list of the key files to import</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of the key files to import</td>
 </tr>
 </tbody>
 </table>
@@ -695,7 +696,7 @@ and environment</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>list</em>) – dnf arguments</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – dnf arguments</td>
 </tr>
 </tbody>
 </table>
@@ -711,7 +712,7 @@ and environment</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dnf_args:list, command_env:dict</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -751,13 +752,13 @@ in the default places</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>shared_zypper_dir</strong> (<em>str</em>) – shared directory between image root
+<li><strong>shared_zypper_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – shared directory between image root
 and build system root</li>
-<li><strong>runtime_zypper_config_file</strong> (<em>str</em>) – zypper runtime config file name</li>
-<li><strong>runtime_zypp_config_file</strong> (<em>str</em>) – libzypp runtime config file name</li>
-<li><strong>zypper_args</strong> (<em>list</em>) – zypper caller args plus additional custom args</li>
-<li><strong>command_env</strong> (<em>dict</em>) – customized os.environ for zypper</li>
-<li><strong>runtime_zypper_config</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></li>
+<li><strong>runtime_zypper_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – zypper runtime config file name</li>
+<li><strong>runtime_zypp_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – libzypp runtime config file name</li>
+<li><strong>zypper_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – zypper caller args plus additional custom args</li>
+<li><strong>command_env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – customized os.environ for zypper</li>
+<li><strong>runtime_zypper_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></li>
 </ul>
 </td>
 </tr>
@@ -772,17 +773,17 @@ and build system root</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) – repository name</li>
-<li><strong>uri</strong> (<em>str</em>) – repository URI</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository name</li>
+<li><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository URI</li>
 <li><strong>repo_type</strong> – repostory type name</li>
-<li><strong>prio</strong> (<em>int</em>) – zypper repostory priority</li>
+<li><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – zypper repostory priority</li>
 <li><strong>dist</strong> – unused</li>
 <li><strong>components</strong> – unused</li>
 <li><strong>user</strong> – credentials username</li>
 <li><strong>secret</strong> – credentials password</li>
 <li><strong>credentials_file</strong> – zypper credentials file</li>
-<li><strong>repo_gpgcheck</strong> (<em>bool</em>) – enable repository signature validation</li>
-<li><strong>pkg_gpgcheck</strong> (<em>bool</em>) – enable package signature validation</li>
+<li><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable repository signature validation</li>
+<li><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable package signature validation</li>
 </ul>
 </td>
 </tr>
@@ -817,7 +818,7 @@ account for the package installations</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – repository name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository name</td>
 </tr>
 </tbody>
 </table>
@@ -834,7 +835,7 @@ deletes these directories to cleanup the cache information</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – repository name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository name</td>
 </tr>
 </tbody>
 </table>
@@ -848,7 +849,7 @@ deletes these directories to cleanup the cache information</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signing_keys</strong> (<em>list</em>) – list of the key files to import</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of the key files to import</td>
 </tr>
 </tbody>
 </table>
@@ -864,7 +865,7 @@ and environment</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<em>list</em>) – zypper arguments</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – zypper arguments</td>
 </tr>
 </tbody>
 </table>
@@ -904,16 +905,16 @@ in the default places</p>
 <dl class="class">
 <dt id="kiwi.repository.Repository">
 <em class="property">class </em><code class="descclassname">kiwi.repository.</code><code class="descname">Repository</code><a class="reference internal" href="../../_modules/kiwi/repository.html#Repository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.Repository" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Repository factory</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>root_bind</strong> (<em>object</em>) – instance of RootBind</li>
-<li><strong>package_manager</strong> (<em>str</em>) – package manager name</li>
-<li><strong>custom_args</strong> (<em>list</em>) – list of custom package manager arguments
+<li><strong>root_bind</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of RootBind</li>
+<li><strong>package_manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – package manager name</li>
+<li><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of custom package manager arguments
 to setup the repository</li>
 </ul>
 </td>

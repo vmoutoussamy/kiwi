@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>KIWI Image Description for Vagrant &mdash; kiwi 9.17.32 documentation</title>
+  <title>KIWI Image Description for Vagrant &mdash; kiwi 9.17.33 documentation</title>
   
 
   
@@ -206,6 +206,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -274,7 +275,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.33</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -517,6 +518,8 @@ box. The following snippet can be added to <code class="file docutils literal no
 <code class="file docutils literal notranslate"><span class="pre">/vagrant</span></code>. Consider adding this empty folder to your overlay
 files and ensure that the user <code class="docutils literal notranslate"><span class="pre">vagrant</span></code> has write permissions to
 it.</p>
+<p>Note, that the boxes that KIWI produces <strong>require</strong> this folder to
+exist, otherwise Vagrant will not be able to start them properly.</p>
 </li>
 <li><p class="first">Setup and start SSH daemon</p>
 <p>In <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code>, add the start of sshd and the initial creation of
