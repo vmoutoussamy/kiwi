@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.runtime_checker &mdash; kiwi 9.17.34 documentation</title>
+  <title>kiwi.runtime_checker &mdash; kiwi 9.17.36 documentation</title>
   
 
   
@@ -273,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.34</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.36</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -315,7 +315,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/schema.html">Schema Documentation 6.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/schema.html">Schema Documentation 7.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
@@ -592,24 +592,33 @@
             <span class="k">if</span> <span class="n">volume</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RuntimeChecker.check_docker_tool_chain_installed"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_docker_tool_chain_installed">[docs]</a>    <span class="k">def</span> <span class="nf">check_docker_tool_chain_installed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RuntimeChecker.check_container_tool_chain_installed"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_container_tool_chain_installed">[docs]</a>    <span class="k">def</span> <span class="nf">check_container_tool_chain_installed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        When creating docker images the tools umoci and skopeo are used</span>
-<span class="sd">        in order to create docker compatible images. This check searches</span>
-<span class="sd">        for those tools to be installed in the build system and fails if</span>
-<span class="sd">        it can&#39;t find them</span>
+<span class="sd">        When creating container images the specific tools are used in order</span>
+<span class="sd">        to import and export OCI or Docker compatible images. This check</span>
+<span class="sd">        searches for those tools to be installed in the build system and</span>
+<span class="sd">        fails if it can&#39;t find them</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">message_tool_not_found</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
 <span class="s1">            Required tool </span><span class="si">{name}</span><span class="s1"> not found in caller environment</span>
 
-<span class="s1">            Creation of docker images requires the tools umoci and skopeo</span>
-<span class="s1">            to be installed on the build system. For SUSE based systems</span>
+<span class="s1">            Creation of OCI or Docker images requires the tools </span><span class="si">{name}</span><span class="s1"> and</span>
+<span class="s1">            skopeo to be installed on the build system. For SUSE based systems</span>
 <span class="s1">            you can find the tools at:</span>
 
 <span class="s1">            http://download.opensuse.org/repositories/Virtualization:/containers</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
         <span class="n">message_version_unsupported</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
 <span class="s1">            </span><span class="si">{name}</span><span class="s1"> tool found with unknown version</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">message_unknown_tool</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
+<span class="s1">            Unknown tool: </span><span class="si">{0}</span><span class="s1">.</span>
+
+<span class="s1">            Please configure KIWI with an appropriate value (umoci or buildah).</span>
+<span class="s1">            Consider this runtime configuration file syntax (/etc/kiwi.yml):</span>
+
+<span class="s1">            oci:</span>
+<span class="s1">                - archive_tool: umoci | buildah</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
 
         <span class="n">expected_version</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -619,8 +628,10 @@
             <span class="n">tool_name</span> <span class="o">=</span> <span class="n">runtime_config</span><span class="o">.</span><span class="n">get_oci_archive_tool</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">tool_name</span> <span class="o">==</span> <span class="s1">&#39;buildah&#39;</span><span class="p">:</span>
                 <span class="n">oci_tools</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;buildah&#39;</span><span class="p">,</span> <span class="s1">&#39;skopeo&#39;</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">tool_name</span> <span class="o">==</span> <span class="s1">&#39;umoci&#39;</span><span class="p">:</span>
                 <span class="n">oci_tools</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;umoci&#39;</span><span class="p">,</span> <span class="s1">&#39;skopeo&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message_unknown_tool</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tool_name</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">oci_tools</span><span class="p">:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">tool</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">):</span>
                     <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
@@ -930,34 +941,6 @@
         <span class="n">overlayroot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_overlayroot</span><span class="p">()</span>
         <span class="n">firmware</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_firmware</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">overlayroot</span> <span class="ow">and</span> <span class="n">firmware</span> <span class="o">==</span> <span class="s1">&#39;uefi&#39;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="RuntimeChecker.check_grub_efi_installed_for_efi_firmware"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_grub_efi_installed_for_efi_firmware">[docs]</a>    <span class="k">def</span> <span class="nf">check_grub_efi_installed_for_efi_firmware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        If the image is being built with efi or uefi firmware setting</span>
-<span class="sd">        we need a grub(2)-...-efi package installed. The check is not 100%</span>
-<span class="sd">        as every distribution has different names and different requirement</span>
-<span class="sd">        but it is a reasonable approximation on the safe side meaning the</span>
-<span class="sd">        user may still get an error but should not receive a false positive</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
-<span class="s1">            Firmware set to efi or uefi but not grub*efi* package is</span>
-<span class="s1">            part of the image build.</span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
-        <span class="n">firmware</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_firmware</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">firmware</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">):</span>
-            <span class="n">grub_efi_packages</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="s1">&#39;grub2-x86_64-efi&#39;</span><span class="p">,</span>  <span class="c1"># SUSE</span>
-                <span class="s1">&#39;grub-efi&#39;</span><span class="p">,</span>  <span class="c1"># Debian based distros have grub-efi-*</span>
-                <span class="s1">&#39;grub2-efi&#39;</span>  <span class="c1"># RedHat</span>
-            <span class="p">)</span>
-            <span class="n">package_names</span> <span class="o">=</span> \
-                <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_packages</span><span class="p">()</span> <span class="o">+</span> \
-                <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_system_packages</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">grub_package</span> <span class="ow">in</span> <span class="n">grub_efi_packages</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">package_name</span> <span class="ow">in</span> <span class="n">package_names</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">package_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">grub_package</span><span class="p">):</span>
-                        <span class="k">return</span> <span class="kc">True</span>
             <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeChecker.check_xen_uniquely_setup_as_server_or_guest"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_xen_uniquely_setup_as_server_or_guest">[docs]</a>    <span class="k">def</span> <span class="nf">check_xen_uniquely_setup_as_server_or_guest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build an OEM Expandable Disk Image &mdash; kiwi 9.17.34 documentation</title>
+  <title>Build an OEM Expandable Disk Image &mdash; kiwi 9.17.36 documentation</title>
   
 
   
@@ -275,7 +275,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.34</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.36</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -317,7 +317,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../development/schema.html">Schema Documentation 6.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/schema.html">Schema Documentation 7.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
@@ -535,13 +535,12 @@ target system:</p>
 <li><p>Make sure to create an installation PXE TAR archive along with your
 OEM image by replacing the following setup in
 kiwi-descriptions/suse/x86_64/suse-leap-42.3-JeOS/config.xml</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>instead of
-
-&lt;type image=&quot;oem&quot; installiso=&quot;true&quot; ...
-
-setup
-
-&lt;type image=&quot;oem&quot; installpxe=&quot;true&quot; ...
+<p>Instead of</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;oem&quot;</span> <span class="na">installiso=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>setup</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;oem&quot;</span> <span class="na">installpxe=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </li>
@@ -584,6 +583,27 @@ to any location supported by the <code class="xref py py-obj docutils literal no
 the data from this URI. This also means your image, MD5 file, system kernel
 and initrd could be fetched from any server and doesn’t have to be stored
 on the <code class="xref py py-obj docutils literal notranslate"><span class="pre">PXE_SERVER</span></code>.</p>
+<p>By default KIWI does not use specific <code class="xref py py-obj docutils literal notranslate"><span class="pre">curl</span></code> options or flags. However it
+is possible to add custom ones by adding the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.kiwi.install.pxe.curl_options</span></code> flag into the kernel command line.
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">curl</span></code> options are passed as comma separated values. Consider the following
+example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rd.kiwi.install.pxe.curl_options<span class="o">=</span>--retry,3,--retry-delay,3,--speed-limit,2048
+</pre></div>
+</div>
+<p>The above tells KIWI to call <code class="xref py py-obj docutils literal notranslate"><span class="pre">curl</span></code> with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --retry <span class="m">3</span> --retry-delay <span class="m">3</span> --speed-limit <span class="m">2048</span> -f &lt;url&gt;
+</pre></div>
+</div>
+<p>This is specially handy when the deployment infraestructure requires
+some fine tuned download behavior. For example, setting retries to be
+more robust over flaky network connections.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>KIWI just replaces commas with spaces and appends it to the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">curl</span></code> call. This is relevant since command line options including
+commas will always fail.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The initrd and Linux Kernel for pxe boot are always loaded via tftp

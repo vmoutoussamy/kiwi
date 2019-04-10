@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.17.34 &mdash; kiwi 9.17.34 documentation</title>
+  <title>API Documentation 9.17.36 &mdash; kiwi 9.17.36 documentation</title>
   
 
   
@@ -275,7 +275,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.34</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.36</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -317,7 +317,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-kiwi">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../schema.html">Schema Documentation 6.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../schema.html">Schema Documentation 7.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
@@ -386,7 +386,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.17.34</li>
+      <li>API Documentation 9.17.36</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -406,7 +406,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.17.34<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.17.36<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -3963,12 +3963,12 @@ same in order to avoid an inconsistent boot setup</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kiwi.runtime_checker.RuntimeChecker.check_docker_tool_chain_installed">
-<code class="descname">check_docker_tool_chain_installed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_docker_tool_chain_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_docker_tool_chain_installed" title="Permalink to this definition">¶</a></dt>
-<dd><p>When creating docker images the tools umoci and skopeo are used
-in order to create docker compatible images. This check searches
-for those tools to be installed in the build system and fails if
-it can’t find them</p>
+<dt id="kiwi.runtime_checker.RuntimeChecker.check_container_tool_chain_installed">
+<code class="descname">check_container_tool_chain_installed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_container_tool_chain_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_container_tool_chain_installed" title="Permalink to this definition">¶</a></dt>
+<dd><p>When creating container images the specific tools are used in order
+to import and export OCI or Docker compatible images. This check
+searches for those tools to be installed in the build system and
+fails if it can’t find them</p>
 </dd></dl>
 
 <dl class="method">
@@ -4022,16 +4022,6 @@ That’s because the shim setup performs changes to the
 root filesystem which can not be applied during the
 bootloader setup at build time because at that point
 the root filesystem is a read-only squashfs source.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.runtime_checker.RuntimeChecker.check_grub_efi_installed_for_efi_firmware">
-<code class="descname">check_grub_efi_installed_for_efi_firmware</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_grub_efi_installed_for_efi_firmware"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_grub_efi_installed_for_efi_firmware" title="Permalink to this definition">¶</a></dt>
-<dd><p>If the image is being built with efi or uefi firmware setting
-we need a grub(2)-…-efi package installed. The check is not 100%
-as every distribution has different names and different requirement
-but it is a reasonable approximation on the safe side meaning the
-user may still get an error but should not receive a false positive</p>
 </dd></dl>
 
 <dl class="method">
@@ -4135,6 +4125,35 @@ the image as such</p>
 containing information to control the behavior of the tools
 used by KIWI.</p>
 <dl class="method">
+<dt id="kiwi.runtime_config.RuntimeConfig.get_bundle_compression">
+<code class="descname">get_bundle_compression</code><span class="sig-paren">(</span><em>default=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_config.html#RuntimeConfig.get_bundle_compression"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_config.RuntimeConfig.get_bundle_compression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return boolean value to express if the image bundle should
+contain XZ compressed image results or not.</p>
+<dl class="simple">
+<dt>bundle:</dt><dd><ul class="simple">
+<li><p>compress: true|false</p></li>
+</ul>
+</dd>
+</dl>
+<p>If compression of image build results is activated the size
+of the bundle is smaller and the download speed increases.
+However the image must be uncompressed before use</p>
+<p>If no compression is explicitly configured, the provided
+default value applies</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>default</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Default value</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True or False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.runtime_config.RuntimeConfig.get_container_compression">
 <code class="descname">get_container_compression</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_config.html#RuntimeConfig.get_container_compression"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_config.RuntimeConfig.get_container_compression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return compression algorithm to use for compression of container images</p>
@@ -4154,6 +4173,20 @@ compression algorithm from the Defaults class is returned</p>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.runtime_config.RuntimeConfig.get_disabled_runtime_checks">
+<code class="descname">get_disabled_runtime_checks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_config.html#RuntimeConfig.get_disabled_runtime_checks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_config.RuntimeConfig.get_disabled_runtime_checks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns disabled runtime checks. Checks can be disabled with:</p>
+<dl class="simple">
+<dt>runtime_checks:</dt><dd><ul class="simple">
+<li><p>disable: check_container_tool_chain_installed</p></li>
+</ul>
+</dd>
+</dl>
+<p>if the provided string does not match any RuntimeChecker method it is
+just ignored.</p>
 </dd></dl>
 
 <dl class="method">
@@ -4268,31 +4301,6 @@ Defaults class is returned</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.runtime_config.RuntimeConfig.is_bundle_compression_requested">
-<code class="descname">is_bundle_compression_requested</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_config.html#RuntimeConfig.is_bundle_compression_requested"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_config.RuntimeConfig.is_bundle_compression_requested" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return boolean value to express if the image bundle should
-contain XZ compressed image results or not.</p>
-<dl class="simple">
-<dt>bundle:</dt><dd><ul class="simple">
-<li><p>compress: true|false</p></li>
-</ul>
-</dd>
-</dl>
-<p>If compression of image build results is activated the size
-of the bundle is smaller and the download speed increases.
-However the image must be uncompressed before use</p>
-<p>By default the bundle will contain compressed results.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>True or False</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4761,20 +4769,6 @@ matching type=”bootstrap”</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>xml_parse::oemconfig</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.xml_state.XMLState.get_build_type_pxedeploy_section">
-<code class="descname">get_build_type_pxedeploy_section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.get_build_type_pxedeploy_section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_build_type_pxedeploy_section" title="Permalink to this definition">¶</a></dt>
-<dd><p>First pxedeploy section from the build type section</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>&lt;pxedeploy&gt; section reference</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>xml_parse::pxedeploy</p>
 </dd>
 </dl>
 </dd></dl>

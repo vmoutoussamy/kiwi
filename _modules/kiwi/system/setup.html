@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; kiwi 9.17.34 documentation</title>
+  <title>kiwi.system.setup &mdash; kiwi 9.17.36 documentation</title>
   
 
   
@@ -273,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.34</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.36</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -315,7 +315,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/schema.html">Schema Documentation 6.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/schema.html">Schema Documentation 7.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
@@ -440,6 +440,7 @@
 <span class="kn">from</span> <span class="nn">kiwi.archive.tar</span> <span class="k">import</span> <span class="n">ArchiveTar</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.compress</span> <span class="k">import</span> <span class="n">Compress</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.command_capabilities</span> <span class="k">import</span> <span class="n">CommandCapabilities</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.rpm_database</span> <span class="k">import</span> <span class="n">RpmDataBase</span>
 
 <span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">KiwiImportDescriptionError</span><span class="p">,</span>
@@ -1361,11 +1362,9 @@
 
     <span class="k">def</span> <span class="nf">_export_rpm_package_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Export rpm packages metadata&#39;</span><span class="p">)</span>
-        <span class="n">dbpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_rpm_database_location</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">dbpath</span><span class="p">:</span>
-            <span class="n">dbpath_option</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--dbpath&#39;</span><span class="p">,</span> <span class="n">dbpath</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dbpath_option</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dbpath_option</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;--dbpath&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_rpm_database_location</span><span class="p">()</span>
+        <span class="p">]</span>
         <span class="n">query_call</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;rpm&#39;</span><span class="p">,</span> <span class="s1">&#39;--root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;-qa&#39;</span><span class="p">,</span> <span class="s1">&#39;--qf&#39;</span><span class="p">,</span>
@@ -1378,7 +1377,9 @@
             <span class="p">]</span> <span class="o">+</span> <span class="n">dbpath_option</span>
         <span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">packages</span><span class="p">:</span>
-            <span class="n">packages</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())))</span>
+            <span class="n">packages</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()))</span>
+            <span class="p">)</span>
             <span class="n">packages</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_export_deb_package_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
@@ -1396,16 +1397,16 @@
             <span class="p">]</span>
         <span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">packages</span><span class="p">:</span>
-            <span class="n">packages</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())))</span>
+            <span class="n">packages</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()))</span>
+            <span class="p">)</span>
             <span class="n">packages</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_export_rpm_package_verification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Export rpm verification metadata&#39;</span><span class="p">)</span>
-        <span class="n">dbpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_rpm_database_location</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">dbpath</span><span class="p">:</span>
-            <span class="n">dbpath_option</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--dbpath&#39;</span><span class="p">,</span> <span class="n">dbpath</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dbpath_option</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dbpath_option</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;--dbpath&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_rpm_database_location</span><span class="p">()</span>
+        <span class="p">]</span>
         <span class="n">query_call</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rpm&#39;</span><span class="p">,</span> <span class="s1">&#39;--root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;-Va&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">dbpath_option</span><span class="p">,</span>
             <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
@@ -1426,12 +1427,10 @@
             <span class="n">verified</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_get_rpm_database_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;rpm&#39;</span><span class="p">,</span> <span class="s1">&#39;-E&#39;</span><span class="p">,</span> <span class="s1">&#39;%_dbpath&#39;</span><span class="p">]</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span></div>
+        <span class="n">rpmdb</span> <span class="o">=</span> <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">has_rpm</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">rpmdb_image</span><span class="o">.</span><span class="n">expand_query</span><span class="p">(</span><span class="s1">&#39;%_dbpath&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">rpmdb_host</span><span class="o">.</span><span class="n">expand_query</span><span class="p">(</span><span class="s1">&#39;%_dbpath&#39;</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

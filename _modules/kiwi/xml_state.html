@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_state &mdash; kiwi 9.17.34 documentation</title>
+  <title>kiwi.xml_state &mdash; kiwi 9.17.36 documentation</title>
   
 
   
@@ -273,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.34</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.36</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -315,7 +315,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/schema.html">Schema Documentation 6.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/schema.html">Schema Documentation 7.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
@@ -1051,18 +1051,6 @@
         <span class="n">systemdisk_sections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_systemdisk</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">systemdisk_sections</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">systemdisk_sections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
-
-<div class="viewcode-block" id="XMLState.get_build_type_pxedeploy_section"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_pxedeploy_section">[docs]</a>    <span class="k">def</span> <span class="nf">get_build_type_pxedeploy_section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        First pxedeploy section from the build type section</span>
-
-<span class="sd">        :return: &lt;pxedeploy&gt; section reference</span>
-
-<span class="sd">        :rtype: xml_parse::pxedeploy</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">pxedeploy_sections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_pxedeploy</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">pxedeploy_sections</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">pxedeploy_sections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="XMLState.get_build_type_machine_section"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_machine_section">[docs]</a>    <span class="k">def</span> <span class="nf">get_build_type_machine_section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

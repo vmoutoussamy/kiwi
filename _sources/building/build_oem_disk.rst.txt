@@ -148,15 +148,17 @@ target system:
    OEM image by replacing the following setup in
    kiwi-descriptions/suse/x86_64/suse-leap-42.3-JeOS/config.xml
 
+   Instead of
+
    .. code:: xml
 
-       instead of
+       <type image="oem" installiso="true"/>
 
-       <type image="oem" installiso="true" ...
+   setup
 
-       setup
+   .. code:: xml
 
-       <type image="oem" installpxe="true" ...
+       <type image="oem" installpxe="true"/>
 
 
 2. Rebuild the image, unpack the resulting
@@ -204,6 +206,32 @@ target system:
    the data from this URI. This also means your image, MD5 file, system kernel
    and initrd could be fetched from any server and doesn't have to be stored
    on the `PXE_SERVER`.
+
+   By default KIWI does not use specific `curl` options or flags. However it
+   is possible to add custom ones by adding the 
+   `rd.kiwi.install.pxe.curl_options` flag into the kernel command line.
+   `curl` options are passed as comma separated values. Consider the following
+   example:
+
+   .. code:: bash
+
+       rd.kiwi.install.pxe.curl_options=--retry,3,--retry-delay,3,--speed-limit,2048
+
+   The above tells KIWI to call `curl` with:
+
+   .. code:: bash
+
+       curl --retry 3 --retry-delay 3 --speed-limit 2048 -f <url>
+
+   This is specially handy when the deployment infraestructure requires
+   some fine tuned download behavior. For example, setting retries to be
+   more robust over flaky network connections.
+
+   .. note::
+
+      KIWI just replaces commas with spaces and appends it to the
+      `curl` call. This is relevant since command line options including
+      commas will always fail.
 
    .. note::
 

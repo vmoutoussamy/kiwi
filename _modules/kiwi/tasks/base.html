@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.tasks.base &mdash; kiwi 9.17.34 documentation</title>
+  <title>kiwi.tasks.base &mdash; kiwi 9.17.36 documentation</title>
   
 
   
@@ -273,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.34</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.36</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -315,7 +315,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/schema.html">Schema Documentation 6.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/schema.html">Schema Documentation 7.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
@@ -420,6 +420,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">attrgetter</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.cli</span> <span class="k">import</span> <span class="n">Cli</span>
@@ -469,6 +470,28 @@
 
         <span class="c1"># get global args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">global_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">get_global_args</span><span class="p">()</span>
+
+        <span class="c1"># initialize generic runtime check dicts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checks_before_command_args</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;check_minimal_required_preferences&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_efi_mode_for_disk_overlay_correctly_setup&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_boot_description_exists&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_consistent_kernel_in_boot_and_system_image&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_container_tool_chain_installed&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_volume_setup_defines_multiple_fullsize_volumes&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_volume_setup_has_no_root_definition&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_volume_label_used_with_lvm&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_xen_uniquely_setup_as_server_or_guest&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_mediacheck_only_for_x86_arch&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_dracut_module_for_live_iso_in_package_list&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_dracut_module_for_disk_overlay_in_package_list&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_dracut_module_for_disk_oem_in_package_list&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_dracut_module_for_oem_install_in_package_list&#39;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checks_after_command_args</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;check_repositories_configured&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_image_include_repos_publicly_resolvable&#39;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
 
         <span class="k">if</span> <span class="n">should_perform_task_setup</span><span class="p">:</span>
             <span class="c1"># set log level</span>
@@ -578,6 +601,22 @@
                 <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span>
             <span class="p">)</span>
         <span class="p">]</span></div>
+
+<div class="viewcode-block" id="CliTask.run_checks"><a class="viewcode-back" href="../../../development/api/kiwi.tasks.html#kiwi.tasks.base.CliTask.run_checks">[docs]</a>    <span class="k">def</span> <span class="nf">run_checks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method runs the given runtime checks excluding the ones disabled</span>
+<span class="sd">        in the runtime configuration file.</span>
+
+<span class="sd">        :param dict checks: A dictionary with the runtime method names as keys</span>
+<span class="sd">            and their arguments list as the values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">exclude_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runtime_config</span><span class="o">.</span><span class="n">get_disabled_runtime_checks</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runtime_checker</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">method</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="p">{</span>
+                <span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">checks</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude_list</span>
+            <span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">attrgetter</span><span class="p">(</span><span class="n">method</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">runtime_checker</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_pop_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">):</span>
         <span class="n">token</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>

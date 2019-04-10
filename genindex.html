@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; kiwi 9.17.34 documentation</title>
+  <title>Index &mdash; kiwi 9.17.36 documentation</title>
   
 
   
@@ -274,7 +274,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.34</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.36</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -316,7 +316,7 @@
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#module-kiwi">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="development/schema.html">Schema Documentation 6.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/schema.html">Schema Documentation 7.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
@@ -556,7 +556,7 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_consistent_kernel_in_boot_and_system_image">check_consistent_kernel_in_boot_and_system_image() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
-      <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_docker_tool_chain_installed">check_docker_tool_chain_installed() (kiwi.runtime_checker.RuntimeChecker method)</a>
+      <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_container_tool_chain_installed">check_container_tool_chain_installed() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_dracut_module_for_disk_oem_in_package_list">check_dracut_module_for_disk_oem_in_package_list() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
@@ -569,8 +569,6 @@
       <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_efi_mode_for_disk_overlay_correctly_setup">check_efi_mode_for_disk_overlay_correctly_setup() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.privileges.Privileges.check_for_root_permissions">check_for_root_permissions() (kiwi.privileges.Privileges static method)</a>
-</li>
-      <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_grub_efi_installed_for_efi_firmware">check_grub_efi_installed_for_efi_firmware() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_image_include_repos_publicly_resolvable">check_image_include_repos_publicly_resolvable() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
@@ -1128,8 +1126,6 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_oemconfig_section">get_build_type_oemconfig_section() (kiwi.xml_state.XMLState method)</a>
 </li>
-      <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_pxedeploy_section">get_build_type_pxedeploy_section() (kiwi.xml_state.XMLState method)</a>
-</li>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_size">get_build_type_size() (kiwi.xml_state.XMLState method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_spare_part_size">get_build_type_spare_part_size() (kiwi.xml_state.XMLState method)</a>
@@ -1149,6 +1145,8 @@
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_vmnic_entries">get_build_type_vmnic_entries() (kiwi.xml_state.XMLState method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_buildservice_env_name">get_buildservice_env_name() (kiwi.defaults.Defaults static method)</a>
+</li>
+      <li><a href="development/api/kiwi.html#kiwi.runtime_config.RuntimeConfig.get_bundle_compression">get_bundle_compression() (kiwi.runtime_config.RuntimeConfig method)</a>
 </li>
       <li><a href="development/api/kiwi.storage.html#kiwi.storage.device_provider.DeviceProvider.get_byte_size">get_byte_size() (kiwi.storage.device_provider.DeviceProvider method)</a>
 </li>
@@ -1246,6 +1244,8 @@
         <li><a href="development/api/kiwi.volume_manager.html#kiwi.volume_manager.lvm.VolumeManagerLVM.get_device">(kiwi.volume_manager.lvm.VolumeManagerLVM method)</a>
 </li>
       </ul></li>
+      <li><a href="development/api/kiwi.html#kiwi.runtime_config.RuntimeConfig.get_disabled_runtime_checks">get_disabled_runtime_checks() (kiwi.runtime_config.RuntimeConfig method)</a>
+</li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_disk_format_types">get_disk_format_types() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_disk_image_types">get_disk_image_types() (kiwi.defaults.Defaults static method)</a>
@@ -1681,8 +1681,6 @@
       <li><a href="development/api/kiwi.html#kiwi.cli.Cli.invoke_kiwicompat">invoke_kiwicompat() (kiwi.cli.Cli method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.is_buildservice_worker">is_buildservice_worker() (kiwi.defaults.Defaults static method)</a>
-</li>
-      <li><a href="development/api/kiwi.html#kiwi.runtime_config.RuntimeConfig.is_bundle_compression_requested">is_bundle_compression_requested() (kiwi.runtime_config.RuntimeConfig method)</a>
 </li>
       <li><a href="development/api/kiwi.storage.html#kiwi.storage.device_provider.DeviceProvider.is_loop">is_loop() (kiwi.storage.device_provider.DeviceProvider method)</a>
 
@@ -2664,6 +2662,8 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.command.Command.run">run() (kiwi.command.Command static method)</a>
 </li>
+      <li><a href="development/api/kiwi.tasks.html#kiwi.tasks.base.CliTask.run_checks">run_checks() (kiwi.tasks.base.CliTask method)</a>
+</li>
       <li><a href="development/api/kiwi.system.html#kiwi.system.shell.Shell.run_common_function">run_common_function() (kiwi.system.shell.Shell static method)</a>
 </li>
       <li><a href="development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.runtime_config">runtime_config() (kiwi.repository.base.RepositoryBase method)</a>
@@ -2798,10 +2798,10 @@
         <li><a href="development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux.setup_live_image_config">(kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_locale">setup_locale() (kiwi.system.setup.SystemSetup method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_machine_id">setup_machine_id() (kiwi.system.setup.SystemSetup method)</a>
 </li>
       <li><a href="development/api/kiwi.volume_manager.html#kiwi.volume_manager.base.VolumeManagerBase.setup_mountpoint">setup_mountpoint() (kiwi.volume_manager.base.VolumeManagerBase method)</a>
@@ -2866,6 +2866,8 @@
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.gce.DiskFormatGce.store_to_result">(kiwi.storage.subformat.gce.DiskFormatGce method)</a>
 </li>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.ova.DiskFormatOva.store_to_result">(kiwi.storage.subformat.ova.DiskFormatOva method)</a>
+</li>
+        <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.qcow2.DiskFormatQcow2.store_to_result">(kiwi.storage.subformat.qcow2.DiskFormatQcow2 method)</a>
 </li>
         <li><a href="development/api/kiwi.storage.subformat.html#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.store_to_result">(kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase method)</a>
 </li>
