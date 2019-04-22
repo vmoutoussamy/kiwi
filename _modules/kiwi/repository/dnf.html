@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository.dnf &mdash; kiwi 9.17.37 documentation</title>
+  <title>kiwi.repository.dnf &mdash; kiwi 9.17.38 documentation</title>
   
 
   
@@ -273,7 +273,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.37</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.38</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -315,7 +315,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/schema.html">Schema Documentation 7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/schema.html">Schema Documentation 7.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
@@ -509,7 +509,8 @@
 <span class="sd">        1. Create the rpm image macro which persists during the build</span>
 <span class="sd">        2. Create the rpm bootstrap macro to make sure for bootstrapping</span>
 <span class="sd">           the rpm database location matches the host rpm database setup.</span>
-<span class="sd">           This macro only persists during the bootstrap phase</span>
+<span class="sd">           This macro only persists during the bootstrap phase. If the</span>
+<span class="sd">           image was already bootstrapped a compat link is created instead.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rpmdb</span> <span class="o">=</span> <span class="n">RpmDataBase</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_custom_rpm_image_macro_name</span><span class="p">()</span>
@@ -518,7 +519,11 @@
             <span class="n">rpmdb</span><span class="o">.</span><span class="n">set_macro_from_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">locale</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">rpmdb</span><span class="o">.</span><span class="n">write_config</span><span class="p">()</span>
 
-        <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span><span class="o">.</span><span class="n">set_database_to_host_path</span><span class="p">()</span></div>
+        <span class="n">rpmdb</span> <span class="o">=</span> <span class="n">RpmDataBase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">has_rpm</span><span class="p">():</span>
+            <span class="n">rpmdb</span><span class="o">.</span><span class="n">link_database_to_host_path</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rpmdb</span><span class="o">.</span><span class="n">set_database_to_host_path</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="RepositoryDnf.use_default_location"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.dnf.RepositoryDnf.use_default_location">[docs]</a>    <span class="k">def</span> <span class="nf">use_default_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
