@@ -1,0 +1,1316 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Image Description &mdash; kiwi 9.17.39 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User Defined Scripts" href="shell_scripts.html" />
+    <link rel="prev" title="Working with KIWI" href="../working_with_kiwi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> kiwi
+          
+
+          
+            
+            <img src="../_static/kiwi-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../working_with_kiwi.html">Working with KIWI</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The Image Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-image-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-description-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-types">Build Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-elements">Common Elements</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#image-profiles">Image Profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-users">Adding Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-repositories-and-adding-or-removing-packages">Defining Repositories and Adding or Removing Packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-repositories">Adding repositories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-and-removing-packages">Adding and removing packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shell_scripts.html">User Defined Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="shell_scripts.html#configuration-tips">Configuration Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shell_scripts.html#functions-and-variables-provided-by-kiwi">Functions and Variables Provided by KIWI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="runtime_configuration.html">The Runtime Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customize_the_boot_process.html">Customizing the Boot Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="customize_the_boot_process.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="customize_the_boot_process.html#boot-image-parameters">Boot Image Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="customize_the_boot_process.html#boot-debugging">Boot Debugging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi.html#image-building-process">Image Building Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi.html#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi.html#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/workflow.html">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../building.html">Building Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_vmx_disk.html">Build a Virtual Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_vmx_disk.html#modifying-the-size-of-the-image">Modifying the Size of the Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_vmx_disk.html#customizing-the-virtual-machine">Customizing the Virtual Machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_vmx_disk.html#modifying-the-vm-configuration-directly">Modifying the VM Configuration Directly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_vmx_disk.html#adding-network-interfaces-to-the-vm">Adding Network Interfaces to the VM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_vmx_disk.html#specifying-disks-and-disk-controllers">Specifying Disks and Disk Controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_vmx_disk.html#adding-cd-dvd-drives">Adding CD/DVD Drives</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#selecting-a-kiwi-template">Selecting a KIWI Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id1">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id2">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id3">The Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_with_profiles.html">Building Images with Profiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_with_profiles.html#local-builds">Local Builds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/working_with_images.html">Working with Images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vmx_setup_for_ec2.html">KIWI Image Description for Amazon EC2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vmx_setup_for_azure.html">KIWI Image Description for Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vmx_setup_for_google.html">KIWI Image Description for Google Compute Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/setup_yast_on_first_boot.html">Setting Up YaST at First Boot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/custom_partitions.html">Custom Disk Partitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">KIWI Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commands/kiwi.html">kiwi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#example">EXAMPLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#the-runtime-configuration-file">The Runtime Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/result_list.html">kiwi result list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/result_bundle.html">kiwi result bundle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_prepare.html">kiwi system prepare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_update.html">kiwi system update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_build.html">kiwi system build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#options">OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#uri-types">URI_TYPES</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_create.html">kiwi system create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/image_resize.html">kiwi image resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/image_info.html">kiwi image info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#options">OPTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.39</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.bootloader.html">kiwi.bootloader Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.builder.html">kiwi.builder Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.container.html">kiwi.container Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.filesystem.html">kiwi.filesystem Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.iso_tools.html">kiwi.iso_tools Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.package_manager.html">kiwi.package_manager Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.partitioner.html">kiwi.partitioner Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.repository.html">kiwi.repository Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.storage.html">kiwi.storage Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.system.html">kiwi.system Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.solver.html">kiwi.solver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.tasks.html">kiwi.tasks package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.utils.html">kiwi.utils Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.volume_manager.html">kiwi.volume_manager Package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.command_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.exceptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.firmware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.kiwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.mount_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.privileges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.runtime_checker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.runtime_checker</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.runtime_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.runtime_config</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.xml_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.xml_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development/schema.html">Schema Documentation 7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#using-the-extension">Using the Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#install-required-operating-system-packages">Install Required Operating System Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-python-virtual-development-environment">Create a Python Virtual Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#running-the-unit-tests">Running the Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-branch-for-each-feature-or-bugfix">Create a Branch for each Feature or Bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#coding-style">Coding Style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#additional-information">Additional Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#signing-git-patches">Signing Git Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#bumping-the-version">Bumping the Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#creating-a-rpm-package">Creating a RPM Package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">kiwi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../working_with_kiwi.html">Working with KIWI</a> &raquo;</li>
+        
+      <li>The Image Description</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/working_with_kiwi/xml_description.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-image-description">
+<span id="xml-description"></span><h1>The Image Description<a class="headerlink" href="#the-image-description" title="Permalink to this headline">¶</a></h1>
+<p>The image description is a XML file that defines properties of the
+appliance that will be build by KIWI, for example:</p>
+<ul class="simple">
+<li><p>image type (e.g. QEMU disk image, PXE bootable image, Vagrant box, etc.)</p></li>
+<li><p>partition layout</p></li>
+<li><p>packages to be installed on the system</p></li>
+<li><p>users to be added</p></li>
+</ul>
+<p>The following sections will walk you through the major elements and
+attributes of the RELAX NG schema <a class="footnote-reference brackets" href="#f1" id="id1">1</a>. A complete description of the
+schema can be found in <a class="reference internal" href="../development/schema.html#schema-docs"><span class="std std-ref">Schema Documentation 7.1</span></a>.</p>
+<p>We will follow the standard nomenclature when addressing components of the
+XML file:</p>
+<ul>
+<li><p>An <em>element</em> is a XML “tag”: <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;example/&gt;</span></code>, which we address by the name
+<em>example</em>.</p></li>
+<li><p>Elements can have <em>attributes</em> which take values:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;example</span> <span class="pre">attr1=&quot;val1&quot;</span> <span class="pre">attr2=val2&quot;/&gt;</span></code>.</p></li>
+<li><p>Elements can have <em>children</em>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;element&gt;</span>
+  <span class="nt">&lt;child/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Some elements have a <em>content</em>:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;element_with_content&gt;CONTENT</span></code>, while others are
+<em>emtpy-element tags</em>: <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;emtpy_element/&gt;</span></code>.</p></li>
+</ul>
+<div class="section" id="the-image-element">
+<h2>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element<a class="headerlink" href="#the-image-element" title="Permalink to this headline">¶</a></h2>
+<p>The image description consists of the root element <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> and its
+children, for example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- all settings belong here --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> element requires the following two attributes (as shown in the
+above example):</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code>: A name for this image that must not contain spaces or <code class="xref py py-obj docutils literal notranslate"><span class="pre">/</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schemaversion</span></code>: The used version of the [KIWI] RNG schema. KIWI will
+automatically convert your image description from an older schema
+version to the most recent one (it will perform this only internally and
+won’t modify your <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>).
+If in doubt, use the latest schema version.</p></li>
+</ul>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> attribute will be used to create the bootloader entry, however
+it can be inconvenient to use as it must be POSIX-safe. You can therefore
+provide an alternative name that will be displayed in the bootloader via
+the attribute <code class="xref py py-obj docutils literal notranslate"><span class="pre">displayName</span></code>, which doesn’t have the same strict rules as
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> (it can contain spaces and slashes):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span> <span class="na">displayName=</span><span class="s">&quot;LimeJeOS Leap 15.0&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- all setting belong here --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-description-element">
+<h2>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element<a class="headerlink" href="#the-description-element" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> element, contains some high level information about the
+image:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;description</span> <span class="na">type=</span><span class="s">&quot;system&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;author&gt;</span>Jane Doe<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;contact&gt;</span>jane@myemaildomain.xyz<span class="nt">&lt;/contact&gt;</span>
+    <span class="nt">&lt;specification&gt;</span>
+      Leap 15.0 JeOS, a small image, that is just enough of an OS
+    <span class="nt">&lt;/specification&gt;</span>
+    <span class="nt">&lt;license&gt;</span>GPLv3<span class="nt">&lt;/license&gt;</span>
+  <span class="nt">&lt;/description&gt;</span>
+
+  <span class="c">&lt;!-- snip --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> element must always contain a <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> attribute. This
+attribute accepts the values <code class="xref py py-obj docutils literal notranslate"><span class="pre">system</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">boot</span></code>. The value <code class="xref py py-obj docutils literal notranslate"><span class="pre">boot</span></code> is used
+by the KIWI developers and is not relevant for the end user, thus <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>
+should be always set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">system</span></code>.</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> allows the following optional children:</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">author</span></code>: The name of the author of this image.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact</span></code>: Some means how to contact the author of the image (e.g. an
+email address, an IM nickname and network, etc.)</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">specification</span></code>: A detailed description of this image, e.g. its use case.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#license" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">license</span></code></a>: If applicable, you can specify a license for the image.</p></li>
+</ul>
+</div>
+<div class="section" id="the-preferences-element">
+<h2>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element<a class="headerlink" href="#the-preferences-element" title="Permalink to this headline">¶</a></h2>
+<p>The mandatory <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> element contains the definition of the various
+enabled image types (so-called build types). Each of these build types can
+be supplied with attributes specific to that image type, which we described
+in the section <a class="reference internal" href="#xml-description-build-types"><span class="std std-ref">Build Types</span></a>.</p>
+<p>The elements that are not image type specific are presented afterwards in
+section <a class="reference internal" href="#xml-description-preferences-common-elements"><span class="std std-ref">Common Elements</span></a>.</p>
+<div class="section" id="build-types">
+<span id="xml-description-build-types"></span><h3>Build Types<a class="headerlink" href="#build-types" title="Permalink to this headline">¶</a></h3>
+<p>A build type defines the type of an appliance that is produced by KIWI, for
+instance, a live ISO image or a virtual machine disk.</p>
+<p>For example, a live ISO image is specified as follows:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;preferences&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;iso&quot;</span> <span class="na">primary=</span><span class="s">&quot;true&quot;</span> <span class="na">flags=</span><span class="s">&quot;overlay&quot;</span> <span class="na">hybridpersistent_filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">hybridpersistent=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- additional preferences --&gt;</span>
+  <span class="nt">&lt;/preferences&gt;</span>
+  <span class="c">&lt;!-- additional image settings --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>A build type is defined via a single <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element whose only required
+attribute is <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code>, that defines which image type is created. All other
+attributes are optional and can be used to customize an image further. In
+the above example we created an ISO image, with the an ext4 filesystem
+<a class="footnote-reference brackets" href="#f2" id="id2">2</a>.</p>
+<p>It is possible to provide <strong>multiple</strong> <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> elements with <strong>different</strong>
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> attributes inside the preferences section. The following XML
+snippet can be used to create a live image, an OEM installation image, and
+a virtual machine disk of the same appliance:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;preferences&gt;</span>
+    <span class="c">&lt;!-- Live ISO --&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;iso&quot;</span> <span class="na">primary=</span><span class="s">&quot;true&quot;</span> <span class="na">flags=</span><span class="s">&quot;overlay&quot;</span> <span class="na">hybridpersistent_filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">hybridpersistent=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!-- Virtual machine --&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span> <span class="na">firmware=</span><span class="s">&quot;efi&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!-- OEM installation image --&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;oem&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">initrd_system=</span><span class="s">&quot;dracut&quot;</span> <span class="na">installiso=</span><span class="s">&quot;true&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span> <span class="na">firmware=</span><span class="s">&quot;efi&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;oemconfig&gt;</span>
+        <span class="nt">&lt;oem-systemsize&gt;</span>2048<span class="nt">&lt;/oem-systemsize&gt;</span>
+        <span class="nt">&lt;oem-swap&gt;</span>true<span class="nt">&lt;/oem-swap&gt;</span>
+        <span class="nt">&lt;oem-device-filter&gt;</span>/dev/ram<span class="nt">&lt;/oem-device-filter&gt;</span>
+        <span class="nt">&lt;oem-multipath-scan&gt;</span>false<span class="nt">&lt;/oem-multipath-scan&gt;</span>
+      <span class="nt">&lt;/oemconfig&gt;</span>
+      <span class="nt">&lt;machine</span> <span class="na">memory=</span><span class="s">&quot;512&quot;</span> <span class="na">guestOS=</span><span class="s">&quot;suse&quot;</span> <span class="na">HWversion=</span><span class="s">&quot;4&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/type&gt;</span>
+    <span class="c">&lt;!-- additional preferences --&gt;</span>
+  <span class="nt">&lt;/preferences&gt;</span>
+
+  <span class="c">&lt;!-- additional image settings --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>Note the additional attribute <code class="xref py py-obj docutils literal notranslate"><span class="pre">primary</span></code> in the Live ISO image build
+type. KIWI will by default build the image which <code class="xref py py-obj docutils literal notranslate"><span class="pre">primary</span></code> attribute is set
+to <code class="xref py py-obj docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>KIWI supports the following values for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> attribute (further
+attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element are documented inside the referenced
+sections):</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">iso</span></code>: a live ISO image, see <a class="reference internal" href="../building/build_live_iso.html#hybrid-iso"><span class="std std-ref">Build an ISO Hybrid Live Image</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">vmx</span></code>: build a virtual machine image, see: <a class="reference internal" href="../building/build_vmx_disk.html#vmx"><span class="std std-ref">Build a Virtual Disk Image</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code>: results in an expandable image that can be deployed via a bootable
+installation medium, e.g. a USB drive or a CD. See <a class="reference internal" href="../building/build_oem_disk.html#oem"><span class="std std-ref">Build an OEM Expandable Disk Image</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pxe</span></code>: creates an image that can be booted via PXE (network boot), see
+<a class="reference internal" href="../building/build_pxe_root_filesystem.html#build-pxe"><span class="std std-ref">Build a PXE Root File System Image</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oci</span></code>: container images, see <a class="reference internal" href="../building/build_docker_container.html#building-docker-build"><span class="std std-ref">Build a Docker Container Image</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext2</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext3</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext4</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">xfs</span></code>: KIWI will convert the
+image into a mountable filesystem of the specified type.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">squashfs</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">clicfs</span></code>: creates the image as a filesystem that can be used
+in live systems</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tbz</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">cpio</span></code>: the unpacked source tree will be compressed into a <a class="reference external" href="https://en.wikipedia.org/wiki/Xz">XZ</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Cpio">CPIO</a> archive.</p></li>
+</ul>
+<p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element furthermore supports the following subelements (as shown
+above, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oemconfig</span></code> is a subelement of <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;type</span> <span class="pre">image=&quot;oem&quot;</span> <span class="pre">...&gt;</span></code>):</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">containerconfig</span></code>: contains settings specific for the creation of
+container images, see <a class="reference internal" href="../building/build_docker_container.html#building-docker-build"><span class="std std-ref">Build a Docker Container Image</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">oemconfig</span></code>: configurations relevant for building OEM images, see:
+<a class="reference internal" href="../building/build_oem_disk.html#oem"><span class="std std-ref">Build an OEM Expandable Disk Image</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pxedeploy</span></code>: settings for PXE booting, see <a class="reference internal" href="../building/build_pxe_root_filesystem.html#build-pxe"><span class="std std-ref">Build a PXE Root File System Image</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">vagrantconfig</span></code>: instructs KIWI to build a Vagrant box instead of a
+standard virtual machine image, see <a class="reference internal" href="../building/working_with_images/vagrant_setup.html#setup-vagrant"><span class="std std-ref">KIWI Image Description for Vagrant</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">systemdisk</span></code>: used to define LVM or Btrfs (sub)volumens, see
+<a class="reference internal" href="../building/working_with_images/custom_volumes.html#custom-volumes"><span class="std std-ref">Custom Disk Volumes</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">machine</span></code>: for configurations of the virtual machines, see
+<a class="reference internal" href="../building/build_vmx_disk.html#vmx-the-machine-element"><span class="std std-ref">Customizing the Virtual Machine</span></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>: for adjusting the size of the final image, see
+<a class="reference internal" href="../building/build_vmx_disk.html#vmx-the-size-element"><span class="std std-ref">Modifying the Size of the Image</span></a>.</p></li>
+</ul>
+<div class="section" id="common-attributes-of-the-type-element">
+<h4>Common attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element<a class="headerlink" href="#common-attributes-of-the-type-element" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element supports a plethora of optional attributes, some of
+these are only relevant for certain build types and will be covered in the
+appropriate place. Certain attributes are however useful for nearly all
+build types and will be covered here:</p>
+<ul>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code>: Specifies the bootloader used for booting the image. At
+the moment <code class="xref py py-obj docutils literal notranslate"><span class="pre">grub2</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">zipl</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">grub2_s390x_emu</span></code> (a combination of zipl
+and a userspace GRUB2) are supported.
+The special <code class="xref py py-obj docutils literal notranslate"><span class="pre">custom</span></code> entry allows to skip the bootloader configuration
+and installation and leaves this up to the user which can be done by
+using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">editbootinstall</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">editbootconfig</span></code> custom scripts.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">boottimeout</span></code>: Specifies the boot timeout in seconds prior to launching
+the default boot option. By default the timeout is set to 10 seconds. It
+makes sense to set this value to <code class="xref py py-obj docutils literal notranslate"><span class="pre">0</span></code> for images intended to be started
+non-interactively (e.g. virtual machines).</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bootpartition</span></code>: Boolean parameter notifying KIWI whether an extra boot
+partition should be used or not (the default depends on the current
+layout). This will override KIWI’s default layout.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs_quota_groups</span></code>: Boolean parameter to activate filesystem quotas if
+the filesystem is <code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs</span></code>. By default quotas are inactive.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs_root_is_snapshot</span></code>: Boolean parameter that tells KIWI to install
+the system into a btrfs snapshot. The snapshot layout is compatible with
+snapper. By default snapshots are turned off.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs_root_is_readonly_snapshot</span></code>: Boolean parameter notifying KIWI that
+the btrfs root filesystem snapshot has to made read-only. if this option
+is set to true, the root filesystem snapshot it will be turned into
+read-only mode, once all data has been placed to it. The option is only
+effective if <code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs_root_is_snapshot</span></code> is also set to true. By default the
+root filesystem snapshot is writable.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compressed</span></code>: Specifies whether the image output file should be
+compressed or not. This option is only used for filesystem only images or
+for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">pxe</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">cpio</span></code> types.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">editbootconfig</span></code>: Specifies the path to a script which is called right
+before the bootloader is installed. The script runs relative to the
+directory which contains the image structure.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">editbootinstall</span></code>: Specifies the path to a script which is called right
+after the bootloader is installed. The script runs relative to the
+directory which contains the image structure.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">filesystem</span></code>: The root filesystem, the following file systems are
+supported: <code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext2</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext3</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext4</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">squashfs</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">xfs</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">firmware</span></code> Specifies the boot firmware of the appliance, supported
+options are: <code class="xref py py-obj docutils literal notranslate"><span class="pre">bios</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ec2</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">efi</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">uefi</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ofw</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">opal</span></code>.
+This attribute is used to differentiate the image according to the
+firmware which boots up the system. It mostly impacts the disk
+layout and the partition table type. By default <code class="xref py py-obj docutils literal notranslate"><span class="pre">bios</span></code> is used on x86,
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">ofw</span></code> on PowerPC and <code class="xref py py-obj docutils literal notranslate"><span class="pre">efi</span></code> on ARM.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">force_mbr</span></code>: Boolean parameter to force the usage of a MBR partition
+table even if the system would default to GPT. This is occasionally
+required on ARM systems that use a EFI partition layout but which must
+not be stored in a GPT. Note that forcing a MBR partition table incurs
+limitations with respect to the number of available partitions and their
+sizes.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fsmountoptions</span></code>: Specifies the filesystem mount options which are passed
+via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">-o</span></code> flag to <strong class="command">mount</strong> and are included in
+<code class="file docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kernelcmdline</span></code>: Additional kernel parameters passed to the kernel by the
+bootloader.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">luks</span></code>: Supplying a value will trigger the encryption of the partitions
+using the LUKS extension and using the provided string as the
+password. Note that the password must be entered when booting the
+appliance!</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">primary</span></code>: Boolean option, KIWI will by default build the image which
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">primary</span></code> attribute is set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_blocksize</span></code>: Specifies the image blocksize in bytes which has to
+match the logical blocksize of the target storage device. By default 512
+Bytes is used, which works on many disks. You can obtain the blocksize
+from the <code class="xref py py-obj docutils literal notranslate"><span class="pre">SSZ</span></code> column in the output of the following command:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">blockdev --report $DEVICE</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="common-elements">
+<span id="xml-description-preferences-common-elements"></span><h3>Common Elements<a class="headerlink" href="#common-elements" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have covered the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element, we shall return to the
+remaining child-elements of <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code>:</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code>: A version number of this image. We recommend to use the
+following format: <strong>Major.Minor.Release</strong>, however other versioning
+schemes are possible, e.g. one can use the version of the underlying
+operating system.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">packagemanager</span></code>: Specify the package manager that will be used to download
+and install the packages for your appliance. Currently the following package
+managers are supported: <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>, <code class="docutils literal notranslate"><span class="pre">zypper</span></code> and <code class="docutils literal notranslate"><span class="pre">dnf</span></code>. Note that the
+package manager must be installed on the system <strong>calling</strong> KIWI, it is
+<strong>not</strong> sufficient to install it inside the appliance.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/locale.html#module-locale" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">locale</span></code></a>: Specify the locale that the resulting appliance will use.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">timezone</span></code>: Override the default timezone of the image to a more suitable
+value, e.g. the timezone in which the image’s users reside.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-check-signatures</span></code>: Boolean value that defines whether the signatures
+of the downloaded RPM packages will be verified before installation.
+Note that when building appliances for a different distribution you will
+have to either import the other distribution’s signing-key or set this to
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">false</span></code> (RPM will otherwise fail to verify the package signatures, as it
+does will not trust the signature key of other distributions or even
+other versions of the same distribution).</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-excludedocs</span></code>: Boolean value that instructs RPM whether to install
+documentation with packages or not. Please bear in mind that enabling
+this can have quite a negative impact on user-experience and should thus
+be used with care.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader-theme</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootsplash-theme</span></code>: themes for the bootloader and
+the bootsplash-screen. These themes have to be either built-in to the
+bootloader or installed via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> section.</p></li>
+</ul>
+<p>An example excerpt from a image description using these child-elements of
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code>, results in the following image description:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span> <span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;OpenSUSE-Leap-15.0&quot;</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!-- snip --&gt;</span>
+   <span class="nt">&lt;preferences&gt;</span>
+     <span class="nt">&lt;version&gt;</span>15.0<span class="nt">&lt;/version&gt;</span>
+     <span class="nt">&lt;packagemanager&gt;</span>zypper<span class="nt">&lt;/packagemanager&gt;</span>
+     <span class="nt">&lt;locale&gt;</span>en_US<span class="nt">&lt;/locale&gt;</span>
+     <span class="nt">&lt;keytable&gt;</span>us<span class="nt">&lt;/keytable&gt;</span>
+     <span class="nt">&lt;timezone&gt;</span>Europe/Berlin<span class="nt">&lt;/timezone&gt;</span>
+     <span class="nt">&lt;rpm-excludedocs&gt;</span>true<span class="nt">&lt;/rpm-excludedocs&gt;</span>
+     <span class="nt">&lt;rpm-check-signatures&gt;</span>false<span class="nt">&lt;/rpm-check-signatures&gt;</span>
+     <span class="nt">&lt;bootsplash-theme&gt;</span>openSUSE<span class="nt">&lt;/bootsplash-theme&gt;</span>
+     <span class="nt">&lt;bootloader-theme&gt;</span>openSUSE<span class="nt">&lt;/bootloader-theme&gt;</span>
+     <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;qcow2&quot;</span> <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/preferences&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="image-profiles">
+<span id="xml-description-image-profiles"></span><h2>Image Profiles<a class="headerlink" href="#image-profiles" title="Permalink to this headline">¶</a></h2>
+<p>In the previous section we have covered build types, that are represented
+in the image description as the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element. We have also shown how it
+is possible to include multiple build types in the same
+appliance. Unfortunately that approach has one significant limitation: one
+can only include multiple build types with <strong>different</strong> settings for the
+attribute <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code>.</p>
+<p>In certain cases this is undesirable, for instance when building multiple
+very similar virtual machine disks. Then one would have to duplicate the
+whole <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> for each virtual machine. KIWI supports <em>profiles</em>
+to work around this issue.</p>
+<p>A <em>profile</em> is a namespace for additional settings that can be applied by
+KIWI on top of the default settings (or other profiles), thereby allowing
+to build multiple appliances with the same build type but with different
+configurations.</p>
+<p>In the following example, we create two virtual machine images: one for
+QEMU (using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">qcow2</span></code> format) and one for VMWare (using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdk</span></code>
+format).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;OpenSUSE-Leap-15.0&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+  <span class="nt">&lt;profiles&gt;</span>
+    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;QEMU&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for QEMU&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VMWare&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for VMWare&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/profiles&gt;</span>
+  <span class="nt">&lt;preferences&gt;</span>
+    <span class="nt">&lt;version&gt;</span>15.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;packagemanager&gt;</span>zypper<span class="nt">&lt;/packagemanager&gt;</span>
+  <span class="nt">&lt;/preferences&gt;</span>
+  <span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;QEMU&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">format=</span><span class="s">&quot;qcow2&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/preferences&gt;</span>
+  <span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;VMWare&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/preferences&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>Each profile is declared via the element <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-profile" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile</span></code></a>, which itself must be a
+child of <code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code> and must contain the <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code>
+attributes. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> is only present for documentation purposes,
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> on the other hand is used to instruct KIWI which profile to build
+via the command line. Additionally, one can provide the boolean attribute
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">import</span></code>, which defines whether this profile should be used by default when
+KIWI is invoked via the command line.</p>
+<p>A profile inherits the default settings which do not belong to any
+profile. It applies only to elements that contain the profile in their
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code> attribute. The attribute <code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code> expects a comma separated
+list of profiles for which the settings of this element apply. The
+attribute is present in the following elements only:</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">drivers</span></code></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> (see
+<a class="reference internal" href="#xml-description-repositories-and-packages"><span class="std std-ref">Defining Repositories and Adding or Removing Packages</span></a>)</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">users</span></code></p></li>
+</ul>
+<p>Profiles can furthermore inherit settings from another profile via the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">requires</span></code> sub-element:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profiles&gt;</span>
+  <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VM&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;QEMU&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for QEMU&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;requires&gt;</span>VM<span class="nt">&lt;/requires&gt;</span>
+  <span class="nt">&lt;/profile&gt;</span>
+<span class="nt">&lt;/profiles&gt;</span>
+</pre></div>
+</div>
+<p>The profile <code class="xref py py-obj docutils literal notranslate"><span class="pre">QEMU</span></code> would inherit the settings from <code class="xref py py-obj docutils literal notranslate"><span class="pre">VM</span></code> in the above
+example.</p>
+<p>We cover the usage of <em>profiles</em> when invoking KIWI and when building in
+the Open Build Service in <a class="reference internal" href="../building/build_with_profiles.html#building-build-with-profiles"><span class="std std-ref">Building Images with Profiles</span></a>.</p>
+</div>
+<div class="section" id="adding-users">
+<span id="xml-description-adding-users"></span><h2>Adding Users<a class="headerlink" href="#adding-users" title="Permalink to this headline">¶</a></h2>
+<p>User accounts can be added or modified via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">users</span></code> element, which
+supports a list of multiple <code class="xref py py-obj docutils literal notranslate"><span class="pre">user</span></code> child elements:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;users&gt;</span>
+    <span class="nt">&lt;user</span>
+      <span class="na">password=</span><span class="s">&quot;this_is_soo_insecure&quot;</span>
+      <span class="na">home=</span><span class="s">&quot;/home/me&quot;</span> <span class="na">name=</span><span class="s">&quot;me&quot;</span>
+      <span class="na">groups=</span><span class="s">&quot;users&quot;</span> <span class="na">pwdformat=</span><span class="s">&quot;plain&quot;</span>
+    <span class="nt">/&gt;</span>
+    <span class="nt">&lt;user</span>
+      <span class="na">password=</span><span class="s">&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot;</span>
+      <span class="na">home=</span><span class="s">&quot;/root&quot;</span> <span class="na">name=</span><span class="s">&quot;root&quot;</span> <span class="na">groups=</span><span class="s">&quot;root&quot;</span>
+    <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/users&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>Each <code class="xref py py-obj docutils literal notranslate"><span class="pre">user</span></code> element represents a specific user that is added or
+modified. The following attributes are mandatory:</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code>: the UNIX username</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">home</span></code>: the path to the user’s home directory</p></li>
+</ul>
+<p>Additionally, the following optional attributes can be specified:</p>
+<ul>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">groups</span></code>: A comma separated list of UNIX groups. The first element of the
+list is used as the user’s primary group. The remaining elements are
+appended to the user’s supplementary groups. When no groups are assigned
+then the system’s default primary group will be used.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#id" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a>: The numeric user id of this account.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat</span></code>: The format in which <code class="xref py py-obj docutils literal notranslate"><span class="pre">password</span></code> is provided, either <code class="xref py py-obj docutils literal notranslate"><span class="pre">plain</span></code>
+or <code class="xref py py-obj docutils literal notranslate"><span class="pre">encrypted</span></code> (the latter is the default).</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">password</span></code>: The password for this user account. It can be provided either
+in cleartext form (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat=&quot;plain&quot;</span></code>) or in <a class="reference external" href="https://docs.python.org/3/library/crypt.html#module-crypt" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crypt</span></code></a>’ed form
+(<code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat=&quot;encrypted&quot;</span></code>). Plain passwords are discouraged, as everyone
+with access to the image description would know the password. It is
+recommended to generate a hash of your password, e.g. using the
+<code class="docutils literal notranslate"><span class="pre">mkpasswd</span></code> tool (available in most Linux distributions via the
+<code class="docutils literal notranslate"><span class="pre">whois</span></code> package):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkpasswd -m sha-512 -S <span class="k">$(</span>date +%N<span class="k">)</span> -s <span class="o">&lt;&lt;&lt;</span> INSERT_YOUR_PASSWORD_HERE
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">users</span></code> element furthermore accepts a list of profiles (see
+<a class="reference internal" href="#xml-description-image-profiles"><span class="std std-ref">Image Profiles</span></a>) to which it applies via the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code> attribute, as shown in the following example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;profiles&gt;</span>
+    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VM&quot;</span> <span class="na">description=</span><span class="s">&quot;standard virtual machine&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;shared_VM&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine shared by everyone&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/profiles&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+  <span class="nt">&lt;users&gt;</span>
+    <span class="nt">&lt;user</span>
+      <span class="na">password=</span><span class="s">&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot;</span>
+      <span class="na">home=</span><span class="s">&quot;/root&quot;</span> <span class="na">name=</span><span class="s">&quot;root&quot;</span> <span class="na">groups=</span><span class="s">&quot;root&quot;</span>
+    <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/users&gt;</span>
+  <span class="nt">&lt;users</span> <span class="na">profiles=</span><span class="s">&quot;VM&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;user</span>
+      <span class="na">password=</span><span class="s">&quot;$1$blablabl$FRTFJZxMPfM6LA1g0EZ5h1&quot;</span>
+      <span class="na">home=</span><span class="s">&quot;/home/devel&quot;</span> <span class="na">name=</span><span class="s">&quot;devel&quot;</span>
+    <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/users&gt;</span>
+  <span class="nt">&lt;users</span> <span class="na">profiles=</span><span class="s">&quot;shared_VM&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;user</span>
+      <span class="na">password=</span><span class="s">&quot;super_secr4t&quot;</span> <span class="na">pwdformat=</span><span class="s">&quot;plain&quot;</span>
+      <span class="na">home=</span><span class="s">&quot;/share/devel&quot;</span> <span class="na">name=</span><span class="s">&quot;devel&quot;</span> <span class="na">groups=</span><span class="s">&quot;users,devel&quot;</span>
+    <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/users&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>Here the settings for the root user are shared among all appliances. The
+configuration of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">devel</span></code> user on the other hand depends on the profile.</p>
+</div>
+<div class="section" id="defining-repositories-and-adding-or-removing-packages">
+<span id="xml-description-repositories-and-packages"></span><h2>Defining Repositories and Adding or Removing Packages<a class="headerlink" href="#defining-repositories-and-adding-or-removing-packages" title="Permalink to this headline">¶</a></h2>
+<p>A crucial part of each appliance is the package and repository
+selection. KIWI allows the end user to completely customize the selection
+of repositories and packages via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> elements.</p>
+<div class="section" id="adding-repositories">
+<h3>Adding repositories<a class="headerlink" href="#adding-repositories" title="Permalink to this headline">¶</a></h3>
+<p>KIWI installs packages into your appliance from the repositories defined in
+the image description. Therefore at least one repository <strong>must</strong> be
+defined, as KIWI will otherwise not be able to fetch any packages.</p>
+<p>A repository is added to the description via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> element,
+which is a child of the top-level <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> element:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+  <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;kiwi&quot;</span> <span class="na">priority=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;obs://Virtualization:Appliances:Builder/Factory&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/repository&gt;</span>
+  <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;Tumbleweed&quot;</span> <span class="na">imageinclude=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;http://download.opensuse.org/tumbleweed/repo/oss&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/repository&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>In the above snippet we defined two repositories:</p>
+<ol class="arabic simple">
+<li><p>The repository belonging to the project
+<em>Virtualization:Appliances:Builder</em> on the Open Build Service (OBS)</p></li>
+<li><p>The RPM repository available via the URL:
+<a class="reference external" href="http://download.opensuse.org/tumbleweed/repo/oss">http://download.opensuse.org/tumbleweed/repo/oss</a>, which will also
+be included in the final appliance.</p></li>
+</ol>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> element accepts one <code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code> child element, which
+contains the URL to the repository in an appropriate format and the
+following optional attributes:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>: repository type, accepts one of the following values: <code class="xref py py-obj docutils literal notranslate"><span class="pre">apt-deb</span></code>,
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">apt-rpm</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">deb-dir</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">mirrors</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-dir</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-md</span></code>.
+For ordinary RPM repositories use <code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-md</span></code>, for ordinary APT repositories
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">apt-deb</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">imageinclude</span></code>: Specify whether this repository should be added to the
+resulting image, defaults to false.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">imageonly</span></code>: A repository with <code class="xref py py-obj docutils literal notranslate"><span class="pre">imageonly=&quot;true&quot;</span></code> will not be available
+during image build, but only in the resulting appliance. Defaults to
+false.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">priority</span></code>: An integer priority for all packages in this repository. If
+the same package is available in more than one repository, then the one
+with the highest priority is used.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">alias</span></code>: Name to be used for this repository, it will appear as the
+repository’s name in the image, which is visible via <code class="docutils literal notranslate"><span class="pre">zypper</span> <span class="pre">repos</span></code> or
+<code class="docutils literal notranslate"><span class="pre">dnf</span> <span class="pre">repolist</span></code>. KIWI will construct an alias from the path in the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code> child element (replacing each <code class="xref py py-obj docutils literal notranslate"><span class="pre">/</span></code> with a <code class="xref py py-obj docutils literal notranslate"><span class="pre">_</span></code>), if no value is
+given.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">repository_gpgcheck</span></code>: Specify whether or not this specific repository is
+configured to to run repository signature validation. If not set, the
+package manager’s default is used.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">package_gpgcheck</span></code>: Boolean value that specifies whether each package’s
+GPG signature will be verified. If omitted, the package manager’s default
+will be used</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">components</span></code>: Distribution components used for <code class="xref py py-obj docutils literal notranslate"><span class="pre">deb</span></code> repositories,
+defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">distribution</span></code>: Distribution name information, used for deb repositories.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code>: List of profiles to which this repository applies.</p></li>
+</ul>
+<div class="section" id="supported-repository-paths">
+<span id="xml-description-supported-supported-repository-paths"></span><h4>Supported repository paths<a class="headerlink" href="#supported-repository-paths" title="Permalink to this headline">¶</a></h4>
+<p>The actual location of a repository is specified in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code> child
+element of <code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> via its only attribute <code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code>. KIWI supports the
+following paths types:</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">http://URL</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">https://URL</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">ftp://URL</span></code>: a URL to the repository
+available via HTTP(s) or FTP.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">obs://$PROJECT/$REPOSITORY</span></code>: evaluates to the repository <code class="xref py py-obj docutils literal notranslate"><span class="pre">$REPOSITORY</span></code>
+of the project <code class="xref py py-obj docutils literal notranslate"><span class="pre">$PROJECT</span></code> available on the Open Build Service (OBS). By
+default KIWI will look for projects on <a class="reference external" href="https://build.opensuse.org">build.opensuse.org</a>, but this can be overridden using the
+runtime configuration file (see <a class="reference internal" href="runtime_configuration.html#working-with-kiwi-runtime-configuration-file"><span class="std std-ref">The Runtime Configuration
+File</span></a>).
+Note that it is not possible to add repositories using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">obs://</span></code> path
+from <strong>different</strong> OBS instances (use direct URLs to the <code class="file docutils literal notranslate"><span class="pre">.repo</span></code>
+file instead in this case).</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">obsrepositories:/</span></code>: special path only available for builds using the
+Open Build Service. The repositories configured for the OBS project in
+which the KIWI image resides will be available inside the appliance. This
+allows you to configure the repositories of your image from OBS itself
+and not having to modify the image description.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dir:///path/to/directory</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">file:///path/to/file</span></code>: an absolute path to
+a local directory or file available on the host building the
+appliance.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">iso:///path/to/image.iso</span></code>: the specified ISO image will be mounted
+during the build of the KIWI image and a repository will be created
+pointing to the mounted ISO.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="adding-and-removing-packages">
+<span id="xml-description-adding-and-removing-packages"></span><h3>Adding and removing packages<a class="headerlink" href="#adding-and-removing-packages" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have defined the repositories, we can define which packages
+should be installed on the image. This is achieved via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code>
+element which includes the packages that should be installed, ignore or
+removed via individual <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> child elements:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+  <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;Tumbleweed&quot;</span> <span class="na">imageinclude=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;https://download.opensuse.org/tumbleweed/repo/oss&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/repository&gt;</span>
+  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;bootstrap&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;udev&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;filesystem&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;openSUSE-release&quot;</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- additional packages installed before the chroot is created --&gt;</span>
+  <span class="nt">&lt;/packages&gt;</span>
+  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;patterns-openSUSE-base&quot;</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- additional packages to be installed into the chroot --&gt;</span>
+  <span class="nt">&lt;/packages&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> element provides a collection of different child elements
+that instruct KIWI when and how to perform package installation or
+removal. Each <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> element acts as a group, whose behavior can be
+configured via the following attributes:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>: either <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootstrap</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">uninstall</span></code> or one of the
+following build types: <code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">iso</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pxe</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmx</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oci</span></code>.</p>
+<p>Packages for <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;bootstrap&quot;</span></code> are pre-installed to populate the images’
+root file system before chrooting into it.</p>
+<p>Packages in <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;image&quot;</span></code> are installed immediately after the initial
+chroot into the new root file system.</p>
+<p>Packages in <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;delete&quot;</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;uninstall&quot;</span></code> are removed from the
+image, for details see <a class="reference internal" href="#xml-description-uninstall-system-packages"><span class="std std-ref">Uninstall System Packages</span></a>.</p>
+<p>And packages which belong to a build type are only installed when that
+specific build type is currently processed by KIWI.</p>
+</li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code>: a list of profiles to which this package selection applies
+(see <a class="reference internal" href="#xml-description-image-profiles"><span class="std std-ref">Image Profiles</span></a>).</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">patternType</span></code>: selection type for patterns, supported values are:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">onlyRequired</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">plusRecommended</span></code>, see:
+<a class="reference internal" href="#xml-description-product-and-namedcollection-element"><span class="std std-ref">The product and namedCollection element</span></a>.</p></li>
+</ul>
+<p>We will describe the different child elements of <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> in the following
+sections.</p>
+<div class="section" id="the-package-element">
+<span id="xml-description-package-element"></span><h4>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element<a class="headerlink" href="#the-package-element" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element represents a single package to be installed (or
+removed), whose name is specified via the mandatory <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> attribute:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;bootstrap&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;udev&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/packages&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>which adds the package <code class="xref py py-obj docutils literal notranslate"><span class="pre">udev</span></code> to the list of packages to be added to the
+initial filesystem.</p>
+<p>Packages can also be included only on specific architectures via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code>
+attribute. KIWI compares the <code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code> attributes value with the output of
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">uname</span> <span class="pre">-m</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2-x86_64-efi&quot;</span> <span class="na">arch=</span><span class="s">&quot;x86_64&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;shim&quot;</span> <span class="na">arch=</span><span class="s">&quot;x86_64&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/packages&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>which results in <code class="xref py py-obj docutils literal notranslate"><span class="pre">grub2-x86_64-efi</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">shim</span></code> being only installed on 64
+Bit images, but GRUB2 also on 32 Bit images.</p>
+</div>
+<div class="section" id="the-archive-element">
+<span id="xml-description-archive-element"></span><h4>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element<a class="headerlink" href="#the-archive-element" title="Permalink to this headline">¶</a></h4>
+<p>It is sometimes necessary to include additional packages into the image
+which are not available in the package manager’s native format. KIWI
+supports the inclusion of ordinary archives via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element,
+whose <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> attribute specifies the filename of the archive (KIWI looks
+for the archive in the image description folder).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;custom-program1.tgz&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;custom-program2.tar&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>KIWI will extract the archive into the root directory of the image using
+<a class="reference external" href="https://www.gnu.org/software/tar/">GNU tar</a>, thus only archives
+supported by it can be included. When multiple <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> elements are
+specified then they will be applied in a top to bottom order. If a file is
+already present in the image, then the file from the archive will overwrite
+it (same as with the image overlay).</p>
+</div>
+<div class="section" id="uninstall-system-packages">
+<span id="xml-description-uninstall-system-packages"></span><h4>Uninstall System Packages<a class="headerlink" href="#uninstall-system-packages" title="Permalink to this headline">¶</a></h4>
+<p>KIWI supports two different methods how packages can be removed from the
+appliance:</p>
+<ol class="arabic simple">
+<li><p>Packages present as a child element of <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;uninstall&quot;&gt;</span></code>
+will be gracefully uninstalled by the package manager alongside with
+dependent packages and orphaned dependencies.</p></li>
+<li><p>Packages present as a child element of <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;delete&quot;&gt;</span></code> will
+be removed by RPM/DPKG without any dependency check, thus potentially
+breaking dependencies and compromising the underlying package database.</p></li>
+</ol>
+<p>Both types of removals take place after <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> is run in the
+<a class="reference internal" href="../working_with_kiwi.html#prepare-step"><span class="std std-ref">prepare step</span></a> (see also
+<a class="reference internal" href="shell_scripts.html#working-with-kiwi-user-defined-scripts"><span class="std std-ref">User Defined Scripts</span></a>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>An <code class="xref py py-obj docutils literal notranslate"><span class="pre">uninstall</span></code> packages request deletes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>the listed packages,</p></li>
+<li><p>the packages dependent on the listed ones, and</p></li>
+<li><p>any orphaned dependency of the listed packages.</p></li>
+</ul>
+</div></blockquote>
+<p>Use this feature with caution as it can easily cause the removal of
+sensitive tools leading to failures in later build stages.</p>
+</div>
+<p>Removing packages via <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;uninstall&quot;</span></code> can be used to completely remove a
+build time tool (e.g. a compiler) without having to specify a all
+dependencies of that tool (as one would have when using
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;delete&quot;</span></code>). Consider the following example where we wish to compile a
+custom program in <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code>. We ship its source code via an
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element and add the build tools (<code class="xref py py-obj docutils literal notranslate"><span class="pre">ninja</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">meson</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">clang</span></code>) to
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;image&quot;&gt;</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;uninstall&quot;&gt;</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ca-certificates&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;coreutils&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ninja&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;clang&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;meson&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;foo_app_sources.tar.gz&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/packages&gt;</span>
+  <span class="c">&lt;!-- These packages will be uninstalled after running config.sh --&gt;</span>
+  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;uninstall&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ninja&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;meson&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;clang&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/packages&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>The tools <code class="xref py py-obj docutils literal notranslate"><span class="pre">meson</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">clang</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">ninja</span></code> are then available during the
+<a class="reference internal" href="../working_with_kiwi.html#prepare-step"><span class="std std-ref">prepare step</span></a> and can thus be used in
+<code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> (for further details, see
+<a class="reference internal" href="shell_scripts.html#working-with-kiwi-user-defined-scripts"><span class="std std-ref">User Defined Scripts</span></a>), for example to build
+<code class="docutils literal notranslate"><span class="pre">foo_app</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pushd</span> /opt/src/foo_app
+mkdir build
+<span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span>clang
+meson build
+<span class="nb">cd</span> build <span class="o">&amp;&amp;</span> ninja <span class="o">&amp;&amp;</span> ninja install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;uninstall&quot;&gt;</span></code> element will make sure that the final
+appliance will no longer contain our tools required to build <code class="docutils literal notranslate"><span class="pre">foo_app</span></code>,
+thus making our image smaller.</p>
+<p>There are also other use cases for <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;uninstall&quot;</span></code>, especially for
+specialized appliances. For containers one can often remove the package
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">shadow</span></code> (it is required to setup new user accounts) or any left over
+partitioning tools (<code class="xref py py-obj docutils literal notranslate"><span class="pre">parted</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">fdisk</span></code>). All networking tools can be
+safely uninstalled in images for embedded devices without a network
+connection.</p>
+</div>
+<div class="section" id="the-product-and-namedcollection-element">
+<span id="xml-description-product-and-namedcollection-element"></span><h4>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code> element<a class="headerlink" href="#the-product-and-namedcollection-element" title="Permalink to this headline">¶</a></h4>
+<p>KIWI supports the inclusion of openSUSE products or of namedCollections
+(<em>patterns</em> in SUSE based distributions or <em>groups</em> for RedHat based
+distributions). These can be added via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code>
+child elements, which both take the mandatory <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> attribute and the
+optional <code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code> attribute.</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code> can be utilized to shorten the list of
+packages that need to be added to the image description tremendously. A
+named pattern, specified with the namedCollection element is a
+representation of a predefined list of packages. Specifying a pattern will
+install all packages listed in the named pattern. Support for patterns is
+distribution specific and available in SLES, openSUSE, CentOS, RHEL and
+Fedora. The optional <code class="xref py py-obj docutils literal notranslate"><span class="pre">patternType</span></code> attribute on the packages element allows
+you to control the installation of dependent packages. You may assign one
+of the following values to the <code class="xref py py-obj docutils literal notranslate"><span class="pre">patternType</span></code> attribute:</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">onlyRequired</span></code>: Incorporates only patterns and packages that the
+specified patterns and packages require. This is a “hard dependency” only
+resolution.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plusRecommended</span></code>: Incorporates patterns and packages that are required
+and recommended by the specified patterns and packages.</p></li>
+</ul>
+</div>
+<div class="section" id="the-ignore-element">
+<h4>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore</span></code> element<a class="headerlink" href="#the-ignore-element" title="Permalink to this headline">¶</a></h4>
+<p>Packages can be explicitly marked to be ignored for installation inside a
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> collection. This useful to exclude certain packages from being
+installed when using patterns with <code class="xref py py-obj docutils literal notranslate"><span class="pre">patternType=&quot;plusRecommended&quot;</span></code> as shown
+in the following example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;Fedora-29&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">patternType=</span><span class="s">&quot;plusRecommended&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;namedCollection</span> <span class="na">name=</span><span class="s">&quot;network-server&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;kernel&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;ignore</span> <span class="na">name=</span><span class="s">&quot;ejabberd&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;ignore</span> <span class="na">name=</span><span class="s">&quot;puppet-server&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/packages&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>Packages can be marked as ignored during the installation by adding a
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore</span></code> child element with the mandatory <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> attribute set to the
+package’s name. Optionally one can also specify the architecture via the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code> similarly to <a class="reference internal" href="#xml-description-package-element"><span class="std std-ref">The package element</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Adding <code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore</span></code> elements as children of a <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;delete&quot;&gt;</span></code> or
+a <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;uninstall&quot;&gt;</span></code> element has no effect! The packages will
+still get deleted.</p>
+</div>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/RELAX_NG">RELAX NG</a> is a
+so-called schema language: it describes the structure of a XML
+document.</p>
+</dd>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>A hybrid persistent filesystem contains a copy-on-write file to
+keep data persistent over a reboot.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="shell_scripts.html" class="btn btn-neutral float-right" title="User Defined Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../working_with_kiwi.html" class="btn btn-neutral float-left" title="Working with KIWI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marcus Schäfer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

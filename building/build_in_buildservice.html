@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building in the Open Build Service &mdash; kiwi 9.17.38 documentation</title>
+  <title>Building in the Open Build Service &mdash; kiwi 9.17.39 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Working with Images" href="working_with_images.html" />
-    <link rel="prev" title="Building in a Self-Contained Environment" href="build_containerized.html" /> 
+    <link rel="prev" title="Building Images with Profiles" href="build_with_profiles.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,29 +97,63 @@
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_kiwi.html">Working with KIWI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html">The Image Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-image-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-description-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#image-profiles">Image Profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-users">Adding Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#defining-repositories-and-adding-or-removing-packages">Defining Repositories and Adding or Removing Packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-repositories">Adding repositories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-and-removing-packages">Adding and removing packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi">Functions and Variables Provided by KIWI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/customize_the_boot_process.html">Customizing the Boot Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/customize_the_boot_process.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/customize_the_boot_process.html#boot-image-parameters">Boot Image Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/customize_the_boot_process.html#boot-debugging">Boot Debugging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi.html#image-building-process">Image Building Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi.html#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi.html#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview/workflow.html">Basic Workflow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#building-images">Building Images</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#the-create-step">The Create Step</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#image-customization-with-config-sh-shell-script">Image Customization with <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#image-customization-with-images-sh-shell-script">Image Customization with <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#customizing-the-boot-process">Customizing the Boot Process</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#boot-image-parameters">Boot Image Parameters</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#conceptual-overview">Conceptual Overview</a></li>
@@ -129,7 +163,17 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../building.html">Building Images</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_vmx_disk.html">Build a Virtual Disk Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_vmx_disk.html">Build a Virtual Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build_vmx_disk.html#modifying-the-size-of-the-image">Modifying the Size of the Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_vmx_disk.html#customizing-the-virtual-machine">Customizing the Virtual Machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="build_vmx_disk.html#modifying-the-vm-configuration-directly">Modifying the VM Configuration Directly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="build_vmx_disk.html#adding-network-interfaces-to-the-vm">Adding Network Interfaces to the VM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="build_vmx_disk.html#specifying-disks-and-disk-controllers">Specifying Disks and Disk Controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="build_vmx_disk.html#adding-cd-dvd-drives">Adding CD/DVD Drives</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
@@ -159,6 +203,11 @@
 <li class="toctree-l3"><a class="reference internal" href="build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build_containerized.html#id3">The Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="build_with_profiles.html">Building Images with Profiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build_with_profiles.html#local-builds">Local Builds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Building in the Open Build Service</a><ul>
@@ -197,7 +246,6 @@
 <li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="working_with_images/uninstall_package_requests.html">Gracefully Uninstall System Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
@@ -218,7 +266,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#description">DESCRIPTION</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#example">EXAMPLE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#runtime-config-file">RUNTIME CONFIG FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#the-runtime-configuration-file">The Runtime Configuration File</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
 </ul>
 </li>
@@ -275,7 +323,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.38</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.39</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -327,14 +375,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-python-virtual-development-environment">Create a python virtual development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development.html#running-test-cases">Running Test Cases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-branch-for-each-feature-or-bugfix">Create a branch for each feature or bugfix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development.html#good-to-know">Good to know</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#install-required-operating-system-packages">Install Required Operating System Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-python-virtual-development-environment">Create a Python Virtual Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#running-the-unit-tests">Running the Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-branch-for-each-feature-or-bugfix">Create a Branch for each Feature or Bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#coding-style">Coding Style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#additional-information">Additional Information</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development.html#signing-git-patches">Signing Git Patches</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../development.html#raising-versions">Raising Versions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../development.html#creating-a-package">Creating a Package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../development.html#building-documentation">Building Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#bumping-the-version">Bumping the Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#creating-a-rpm-package">Creating a RPM Package</a></li>
 </ul>
 </li>
 </ul>
@@ -411,7 +463,7 @@
 <p class="admonition-title">Hint</p>
 <p><strong>Abstract</strong></p>
 <p>This document gives a brief overview how to build images with
-KIWI in version 9.17.38 inside of the Open Build Service.
+KIWI in version 9.17.39 inside of the Open Build Service.
 A tutorial on the Open Buildservice itself can be found here:
 <a class="reference external" href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial">https://en.opensuse.org/openSUSE:Build_Service_Tutorial</a></p>
 </div>
@@ -477,12 +529,55 @@ choice for multiple package version and results in a much smoother
 experience when using OBS.</p>
 </div>
 </li>
-<li><p>OBS will by default only build a single image type. If your appliance
-contains the multiple build types or uses profiles, use the <a class="reference external" href="https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.multibuild.html">multibuild</a> feature.</p></li>
-<li><p>Subfolders in OBS projects are ignored by default by <code class="file docutils literal notranslate"><span class="pre">osc</span></code> and must
-be explicitly added via <code class="xref py py-obj docutils literal notranslate"><span class="pre">osc</span> <span class="pre">add</span> <span class="pre">$FOLDER</span></code> <a class="footnote-reference brackets" href="#f2" id="id2">2</a>. Bear that in mind when
-adding the overlay files inside the <code class="file docutils literal notranslate"><span class="pre">root/</span></code> directory to your
-project.</p></li>
+<li><p>By default, OBS builds only a single build type and the default
+profile. If your appliance uses multiple build types, put
+each build type into a profile, as OBS cannot handle multiple build
+types.</p>
+<p>There are two options to build multiple profiles on OBS:</p>
+<ol class="arabic">
+<li><p>Use the <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image&gt;</span></code> element and add it bellow the XML
+declaration (<code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;?xml</span> <span class="pre">..?&gt;</span></code>):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+<span class="c">&lt;!-- OBS-Profiles: foo_profile bar_profile --&gt;</span>
+
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- image description with the profiles foo_profile and bar_profile</span>
+<span class="c">&lt;/image&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use the <a class="reference external" href="https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.multibuild.html">multibuild</a> feature.</p></li>
+</ol>
+<p>The first option is simpler to use, but has the disadvantage that your
+appliances are built sequentially. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">multibuild</span></code> feature allows to
+build each profile as a single package, thereby enabling parallel execution,
+but requires an additional <code class="file docutils literal notranslate"><span class="pre">_multibuild</span></code> file. For the above example
+<code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> would have to be adapted as follows:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+<span class="c">&lt;!-- OBS-Profiles: @BUILD_FLAVOR@ --&gt;</span>
+
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- image description with the profiles foo_profile and bar_profile</span>
+<span class="c">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>The file <code class="file docutils literal notranslate"><span class="pre">_multibuild</span></code> would have the following contents:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;multibuild&gt;</span>
+  <span class="nt">&lt;flavor&gt;</span>foo_profile<span class="nt">&lt;/flavor&gt;</span>
+  <span class="nt">&lt;flavor&gt;</span>bar_profile<span class="nt">&lt;/flavor&gt;</span>
+<span class="nt">&lt;/multibuild&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Subfolders in OBS projects are ignored by default by <strong class="command">osc</strong> and
+must be explicitly added via <strong class="command">osc add $FOLDER</strong> <a class="footnote-reference brackets" href="#f2" id="id2">2</a>. Bear that
+in mind when adding the overlay files inside the <code class="file docutils literal notranslate"><span class="pre">root/</span></code> directory
+to your project.</p></li>
+<li><p>OBS ignores file permissions. Therefore <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> and
+<code class="file docutils literal notranslate"><span class="pre">images.sh</span></code> will <strong>always</strong> be executed through BASH (see also:
+<a class="reference internal" href="../working_with_kiwi/shell_scripts.html#working-with-kiwi-user-defined-scripts"><span class="std std-ref">User Defined Scripts</span></a>).</p></li>
 </ul>
 </div>
 <div class="section" id="recommendations">
@@ -525,6 +620,10 @@ adding a line of the following form as a child of <code class="docutils literal 
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;path</span> <span class="na">project=</span><span class="s">&quot;$OBS_PROJECT&quot;</span> <span class="na">repository=</span><span class="s">&quot;$REPOSITORY_NAME&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
+<p>The order in which you add repositories matters: if a package is present
+in multiple repositories, then it is taken from the <strong>first</strong>
+repository. The <strong>last</strong> repository is subject to path expansion: its
+repository paths are included as well.</p>
 <p>Don’t forget to add the repository from the
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Builder</span></code> project, providing the latest stable
 version of KIWI (which you are very likely using for your local builds).</p>
@@ -542,29 +641,54 @@ those from the latest snapshot of openSUSE Tumbleweed:</p>
 <span class="nt">&lt;/project&gt;</span>
 </pre></div>
 </div>
+<p>The above can be simplified further using the path expansion of the last
+repository to:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&quot;Virtualization:Appliances:Images:openSUSE-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>JeOS for Tumbleweed <span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;description&gt;</span>Host JeOS images for Tumbleweed<span class="nt">&lt;/description&gt;</span>
+  <span class="nt">&lt;repository</span> <span class="na">name=</span><span class="s">&quot;images&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;path</span> <span class="na">project=</span><span class="s">&quot;Virtualization:Appliances:Builder&quot;</span> <span class="na">repository=</span><span class="s">&quot;Factory&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
+  <span class="nt">&lt;/repository&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</pre></div>
+</div>
+<p>Now <code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Builder</span></code> is the last repository, which’
+repositories are included into the search path. As
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">openSUSE:Factory/snapshot</span></code> is among these, it can be omitted from the
+repository list.</p>
 </li>
-<li><p>Keep the repositories in your <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> configuration
-file. If you have installed KIWI as described in
+<li><p>Keep the repositories in your <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> configuration file. If
+you have installed the latest stable KIWI as described in
 <a class="reference internal" href="../installation.html#kiwi-installation"><span class="std std-ref">Installation</span></a> then you should add the following repository to
-your <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>, so that OBS will pick the latest stable KIWI
-version too:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;kiwi-next-generation&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;obs://Virtualization:Appliances:Builder/$DISTRO&quot;</span><span class="nt">/&gt;</span>
+your projects configuration (accessible via <strong class="command">osc meta -e
+prjconf</strong>), so that OBS will pick the latest stable KIWI version too:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repository</span> <span class="na">name=</span><span class="s">&quot;images&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;path</span> <span class="na">project=</span><span class="s">&quot;Virtualization:Appliances:Builder&quot;</span> <span class="na">repository=</span><span class="s">&quot;$DISTRO&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
 <span class="nt">&lt;/repository&gt;</span>
 </pre></div>
 </div>
 <p>Replace <code class="docutils literal notranslate"><span class="pre">$DISTRO</span></code> with the appropriate name for the distribution that
-you are currently building.</p>
+you are currently building and optionally adjust the architecture.</p>
 </li>
 </ol>
 <p>We recommend to use the first method, as it integrates better into
-OBS. Note however, that you will be unable to build images for different
-distributions from the same OBS project when adding repositories to your
-project’s configuration (method 1.). The problem is, that all your image
-builds share the same repositories. This will result in dependency
-conflicts for different distributions. On the other hand this approach
-requires a lot less workarounds in the project configuration then adding
-the repositories via the <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>.</p>
+OBS. Note that your image description will then no longer build outside of
+OBS though. If building locally is required, use the second method.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Adding the repositories to project’s configuration makes it impossible
+to build images for different distributions from the same project.</p>
+<p>Since the repositories are added for every package in your project, all
+your image builds will share the same repositories, thereby resulting in
+conflicts for different distributions.</p>
+<p>We recommend to create a separate project for each distribution. If that
+is impossible, you can keep all your repositories (including
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Builder</span></code>) in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>. That however
+usually requires a large number of workarounds via <code class="xref py py-obj docutils literal notranslate"><span class="pre">Prefer:</span></code> settings in
+the project configuration and is thus <strong>not</strong> recommended.</p>
+</div>
 </div>
 <div class="section" id="project-configuration">
 <h3>Project Configuration<a class="headerlink" href="#project-configuration" title="Permalink to this headline">¶</a></h3>
@@ -572,14 +696,9 @@ the repositories via the <code class="file docutils literal notranslate"><span c
 when run locally, but with a custom filename ending (that is unfortunately
 unpredictable). This has the consequence that the download URL of your
 image will change with every rebuild (and thus break automated
-scripts). This behavior can be deactivated by adding the following line
-into the project’s configuration:</p>
+scripts). OBS can create symbolic links with static names to the latest
+build by adding the following line to the project configuration:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Repotype: staticlinks
-</pre></div>
-</div>
-<p>Furthermore, if you are building images of openSUSE Leap 15 the above
-setting is not sufficient. The following additional line is required:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Release: &lt;CI_CNT&gt;.&lt;B_CNT&gt;
 </pre></div>
 </div>
 <p>If build Vagrant images (see <a class="reference internal" href="working_with_images/vagrant_setup.html#setup-vagrant"><span class="std std-ref">KIWI Image Description for Vagrant</span></a>) add the repository-type
@@ -633,7 +752,7 @@ Vagrant boxes.</p>
         <a href="working_with_images.html" class="btn btn-neutral float-right" title="Working with Images" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="build_containerized.html" class="btn btn-neutral float-left" title="Building in a Self-Contained Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="build_with_profiles.html" class="btn btn-neutral float-left" title="Building Images with Profiles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -642,7 +761,7 @@ Vagrant boxes.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Marcus Schäfer
+        &copy; Copyright 2019, Marcus Schäfer
 
     </p>
   </div>
