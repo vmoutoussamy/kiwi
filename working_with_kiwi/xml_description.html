@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Image Description &mdash; kiwi 9.17.39 documentation</title>
+  <title>The Image Description &mdash; kiwi 9.17.40 documentation</title>
   
 
   
@@ -98,19 +98,30 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../working_with_kiwi.html">Working with KIWI</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">The Image Description</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#the-image-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-description-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#build-types">Build Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#common-elements">Common Elements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The Image Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-image-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-description-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-types">Build Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#image-profiles">Image Profiles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-users">Adding Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#defining-repositories-and-adding-or-removing-packages">Defining Repositories and Adding or Removing Packages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#adding-repositories">Adding repositories</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-and-removing-packages">Adding and removing packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-elements">Common Elements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#image-profiles">Image Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-users">Adding Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-repositories-and-adding-or-removing-packages">Defining Repositories and Adding or Removing Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-repositories">Adding repositories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supported-repository-paths">Supported repository paths</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-and-removing-packages">Adding and removing packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-package-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-archive-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uninstall-system-packages">Uninstall System Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-product-and-namedcollection-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-ignore-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore</span></code> element</a></li>
 </ul>
 </li>
 </ul>
@@ -323,7 +334,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.39</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.40</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -488,13 +499,14 @@ XML file:</p>
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;element_with_content&gt;CONTENT</span></code>, while others are
 <em>emtpy-element tags</em>: <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;emtpy_element/&gt;</span></code>.</p></li>
 </ul>
+</div>
 <div class="section" id="the-image-element">
-<h2>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element<a class="headerlink" href="#the-image-element" title="Permalink to this headline">¶</a></h2>
+<h1>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element<a class="headerlink" href="#the-image-element" title="Permalink to this headline">¶</a></h1>
 <p>The image description consists of the root element <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> and its
 children, for example:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 
-<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- all settings belong here --&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
@@ -516,28 +528,26 @@ the attribute <code class="xref py py-obj docutils literal notranslate"><span cl
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> (it can contain spaces and slashes):</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 
-<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span> <span class="na">displayName=</span><span class="s">&quot;LimeJeOS Leap 15.0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span> <span class="na">displayName=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- all setting belong here --&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="the-description-element">
-<h2>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element<a class="headerlink" href="#the-description-element" title="Permalink to this headline">¶</a></h2>
+<h1>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element<a class="headerlink" href="#the-description-element" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> element, contains some high level information about the
 image:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span><span class="nt">&gt;</span>
-
-  <span class="nt">&lt;description</span> <span class="na">type=</span><span class="s">&quot;system&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;author&gt;</span>Jane Doe<span class="nt">&lt;/author&gt;</span>
-    <span class="nt">&lt;contact&gt;</span>jane@myemaildomain.xyz<span class="nt">&lt;/contact&gt;</span>
-    <span class="nt">&lt;specification&gt;</span>
-      Leap 15.0 JeOS, a small image, that is just enough of an OS
-    <span class="nt">&lt;/specification&gt;</span>
-    <span class="nt">&lt;license&gt;</span>GPLv3<span class="nt">&lt;/license&gt;</span>
-  <span class="nt">&lt;/description&gt;</span>
-
-  <span class="c">&lt;!-- snip --&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;description</span> <span class="na">type=</span><span class="s">&quot;system&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;author&gt;</span>Jane Doe<span class="nt">&lt;/author&gt;</span>
+        <span class="nt">&lt;contact&gt;</span>jane@myemaildomain.xyz<span class="nt">&lt;/contact&gt;</span>
+        <span class="nt">&lt;specification&gt;</span>
+            LimeJeOS-Leap-15.1, a small image
+        <span class="nt">&lt;/specification&gt;</span>
+        <span class="nt">&lt;license&gt;</span>GPLv3<span class="nt">&lt;/license&gt;</span>
+    <span class="nt">&lt;/description&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -555,7 +565,7 @@ email address, an IM nickname and network, etc.)</p></li>
 </ul>
 </div>
 <div class="section" id="the-preferences-element">
-<h2>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element<a class="headerlink" href="#the-preferences-element" title="Permalink to this headline">¶</a></h2>
+<h1>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element<a class="headerlink" href="#the-preferences-element" title="Permalink to this headline">¶</a></h1>
 <p>The mandatory <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> element contains the definition of the various
 enabled image types (so-called build types). Each of these build types can
 be supplied with attributes specific to that image type, which we described
@@ -563,16 +573,16 @@ in the section <a class="reference internal" href="#xml-description-build-types"
 <p>The elements that are not image type specific are presented afterwards in
 section <a class="reference internal" href="#xml-description-preferences-common-elements"><span class="std std-ref">Common Elements</span></a>.</p>
 <div class="section" id="build-types">
-<span id="xml-description-build-types"></span><h3>Build Types<a class="headerlink" href="#build-types" title="Permalink to this headline">¶</a></h3>
+<span id="xml-description-build-types"></span><h2>Build Types<a class="headerlink" href="#build-types" title="Permalink to this headline">¶</a></h2>
 <p>A build type defines the type of an appliance that is produced by KIWI, for
 instance, a live ISO image or a virtual machine disk.</p>
 <p>For example, a live ISO image is specified as follows:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;preferences&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;iso&quot;</span> <span class="na">primary=</span><span class="s">&quot;true&quot;</span> <span class="na">flags=</span><span class="s">&quot;overlay&quot;</span> <span class="na">hybridpersistent_filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">hybridpersistent=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-    <span class="c">&lt;!-- additional preferences --&gt;</span>
-  <span class="nt">&lt;/preferences&gt;</span>
-  <span class="c">&lt;!-- additional image settings --&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;preferences&gt;</span>
+        <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;iso&quot;</span> <span class="na">primary=</span><span class="s">&quot;true&quot;</span> <span class="na">flags=</span><span class="s">&quot;overlay&quot;</span> <span class="na">hybridpersistent_filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">hybridpersistent=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- additional preferences --&gt;</span>
+    <span class="nt">&lt;/preferences&gt;</span>
+    <span class="c">&lt;!-- additional image settings --&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -585,28 +595,28 @@ the above example we created an ISO image, with the an ext4 filesystem
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> attributes inside the preferences section. The following XML
 snippet can be used to create a live image, an OEM installation image, and
 a virtual machine disk of the same appliance:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.0&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;preferences&gt;</span>
-    <span class="c">&lt;!-- Live ISO --&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;iso&quot;</span> <span class="na">primary=</span><span class="s">&quot;true&quot;</span> <span class="na">flags=</span><span class="s">&quot;overlay&quot;</span> <span class="na">hybridpersistent_filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">hybridpersistent=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;preferences&gt;</span>
+        <span class="c">&lt;!-- Live ISO --&gt;</span>
+        <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;iso&quot;</span> <span class="na">primary=</span><span class="s">&quot;true&quot;</span> <span class="na">flags=</span><span class="s">&quot;overlay&quot;</span> <span class="na">hybridpersistent_filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">hybridpersistent=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 
-    <span class="c">&lt;!-- Virtual machine --&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span> <span class="na">firmware=</span><span class="s">&quot;efi&quot;</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- Virtual machine --&gt;</span>
+        <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span> <span class="na">firmware=</span><span class="s">&quot;efi&quot;</span><span class="nt">/&gt;</span>
 
-    <span class="c">&lt;!-- OEM installation image --&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;oem&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">initrd_system=</span><span class="s">&quot;dracut&quot;</span> <span class="na">installiso=</span><span class="s">&quot;true&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span> <span class="na">firmware=</span><span class="s">&quot;efi&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;oemconfig&gt;</span>
-        <span class="nt">&lt;oem-systemsize&gt;</span>2048<span class="nt">&lt;/oem-systemsize&gt;</span>
-        <span class="nt">&lt;oem-swap&gt;</span>true<span class="nt">&lt;/oem-swap&gt;</span>
-        <span class="nt">&lt;oem-device-filter&gt;</span>/dev/ram<span class="nt">&lt;/oem-device-filter&gt;</span>
-        <span class="nt">&lt;oem-multipath-scan&gt;</span>false<span class="nt">&lt;/oem-multipath-scan&gt;</span>
-      <span class="nt">&lt;/oemconfig&gt;</span>
-      <span class="nt">&lt;machine</span> <span class="na">memory=</span><span class="s">&quot;512&quot;</span> <span class="na">guestOS=</span><span class="s">&quot;suse&quot;</span> <span class="na">HWversion=</span><span class="s">&quot;4&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/type&gt;</span>
-    <span class="c">&lt;!-- additional preferences --&gt;</span>
-  <span class="nt">&lt;/preferences&gt;</span>
+        <span class="c">&lt;!-- OEM installation image --&gt;</span>
+        <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;oem&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">initrd_system=</span><span class="s">&quot;dracut&quot;</span> <span class="na">installiso=</span><span class="s">&quot;true&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span> <span class="na">firmware=</span><span class="s">&quot;efi&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;oemconfig&gt;</span>
+                <span class="nt">&lt;oem-systemsize&gt;</span>2048<span class="nt">&lt;/oem-systemsize&gt;</span>
+                <span class="nt">&lt;oem-swap&gt;</span>true<span class="nt">&lt;/oem-swap&gt;</span>
+                <span class="nt">&lt;oem-device-filter&gt;</span>/dev/ram<span class="nt">&lt;/oem-device-filter&gt;</span>
+                <span class="nt">&lt;oem-multipath-scan&gt;</span>false<span class="nt">&lt;/oem-multipath-scan&gt;</span>
+            <span class="nt">&lt;/oemconfig&gt;</span>
+            <span class="nt">&lt;machine</span> <span class="na">memory=</span><span class="s">&quot;512&quot;</span> <span class="na">guestOS=</span><span class="s">&quot;suse&quot;</span> <span class="na">HWversion=</span><span class="s">&quot;4&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/type&gt;</span>
+        <span class="c">&lt;!-- additional preferences --&gt;</span>
+    <span class="nt">&lt;/preferences&gt;</span>
 
-  <span class="c">&lt;!-- additional image settings --&gt;</span>
+    <span class="c">&lt;!-- additional image settings --&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -648,7 +658,7 @@ standard virtual machine image, see <a class="reference internal" href="../build
 <a class="reference internal" href="../building/build_vmx_disk.html#vmx-the-size-element"><span class="std std-ref">Modifying the Size of the Image</span></a>.</p></li>
 </ul>
 <div class="section" id="common-attributes-of-the-type-element">
-<h4>Common attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element<a class="headerlink" href="#common-attributes-of-the-type-element" title="Permalink to this headline">¶</a></h4>
+<h3>Common attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element<a class="headerlink" href="#common-attributes-of-the-type-element" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element supports a plethora of optional attributes, some of
 these are only relevant for certain build types and will be covered in the
 appropriate place. Certain attributes are however useful for nearly all
@@ -724,7 +734,7 @@ from the <code class="xref py py-obj docutils literal notranslate"><span class="
 </div>
 </div>
 <div class="section" id="common-elements">
-<span id="xml-description-preferences-common-elements"></span><h3>Common Elements<a class="headerlink" href="#common-elements" title="Permalink to this headline">¶</a></h3>
+<span id="xml-description-preferences-common-elements"></span><h2>Common Elements<a class="headerlink" href="#common-elements" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have covered the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element, we shall return to the
 remaining child-elements of <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code>:</p>
 <ul class="simple">
@@ -757,28 +767,28 @@ bootloader or installed via the <code class="xref py py-obj docutils literal not
 </ul>
 <p>An example excerpt from a image description using these child-elements of
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code>, results in the following image description:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span> <span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;OpenSUSE-Leap-15.0&quot;</span><span class="nt">&gt;</span>
-   <span class="c">&lt;!-- snip --&gt;</span>
-   <span class="nt">&lt;preferences&gt;</span>
-     <span class="nt">&lt;version&gt;</span>15.0<span class="nt">&lt;/version&gt;</span>
-     <span class="nt">&lt;packagemanager&gt;</span>zypper<span class="nt">&lt;/packagemanager&gt;</span>
-     <span class="nt">&lt;locale&gt;</span>en_US<span class="nt">&lt;/locale&gt;</span>
-     <span class="nt">&lt;keytable&gt;</span>us<span class="nt">&lt;/keytable&gt;</span>
-     <span class="nt">&lt;timezone&gt;</span>Europe/Berlin<span class="nt">&lt;/timezone&gt;</span>
-     <span class="nt">&lt;rpm-excludedocs&gt;</span>true<span class="nt">&lt;/rpm-excludedocs&gt;</span>
-     <span class="nt">&lt;rpm-check-signatures&gt;</span>false<span class="nt">&lt;/rpm-check-signatures&gt;</span>
-     <span class="nt">&lt;bootsplash-theme&gt;</span>openSUSE<span class="nt">&lt;/bootsplash-theme&gt;</span>
-     <span class="nt">&lt;bootloader-theme&gt;</span>openSUSE<span class="nt">&lt;/bootloader-theme&gt;</span>
-     <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;qcow2&quot;</span> <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/preferences&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
+    <span class="nt">&lt;preferences&gt;</span>
+        <span class="nt">&lt;version&gt;</span>15.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;packagemanager&gt;</span>zypper<span class="nt">&lt;/packagemanager&gt;</span>
+        <span class="nt">&lt;locale&gt;</span>en_US<span class="nt">&lt;/locale&gt;</span>
+        <span class="nt">&lt;keytable&gt;</span>us<span class="nt">&lt;/keytable&gt;</span>
+        <span class="nt">&lt;timezone&gt;</span>Europe/Berlin<span class="nt">&lt;/timezone&gt;</span>
+        <span class="nt">&lt;rpm-excludedocs&gt;</span>true<span class="nt">&lt;/rpm-excludedocs&gt;</span>
+        <span class="nt">&lt;rpm-check-signatures&gt;</span>false<span class="nt">&lt;/rpm-check-signatures&gt;</span>
+        <span class="nt">&lt;bootsplash-theme&gt;</span>openSUSE<span class="nt">&lt;/bootsplash-theme&gt;</span>
+        <span class="nt">&lt;bootloader-theme&gt;</span>openSUSE<span class="nt">&lt;/bootloader-theme&gt;</span>
+        <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;qcow2&quot;</span> <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/preferences&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="image-profiles">
-<span id="xml-description-image-profiles"></span><h2>Image Profiles<a class="headerlink" href="#image-profiles" title="Permalink to this headline">¶</a></h2>
+<span id="xml-description-image-profiles"></span><h1>Image Profiles<a class="headerlink" href="#image-profiles" title="Permalink to this headline">¶</a></h1>
 <p>In the previous section we have covered build types, that are represented
 in the image description as the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element. We have also shown how it
 is possible to include multiple build types in the same
@@ -796,23 +806,23 @@ configurations.</p>
 <p>In the following example, we create two virtual machine images: one for
 QEMU (using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">qcow2</span></code> format) and one for VMWare (using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdk</span></code>
 format).</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;OpenSUSE-Leap-15.0&quot;</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
-  <span class="nt">&lt;profiles&gt;</span>
-    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;QEMU&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for QEMU&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VMWare&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for VMWare&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/profiles&gt;</span>
-  <span class="nt">&lt;preferences&gt;</span>
-    <span class="nt">&lt;version&gt;</span>15.0<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;packagemanager&gt;</span>zypper<span class="nt">&lt;/packagemanager&gt;</span>
-  <span class="nt">&lt;/preferences&gt;</span>
-  <span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;QEMU&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">format=</span><span class="s">&quot;qcow2&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/preferences&gt;</span>
-  <span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;VMWare&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/preferences&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
+    <span class="nt">&lt;profiles&gt;</span>
+        <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;QEMU&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for QEMU&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VMWare&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for VMWare&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/profiles&gt;</span>
+    <span class="nt">&lt;preferences&gt;</span>
+        <span class="nt">&lt;version&gt;</span>15.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;packagemanager&gt;</span>zypper<span class="nt">&lt;/packagemanager&gt;</span>
+    <span class="nt">&lt;/preferences&gt;</span>
+    <span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;QEMU&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">format=</span><span class="s">&quot;qcow2&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/preferences&gt;</span>
+    <span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;VMWare&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/preferences&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -838,10 +848,10 @@ attribute is present in the following elements only:</p>
 <p>Profiles can furthermore inherit settings from another profile via the
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">requires</span></code> sub-element:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profiles&gt;</span>
-  <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VM&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;QEMU&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for QEMU&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;requires&gt;</span>VM<span class="nt">&lt;/requires&gt;</span>
-  <span class="nt">&lt;/profile&gt;</span>
+    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VM&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;QEMU&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine for QEMU&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;requires&gt;</span>VM<span class="nt">&lt;/requires&gt;</span>
+    <span class="nt">&lt;/profile&gt;</span>
 <span class="nt">&lt;/profiles&gt;</span>
 </pre></div>
 </div>
@@ -851,21 +861,21 @@ example.</p>
 the Open Build Service in <a class="reference internal" href="../building/build_with_profiles.html#building-build-with-profiles"><span class="std std-ref">Building Images with Profiles</span></a>.</p>
 </div>
 <div class="section" id="adding-users">
-<span id="xml-description-adding-users"></span><h2>Adding Users<a class="headerlink" href="#adding-users" title="Permalink to this headline">¶</a></h2>
+<span id="xml-description-adding-users"></span><h1>Adding Users<a class="headerlink" href="#adding-users" title="Permalink to this headline">¶</a></h1>
 <p>User accounts can be added or modified via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">users</span></code> element, which
 supports a list of multiple <code class="xref py py-obj docutils literal notranslate"><span class="pre">user</span></code> child elements:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;users&gt;</span>
-    <span class="nt">&lt;user</span>
-      <span class="na">password=</span><span class="s">&quot;this_is_soo_insecure&quot;</span>
-      <span class="na">home=</span><span class="s">&quot;/home/me&quot;</span> <span class="na">name=</span><span class="s">&quot;me&quot;</span>
-      <span class="na">groups=</span><span class="s">&quot;users&quot;</span> <span class="na">pwdformat=</span><span class="s">&quot;plain&quot;</span>
-    <span class="nt">/&gt;</span>
-    <span class="nt">&lt;user</span>
-      <span class="na">password=</span><span class="s">&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot;</span>
-      <span class="na">home=</span><span class="s">&quot;/root&quot;</span> <span class="na">name=</span><span class="s">&quot;root&quot;</span> <span class="na">groups=</span><span class="s">&quot;root&quot;</span>
-    <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/users&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;users&gt;</span>
+        <span class="nt">&lt;user</span>
+            <span class="na">password=</span><span class="s">&quot;this_is_soo_insecure&quot;</span>
+            <span class="na">home=</span><span class="s">&quot;/home/me&quot;</span> <span class="na">name=</span><span class="s">&quot;me&quot;</span>
+            <span class="na">groups=</span><span class="s">&quot;users&quot;</span> <span class="na">pwdformat=</span><span class="s">&quot;plain&quot;</span>
+        <span class="nt">/&gt;</span>
+        <span class="nt">&lt;user</span>
+            <span class="na">password=</span><span class="s">&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot;</span>
+            <span class="na">home=</span><span class="s">&quot;/root&quot;</span> <span class="na">name=</span><span class="s">&quot;root&quot;</span> <span class="na">groups=</span><span class="s">&quot;root&quot;</span>
+        <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/users&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -899,30 +909,30 @@ recommended to generate a hash of your password, e.g. using the
 <p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">users</span></code> element furthermore accepts a list of profiles (see
 <a class="reference internal" href="#xml-description-image-profiles"><span class="std std-ref">Image Profiles</span></a>) to which it applies via the
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code> attribute, as shown in the following example:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;profiles&gt;</span>
-    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VM&quot;</span> <span class="na">description=</span><span class="s">&quot;standard virtual machine&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;shared_VM&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine shared by everyone&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/profiles&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
-  <span class="nt">&lt;users&gt;</span>
-    <span class="nt">&lt;user</span>
-      <span class="na">password=</span><span class="s">&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot;</span>
-      <span class="na">home=</span><span class="s">&quot;/root&quot;</span> <span class="na">name=</span><span class="s">&quot;root&quot;</span> <span class="na">groups=</span><span class="s">&quot;root&quot;</span>
-    <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/users&gt;</span>
-  <span class="nt">&lt;users</span> <span class="na">profiles=</span><span class="s">&quot;VM&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;user</span>
-      <span class="na">password=</span><span class="s">&quot;$1$blablabl$FRTFJZxMPfM6LA1g0EZ5h1&quot;</span>
-      <span class="na">home=</span><span class="s">&quot;/home/devel&quot;</span> <span class="na">name=</span><span class="s">&quot;devel&quot;</span>
-    <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/users&gt;</span>
-  <span class="nt">&lt;users</span> <span class="na">profiles=</span><span class="s">&quot;shared_VM&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;user</span>
-      <span class="na">password=</span><span class="s">&quot;super_secr4t&quot;</span> <span class="na">pwdformat=</span><span class="s">&quot;plain&quot;</span>
-      <span class="na">home=</span><span class="s">&quot;/share/devel&quot;</span> <span class="na">name=</span><span class="s">&quot;devel&quot;</span> <span class="na">groups=</span><span class="s">&quot;users,devel&quot;</span>
-    <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/users&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;profiles&gt;</span>
+        <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;VM&quot;</span> <span class="na">description=</span><span class="s">&quot;standard virtual machine&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;shared_VM&quot;</span> <span class="na">description=</span><span class="s">&quot;virtual machine shared by everyone&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/profiles&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
+    <span class="nt">&lt;users&gt;</span>
+        <span class="nt">&lt;user</span>
+            <span class="na">password=</span><span class="s">&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot;</span>
+            <span class="na">home=</span><span class="s">&quot;/root&quot;</span> <span class="na">name=</span><span class="s">&quot;root&quot;</span> <span class="na">groups=</span><span class="s">&quot;root&quot;</span>
+        <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/users&gt;</span>
+    <span class="nt">&lt;users</span> <span class="na">profiles=</span><span class="s">&quot;VM&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;user</span>
+            <span class="na">password=</span><span class="s">&quot;$1$blablabl$FRTFJZxMPfM6LA1g0EZ5h1&quot;</span>
+            <span class="na">home=</span><span class="s">&quot;/home/devel&quot;</span> <span class="na">name=</span><span class="s">&quot;devel&quot;</span>
+        <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/users&gt;</span>
+    <span class="nt">&lt;users</span> <span class="na">profiles=</span><span class="s">&quot;shared_VM&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;user</span>
+            <span class="na">password=</span><span class="s">&quot;super_secr4t&quot;</span> <span class="na">pwdformat=</span><span class="s">&quot;plain&quot;</span>
+            <span class="na">home=</span><span class="s">&quot;/share/devel&quot;</span> <span class="na">name=</span><span class="s">&quot;devel&quot;</span> <span class="na">groups=</span><span class="s">&quot;users,devel&quot;</span>
+        <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/users&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -930,35 +940,35 @@ recommended to generate a hash of your password, e.g. using the
 configuration of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">devel</span></code> user on the other hand depends on the profile.</p>
 </div>
 <div class="section" id="defining-repositories-and-adding-or-removing-packages">
-<span id="xml-description-repositories-and-packages"></span><h2>Defining Repositories and Adding or Removing Packages<a class="headerlink" href="#defining-repositories-and-adding-or-removing-packages" title="Permalink to this headline">¶</a></h2>
+<span id="xml-description-repositories-and-packages"></span><h1>Defining Repositories and Adding or Removing Packages<a class="headerlink" href="#defining-repositories-and-adding-or-removing-packages" title="Permalink to this headline">¶</a></h1>
 <p>A crucial part of each appliance is the package and repository
 selection. KIWI allows the end user to completely customize the selection
 of repositories and packages via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> elements.</p>
 <div class="section" id="adding-repositories">
-<h3>Adding repositories<a class="headerlink" href="#adding-repositories" title="Permalink to this headline">¶</a></h3>
+<h2>Adding repositories<a class="headerlink" href="#adding-repositories" title="Permalink to this headline">¶</a></h2>
 <p>KIWI installs packages into your appliance from the repositories defined in
 the image description. Therefore at least one repository <strong>must</strong> be
 defined, as KIWI will otherwise not be able to fetch any packages.</p>
 <p>A repository is added to the description via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> element,
 which is a child of the top-level <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> element:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
-  <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;kiwi&quot;</span> <span class="na">priority=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;obs://Virtualization:Appliances:Builder/Factory&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/repository&gt;</span>
-  <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;Tumbleweed&quot;</span> <span class="na">imageinclude=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;http://download.opensuse.org/tumbleweed/repo/oss&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/repository&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
+    <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;kiwi&quot;</span> <span class="na">priority=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;obs://Virtualization:Appliances:Builder/openSUSE_Leap_15.1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/repository&gt;</span>
+    <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;OS&quot;</span> <span class="na">imageinclude=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;obs://openSUSE:Leap:15.1/standard&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/repository&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
 <p>In the above snippet we defined two repositories:</p>
 <ol class="arabic simple">
-<li><p>The repository belonging to the project
-<em>Virtualization:Appliances:Builder</em> on the Open Build Service (OBS)</p></li>
-<li><p>The RPM repository available via the URL:
-<a class="reference external" href="http://download.opensuse.org/tumbleweed/repo/oss">http://download.opensuse.org/tumbleweed/repo/oss</a>, which will also
-be included in the final appliance.</p></li>
+<li><p>The repository belonging to the KIWI project:
+<em>obs://Virtualization:Appliances:Builder/openSUSE_Leap_15.1</em> at the Open Build Service (OBS)</p></li>
+<li><p>The RPM repository belonging to the OS project:
+<em>obs://openSUSE:Leap:15.1/standard</em>, at the Open Build Service (OBS). The translated
+http URL will also be included in the final appliance.</p></li>
 </ol>
 <p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> element accepts one <code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code> child element, which
 contains the URL to the repository in an appropriate format and the
@@ -993,7 +1003,7 @@ defaults to <code class="xref py py-obj docutils literal notranslate"><span clas
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code>: List of profiles to which this repository applies.</p></li>
 </ul>
 <div class="section" id="supported-repository-paths">
-<span id="xml-description-supported-supported-repository-paths"></span><h4>Supported repository paths<a class="headerlink" href="#supported-repository-paths" title="Permalink to this headline">¶</a></h4>
+<span id="xml-description-supported-supported-repository-paths"></span><h3>Supported repository paths<a class="headerlink" href="#supported-repository-paths" title="Permalink to this headline">¶</a></h3>
 <p>The actual location of a repository is specified in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code> child
 element of <code class="xref py py-obj docutils literal notranslate"><span class="pre">repository</span></code> via its only attribute <code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code>. KIWI supports the
 following paths types:</p>
@@ -1023,26 +1033,22 @@ pointing to the mounted ISO.</p></li>
 </div>
 </div>
 <div class="section" id="adding-and-removing-packages">
-<span id="xml-description-adding-and-removing-packages"></span><h3>Adding and removing packages<a class="headerlink" href="#adding-and-removing-packages" title="Permalink to this headline">¶</a></h3>
+<span id="xml-description-adding-and-removing-packages"></span><h2>Adding and removing packages<a class="headerlink" href="#adding-and-removing-packages" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have defined the repositories, we can define which packages
 should be installed on the image. This is achieved via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code>
 element which includes the packages that should be installed, ignore or
 removed via individual <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> child elements:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
-  <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span> <span class="na">alias=</span><span class="s">&quot;Tumbleweed&quot;</span> <span class="na">imageinclude=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;https://download.opensuse.org/tumbleweed/repo/oss&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/repository&gt;</span>
-  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;bootstrap&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;udev&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;filesystem&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;openSUSE-release&quot;</span><span class="nt">/&gt;</span>
-    <span class="c">&lt;!-- additional packages installed before the chroot is created --&gt;</span>
-  <span class="nt">&lt;/packages&gt;</span>
-  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;patterns-openSUSE-base&quot;</span><span class="nt">/&gt;</span>
-    <span class="c">&lt;!-- additional packages to be installed into the chroot --&gt;</span>
-  <span class="nt">&lt;/packages&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;bootstrap&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;udev&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;filesystem&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;openSUSE-release&quot;</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- additional packages installed before the chroot is created --&gt;</span>
+    <span class="nt">&lt;/packages&gt;</span>
+    <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;patterns-openSUSE-base&quot;</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- additional packages to be installed into the chroot --&gt;</span>
+    <span class="nt">&lt;/packages&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -1071,14 +1077,14 @@ specific build type is currently processed by KIWI.</p>
 <p>We will describe the different child elements of <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> in the following
 sections.</p>
 <div class="section" id="the-package-element">
-<span id="xml-description-package-element"></span><h4>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element<a class="headerlink" href="#the-package-element" title="Permalink to this headline">¶</a></h4>
+<span id="xml-description-package-element"></span><h3>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element<a class="headerlink" href="#the-package-element" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element represents a single package to be installed (or
 removed), whose name is specified via the mandatory <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> attribute:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
-  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;bootstrap&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;udev&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/packages&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
+    <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;bootstrap&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;udev&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/packages&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -1087,13 +1093,13 @@ initial filesystem.</p>
 <p>Packages can also be included only on specific architectures via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code>
 attribute. KIWI compares the <code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code> attributes value with the output of
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">uname</span> <span class="pre">-m</span></code>.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
-  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2-x86_64-efi&quot;</span> <span class="na">arch=</span><span class="s">&quot;x86_64&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;shim&quot;</span> <span class="na">arch=</span><span class="s">&quot;x86_64&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/packages&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
+    <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2-x86_64-efi&quot;</span> <span class="na">arch=</span><span class="s">&quot;x86_64&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;shim&quot;</span> <span class="na">arch=</span><span class="s">&quot;x86_64&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/packages&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -1101,15 +1107,15 @@ attribute. KIWI compares the <code class="xref py py-obj docutils literal notran
 Bit images, but GRUB2 also on 32 Bit images.</p>
 </div>
 <div class="section" id="the-archive-element">
-<span id="xml-description-archive-element"></span><h4>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element<a class="headerlink" href="#the-archive-element" title="Permalink to this headline">¶</a></h4>
+<span id="xml-description-archive-element"></span><h3>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element<a class="headerlink" href="#the-archive-element" title="Permalink to this headline">¶</a></h3>
 <p>It is sometimes necessary to include additional packages into the image
 which are not available in the package manager’s native format. KIWI
 supports the inclusion of ordinary archives via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element,
 whose <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> attribute specifies the filename of the archive (KIWI looks
 for the archive in the image description folder).</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;custom-program1.tgz&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;custom-program2.tar&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;custom-program1.tgz&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;custom-program2.tar&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/packages&gt;</span>
 </pre></div>
 </div>
@@ -1121,7 +1127,7 @@ already present in the image, then the file from the archive will overwrite
 it (same as with the image overlay).</p>
 </div>
 <div class="section" id="uninstall-system-packages">
-<span id="xml-description-uninstall-system-packages"></span><h4>Uninstall System Packages<a class="headerlink" href="#uninstall-system-packages" title="Permalink to this headline">¶</a></h4>
+<span id="xml-description-uninstall-system-packages"></span><h3>Uninstall System Packages<a class="headerlink" href="#uninstall-system-packages" title="Permalink to this headline">¶</a></h3>
 <p>KIWI supports two different methods how packages can be removed from the
 appliance:</p>
 <ol class="arabic simple">
@@ -1155,22 +1161,22 @@ dependencies of that tool (as one would have when using
 custom program in <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code>. We ship its source code via an
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element and add the build tools (<code class="xref py py-obj docutils literal notranslate"><span class="pre">ninja</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">meson</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">clang</span></code>) to
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;image&quot;&gt;</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;packages</span> <span class="pre">type=&quot;uninstall&quot;&gt;</span></code>:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- snip --&gt;</span>
-  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ca-certificates&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;coreutils&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ninja&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;clang&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;meson&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;foo_app_sources.tar.gz&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/packages&gt;</span>
-  <span class="c">&lt;!-- These packages will be uninstalled after running config.sh --&gt;</span>
-  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;uninstall&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ninja&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;meson&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;clang&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/packages&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
+    <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ca-certificates&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;coreutils&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ninja&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;clang&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;meson&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;foo_app_sources.tar.gz&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/packages&gt;</span>
+    <span class="c">&lt;!-- These packages will be uninstalled after running config.sh --&gt;</span>
+    <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;uninstall&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;ninja&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;meson&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;clang&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/packages&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -1198,7 +1204,7 @@ safely uninstalled in images for embedded devices without a network
 connection.</p>
 </div>
 <div class="section" id="the-product-and-namedcollection-element">
-<span id="xml-description-product-and-namedcollection-element"></span><h4>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code> element<a class="headerlink" href="#the-product-and-namedcollection-element" title="Permalink to this headline">¶</a></h4>
+<span id="xml-description-product-and-namedcollection-element"></span><h3>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code> element<a class="headerlink" href="#the-product-and-namedcollection-element" title="Permalink to this headline">¶</a></h3>
 <p>KIWI supports the inclusion of openSUSE products or of namedCollections
 (<em>patterns</em> in SUSE based distributions or <em>groups</em> for RedHat based
 distributions). These can be added via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code>
@@ -1222,19 +1228,19 @@ and recommended by the specified patterns and packages.</p></li>
 </ul>
 </div>
 <div class="section" id="the-ignore-element">
-<h4>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore</span></code> element<a class="headerlink" href="#the-ignore-element" title="Permalink to this headline">¶</a></h4>
+<h3>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore</span></code> element<a class="headerlink" href="#the-ignore-element" title="Permalink to this headline">¶</a></h3>
 <p>Packages can be explicitly marked to be ignored for installation inside a
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> collection. This useful to exclude certain packages from being
 installed when using patterns with <code class="xref py py-obj docutils literal notranslate"><span class="pre">patternType=&quot;plusRecommended&quot;</span></code> as shown
 in the following example:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;Fedora-29&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">patternType=</span><span class="s">&quot;plusRecommended&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;namedCollection</span> <span class="na">name=</span><span class="s">&quot;network-server&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;kernel&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;ignore</span> <span class="na">name=</span><span class="s">&quot;ejabberd&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;ignore</span> <span class="na">name=</span><span class="s">&quot;puppet-server&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/packages&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">patternType=</span><span class="s">&quot;plusRecommended&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;namedCollection</span> <span class="na">name=</span><span class="s">&quot;network-server&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;kernel&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;ignore</span> <span class="na">name=</span><span class="s">&quot;ejabberd&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;ignore</span> <span class="na">name=</span><span class="s">&quot;puppet-server&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/packages&gt;</span>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
@@ -1259,7 +1265,6 @@ document.</p>
 keep data persistent over a reboot.</p>
 </dd>
 </dl>
-</div>
 </div>
 </div>
 </div>

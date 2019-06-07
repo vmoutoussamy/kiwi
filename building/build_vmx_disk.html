@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build a Virtual Disk Image &mdash; kiwi 9.17.39 documentation</title>
+  <title>Build a Virtual Disk Image &mdash; kiwi 9.17.40 documentation</title>
   
 
   
@@ -98,19 +98,30 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_kiwi.html">Working with KIWI</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html">The Image Description</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-image-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-description-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html">The Image Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-image-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-description-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#image-profiles">Image Profiles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-users">Adding Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#defining-repositories-and-adding-or-removing-packages">Defining Repositories and Adding or Removing Packages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-repositories">Adding repositories</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-and-removing-packages">Adding and removing packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#image-profiles">Image Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-users">Adding Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#defining-repositories-and-adding-or-removing-packages">Defining Repositories and Adding or Removing Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-repositories">Adding repositories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#supported-repository-paths">Supported repository paths</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#adding-and-removing-packages">Adding and removing packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-package-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-archive-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#uninstall-system-packages">Uninstall System Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-product-and-namedcollection-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-ignore-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore</span></code> element</a></li>
 </ul>
 </li>
 </ul>
@@ -323,7 +334,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.39</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.17.40</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -513,7 +524,7 @@ sections (see <a class="reference internal" href="#vmx-the-size-element"><span c
 from the <a class="reference internal" href="../installation.html#example-descriptions"><span class="std std-ref">example descriptions</span></a> and use one of
 them) build the image with KIWI:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo kiwi-ng --type vmx system build <span class="se">\</span>
-    --description path/to/the/vmx-image-description/ <span class="se">\</span>
+    --description kiwi-descriptions/suse/x86_64/suse-leap-15.1-JeOS <span class="se">\</span>
     --target-dir /tmp/myimage
 </pre></div>
 </div>
@@ -521,7 +532,7 @@ them) build the image with KIWI:</p>
 the file extension <code class="file docutils literal notranslate"><span class="pre">.raw</span></code>.</p>
 <p>The live image can then be tested with QEMU:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ qemu <span class="se">\</span>
-    -drive <span class="nv">file</span><span class="o">=</span><span class="nv">$IMAGE_NAME</span>.raw,format<span class="o">=</span>raw,if<span class="o">=</span>virtio <span class="se">\</span>
+    -drive <span class="nv">file</span><span class="o">=</span>LimeJeOS-Leap-15.1.x86_64-1.15.1.raw,format<span class="o">=</span>raw,if<span class="o">=</span>virtio <span class="se">\</span>
     -m <span class="m">4096</span>
 </pre></div>
 </div>
