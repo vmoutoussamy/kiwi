@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.17.40 &mdash; kiwi 9.17.40 documentation</title>
+  <title>API Documentation 9.17.41 &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -269,6 +269,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../commands.html">KIWI Commands</a><ul>
@@ -334,7 +335,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.40</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.17.41</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -449,7 +450,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.17.40</li>
+      <li>API Documentation 9.17.41</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -469,7 +470,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.17.40<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.17.41<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -905,7 +906,7 @@ from command_process</p>
 
 <dl class="method">
 <dt id="kiwi.command.Command.run">
-<em class="property">static </em><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">command</em>, <em class="sig-param">custom_env=None</em>, <em class="sig-param">raise_on_error=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/command.html#Command.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.command.Command.run" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">command</em>, <em class="sig-param">custom_env=None</em>, <em class="sig-param">raise_on_error=True</em>, <em class="sig-param">stderr_to_stdout=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/command.html#Command.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.command.Command.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a program and block the caller. The return value
 is a hash containing the stdout, stderr and return code
 information. Unless raise_on_error is set to false an
@@ -921,6 +922,7 @@ code not equal to zero</p>
 <li><p><strong>command</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – command and arguments</p></li>
 <li><p><strong>custom_env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – custom os.environ</p></li>
 <li><p><strong>raise_on_error</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – control error behaviour</p></li>
+<li><p><strong>stderr_to_stdout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – redirects stderr to stdout</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1105,6 +1107,34 @@ raise on error and log output</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.defaults.Defaults.get_bios_image_name">
+<em class="property">static </em><code class="sig-name descname">get_bios_image_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_bios_image_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_bios_image_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides bios core boot binary name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.defaults.Defaults.get_bios_module_directory_name">
+<em class="property">static </em><code class="sig-name descname">get_bios_module_directory_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_bios_module_directory_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_bios_module_directory_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides x86 BIOS directory name which stores the pc binaries</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>directory name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1722,6 +1752,25 @@ be included in the resulting image.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.defaults.Defaults.get_grub_bios_core_loader">
+<em class="property">static </em><code class="sig-name descname">get_grub_bios_core_loader</code><span class="sig-paren">(</span><em class="sig-param">root_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_grub_bios_core_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_grub_bios_core_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides grub bios image</p>
+<p>Searches distribution specific locations to find the
+core bios image below the given root path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root_path</strong> (<em>string</em>) – image root path</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>file path or None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.defaults.Defaults.get_grub_bios_modules">
 <em class="property">static </em><code class="sig-name descname">get_grub_bios_modules</code><span class="sig-paren">(</span><em class="sig-param">multiboot=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_grub_bios_modules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_grub_bios_modules" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides list of grub bios modules</p>
@@ -1875,6 +1924,21 @@ on kiwi iso filesystems</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.defaults.Defaults.get_isolinux_bios_grub_loader">
+<em class="property">static </em><code class="sig-name descname">get_isolinux_bios_grub_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_isolinux_bios_grub_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_isolinux_bios_grub_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return name of eltorito grub image used as isolinux loader
+in BIOS mode if isolinux.bin should not be used</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>file base name</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
@@ -2204,6 +2268,37 @@ dependency and metadata resolution</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.defaults.Defaults.get_syslinux_modules">
+<em class="property">static </em><code class="sig-name descname">get_syslinux_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_syslinux_modules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_syslinux_modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of syslinux modules to include on ISO
+images that boots via isolinux</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>base file names</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.defaults.Defaults.get_syslinux_search_paths">
+<em class="property">static </em><code class="sig-name descname">get_syslinux_search_paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_syslinux_search_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_syslinux_search_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>syslinux is packaged differently between distributions.
+This method returns a list of directories to search for
+syslinux data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>directory names</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.defaults.Defaults.get_unsigned_grub_loader">
 <em class="property">static </em><code class="sig-name descname">get_unsigned_grub_loader</code><span class="sig-paren">(</span><em class="sig-param">root_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_unsigned_grub_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_unsigned_grub_loader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides unsigned grub efi loader file path</p>
@@ -2316,6 +2411,20 @@ we are building inside of the open buildservice</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.defaults.Defaults.is_x86_arch">
+<em class="property">static </em><code class="sig-name descname">is_x86_arch</code><span class="sig-paren">(</span><em class="sig-param">arch</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.is_x86_arch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.is_x86_arch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if machine architecture is x86 based</p>
+<p>Any arch that matches 32bit and 64bit x86 architecture
+causes the method to return True. Anything else will
+cause the method to return False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2457,14 +2566,6 @@ grub2 loader could not be found in the image root system</p>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
 <p>Exception raised if an installation for an unsupported
 bootloader is requested.</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="kiwi.exceptions.KiwiBootLoaderIsoLinuxPlatformError">
-<em class="property">exception </em><code class="sig-prename descclassname">kiwi.exceptions.</code><code class="sig-name descname">KiwiBootLoaderIsoLinuxPlatformError</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/exceptions.html#KiwiBootLoaderIsoLinuxPlatformError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiBootLoaderIsoLinuxPlatformError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
-<p>Exception raised if an attempt was made to use isolinux on
-an unsupported platform.</p>
 </dd></dl>
 
 <dl class="exception">
@@ -3665,6 +3766,20 @@ for messages with another level an extra handler is used</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.logger.Logger.get_logfile">
+<code class="sig-name descname">get_logfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#Logger.get_logfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.Logger.get_logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return file path name of logfile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>file path</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.logger.Logger.progress">
 <code class="sig-name descname">progress</code><span class="sig-paren">(</span><em class="sig-param">current</em>, <em class="sig-param">total</em>, <em class="sig-param">prefix</em>, <em class="sig-param">bar_length=40</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#Logger.progress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.Logger.progress" title="Permalink to this definition">¶</a></dt>
 <dd><p>Custom progress log information. progress information is
@@ -3762,11 +3877,6 @@ for messages with another level an extra handler is used</p>
 </dd></dl>
 
 </dd></dl>
-
-<dl class="data">
-<dt id="kiwi.logger.log">
-<code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">log</code><em class="property"> = &lt;Logger kiwi (DEBUG)&gt;</em><a class="headerlink" href="#kiwi.logger.log" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </div>
 <div class="section" id="module-kiwi.mount_manager">
@@ -4029,6 +4139,18 @@ or boot problems early.</p>
 </dl>
 </li>
 </ul>
+<dl class="method">
+<dt id="kiwi.runtime_checker.RuntimeChecker.check_architecture_supports_iso_firmware_setup">
+<code class="sig-name descname">check_architecture_supports_iso_firmware_setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_architecture_supports_iso_firmware_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_architecture_supports_iso_firmware_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>For creating ISO images a different bootloader setup is
+performed depending on the configured firmware. If the
+firmware is set to bios, isolinux is used and that limits
+the architecture to x86 only. In any other case the appliance
+configured bootloader is used. This check examines if the
+host architecture is supported with the configured firmware
+on request of an ISO image.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="kiwi.runtime_checker.RuntimeChecker.check_boot_description_exists">
 <code class="sig-name descname">check_boot_description_exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_boot_description_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_boot_description_exists" title="Permalink to this definition">¶</a></dt>
@@ -4482,7 +4604,7 @@ autogenerated(generateDS) parser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xml_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of XMLDescription</p></li>
+<li><p><strong>xml_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – parse result from XMLDescription.load()</p></li>
 <li><p><strong>profiles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of used profiles</p></li>
 <li><p><strong>build_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – build &lt;type&gt; section reference</p></li>
 </ul>

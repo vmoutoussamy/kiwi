@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.live &mdash; kiwi 9.17.40 documentation</title>
+  <title>kiwi.builder.live &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -267,6 +267,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../commands.html">KIWI Commands</a><ul>
@@ -332,7 +333,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.40</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.41</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -506,6 +507,7 @@
 <span class="kn">from</span> <span class="nn">kiwi.system.kernel</span> <span class="k">import</span> <span class="n">Kernel</span>
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.runtime_config</span> <span class="k">import</span> <span class="n">RuntimeConfig</span>
+<span class="kn">from</span> <span class="nn">kiwi.iso_tools.base</span> <span class="k">import</span> <span class="n">IsoToolsBase</span>
 
 <span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">KiwiLiveBootImageError</span>
@@ -660,36 +662,38 @@
             <span class="n">container_image</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span> <span class="o">+</span> <span class="s1">&#39;/LiveOS/squashfs.img&#39;</span>
         <span class="p">)</span>
 
-        <span class="c1"># setup bootloader config to boot the ISO via isolinux</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up isolinux bootloader configuration&#39;</span><span class="p">)</span>
-        <span class="n">bootloader_config_isolinux</span> <span class="o">=</span> <span class="n">BootLoaderConfig</span><span class="p">(</span>
-            <span class="s1">&#39;isolinux&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s1">&#39;Setting up live image bootloader configuration&#39;</span>
         <span class="p">)</span>
-        <span class="n">bootloader_config_isolinux</span><span class="o">.</span><span class="n">setup_live_boot_images</span><span class="p">(</span>
-            <span class="n">mbrid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">lookup_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">boot_root_directory</span>
-        <span class="p">)</span>
-        <span class="n">bootloader_config_isolinux</span><span class="o">.</span><span class="n">setup_live_image_config</span><span class="p">(</span>
-            <span class="n">mbrid</span><span class="o">=</span><span class="kc">None</span>
-        <span class="p">)</span>
-        <span class="n">bootloader_config_isolinux</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-
-        <span class="c1"># setup bootloader config to boot the ISO via EFI</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up EFI grub bootloader configuration&#39;</span><span class="p">)</span>
-            <span class="n">bootloader_config_grub</span> <span class="o">=</span> <span class="n">BootLoaderConfig</span><span class="p">(</span>
+            <span class="c1"># setup bootloader config to boot the ISO via EFI</span>
+            <span class="c1"># This also embedds an MBR and the respective BIOS modules</span>
+            <span class="c1"># for compat boot. The complete bootloader setup will be</span>
+            <span class="c1"># based on grub</span>
+            <span class="n">bootloader_config</span> <span class="o">=</span> <span class="n">BootLoaderConfig</span><span class="p">(</span>
                 <span class="s1">&#39;grub2&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span><span class="p">,</span> <span class="p">{</span>
                     <span class="s1">&#39;grub_directory_name&#39;</span><span class="p">:</span>
                         <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_boot_directory_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
                 <span class="p">}</span>
             <span class="p">)</span>
-            <span class="n">bootloader_config_grub</span><span class="o">.</span><span class="n">setup_live_boot_images</span><span class="p">(</span>
+            <span class="n">bootloader_config</span><span class="o">.</span><span class="n">setup_live_boot_images</span><span class="p">(</span>
                 <span class="n">mbrid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">,</span> <span class="n">lookup_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
             <span class="p">)</span>
-            <span class="n">bootloader_config_grub</span><span class="o">.</span><span class="n">setup_live_image_config</span><span class="p">(</span>
-                <span class="n">mbrid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># setup bootloader config to boot the ISO via isolinux.</span>
+            <span class="c1"># This allows for booting on x86 platforms in BIOS mode</span>
+            <span class="c1"># only.</span>
+            <span class="n">bootloader_config</span> <span class="o">=</span> <span class="n">BootLoaderConfig</span><span class="p">(</span>
+                <span class="s1">&#39;isolinux&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span>
             <span class="p">)</span>
-            <span class="n">bootloader_config_grub</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+        <span class="n">IsoToolsBase</span><span class="o">.</span><span class="n">setup_media_loader_directory</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span><span class="p">,</span>
+            <span class="n">bootloader_config</span><span class="o">.</span><span class="n">get_boot_theme</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">bootloader_config</span><span class="o">.</span><span class="n">setup_live_image_config</span><span class="p">(</span>
+            <span class="n">mbrid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span>
+        <span class="p">)</span>
+        <span class="n">bootloader_config</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
 
         <span class="c1"># call custom editbootconfig script if present</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">system_setup</span><span class="o">.</span><span class="n">call_edit_boot_config_script</span><span class="p">(</span>

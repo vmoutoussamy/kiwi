@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.17.40 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -267,6 +267,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../commands.html">KIWI Commands</a><ul>
@@ -332,7 +333,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.40</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.41</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -545,6 +546,21 @@
         <span class="k">return</span> <span class="p">[</span>
             <span class="s1">&#39;--threads=0&#39;</span>
         <span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.is_x86_arch"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.is_x86_arch">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_x86_arch</span><span class="p">(</span><span class="n">arch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks if machine architecture is x86 based</span>
+
+<span class="sd">        Any arch that matches 32bit and 64bit x86 architecture</span>
+<span class="sd">        causes the method to return True. Anything else will</span>
+<span class="sd">        cause the method to return False</span>
+
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span> <span class="ow">or</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i686&#39;</span> <span class="ow">or</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i586&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Defaults.is_buildservice_worker"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.is_buildservice_worker">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">is_buildservice_worker</span><span class="p">():</span>
@@ -1007,6 +1023,85 @@
             <span class="p">):</span>
                 <span class="k">return</span> <span class="n">unsigned_grub_file</span></div>
 
+<div class="viewcode-block" id="Defaults.get_grub_bios_core_loader"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_bios_core_loader">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_bios_core_loader</span><span class="p">(</span><span class="n">root_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides grub bios image</span>
+
+<span class="sd">        Searches distribution specific locations to find the</span>
+<span class="sd">        core bios image below the given root path</span>
+
+<span class="sd">        :param string root_path: image root path</span>
+
+<span class="sd">        :return: file path or None</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">bios_grub_core_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/usr/share/grub*/i386-pc/</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">Defaults</span><span class="o">.</span><span class="n">get_bios_image_name</span><span class="p">()</span>
+            <span class="p">),</span>
+            <span class="s1">&#39;/usr/lib/grub*/i386-pc/</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">Defaults</span><span class="o">.</span><span class="n">get_bios_image_name</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">bios_grub_core_pattern</span> <span class="ow">in</span> <span class="n">bios_grub_core_patterns</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">bios_grub_core</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span>
+                <span class="n">root_path</span> <span class="o">+</span> <span class="n">bios_grub_core_pattern</span>
+            <span class="p">):</span>
+                <span class="k">return</span> <span class="n">bios_grub_core</span></div>
+
+<div class="viewcode-block" id="Defaults.get_syslinux_modules"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_syslinux_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_syslinux_modules</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns list of syslinux modules to include on ISO</span>
+<span class="sd">        images that boots via isolinux</span>
+
+<span class="sd">        :return: base file names</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;isolinux.bin&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ldlinux.c32&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;libcom32.c32&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;libutil.c32&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;gfxboot.c32&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;gfxboot.com&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;menu.c32&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;chain.c32&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;mboot.c32&#39;</span>
+        <span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_syslinux_search_paths"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_syslinux_search_paths">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_syslinux_search_paths</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        syslinux is packaged differently between distributions.</span>
+<span class="sd">        This method returns a list of directories to search for</span>
+<span class="sd">        syslinux data</span>
+
+<span class="sd">        :return: directory names</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;/usr/share/syslinux&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/usr/lib/syslinux/modules/bios&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/usr/lib/ISOLINUX&#39;</span>
+        <span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_isolinux_bios_grub_loader"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_isolinux_bios_grub_loader">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_isolinux_bios_grub_loader</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return name of eltorito grub image used as isolinux loader</span>
+<span class="sd">        in BIOS mode if isolinux.bin should not be used</span>
+
+<span class="sd">        :return: file base name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;eltorito.img&#39;</span></div>
+
 <div class="viewcode-block" id="Defaults.get_signed_grub_loader"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_signed_grub_loader">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_signed_grub_loader</span><span class="p">(</span><span class="n">root_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1024,7 +1119,8 @@
         <span class="n">signed_grub_file_patterns</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s1">&#39;/usr/share/efi/*/grub.efi&#39;</span><span class="p">,</span>
             <span class="s1">&#39;/usr/lib64/efi/grub.efi&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;/boot/efi/EFI/*/grub*.efi&#39;</span>
+            <span class="s1">&#39;/boot/efi/EFI/*/grub*.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/usr/share/grub*/*-efi/grub.efi&#39;</span>
         <span class="p">]</span>
         <span class="k">for</span> <span class="n">signed_grub_pattern</span> <span class="ow">in</span> <span class="n">signed_grub_file_patterns</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">signed_grub</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="n">signed_grub_pattern</span><span class="p">):</span>
@@ -1292,6 +1388,17 @@
         <span class="k">if</span> <span class="n">arch</span> <span class="ow">in</span> <span class="n">default_module_directory_names</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">default_module_directory_names</span><span class="p">[</span><span class="n">arch</span><span class="p">]</span></div>
 
+<div class="viewcode-block" id="Defaults.get_bios_module_directory_name"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_bios_module_directory_name">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_bios_module_directory_name</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides x86 BIOS directory name which stores the pc binaries</span>
+
+<span class="sd">        :return: directory name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;i386-pc&#39;</span></div>
+
 <div class="viewcode-block" id="Defaults.get_efi_image_name"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_efi_image_name">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_efi_image_name</span><span class="p">(</span><span class="n">arch</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1314,6 +1421,17 @@
         <span class="p">}</span>
         <span class="k">if</span> <span class="n">arch</span> <span class="ow">in</span> <span class="n">default_efi_image_names</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">default_efi_image_names</span><span class="p">[</span><span class="n">arch</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_bios_image_name"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_bios_image_name">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_bios_image_name</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides bios core boot binary name</span>
+
+<span class="sd">        :return: name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;core.img&#39;</span></div>
 
 <div class="viewcode-block" id="Defaults.get_default_boot_timeout_seconds"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_boot_timeout_seconds">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_default_boot_timeout_seconds</span><span class="p">():</span>

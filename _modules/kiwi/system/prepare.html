@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.prepare &mdash; kiwi 9.17.40 documentation</title>
+  <title>kiwi.system.prepare &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -267,6 +267,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../commands.html">KIWI Commands</a><ul>
@@ -332,7 +333,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.40</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.41</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -481,6 +482,8 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="k">import</span> <span class="n">dedent</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.root_init</span> <span class="k">import</span> <span class="n">RootInit</span>
@@ -520,6 +523,18 @@
 <span class="sd">        Setup and host bind new root system at given root_dir directory</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setup root directory: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">log</span><span class="o">.</span><span class="n">getLogLevel</span><span class="p">()</span> <span class="o">==</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">log</span><span class="o">.</span><span class="n">get_logfile</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                </span><span class="si">{headline}</span><span class="s1">: </span><span class="si">{reason}</span><span class="s1"></span>
+
+<span class="s1">                Further details to clarify the error might have been</span>
+<span class="s1">                reported earlier in the package manager log information</span>
+<span class="s1">                and did not get exposed to the caller. Thus if the above</span>
+<span class="s1">                message is not clear on the error please call kiwi with</span>
+<span class="s1">                the --debug or --logfile option.</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{headline}</span><span class="s1">: </span><span class="si">{reason}</span><span class="s1">&#39;</span>
         <span class="n">root</span> <span class="o">=</span> <span class="n">RootInit</span><span class="p">(</span>
             <span class="n">root_dir</span><span class="p">,</span> <span class="n">allow_existing</span>
         <span class="p">)</span>
@@ -675,16 +690,22 @@
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">manager</span><span class="o">.</span><span class="n">has_failed</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">returncode</span><span class="p">()):</span>
                 <span class="k">raise</span> <span class="n">KiwiBootStrapPhaseFailed</span><span class="p">(</span>
-                    <span class="s1">&#39;Bootstrap package installation failed: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">issue</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">headline</span><span class="o">=</span><span class="s1">&#39;Bootstrap package installation failed&#39;</span><span class="p">,</span>
+                        <span class="n">reason</span><span class="o">=</span><span class="n">issue</span>
+                    <span class="p">)</span>
                 <span class="p">)</span>
         <span class="n">manager</span><span class="o">.</span><span class="n">post_process_install_requests_bootstrap</span><span class="p">()</span>
         <span class="c1"># process archive installations</span>
         <span class="k">if</span> <span class="n">bootstrap_archives</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_install_archives</span><span class="p">(</span><span class="n">bootstrap_archives</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">KiwiBootStrapPhaseFailed</span><span class="p">(</span>
-                    <span class="s1">&#39;Bootstrap archive installation failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">headline</span><span class="o">=</span><span class="s1">&#39;Bootstrap archive installation failed&#39;</span><span class="p">,</span>
+                        <span class="n">reason</span><span class="o">=</span><span class="n">issue</span>
+                    <span class="p">)</span>
                 <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemPrepare.install_system"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare.install_system">[docs]</a>    <span class="k">def</span> <span class="nf">install_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="p">):</span>
@@ -736,15 +757,21 @@
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">manager</span><span class="o">.</span><span class="n">has_failed</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">returncode</span><span class="p">()):</span>
                     <span class="k">raise</span> <span class="n">KiwiInstallPhaseFailed</span><span class="p">(</span>
-                        <span class="s1">&#39;System package installation failed: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">issue</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">headline</span><span class="o">=</span><span class="s1">&#39;Systen package installation failed&#39;</span><span class="p">,</span>
+                            <span class="n">reason</span><span class="o">=</span><span class="n">issue</span>
+                        <span class="p">)</span>
                     <span class="p">)</span>
         <span class="c1"># process archive installations</span>
         <span class="k">if</span> <span class="n">system_archives</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_install_archives</span><span class="p">(</span><span class="n">system_archives</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">KiwiInstallPhaseFailed</span><span class="p">(</span>
-                    <span class="s1">&#39;System archive installation failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">headline</span><span class="o">=</span><span class="s1">&#39;System archive installation failed&#39;</span><span class="p">,</span>
+                        <span class="n">reason</span><span class="o">=</span><span class="n">issue</span>
+                    <span class="p">)</span>
                 <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemPrepare.pinch_system"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare.pinch_system">[docs]</a>    <span class="k">def</span> <span class="nf">pinch_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -762,11 +789,13 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">to_become_deleted_packages</span> <span class="o">=</span> \
             <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_to_become_deleted_packages</span><span class="p">(</span><span class="n">force</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">to_become_deleted_packages</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> system packages (chroot)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="s1">&#39;Force deleting&#39;</span> <span class="k">if</span> <span class="n">force</span> <span class="k">else</span> <span class="s1">&#39;Uninstalling&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">to_become_deleted_packages</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> system packages (chroot)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="s1">&#39;Force deleting&#39;</span> <span class="k">if</span> <span class="n">force</span> <span class="k">else</span> <span class="s1">&#39;Uninstalling&#39;</span>
                 <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">manager</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">package_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_package_manager</span><span class="p">()</span>
                     <span class="n">manager</span> <span class="o">=</span> <span class="n">PackageManager</span><span class="p">(</span>
@@ -776,10 +805,13 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">delete_packages</span><span class="p">(</span>
                     <span class="n">manager</span><span class="p">,</span> <span class="n">to_become_deleted_packages</span><span class="p">,</span> <span class="n">force</span>
                 <span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">KiwiPackagesDeletePhaseFailed</span><span class="p">(</span>
-                <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
-            <span class="p">)</span></div>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">KiwiPackagesDeletePhaseFailed</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">headline</span><span class="o">=</span><span class="s1">&#39;System package deletion failed&#39;</span><span class="p">,</span>
+                        <span class="n">reason</span><span class="o">=</span><span class="n">issue</span>
+                    <span class="p">)</span>
+                <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemPrepare.install_packages"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare.install_packages">[docs]</a>    <span class="k">def</span> <span class="nf">install_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="p">,</span> <span class="n">packages</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -806,9 +838,12 @@
                         <span class="n">manager</span><span class="o">.</span><span class="n">match_package_installed</span>
                     <span class="p">)</span>
                 <span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">KiwiSystemInstallPackagesFailed</span><span class="p">(</span>
-                    <span class="s1">&#39;Package installation failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">headline</span><span class="o">=</span><span class="s1">&#39;Package installation failed&#39;</span><span class="p">,</span>
+                        <span class="n">reason</span><span class="o">=</span><span class="n">issue</span>
+                    <span class="p">)</span>
                 <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemPrepare.delete_packages"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare.delete_packages">[docs]</a>    <span class="k">def</span> <span class="nf">delete_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="p">,</span> <span class="n">packages</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -824,13 +859,15 @@
 
 <span class="sd">        :raises KiwiSystemDeletePackagesFailed: if installation process fails</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> system packages (chroot)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="s1">&#39;Force deleting&#39;</span> <span class="k">if</span> <span class="n">force</span> <span class="k">else</span> <span class="s1">&#39;Uninstall&#39;</span>
-        <span class="p">))</span>
         <span class="n">all_delete_items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setup_requests</span><span class="p">(</span>
             <span class="n">manager</span><span class="p">,</span> <span class="n">packages</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">all_delete_items</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> system packages (chroot)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="s1">&#39;Force deleting&#39;</span> <span class="k">if</span> <span class="n">force</span> <span class="k">else</span> <span class="s1">&#39;Uninstall&#39;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
             <span class="n">process</span> <span class="o">=</span> <span class="n">CommandProcess</span><span class="p">(</span>
                 <span class="n">command</span><span class="o">=</span><span class="n">manager</span><span class="o">.</span><span class="n">process_delete_requests</span><span class="p">(</span><span class="n">force</span><span class="p">),</span>
                 <span class="n">log_topic</span><span class="o">=</span><span class="s1">&#39;system&#39;</span>
@@ -842,9 +879,12 @@
                         <span class="n">manager</span><span class="o">.</span><span class="n">match_package_deleted</span>
                     <span class="p">)</span>
                 <span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">KiwiSystemDeletePackagesFailed</span><span class="p">(</span>
-                    <span class="s1">&#39;Package deletion failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">headline</span><span class="o">=</span><span class="s1">&#39;Package deletion failed&#39;</span><span class="p">,</span>
+                        <span class="n">reason</span><span class="o">=</span><span class="n">issue</span>
+                    <span class="p">)</span>
                 <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemPrepare.update_system"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare.update_system">[docs]</a>    <span class="k">def</span> <span class="nf">update_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="p">):</span>
@@ -863,9 +903,12 @@
         <span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiSystemUpdateFailed</span><span class="p">(</span>
-                <span class="s1">&#39;System update failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">issue_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">headline</span><span class="o">=</span><span class="s1">&#39;System update failed&#39;</span><span class="p">,</span>
+                    <span class="n">reason</span><span class="o">=</span><span class="n">issue</span>
+                <span class="p">)</span>
             <span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_install_archives</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">archive_list</span><span class="p">):</span>

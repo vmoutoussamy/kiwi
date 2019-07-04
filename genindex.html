@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; kiwi 9.17.40 documentation</title>
+  <title>Index &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -268,6 +268,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">KIWI Commands</a><ul>
@@ -333,7 +334,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.40</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.17.41</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -614,6 +615,8 @@
       <li><a href="development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_edit_boot_install_script">call_edit_boot_install_script() (kiwi.system.setup.SystemSetup method)</a>
 </li>
       <li><a href="development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_image_script">call_image_script() (kiwi.system.setup.SystemSetup method)</a>
+</li>
+      <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_architecture_supports_iso_firmware_setup">check_architecture_supports_iso_firmware_setup() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_boot_description_exists">check_boot_description_exists() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
@@ -1141,6 +1144,10 @@
       </ul></li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_archive_image_types">get_archive_image_types() (kiwi.defaults.Defaults static method)</a>
 </li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_bios_image_name">get_bios_image_name() (kiwi.defaults.Defaults static method)</a>
+</li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_bios_module_directory_name">get_bios_module_directory_name() (kiwi.defaults.Defaults static method)</a>
+</li>
       <li><a href="development/api/kiwi.utils.html#kiwi.utils.block.BlockID.get_blkid">get_blkid() (kiwi.utils.block.BlockID method)</a>
 </li>
       <li><a href="development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.base.BootLoaderConfigBase.get_boot_cmdline">get_boot_cmdline() (kiwi.bootloader.config.base.BootLoaderConfigBase method)</a>
@@ -1373,14 +1380,16 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_basic_modules">get_grub_basic_modules() (kiwi.defaults.Defaults static method)</a>
 </li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_bios_core_loader">get_grub_bios_core_loader() (kiwi.defaults.Defaults static method)</a>
+</li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_bios_modules">get_grub_bios_modules() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_boot_directory_name">get_grub_boot_directory_name() (kiwi.defaults.Defaults static method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_efi_modules">get_grub_efi_modules() (kiwi.defaults.Defaults static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_ofw_modules">get_grub_ofw_modules() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_path">get_grub_path() (kiwi.defaults.Defaults static method)</a>
@@ -1425,6 +1434,8 @@
         <li><a href="development/api/kiwi.html#kiwi.runtime_config.RuntimeConfig.get_iso_tool_category">(kiwi.runtime_config.RuntimeConfig method)</a>
 </li>
       </ul></li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_isolinux_bios_grub_loader">get_isolinux_bios_grub_loader() (kiwi.defaults.Defaults static method)</a>
+</li>
       <li><a href="development/api/kiwi.system.html#kiwi.system.kernel.Kernel.get_kernel">get_kernel() (kiwi.system.kernel.Kernel method)</a>
 </li>
       <li><a href="development/api/kiwi.utils.html#kiwi.utils.block.BlockID.get_label">get_label() (kiwi.utils.block.BlockID method)</a>
@@ -1438,6 +1449,8 @@
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_live_iso_persistent_boot_options">get_live_iso_persistent_boot_options() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_locale">get_locale() (kiwi.xml_state.XMLState method)</a>
+</li>
+      <li><a href="development/api/kiwi.html#kiwi.logger.Logger.get_logfile">get_logfile() (kiwi.logger.Logger method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_lvm_overhead_mbytes">get_lvm_overhead_mbytes() (kiwi.defaults.Defaults static method)</a>
 </li>
@@ -1554,6 +1567,10 @@
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_strip_list">get_strip_list() (kiwi.xml_state.XMLState method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_strip_tools_to_keep">get_strip_tools_to_keep() (kiwi.xml_state.XMLState method)</a>
+</li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_syslinux_modules">get_syslinux_modules() (kiwi.defaults.Defaults static method)</a>
+</li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_syslinux_search_paths">get_syslinux_search_paths() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.get_system_archives">get_system_archives() (kiwi.xml_state.XMLState method)</a>
 </li>
@@ -1774,6 +1791,8 @@
       <li><a href="development/api/kiwi.system.html#kiwi.system.uri.Uri.is_remote">is_remote() (kiwi.system.uri.Uri method)</a>
 </li>
       <li><a href="development/api/kiwi.solver.repository.html#kiwi.solver.repository.base.SolverRepositoryBase.is_uptodate">is_uptodate() (kiwi.solver.repository.base.SolverRepositoryBase method)</a>
+</li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.is_x86_arch">is_x86_arch() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.xml_state.XMLState.is_xen_guest">is_xen_guest() (kiwi.xml_state.XMLState method)</a>
 </li>
@@ -2121,8 +2140,6 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.exceptions.KiwiBootLoaderInstallSetupError">KiwiBootLoaderInstallSetupError</a>
 </li>
-      <li><a href="development/api/kiwi.html#kiwi.exceptions.KiwiBootLoaderIsoLinuxPlatformError">KiwiBootLoaderIsoLinuxPlatformError</a>
-</li>
       <li><a href="development/api/kiwi.html#kiwi.exceptions.KiwiBootLoaderTargetError">KiwiBootLoaderTargetError</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.exceptions.KiwiBootLoaderZiplInstallError">KiwiBootLoaderZiplInstallError</a>
@@ -2339,15 +2356,13 @@
         <li><a href="development/api/kiwi.html#kiwi.xml_description.XMLDescription.load">(kiwi.xml_description.XMLDescription method)</a>
 </li>
       </ul></li>
-      <li><a href="development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.load_boot_xml_description">load_boot_xml_description() (kiwi.boot.image.base.BootImageBase method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.load_boot_xml_description">load_boot_xml_description() (kiwi.boot.image.base.BootImageBase method)</a>
+</li>
       <li><a href="development/api/kiwi.html#kiwi.cli.Cli.load_command">load_command() (kiwi.cli.Cli method)</a>
 </li>
       <li><a href="development/api/kiwi.tasks.html#kiwi.tasks.base.CliTask.load_xml_description">load_xml_description() (kiwi.tasks.base.CliTask method)</a>
-</li>
-      <li><a href="development/api/kiwi.html#kiwi.logger.log">log (in module kiwi.logger)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.logger.Logger">Logger (class in kiwi.logger)</a>
 </li>
@@ -2870,6 +2885,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_machine_id">setup_machine_id() (kiwi.system.setup.SystemSetup method)</a>
+</li>
+      <li><a href="development/api/kiwi.iso_tools.html#kiwi.iso_tools.base.IsoToolsBase.setup_media_loader_directory">setup_media_loader_directory() (kiwi.iso_tools.base.IsoToolsBase static method)</a>
 </li>
       <li><a href="development/api/kiwi.volume_manager.html#kiwi.volume_manager.base.VolumeManagerBase.setup_mountpoint">setup_mountpoint() (kiwi.volume_manager.base.VolumeManagerBase method)</a>
 </li>

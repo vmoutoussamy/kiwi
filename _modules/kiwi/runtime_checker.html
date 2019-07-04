@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.runtime_checker &mdash; kiwi 9.17.40 documentation</title>
+  <title>kiwi.runtime_checker &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -267,6 +267,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../commands.html">KIWI Commands</a><ul>
@@ -332,7 +333,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.40</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.41</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -481,6 +482,7 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">platform</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="k">import</span> <span class="n">dedent</span>
 
 <span class="c1"># project</span>
@@ -526,12 +528,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
 <span class="s1">            The use of imageinclude=&quot;true&quot; in the repository definition</span>
-<span class="s1">            for the Repository: </span><span class="si">{0}</span><span class="s1"> requires the repository to by publicly</span>
-<span class="s1">            available. The source locator of the repository however</span>
-<span class="s1">            indicates it is private to your local system. Therefore it</span>
-<span class="s1">            can&#39;t be included into the system image repository configuration.</span>
-<span class="s1">            Please define a publicly available repository in your image</span>
-<span class="s1">            XML description: </span><span class="si">{1}</span><span class="s1"></span>
+<span class="s1">            for the Repository: </span><span class="si">{0}</span><span class="s1"></span>
+<span class="s1">            requires the repository to by publicly available. The source</span>
+<span class="s1">            locator of the repository however indicates it is private to</span>
+<span class="s1">            your local system. Therefore it can&#39;t be included into the</span>
+<span class="s1">            system image repository configuration. Please define a publicly</span>
+<span class="s1">            available repository in your image XML description.</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
 
         <span class="n">repository_sections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_repository_sections</span><span class="p">()</span>
@@ -544,9 +546,7 @@
                 <span class="n">uri</span> <span class="o">=</span> <span class="n">Uri</span><span class="p">(</span><span class="n">repo_source</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="o">.</span><span class="n">is_public</span><span class="p">():</span>
                     <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
-                        <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                            <span class="n">repo_source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">description</span>
-                        <span class="p">)</span>
+                        <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_source</span><span class="p">)</span>
                     <span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeChecker.check_target_directory_not_in_shared_cache"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_target_directory_not_in_shared_cache">[docs]</a>    <span class="k">def</span> <span class="nf">check_target_directory_not_in_shared_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">):</span>
@@ -887,6 +887,44 @@
                     <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
                         <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">required_dracut_package</span><span class="p">)</span>
                     <span class="p">)</span></div>
+
+<div class="viewcode-block" id="RuntimeChecker.check_architecture_supports_iso_firmware_setup"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_architecture_supports_iso_firmware_setup">[docs]</a>    <span class="k">def</span> <span class="nf">check_architecture_supports_iso_firmware_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        For creating ISO images a different bootloader setup is</span>
+<span class="sd">        performed depending on the configured firmware. If the</span>
+<span class="sd">        firmware is set to bios, isolinux is used and that limits</span>
+<span class="sd">        the architecture to x86 only. In any other case the appliance</span>
+<span class="sd">        configured bootloader is used. This check examines if the</span>
+<span class="sd">        host architecture is supported with the configured firmware</span>
+<span class="sd">        on request of an ISO image.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
+<span class="s1">            Unsupported firmware setup: </span><span class="si">{0}</span><span class="s1"> on </span><span class="si">{1}</span><span class="s1"> architecture</span>
+
+<span class="s1">            The selected firmware limits the creation of images to</span>
+<span class="s1">            the x86 platform. For the detected build host architecture</span>
+<span class="s1">            and the request to build a live or install ISO media</span>
+<span class="s1">            the EFI firmware must be used:</span>
+
+<span class="s1">            &lt;type ... firmware=&quot;efi&quot;/&gt;</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
+        <span class="n">build_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span>
+        <span class="n">firmware</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_firmware</span><span class="p">()</span> <span class="ow">or</span> \
+            <span class="n">Defaults</span><span class="o">.</span><span class="n">get_default_firmware</span><span class="p">(</span><span class="n">arch</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">firmware</span> <span class="o">==</span> <span class="s1">&#39;bios&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">is_x86_arch</span><span class="p">(</span><span class="n">arch</span><span class="p">):</span>
+            <span class="n">iso_build_requested</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">build_type</span> <span class="o">==</span> <span class="s1">&#39;iso&#39;</span><span class="p">:</span>
+                <span class="n">iso_build_requested</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">build_type</span> <span class="o">==</span> <span class="s1">&#39;oem&#39;</span><span class="p">:</span>
+                <span class="n">install_iso</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_installiso</span><span class="p">()</span>
+                <span class="n">install_stick</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_installstick</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">install_iso</span> <span class="ow">or</span> <span class="n">install_stick</span><span class="p">:</span>
+                    <span class="n">iso_build_requested</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">iso_build_requested</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">firmware</span><span class="p">,</span> <span class="n">arch</span><span class="p">)</span>
+                <span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeChecker.check_dracut_module_for_disk_oem_in_package_list"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_dracut_module_for_disk_oem_in_package_list">[docs]</a>    <span class="k">def</span> <span class="nf">check_dracut_module_for_disk_oem_in_package_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

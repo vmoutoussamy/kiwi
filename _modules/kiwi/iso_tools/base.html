@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.iso_tools.base &mdash; kiwi 9.17.40 documentation</title>
+  <title>kiwi.iso_tools.base &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -267,6 +267,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../commands.html">KIWI Commands</a><ul>
@@ -332,7 +333,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.40</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.17.41</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -482,8 +483,16 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
+<span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.sync</span> <span class="k">import</span> <span class="n">DataSync</span>
+<span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 
 
 <div class="viewcode-block" id="IsoToolsBase"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.base.IsoToolsBase">[docs]</a><span class="k">class</span> <span class="nc">IsoToolsBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -496,6 +505,7 @@
 <span class="sd">    :param str iso_loaders: list of ISO loaders to embed</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dir</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">source_dir</span> <span class="o">=</span> <span class="n">source_dir</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_path</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_iso_boot_path</span><span class="p">()</span>
@@ -559,7 +569,83 @@
 
 <span class="sd">        Implementation in specialized tool class</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="IsoToolsBase.setup_media_loader_directory"><a class="viewcode-back" href="../../../development/api/kiwi.iso_tools.html#kiwi.iso_tools.base.IsoToolsBase.setup_media_loader_directory">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">setup_media_loader_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">,</span> <span class="n">media_path</span><span class="p">,</span> <span class="n">boot_theme</span><span class="p">):</span>
+        <span class="n">loader_data</span> <span class="o">=</span> <span class="n">lookup_path</span> <span class="o">+</span> <span class="s1">&#39;/image/loader/&#39;</span>
+        <span class="n">media_boot_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">media_path</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_iso_boot_path</span><span class="p">(),</span> <span class="s1">&#39;loader&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">loader_data</span><span class="p">)</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">loader_data</span><span class="p">)</span>
+        <span class="n">grub_image_file_names</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">Defaults</span><span class="o">.</span><span class="n">get_isolinux_bios_grub_loader</span><span class="p">(),</span>
+            <span class="s1">&#39;boot_hybrid.img&#39;</span>
+        <span class="p">]</span>
+        <span class="n">loader_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">grub_image_file_name</span> <span class="ow">in</span> <span class="n">grub_image_file_names</span><span class="p">:</span>
+            <span class="n">grub_file</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_path</span><span class="p">(</span>
+                <span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;i386-pc/</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grub_image_file_name</span><span class="p">),</span>
+                <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">grub_file</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">grub_file</span><span class="p">):</span>
+                <span class="n">loader_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grub_file</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">syslinux_file_name</span> <span class="ow">in</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_syslinux_modules</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">syslinux_dir</span> <span class="ow">in</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_syslinux_search_paths</span><span class="p">():</span>
+                <span class="n">syslinux_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span><span class="n">lookup_path</span><span class="p">,</span> <span class="n">syslinux_dir</span><span class="p">,</span> <span class="n">syslinux_file_name</span><span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">syslinux_file</span><span class="p">):</span>
+                    <span class="n">loader_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">syslinux_file</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Copying loader files to </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loader_data</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">loader_file</span> <span class="ow">in</span> <span class="n">loader_files</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;--&gt; Copying </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loader_file</span><span class="p">))</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">loader_file</span><span class="p">,</span> <span class="n">loader_data</span><span class="p">)</span>
+
+        <span class="n">bash_command</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">lookup_path</span> <span class="o">+</span> <span class="s1">&#39;/boot/memtest*&#39;</span><span class="p">,</span> <span class="n">loader_data</span> <span class="o">+</span> <span class="s1">&#39;/memtest&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">bash_command</span><span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">boot_theme</span><span class="p">:</span>
+            <span class="n">theme_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;/etc/bootsplash/themes/&#39;</span><span class="p">,</span> <span class="n">boot_theme</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">theme_path</span> <span class="o">+</span> <span class="s1">&#39;/cdrom/gfxboot.cfg&#39;</span><span class="p">):</span>
+                <span class="n">bash_command</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">theme_path</span> <span class="o">+</span> <span class="s1">&#39;/cdrom/*&#39;</span><span class="p">,</span> <span class="n">loader_data</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                    <span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">bash_command</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="c1"># don&#39;t move down one menu entry the first time a F-key is used</span>
+                <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="s1">&#39;gfxboot&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;--config-file&#39;</span><span class="p">,</span> <span class="n">loader_data</span> <span class="o">+</span> <span class="s1">&#39;/gfxboot.cfg&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;--change-config&#39;</span><span class="p">,</span> <span class="s1">&#39;install::autodown=0&#39;</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">theme_path</span> <span class="o">+</span> <span class="s1">&#39;/bootloader/message&#39;</span><span class="p">):</span>
+                <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                    <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">theme_path</span> <span class="o">+</span> <span class="s1">&#39;/bootloader/message&#39;</span><span class="p">,</span> <span class="n">loader_data</span><span class="p">]</span>
+                <span class="p">)</span>
+
+        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">media_boot_path</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">DataSync</span><span class="p">(</span>
+            <span class="n">loader_data</span><span class="p">,</span> <span class="n">media_boot_path</span>
+        <span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">]</span>
+        <span class="p">)</span></div></div>
 </pre></div>
 
            </div>

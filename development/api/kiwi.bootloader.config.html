@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config Package &mdash; kiwi 9.17.40 documentation</title>
+  <title>kiwi.bootloader.config Package &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -269,6 +269,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../commands.html">KIWI Commands</a><ul>
@@ -334,7 +335,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.40</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.41</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -449,7 +450,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.40</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.17.41</a> &raquo;</li>
         
           <li><a href="kiwi.bootloader.html">kiwi.bootloader Package</a> &raquo;</li>
         
@@ -883,7 +884,7 @@ the filesystem</p>
 
 <dl class="method">
 <dt id="kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.setup_disk_image_config">
-<code class="sig-name descname">setup_disk_image_config</code><span class="sig-paren">(</span><em class="sig-param">boot_uuid</em>, <em class="sig-param">root_uuid</em>, <em class="sig-param">hypervisor='xen.gz'</em>, <em class="sig-param">kernel='linux.vmx'</em>, <em class="sig-param">initrd='initrd.vmx'</em>, <em class="sig-param">boot_options=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/grub2.html#BootLoaderConfigGrub2.setup_disk_image_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.setup_disk_image_config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setup_disk_image_config</code><span class="sig-paren">(</span><em class="sig-param">boot_uuid</em>, <em class="sig-param">root_uuid</em>, <em class="sig-param">hypervisor='xen.gz'</em>, <em class="sig-param">kernel=None</em>, <em class="sig-param">initrd=None</em>, <em class="sig-param">boot_options=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/grub2.html#BootLoaderConfigGrub2.setup_disk_image_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.setup_disk_image_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the grub.cfg in memory from a template suitable to boot
 from a disk image</p>
 <dl class="field-list simple">
@@ -1000,13 +1001,12 @@ parameters required according to the grub2 bootloader setup</p>
 <dt id="kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux.setup_install_boot_images">
 <code class="sig-name descname">setup_install_boot_images</code><span class="sig-paren">(</span><em class="sig-param">mbrid</em>, <em class="sig-param">lookup_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/isolinux.html#BootLoaderConfigIsoLinux.setup_install_boot_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux.setup_install_boot_images" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide isolinux boot metadata</p>
-<p>The mbrid parameter is not used, because only isolinux
-loader binary and possible theming files are copied</p>
+<p>No extra boot images must be created for isolinux</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mbrid</strong> (<em>string</em>) – unused</p></li>
-<li><p><strong>lookup_path</strong> (<em>string</em>) – custom module lookup path</p></li>
+<li><p><strong>lookup_path</strong> (<em>string</em>) – unused</p></li>
 </ul>
 </dd>
 </dl>
@@ -1033,7 +1033,15 @@ from an ISO image in BIOS boot mode</p>
 <dt id="kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux.setup_live_boot_images">
 <code class="sig-name descname">setup_live_boot_images</code><span class="sig-paren">(</span><em class="sig-param">mbrid</em>, <em class="sig-param">lookup_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/isolinux.html#BootLoaderConfigIsoLinux.setup_live_boot_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux.setup_live_boot_images" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide isolinux boot metadata</p>
-<p>Calls setup_install_boot_images because no different action required</p>
+<p>No extra boot images must be created for isolinux</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mbrid</strong> (<em>string</em>) – unused</p></li>
+<li><p><strong>lookup_path</strong> (<em>string</em>) – unused</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1101,7 +1109,7 @@ a live system from an ISO image in BIOS boot mode</p>
 
 <dl class="method">
 <dt id="kiwi.bootloader.config.zipl.BootLoaderConfigZipl.setup_disk_image_config">
-<code class="sig-name descname">setup_disk_image_config</code><span class="sig-paren">(</span><em class="sig-param">boot_uuid=None</em>, <em class="sig-param">root_uuid=None</em>, <em class="sig-param">hypervisor=None</em>, <em class="sig-param">kernel='linux.vmx'</em>, <em class="sig-param">initrd='initrd.vmx'</em>, <em class="sig-param">boot_options=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/zipl.html#BootLoaderConfigZipl.setup_disk_image_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.zipl.BootLoaderConfigZipl.setup_disk_image_config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setup_disk_image_config</code><span class="sig-paren">(</span><em class="sig-param">boot_uuid=None</em>, <em class="sig-param">root_uuid=None</em>, <em class="sig-param">hypervisor=None</em>, <em class="sig-param">kernel=None</em>, <em class="sig-param">initrd=None</em>, <em class="sig-param">boot_options=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/zipl.html#BootLoaderConfigZipl.setup_disk_image_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.zipl.BootLoaderConfigZipl.setup_disk_image_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the zipl config in memory from a template suitable to
 boot from a disk image.</p>
 <dl class="field-list simple">

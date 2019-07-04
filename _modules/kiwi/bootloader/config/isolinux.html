@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.isolinux &mdash; kiwi 9.17.40 documentation</title>
+  <title>kiwi.bootloader.config.isolinux &mdash; kiwi 9.17.41 documentation</title>
   
 
   
@@ -267,6 +267,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../commands.html">KIWI Commands</a><ul>
@@ -332,7 +333,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.40</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.41</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -484,21 +485,15 @@
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">platform</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.bootloader.config.base</span> <span class="k">import</span> <span class="n">BootLoaderConfigBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.bootloader.template.isolinux</span> <span class="k">import</span> <span class="n">BootLoaderTemplateIsoLinux</span>
-<span class="kn">from</span> <span class="nn">kiwi.utils.sync</span> <span class="k">import</span> <span class="n">DataSync</span>
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
-<span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
 
-<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
-    <span class="n">KiwiTemplateError</span><span class="p">,</span>
-    <span class="n">KiwiBootLoaderIsoLinuxPlatformError</span>
-<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="n">KiwiTemplateError</span>
 
 
 <div class="viewcode-block" id="BootLoaderConfigIsoLinux"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux">[docs]</a><span class="k">class</span> <span class="nc">BootLoaderConfigIsoLinux</span><span class="p">(</span><span class="n">BootLoaderConfigBase</span><span class="p">):</span>
@@ -512,15 +507,9 @@
 <span class="sd">        :param dict custom_args: custom isolinux config arguments</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">=</span> <span class="n">custom_args</span>
-        <span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">arch</span>
-        <span class="k">elif</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i686&#39;</span> <span class="ow">or</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i586&#39;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i686&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i586&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="s1">&#39;ix86&#39;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">KiwiBootLoaderIsoLinuxPlatformError</span><span class="p">(</span>
-                <span class="s1">&#39;host architecture </span><span class="si">%s</span><span class="s1"> not supported for isolinux setup&#39;</span> <span class="o">%</span> <span class="n">arch</span>
-            <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">install_volid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_volid</span><span class="p">()</span> <span class="ow">or</span> \
             <span class="n">Defaults</span><span class="o">.</span><span class="n">get_install_volume_id</span><span class="p">()</span>
@@ -694,92 +683,23 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Provide isolinux boot metadata</span>
 
-<span class="sd">        The mbrid parameter is not used, because only isolinux</span>
-<span class="sd">        loader binary and possible theming files are copied</span>
+<span class="sd">        No extra boot images must be created for isolinux</span>
 
 <span class="sd">        :param string mbrid: unused</span>
-<span class="sd">        :param string lookup_path: custom module lookup path</span>
+<span class="sd">        :param string lookup_path: unused</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_copy_loader_data_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span></div>
+        <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="BootLoaderConfigIsoLinux.setup_live_boot_images"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.isolinux.BootLoaderConfigIsoLinux.setup_live_boot_images">[docs]</a>    <span class="k">def</span> <span class="nf">setup_live_boot_images</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mbrid</span><span class="p">,</span> <span class="n">lookup_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Provide isolinux boot metadata</span>
 
-<span class="sd">        Calls setup_install_boot_images because no different action required</span>
+<span class="sd">        No extra boot images must be created for isolinux</span>
+
+<span class="sd">        :param string mbrid: unused</span>
+<span class="sd">        :param string lookup_path: unused</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setup_install_boot_images</span><span class="p">(</span><span class="n">mbrid</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="nf">_copy_loader_data_to_boot_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">lookup_path</span><span class="p">:</span>
-            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
-        <span class="n">loader_data</span> <span class="o">=</span> <span class="n">lookup_path</span> <span class="o">+</span> <span class="s1">&#39;/image/loader/&#39;</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">loader_data</span><span class="p">)</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">loader_data</span><span class="p">)</span>
-
-        <span class="n">syslinux_file_names</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;isolinux.bin&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;ldlinux.c32&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;libcom32.c32&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;libutil.c32&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;gfxboot.c32&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;gfxboot.com&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;menu.c32&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;chain.c32&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;mboot.c32&#39;</span>
-        <span class="p">]</span>
-        <span class="n">syslinux_dirs</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;/usr/share/syslinux/&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;/usr/lib/syslinux/modules/bios/&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;/usr/lib/ISOLINUX/&#39;</span>
-        <span class="p">]</span>
-        <span class="k">for</span> <span class="n">syslinux_file_name</span> <span class="ow">in</span> <span class="n">syslinux_file_names</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">syslinux_dir</span> <span class="ow">in</span> <span class="n">syslinux_dirs</span><span class="p">:</span>
-                <span class="n">syslinux_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                    <span class="p">[</span><span class="n">lookup_path</span><span class="p">,</span> <span class="n">syslinux_dir</span><span class="p">,</span> <span class="n">syslinux_file_name</span><span class="p">]</span>
-                <span class="p">)</span>
-                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">syslinux_file</span><span class="p">):</span>
-                    <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">syslinux_file</span><span class="p">,</span> <span class="n">loader_data</span><span class="p">)</span>
-
-        <span class="n">bash_command</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">lookup_path</span> <span class="o">+</span> <span class="s1">&#39;/boot/memtest*&#39;</span><span class="p">,</span> <span class="n">loader_data</span> <span class="o">+</span> <span class="s1">&#39;/memtest&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">bash_command</span><span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
-        <span class="p">)</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_theme</span><span class="p">():</span>
-            <span class="n">theme_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                <span class="p">[</span><span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;/etc/bootsplash/themes/&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_theme</span><span class="p">()]</span>
-            <span class="p">)</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">theme_path</span> <span class="o">+</span> <span class="s1">&#39;/cdrom/gfxboot.cfg&#39;</span><span class="p">):</span>
-                <span class="n">bash_command</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">theme_path</span> <span class="o">+</span> <span class="s1">&#39;/cdrom/*&#39;</span><span class="p">,</span> <span class="n">loader_data</span><span class="p">]</span>
-                <span class="p">)</span>
-                <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">bash_command</span><span class="p">]</span>
-                <span class="p">)</span>
-                <span class="c1"># don&#39;t move down one menu entry the first time a F-key is used</span>
-                <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="p">[</span>
-                        <span class="s1">&#39;gfxboot&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;--config-file&#39;</span><span class="p">,</span> <span class="n">loader_data</span> <span class="o">+</span> <span class="s1">&#39;/gfxboot.cfg&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;--change-config&#39;</span><span class="p">,</span> <span class="s1">&#39;install::autodown=0&#39;</span>
-                    <span class="p">]</span>
-                <span class="p">)</span>
-
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">theme_path</span> <span class="o">+</span> <span class="s1">&#39;/bootloader/message&#39;</span><span class="p">):</span>
-                <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">theme_path</span> <span class="o">+</span> <span class="s1">&#39;/bootloader/message&#39;</span><span class="p">,</span> <span class="n">loader_data</span><span class="p">]</span>
-                <span class="p">)</span>
-
-        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_iso_boot_path</span><span class="p">())</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">DataSync</span><span class="p">(</span>
-            <span class="n">loader_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_iso_boot_path</span><span class="p">()</span>
-        <span class="p">)</span>
-        <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
-            <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
+        <span class="k">pass</span></div>
 
     <span class="k">def</span> <span class="nf">_get_iso_boot_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">+</span> <span class="s1">&#39;/loader&#39;</span>
