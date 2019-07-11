@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.17.42 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.18.0 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.17.42</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -486,8 +486,6 @@
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">reload_module</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
 <span class="kn">import</span> <span class="nn">platform</span>
 <span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">resource_filename</span>
@@ -1834,22 +1832,6 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s1">&#39;KIWI </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__version__</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="Defaults.set_python_default_encoding_to_utf8"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.set_python_default_encoding_to_utf8">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">set_python_default_encoding_to_utf8</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Set python default encoding to utf-8 if not already done</span>
-
-<span class="sd">        This is not a safe operation since sys.setdefaultencoding()</span>
-<span class="sd">        was removed from sys on purpose when Python starts. Reenabling</span>
-<span class="sd">        it and changing the default encoding can break code that relies</span>
-<span class="sd">        on ascii being the default. Within the scope of kiwi the</span>
-<span class="sd">        operation is safe because all data is expected to be utf-8</span>
-<span class="sd">        everywhere and considered a bug if this is not the case</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="n">reload_module</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>  <span class="c1"># Reload required to get setdefaultencoding back</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Defaults.get_custom_rpm_macros_path"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_custom_rpm_macros_path">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_custom_rpm_macros_path</span><span class="p">():</span>

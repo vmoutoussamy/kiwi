@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.vagrant_base &mdash; kiwi 9.17.42 documentation</title>
+  <title>kiwi.storage.subformat.vagrant_base &mdash; kiwi 9.18.0 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.17.42</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -488,7 +488,6 @@
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
-<span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">mkdtemp</span>
 
@@ -705,20 +704,8 @@
 
     <span class="k">def</span> <span class="nf">_create_box_vagrantconfig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">template</span> <span class="o">=</span> <span class="n">VagrantConfigTemplate</span><span class="p">()</span>
-        <span class="n">vagrant_config</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span>
+        <span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span>
             <span class="n">custom_settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_additional_vagrant_config_settings</span><span class="p">()</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">vagrant_config</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span>
-            <span class="p">{</span><span class="s1">&#39;mac_address&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_mac</span><span class="p">()}</span>
-        <span class="p">)</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_random_mac</span><span class="p">():</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%02x%02x%02x%02x%02x%02x</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x16</span><span class="p">,</span> <span class="mh">0x3e</span><span class="p">,</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0x7e</span><span class="p">),</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">),</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">)</span>
         <span class="p">)</span></div>
 </pre></div>
 

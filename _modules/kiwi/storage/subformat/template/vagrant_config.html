@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.template.vagrant_config &mdash; kiwi 9.17.42 documentation</title>
+  <title>kiwi.storage.subformat.template.vagrant_config &mdash; kiwi 9.18.0 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../development/api/kiwi.html">API Documentation 9.17.42</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../development/api/kiwi.html">API Documentation 9.18.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -489,7 +489,6 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="k">import</span> <span class="n">dedent</span>
-<span class="kn">from</span> <span class="nn">string</span> <span class="k">import</span> <span class="n">Template</span>
 
 
 <div class="viewcode-block" id="VagrantConfigTemplate"><a class="viewcode-back" href="../../../../../development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate">[docs]</a><span class="k">class</span> <span class="nc">VagrantConfigTemplate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -500,9 +499,9 @@
 <span class="sd">    inside a vagrant box.</span>
 
 <span class="sd">    The included Vagrantfile carries additional information for vagrant: by</span>
-<span class="sd">    default that is just the boxes&#39; MAC address, but depending on the provider</span>
-<span class="sd">    additional information need to be present. These can be passed via the</span>
-<span class="sd">    parameter ``custom_settings`` to the method :meth:`get_template`.</span>
+<span class="sd">    default that is nothing, but depending on the provider additional</span>
+<span class="sd">    information need to be present. These can be passed via the parameter</span>
+<span class="sd">    ``custom_settings`` to the method :meth:`get_template`.</span>
 
 <span class="sd">    Example usage:</span>
 
@@ -514,10 +513,8 @@
 <span class="sd">        &gt;&gt;&gt; vagrant_config = VagrantConfigTemplate()</span>
 <span class="sd">        &gt;&gt;&gt; print(</span>
 <span class="sd">        ...     vagrant_config.get_template()</span>
-<span class="sd">        ...     .substitute({&#39;mac_address&#39;: &#39;deadbeef&#39;})</span>
 <span class="sd">        ... )</span>
 <span class="sd">        Vagrant.configure(&quot;2&quot;) do |config|</span>
-<span class="sd">          config.vm.base_mac = &quot;deadbeef&quot;</span>
 <span class="sd">        end</span>
 
 <span class="sd">    If your provider/box requires additional settings, provide them as follows:</span>
@@ -532,10 +529,8 @@
 <span class="sd">        ... &#39;&#39;&#39;).strip()</span>
 <span class="sd">        &gt;&gt;&gt; print(</span>
 <span class="sd">        ...     vagrant_config.get_template(extra_settings)</span>
-<span class="sd">        ...     .substitute({&#39;mac_address&#39;: &#39;DEADBEEF&#39;})</span>
 <span class="sd">        ... )</span>
 <span class="sd">        Vagrant.configure(&quot;2&quot;) do |config|</span>
-<span class="sd">          config.vm.base_mac = &quot;DEADBEEF&quot;</span>
 <span class="sd">          config.vm.hostname = &quot;no-dead-beef&quot;</span>
 <span class="sd">          config.vm.provider :special do |special|</span>
 <span class="sd">            special.secret_settings = &quot;please_work&quot;</span>
@@ -548,10 +543,6 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            Vagrant.configure(&quot;2&quot;) do |config|</span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">mac</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="o">+</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            config.vm.base_mac = &quot;$</span><span class="si">{mac_address}</span><span class="s1">&quot;</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
@@ -567,21 +558,20 @@
 <span class="sd">            pasted into the Vagrantfile template. The string is put at the</span>
 <span class="sd">            correct indentation level for you, but the internal indentation has</span>
 <span class="sd">            to be provided by the caller.</span>
-<span class="sd">        :return: A template with ``custom_settings`` inserted at the</span>
+<span class="sd">        :return: A string with ``custom_settings`` inserted at the</span>
 <span class="sd">            appropriate position. The template has one the variable</span>
 <span class="sd">            ``mac_address`` that must be substituted.</span>
-<span class="sd">        :rtype: string.Template</span>
+<span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mac</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
         <span class="k">if</span> <span class="n">custom_settings</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">template</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span>
+            <span class="n">template</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="n">custom_settings</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
             <span class="p">)</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span>
-        <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div></div>
+            <span class="n">template</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+        <span class="n">template</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span>
+        <span class="k">return</span> <span class="n">template</span></div></div>
 </pre></div>
 
            </div>

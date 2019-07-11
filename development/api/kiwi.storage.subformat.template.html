@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.template Package &mdash; kiwi 9.17.42 documentation</title>
+  <title>kiwi.storage.subformat.template Package &mdash; kiwi 9.18.0 documentation</title>
   
 
   
@@ -338,7 +338,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.17.42</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.0</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -453,7 +453,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.17.42</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.0</a> &raquo;</li>
         
           <li><a href="kiwi.storage.html">kiwi.storage Package</a> &raquo;</li>
         
@@ -527,19 +527,17 @@
 <p>This class creates a simple template for the Vagrantfile that is included
 inside a vagrant box.</p>
 <p>The included Vagrantfile carries additional information for vagrant: by
-default that is just the boxes’ MAC address, but depending on the provider
-additional information need to be present. These can be passed via the
-parameter <code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> to the method <a class="reference internal" href="#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template" title="kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_template()</span></code></a>.</p>
+default that is nothing, but depending on the provider additional
+information need to be present. These can be passed via the parameter
+<code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> to the method <a class="reference internal" href="#kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template" title="kiwi.storage.subformat.template.vagrant_config.VagrantConfigTemplate.get_template"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_template()</span></code></a>.</p>
 <p>Example usage:</p>
 <p>The default without any additional settings will result in this
 Vagrantfile:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vagrant_config</span> <span class="o">=</span> <span class="n">VagrantConfigTemplate</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">vagrant_config</span><span class="o">.</span><span class="n">get_template</span><span class="p">()</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="s1">&#39;mac_address&#39;</span><span class="p">:</span> <span class="s1">&#39;deadbeef&#39;</span><span class="p">})</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="go">Vagrant.configure(&quot;2&quot;) do |config|</span>
-<span class="go">  config.vm.base_mac = &quot;deadbeef&quot;</span>
 <span class="go">end</span>
 </pre></div>
 </div>
@@ -552,10 +550,8 @@ Vagrantfile:</p>
 <span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">vagrant_config</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">extra_settings</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="s1">&#39;mac_address&#39;</span><span class="p">:</span> <span class="s1">&#39;DEADBEEF&#39;</span><span class="p">})</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="go">Vagrant.configure(&quot;2&quot;) do |config|</span>
-<span class="go">  config.vm.base_mac = &quot;DEADBEEF&quot;</span>
 <span class="go">  config.vm.hostname = &quot;no-dead-beef&quot;</span>
 <span class="go">  config.vm.provider :special do |special|</span>
 <span class="go">    special.secret_settings = &quot;please_work&quot;</span>
@@ -576,12 +572,12 @@ correct indentation level for you, but the internal indentation has
 to be provided by the caller.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A template with <code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> inserted at the
+<dd class="field-even"><p>A string with <code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> inserted at the
 appropriate position. The template has one the variable
 <code class="docutils literal notranslate"><span class="pre">mac_address</span></code> that must be substituted.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/string.html#string.Template" title="(in Python v3.7)">string.Template</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
