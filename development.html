@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Development and Contributing &mdash; kiwi 9.18.1 documentation</title>
+  <title>Development and Contributing &mdash; kiwi 9.18.2 documentation</title>
   
 
   
@@ -338,7 +338,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -477,12 +477,12 @@
 <p><strong>Abstract</strong></p>
 <p>This document describes the development process of KIWI
 and how you can be part of it. This description applies
-to version 9.18.1.</p>
+to version 9.18.2.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/schema.html">Schema Documentation 7.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/schema_extensions.html">Extending KIWI with Custom Operations</a></li>
 </ul>
@@ -491,11 +491,11 @@ to version 9.18.1.</p>
 driven development rules.</p>
 <p>If you want to implement a bigger feature, consider opening an issue on
 GitHub first to discuss the changes. Or join the discussion in the
-<code class="docutils literal notranslate"><span class="pre">#kiwi</span></code> channel on <a class="reference external" href="https://riot.im/">Riot.im</a>.</p>
+<code class="docutils literal notranslate"><span class="pre">#kiwi</span></code> channel on <a class="reference external" href="https://about.riot.im">Riot.im</a>.</p>
 <div class="section" id="fork-the-upstream-kiwi-repository">
 <h2>Fork the upstream KIWI repository<a class="headerlink" href="#fork-the-upstream-kiwi-repository" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>On GitHub, navigate to: <a class="reference external" href="https://github.com/SUSE/kiwi">https://github.com/SUSE/kiwi</a></p></li>
+<li><p>On GitHub, navigate to: <a class="reference external" href="https://github.com/OSInside/kiwi">https://github.com/OSInside/kiwi</a></p></li>
 <li><p>In the top-right corner of the page, click <strong class="command">Fork</strong>.</p></li>
 </ol>
 </div>
@@ -503,7 +503,7 @@ GitHub first to discuss the changes. Or join the discussion in the
 <h2>Create a local clone of the forked KIWI repository<a class="headerlink" href="#create-a-local-clone-of-the-forked-kiwi-repository" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/YOUR-USERNAME/kiwi
 
-<span class="gp">$</span> git remote add upstream https://github.com/SUSE/kiwi.git
+<span class="gp">$</span> git remote add upstream https://github.com/OSInside/kiwi.git
 </pre></div>
 </div>
 </div>
@@ -653,7 +653,7 @@ as documented in <a class="reference internal" href="#signing-git-patches"><span
 </pre></div>
 </div>
 <p>Run the tests and code style checks. All of these are also performed by the
-<a class="reference external" href="https://travis-ci.com/SUSE/kiwi">Travis CI</a> and <a class="reference external" href="https://gitlab.com/schaefi/kiwi-ci/pipelines">GitLab CI</a> integration test systems
+<a class="reference external" href="https://travis-ci.com/OSInside/kiwi">Travis CI</a> and <a class="reference external" href="https://gitlab.com/schaefi/kiwi-ci/pipelines">GitLab CI</a> integration test systems
 when a pull request is created.</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tox
 </pre></div>
