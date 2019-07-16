@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.2 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.3 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -622,7 +622,7 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">shim_fallback_setup</span><span class="p">:</span>
                     <span class="n">efi_vendor_boot_path</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_shim_vendor_directory</span><span class="p">(</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span>
                     <span class="p">)</span>
                     <span class="k">if</span> <span class="n">efi_vendor_boot_path</span><span class="p">:</span>
                         <span class="n">grub_config_file_for_efi_boot</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -671,11 +671,11 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">cmdline_failsafe</span>
             <span class="p">)</span>
 
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Writing sysconfig bootloader file&#39;</span><span class="p">)</span>
         <span class="n">sysconfig_bootloader_location</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;/etc/sysconfig/&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">sysconfig_bootloader_location</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Writing sysconfig bootloader file&#39;</span><span class="p">)</span>
             <span class="n">sysconfig_bootloader_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="p">[</span><span class="n">sysconfig_bootloader_location</span><span class="p">,</span> <span class="s1">&#39;bootloader&#39;</span><span class="p">]</span>
             <span class="p">)</span>
@@ -876,10 +876,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_boot_path</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="n">mbrid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="n">mbrid</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="n">mbrid</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="n">mbrid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/mbrid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/mbrid&#39;</span>
         <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_copy_theme_data_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;iso&#39;</span><span class="p">)</span>
@@ -1024,7 +1024,7 @@
             <span class="s1">&#39;--&gt; Running fallback setup for shim secure boot efi image&#39;</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lookup_path</span><span class="p">:</span>
-            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span>
         <span class="n">grub_image</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_signed_grub_loader</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">grub_image</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiBootLoaderGrubSecureBootError</span><span class="p">(</span>
@@ -1059,7 +1059,7 @@
 <span class="sd">        grub modules</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lookup_path</span><span class="p">:</span>
-            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span>
         <span class="n">grub_image</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_unsigned_grub_loader</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">grub_image</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Using prebuilt unsigned efi image&#39;</span><span class="p">)</span>
@@ -1078,7 +1078,7 @@
 <span class="sd">        Provide bios grub image</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lookup_path</span><span class="p">:</span>
-            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span>
         <span class="n">grub_image</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_bios_core_loader</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">grub_image</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Using prebuilt bios image&#39;</span><span class="p">)</span>
@@ -1106,9 +1106,9 @@
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_create_embedded_fat_efi_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span><span class="p">)</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span><span class="p">)</span>
         <span class="n">efi_fat_image</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span><span class="p">,</span> <span class="s1">&#39;/efi&#39;</span><span class="p">]</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span><span class="p">,</span> <span class="s1">&#39;/efi&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span><span class="s1">&#39;qemu-img&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="n">efi_fat_image</span><span class="p">,</span> <span class="s1">&#39;15M&#39;</span><span class="p">]</span>
@@ -1119,7 +1119,7 @@
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;mcopy&#39;</span><span class="p">,</span> <span class="s1">&#39;-Do&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">efi_fat_image</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/EFI&#39;</span><span class="p">,</span> <span class="s1">&#39;::&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/EFI&#39;</span><span class="p">,</span> <span class="s1">&#39;::&#39;</span>
             <span class="p">]</span>
         <span class="p">)</span>
 
@@ -1213,7 +1213,7 @@
                 <span class="k">return</span> <span class="n">grub_mkimage_tool</span>
 
     <span class="k">def</span> <span class="nf">_get_grub2_boot_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span>
 
     <span class="k">def</span> <span class="nf">_get_efi_image_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -1248,7 +1248,7 @@
 
     <span class="k">def</span> <span class="nf">_get_module_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_name</span><span class="p">,</span> <span class="n">lookup_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lookup_path</span><span class="p">:</span>
-            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span>
         <span class="k">return</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_path</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">,</span> <span class="n">format_name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_find_theme_background_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">):</span>
@@ -1263,11 +1263,11 @@
 
     <span class="k">def</span> <span class="nf">_copy_theme_data_to_boot_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lookup_path</span><span class="p">:</span>
-            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span>
         <span class="n">boot_fonts_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
             <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="p">[</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">,</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">(</span><span class="n">target</span><span class="p">),</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span>
                     <span class="s1">&#39;fonts&#39;</span>
@@ -1290,7 +1290,7 @@
                 <span class="p">)</span>
 
         <span class="n">boot_theme_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span> <span class="s1">&#39;themes&#39;</span><span class="p">]</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span> <span class="s1">&#39;themes&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">boot_theme_dir</span><span class="p">)</span>
 
@@ -1307,7 +1307,7 @@
                     <span class="c1"># file which was created at install time of the theme</span>
                     <span class="c1"># package by the activate-theme script</span>
                     <span class="n">boot_theme_background_backup_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;background.png&#39;</span><span class="p">]</span>
+                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">,</span> <span class="s1">&#39;background.png&#39;</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
                         <span class="p">[</span>
@@ -1347,7 +1347,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">:</span>
             <span class="n">theme_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="p">[</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span>
                     <span class="s1">&#39;themes&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span>
                 <span class="p">]</span>
             <span class="p">)</span>
@@ -1361,10 +1361,10 @@
 <span class="sd">        Copy efi boot data from lookup_path to the root directory</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lookup_path</span><span class="p">:</span>
-            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+            <span class="n">lookup_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span>
         <span class="n">efi_path</span> <span class="o">=</span> <span class="n">lookup_path</span> <span class="o">+</span> <span class="s1">&#39;/boot/efi/&#39;</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">efi_path</span><span class="p">):</span>
-            <span class="n">efi_data</span> <span class="o">=</span> <span class="n">DataSync</span><span class="p">(</span><span class="n">efi_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
+            <span class="n">efi_data</span> <span class="o">=</span> <span class="n">DataSync</span><span class="p">(</span><span class="n">efi_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">)</span>
             <span class="n">efi_data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-a&#39;</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">_copy_efi_modules_to_boot_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">):</span>
@@ -1399,7 +1399,7 @@
 
     <span class="k">def</span> <span class="nf">_get_shim_install</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">chroot_env</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;sbin&#39;</span><span class="p">])</span>
+            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;sbin&#39;</span><span class="p">])</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span>
             <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;shim-install&#39;</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="n">chroot_env</span>

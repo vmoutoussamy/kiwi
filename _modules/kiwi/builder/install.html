@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.install &mdash; kiwi 9.18.2 documentation</title>
+  <title>kiwi.builder.install &mdash; kiwi 9.18.3 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -659,7 +659,8 @@
             <span class="c1"># for compat boot. The complete bootloader setup will be</span>
             <span class="c1"># based on grub</span>
             <span class="n">bootloader_config</span> <span class="o">=</span> <span class="n">BootLoaderConfig</span><span class="p">(</span>
-                <span class="s1">&#39;grub2&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span><span class="p">,</span> <span class="p">{</span>
+                <span class="s1">&#39;grub2&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+                <span class="n">boot_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="p">{</span>
                     <span class="s1">&#39;grub_directory_name&#39;</span><span class="p">:</span>
                         <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_boot_directory_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
                 <span class="p">}</span>
@@ -672,7 +673,8 @@
             <span class="c1"># This allows for booting on x86 platforms in BIOS mode</span>
             <span class="c1"># only.</span>
             <span class="n">bootloader_config</span> <span class="o">=</span> <span class="n">BootLoaderConfig</span><span class="p">(</span>
-                <span class="s1">&#39;isolinux&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span>
+                <span class="s1">&#39;isolinux&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+                <span class="n">boot_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span>
             <span class="p">)</span>
         <span class="n">IsoToolsBase</span><span class="o">.</span><span class="n">setup_media_loader_directory</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span><span class="p">,</span>

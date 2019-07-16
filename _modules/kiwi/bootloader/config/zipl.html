@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.zipl &mdash; kiwi 9.18.2 documentation</title>
+  <title>kiwi.bootloader.config.zipl &mdash; kiwi 9.18.3 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -577,14 +577,14 @@
                     <span class="s1">&#39;mv&#39;</span><span class="p">,</span>
                     <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                         <span class="p">[</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span>
-                            <span class="n">os</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/initrd&#39;</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/initrd&#39;</span><span class="p">)</span>
                         <span class="p">]</span>
                     <span class="p">),</span>
                     <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                         <span class="p">[</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span>
-                            <span class="n">os</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/image&#39;</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/image&#39;</span><span class="p">)</span>
                         <span class="p">]</span>
                     <span class="p">),</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_get_zipl_boot_path</span><span class="p">()</span>
@@ -645,7 +645,7 @@
         <span class="k">pass</span></div>
 
     <span class="k">def</span> <span class="nf">_get_zipl_boot_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/zipl&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/zipl&#39;</span>
 
     <span class="k">def</span> <span class="nf">_get_target_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_table_type</span> <span class="o">==</span> <span class="s1">&#39;dasd&#39;</span><span class="p">:</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.iso_tools.cdrtools &mdash; kiwi 9.18.2 documentation</title>
+  <title>kiwi.iso_tools.cdrtools &mdash; kiwi 9.18.3 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -495,6 +495,7 @@
 <span class="p">)</span>
 
 <span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.iso_tools.base</span> <span class="k">import</span> <span class="n">IsoToolsBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.command_capabilities</span> <span class="k">import</span> <span class="n">CommandCapabilities</span>
 <span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
@@ -551,7 +552,10 @@
 
 <span class="sd">        :param list custom_args: custom ISO creation args</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">efi_mode</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">custom_args</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;efi_mode&#39;</span><span class="p">):</span>
+                <span class="n">efi_mode</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">if</span> <span class="s1">&#39;mbr_id&#39;</span> <span class="ow">in</span> <span class="n">custom_args</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">iso_parameters</span> <span class="o">+=</span> <span class="p">[</span>
                     <span class="s1">&#39;-A&#39;</span><span class="p">,</span> <span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;mbr_id&#39;</span><span class="p">]</span>
@@ -580,7 +584,15 @@
             <span class="s1">&#39;-hide&#39;</span><span class="p">,</span> <span class="n">catalog_file</span><span class="p">,</span>
             <span class="s1">&#39;-hide-joliet&#39;</span><span class="p">,</span> <span class="n">catalog_file</span><span class="p">,</span>
         <span class="p">]</span>
-        <span class="n">loader_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_path</span> <span class="o">+</span> <span class="s1">&#39;/loader/isolinux.bin&#39;</span>
+        <span class="k">if</span> <span class="n">efi_mode</span><span class="p">:</span>
+            <span class="n">loader_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">boot_path</span><span class="p">,</span> <span class="s1">&#39;loader&#39;</span><span class="p">,</span>
+                    <span class="n">Defaults</span><span class="o">.</span><span class="n">get_isolinux_bios_grub_loader</span><span class="p">()</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">loader_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_path</span> <span class="o">+</span> <span class="s1">&#39;/loader/isolinux.bin&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iso_loaders</span> <span class="o">+=</span> <span class="p">[</span>
             <span class="s1">&#39;-b&#39;</span><span class="p">,</span> <span class="n">loader_file</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">catalog_file</span>
         <span class="p">]</span></div>

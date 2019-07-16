@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.filesystem.isofs &mdash; kiwi 9.18.2 documentation</title>
+  <title>kiwi.filesystem.isofs &mdash; kiwi 9.18.3 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -486,7 +486,11 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="k">import</span> <span class="n">dedent</span>
+
 <span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.filesystem.base</span> <span class="k">import</span> <span class="n">FileSystemBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.iso_tools.iso</span> <span class="k">import</span> <span class="n">Iso</span>
 <span class="kn">from</span> <span class="nn">kiwi.iso_tools</span> <span class="k">import</span> <span class="n">IsoTools</span>
@@ -525,17 +529,27 @@
         <span class="n">iso_tool</span><span class="o">.</span><span class="n">create_iso</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">iso_tool</span><span class="o">.</span><span class="n">has_iso_hybrid_capability</span><span class="p">():</span>
-            <span class="n">hybrid_offset</span> <span class="o">=</span> <span class="n">iso</span><span class="o">.</span><span class="n">create_header_end_block</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-            <span class="n">iso_tool</span><span class="o">.</span><span class="n">create_iso</span><span class="p">(</span>
-                <span class="n">filename</span><span class="p">,</span> <span class="n">hidden_files</span><span class="o">=</span><span class="p">[</span><span class="n">iso</span><span class="o">.</span><span class="n">header_end_name</span><span class="p">]</span>
-            <span class="p">)</span>
-            <span class="n">iso</span><span class="o">.</span><span class="n">relocate_boot_catalog</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-            <span class="n">iso</span><span class="o">.</span><span class="n">fix_boot_catalog</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-            <span class="n">mbr_id</span> <span class="o">=</span> <span class="n">meta_data</span><span class="p">[</span><span class="s1">&#39;mbr_id&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;mbr_id&#39;</span> <span class="ow">in</span> <span class="n">meta_data</span> <span class="k">else</span> \
-                <span class="s1">&#39;0xffffffff&#39;</span>
-            <span class="n">iso</span><span class="o">.</span><span class="n">create_hybrid</span><span class="p">(</span>
-                <span class="n">hybrid_offset</span><span class="p">,</span> <span class="n">mbr_id</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">efi_mode</span><span class="p">)</span>
-            <span class="p">)</span></div></div>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">efi_mode</span><span class="p">:</span>
+                <span class="n">hybrid_offset</span> <span class="o">=</span> <span class="n">iso</span><span class="o">.</span><span class="n">create_header_end_block</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+                <span class="n">iso_tool</span><span class="o">.</span><span class="n">create_iso</span><span class="p">(</span>
+                    <span class="n">filename</span><span class="p">,</span> <span class="n">hidden_files</span><span class="o">=</span><span class="p">[</span><span class="n">iso</span><span class="o">.</span><span class="n">header_end_name</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">iso</span><span class="o">.</span><span class="n">relocate_boot_catalog</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+                <span class="n">iso</span><span class="o">.</span><span class="n">fix_boot_catalog</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+                <span class="n">mbr_id</span> <span class="o">=</span> <span class="n">meta_data</span><span class="p">[</span><span class="s1">&#39;mbr_id&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;mbr_id&#39;</span> <span class="ow">in</span> <span class="n">meta_data</span> <span class="k">else</span> \
+                    <span class="s1">&#39;0xffffffff&#39;</span>
+                <span class="n">iso</span><span class="o">.</span><span class="n">create_hybrid</span><span class="p">(</span>
+                    <span class="n">hybrid_offset</span><span class="p">,</span> <span class="n">mbr_id</span><span class="p">,</span> <span class="n">filename</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    Can&#39;t create hybrid ISO in EFI mode with cdrtools</span>
+
+<span class="s1">                    isohybrid requires isolinux as loader. In EFI mode</span>
+<span class="s1">                    the configured bootloader e.g grub is used and no</span>
+<span class="s1">                    isolinux signature exists.</span>
+<span class="s1">                &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
