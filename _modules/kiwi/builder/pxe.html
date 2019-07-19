@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.pxe &mdash; kiwi 9.18.3 documentation</title>
+  <title>kiwi.builder.pxe &mdash; kiwi 9.18.4 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.4</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -491,7 +491,6 @@
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
-<span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
 <span class="kn">from</span> <span class="nn">kiwi.boot.image</span> <span class="k">import</span> <span class="n">BootImage</span>
 <span class="kn">from</span> <span class="nn">kiwi.builder.filesystem</span> <span class="k">import</span> <span class="n">FileSystemBuilder</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.compress</span> <span class="k">import</span> <span class="n">Compress</span>
@@ -501,6 +500,7 @@
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.result</span> <span class="k">import</span> <span class="n">Result</span>
 <span class="kn">from</span> <span class="nn">kiwi.runtime_config</span> <span class="k">import</span> <span class="n">RuntimeConfig</span>
+<span class="kn">from</span> <span class="nn">kiwi.archive.tar</span> <span class="k">import</span> <span class="n">ArchiveTar</span>
 
 <span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">KiwiPxeBootImageError</span>
@@ -546,7 +546,7 @@
                 <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_image_version</span><span class="p">()</span>
             <span class="p">]</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">archive_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">image_name</span><span class="p">,</span> <span class="s1">&#39;.tar.xz&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">archive_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">image_name</span><span class="p">,</span> <span class="s1">&#39;.tar&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checksum_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">image_name</span><span class="p">,</span> <span class="s1">&#39;.md5&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kernel_filename</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hypervisor_filename</span> <span class="o">=</span> <span class="kc">None</span>
@@ -643,19 +643,25 @@
         <span class="c1"># put results into a tarball</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">xz_options</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xz_options</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_xz_compression_options</span><span class="p">()</span>
-        <span class="n">bash_command</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;tar&#39;</span><span class="p">,</span> <span class="s1">&#39;-C&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_dir</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;--to-stdout&#39;</span>
-        <span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+
+        <span class="n">pxe_tarball_files</span> <span class="o">=</span> <span class="p">[</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">kernel_filename</span><span class="p">,</span>
             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">initrd_filename</span><span class="p">),</span>
             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">),</span>
             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checksum_name</span><span class="p">)</span>
-        <span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
-            <span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="s1">&#39;xz&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span>
-        <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xz_options</span> <span class="o">+</span> <span class="p">[</span>
-            <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">archive_name</span>
         <span class="p">]</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bash_command</span><span class="p">)])</span>
+        <span class="n">pxe_tarball</span> <span class="o">=</span> <span class="n">ArchiveTar</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">archive_name</span><span class="p">,</span>
+            <span class="n">create_from_file_list</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">file_list</span><span class="o">=</span><span class="n">pxe_tarball_files</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">compressed</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">archive_name</span> <span class="o">=</span> <span class="n">pxe_tarball</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_dir</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">archive_name</span> <span class="o">=</span> <span class="n">pxe_tarball</span><span class="o">.</span><span class="n">create_xz_compressed</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">target_dir</span><span class="p">,</span> <span class="n">xz_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xz_options</span>
+            <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">verify_image_size</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">runtime_config</span><span class="o">.</span><span class="n">get_max_size_constraint</span><span class="p">(),</span>

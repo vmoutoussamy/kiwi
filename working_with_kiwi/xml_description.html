@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Image Description &mdash; kiwi 9.18.3 documentation</title>
+  <title>The Image Description &mdash; kiwi 9.18.4 documentation</title>
   
 
   
@@ -338,7 +338,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.4</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -718,6 +718,24 @@ sizes.</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fsmountoptions</span></code>: Specifies the filesystem mount options which are passed
 via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">-o</span></code> flag to <strong class="command">mount</strong> and are included in
 <code class="file docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fscreateoptions</span></code>: Specifies the filesystem options used to create the
+filesystem. In KIWI the filesystem utility to create a filesystem is
+called without any custom options. The default options are filesystem
+specific and are provided along with the package that provides the
+filesystem utility. For the Linux <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext[234]</span></code> filesystem, the default
+options can be found in the <code class="file docutils literal notranslate"><span class="pre">/etc/mke2fs.conf</span></code> file. Other
+filesystems provides this differently and documents information
+about options and their defaults in the respective manual page, e.g
+<strong class="command">man mke2fs</strong>. With the <code class="xref py py-obj docutils literal notranslate"><span class="pre">fscreateoptions</span></code> attribute it’s possible
+to directly influence how the filesystem will be created. The options
+provided as a string are passed to the command that creates the
+filesystem without any further validation by KIWI. For example, to turn
+off the journal on creation of an ext4 filesystem the following option
+would be required:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">fscreateoptions=</span><span class="s">&quot;-O ^has_journal&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kernelcmdline</span></code>: Additional kernel parameters passed to the kernel by the
 bootloader.</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">luks</span></code>: Supplying a value will trigger the encryption of the partitions

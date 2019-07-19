@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_state &mdash; kiwi 9.18.3 documentation</title>
+  <title>kiwi.xml_state &mdash; kiwi 9.18.4 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.4</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -2164,6 +2164,25 @@
         <span class="n">mount_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_fsmountoptions</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">mount_options</span><span class="p">:</span>
             <span class="n">option_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">mount_options</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">option_list</span></div>
+
+<div class="viewcode-block" id="XMLState.get_fs_create_option_list"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_fs_create_option_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_fs_create_option_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        List of root filesystem creation options</span>
+
+<span class="sd">        The list contains elements with the information from the</span>
+<span class="sd">        fscreateoptions attribute string that got split into its</span>
+<span class="sd">        substring components</span>
+
+<span class="sd">        :return: list with create options</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">option_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">create_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_fscreateoptions</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">create_options</span><span class="p">:</span>
+            <span class="n">option_list</span> <span class="o">=</span> <span class="n">create_options</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">option_list</span></div>
 

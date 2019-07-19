@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.live &mdash; kiwi 9.18.3 documentation</title>
+  <title>kiwi.builder.live &mdash; kiwi 9.18.4 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.4</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -540,9 +540,6 @@
             <span class="n">Defaults</span><span class="o">.</span><span class="n">get_volume_id</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span> <span class="o">=</span> <span class="n">SystemIdentifier</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="o">.</span><span class="n">calculate_id</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filesystem_custom_parameters</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;mount_options&#39;</span><span class="p">:</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_fs_mount_option_list</span><span class="p">()</span>
-        <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_publisher</span><span class="p">()</span> <span class="ow">or</span> \
             <span class="n">Defaults</span><span class="o">.</span><span class="n">get_publisher</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">=</span> <span class="n">custom_args</span>
@@ -676,7 +673,8 @@
         <span class="p">)</span>
         <span class="n">root_filesystem</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_default_live_iso_root_filesystem</span><span class="p">()</span>
         <span class="n">filesystem_custom_parameters</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;mount_options&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_fs_mount_option_list</span><span class="p">()</span>
+            <span class="s1">&#39;mount_options&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_fs_mount_option_list</span><span class="p">(),</span>
+            <span class="s1">&#39;create_options&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_fs_create_option_list</span><span class="p">()</span>
         <span class="p">}</span>
         <span class="n">filesystem_setup</span> <span class="o">=</span> <span class="n">FileSystemSetup</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
