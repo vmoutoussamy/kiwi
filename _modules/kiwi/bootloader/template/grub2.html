@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.template.grub2 &mdash; kiwi 9.18.7 documentation</title>
+  <title>kiwi.bootloader.template.grub2 &mdash; kiwi 9.18.8 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.7</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -527,18 +527,15 @@
 <span class="s1">                echo &quot;Please press &#39;t&#39; to show the boot menu on this console&quot;</span>
 <span class="s1">            fi</span>
 <span class="s1">            set gfxmode=$</span><span class="si">{gfxmode}</span><span class="s1"></span>
-<span class="s1">            terminal_output gfxterm</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            serial --speed=9600 --unit=0 --word=8 --parity=no --stop=1</span>
-<span class="s1">            terminal_input serial</span>
-<span class="s1">            terminal_output serial</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">header_textconsole</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            terminal_input console</span>
-<span class="s1">            terminal_output console</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            terminal_input $</span><span class="si">{terminal_setup}</span><span class="s1"></span>
+<span class="s1">            terminal_output $</span><span class="si">{terminal_setup}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">fonts</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
@@ -791,13 +788,12 @@
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
         <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_hybrid</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme</span>
-        <span class="k">elif</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_textconsole</span>
+        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span>
         <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_hybrid</span>
             <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
@@ -807,7 +803,7 @@
             <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
                 <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_failsafe</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_boot_snapshots</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_console_switch</span>
         <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div>
 
@@ -827,18 +823,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme</span>
-        <span class="k">elif</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_textconsole</span>
+        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_multiboot</span>
         <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_failsafe_multiboot</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_boot_snapshots</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_console_switch</span>
         <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div>
 
@@ -860,13 +855,12 @@
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
         <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_hybrid</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme_iso</span>
-        <span class="k">elif</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_textconsole</span>
+        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span>
         <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_hybrid</span>
             <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
@@ -881,7 +875,7 @@
                 <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_mediacheck_entry</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_iso_harddisk_entry</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_boot_snapshots</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_console_switch</span>
         <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div>
 
@@ -901,13 +895,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme_iso</span>
-        <span class="k">elif</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_textconsole</span>
+        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_multiboot</span>
         <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_failsafe_multiboot</span>
@@ -915,7 +908,7 @@
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_mediacheck_entry_multiboot</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_iso_harddisk_entry</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_boot_snapshots</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_console_switch</span>
         <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div>
 
@@ -938,13 +931,12 @@
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
         <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_hybrid</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme_iso</span>
-        <span class="k">elif</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_textconsole</span>
+        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_iso_harddisk_entry</span>
         <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_install_entry_hybrid</span>
@@ -955,7 +947,7 @@
             <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
                 <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_install_entry_failsafe</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_boot_snapshots</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_console_switch</span>
         <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div>
 
@@ -976,19 +968,18 @@
         <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
         <span class="k">if</span> <span class="n">with_timeout</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme_iso</span>
-        <span class="k">elif</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_textconsole</span>
+        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_iso_harddisk_entry</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_install_entry_multiboot</span>
         <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_install_entry_failsafe_multiboot</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_boot_snapshots</span>
-        <span class="k">if</span> <span class="n">terminal</span> <span class="o">==</span> <span class="s1">&#39;gfxterm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_console_switch</span>
         <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div></div>
 </pre></div>
