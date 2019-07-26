@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.command_process &mdash; kiwi 9.18.8 documentation</title>
+  <title>kiwi.command_process &mdash; kiwi 9.18.9 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.8</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.9</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -484,7 +484,6 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
-<span class="kn">import</span> <span class="nn">six</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
 
 <span class="c1"># project</span>
@@ -617,7 +616,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="CommandIterator"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.command_process.CommandIterator">[docs]</a><span class="k">class</span> <span class="nc">CommandIterator</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">Iterator</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandIterator"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.command_process.CommandIterator">[docs]</a><span class="k">class</span> <span class="nc">CommandIterator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    **Implements an Iterator for Instances of Command**</span>
 
