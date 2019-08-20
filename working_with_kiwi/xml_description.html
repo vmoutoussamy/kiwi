@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Image Description &mdash; kiwi 9.18.11 documentation</title>
+  <title>The Image Description &mdash; kiwi 9.18.12 documentation</title>
   
 
   
@@ -257,8 +257,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -269,6 +269,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
@@ -338,7 +339,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.12</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -653,7 +654,7 @@ container images, see <a class="reference internal" href="../building/build_dock
 <a class="reference internal" href="../building/build_oem_disk.html#oem"><span class="std std-ref">Build an OEM Expandable Disk Image</span></a></p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pxedeploy</span></code>: settings for PXE booting, see <a class="reference internal" href="../building/build_pxe_root_filesystem.html#build-pxe"><span class="std std-ref">Build a PXE Root File System Image</span></a></p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">vagrantconfig</span></code>: instructs KIWI to build a Vagrant box instead of a
-standard virtual machine image, see <a class="reference internal" href="../building/working_with_images/vagrant_setup.html#setup-vagrant"><span class="std std-ref">KIWI Image Description for Vagrant</span></a></p></li>
+standard virtual machine image, see <a class="reference internal" href="../building/working_with_images/vmx_vagrant_setup.html#setup-vagrant"><span class="std std-ref">KIWI Image Description for Vagrant</span></a></p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">systemdisk</span></code>: used to define LVM or Btrfs (sub)volumens, see
 <a class="reference internal" href="../building/working_with_images/custom_volumes.html#custom-volumes"><span class="std std-ref">Custom Disk Volumes</span></a></p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">machine</span></code>: for configurations of the virtual machines, see

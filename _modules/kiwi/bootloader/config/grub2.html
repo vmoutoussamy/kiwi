@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.11 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.12 documentation</title>
   
 
   
@@ -255,8 +255,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -267,6 +267,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -336,7 +337,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.12</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -996,6 +997,8 @@
                 <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_INITRDEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_btrfs_root_is_snapshot</span><span class="p">():</span>
             <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;SUSE_BTRFS_SNAPSHOT_BOOTING&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;boot_is_crypto&#39;</span><span class="p">):</span>
+            <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_ENABLE_CRYPTODISK&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>
 
         <span class="k">if</span> <span class="n">grub_default_entries</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Writing grub2 defaults file&#39;</span><span class="p">)</span>
@@ -1185,6 +1188,23 @@
             <span class="n">early_boot</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
                 <span class="s1">&#39;set btrfs_relative_path=&quot;yes&quot;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
             <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;boot_is_crypto&#39;</span><span class="p">):</span>
+                <span class="n">early_boot</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="s1">&#39;insmod cryptodisk</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">early_boot</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="s1">&#39;insmod luks</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">early_boot</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="s1">&#39;cryptomount -u </span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">uuid</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">early_boot</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="s1">&#39;set root=&quot;cryptouuid/</span><span class="si">{0}</span><span class="s1">&quot;</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">uuid</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
             <span class="n">early_boot</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
                 <span class="s1">&#39;search --fs-uuid --set=root </span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
             <span class="p">)</span>
@@ -1323,7 +1343,7 @@
                     <span class="n">theme_dir</span><span class="p">,</span> <span class="n">boot_theme_dir</span>
                 <span class="p">)</span>
                 <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
-                    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">]</span>
+                    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-a&#39;</span><span class="p">]</span>
                 <span class="p">)</span>
                 <span class="k">if</span> <span class="n">boot_theme_background_file</span><span class="p">:</span>
                     <span class="c1"># Install preserved background file to the theme</span>
@@ -1341,7 +1361,7 @@
                     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">boot_theme_background_file</span><span class="p">),</span> <span class="n">boot_theme_dir</span>
                 <span class="p">)</span>
                 <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
-                    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">]</span>
+                    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-a&#39;</span><span class="p">]</span>
                 <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_boot_theme_exists</span><span class="p">()</span>
@@ -1393,7 +1413,7 @@
                 <span class="n">module_path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">boot_module_path</span>
             <span class="p">)</span>
             <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
-                <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">],</span> <span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;*.module&#39;</span><span class="p">]</span>
+                <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-a&#39;</span><span class="p">],</span> <span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;*.module&#39;</span><span class="p">]</span>
             <span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiBootLoaderGrubModulesError</span><span class="p">(</span>
