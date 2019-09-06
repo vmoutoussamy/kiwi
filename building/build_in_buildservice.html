@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building in the Open Build Service &mdash; kiwi 9.18.12 documentation</title>
+  <title>Building in the Open Build Service &mdash; kiwi 9.18.10 documentation</title>
   
 
   
@@ -257,8 +257,8 @@
 <li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -269,7 +269,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
@@ -339,7 +338,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.12</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -479,7 +478,7 @@
 <p class="admonition-title">Hint</p>
 <p><strong>Abstract</strong></p>
 <p>This document gives a brief overview how to build images with
-KIWI in version 9.18.12 inside of the Open Build Service.
+KIWI in version 9.18.10 inside of the Open Build Service.
 A tutorial on the Open Buildservice itself can be found here:
 <a class="reference external" href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial">https://en.opensuse.org/openSUSE:Build_Service_Tutorial</a></p>
 </div>
@@ -717,7 +716,7 @@ build by adding the following line to the project configuration:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Repotype: staticlinks
 </pre></div>
 </div>
-<p>If build Vagrant images (see <a class="reference internal" href="working_with_images/vmx_vagrant_setup.html#setup-vagrant"><span class="std std-ref">KIWI Image Description for Vagrant</span></a>) add the repository-type
+<p>If build Vagrant images (see <a class="reference internal" href="working_with_images/vagrant_setup.html#setup-vagrant"><span class="std std-ref">KIWI Image Description for Vagrant</span></a>) add the repository-type
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">vagrant</span></code>. OBS creates a <code class="xref py py-obj docutils literal notranslate"><span class="pre">boxes/</span></code> subdirectory in your download
 repositories, which contains JSON files for Vagrant <a class="footnote-reference brackets" href="#f4" id="id4">4</a>.</p>
 <p>If you have added your repositories to <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>, you probably see

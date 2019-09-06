@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building Images &mdash; kiwi 9.18.12 documentation</title>
+  <title>Building Images &mdash; kiwi 9.18.10 documentation</title>
   
 
   
@@ -257,8 +257,8 @@
 <li class="toctree-l4"><a class="reference internal" href="building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -269,7 +269,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-distributions">Supported Distributions</a></li>
@@ -339,7 +338,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.12</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.10</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -492,32 +491,37 @@ the different image types and their meaning.</p>
 <li class="toctree-l1"><a class="reference internal" href="building/working_with_images.html">Working with Images</a></li>
 </ul>
 </div>
-<dl class="simple">
-<dt>ISO Hybrid Live Image</dt><dd><p>An iso image which can be dumped on a CD/DVD or USB stick
+<ul>
+<li><p>ISO Hybrid Live Image</p>
+<p>An iso image which can be dumped on a CD/DVD or USB stick
 and boots off from this media without interfering with other
 system storage components. A useful pocket system for testing
 and demo and debugging purposes.</p>
-</dd>
-<dt>Virtual Disk Image</dt><dd><p>An image representing the system disk, useful for cloud frameworks
+</li>
+<li><p>Virtual Disk Image</p>
+<p>An image representing the system disk, useful for cloud frameworks
 like Amazon EC2, Google Compute Engine or Microsoft Azure.</p>
-</dd>
-<dt>OEM Expandable Disk Image</dt><dd><p>An image representing an expandable system disk. This means after
+</li>
+<li><p>OEM Expandable Disk Image</p>
+<p>An image representing an expandable system disk. This means after
 deployment the system can resize itself to the new disk geometry.
 The resize operation is configurable as part of the image description
 and an installation image for CD/DVD, USB stick and Network deployment
 can be created in addition.</p>
-</dd>
-<dt>PXE root File System Image</dt><dd><p>A root filesystem image which can be deployed via KIWI’s PXE netboot
+</li>
+<li><p>PXE root File System Image</p>
+<p>A root filesystem image which can be deployed via KIWI’s PXE netboot
 infrastructure. A client configuration file on the pxe server controls
 how the root filesystem image should be deployed. Many different
 deployment strategies are possible, e.g root over NBD, AoE or NFS for
 diskless and diskfull clients.</p>
-</dd>
-<dt>Docker Container Image</dt><dd><p>An archive image suitable for the docker container engine.
+</li>
+<li><p>Docker Container Image</p>
+<p>An archive image suitable for the docker container engine.
 The image can be loaded via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span> <span class="pre">load</span></code> command and
 works within the scope of the container engine</p>
-</dd>
-</dl>
+</li>
+</ul>
 <div class="section" id="supported-distributions">
 <span id="id1"></span><h2>Supported Distributions<a class="headerlink" href="#supported-distributions" title="Permalink to this headline">¶</a></h2>
 <p>KIWI can build images for the distributions which are <strong>equal</strong> or <strong>newer</strong>

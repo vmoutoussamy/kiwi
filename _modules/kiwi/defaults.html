@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.18.12 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.18.10 documentation</title>
   
 
   
@@ -255,8 +255,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -267,7 +267,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -337,7 +336,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.12</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -530,13 +529,6 @@
             <span class="s1">&#39;kiwi_sectorsize&#39;</span><span class="p">,</span>
             <span class="s1">&#39;kiwi_revision&#39;</span>
         <span class="p">]</span>
-
-<div class="viewcode-block" id="Defaults.get_luks_key_length"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_luks_key_length">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">get_luks_key_length</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Provides key length to use for random luks keys</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="mi">256</span></div>
 
 <div class="viewcode-block" id="Defaults.get_xz_compression_options"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_xz_compression_options">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_xz_compression_options</span><span class="p">():</span>
@@ -853,12 +845,6 @@
             <span class="s1">&#39;xfs&#39;</span><span class="p">,</span>
             <span class="s1">&#39;btrfs&#39;</span><span class="p">,</span>
             <span class="s1">&#39;lvm&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;luks&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;gcry_rijndael&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;gcry_sha256&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;gcry_sha512&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;crypto&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;cryptodisk&#39;</span><span class="p">,</span>
             <span class="s1">&#39;test&#39;</span><span class="p">,</span>
             <span class="s1">&#39;true&#39;</span>
         <span class="p">]</span>
