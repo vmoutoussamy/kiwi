@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.prepare &mdash; kiwi 9.18.10 documentation</title>
+  <title>kiwi.system.prepare &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -255,8 +255,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -267,6 +267,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -336,7 +337,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -510,7 +511,7 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="SystemPrepare"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare">[docs]</a><span class="k">class</span> <span class="nc">SystemPrepare</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="SystemPrepare"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare">[docs]</a><span class="k">class</span> <span class="nc">SystemPrepare</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implements preparation and installation of a new root system</span>
 
@@ -646,23 +647,27 @@
             <span class="n">repo</span><span class="p">,</span> <span class="n">package_manager</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="SystemPrepare.install_bootstrap"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare.install_bootstrap">[docs]</a>    <span class="k">def</span> <span class="nf">install_bootstrap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="p">):</span>
+<div class="viewcode-block" id="SystemPrepare.install_bootstrap"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.prepare.SystemPrepare.install_bootstrap">[docs]</a>    <span class="k">def</span> <span class="nf">install_bootstrap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="p">,</span> <span class="n">plus_packages</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Install system software using the package manager</span>
 <span class="sd">        from the host, also known as bootstrapping</span>
 
 <span class="sd">        :param object manager: instance of a :class:`PackageManager` subclass</span>
+<span class="sd">        :param list plus_packages: list of additional packages</span>
 
 <span class="sd">        :raises KiwiBootStrapPhaseFailed: if the bootstrapping process fails</span>
 <span class="sd">            either installing packages or including bootstrap archives</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_packages_sections</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_packages_sections</span><span class="p">()</span> \
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">plus_packages</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;No &lt;packages&gt; sections marked as &quot;bootstrap&quot; found&#39;</span><span class="p">)</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Processing of bootstrap stage skipped&#39;</span><span class="p">)</span>
             <span class="k">return</span>
 
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Installing bootstrap packages&#39;</span><span class="p">)</span>
-        <span class="n">bootstrap_packages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_packages</span><span class="p">()</span>
+        <span class="n">bootstrap_packages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_packages</span><span class="p">(</span>
+            <span class="n">plus_packages</span>
+        <span class="p">)</span>
         <span class="n">collection_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_collection_type</span><span class="p">()</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; collection type: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">collection_type</span><span class="p">)</span>
         <span class="n">bootstrap_collections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_collections</span><span class="p">()</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Add or Update the Fstab File &mdash; kiwi 9.18.10 documentation</title>
+  <title>Add or Update the Fstab File &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="KIWI Commands" href="../../commands.html" />
+    <link rel="next" title="KIWI Image Description Encrypted Disk" href="vmx_setup_for_luks.html" />
     <link rel="prev" title="Custom Disk Volumes" href="custom_volumes.html" /> 
 </head>
 
@@ -257,8 +257,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -269,6 +269,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -338,7 +339,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -512,27 +513,32 @@ be used with care.</p>
 <p>The optimal way to provide custom fstab information is through a
 package. If this can’t be done the files can also be provided via
 the overlay file tree of the image description.</p>
-<p>KIWI supports two ways to modify the contents of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab</span></code>
+<p>KIWI supports three ways to modify the contents of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab</span></code>
 file:</p>
-<ol class="arabic">
-<li><p>Providing an <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.append</span></code> file</p>
-<p>If that file exists in the image root tree, KIWI will take its
+<dl class="simple">
+<dt>Providing an <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.append</span></code> file</dt><dd><p>If that file exists in the image root tree, KIWI will take its
 contents and append it to the existing <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab</span></code> file. The
 provided <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.append</span></code> file will be deleted after successful
 modification.</p>
-</li>
-<li><p>Providing an <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.patch</span></code> file</p>
-<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.patch</span></code> represents a patch file that will be
+</dd>
+<dt>Providing an <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.patch</span></code> file</dt><dd><p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.patch</span></code> represents a patch file that will be
 applied to <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab</span></code> using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">patch</span></code> program. This method
 also allows to change the existing contents of <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.
 On success <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.patch</span></code> will be deleted.</p>
-</li>
-</ol>
+</dd>
+<dt>Providing an <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.script</span></code> file</dt><dd><p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.script</span></code> represents an executable which is called
+as chrooted process. This method is the most flexible one and
+allows to apply any change. On success <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.script</span></code> will be
+deleted.</p>
+</dd>
+</dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.append</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/fstab.patch</span></code> can be used together.
-If both files are provided, appending happens first and patching
-afterwards.</p>
+<p>All three variants to handle the fstab file can be used together.
+Appending happens first, patching afterwards and the script call
+is last. When using the script call, there is no validation that
+checks if the script actually handles fstab or any other
+file in the image rootfs.</p>
 </div>
 </div>
 
@@ -544,7 +550,7 @@ afterwards.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../commands.html" class="btn btn-neutral float-right" title="KIWI Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vmx_setup_for_luks.html" class="btn btn-neutral float-right" title="KIWI Image Description Encrypted Disk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="custom_volumes.html" class="btn btn-neutral float-left" title="Custom Disk Volumes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

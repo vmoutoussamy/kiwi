@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image Package &mdash; kiwi 9.18.10 documentation</title>
+  <title>kiwi.boot.image Package &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -257,8 +257,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -269,6 +269,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -338,7 +339,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.10</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.13</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -453,7 +454,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.18.10</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.13</a> &raquo;</li>
         
           <li><a href="kiwi.boot.html">kiwi.boot Package</a> &raquo;</li>
         
@@ -585,6 +586,22 @@ for kiwi boot images the method is a noop</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.boot.image.base.BootImageBase.include_module">
+<code class="sig-name descname">include_module</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/base.html#BootImageBase.include_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.include_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include module to boot image</p>
+<p>For kiwi boot no modules configuration is required. Thus in
+such a case this method is a noop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> (<em>string</em>) – module to include</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – include the module for install initrds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.boot.image.base.BootImageBase.is_prepared">
 <code class="sig-name descname">is_prepared</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/base.html#BootImageBase.is_prepared"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.is_prepared" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if initrd system is prepared.</p>
@@ -606,6 +623,22 @@ description boot attribute</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.boot.image.base.BootImageBase.omit_module">
+<code class="sig-name descname">omit_module</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/base.html#BootImageBase.omit_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.omit_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Omit module to boot image</p>
+<p>For kiwi boot no modules configuration is required. Thus in
+such a case this method is a noop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> (<em>string</em>) – module to omit</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – omit the module for install initrds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.boot.image.base.BootImageBase.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/base.html#BootImageBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
@@ -618,6 +651,25 @@ description boot attribute</p>
 <dd><p>Prepare new root system to create initrd from. Implementation
 is only needed if there is no other root system available</p>
 <p>Implementation in specialized boot image class</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.boot.image.base.BootImageBase.write_system_config_file">
+<code class="sig-name descname">write_system_config_file</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">config_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/base.html#BootImageBase.write_system_config_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.write_system_config_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes relevant boot image configuration into configuration file
+that will be part of the system image.</p>
+<p>This is used to configure any further boot image rebuilds after
+deployment. For instance, initrds recreated on kernel update.</p>
+<p>For kiwi boot no specific configuration is required for initrds
+recreation, thus this method is a noop in that case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – dictonary including configuration parameters</p></li>
+<li><p><strong>config_file</strong> (<em>string</em>) – configuration file to write</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -679,6 +731,34 @@ the result into the image build target directory</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.boot.image.dracut.BootImageDracut.include_module">
+<code class="sig-name descname">include_module</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/dracut.html#BootImageDracut.include_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.include_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include module to dracut boot image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> (<em>string</em>) – module to include</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – include the module for install initrds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.boot.image.dracut.BootImageDracut.omit_module">
+<code class="sig-name descname">omit_module</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/dracut.html#BootImageDracut.omit_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.omit_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Omit module to dracut boot image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> (<em>string</em>) – module to omit</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – omit the module for install initrds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/dracut.html#BootImageDracut.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
@@ -693,6 +773,20 @@ the result into the image build target directory</p>
 <li><p>Create kiwi .profile environment to be included in dracut initrd</p></li>
 <li><p>Setup machine_id(s) to be generic and rebuild by dracut on boot</p></li>
 </ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.boot.image.dracut.BootImageDracut.write_system_config_file">
+<code class="sig-name descname">write_system_config_file</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">config_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/dracut.html#BootImageDracut.write_system_config_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.write_system_config_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes modules configuration into a dracut configuration file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – a dictionary containing the modules to add and omit</p></li>
+<li><p><strong>conf_file</strong> (<em>string</em>) – configuration file to write</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>KIWI Image Description for Vagrant &mdash; kiwi 9.18.10 documentation</title>
+  <title>KIWI Image Description Encrypted Disk &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Booting a Live ISO Image from Network" href="pxe_live_iso_boot.html" />
-    <link rel="prev" title="PXE Client Setup Configuration" href="pxe_client_configuration.html" /> 
+    <link rel="next" title="KIWI Commands" href="../../commands.html" />
+    <link rel="prev" title="Add or Update the Fstab File" href="custom_fstab_extension.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -257,8 +257,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -269,6 +269,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -338,7 +339,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -455,13 +456,13 @@
         
           <li><a href="../working_with_images.html">Working with Images</a> &raquo;</li>
         
-      <li>KIWI Image Description for Vagrant</li>
+      <li>KIWI Image Description Encrypted Disk</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/building/working_with_images/vagrant_setup.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/building/working_with_images/vmx_setup_for_luks.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -474,259 +475,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="kiwi-image-description-for-vagrant">
-<span id="setup-vagrant"></span><h1>KIWI Image Description for Vagrant<a class="headerlink" href="#kiwi-image-description-for-vagrant" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="kiwi-image-description-encrypted-disk">
+<span id="setup-for-luks"></span><h1>KIWI Image Description Encrypted Disk<a class="headerlink" href="#kiwi-image-description-encrypted-disk" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar">
 <p class="sidebar-title">Abstract</p>
 <p>This page provides further information for handling
-VMX images built with KIWI and references the following
+vmx images with an encrypted root filesystem setup.
+The information here is based on top of the following
 article:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../build_vmx_disk.html#vmx"><span class="std std-ref">Build a Virtual Disk Image</span></a></p></li>
 </ul>
 </div>
-<p><a class="reference external" href="https://www.vagrantup.com">Vagrant</a> is a framework to
-implement consistent processing/testing work environments based on
-Virtualization technologies. To run a system, Vagrant needs so-called
-<strong>boxes</strong>. A box is a TAR archive containing a virtual disk image and
-some metadata.</p>
-<p>To build Vagrant boxes, you can use <a class="reference external" href="https://www.packer.io">Packer</a> which
-is provided by Hashicorp itself. Packer is based on the official
-installation media (DVDs) as shipped by the distribution vendor.</p>
-<p>The KIWI way of building images might be helpful, if such a media does not
-exist or does not suit your needs. For example, if the distribution is
-still under development or you want to use a collection of your own
-repositories. Note, that in contrast to Packer KIWI only supports the
-libvirt and VirtualBox providers. Other providers require a different box
-layout that is currently not supported by KIWI.</p>
-<p>In addition, you can use the KIWI image description as source for the
-<a class="reference external" href="https://openbuildservice.org">Open Build Service</a> which allows
-building and maintaining boxes.</p>
-<p>Vagrant expects boxes to be setup in a specific way (for details refer to
-the <a class="reference external" href="https://www.vagrantup.com/docs/boxes/base.html">Vagrant box documentation</a>.), applied to the
-referenced KIWI image description from <a class="reference internal" href="../build_vmx_disk.html#vmx"><span class="std std-ref">Build a Virtual Disk Image</span></a>, the following steps are
-required:</p>
+<p>A virtual disk image can be partially or fully encrypted
+using the LUKS extension supported by KIWI. A fully encrypted
+image also includes the data in <code class="file docutils literal notranslate"><span class="pre">/boot</span></code> to be encrypted.
+Such an image requests the passphrase for the master key
+to be entered at the bootloader stage. A partialy encrypted
+image keeps <code class="file docutils literal notranslate"><span class="pre">/boot</span></code> unencrypted and on an extra boot partition.
+Such an image requests the passphrase for the master key later
+in the boot process when the root partition gets accessed by
+the systemd mount service. In any case the master passphrase
+is requested only once.</p>
+<p>Update the KIWI image description as follows:</p>
 <ol class="arabic">
-<li><p>Update the image type setup</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;vagrant&quot;</span> <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;vagrantconfig</span> <span class="na">provider=</span><span class="s">&quot;libvirt&quot;</span> <span class="na">virtualsize=</span><span class="s">&quot;42&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;size</span> <span class="na">unit=</span><span class="s">&quot;G&quot;</span><span class="nt">&gt;</span>42<span class="nt">&lt;/size&gt;</span>
+<li><p>Software packages</p>
+<p>Make sure to add the following package to the package list</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Package names used in the following list match the
+package names of the SUSE distribution and might be different
+on other distributions.</p>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;cryptsetup&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Image Type definition</p>
+<p>Update the vmx image type setup as follows</p>
+<dl>
+<dt>Full disk encryption including <code class="file docutils literal notranslate"><span class="pre">/boot</span></code>:</dt><dd><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span>
+    <span class="na">image=</span><span class="s">&quot;vmx&quot;</span>
+    <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span>
+    <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span>
+    <span class="na">luks=</span><span class="s">&quot;linux&quot;</span>
+    <span class="na">bootpartition=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/type&gt;</span>
 </pre></div>
 </div>
-<p>This modifies the type to build a Vagrant box for the libvirt
-provider including a pre-defined disk size. The disk size is
-optional, but recommended to provide some free space on disk.</p>
-<p>For the VirtualBox provider, the additional attribute
-<code class="docutils literal notranslate"><span class="pre">virtualbox_guest_additions_present</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> when the
-VirtualBox guest additions are installed in the KIWI image:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;vagrant&quot;</span> <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;vagrantconfig</span>
-      <span class="na">provider=</span><span class="s">&quot;virtualbox&quot;</span>
-      <span class="na">virtualbox_guest_additions_present=</span><span class="s">&quot;true&quot;</span>
-      <span class="na">virtualsize=</span><span class="s">&quot;42&quot;</span>
-    <span class="nt">/&gt;</span>
-    <span class="nt">&lt;size</span> <span class="na">unit=</span><span class="s">&quot;G&quot;</span><span class="nt">&gt;</span>42<span class="nt">&lt;/size&gt;</span>
+</dd>
+<dt>Encrypted root partition with an unencrypted extra <code class="file docutils literal notranslate"><span class="pre">/boot</span></code> partition:</dt><dd><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span>
+    <span class="na">image=</span><span class="s">&quot;vmx&quot;</span>
+    <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span>
+    <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span>
+    <span class="na">luks=</span><span class="s">&quot;linux&quot;</span>
+    <span class="na">bootpartition=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/type&gt;</span>
 </pre></div>
 </div>
-<p>The resulting Vagrant box then uses the <code class="docutils literal notranslate"><span class="pre">vboxfs</span></code> module for the
-synchronized folder instead of <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, that is used by default.</p>
-</li>
-<li><p>Add mandatory packages</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;sudo&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;openssh&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Add additional packages</p>
-<p>If you have set the attribute <code class="docutils literal notranslate"><span class="pre">virtualbox_guest_additions_present</span></code> to
-<code class="docutils literal notranslate"><span class="pre">true</span></code>, add the VirtualBox guest additions. For openSUSE the following
-packages are required:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;virtualbox-guest-tools&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;virtualbox-guest-x11&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;virtualbox-guest-kmp-default&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
-</div>
-<p>Otherwise, you must add <code class="docutils literal notranslate"><span class="pre">rsync</span></code>:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;rsync&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
-</div>
-<p>Note that KIWI cannot verify whether these packages are installed. If
-they are missing, the resulting Vagrant box will be broken.</p>
-</li>
-<li><p>Add Vagrant user</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;users</span> <span class="na">group=</span><span class="s">&#39;vagrant&#39;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">&#39;vagrant&#39;</span> <span class="na">password=</span><span class="s">&#39;vh4vw1N4alxKQ&#39;</span> <span class="na">home=</span><span class="s">&#39;/home/vagrant&#39;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/users&gt;</span>
-</pre></div>
-</div>
-<p>This adds the <strong>vagrant</strong> user to the system and applies the
-name of the user as the password for login.</p>
-</li>
-<li><p>Integrate public SSH key</p>
-<p>Vagrant requires an insecure public key pair <a class="footnote-reference brackets" href="#f1" id="id1">1</a> to be added to the
-authorized keys for the user <code class="docutils literal notranslate"><span class="pre">vagrant</span></code> so that Vagrant itself can
-connect to the box via ssh.
-The key can be obtained from <a class="reference external" href="https://github.com/hashicorp/vagrant/blob/master/keys/vagrant.pub">GitHub</a>
-and should be inserted into the file
-<code class="file docutils literal notranslate"><span class="pre">home/vagrant/.ssh/authorized_keys</span></code>, which can be added as an
-overlay file into the image description.</p>
-<p>Keep in mind to set the file system permissions of
-<code class="file docutils literal notranslate"><span class="pre">home/vagrant/.ssh/</span></code> and <code class="file docutils literal notranslate"><span class="pre">home/vagrant/.ssh/authorized_keys</span></code>
-correctly, otherwise Vagrant will not be able to connect to your
-box. The following snippet can be added to <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod <span class="m">0600</span> /home/vagrant/.ssh/authorized_keys
-chown -R vagrant:vagrant /home/vagrant/
-</pre></div>
-</div>
-</li>
-<li><p>Create the default shared folder</p>
-<p>Vagrant boxes usually provide a default shared folder under
-<code class="file docutils literal notranslate"><span class="pre">/vagrant</span></code>. Consider adding this empty folder to your overlay
-files and ensure that the user <code class="docutils literal notranslate"><span class="pre">vagrant</span></code> has write permissions to
-it.</p>
-<p>Note, that the boxes that KIWI produces <strong>require</strong> this folder to
-exist, otherwise Vagrant will not be able to start them properly.</p>
-</li>
-<li><p>Setup and start SSH daemon</p>
-<p>In <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> add the start of sshd:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#======================================</span>
-<span class="c1"># Activate services</span>
-<span class="c1">#--------------------------------------</span>
-baseInsertService sshd
-</pre></div>
-</div>
-<p>Also make sure to add the line <strong>UseDNS=no</strong> into
-<code class="file docutils literal notranslate"><span class="pre">/etc/ssh/sshd_config</span></code>. This can be done by an overlay file or by
-patching the file in the above mentioned <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> file.</p>
-</li>
-<li><p>Configure sudo for the Vagrant user</p>
-<p>Vagrant expects to have passwordless root permissions via <code class="docutils literal notranslate"><span class="pre">sudo</span></code> to be
-able to setup your box. Add the following line to <code class="file docutils literal notranslate"><span class="pre">/etc/sudoers</span></code>
-or add it into a new file <code class="file docutils literal notranslate"><span class="pre">/etc/sudoers.d/vagrant</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vagrant</span> <span class="n">ALL</span><span class="o">=</span><span class="p">(</span><span class="n">ALL</span><span class="p">)</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="n">ALL</span>
-</pre></div>
-</div>
-<p>You can also use <strong class="command">visudo</strong> to verify that the resulting
-<code class="file docutils literal notranslate"><span class="pre">/etc/sudoers</span></code> or <code class="file docutils literal notranslate"><span class="pre">/etc/sudoers.d/vagrant</span></code> are valid:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>visudo -cf /etc/sudoers
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">exit</span> <span class="m">1</span>
-<span class="k">fi</span>
-</pre></div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The value for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">luks</span></code> attribute sets the master passphrase
+for the LUKS keyring. Therefore the XML description becomes
+security critical and should only be readable by trustworthy
+people</p>
 </div>
 </li>
 </ol>
-<p>An image built with the above setup creates a Vagrant box file with the
-extension <code class="file docutils literal notranslate"><span class="pre">.vagrant.libvirt.box</span></code> or
-<code class="file docutils literal notranslate"><span class="pre">.vagrant.virtualbox.box</span></code>. Add the box file to Vagrant with the
-command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant box add my-box image-file.vagrant.libvirt.box
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Using the box with the libvirt provider requires alongside a correct
-Vagrant installation:</p>
-<ul class="simple">
-<li><p>the plugin <code class="docutils literal notranslate"><span class="pre">vagrant-libvirt</span></code> to be installed</p></li>
-<li><p>a running libvirtd daemon</p></li>
-</ul>
-</div>
-<p>Once added to Vagrant, boot the box and log in
-with the following sequence of <strong class="command">vagrant</strong> commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant init my-box
-vagrant up --provider libvirt
-vagrant ssh
-</pre></div>
-</div>
-<div class="section" id="customizing-the-embedded-vagrantfile">
-<h2>Customizing the embedded Vagrantfile<a class="headerlink" href="#customizing-the-embedded-vagrantfile" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is an advanced topic and not required for most users</p>
-</div>
-<p>Vagrant ship with an embedded <code class="file docutils literal notranslate"><span class="pre">Vagrantfile</span></code> that carries settings
-specific to this box, for instance the synchronization mechanism for the
-shared folder. KIWI generates such a file automatically for you and it
-should be sufficient for most use cases.</p>
-<p>If a box requires different settings in the embedded <code class="file docutils literal notranslate"><span class="pre">Vagrantfile</span></code>,
-then the user can provide KIWI with a path to an alternative via the
-attribute <code class="xref py py-obj docutils literal notranslate"><span class="pre">embebbed_vagrantfile</span></code> of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">vagrantconfig</span></code> element: it
-specifies a relative path to the <code class="file docutils literal notranslate"><span class="pre">Vagrantfile</span></code> that will be included
-in the finished box.</p>
-<p>In the following example snippet from <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> we add a custom
-<code class="file docutils literal notranslate"><span class="pre">MyVagrantfile</span></code> into the box (the file should be in the image
-description directory next to <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code>):</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;vagrant&quot;</span> <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;vagrantconfig</span>
-      <span class="na">provider=</span><span class="s">&quot;libvirt&quot;</span>
-      <span class="na">virtualsize=</span><span class="s">&quot;42&quot;</span>
-      <span class="na">embedded_vagrantfile=</span><span class="s">&quot;MyVagrantfile&quot;</span>
-    <span class="nt">/&gt;</span>
-    <span class="nt">&lt;size</span> <span class="na">unit=</span><span class="s">&quot;G&quot;</span><span class="nt">&gt;</span>42<span class="nt">&lt;/size&gt;</span>
-<span class="nt">&lt;/type&gt;</span>
-</pre></div>
-</div>
-<p>The option to provide a custom <code class="file docutils literal notranslate"><span class="pre">Vagrantfile</span></code> can be combined with the
-usage of <em>profiles</em> (see <a class="reference internal" href="../../working_with_kiwi/xml_description.html#xml-description-image-profiles"><span class="std std-ref">Image Profiles</span></a>), so that
-certain builds can use the automatically generated <code class="file docutils literal notranslate"><span class="pre">Vagrantfile</span></code> (in
-the following example that is the Virtualbox build) and others get a
-customized one (the libvirt profile in the following example):</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-
-<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- description goes here --&gt;</span>
-  <span class="nt">&lt;profiles&gt;</span>
-    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;libvirt&quot;</span> <span class="na">description=</span><span class="s">&quot;Vagrant Box for Libvirt&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;virtualbox&quot;</span> <span class="na">description=</span><span class="s">&quot;Vagrant Box for VirtualBox&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/profiles&gt;</span>
-
-  <span class="c">&lt;!-- general preferences go here --&gt;</span>
-
-  <span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;libvirt&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;type</span>
-      <span class="na">image=</span><span class="s">&quot;vmx&quot;</span>
-      <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span>
-      <span class="na">format=</span><span class="s">&quot;vagrant&quot;</span>
-      <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span>
-      <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;vagrantconfig</span>
-          <span class="na">provider=</span><span class="s">&quot;libvirt&quot;</span>
-          <span class="na">virtualsize=</span><span class="s">&quot;42&quot;</span>
-          <span class="na">embedded_vagrantfile=</span><span class="s">&quot;LibvirtVagrantfile&quot;</span>
-        <span class="nt">/&gt;</span>
-        <span class="nt">&lt;size</span> <span class="na">unit=</span><span class="s">&quot;G&quot;</span><span class="nt">&gt;</span>42<span class="nt">&lt;/size&gt;</span>
-   <span class="nt">&lt;/type&gt;</span>
-   <span class="nt">&lt;/preferences&gt;</span>
-   <span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;virtualbox&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;type</span>
-       <span class="na">image=</span><span class="s">&quot;vmx&quot;</span>
-       <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span>
-       <span class="na">format=</span><span class="s">&quot;vagrant&quot;</span>
-       <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span>
-       <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
-         <span class="nt">&lt;vagrantconfig</span>
-           <span class="na">provider=</span><span class="s">&quot;virtualbox&quot;</span>
-           <span class="na">virtualbox_guest_additions_present=</span><span class="s">&quot;true&quot;</span>
-           <span class="na">virtualsize=</span><span class="s">&quot;42&quot;</span>
-         <span class="nt">/&gt;</span>
-         <span class="nt">&lt;size</span> <span class="na">unit=</span><span class="s">&quot;G&quot;</span><span class="nt">&gt;</span>42<span class="nt">&lt;/size&gt;</span>
-     <span class="nt">&lt;/type&gt;</span>
-   <span class="nt">&lt;/preferences&gt;</span>
-
-   <span class="c">&lt;!-- remaining box description --&gt;</span>
- <span class="nt">&lt;/image&gt;</span>
-</pre></div>
-</div>
-<dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>The insecure key is removed from the box when the it is first
-booted via Vagrant.</p>
-</dd>
-</dl>
-</div>
 </div>
 
 
@@ -737,10 +554,10 @@ booted via Vagrant.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pxe_live_iso_boot.html" class="btn btn-neutral float-right" title="Booting a Live ISO Image from Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../commands.html" class="btn btn-neutral float-right" title="KIWI Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pxe_client_configuration.html" class="btn btn-neutral float-left" title="PXE Client Setup Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="custom_fstab_extension.html" class="btn btn-neutral float-left" title="Add or Update the Fstab File" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

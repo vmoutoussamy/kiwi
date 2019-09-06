@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system Package &mdash; kiwi 9.18.10 documentation</title>
+  <title>kiwi.system Package &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -257,8 +257,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -269,6 +269,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -338,7 +339,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.10</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.13</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -453,7 +454,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.18.10</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.13</a> &raquo;</li>
         
       <li>kiwi.system Package</li>
     
@@ -667,12 +668,15 @@ is ignored.</p>
 
 <dl class="method">
 <dt id="kiwi.system.prepare.SystemPrepare.install_bootstrap">
-<code class="sig-name descname">install_bootstrap</code><span class="sig-paren">(</span><em class="sig-param">manager</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/prepare.html#SystemPrepare.install_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.prepare.SystemPrepare.install_bootstrap" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">install_bootstrap</code><span class="sig-paren">(</span><em class="sig-param">manager</em>, <em class="sig-param">plus_packages=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/prepare.html#SystemPrepare.install_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.prepare.SystemPrepare.install_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Install system software using the package manager
 from the host, also known as bootstrapping</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">PackageManager</span></code> subclass</p></li>
+<li><p><strong>plus_packages</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of additional packages</p></li>
+</ul>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiBootStrapPhaseFailed" title="kiwi.exceptions.KiwiBootStrapPhaseFailed"><strong>KiwiBootStrapPhaseFailed</strong></a> – if the bootstrapping process fails
@@ -1186,13 +1190,23 @@ required in the later image</p>
 <dt id="kiwi.system.setup.SystemSetup.create_fstab">
 <code class="sig-name descname">create_fstab</code><span class="sig-paren">(</span><em class="sig-param">entries</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/system/setup.html#SystemSetup.create_fstab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.create_fstab" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create etc/fstab from given list of entries</p>
-<p>Also look for an optional fstab.append file which allows
+<p>Custom fstab modifications are possible and handled
+in the following order:</p>
+<ol class="arabic simple">
+<li><p>Look for an optional fstab.append file which allows
 to append custom fstab entries to the final fstab. Once
-embedded the fstab.append file will be deleted</p>
-<p>Also look for an optional fstab.patch file which allows
+embedded the fstab.append file will be deleted</p></li>
+<li><p>Look for an optional fstab.patch file which allows
 to patch the current contents of the fstab file with
 a given patch file. Once patched the fstab.patch file will
-be deleted</p>
+be deleted</p></li>
+<li><p>Look for an optional fstab.script file which is called
+chrooted for the purpose of updating the fstab file as
+appropriate. Note: There is no validation in place that
+checks if the script actually handles fstab or any other
+file in the image rootfs. Once called the fstab.script
+file will be deleted</p></li>
+</ol>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of line entries for fstab</p>

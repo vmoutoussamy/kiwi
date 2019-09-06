@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.disk &mdash; kiwi 9.18.10 documentation</title>
+  <title>kiwi.builder.disk &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -255,8 +255,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -267,6 +267,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -336,7 +337,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -525,7 +526,7 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="DiskBuilder"><a class="viewcode-back" href="../../../development/api/kiwi.builder.html#kiwi.builder.disk.DiskBuilder">[docs]</a><span class="k">class</span> <span class="nc">DiskBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="DiskBuilder"><a class="viewcode-back" href="../../../development/api/kiwi.builder.html#kiwi.builder.disk.DiskBuilder">[docs]</a><span class="k">class</span> <span class="nc">DiskBuilder</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    **Disk image builder**</span>
 
@@ -604,6 +605,8 @@
                 <span class="s1">&#39;.raw&#39;</span>
             <span class="p">]</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boot_is_crypto</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">luks</span> <span class="ow">and</span> <span class="ow">not</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">disk_setup</span><span class="o">.</span><span class="n">need_boot_partition</span><span class="p">()</span> <span class="k">else</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">install_media</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_install_image_requested</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">generic_fstab_entries</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -719,7 +722,9 @@
                 <span class="s1">&#39;targetbase&#39;</span><span class="p">:</span>
                     <span class="n">loop_provider</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span>
                 <span class="s1">&#39;grub_directory_name&#39;</span><span class="p">:</span>
-                    <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_boot_directory_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
+                    <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_boot_directory_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">),</span>
+                <span class="s1">&#39;boot_is_crypto&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">boot_is_crypto</span>
             <span class="p">}</span>
         <span class="p">)</span>
 
@@ -739,9 +744,19 @@
         <span class="c1"># create luks on current root device if requested</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">luks</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">luks_root</span> <span class="o">=</span> <span class="n">LuksDevice</span><span class="p">(</span><span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">])</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">luks_root</span><span class="o">.</span><span class="n">create_crypto_luks</span><span class="p">(</span>
-                <span class="n">passphrase</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">luks</span><span class="p">,</span> <span class="n">os</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">luks_os</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">luks_boot_keyfile</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;/.root.keyfile&#39;</span><span class="p">]</span>
             <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">luks_root</span><span class="o">.</span><span class="n">create_crypto_luks</span><span class="p">(</span>
+                <span class="n">passphrase</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">luks</span><span class="p">,</span>
+                <span class="n">os</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">luks_os</span><span class="p">,</span>
+                <span class="n">keyfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">luks_boot_keyfile</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_is_crypto</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_is_crypto</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">include_file</span><span class="p">(</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">luks_boot_keyfile</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;luks_root&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">]</span>
             <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">luks_root</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
 
         <span class="c1"># create spare filesystem on spare partition if present</span>
@@ -830,14 +845,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_write_generic_fstab_to_system_image</span><span class="p">(</span><span class="n">device_map</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_create_dracut_config</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_multipath</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">omit_module</span><span class="p">(</span><span class="s1">&#39;multipath&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_overlay</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">include_module</span><span class="p">(</span><span class="s1">&#39;kiwi-overlay&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">write_system_config_file</span><span class="p">(</span>
+                    <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;modules&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;kiwi-overlay&#39;</span><span class="p">]}</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type_name</span> <span class="o">==</span> <span class="s1">&#39;oem&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">include_module</span><span class="p">(</span><span class="s1">&#39;kiwi-repart&#39;</span><span class="p">)</span>
 
         <span class="c1"># create initrd cpio archive</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">create_initrd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">)</span>
-
-        <span class="c1"># create dracut config omitting one time kiwi dracut modules</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_create_system_dracut_config</span><span class="p">()</span>
 
         <span class="c1"># create second stage metadata to system image</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_copy_first_boot_files_to_system_image</span><span class="p">()</span>
@@ -1226,55 +1245,6 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">disk</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_create_dracut_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dracut_config</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;hostonly=&quot;no&quot;&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;dracut_rescue_image=&quot;no&quot;&#39;</span>
-        <span class="p">]</span>
-        <span class="n">dracut_modules</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">dracut_modules_omit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kiwi-live&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi-dump&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_multipath</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">dracut_modules_omit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;multipath&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_overlay</span><span class="p">:</span>
-            <span class="n">dracut_modules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;kiwi-overlay&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dracut_modules_omit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;kiwi-overlay&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type_name</span> <span class="o">==</span> <span class="s1">&#39;oem&#39;</span><span class="p">:</span>
-            <span class="n">dracut_modules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;kiwi-lib&#39;</span><span class="p">)</span>
-            <span class="n">dracut_modules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;kiwi-repart&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_write_dracut_config</span><span class="p">(</span>
-            <span class="n">config</span><span class="o">=</span><span class="n">dracut_config</span><span class="p">,</span>
-            <span class="n">modules</span><span class="o">=</span><span class="n">dracut_modules</span><span class="p">,</span>
-            <span class="n">omit_modules</span><span class="o">=</span><span class="n">dracut_modules_omit</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_create_system_dracut_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dracut_modules</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">dracut_modules_omit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kiwi-live&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi-dump&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi-repart&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_overlay</span><span class="p">:</span>
-            <span class="n">dracut_modules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;kiwi-overlay&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dracut_modules_omit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;kiwi-overlay&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_write_dracut_config</span><span class="p">(</span>
-            <span class="n">config</span><span class="o">=</span><span class="p">[],</span> <span class="n">modules</span><span class="o">=</span><span class="n">dracut_modules</span><span class="p">,</span> <span class="n">omit_modules</span><span class="o">=</span><span class="n">dracut_modules_omit</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_write_dracut_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">modules</span><span class="p">,</span> <span class="n">omit_modules</span><span class="p">):</span>
-        <span class="n">dracut_config_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_dracut_conf_name</span><span class="p">()]</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">modules</span><span class="p">:</span>
-            <span class="n">config</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="s1">&#39;add_dracutmodules+=&quot; </span><span class="si">{0}</span><span class="s1"> &quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">modules</span><span class="p">))</span>
-            <span class="p">)</span>
-        <span class="k">if</span> <span class="n">omit_modules</span><span class="p">:</span>
-            <span class="n">config</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="s1">&#39;omit_dracutmodules+=&quot; </span><span class="si">{0}</span><span class="s1"> &quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">omit_modules</span><span class="p">))</span>
-            <span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dracut_config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dracut_config</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
-                <span class="n">dracut_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">entry</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">_write_partition_id_config_to_boot_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating config.partids in boot system&#39;</span><span class="p">)</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -1413,7 +1383,12 @@
             <span class="n">boot_uuid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">disk</span><span class="o">.</span><span class="n">get_uuid</span><span class="p">(</span>
                 <span class="n">boot_device</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
             <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bootloader_config</span><span class="o">.</span><span class="n">setup_disk_boot_images</span><span class="p">(</span><span class="n">boot_uuid</span><span class="p">)</span>
+            <span class="n">boot_uuid_unmapped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">disk</span><span class="o">.</span><span class="n">get_uuid</span><span class="p">(</span>
+                <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;luks_root&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
+            <span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">luks</span> <span class="k">else</span> <span class="n">boot_uuid</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bootloader_config</span><span class="o">.</span><span class="n">setup_disk_boot_images</span><span class="p">(</span>
+                <span class="n">boot_uuid_unmapped</span>
+            <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bootloader_config</span><span class="o">.</span><span class="n">setup_disk_image_config</span><span class="p">(</span>
                 <span class="n">boot_uuid</span><span class="o">=</span><span class="n">boot_uuid</span><span class="p">,</span>
                 <span class="n">root_uuid</span><span class="o">=</span><span class="n">root_uuid</span><span class="p">,</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image.base &mdash; kiwi 9.18.10 documentation</title>
+  <title>kiwi.boot.image.base &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -255,8 +255,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -267,6 +267,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -336,7 +337,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -504,7 +505,7 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="BootImageBase"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase">[docs]</a><span class="k">class</span> <span class="nc">BootImageBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="BootImageBase"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase">[docs]</a><span class="k">class</span> <span class="nc">BootImageBase</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    **Base class for boot image(initrd) task**</span>
 
@@ -560,6 +561,48 @@
 <span class="sd">        :param string filename: file path name</span>
 
 <span class="sd">        :param bool install_media: include also for installation media initrd</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="BootImageBase.include_module"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.include_module">[docs]</a>    <span class="k">def</span> <span class="nf">include_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">install_media</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Include module to boot image</span>
+
+<span class="sd">        For kiwi boot no modules configuration is required. Thus in</span>
+<span class="sd">        such a case this method is a noop.</span>
+
+<span class="sd">        :param string module: module to include</span>
+<span class="sd">        :param bool install_media: include the module for install initrds</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="BootImageBase.omit_module"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.omit_module">[docs]</a>    <span class="k">def</span> <span class="nf">omit_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">install_media</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Omit module to boot image</span>
+
+<span class="sd">        For kiwi boot no modules configuration is required. Thus in</span>
+<span class="sd">        such a case this method is a noop.</span>
+
+<span class="sd">        :param string module: module to omit</span>
+<span class="sd">        :param bool install_media: omit the module for install initrds</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="BootImageBase.write_system_config_file"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.write_system_config_file">[docs]</a>    <span class="k">def</span> <span class="nf">write_system_config_file</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Writes relevant boot image configuration into configuration file</span>
+<span class="sd">        that will be part of the system image.</span>
+
+<span class="sd">        This is used to configure any further boot image rebuilds after</span>
+<span class="sd">        deployment. For instance, initrds recreated on kernel update.</span>
+
+<span class="sd">        For kiwi boot no specific configuration is required for initrds</span>
+<span class="sd">        recreation, thus this method is a noop in that case.</span>
+
+<span class="sd">        :param dict config: dictonary including configuration parameters</span>
+<span class="sd">        :param string config_file: configuration file to write</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
@@ -629,7 +672,7 @@
 
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="BootImageBase.load_boot_xml_description"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.load_boot_xml_description">[docs]</a>    <span class="k">def</span> <span class="nf">load_boot_xml_description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.luks_device &mdash; kiwi 9.18.10 documentation</title>
+  <title>kiwi.storage.luks_device &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -255,8 +255,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -267,6 +267,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -336,7 +337,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -484,10 +485,12 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">NamedTemporaryFile</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
+<span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.storage.device_provider</span> <span class="k">import</span> <span class="n">DeviceProvider</span>
 <span class="kn">from</span> <span class="nn">kiwi.storage.mapped_device</span> <span class="k">import</span> <span class="n">MappedDevice</span>
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
@@ -510,6 +513,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">storage_provider</span> <span class="o">=</span> <span class="n">storage_provider</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">luks_device</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">luks_keyfile</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">luks_name</span> <span class="o">=</span> <span class="s1">&#39;luksRoot&#39;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">option_map</span> <span class="o">=</span> <span class="p">{</span>
@@ -533,7 +537,9 @@
                 <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">luks_device</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="LuksDevice.create_crypto_luks"><a class="viewcode-back" href="../../../development/api/kiwi.storage.html#kiwi.storage.luks_device.LuksDevice.create_crypto_luks">[docs]</a>    <span class="k">def</span> <span class="nf">create_crypto_luks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">passphrase</span><span class="p">,</span> <span class="n">os</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="LuksDevice.create_crypto_luks"><a class="viewcode-back" href="../../../development/api/kiwi.storage.html#kiwi.storage.luks_device.LuksDevice.create_crypto_luks">[docs]</a>    <span class="k">def</span> <span class="nf">create_crypto_luks</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">passphrase</span><span class="p">,</span> <span class="n">os</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keyfile</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create luks device. Please note the passphrase is readable</span>
 <span class="sd">        at creation time of this image. Make sure your host system</span>
@@ -544,6 +550,9 @@
 <span class="sd">            distribution name to match distribution specific</span>
 <span class="sd">            options for cryptsetup</span>
 <span class="sd">        :param list options: further cryptsetup options</span>
+<span class="sd">        :param string keyfile: file path name</span>
+<span class="sd">            file path name which contains an alternative key</span>
+<span class="sd">            to unlock the luks device</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">options</span><span class="p">:</span>
             <span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
@@ -582,6 +591,15 @@
                 <span class="s1">&#39;luksFormat&#39;</span><span class="p">,</span> <span class="n">storage_device</span>
             <span class="p">]</span>
         <span class="p">)</span>
+        <span class="k">if</span> <span class="n">keyfile</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">luks_keyfile</span> <span class="o">=</span> <span class="n">keyfile</span>
+            <span class="n">LuksDevice</span><span class="o">.</span><span class="n">create_random_keyfile</span><span class="p">(</span><span class="n">keyfile</span><span class="p">)</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s1">&#39;cryptsetup&#39;</span><span class="p">,</span> <span class="s1">&#39;--key-file&#39;</span><span class="p">,</span> <span class="n">passphrase_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="s1">&#39;luksAddKey&#39;</span><span class="p">,</span> <span class="n">storage_device</span><span class="p">,</span> <span class="n">keyfile</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;cryptsetup&#39;</span><span class="p">,</span> <span class="s1">&#39;--key-file&#39;</span><span class="p">,</span> <span class="n">passphrase_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
@@ -598,11 +616,20 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">storage_device</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_provider</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">crypttab</span><span class="p">:</span>
-            <span class="n">crypttab</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                <span class="s1">&#39;luks UUID=</span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_provider</span><span class="o">.</span><span class="n">get_uuid</span><span class="p">(</span>
-                    <span class="n">storage_device</span>
+            <span class="n">luks_uuid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_provider</span><span class="o">.</span><span class="n">get_uuid</span><span class="p">(</span><span class="n">storage_device</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">luks_keyfile</span><span class="p">:</span>
+                <span class="n">crypttab</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="s1">&#39;luks UUID=</span><span class="si">{0}</span><span class="s1"> /</span><span class="si">{1}{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">luks_uuid</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">luks_keyfile</span><span class="p">),</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+                    <span class="p">)</span>
                 <span class="p">)</span>
-            <span class="p">)</span></div>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">crypttab</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="s1">&#39;luks UUID=</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">luks_uuid</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+                    <span class="p">)</span>
+                <span class="p">)</span></div>
 
 <div class="viewcode-block" id="LuksDevice.is_loop"><a class="viewcode-back" href="../../../development/api/kiwi.storage.html#kiwi.storage.luks_device.LuksDevice.is_loop">[docs]</a>    <span class="k">def</span> <span class="nf">is_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -615,6 +642,16 @@
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_provider</span><span class="o">.</span><span class="n">is_loop</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LuksDevice.create_random_keyfile"><a class="viewcode-back" href="../../../development/api/kiwi.storage.html#kiwi.storage.luks_device.LuksDevice.create_random_keyfile">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_random_keyfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create keyfile with random data</span>
+
+<span class="sd">        :param string filename: file path name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">keyfile</span><span class="p">:</span>
+            <span class="n">keyfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="n">Defaults</span><span class="o">.</span><span class="n">get_luks_key_length</span><span class="p">()))</span></div>
 
     <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">luks_device</span><span class="p">:</span>

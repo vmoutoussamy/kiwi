@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.install &mdash; kiwi 9.18.10 documentation</title>
+  <title>kiwi.builder.install &mdash; kiwi 9.18.13 documentation</title>
   
 
   
@@ -255,8 +255,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
@@ -267,6 +267,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
@@ -336,7 +337,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -513,7 +514,7 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="InstallImageBuilder"><a class="viewcode-back" href="../../../development/api/kiwi.builder.html#kiwi.builder.install.InstallImageBuilder">[docs]</a><span class="k">class</span> <span class="nc">InstallImageBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="InstallImageBuilder"><a class="viewcode-back" href="../../../development/api/kiwi.builder.html#kiwi.builder.install.InstallImageBuilder">[docs]</a><span class="k">class</span> <span class="nc">InstallImageBuilder</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    **Installation image builder**</span>
 
@@ -829,7 +830,13 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">boot_root_directory</span>
                 <span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_create_dracut_install_config</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">include_module</span><span class="p">(</span>
+                <span class="s1">&#39;kiwi-dump&#39;</span><span class="p">,</span> <span class="n">install_media</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_multipath</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">omit_module</span><span class="p">(</span>
+                    <span class="s1">&#39;multipath&#39;</span><span class="p">,</span> <span class="n">install_media</span><span class="o">=</span><span class="kc">True</span>
+                <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_system_image_boot_options_to_boot_image</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">create_initrd</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">,</span> <span class="s1">&#39;initrd_kiwi_install&#39;</span><span class="p">,</span>
@@ -863,7 +870,13 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">boot_root_directory</span>
                 <span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_create_dracut_install_config</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">include_module</span><span class="p">(</span>
+                <span class="s1">&#39;kiwi-dump&#39;</span><span class="p">,</span> <span class="n">install_media</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_multipath</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">omit_module</span><span class="p">(</span>
+                    <span class="s1">&#39;multipath&#39;</span><span class="p">,</span> <span class="n">install_media</span><span class="o">=</span><span class="kc">True</span>
+                <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_system_image_boot_options_to_boot_image</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">create_initrd</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">,</span> <span class="s1">&#39;initrd_kiwi_install&#39;</span><span class="p">,</span>
@@ -904,33 +917,8 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">initrd_trigger</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vmx_system</span><span class="p">:</span>
             <span class="n">vmx_system</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;IMAGE=&quot;</span><span class="si">%s</span><span class="s1">&quot;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">squashed_diskname</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_create_dracut_install_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dracut_config</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;hostonly=&quot;no&quot;&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;dracut_rescue_image=&quot;no&quot;&#39;</span>
-        <span class="p">]</span>
-        <span class="n">dracut_modules</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kiwi-lib&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi-dump&#39;</span><span class="p">]</span>
-        <span class="n">dracut_modules_omit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kiwi-overlay&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi-live&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi-repart&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_multipath</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">dracut_modules_omit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;multipath&#39;</span><span class="p">)</span>
-        <span class="n">dracut_config</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="s1">&#39;add_dracutmodules+=&quot; </span><span class="si">{0}</span><span class="s1"> &quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dracut_modules</span><span class="p">))</span>
-        <span class="p">)</span>
-        <span class="n">dracut_config</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="s1">&#39;omit_dracutmodules+=&quot; </span><span class="si">{0}</span><span class="s1"> &quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dracut_modules_omit</span><span class="p">))</span>
-        <span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dracut_config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">dracut_config</span><span class="p">:</span>
-                <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">entry</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_delete_dracut_install_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dracut_config_file</span><span class="p">):</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dracut_config_file</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Cleaning up </span><span class="si">%s</span><span class="s1"> instance&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_delete_dracut_install_config</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span><span class="p">:</span>
             <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_dir</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pxe_dir</span><span class="p">:</span>
