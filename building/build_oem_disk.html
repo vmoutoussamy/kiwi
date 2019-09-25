@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build an OEM Expandable Disk Image &mdash; kiwi 9.18.17 documentation</title>
+  <title>Build an OEM Expandable Disk Image &mdash; kiwi 9.18.18 documentation</title>
   
 
   
@@ -173,7 +173,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../building.html">Building Images</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="build_vmx_disk.html">Build a Virtual Disk Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="build_vmx_disk.html#modifying-the-size-of-the-image">Modifying the Size of the Image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build_vmx_disk.html#customizing-the-virtual-machine">Customizing the Virtual Machine</a><ul>
@@ -339,7 +342,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.17</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.18</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -622,8 +625,8 @@ tar -xf LimeJeOS-Leap-15.1.x86_64-1.15.1.install.tar.xz
 </div>
 </li>
 <li><p>Copy kernel and initrd used for pxe boot</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp pxeboot.initrd.xz PXE_SERVER_IP:/srv/tftpboot/boot/initrd
-scp pxeboot.kernel PXE_SERVER_IP:/srv/tftpboot/boot/linux
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp pxeboot.LimeJeOS-Leap-15.1.x86_64-1.15.1.initrd.xz PXE_SERVER_IP:/srv/tftpboot/boot/initrd
+scp pxeboot.LimeJeOS-Leap-15.1.x86_64-1.15.1.kernel PXE_SERVER_IP:/srv/tftpboot/boot/linux
 </pre></div>
 </div>
 </li>
@@ -635,14 +638,14 @@ the PXE boot server:</p>
 and initrd provided here.</p>
 <ol class="loweralpha">
 <li><p>Copy system image and MD5 checksum</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp LimeJeOS-Leap-15.1.xz PXE_SERVER_IP:/srv/tftpboot/image/
-scp LimeJeOS-Leap-15.1.md5 PXE_SERVER_IP:/srv/tftpboot/image/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp LimeJeOS-Leap-15.1.x86_64-1.15.1.xz PXE_SERVER_IP:/srv/tftpboot/image/
+scp LimeJeOS-Leap-15.1.x86_64-1.15.1.md5 PXE_SERVER_IP:/srv/tftpboot/image/
 </pre></div>
 </div>
 </li>
 <li><p>Copy kernel and initrd used for booting the system via kexec</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp LimeJeOS-Leap-15.1.initrd PXE_SERVER_IP:/srv/tftpboot/image/
-scp LimeJeOS-Leap-15.1.kernel PXE_SERVER_IP:/srv/tftpboot/image/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp LimeJeOS-Leap-15.1.x86_64-1.15.1.initrd PXE_SERVER_IP:/srv/tftpboot/image/
+scp LimeJeOS-Leap-15.1.x86_64-1.15.1.kernel PXE_SERVER_IP:/srv/tftpboot/image/
 </pre></div>
 </div>
 </li>
@@ -652,7 +655,7 @@ scp LimeJeOS-Leap-15.1.kernel PXE_SERVER_IP:/srv/tftpboot/image/
 <p>Edit your PXE configuration (for example <code class="file docutils literal notranslate"><span class="pre">pxelinux.cfg/default</span></code>) on
 the PXE server and add these parameters to the append line, typically
 looking like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>append <span class="nv">initrd</span><span class="o">=</span>boot/initrd rd.kiwi.install.pxe rd.kiwi.install.image<span class="o">=</span>tftp://192.168.100.16/image/LimeJeOS-Leap-15.1.xz
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>append <span class="nv">initrd</span><span class="o">=</span>boot/initrd rd.kiwi.install.pxe rd.kiwi.install.image<span class="o">=</span>tftp://192.168.100.16/image/LimeJeOS-Leap-15.1.x86_64-1.15.1.xz
 </pre></div>
 </div>
 <p>The location of the image is specified as a source URI which can point

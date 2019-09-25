@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build an ISO Hybrid Live Image &mdash; kiwi 9.18.17 documentation</title>
+  <title>Build an ISO Hybrid Live Image &mdash; kiwi 9.18.18 documentation</title>
   
 
   
@@ -173,7 +173,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../building.html">Building Images</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build an ISO Hybrid Live Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="build_vmx_disk.html">Build a Virtual Disk Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="build_vmx_disk.html#modifying-the-size-of-the-image">Modifying the Size of the Image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build_vmx_disk.html#customizing-the-virtual-machine">Customizing the Virtual Machine</a><ul>
@@ -339,7 +342,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.17</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.18</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -509,7 +512,8 @@ be set to <code class="xref py py-obj docutils literal notranslate"><span class=
 live ISO system based on squashfs and overlayfs.
 If set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code>, the dracut standard dmsquash-live module will be
 used to support a live ISO system based on squashfs and the device
-mapper. Note, both modules support a different set of live features.</p>
+mapper. Note, both modules support a different set of live features.
+For details see <a class="reference internal" href="#live-features"><span class="std std-ref">Decision for a live ISO technology</span></a></p>
 </li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hybridpersistent</span></code>: Accepts <code class="xref py py-obj docutils literal notranslate"><span class="pre">true</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">false</span></code>, if set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">true</span></code> then the
 resulting image will be created with a COW file to keep data persistent
@@ -532,6 +536,72 @@ be tested with QEMU:</p>
 <p>The image is now complete and ready to use. See <a class="reference internal" href="working_with_images/iso_to_usb_stick_deployment.html#iso-to-usb-stick"><span class="std std-ref">Deploy ISO Image on an USB Stick</span></a> and
 <a class="reference internal" href="working_with_images/iso_to_usb_stick_file_based_deployment.html#iso-as-file-to-usb-stick"><span class="std std-ref">Deploy ISO Image as File on a FAT32 Formated USB Stick</span></a> for further information concerning
 deployment.</p>
+<div class="section" id="decision-for-a-live-iso-technology">
+<span id="live-features"></span><h2>Decision for a live ISO technology<a class="headerlink" href="#decision-for-a-live-iso-technology" title="Permalink to this headline">¶</a></h2>
+<p>The decision for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> vs. <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> dracut module depends on
+the features one wants to use. From a design perspective the <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code>
+module is conceived for live ISO deployments on disk devices which
+allows the creation of a write partition or cow file. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code>
+module is conceived as a generic mapping technology using device-mapper
+snapshots. The following list describes important live ISO features and
+their support status compared to the <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> modules.</p>
+<dl class="simple">
+<dt>ISO scan</dt><dd><p>Usable in the same way with both dracut modules. This feature allows
+to boot the live ISO as a file from a grub loopback configured bootloader.
+The <code class="xref py py-obj docutils literal notranslate"><span class="pre">live-grub-stick</span></code> tool is just one example that uses this feature.
+For details how to setup ISO scan with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> module see
+<a class="reference internal" href="working_with_images/iso_to_usb_stick_file_based_deployment.html#iso-as-file-to-usb-stick"><span class="std std-ref">Deploy ISO Image as File on a FAT32 Formated USB Stick</span></a></p>
+</dd>
+<dt>ISO in RAM completely</dt><dd><p>Usable with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> module through <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.live.ram</span></code>. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code>
+module does not support this mode but KIWI supports RAM only systems
+as OEM deployment into RAM from an install ISO media. For details how
+to setup RAM only deployments in KIWI see: <a class="reference internal" href="working_with_images/oem_ramdisk_deployment.html#ramdisk-deployment"><span class="std std-ref">Deploy and Run System in a RamDisk</span></a></p>
+</dd>
+<dt>Overlay based on overlayfs</dt><dd><p>Usable with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> module. A squashfs compressed readonly root
+gets overlayed with a readwrite filesystem using the kernel overlayfs
+filesystem.</p>
+</dd>
+<dt>Overlay based on device mapper snapshots</dt><dd><p>Usable with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> module. A squashfs compressed readonly root
+gets overlayed with a readwrite filesystem using a device mapper
+snapshot. This method was the preferred one before overlayfs existed
+in the Linux kernel.</p>
+</dd>
+<dt>Media Checksum Verification</dt><dd><p>Boot the live iso only for ISO checksum verification. This is possible
+with both modules but the <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> module uses the <code class="xref py py-obj docutils literal notranslate"><span class="pre">checkmedia</span></code> tool
+whereas the upstream <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> module uses <code class="xref py py-obj docutils literal notranslate"><span class="pre">checkisomd5</span></code>. The activation
+of the verification process is done by passing the kernel option
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">mediacheck</span></code> for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> module and <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.live.check</span></code> for
+the <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> module.</p>
+</dd>
+<dt>Live ISO through PXE boot</dt><dd><p>Boot the live image via the network. This is possible with both
+modules but uses different technologies. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> module supports
+network boot only in combination with the AoE (Ata Over Ethernet) protocol.
+For details see <a class="reference internal" href="working_with_images/pxe_live_iso_boot.html#pxe-live-boot"><span class="std std-ref">Booting a Live ISO Image from Network</span></a>. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> module supports
+network boot by fetching the ISO image into memory from <code class="xref py py-obj docutils literal notranslate"><span class="pre">root=live:</span></code>
+using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">livenet</span></code> module.</p>
+</dd>
+<dt>Persistent Data</dt><dd><p>Keep new data persistent on a writable storage device. This can be done
+with both modules but in different ways. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> module activates
+persistency with the kernel boot parameter <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.live.overlay.persistent</span></code>.
+If the persistent setup cannot be created the fallback to the non persistent
+mode applies automatically. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">overlay</span></code> module auto detects if it is
+used on a disk or ISO scan loop booted from a file. If booted as disk,
+persistency is setup on a new partition of that disk. If loop booted
+from file, persistency is setup on a new cow file. The cow file/partition
+setup can be influenced with the kernel boot parameters:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.live.overlay.cowfs</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.live.cowfile.mbsize</span></code>. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code>
+module configures persistency through the <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.live.overlay</span></code> option
+exclusively and does not support the automatic creation of a write
+partition in disk mode.</p>
+</dd>
+</dl>
+<div class="admonition-dmsquash-documentation admonition">
+<p class="admonition-title">dmsquash documentation</p>
+<p>Documentation for the upstream <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> module can be found
+<a class="reference external" href="http://man7.org/linux/man-pages/man7/dracut.cmdline.7.html">here</a>.
+Options to setup <code class="xref py py-obj docutils literal notranslate"><span class="pre">dmsquash</span></code> are marked with <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.live</span></code></p>
+</div>
+</div>
 </div>
 
 
