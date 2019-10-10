@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.prepare &mdash; kiwi 9.18.18 documentation</title>
+  <title>kiwi.system.prepare &mdash; kiwi 9.18.19 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.18</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -612,17 +612,20 @@
             <span class="n">repo_components</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_components</span><span class="p">()</span>
             <span class="n">repo_repository_gpgcheck</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_repository_gpgcheck</span><span class="p">()</span>
             <span class="n">repo_package_gpgcheck</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_package_gpgcheck</span><span class="p">()</span>
+            <span class="n">repo_sourcetype</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_sourcetype</span><span class="p">()</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up repository </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_source</span><span class="p">)</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Type: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Type: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_type</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">repo_sourcetype</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; SourceType: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_sourcetype</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">repo_priority</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Priority: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_priority</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Priority: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_priority</span><span class="p">))</span>
 
             <span class="n">uri</span> <span class="o">=</span> <span class="n">Uri</span><span class="p">(</span><span class="n">repo_source</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">)</span>
             <span class="n">repo_source_translated</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Translated: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_source_translated</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Translated: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_source_translated</span><span class="p">))</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">repo_alias</span><span class="p">:</span>
                 <span class="n">repo_alias</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Alias: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_alias</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Alias: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_alias</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="o">.</span><span class="n">is_remote</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span>
                 <span class="n">repo_source_translated</span>
@@ -640,7 +643,8 @@
                 <span class="n">repo_alias</span><span class="p">,</span> <span class="n">repo_source_translated</span><span class="p">,</span>
                 <span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_priority</span><span class="p">,</span> <span class="n">repo_dist</span><span class="p">,</span> <span class="n">repo_components</span><span class="p">,</span>
                 <span class="n">repo_user</span><span class="p">,</span> <span class="n">repo_secret</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">credentials_file_name</span><span class="p">(),</span>
-                <span class="n">repo_repository_gpgcheck</span><span class="p">,</span> <span class="n">repo_package_gpgcheck</span>
+                <span class="n">repo_repository_gpgcheck</span><span class="p">,</span> <span class="n">repo_package_gpgcheck</span><span class="p">,</span>
+                <span class="n">repo_sourcetype</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">clear_cache</span><span class="p">:</span>
                 <span class="n">repo</span><span class="o">.</span><span class="n">delete_repo_cache</span><span class="p">(</span><span class="n">repo_alias</span><span class="p">)</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.18.18 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.18.19 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.18</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -821,6 +821,20 @@
             <span class="c1"># boot data should live below boot/grub</span>
             <span class="k">return</span> <span class="s1">&#39;grub&#39;</span></div>
 
+<div class="viewcode-block" id="Defaults.get_grub_config_tool"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_config_tool">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_config_tool</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides full qualified path name to grub mkconfig utility</span>
+
+<span class="sd">        :return: file path name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">grub_mkconfig_tool</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;grub2-mkconfig&#39;</span><span class="p">,</span> <span class="s1">&#39;grub-mkconfig&#39;</span><span class="p">]:</span>
+            <span class="n">grub_mkconfig_tool_file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">grub_mkconfig_tool</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">grub_mkconfig_tool_file_path</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">grub_mkconfig_tool_file_path</span></div>
+
 <div class="viewcode-block" id="Defaults.get_grub_basic_modules"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_basic_modules">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_grub_basic_modules</span><span class="p">(</span><span class="n">multiboot</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -888,8 +902,7 @@
         <span class="p">]</span>
         <span class="k">if</span> <span class="n">host_architecture</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span>
             <span class="n">modules</span> <span class="o">+=</span> <span class="p">[</span>
-                <span class="s1">&#39;efi_uga&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;linuxefi&#39;</span>
+                <span class="s1">&#39;efi_uga&#39;</span>
             <span class="p">]</span>
         <span class="k">return</span> <span class="n">modules</span></div>
 
@@ -1033,7 +1046,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">unsigned_grub_file_patterns</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s1">&#39;/usr/share/grub*/*-efi/grub.efi&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;/usr/lib/grub*/*-efi/grub.efi&#39;</span>
+            <span class="s1">&#39;/usr/lib/grub*/*-efi/grub.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/boot/efi/EFI/*/grubx64.efi&#39;</span>
         <span class="p">]</span>
         <span class="k">for</span> <span class="n">unsigned_grub_file_pattern</span> <span class="ow">in</span> <span class="n">unsigned_grub_file_patterns</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">unsigned_grub_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span>

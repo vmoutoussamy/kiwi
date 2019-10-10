@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository Package &mdash; kiwi 9.18.18 documentation</title>
+  <title>kiwi.repository Package &mdash; kiwi 9.18.19 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.18</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.19</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.18.18</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.19</a> &raquo;</li>
         
       <li>kiwi.repository Package</li>
     
@@ -516,7 +516,7 @@ and build system root</p></li>
 </dl>
 <dl class="method">
 <dt id="kiwi.repository.base.RepositoryBase.add_repo">
-<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type</em>, <em class="sig-param">prio</em>, <em class="sig-param">dist</em>, <em class="sig-param">components</em>, <em class="sig-param">user</em>, <em class="sig-param">secret</em>, <em class="sig-param">credentials_file</em>, <em class="sig-param">repo_gpgcheck</em>, <em class="sig-param">pkg_gpgcheck</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/base.html#RepositoryBase.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.add_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type</em>, <em class="sig-param">prio</em>, <em class="sig-param">dist</em>, <em class="sig-param">components</em>, <em class="sig-param">user</em>, <em class="sig-param">secret</em>, <em class="sig-param">credentials_file</em>, <em class="sig-param">repo_gpgcheck</em>, <em class="sig-param">pkg_gpgcheck</em>, <em class="sig-param">sourcetype</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/base.html#RepositoryBase.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.add_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add repository</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
@@ -526,13 +526,14 @@ and build system root</p></li>
 <li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
 <li><p><strong>repo_type</strong> – unused</p></li>
 <li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – unused</p></li>
-<li><p><strong>dist</strong> – unused</p></li>
-<li><p><strong>components</strong> – unused</p></li>
-<li><p><strong>user</strong> – unused</p></li>
-<li><p><strong>secret</strong> – unused</p></li>
-<li><p><strong>credentials_file</strong> – unused</p></li>
-<li><p><strong>repo_gpgcheck</strong> – unused</p></li>
-<li><p><strong>pkg_gpgcheck</strong> – unused</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – unused</p></li>
+<li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – unused</p></li>
+<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
 </ul>
 </dd>
 </dl>
@@ -646,7 +647,7 @@ and build system root</p></li>
 </dl>
 <dl class="method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.add_repo">
-<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type='rpm-md'</em>, <em class="sig-param">prio=None</em>, <em class="sig-param">dist=None</em>, <em class="sig-param">components=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em>, <em class="sig-param">credentials_file=None</em>, <em class="sig-param">repo_gpgcheck=None</em>, <em class="sig-param">pkg_gpgcheck=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.add_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type='rpm-md'</em>, <em class="sig-param">prio=None</em>, <em class="sig-param">dist=None</em>, <em class="sig-param">components=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em>, <em class="sig-param">credentials_file=None</em>, <em class="sig-param">repo_gpgcheck=None</em>, <em class="sig-param">pkg_gpgcheck=None</em>, <em class="sig-param">sourcetype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/dnf.html#RepositoryDnf.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.add_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add dnf repository</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -655,13 +656,14 @@ and build system root</p></li>
 <li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository URI</p></li>
 <li><p><strong>repo_type</strong> – repostory type name</p></li>
 <li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – dnf repostory priority</p></li>
-<li><p><strong>dist</strong> – unused</p></li>
-<li><p><strong>components</strong> – unused</p></li>
-<li><p><strong>user</strong> – unused</p></li>
-<li><p><strong>secret</strong> – unused</p></li>
-<li><p><strong>credentials_file</strong> – unused</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
 <li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable repository signature validation</p></li>
 <li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable package signature validation</p></li>
+<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – source type, one of ‘baseurl’, ‘metalink’ or ‘mirrorlist’</p></li>
 </ul>
 </dd>
 </dl>
@@ -792,7 +794,7 @@ and build system root</p></li>
 </dl>
 <dl class="method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.add_repo">
-<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type='rpm-md'</em>, <em class="sig-param">prio=None</em>, <em class="sig-param">dist=None</em>, <em class="sig-param">components=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em>, <em class="sig-param">credentials_file=None</em>, <em class="sig-param">repo_gpgcheck=None</em>, <em class="sig-param">pkg_gpgcheck=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/zypper.html#RepositoryZypper.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.add_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type='rpm-md'</em>, <em class="sig-param">prio=None</em>, <em class="sig-param">dist=None</em>, <em class="sig-param">components=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em>, <em class="sig-param">credentials_file=None</em>, <em class="sig-param">repo_gpgcheck=None</em>, <em class="sig-param">pkg_gpgcheck=None</em>, <em class="sig-param">sourcetype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/zypper.html#RepositoryZypper.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.add_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add zypper repository</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -801,13 +803,14 @@ and build system root</p></li>
 <li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository URI</p></li>
 <li><p><strong>repo_type</strong> – repostory type name</p></li>
 <li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – zypper repostory priority</p></li>
-<li><p><strong>dist</strong> – unused</p></li>
-<li><p><strong>components</strong> – unused</p></li>
-<li><p><strong>user</strong> – credentials username</p></li>
-<li><p><strong>secret</strong> – credentials password</p></li>
-<li><p><strong>credentials_file</strong> – zypper credentials file</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – credentials username</p></li>
+<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – credentials password</p></li>
+<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – zypper credentials file</p></li>
 <li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable repository signature validation</p></li>
 <li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable package signature validation</p></li>
+<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
 </ul>
 </dd>
 </dl>

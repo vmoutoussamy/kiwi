@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.18 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.19 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.18</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -951,7 +951,7 @@
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="k">def</span> <span class="nf">_setup_default_grub</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_setup_default_grub</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># noqa: C901</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create or update etc/default/grub by parameters required</span>
 <span class="sd">        according to the root filesystem setup</span>
@@ -996,8 +996,15 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
             <span class="c1"># linuxefi/initrdefi only exist on x86, others always use efi</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;ix86&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span>
-                <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_LINUXEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
-                <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_INITRDEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
+                <span class="n">use_linuxefi_implemented</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="s1">&#39;grep&#39;</span><span class="p">,</span> <span class="s1">&#39;-q&#39;</span><span class="p">,</span> <span class="s1">&#39;GRUB_USE_LINUXEFI&#39;</span><span class="p">,</span>
+                        <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_config_tool</span><span class="p">()</span>
+                    <span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">use_linuxefi_implemented</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_LINUXEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
+                    <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_INITRDEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_btrfs_root_is_snapshot</span><span class="p">():</span>
             <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;SUSE_BTRFS_SNAPSHOT_BOOTING&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;boot_is_crypto&#39;</span><span class="p">):</span>
@@ -1144,6 +1151,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_create_early_boot_script_for_mbrid_search</span><span class="p">(</span>
                 <span class="n">early_boot_script</span><span class="p">,</span> <span class="n">mbrid</span>
             <span class="p">)</span>
+        <span class="n">module_list</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_efi_modules</span><span class="p">(</span><span class="n">multiboot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xen_guest</span><span class="p">)</span>
+        <span class="n">module_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_efi_modules_path</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">module_path</span> <span class="o">+</span> <span class="s1">&#39;/linuxefi.mod&#39;</span><span class="p">):</span>
+            <span class="n">module_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;linuxefi&#39;</span><span class="p">)</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_mkimage_tool</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;grub2-mkimage&#39;</span><span class="p">,</span>
@@ -1151,8 +1162,8 @@
                 <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_efi_image_name</span><span class="p">(),</span>
                 <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">early_boot_script</span><span class="p">,</span>
                 <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span>
-                <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_efi_modules_path</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span>
-            <span class="p">]</span> <span class="o">+</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_efi_modules</span><span class="p">(</span><span class="n">multiboot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xen_guest</span><span class="p">)</span>
+                <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">module_path</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="n">module_list</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_create_efi_config_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mbrid</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository.base &mdash; kiwi 9.18.18 documentation</title>
+  <title>kiwi.repository.base &mdash; kiwi 9.18.19 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.18</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -538,7 +538,8 @@
 
 <div class="viewcode-block" id="RepositoryBase.add_repo"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.base.RepositoryBase.add_repo">[docs]</a>    <span class="k">def</span> <span class="nf">add_repo</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">,</span> <span class="n">prio</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">components</span><span class="p">,</span>
-        <span class="n">user</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">credentials_file</span><span class="p">,</span> <span class="n">repo_gpgcheck</span><span class="p">,</span> <span class="n">pkg_gpgcheck</span>
+        <span class="n">user</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">credentials_file</span><span class="p">,</span> <span class="n">repo_gpgcheck</span><span class="p">,</span> <span class="n">pkg_gpgcheck</span><span class="p">,</span>
+        <span class="n">sourcetype</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add repository</span>
@@ -549,13 +550,14 @@
 <span class="sd">        :param str uri: unused</span>
 <span class="sd">        :param repo_type: unused</span>
 <span class="sd">        :param int prio: unused</span>
-<span class="sd">        :param dist: unused</span>
-<span class="sd">        :param components: unused</span>
-<span class="sd">        :param user: unused</span>
-<span class="sd">        :param secret: unused</span>
-<span class="sd">        :param credentials_file: unused</span>
-<span class="sd">        :param repo_gpgcheck: unused</span>
-<span class="sd">        :param pkg_gpgcheck: unused</span>
+<span class="sd">        :param str dist: unused</span>
+<span class="sd">        :param str components: unused</span>
+<span class="sd">        :param str user: unused</span>
+<span class="sd">        :param str secret: unused</span>
+<span class="sd">        :param str credentials_file: unused</span>
+<span class="sd">        :param bool repo_gpgcheck: unused</span>
+<span class="sd">        :param bool pkg_gpgcheck: unused</span>
+<span class="sd">        :param str sourcetype: unused</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 

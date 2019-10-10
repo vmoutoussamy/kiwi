@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository.zypper &mdash; kiwi 9.18.18 documentation</title>
+  <title>kiwi.repository.zypper &mdash; kiwi 9.18.19 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.18</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -668,18 +668,18 @@
         <span class="c1"># For further details on the motivation in zypper please</span>
         <span class="c1"># refer to bsc#1112357</span>
         <span class="n">rpmdb</span><span class="o">.</span><span class="n">init_database</span><span class="p">()</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;lib&#39;</span><span class="p">])</span>
-        <span class="p">)</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="s1">&#39;ln&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;../..&#39;</span><span class="p">,</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">rpmdb_host</span><span class="o">.</span><span class="n">expand_query</span><span class="p">(</span><span class="s1">&#39;%_dbpath&#39;</span><span class="p">)]</span>
-                <span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                    <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;lib&#39;</span><span class="p">,</span> <span class="s1">&#39;rpm&#39;</span><span class="p">]</span>
-                <span class="p">)</span>
-            <span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
-        <span class="p">)</span></div>
+        <span class="n">image_rpm_compat_link</span> <span class="o">=</span> <span class="s1">&#39;/var/lib/rpm&#39;</span>
+        <span class="n">host_rpm_dbpath</span> <span class="o">=</span> <span class="n">rpmdb</span><span class="o">.</span><span class="n">rpmdb_host</span><span class="o">.</span><span class="n">expand_query</span><span class="p">(</span><span class="s1">&#39;%_dbpath&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">host_rpm_dbpath</span> <span class="o">!=</span> <span class="n">image_rpm_compat_link</span><span class="p">:</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">image_rpm_compat_link</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s1">&#39;ln&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;../..&#39;</span><span class="p">,</span> <span class="n">host_rpm_dbpath</span><span class="p">]),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">image_rpm_compat_link</span>
+                <span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span></div>
 
 <div class="viewcode-block" id="RepositoryZypper.use_default_location"><a class="viewcode-back" href="../../../development/api/kiwi.repository.html#kiwi.repository.zypper.RepositoryZypper.use_default_location">[docs]</a>    <span class="k">def</span> <span class="nf">use_default_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -708,7 +708,8 @@
         <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">repo_type</span><span class="o">=</span><span class="s1">&#39;rpm-md&#39;</span><span class="p">,</span>
         <span class="n">prio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">secret</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">credentials_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">repo_gpgcheck</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pkg_gpgcheck</span><span class="o">=</span><span class="kc">None</span>
+        <span class="n">repo_gpgcheck</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pkg_gpgcheck</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">sourcetype</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add zypper repository</span>
@@ -717,13 +718,14 @@
 <span class="sd">        :param str uri: repository URI</span>
 <span class="sd">        :param repo_type: repostory type name</span>
 <span class="sd">        :param int prio: zypper repostory priority</span>
-<span class="sd">        :param dist: unused</span>
-<span class="sd">        :param components: unused</span>
-<span class="sd">        :param user: credentials username</span>
-<span class="sd">        :param secret: credentials password</span>
-<span class="sd">        :param credentials_file: zypper credentials file</span>
+<span class="sd">        :param str dist: unused</span>
+<span class="sd">        :param str components: unused</span>
+<span class="sd">        :param str user: credentials username</span>
+<span class="sd">        :param str secret: credentials password</span>
+<span class="sd">        :param str credentials_file: zypper credentials file</span>
 <span class="sd">        :param bool repo_gpgcheck: enable repository signature validation</span>
 <span class="sd">        :param bool pkg_gpgcheck: enable package signature validation</span>
+<span class="sd">        :param str sourcetype: unused</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">credentials_file</span><span class="p">:</span>
             <span class="n">repo_secret</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>

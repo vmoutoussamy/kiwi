@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Development and Contributing &mdash; kiwi 9.18.18 documentation</title>
+  <title>Development and Contributing &mdash; kiwi 9.18.19 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.18</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.19</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -481,12 +481,12 @@
 <p><strong>Abstract</strong></p>
 <p>This document describes the development process of KIWI
 and how you can be part of it. This description applies
-to version 9.18.18.</p>
+to version 9.18.19.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.18</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.19</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/schema.html">Schema Documentation 7.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/schema_extensions.html">Extending KIWI with Custom Operations</a></li>
 </ul>
@@ -515,63 +515,49 @@ GitHub first to discuss the changes. Or join the discussion in the
 <h2>Install Required Operating System Packages<a class="headerlink" href="#install-required-operating-system-packages" title="Permalink to this headline">¶</a></h2>
 <p>KIWI requires the following additional packages which are not provided by
 <strong class="command">pip</strong>:</p>
-<ul class="simple">
-<li><p>XML processing libraries: <code class="xref py py-obj docutils literal notranslate"><span class="pre">libxml2</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">libxslt</span></code> (for <code class="xref py py-mod docutils literal notranslate"><span class="pre">lxml</span></code>)</p></li>
-<li><p>Python header files (for <code class="xref py py-mod docutils literal notranslate"><span class="pre">xattr</span></code>), usually provided by a package
-called <code class="xref py py-obj docutils literal notranslate"><span class="pre">python-devel</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">python3-devel</span></code></p></li>
-<li><p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">enchant</span></code> spell checking library</p></li>
-<li><p>gcc compiler and glibc-devel header files</p></li>
-<li><p>The <a class="reference external" href="https://github.com/koalaman/shellcheck">ShellCheck</a> script
-linter.</p></li>
-<li><p>A manipulation program for ISO images, either: <code class="docutils literal notranslate"><span class="pre">xorriso</span></code> (preferred) or
-<code class="docutils literal notranslate"><span class="pre">genisoimage</span></code>.</p></li>
-</ul>
-<p>A full LaTeX installation is required to build the PDF documentation
+<dl class="simple">
+<dt>XML processing libraries</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">libxml2</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">libxslt</span></code> (for <code class="xref py py-mod docutils literal notranslate"><span class="pre">lxml</span></code>)</p>
+</dd>
+<dt>Python header files, GCC compiler and glibc-devel header files</dt><dd><p>Required for python modules that hooks into shared library context</p>
+</dd>
+<dt>Spell Checking library</dt><dd><p>Provided by the <code class="xref py py-obj docutils literal notranslate"><span class="pre">enchant</span></code> library</p>
+</dd>
+<dt>ShellCheck</dt><dd><p><a class="reference external" href="https://github.com/koalaman/shellcheck">ShellCheck</a> script linter.</p>
+</dd>
+<dt>ISO creation program</dt><dd><p>One of <code class="docutils literal notranslate"><span class="pre">xorriso</span></code> (preferred) or <code class="docutils literal notranslate"><span class="pre">genisoimage</span></code>.</p>
+</dd>
+<dt>LaTeX documentation build environment</dt><dd><p>A full LaTeX installation is required to build the PDF documentation
 <a class="footnote-reference brackets" href="#f1" id="id1">1</a>.</p>
-<p>On SUSE based systems run:</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> zypper install --no-recommends <span class="se">\</span>
-      python3-devel libxml2-devel libxslt-devel glibc-devel gcc <span class="se">\</span>
-      trang xorriso <span class="se">\</span>
-      texlive-fncychap texlive-wrapfig texlive-capt-of <span class="se">\</span>
-      texlive-latexmk texlive-cmap texlive-babel-english <span class="se">\</span>
-      texlive-times texlive-titlesec texlive-tabulary texlive-framed <span class="se">\</span>
-      texlive-float texlive-upquote texlive-parskip texlive-needspace <span class="se">\</span>
-      texlive-makeindex-bin texlive-collection-fontsrecommended <span class="se">\</span>
-      texlive-psnfss
+</dd>
+</dl>
+<p>The above mentioned system packages will be installed by calling the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">install_devel_packages.sh</span></code> helper script from the checked out Git
+repository as follows:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo helper/install_devel_packages.sh
 </pre></div>
 </div>
-<p>On Fedora the following commands should install the required packages:</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> dnf install python3 python3-devel <span class="s1">&#39;python3dist(pip)&#39;</span> <span class="se">\</span>
-   <span class="s1">&#39;python3dist(tox)&#39;</span> make gcc which xz xorriso libxml2-devel <span class="se">\</span>
-   libxslt-devel enchant genisoimage ShellCheck
-<span class="gp">$</span> <span class="c1"># LaTeX packages</span>
-<span class="gp">$</span> dnf install latexmk texlive-cmap texlive-metafont texlive-ec <span class="se">\</span>
-   texlive-babel-english texlive-fncychap texlive-fancyhdr <span class="se">\</span>
-   texlive-titlesec texlive-tabulary texlive-framed texlive-wrapfig <span class="se">\</span>
-   texlive-parskip texlive-upquote texlive-capt-of texlive-needspace <span class="se">\</span>
-   texlive-makeindex texlive-times texlive-helvetic texlive-courier <span class="se">\</span>
-   texlive-gsftopk texlive-updmap-map texlive-dvips
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The helper script checks for the package managers <code class="xref py py-obj docutils literal notranslate"><span class="pre">zypper</span></code> and
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">dnf</span></code> and associates a distribution with it. If you use a
+distribution that does not use one of those package managers
+the script will not install any packages and exit with an
+error message. In this case we recommend to take a look at
+the package list encoded in the script and adapt to your
+distribution and package manager as needed.</p>
 </div>
 </div>
 <div class="section" id="create-a-python-virtual-development-environment">
 <h2>Create a Python Virtual Development Environment<a class="headerlink" href="#create-a-python-virtual-development-environment" title="Permalink to this headline">¶</a></h2>
-<p>We recommend to setup a Python virtualenv for development. For Python 3
-<strong class="command">python3 -m venv</strong> is used, as it is bundled with Python itself
-(see <a class="reference external" href="https://docs.python.org/3/library/venv.html">https://docs.python.org/3/library/venv.html</a> for details). For Python
-2.7, use <strong class="command">virtualenv</strong>, which is provided via <strong class="command">pip</strong> or as
-an extra package by your favorite Linux distribution.</p>
-<p>The following commands initializes a development environment for Python 3:</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python3 -m venv .env3
-<span class="gp">$</span> <span class="nb">source</span> .env3/bin/activate
-<span class="gp">$</span> pip install -r .virtualenv.dev-requirements.txt
-<span class="gp">$</span> python3 setup.py develop
+<p>The following commands initializes and activates a development
+environment for Python 3:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tox -e devel
+<span class="gp">$</span> <span class="nb">source</span> .tox/3/bin/activate
 </pre></div>
 </div>
-<p>The <strong class="command">develop</strong> target of the <strong class="command">setup.py</strong> script
-automatically creates the application entry point called
-<strong class="command">kiwi-ng-3</strong>, which allows you to call the your modified version of
-KIWI from inside the virtual environment:</p>
+<p>The commands above automatically creates the application script
+called <strong class="command">kiwi-ng-3</strong>, which allows you to run KIWI from the
+Python sources inside the virtual environment:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> kiwi-ng-3 --help
 </pre></div>
 </div>
@@ -580,24 +566,24 @@ KIWI from inside the virtual environment:</p>
 <p>The virtualenv’s <code class="xref py py-obj docutils literal notranslate"><span class="pre">$PATH</span></code> will not be taken into account when calling
 KIWI via <strong class="command">sudo</strong>! Use the absolute path to the KIWI executable
 to run an actual build using your local changes:</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo <span class="nv">$PWD</span>/.env3/bin/kiwi-ng-3 system build ...
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo <span class="nv">$PWD</span>/.tox/3/bin/kiwi-ng-3 system build ...
 </pre></div>
 </div>
 </div>
-<p>In order to leave the development mode call:</p>
+<p>To leave the development mode, run:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> deactivate
 </pre></div>
 </div>
 <p>To resume your work, <strong class="command">cd</strong> into your local Git repository and call:</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">source</span> .env3/bin/activate
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">source</span> .tox/3/bin/activate
 </pre></div>
 </div>
 </div>
 <div class="section" id="running-the-unit-tests">
 <h2>Running the Unit Tests<a class="headerlink" href="#running-the-unit-tests" title="Permalink to this headline">¶</a></h2>
 <p>We use <strong class="command">tox</strong> to run the unit tests. Tox sets up its own
-virtualenvs inside the <code class="file docutils literal notranslate"><span class="pre">.tox</span></code> directory for multiple Python versions and should
-thus <strong>not</strong> be invoked from inside your development virtualenv.</p>
+virtualenvs inside the <code class="file docutils literal notranslate"><span class="pre">.tox</span></code> directory for multiple Python versions
+and should thus <strong>not</strong> be invoked from inside your development virtualenv.</p>
 <p>Before submitting your changes via a pull request, ensure that all tests
 pass and that the code has the required test coverage via the command:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tox
@@ -618,17 +604,11 @@ check the source code for errors and build the documentation.</p>
 <p>If you want to see the available targets, use the option <code class="xref py py-obj docutils literal notranslate"><span class="pre">-l</span></code> to let
 <strong class="command">tox</strong> print a list of them:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tox -l
-<span class="go">check</span>
-<span class="go">unit_py3_7</span>
-<span class="go">unit_py3_6</span>
-<span class="go">unit_py3_4</span>
-<span class="go">unit_py2_7</span>
-<span class="go">packagedoc</span>
 </pre></div>
 </div>
 <p>To only run a special target, use the <code class="xref py py-obj docutils literal notranslate"><span class="pre">-e</span></code> option. The following
-example runs the test cases for the Python 3.7 interpreter only:</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tox -e unit_py3_7
+example runs the test cases for the Python 3.6 interpreter only:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tox -e unit_py3_6
 </pre></div>
 </div>
 </div>

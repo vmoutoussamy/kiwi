@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.tasks.result_bundle &mdash; kiwi 9.18.18 documentation</title>
+  <title>kiwi.tasks.result_bundle &mdash; kiwi 9.18.19 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.18</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -636,7 +636,8 @@
                     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">bundle_file</span> <span class="o">+</span> <span class="s1">&#39;.sha256&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">shasum</span><span class="p">:</span>
                         <span class="n">shasum</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
                             <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">  </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                                <span class="n">checksum</span><span class="o">.</span><span class="n">sha256</span><span class="p">(),</span> <span class="n">bundle_file_basename</span>
+                                <span class="n">checksum</span><span class="o">.</span><span class="n">sha256</span><span class="p">(),</span>
+                                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">bundle_file</span><span class="p">)</span>
                             <span class="p">)</span>
                         <span class="p">)</span></div>
 
