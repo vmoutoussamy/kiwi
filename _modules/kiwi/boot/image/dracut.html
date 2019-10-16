@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image.dracut &mdash; kiwi 9.18.19 documentation</title>
+  <title>kiwi.boot.image.dracut &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -491,8 +491,6 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
@@ -502,9 +500,6 @@
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.profile</span> <span class="k">import</span> <span class="n">Profile</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.setup</span> <span class="k">import</span> <span class="n">SystemSetup</span>
-<span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
-
-<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="n">KiwiDiskBootImageError</span>
 
 
 <div class="viewcode-block" id="BootImageDracut"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.dracut.BootImageDracut">[docs]</a><span class="k">class</span> <span class="nc">BootImageDracut</span><span class="p">(</span><span class="n">BootImageBase</span><span class="p">):</span>
@@ -676,72 +671,7 @@
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">initrd_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">target_dir</span><span class="p">,</span> <span class="n">dracut_initrd_basename</span><span class="p">]</span>
-            <span class="p">)</span></div>
-
-<div class="viewcode-block" id="BootImageDracut.get_boot_names"><a class="viewcode-back" href="../../../../development/api/kiwi.boot.image.html#kiwi.boot.image.dracut.BootImageDracut.get_boot_names">[docs]</a>    <span class="k">def</span> <span class="nf">get_boot_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Provides kernel and initrd names for kiwi boot image</span>
-
-<span class="sd">        :return:</span>
-<span class="sd">            Contains boot_names_type tuple</span>
-
-<span class="sd">            .. code:: python</span>
-
-<span class="sd">                boot_names_type(</span>
-<span class="sd">                    kernel_name=&#39;INSTALLED_KERNEL&#39;,</span>
-<span class="sd">                    initrd_name=&#39;DRACUT_OUTPUT_NAME&#39;</span>
-<span class="sd">                )</span>
-
-<span class="sd">        :rtype: tuple</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">boot_names_type</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
-            <span class="s1">&#39;boot_names_type&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;kernel_name&#39;</span><span class="p">,</span> <span class="s1">&#39;initrd_name&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="n">kernel</span> <span class="o">=</span> <span class="n">Kernel</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span>
-        <span class="p">)</span>
-        <span class="n">kernel_info</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">.</span><span class="n">get_kernel</span><span class="p">()</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">kernel_info</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">KiwiDiskBootImageError</span><span class="p">(</span>
-                <span class="s1">&#39;No kernel in boot image tree </span><span class="si">%s</span><span class="s1"> found&#39;</span> <span class="o">%</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span>
-            <span class="p">)</span>
-        <span class="n">dracut_output_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dracut_output_file_format</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">boot_names_type</span><span class="p">(</span>
-            <span class="n">kernel_name</span><span class="o">=</span><span class="n">kernel_info</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="n">initrd_name</span><span class="o">=</span><span class="n">dracut_output_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">kernel_version</span><span class="o">=</span><span class="n">kernel_info</span><span class="o">.</span><span class="n">version</span>
-            <span class="p">)</span>
-        <span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="nf">_get_dracut_output_file_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Unfortunately the dracut initrd output file format varies between</span>
-<span class="sd">        the different Linux distributions. Tools like lsinitrd, and also</span>
-<span class="sd">        grub2 rely on the initrd output file to be in that format.</span>
-<span class="sd">        Thus when kiwi uses dracut the same file format should be used</span>
-<span class="sd">        all over the place in order to stay compatible with what the</span>
-<span class="sd">        distribution does</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">default_outfile_format</span> <span class="o">=</span> <span class="s1">&#39;initramfs-</span><span class="si">{kernel_version}</span><span class="s1">.img&#39;</span>
-        <span class="n">dracut_search_env</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
-        <span class="n">dracut_tool</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span>
-            <span class="s1">&#39;dracut&#39;</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="n">dracut_search_env</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">X_OK</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">dracut_tool</span><span class="p">:</span>
-            <span class="n">outfile_expression</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;outfile=&quot;/boot/(init.*\$kernel.*)&quot;&#39;</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dracut_tool</span><span class="p">)</span> <span class="k">as</span> <span class="n">dracut</span><span class="p">:</span>
-                <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">outfile_expression</span><span class="p">,</span> <span class="n">dracut</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-                <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$kernel&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{kernel_version}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Could not detect dracut output file format&#39;</span><span class="p">)</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Using default initrd file name format </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">default_outfile_format</span>
-        <span class="p">))</span>
-        <span class="k">return</span> <span class="n">default_outfile_format</span></div>
+            <span class="p">)</span></div></div>
 </pre></div>
 
            </div>

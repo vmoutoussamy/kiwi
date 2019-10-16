@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.base &mdash; kiwi 9.18.19 documentation</title>
+  <title>kiwi.bootloader.config.base &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -495,6 +495,7 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
 
 <span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">kiwi.mount_manager</span> <span class="k">import</span> <span class="n">MountManager</span>
 <span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.storage.setup</span> <span class="k">import</span> <span class="n">DiskSetup</span>
 <span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
@@ -519,6 +520,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span> <span class="o">=</span> <span class="n">xml_state</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">volumes_mount</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_mount</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span> <span class="o">=</span> <span class="kc">None</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">post_init</span><span class="p">(</span><span class="n">custom_args</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BootLoaderConfigBase.post_init"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.base.BootLoaderConfigBase.post_init">[docs]</a>    <span class="k">def</span> <span class="nf">post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_args</span><span class="p">):</span>
@@ -539,6 +546,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
+<div class="viewcode-block" id="BootLoaderConfigBase.write_meta_data"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.base.BootLoaderConfigBase.write_meta_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_meta_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_uuid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">boot_options</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write bootloader setup meta data files</span>
+
+<span class="sd">        :param string root_uuid: root device UUID</span>
+<span class="sd">        :param string boot_options: kernel options as string</span>
+
+<span class="sd">        Implementation in specialized bootloader class optional</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="BootLoaderConfigBase.setup_disk_image_config"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.base.BootLoaderConfigBase.setup_disk_image_config">[docs]</a>    <span class="k">def</span> <span class="nf">setup_disk_image_config</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">boot_uuid</span><span class="p">,</span> <span class="n">root_uuid</span><span class="p">,</span> <span class="n">hypervisor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">initrd</span><span class="p">,</span> <span class="n">boot_options</span>
     <span class="p">):</span>
@@ -550,7 +568,9 @@
 <span class="sd">        :param string hypervisor: hypervisor name</span>
 <span class="sd">        :param string kernel: kernel name</span>
 <span class="sd">        :param string initrd: initrd name</span>
-<span class="sd">        :param string boot_options: kernel options as string</span>
+<span class="sd">        :param string boot_options:</span>
+<span class="sd">            custom options required to setup the boot. The scope</span>
+<span class="sd">            of the options is specified in the implementation</span>
 
 <span class="sd">        Implementation in specialized bootloader class required</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -925,6 +945,44 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">gfxmode</span></div>
 
+    <span class="k">def</span> <span class="nf">_mount_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_device</span><span class="p">,</span> <span class="n">boot_device</span><span class="p">,</span> <span class="n">volumes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
+            <span class="n">device</span><span class="o">=</span><span class="n">root_device</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
+            <span class="n">device</span><span class="o">=</span><span class="n">boot_device</span><span class="p">,</span>
+            <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/boot&#39;</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">volumes</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">volume_path</span> <span class="ow">in</span> <span class="n">Path</span><span class="o">.</span><span class="n">sort_by_hierarchy</span><span class="p">(</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">volumes</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="p">):</span>
+                <span class="n">volume_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
+                    <span class="n">device</span><span class="o">=</span><span class="n">volumes</span><span class="p">[</span><span class="n">volume_path</span><span class="p">][</span><span class="s1">&#39;volume_device&#39;</span><span class="p">],</span>
+                    <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">volume_path</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">volumes_mount</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_mount</span><span class="p">)</span>
+                <span class="n">volume_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span>
+                    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">volumes</span><span class="p">[</span><span class="n">volume_path</span><span class="p">][</span><span class="s1">&#39;volume_options&#39;</span><span class="p">]]</span>
+                <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
+            <span class="n">device</span><span class="o">=</span><span class="s1">&#39;/dev&#39;</span><span class="p">,</span>
+            <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/dev&#39;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
+            <span class="n">device</span><span class="o">=</span><span class="s1">&#39;/proc&#39;</span><span class="p">,</span>
+            <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/proc&#39;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_mount</span><span class="o">.</span><span class="n">bind_mount</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span><span class="o">.</span><span class="n">bind_mount</span><span class="p">()</span>
+
     <span class="k">def</span> <span class="nf">_get_root_cmdline_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uuid</span><span class="p">):</span>
         <span class="n">firmware</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_firmware</span><span class="p">()</span>
         <span class="n">initrd_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_initrd_system</span><span class="p">()</span>
@@ -956,7 +1014,20 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                     <span class="s1">&#39;root=UUID=&lt;uuid&gt; setup requested, but uuid is not provided&#39;</span>
-                <span class="p">)</span></div>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Cleaning up </span><span class="si">%s</span><span class="s1"> instance&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">volume_mount</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volumes_mount</span><span class="p">):</span>
+            <span class="n">volume_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_mount</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">device_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span></div>
 </pre></div>
 
            </div>

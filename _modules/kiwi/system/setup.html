@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; kiwi 9.18.19 documentation</title>
+  <title>kiwi.system.setup &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -864,45 +864,24 @@
 
             <span class="n">user_exists</span> <span class="o">=</span> <span class="n">system_users</span><span class="o">.</span><span class="n">user_exists</span><span class="p">(</span><span class="n">user_name</span><span class="p">)</span>
 
-            <span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">if</span> <span class="n">password_format</span> <span class="o">==</span> <span class="s1">&#39;plain&#39;</span><span class="p">:</span>
-                <span class="n">password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_passwd_hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">password</span><span class="p">:</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">)</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">user_shell</span><span class="p">:</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">)</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_shell</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">):</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-g&#39;</span><span class="p">)</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-G&#39;</span><span class="p">)</span>
-                    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">user_groups</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
-            <span class="k">if</span> <span class="n">user_id</span><span class="p">:</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-u&#39;</span><span class="p">)</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">user_realname</span><span class="p">:</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">)</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_realname</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">user_exists</span> <span class="ow">and</span> <span class="n">home_path</span><span class="p">:</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-m&#39;</span><span class="p">)</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">)</span>
-                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_user_options</span><span class="p">(</span>
+                <span class="n">password_format</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">user_shell</span><span class="p">,</span> <span class="n">user_groups</span><span class="p">,</span>
+                <span class="n">user_id</span><span class="p">,</span> <span class="n">user_realname</span><span class="p">,</span> <span class="n">user_exists</span><span class="p">,</span> <span class="n">home_path</span>
+            <span class="p">)</span>
+
+            <span class="n">group_msg</span> <span class="o">=</span> <span class="s1">&#39;--&gt; Primary group for user </span><span class="si">{0}</span><span class="s1">: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">user_name</span><span class="p">,</span> <span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
 
             <span class="k">if</span> <span class="n">user_exists</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                    <span class="s1">&#39;--&gt; Modifying user: </span><span class="si">%s</span><span class="s1"> [</span><span class="si">%s</span><span class="s1">]&#39;</span><span class="p">,</span>
-                    <span class="n">user_name</span><span class="p">,</span>
-                    <span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
-                <span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Modifying user: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_name</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">group_msg</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">group_msg</span><span class="p">)</span>
                 <span class="n">system_users</span><span class="o">.</span><span class="n">user_modify</span><span class="p">(</span><span class="n">user_name</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                    <span class="s1">&#39;--&gt; Adding user: </span><span class="si">%s</span><span class="s1"> [</span><span class="si">%s</span><span class="s1">]&#39;</span><span class="p">,</span>
-                    <span class="n">user_name</span><span class="p">,</span>
-                    <span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
-                <span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Adding user: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_name</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">group_msg</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">group_msg</span><span class="p">)</span>
                 <span class="n">system_users</span><span class="o">.</span><span class="n">user_add</span><span class="p">(</span><span class="n">user_name</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">home_path</span><span class="p">:</span>
                     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
@@ -1243,6 +1222,37 @@
                 <span class="s1">&#39;--&gt; Inplace recovery requested, deleting archive&#39;</span>
             <span class="p">)</span>
             <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.gz&#39;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_process_user_options</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">password_format</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">user_shell</span><span class="p">,</span> <span class="n">user_groups</span><span class="p">,</span>
+        <span class="n">user_id</span><span class="p">,</span> <span class="n">user_realname</span><span class="p">,</span> <span class="n">user_exists</span><span class="p">,</span> <span class="n">home_path</span>
+    <span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">password_format</span> <span class="o">==</span> <span class="s1">&#39;plain&#39;</span><span class="p">:</span>
+            <span class="n">password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_passwd_hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">password</span><span class="p">:</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">)</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">user_shell</span><span class="p">:</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">)</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_shell</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">):</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-g&#39;</span><span class="p">)</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-G&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">user_groups</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+        <span class="k">if</span> <span class="n">user_id</span><span class="p">:</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-u&#39;</span><span class="p">)</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">user_realname</span><span class="p">:</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">)</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_realname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user_exists</span> <span class="ow">and</span> <span class="n">home_path</span><span class="p">:</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-m&#39;</span><span class="p">)</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">)</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">options</span>
 
     <span class="k">def</span> <span class="nf">_import_cdroot_archive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">glob_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/config-cdroot.tar*&#39;</span>

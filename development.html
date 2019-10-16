@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Development and Contributing &mdash; kiwi 9.18.19 documentation</title>
+  <title>Development and Contributing &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -481,12 +481,12 @@
 <p><strong>Abstract</strong></p>
 <p>This document describes the development process of KIWI
 and how you can be part of it. This description applies
-to version 9.18.19.</p>
+to version 9.18.20.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.19</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.18.20</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/schema.html">Schema Documentation 7.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/schema_extensions.html">Extending KIWI with Custom Operations</a></li>
 </ul>
@@ -556,9 +556,9 @@ environment for Python 3:</p>
 </pre></div>
 </div>
 <p>The commands above automatically creates the application script
-called <strong class="command">kiwi-ng-3</strong>, which allows you to run KIWI from the
+called <strong class="command">kiwi-ng</strong>, which allows you to run KIWI from the
 Python sources inside the virtual environment:</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> kiwi-ng-3 --help
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> kiwi-ng --help
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -566,7 +566,7 @@ Python sources inside the virtual environment:</p>
 <p>The virtualenv’s <code class="xref py py-obj docutils literal notranslate"><span class="pre">$PATH</span></code> will not be taken into account when calling
 KIWI via <strong class="command">sudo</strong>! Use the absolute path to the KIWI executable
 to run an actual build using your local changes:</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo <span class="nv">$PWD</span>/.tox/3/bin/kiwi-ng-3 system build ...
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo <span class="nv">$PWD</span>/.tox/3/bin/kiwi-ng system build ...
 </pre></div>
 </div>
 </div>

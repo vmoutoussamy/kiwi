@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.template Package &mdash; kiwi 9.18.19 documentation</title>
+  <title>kiwi.bootloader.template Package &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.19</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.20</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.18.19</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.20</a> &raquo;</li>
         
           <li><a href="kiwi.bootloader.html">kiwi.bootloader Package</a> &raquo;</li>
         
@@ -490,29 +490,8 @@
 <dl class="class">
 <dt id="kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.template.grub2.</code><code class="sig-name descname">BootLoaderTemplateGrub2</code><a class="reference internal" href="../../_modules/kiwi/bootloader/template/grub2.html#BootLoaderTemplateGrub2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>grub2 configuraton file templates</strong></p>
-<dl class="method">
-<dt id="kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_disk_template">
-<code class="sig-name descname">get_disk_template</code><span class="sig-paren">(</span><em class="sig-param">failsafe=True</em>, <em class="sig-param">hybrid=True</em>, <em class="sig-param">terminal='gfxterm'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/grub2.html#BootLoaderTemplateGrub2.get_disk_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_disk_template" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bootloader configuration template for disk image</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
-<li><p><strong>hybrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with hybrid true|false</p></li>
-<li><p><strong>terminal</strong> (<em>string</em>) – output terminal name</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Template</span></code></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Template</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="method">
 <dt id="kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_install_template">
 <code class="sig-name descname">get_install_template</code><span class="sig-paren">(</span><em class="sig-param">failsafe=True</em>, <em class="sig-param">hybrid=True</em>, <em class="sig-param">terminal='gfxterm'</em>, <em class="sig-param">with_timeout=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/grub2.html#BootLoaderTemplateGrub2.get_install_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_install_template" title="Permalink to this definition">¶</a></dt>
@@ -520,8 +499,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
-<li><p><strong>hybrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with hybrid true|false</p></li>
+<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>hybrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with hybrid true|false</p></li>
 <li><p><strong>terminal</strong> (<em>string</em>) – output terminal name</p></li>
 </ul>
 </dd>
@@ -541,29 +520,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
-<li><p><strong>hybrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with hybrid true|false</p></li>
-<li><p><strong>terminal</strong> (<em>string</em>) – output terminal name</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Template</span></code></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Template</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_multiboot_disk_template">
-<code class="sig-name descname">get_multiboot_disk_template</code><span class="sig-paren">(</span><em class="sig-param">failsafe=True</em>, <em class="sig-param">terminal='gfxterm'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/template/grub2.html#BootLoaderTemplateGrub2.get_multiboot_disk_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_multiboot_disk_template" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bootloader configuration template for disk image with
-hypervisor, e.g Xen dom0</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>hybrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with hybrid true|false</p></li>
 <li><p><strong>terminal</strong> (<em>string</em>) – output terminal name</p></li>
 </ul>
 </dd>
@@ -584,7 +542,7 @@ hypervisor, e.g Xen dom0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p></li>
 <li><p><strong>terminal</strong> (<em>string</em>) – output terminal name</p></li>
 </ul>
 </dd>
@@ -605,7 +563,7 @@ hypervisor, e.g Xen dom0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p></li>
 <li><p><strong>terminal</strong> (<em>string</em>) – output terminal name</p></li>
 </ul>
 </dd>
@@ -626,7 +584,7 @@ hypervisor, e.g Xen dom0</p>
 <dl class="class">
 <dt id="kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.template.isolinux.</code><code class="sig-name descname">BootLoaderTemplateIsoLinux</code><a class="reference internal" href="../../_modules/kiwi/bootloader/template/isolinux.html#BootLoaderTemplateIsoLinux"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>isolinux configuraton file templates</strong></p>
 <dl class="method">
 <dt id="kiwi.bootloader.template.isolinux.BootLoaderTemplateIsoLinux.get_install_message_template">
@@ -651,8 +609,8 @@ initialized</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
-<li><p><strong>with_theme</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with graphics theme true|false</p></li>
+<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>with_theme</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with graphics theme true|false</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -687,8 +645,8 @@ hypervisor, e.g Xen dom0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
-<li><p><strong>with_theme</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with graphics theme true|false</p></li>
+<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>with_theme</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with graphics theme true|false</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -708,8 +666,8 @@ hypervisor, e.g Xen dom0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
-<li><p><strong>with_theme</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with graphics theme true|false</p></li>
+<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>with_theme</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with graphics theme true|false</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -728,8 +686,8 @@ hypervisor, e.g Xen dom0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p></li>
-<li><p><strong>with_theme</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with graphics theme true|false</p></li>
+<li><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p></li>
+<li><p><strong>with_theme</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with graphics theme true|false</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -749,7 +707,7 @@ hypervisor, e.g Xen dom0</p>
 <dl class="class">
 <dt id="kiwi.bootloader.template.zipl.BootLoaderTemplateZipl">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.template.zipl.</code><code class="sig-name descname">BootLoaderTemplateZipl</code><a class="reference internal" href="../../_modules/kiwi/bootloader/template/zipl.html#BootLoaderTemplateZipl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.template.zipl.BootLoaderTemplateZipl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>zipl configuraton file templates</strong></p>
 <dl class="method">
 <dt id="kiwi.bootloader.template.zipl.BootLoaderTemplateZipl.get_template">
@@ -757,7 +715,7 @@ hypervisor, e.g Xen dom0</p>
 <dd><p>Bootloader configuration template for disk boot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – with failsafe true|false</p>
+<dd class="field-odd"><p><strong>failsafe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – with failsafe true|false</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Template</span></code></p>

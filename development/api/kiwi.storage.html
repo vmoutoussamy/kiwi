@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage Package &mdash; kiwi 9.18.19 documentation</title>
+  <title>kiwi.storage Package &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.19</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.20</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.18.19</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.20</a> &raquo;</li>
         
       <li>kiwi.storage Package</li>
     
@@ -523,7 +523,7 @@
 <dl class="class">
 <dt id="kiwi.storage.device_provider.DeviceProvider">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.device_provider.</code><code class="sig-name descname">DeviceProvider</code><a class="reference internal" href="../../_modules/kiwi/storage/device_provider.html#DeviceProvider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.device_provider.DeviceProvider" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class for any class providing storage devices</strong></p>
 <dl class="method">
 <dt id="kiwi.storage.device_provider.DeviceProvider.get_byte_size">
@@ -537,7 +537,7 @@
 <dd class="field-even"><p>byte value from blockdev</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -562,7 +562,7 @@ Implementation in specialized device provider class</p>
 <dd class="field-even"><p>UUID from blkid</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -578,7 +578,7 @@ in the the specialized device provider class</p>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -597,8 +597,8 @@ in the the specialized device provider class</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>table_type</strong> (<em>string</em>) – Partition table type name</p></li>
-<li><p><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</p></li>
-<li><p><strong>start_sector</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – sector number</p></li>
+<li><p><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of class based on DeviceProvider</p></li>
+<li><p><strong>start_sector</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – sector number</p></li>
 </ul>
 </dd>
 </dl>
@@ -616,7 +616,7 @@ in the the specialized device provider class</p>
 <p>Populates kiwi_BootPart(id)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -628,7 +628,7 @@ in the the specialized device provider class</p>
 <p>Populates kiwi_BiosGrub(id)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -640,7 +640,7 @@ in the the specialized device provider class</p>
 <p>Populates kiwi_EfiPart(id)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -666,7 +666,7 @@ in the the specialized device provider class</p>
 <p>Populates kiwi_PrepPart(id)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -678,7 +678,7 @@ in the the specialized device provider class</p>
 <p>Populates kiwi_RootPart(id) and kiwi_RootPartVol(LVRoot)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -691,7 +691,7 @@ in the the specialized device provider class</p>
 boot partition is requested</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -705,7 +705,7 @@ as the default raid device node at boot time which is
 configured to be kiwi_RaidDev(/dev/mdX)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -720,7 +720,7 @@ should be the size of the squashfs filesystem in order to
 avoid wasting disk space</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -732,7 +732,7 @@ avoid wasting disk space</p>
 <p>Populates kiwi_SparePart(id)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – partition size</p>
+<dd class="field-odd"><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -747,7 +747,7 @@ avoid wasting disk space</p>
 <dd class="field-odd"><p>instances of MappedDevice</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -769,7 +769,7 @@ the storage provider is loop based the disk is it too</p>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -803,8 +803,8 @@ For DASD disks create a new VTOC table</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename</strong> (<em>string</em>) – loop file name to create</p></li>
-<li><p><strong>filesize_mbytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – size of the loop file</p></li>
-<li><p><strong>blocksize_bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – blocksize used in loop driver</p></li>
+<li><p><strong>filesize_mbytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – size of the loop file</p></li>
+<li><p><strong>blocksize_bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – blocksize used in loop driver</p></li>
 </ul>
 </dd>
 </dl>
@@ -816,7 +816,7 @@ The file to loop is created with the size specified in the
 constructor unless an existing one should not be overwritten</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – overwrite existing file to loop</p>
+<dd class="field-odd"><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – overwrite existing file to loop</p>
 </dd>
 </dl>
 </dd></dl>
@@ -830,7 +830,7 @@ constructor unless an existing one should not be overwritten</p>
 <dd class="field-odd"><p>device node name</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -844,7 +844,7 @@ constructor unless an existing one should not be overwritten</p>
 <dd class="field-odd"><p>True</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -861,7 +861,7 @@ constructor unless an existing one should not be overwritten</p>
 <p><strong>Implements luks setup on a storage device</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</p>
+<dd class="field-odd"><p><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of class based on DeviceProvider</p>
 </dd>
 </dl>
 <dl class="method">
@@ -876,7 +876,7 @@ is secure while this process runs</p>
 <li><p><strong>passphrase</strong> (<em>string</em>) – credentials</p></li>
 <li><p><strong>os</strong> (<em>string</em>) – distribution name to match distribution specific
 options for cryptsetup</p></li>
-<li><p><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – further cryptsetup options</p></li>
+<li><p><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – further cryptsetup options</p></li>
 <li><p><strong>keyfile</strong> (<em>string</em>) – file path name
 file path name which contains an alternative key
 to unlock the luks device</p></li>
@@ -931,7 +931,7 @@ to unlock the luks device</p></li>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -949,7 +949,7 @@ to unlock the luks device</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</p></li>
+<li><p><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of class based on DeviceProvider</p></li>
 <li><p><strong>device</strong> (<em>string</em>) – Device node name</p></li>
 </ul>
 </dd>
@@ -963,7 +963,7 @@ to unlock the luks device</p></li>
 <dd class="field-odd"><p>device node name</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -978,7 +978,7 @@ to unlock the luks device</p></li>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -995,7 +995,7 @@ to unlock the luks device</p></li>
 <p><strong>Implement raid setup on a storage device</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of class based on DeviceProvider</p>
+<dd class="field-odd"><p><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of class based on DeviceProvider</p>
 </dd>
 </dl>
 <dl class="method">
@@ -1045,7 +1045,7 @@ This only works in the raid levels 0(striping) and 1(mirroring)</p>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1058,14 +1058,14 @@ This only works in the raid levels 0(striping) and 1(mirroring)</p>
 <dl class="class">
 <dt id="kiwi.storage.setup.DiskSetup">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.setup.</code><code class="sig-name descname">DiskSetup</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/storage/setup.html#DiskSetup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.setup.DiskSetup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implements disk setup methods</strong></p>
 <p>Methods from this class provides information required
 before building a disk image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of XMLState</p></li>
+<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of XMLState</p></li>
 <li><p><strong>root_dir</strong> (<em>string</em>) – root directory path name</p></li>
 </ul>
 </dd>
@@ -1079,7 +1079,7 @@ before building a disk image</p>
 <dd class="field-odd"><p>boot size mbytes</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1093,7 +1093,7 @@ before building a disk image</p>
 <dd class="field-odd"><p>label name</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1107,7 +1107,7 @@ before building a disk image</p>
 <dd class="field-odd"><p>disk size mbytes</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1121,7 +1121,7 @@ before building a disk image</p>
 <dd class="field-odd"><p>label name</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1137,7 +1137,7 @@ root label is set to ‘ROOT’</p>
 <dd class="field-odd"><p>label name</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1154,7 +1154,7 @@ we need a boot partition or not</p>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>

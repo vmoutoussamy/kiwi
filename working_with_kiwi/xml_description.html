@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Image Description &mdash; kiwi 9.18.19 documentation</title>
+  <title>The Image Description &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -559,9 +559,9 @@ image:</p>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
-<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> element must always contain a <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> attribute. This
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> element must always contain a <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> attribute. This
 attribute accepts the values <code class="xref py py-obj docutils literal notranslate"><span class="pre">system</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">boot</span></code>. The value <code class="xref py py-obj docutils literal notranslate"><span class="pre">boot</span></code> is used
-by the KIWI developers and is not relevant for the end user, thus <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>
+by the KIWI developers and is not relevant for the end user, thus <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>
 should be always set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">system</span></code>.</p>
 <p><code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> allows the following optional children:</p>
 <ul class="simple">
@@ -569,7 +569,7 @@ should be always set to <code class="xref py py-obj docutils literal notranslate
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact</span></code>: Some means how to contact the author of the image (e.g. an
 email address, an IM nickname and network, etc.)</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">specification</span></code>: A detailed description of this image, e.g. its use case.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#license" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">license</span></code></a>: If applicable, you can specify a license for the image.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#license" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">license</span></code></a>: If applicable, you can specify a license for the image.</p></li>
 </ul>
 </div>
 <div class="section" id="the-preferences-element">
@@ -594,12 +594,12 @@ instance, a live ISO image or a virtual machine disk.</p>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
-<p>A build type is defined via a single <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element whose only required
+<p>A build type is defined via a single <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element whose only required
 attribute is <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code>, that defines which image type is created. All other
 attributes are optional and can be used to customize an image further. In
 the above example we created an ISO image, with the an ext4 filesystem
 <a class="footnote-reference brackets" href="#f2" id="id2">2</a>.</p>
-<p>It is possible to provide <strong>multiple</strong> <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> elements with <strong>different</strong>
+<p>It is possible to provide <strong>multiple</strong> <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> elements with <strong>different</strong>
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> attributes inside the preferences section. The following XML
 snippet can be used to create a live image, an OEM installation image, and
 a virtual machine disk of the same appliance:</p>
@@ -632,7 +632,7 @@ a virtual machine disk of the same appliance:</p>
 type. KIWI will by default build the image which <code class="xref py py-obj docutils literal notranslate"><span class="pre">primary</span></code> attribute is set
 to <code class="xref py py-obj docutils literal notranslate"><span class="pre">true</span></code>.</p>
 <p>KIWI supports the following values for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> attribute (further
-attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element are documented inside the referenced
+attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element are documented inside the referenced
 sections):</p>
 <ul class="simple">
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">iso</span></code>: a live ISO image, see <a class="reference internal" href="../building/build_live_iso.html#hybrid-iso"><span class="std std-ref">Build an ISO Hybrid Live Image</span></a></p></li>
@@ -648,7 +648,7 @@ image into a mountable filesystem of the specified type.</p></li>
 in live systems</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tbz</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">cpio</span></code>: the unpacked source tree will be compressed into a <a class="reference external" href="https://en.wikipedia.org/wiki/Xz">XZ</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Cpio">CPIO</a> archive.</p></li>
 </ul>
-<p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element furthermore supports the following subelements (as shown
+<p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element furthermore supports the following subelements (as shown
 above, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oemconfig</span></code> is a subelement of <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;type</span> <span class="pre">image=&quot;oem&quot;</span> <span class="pre">...&gt;</span></code>):</p>
 <ul class="simple">
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">containerconfig</span></code>: contains settings specific for the creation of
@@ -666,8 +666,8 @@ standard virtual machine image, see <a class="reference internal" href="../build
 <a class="reference internal" href="../building/build_vmx_disk.html#vmx-the-size-element"><span class="std std-ref">Modifying the Size of the Image</span></a>.</p></li>
 </ul>
 <div class="section" id="common-attributes-of-the-type-element">
-<h3>Common attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element<a class="headerlink" href="#common-attributes-of-the-type-element" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element supports a plethora of optional attributes, some of
+<h3>Common attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element<a class="headerlink" href="#common-attributes-of-the-type-element" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element supports a plethora of optional attributes, some of
 these are only relevant for certain build types and will be covered in the
 appropriate place. Certain attributes are however useful for nearly all
 build types and will be covered here:</p>
@@ -761,7 +761,7 @@ from the <code class="xref py py-obj docutils literal notranslate"><span class="
 </div>
 <div class="section" id="common-elements">
 <span id="xml-description-preferences-common-elements"></span><h2>Common Elements<a class="headerlink" href="#common-elements" title="Permalink to this headline">¶</a></h2>
-<p>Now that we have covered the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element, we shall return to the
+<p>Now that we have covered the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element, we shall return to the
 remaining child-elements of <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code>:</p>
 <ul class="simple">
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code>: A version number of this image. We recommend to use the
@@ -773,7 +773,7 @@ and install the packages for your appliance. Currently the following package
 managers are supported: <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>, <code class="docutils literal notranslate"><span class="pre">zypper</span></code> and <code class="docutils literal notranslate"><span class="pre">dnf</span></code>. Note that the
 package manager must be installed on the system <strong>calling</strong> KIWI, it is
 <strong>not</strong> sufficient to install it inside the appliance.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/locale.html#module-locale" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">locale</span></code></a>: Specify the locale that the resulting appliance will use.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/locale.html#module-locale" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">locale</span></code></a>: Specify the locale that the resulting appliance will use.</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">timezone</span></code>: Override the default timezone of the image to a more suitable
 value, e.g. the timezone in which the image’s users reside.</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-check-signatures</span></code>: Boolean value that defines whether the signatures
@@ -816,7 +816,7 @@ bootloader or installed via the <code class="xref py py-obj docutils literal not
 <div class="section" id="image-profiles">
 <span id="xml-description-image-profiles"></span><h1>Image Profiles<a class="headerlink" href="#image-profiles" title="Permalink to this headline">¶</a></h1>
 <p>In the previous section we have covered build types, that are represented
-in the image description as the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element. We have also shown how it
+in the image description as the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element. We have also shown how it
 is possible to include multiple build types in the same
 appliance. Unfortunately that approach has one significant limitation: one
 can only include multiple build types with <strong>different</strong> settings for the
@@ -852,7 +852,7 @@ format).</p>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
-<p>Each profile is declared via the element <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-profile" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile</span></code></a>, which itself must be a
+<p>Each profile is declared via the element <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-profile" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile</span></code></a>, which itself must be a
 child of <code class="xref py py-obj docutils literal notranslate"><span class="pre">profiles</span></code> and must contain the <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code>
 attributes. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> is only present for documentation purposes,
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> on the other hand is used to instruct KIWI which profile to build
@@ -917,11 +917,11 @@ modified. The following attributes are mandatory:</p>
 list is used as the user’s primary group. The remaining elements are
 appended to the user’s supplementary groups. When no groups are assigned
 then the system’s default primary group will be used.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#id" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a>: The numeric user id of this account.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#id" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a>: The numeric user id of this account.</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat</span></code>: The format in which <code class="xref py py-obj docutils literal notranslate"><span class="pre">password</span></code> is provided, either <code class="xref py py-obj docutils literal notranslate"><span class="pre">plain</span></code>
 or <code class="xref py py-obj docutils literal notranslate"><span class="pre">encrypted</span></code> (the latter is the default).</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">password</span></code>: The password for this user account. It can be provided either
-in cleartext form (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat=&quot;plain&quot;</span></code>) or in <a class="reference external" href="https://docs.python.org/3/library/crypt.html#module-crypt" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crypt</span></code></a>’ed form
+in cleartext form (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat=&quot;plain&quot;</span></code>) or in <a class="reference external" href="https://docs.python.org/3/library/crypt.html#module-crypt" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crypt</span></code></a>’ed form
 (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat=&quot;encrypted&quot;</span></code>). Plain passwords are discouraged, as everyone
 with access to the image description would know the password. It is
 recommended to generate a hash of your password, e.g. using the
@@ -1000,7 +1000,7 @@ http URL will also be included in the final appliance.</p></li>
 contains the URL to the repository in an appropriate format and the
 following optional attributes:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>: repository type, accepts one of the following values: <code class="xref py py-obj docutils literal notranslate"><span class="pre">apt-deb</span></code>,
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>: repository type, accepts one of the following values: <code class="xref py py-obj docutils literal notranslate"><span class="pre">apt-deb</span></code>,
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">apt-rpm</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">deb-dir</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">mirrors</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-dir</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-md</span></code>.
 For ordinary RPM repositories use <code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm-md</span></code>, for ordinary APT repositories
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">apt-deb</span></code>.</p></li>
@@ -1083,7 +1083,7 @@ that instruct KIWI when and how to perform package installation or
 removal. Each <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> element acts as a group, whose behavior can be
 configured via the following attributes:</p>
 <ul>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>: either <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootstrap</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">uninstall</span></code> or one of the
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>: either <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootstrap</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">uninstall</span></code> or one of the
 following build types: <code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">iso</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pxe</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmx</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oci</span></code>.</p>
 <p>Packages for <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;bootstrap&quot;</span></code> are pre-installed to populate the images’
 root file system before chrooting into it.</p>

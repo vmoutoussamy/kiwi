@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository Package &mdash; kiwi 9.18.19 documentation</title>
+  <title>kiwi.repository Package &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.19</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.20</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.18.19</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.20</a> &raquo;</li>
         
       <li>kiwi.repository Package</li>
     
@@ -501,15 +501,15 @@
 <dl class="class">
 <dt id="kiwi.repository.base.RepositoryBase">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.base.</code><code class="sig-name descname">RepositoryBase</code><span class="sig-paren">(</span><em class="sig-param">root_bind</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/repository/base.html#RepositoryBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Implements base class for package manager repository handling</p>
 <p>Attributes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>root_bind</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">RootBind</span></code></p></li>
-<li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – root directory path name</p></li>
-<li><p><strong>shared_location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – shared directory between image root
+<li><p><strong>root_bind</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">RootBind</span></code></p></li>
+<li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – root directory path name</p></li>
+<li><p><strong>shared_location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – shared directory between image root
 and build system root</p></li>
 </ul>
 </dd>
@@ -522,18 +522,18 @@ and build system root</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
 <li><p><strong>repo_type</strong> – unused</p></li>
-<li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – unused</p></li>
-<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – unused</p></li>
-<li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – unused</p></li>
-<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – unused</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – unused</p></li>
+<li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – unused</p></li>
+<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
 </ul>
 </dd>
 </dl>
@@ -562,7 +562,7 @@ are allowed to be active when building</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -574,7 +574,7 @@ are allowed to be active when building</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -586,7 +586,7 @@ are allowed to be active when building</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of the key files to import</p>
+<dd class="field-odd"><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of the key files to import</p>
 </dd>
 </dl>
 </dd></dl>
@@ -598,7 +598,7 @@ are allowed to be active when building</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -637,11 +637,11 @@ are allowed to be active when building</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>shared_dnf_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – shared directory between image root
+<li><p><strong>shared_dnf_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – shared directory between image root
 and build system root</p></li>
-<li><p><strong>runtime_dnf_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – dnf runtime config file name</p></li>
-<li><p><strong>command_env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – customized os.environ for dnf</p></li>
-<li><p><strong>runtime_dnf_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></p></li>
+<li><p><strong>runtime_dnf_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – dnf runtime config file name</p></li>
+<li><p><strong>command_env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – customized os.environ for dnf</p></li>
+<li><p><strong>runtime_dnf_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -652,18 +652,18 @@ and build system root</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository base file name</p></li>
-<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository URI</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – repository base file name</p></li>
+<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – repository URI</p></li>
 <li><p><strong>repo_type</strong> – repostory type name</p></li>
-<li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – dnf repostory priority</p></li>
-<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable repository signature validation</p></li>
-<li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable package signature validation</p></li>
-<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – source type, one of ‘baseurl’, ‘metalink’ or ‘mirrorlist’</p></li>
+<li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – dnf repostory priority</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – enable repository signature validation</p></li>
+<li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – enable package signature validation</p></li>
+<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – source type, one of ‘baseurl’, ‘metalink’ or ‘mirrorlist’</p></li>
 </ul>
 </dd>
 </dl>
@@ -690,7 +690,7 @@ the package installations</p>
 <dd><p>Delete dnf repository</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository base file name</p>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – repository base file name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -706,7 +706,7 @@ the repository name followed by any characters to cleanup
 the cache information</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository name</p>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – repository name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -717,7 +717,7 @@ the cache information</p>
 <dd><p>Imports trusted keys into the image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of the key files to import</p>
+<dd class="field-odd"><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of the key files to import</p>
 </dd>
 </dl>
 </dd></dl>
@@ -730,7 +730,7 @@ the cache information</p>
 and environment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – dnf arguments</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – dnf arguments</p>
 </dd>
 </dl>
 </dd></dl>
@@ -744,7 +744,7 @@ and environment</p>
 <dd class="field-odd"><p>dnf_args:list, command_env:dict</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -782,13 +782,13 @@ in the default places</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>shared_zypper_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – shared directory between image root
+<li><p><strong>shared_zypper_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – shared directory between image root
 and build system root</p></li>
-<li><p><strong>runtime_zypper_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – zypper runtime config file name</p></li>
-<li><p><strong>runtime_zypp_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – libzypp runtime config file name</p></li>
-<li><p><strong>zypper_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – zypper caller args plus additional custom args</p></li>
-<li><p><strong>command_env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – customized os.environ for zypper</p></li>
-<li><p><strong>runtime_zypper_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></p></li>
+<li><p><strong>runtime_zypper_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – zypper runtime config file name</p></li>
+<li><p><strong>runtime_zypp_config_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – libzypp runtime config file name</p></li>
+<li><p><strong>zypper_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – zypper caller args plus additional custom args</p></li>
+<li><p><strong>command_env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – customized os.environ for zypper</p></li>
+<li><p><strong>runtime_zypper_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -799,18 +799,18 @@ and build system root</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository name</p></li>
-<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository URI</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – repository name</p></li>
+<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – repository URI</p></li>
 <li><p><strong>repo_type</strong> – repostory type name</p></li>
-<li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – zypper repostory priority</p></li>
-<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – credentials username</p></li>
-<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – credentials password</p></li>
-<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – zypper credentials file</p></li>
-<li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable repository signature validation</p></li>
-<li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable package signature validation</p></li>
-<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>prio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – zypper repostory priority</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>components</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – credentials username</p></li>
+<li><p><strong>secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – credentials password</p></li>
+<li><p><strong>credentials_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – zypper credentials file</p></li>
+<li><p><strong>repo_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – enable repository signature validation</p></li>
+<li><p><strong>pkg_gpgcheck</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – enable package signature validation</p></li>
+<li><p><strong>sourcetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
 </ul>
 </dd>
 </dl>
@@ -841,7 +841,7 @@ account for the package installations</p>
 <dd><p>Delete zypper repository</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository name</p>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – repository name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -855,7 +855,7 @@ directories of the same name as the repository name. The method
 deletes these directories to cleanup the cache information</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – repository name</p>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – repository name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -866,7 +866,7 @@ deletes these directories to cleanup the cache information</p>
 <dd><p>Imports trusted keys into the image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of the key files to import</p>
+<dd class="field-odd"><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of the key files to import</p>
 </dd>
 </dl>
 </dd></dl>
@@ -879,7 +879,7 @@ deletes these directories to cleanup the cache information</p>
 and environment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – zypper arguments</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – zypper arguments</p>
 </dd>
 </dl>
 </dd></dl>
@@ -919,14 +919,14 @@ in the default places</p>
 <dl class="class">
 <dt id="kiwi.repository.Repository">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.</code><code class="sig-name descname">Repository</code><a class="reference internal" href="../../_modules/kiwi/repository.html#Repository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.Repository" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Repository factory</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>root_bind</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of RootBind</p></li>
-<li><p><strong>package_manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – package manager name</p></li>
-<li><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of custom package manager arguments
+<li><p><strong>root_bind</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of RootBind</p></li>
+<li><p><strong>package_manager</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – package manager name</p></li>
+<li><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of custom package manager arguments
 to setup the repository</p></li>
 </ul>
 </dd>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image Package &mdash; kiwi 9.18.19 documentation</title>
+  <title>kiwi.boot.image Package &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.19</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.20</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.18.19</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.20</a> &raquo;</li>
         
           <li><a href="kiwi.boot.html">kiwi.boot Package</a> &raquo;</li>
         
@@ -490,15 +490,15 @@
 <dl class="class">
 <dt id="kiwi.boot.image.base.BootImageBase">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.base.</code><code class="sig-name descname">BootImageBase</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">signing_keys=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/base.html#BootImageBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class for boot image(initrd) task</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
+<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
 <li><p><strong>target_dir</strong> (<em>string</em>) – target dir to store the initrd</p></li>
 <li><p><strong>root_dir</strong> (<em>string</em>) – system image root directory</p></li>
-<li><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of package signing keys</p></li>
+<li><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of package signing keys</p></li>
 </ul>
 </dd>
 </dl>
@@ -509,9 +509,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of ImageIdentifier</p></li>
+<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of ImageIdentifier</p></li>
 <li><p><strong>basename</strong> (<em>string</em>) – base initrd file name</p></li>
-<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – installation media initrd</p></li>
+<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – installation media initrd</p></li>
 </ul>
 </dd>
 </dl>
@@ -552,7 +552,7 @@ in order to preserve the generated data</p>
 <dd class="field-odd"><p>path name</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -560,8 +560,22 @@ in order to preserve the generated data</p>
 <dl class="method">
 <dt id="kiwi.boot.image.base.BootImageBase.get_boot_names">
 <code class="sig-name descname">get_boot_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/base.html#BootImageBase.get_boot_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.get_boot_names" title="Permalink to this definition">¶</a></dt>
-<dd><p>Provides kernel and initrd names for this boot image</p>
-<p>Implementation in specialized boot image class</p>
+<dd><p>Provides kernel and initrd names for the boot image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>Contains boot_names_type tuple</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boot_names_type</span><span class="p">(</span>
+    <span class="n">kernel_name</span><span class="o">=</span><span class="s1">&#39;INSTALLED_KERNEL&#39;</span><span class="p">,</span>
+    <span class="n">initrd_name</span><span class="o">=</span><span class="s1">&#39;DRACUT_OUTPUT_NAME&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -582,7 +596,7 @@ for kiwi boot images the method is a noop</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename</strong> (<em>string</em>) – file path name</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – include also for installation media initrd</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – include also for installation media initrd</p></li>
 </ul>
 </dd>
 </dl>
@@ -598,7 +612,7 @@ such a case this method is a noop.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module</strong> (<em>string</em>) – module to include</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – include the module for install initrds</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – include the module for install initrds</p></li>
 </ul>
 </dd>
 </dl>
@@ -613,7 +627,7 @@ such a case this method is a noop.</p>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -635,7 +649,7 @@ such a case this method is a noop.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module</strong> (<em>string</em>) – module to omit</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – omit the module for install initrds</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – omit the module for install initrds</p></li>
 </ul>
 </dd>
 </dl>
@@ -668,7 +682,7 @@ recreation, thus this method is a noop in that case.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – dictonary including configuration parameters</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – dictonary including configuration parameters</p></li>
 <li><p><strong>config_file</strong> (<em>string</em>) – configuration file to write</p></li>
 </ul>
 </dd>
@@ -693,31 +707,10 @@ the result into the image build target directory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – unused</p></li>
+<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – unused</p></li>
 <li><p><strong>basename</strong> (<em>string</em>) – base initrd file name</p></li>
-<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – installation media initrd</p></li>
+<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – installation media initrd</p></li>
 </ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.boot.image.dracut.BootImageDracut.get_boot_names">
-<code class="sig-name descname">get_boot_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/dracut.html#BootImageDracut.get_boot_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.get_boot_names" title="Permalink to this definition">¶</a></dt>
-<dd><p>Provides kernel and initrd names for kiwi boot image</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><p>Contains boot_names_type tuple</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boot_names_type</span><span class="p">(</span>
-    <span class="n">kernel_name</span><span class="o">=</span><span class="s1">&#39;INSTALLED_KERNEL&#39;</span><span class="p">,</span>
-    <span class="n">initrd_name</span><span class="o">=</span><span class="s1">&#39;DRACUT_OUTPUT_NAME&#39;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -741,7 +734,7 @@ the result into the image build target directory</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module</strong> (<em>string</em>) – module to include</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – include the module for install initrds</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – include the module for install initrds</p></li>
 </ul>
 </dd>
 </dl>
@@ -755,7 +748,7 @@ the result into the image build target directory</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module</strong> (<em>string</em>) – module to omit</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – omit the module for install initrds</p></li>
+<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – omit the module for install initrds</p></li>
 </ul>
 </dd>
 </dl>
@@ -785,7 +778,7 @@ the result into the image build target directory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – a dictionary containing the modules to add and omit</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – a dictionary containing the modules to add and omit</p></li>
 <li><p><strong>conf_file</strong> (<em>string</em>) – configuration file to write</p></li>
 </ul>
 </dd>
@@ -812,31 +805,10 @@ itself after first boot by the result of dracut.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – instance of ImageIdentifier</p></li>
+<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of ImageIdentifier</p></li>
 <li><p><strong>basename</strong> (<em>string</em>) – base initrd file name</p></li>
-<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – installation media initrd</p></li>
+<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – installation media initrd</p></li>
 </ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.boot.image.builtin_kiwi.BootImageKiwi.get_boot_names">
-<code class="sig-name descname">get_boot_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi.get_boot_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi.get_boot_names" title="Permalink to this definition">¶</a></dt>
-<dd><p>Provides kernel and initrd names for kiwi boot image</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><p>Contains boot_names_type tuple</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boot_names_type</span><span class="p">(</span>
-    <span class="n">kernel_name</span><span class="o">=</span><span class="s1">&#39;linux.vmx&#39;</span><span class="p">,</span>
-    <span class="n">initrd_name</span><span class="o">=</span><span class="s1">&#39;initrd.vmx&#39;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -864,15 +836,15 @@ the initrd from</p>
 <dl class="class">
 <dt id="kiwi.boot.image.BootImage">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.</code><code class="sig-name descname">BootImage</code><a class="reference internal" href="../../_modules/kiwi/boot/image.html#BootImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.BootImage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>BootImge Factory</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
+<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
 <li><p><strong>target_dir</strong> (<em>string</em>) – target dir to store the initrd</p></li>
 <li><p><strong>root_dir</strong> (<em>string</em>) – system image root directory</p></li>
-<li><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of package signing keys</p></li>
+<li><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of package signing keys</p></li>
 </ul>
 </dd>
 </dl>

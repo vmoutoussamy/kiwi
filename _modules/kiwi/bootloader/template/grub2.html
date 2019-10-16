@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.template.grub2 &mdash; kiwi 9.18.19 documentation</title>
+  <title>kiwi.bootloader.template.grub2 &mdash; kiwi 9.18.20 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.19</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -773,73 +773,6 @@
 <span class="s1">                exit</span>
 <span class="s1">            }</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
-
-<div class="viewcode-block" id="BootLoaderTemplateGrub2.get_disk_template"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.template.html#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_disk_template">[docs]</a>    <span class="k">def</span> <span class="nf">get_disk_template</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">failsafe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hybrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">terminal</span><span class="o">=</span><span class="s1">&#39;gfxterm&#39;</span>
-    <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Bootloader configuration template for disk image</span>
-
-<span class="sd">        :param bool failsafe: with failsafe true|false</span>
-<span class="sd">        :param bool hybrid: with hybrid true|false</span>
-<span class="sd">        :param string terminal: output terminal name</span>
-
-<span class="sd">        :return: instance of :class:`Template`</span>
-
-<span class="sd">        :rtype: Template</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
-        <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_hybrid</span>
-        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme</span>
-        <span class="k">if</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span>
-        <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_hybrid</span>
-            <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
-                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_failsafe_hybrid</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry</span>
-            <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
-                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_failsafe</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_boot_snapshots</span>
-        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_console_switch</span>
-        <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="BootLoaderTemplateGrub2.get_multiboot_disk_template"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.template.html#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_multiboot_disk_template">[docs]</a>    <span class="k">def</span> <span class="nf">get_multiboot_disk_template</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">failsafe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">terminal</span><span class="o">=</span><span class="s1">&#39;gfxterm&#39;</span>
-    <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Bootloader configuration template for disk image with</span>
-<span class="sd">        hypervisor, e.g Xen dom0</span>
-
-<span class="sd">        :param bool failsafe: with failsafe true|false</span>
-<span class="sd">        :param string terminal: output terminal name</span>
-
-<span class="sd">        :return: instance of :class:`Template`</span>
-
-<span class="sd">        :rtype: Template</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
-        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme</span>
-        <span class="k">if</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_multiboot</span>
-        <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_failsafe_multiboot</span>
-        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_boot_snapshots</span>
-        <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_console_switch</span>
-        <span class="k">return</span> <span class="n">Template</span><span class="p">(</span><span class="n">template_data</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BootLoaderTemplateGrub2.get_iso_template"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.template.html#kiwi.bootloader.template.grub2.BootLoaderTemplateGrub2.get_iso_template">[docs]</a>    <span class="k">def</span> <span class="nf">get_iso_template</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">failsafe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hybrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">terminal</span><span class="o">=</span><span class="s1">&#39;gfxterm&#39;</span><span class="p">,</span> <span class="n">checkiso</span><span class="o">=</span><span class="kc">False</span>
