@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.22 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.21 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.22</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.21</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -620,17 +620,34 @@
 <span class="sd">        Also copies grub config file to alternative boot path for</span>
 <span class="sd">        EFI systems in fallback mode</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_boot_path</span><span class="p">()</span>
+        <span class="n">config_file</span> <span class="o">=</span> <span class="n">config_dir</span> <span class="o">+</span> <span class="s1">&#39;/grub.cfg&#39;</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">config_dir</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Writing KIWI template grub.cfg file&#39;</span><span class="p">)</span>
-            <span class="n">config_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_boot_path</span><span class="p">()</span>
-            <span class="n">config_file</span> <span class="o">=</span> <span class="n">config_dir</span> <span class="o">+</span> <span class="s1">&#39;/grub.cfg&#39;</span>
-            <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">config_dir</span><span class="p">)</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_copy_grub_config_to_efi_path</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">config_file</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">shim_fallback_setup</span><span class="p">:</span>
+                <span class="n">efi_vendor_boot_path</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_shim_vendor_directory</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">efi_vendor_boot_path</span><span class="p">:</span>
+                    <span class="n">grub_config_file_for_efi_boot</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span><span class="n">efi_vendor_boot_path</span><span class="p">,</span> <span class="s1">&#39;grub.cfg&#39;</span><span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">grub_config_file_for_efi_boot</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">efi_boot_path</span><span class="p">,</span> <span class="s1">&#39;grub.cfg&#39;</span><span class="p">])</span>
+                    <span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s1">&#39;Writing </span><span class="si">{0}</span><span class="s1"> file to be found by EFI firmware&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">grub_config_file_for_efi_boot</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+                    <span class="n">config_file</span><span class="p">,</span> <span class="n">grub_config_file_for_efi_boot</span>
                 <span class="p">)</span></div>
 
 <div class="viewcode-block" id="BootLoaderConfigGrub2.write_meta_data"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.write_meta_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_meta_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_uuid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">boot_options</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">iso_boot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -681,32 +698,20 @@
 <span class="sd">                {</span>
 <span class="sd">                    &#39;root_device&#39;: string,</span>
 <span class="sd">                    &#39;boot_device&#39;: string,</span>
-<span class="sd">                    &#39;efi_device&#39;: string,</span>
 <span class="sd">                    &#39;system_volumes&#39;: volume_manager_instance.get_volumes()</span>
 <span class="sd">                }</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mount_system</span><span class="p">(</span>
             <span class="n">boot_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;root_device&#39;</span><span class="p">),</span>
             <span class="n">boot_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;boot_device&#39;</span><span class="p">),</span>
-            <span class="n">boot_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;efi_device&#39;</span><span class="p">),</span>
             <span class="n">boot_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;system_volumes&#39;</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span> <span class="s1">&#39;grub.cfg&#39;</span>
-            <span class="p">]</span>
         <span class="p">)</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
-                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;grub2-mkconfig&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span>
-                <span class="n">config_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span>
+                <span class="s1">&#39;grub2-mkconfig&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;boot/grub2/grub.cfg&#39;</span>
             <span class="p">]</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_copy_grub_config_to_efi_path</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="n">config_file</span>
-            <span class="p">)</span></div>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="BootLoaderConfigGrub2.setup_install_image_config"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.setup_install_image_config">[docs]</a>    <span class="k">def</span> <span class="nf">setup_install_image_config</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">mbrid</span><span class="p">,</span> <span class="n">hypervisor</span><span class="o">=</span><span class="s1">&#39;xen.gz&#39;</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linux&#39;</span><span class="p">,</span> <span class="n">initrd</span><span class="o">=</span><span class="s1">&#39;initrd&#39;</span>
@@ -894,28 +899,6 @@
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xen_guest</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_copy_xen_modules_to_boot_directory</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="nf">_copy_grub_config_to_efi_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">shim_fallback_setup</span><span class="p">:</span>
-            <span class="n">efi_vendor_boot_path</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_shim_vendor_directory</span><span class="p">(</span>
-                <span class="n">root_path</span>
-            <span class="p">)</span>
-            <span class="k">if</span> <span class="n">efi_vendor_boot_path</span><span class="p">:</span>
-                <span class="n">grub_config_file_for_efi_boot</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                    <span class="p">[</span><span class="n">efi_vendor_boot_path</span><span class="p">,</span> <span class="s1">&#39;grub.cfg&#39;</span><span class="p">]</span>
-                <span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">grub_config_file_for_efi_boot</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
-                    <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">root_path</span><span class="p">,</span> <span class="s1">&#39;boot/efi/EFI/BOOT&#39;</span><span class="p">,</span> <span class="s1">&#39;grub.cfg&#39;</span><span class="p">])</span>
-                <span class="p">)</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="s1">&#39;Copying </span><span class="si">{0}</span><span class="s1"> -&gt; </span><span class="si">{1}</span><span class="s1"> to be found by EFI&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">config_file</span><span class="p">,</span> <span class="n">grub_config_file_for_efi_boot</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
-            <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
-                <span class="n">config_file</span><span class="p">,</span> <span class="n">grub_config_file_for_efi_boot</span>
-            <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_supports_bios_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;ix86&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span>
