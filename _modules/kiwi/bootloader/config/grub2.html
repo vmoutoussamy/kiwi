@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.24 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.23 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.24</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.23</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -644,7 +644,6 @@
 
 <span class="sd">        :param string root_uuid: root device UUID</span>
 <span class="sd">        :param string boot_options: kernel options as string</span>
-<span class="sd">        :param bool iso_boot: indicate target is an ISO</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cmdline</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_boot_cmdline</span><span class="p">(</span><span class="n">root_uuid</span><span class="p">),</span> <span class="n">boot_options</span><span class="p">]</span>
@@ -700,8 +699,7 @@
         <span class="p">)</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
-                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_mkconfig_tool</span><span class="p">(),</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;grub2-mkconfig&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span>
                 <span class="n">config_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="p">]</span>
         <span class="p">)</span>
@@ -1271,11 +1269,6 @@
         <span class="k">for</span> <span class="n">grub_mkimage_tool</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;grub2-mkimage&#39;</span><span class="p">,</span> <span class="s1">&#39;grub-mkimage&#39;</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">grub_mkimage_tool</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">grub_mkimage_tool</span>
-
-    <span class="k">def</span> <span class="nf">_get_grub2_mkconfig_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">grub_mkconfig_tool</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;grub2-mkconfig&#39;</span><span class="p">,</span> <span class="s1">&#39;grub-mkconfig&#39;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">grub_mkconfig_tool</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">grub_mkconfig_tool</span>
 
     <span class="k">def</span> <span class="nf">_get_grub2_boot_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span>
