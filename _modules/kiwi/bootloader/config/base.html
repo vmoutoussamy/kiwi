@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.base &mdash; kiwi 9.18.20 documentation</title>
+  <title>kiwi.bootloader.config.base &mdash; kiwi 9.18.22 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.20</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.22</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -523,6 +523,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">volumes_mount</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">device_mount</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -945,7 +946,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">gfxmode</span></div>
 
-    <span class="k">def</span> <span class="nf">_mount_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_device</span><span class="p">,</span> <span class="n">boot_device</span><span class="p">,</span> <span class="n">volumes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_mount_system</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">root_device</span><span class="p">,</span> <span class="n">boot_device</span><span class="p">,</span> <span class="n">efi_device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">volumes</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
             <span class="n">device</span><span class="o">=</span><span class="n">root_device</span>
         <span class="p">)</span>
@@ -953,11 +956,19 @@
             <span class="n">device</span><span class="o">=</span><span class="n">boot_device</span><span class="p">,</span>
             <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/boot&#39;</span>
         <span class="p">)</span>
+        <span class="k">if</span> <span class="n">efi_device</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
+                <span class="n">device</span><span class="o">=</span><span class="n">efi_device</span><span class="p">,</span>
+                <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/boot/efi&#39;</span>
+            <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">efi_device</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">volumes</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">volume_path</span> <span class="ow">in</span> <span class="n">Path</span><span class="o">.</span><span class="n">sort_by_hierarchy</span><span class="p">(</span>
@@ -1024,6 +1035,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">device_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="o">.</span><span class="n">umount</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="p">:</span>
