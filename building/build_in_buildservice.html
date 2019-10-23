@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building in the Open Build Service &mdash; kiwi 9.18.25 documentation</title>
+  <title>Building in the Open Build Service &mdash; kiwi 9.18.26 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.25</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.26</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -482,16 +482,16 @@
 <p class="admonition-title">Hint</p>
 <p><strong>Abstract</strong></p>
 <p>This document gives a brief overview how to build images with
-KIWI in version 9.18.25 inside of the Open Build Service.
+KIWI in version 9.18.26 inside of the Open Build Service.
 A tutorial on the Open Buildservice itself can be found here:
 <a class="reference external" href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial">https://en.opensuse.org/openSUSE:Build_Service_Tutorial</a></p>
 </div>
 <p>The next generation KIWI is fully integrated with the Open Build Service.
 In order to start it’s best to checkout one of the integration test
 image build projects from the base Testing project
-<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Images:Testing_$ARCH</span></code> at:</p>
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Images:Testing_$ARCH:$DISTRO</span></code> at:</p>
 <p><a class="reference external" href="https://build.opensuse.org">https://build.opensuse.org</a></p>
-<p>For example the test images for x86 can be found <a class="reference external" href="https://build.opensuse.org/project/show/Virtualization:Appliances:Images:Testing_x86">here</a>.</p>
+<p>For example the test images for SUSE on x86 can be found <a class="reference external" href="https://build.opensuse.org/project/show/Virtualization:Appliances:Images:Testing_x86:suse">here</a>.</p>
 <div class="section" id="advantages-of-using-the-open-build-service-obs">
 <h2>Advantages of using the Open Build Service (OBS)<a class="headerlink" href="#advantages-of-using-the-open-build-service-obs" title="Permalink to this headline">¶</a></h2>
 <p>The Open Build Service offers multiple advantages over running KIWI
@@ -731,7 +731,7 @@ errors of the following type:</p>
 <p>Instead of starting from scratch and manually adding <code class="docutils literal notranslate"><span class="pre">Prefer:</span></code> statements
 to the project configuration, we recommend to copy the current project
 configuration of the testing project
-<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Images:Testing_$ARCH</span></code> into your own project.
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Images:Testing_$ARCH:$DISTRO</span></code> into your own project.
 It provides a good starting point and can be adapted to your OBS project.</p>
 <dl class="footnote brackets">
 <dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
