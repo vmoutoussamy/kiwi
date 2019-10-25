@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.18.26 &mdash; kiwi 9.18.26 documentation</title>
+  <title>API Documentation 9.18.27 &mdash; kiwi 9.18.27 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.18.26</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.18.27</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.18.26</li>
+      <li>API Documentation 9.18.27</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -477,7 +477,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.18.26<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.18.27<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -3621,148 +3621,6 @@ short form by default, long form with -h | –help</p></li>
 <div class="section" id="module-kiwi.logger">
 <span id="kiwi-logger-module"></span><h2><a class="reference internal" href="#module-kiwi.logger" title="kiwi.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger</span></code></a> Module<a class="headerlink" href="#module-kiwi.logger" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="kiwi.logger.ColorFormatter">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">ColorFormatter</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#ColorFormatter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.ColorFormatter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Formatter</span></code></a></p>
-<p><strong>Extended standard logging Formatter</strong></p>
-<p>Extended format supporting text with color metadata</p>
-<p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ColorFormatter</span><span class="p">(</span><span class="n">message_format</span><span class="p">,</span> <span class="s1">&#39;%H:%M:%S&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="method">
-<dt id="kiwi.logger.ColorFormatter.format">
-<code class="sig-name descname">format</code><span class="sig-paren">(</span><em class="sig-param">record</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#ColorFormatter.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.ColorFormatter.format" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a logging Formatter with support for color messages</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – logging message record</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>result from format_message</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kiwi.logger.ColorMessage">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">ColorMessage</code><a class="reference internal" href="../../_modules/kiwi/logger.html#ColorMessage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.ColorMessage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p><strong>Implements color messages for Python logging facility</strong></p>
-<p>Has to implement the format_message method to serve as
-message formatter</p>
-<dl class="method">
-<dt id="kiwi.logger.ColorMessage.format_message">
-<code class="sig-name descname">format_message</code><span class="sig-paren">(</span><em class="sig-param">level</em>, <em class="sig-param">message</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#ColorMessage.format_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.ColorMessage.format_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Message formatter with support for embedded color sequences</p>
-<p>The Message is allowed to contain the following color metadata:</p>
-<ul class="simple">
-<li><p>$RESET, reset to no color mode</p></li>
-<li><p>$BOLD, bold</p></li>
-<li><p>$COLOR, color the following text</p></li>
-<li><p>$LIGHTCOLOR, light color the following text</p></li>
-</ul>
-<p>The color of the message depends on the level and is defined
-in the ColorMessage constructor</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – color level number</p></li>
-<li><p><strong>message</strong> (<em>string</em>) – text</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>color message with escape sequences</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kiwi.logger.DebugFilter">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">DebugFilter</code><span class="sig-paren">(</span><em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#DebugFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.DebugFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Filter" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Filter</span></code></a></p>
-<p><strong>Extended standard debug logging Filter</strong></p>
-<dl class="method">
-<dt id="kiwi.logger.DebugFilter.filter">
-<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param">record</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#DebugFilter.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.DebugFilter.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Only messages with record level DEBUG can pass
-for messages with another level an extra handler is used</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – logging message record</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>record.name</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kiwi.logger.ErrorFilter">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">ErrorFilter</code><span class="sig-paren">(</span><em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#ErrorFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.ErrorFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Filter" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Filter</span></code></a></p>
-<p><strong>Extended standard error logging Filter</strong></p>
-<dl class="method">
-<dt id="kiwi.logger.ErrorFilter.filter">
-<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param">record</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#ErrorFilter.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.ErrorFilter.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Only messages with record level DEBUG can pass
-for messages with another level an extra handler is used</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – logging message record</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>record.name</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kiwi.logger.InfoFilter">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">InfoFilter</code><span class="sig-paren">(</span><em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#InfoFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.InfoFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Filter" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Filter</span></code></a></p>
-<p><strong>Extended standard logging Filter</strong></p>
-<dl class="method">
-<dt id="kiwi.logger.InfoFilter.filter">
-<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param">record</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#InfoFilter.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.InfoFilter.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Only messages with record level INFO and WARNING can pass
-for messages with another level an extra handler is used</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – logging message record</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>record.name</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="kiwi.logger.Logger">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">Logger</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#Logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.Logger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></a></p>
@@ -3843,56 +3701,6 @@ the log file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – logfile file path</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kiwi.logger.LoggerSchedulerFilter">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">LoggerSchedulerFilter</code><span class="sig-paren">(</span><em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#LoggerSchedulerFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.LoggerSchedulerFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Filter" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Filter</span></code></a></p>
-<p><strong>Extended standard logging Filter</strong></p>
-<dl class="method">
-<dt id="kiwi.logger.LoggerSchedulerFilter.filter">
-<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param">record</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#LoggerSchedulerFilter.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.LoggerSchedulerFilter.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Messages from apscheduler scheduler instances are filtered out
-They conflict with console progress information</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – logging message record</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>record.name</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kiwi.logger.WarningFilter">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.logger.</code><code class="sig-name descname">WarningFilter</code><span class="sig-paren">(</span><em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#WarningFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.WarningFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Filter" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Filter</span></code></a></p>
-<p><strong>Extended standard warning logging Filter</strong></p>
-<dl class="method">
-<dt id="kiwi.logger.WarningFilter.filter">
-<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param">record</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/logger.html#WarningFilter.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.logger.WarningFilter.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Only messages with record level WARNING can pass
-for messages with another level an extra handler is used</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – logging message record</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>record.name</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>

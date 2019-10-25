@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.tasks.base &mdash; kiwi 9.18.26 documentation</title>
+  <title>kiwi.tasks.base &mdash; kiwi 9.18.27 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.26</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.27</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -504,6 +504,8 @@
     <span class="n">KiwiConfigFileNotFound</span>
 <span class="p">)</span>
 
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;kiwi&#39;</span><span class="p">)</span>
+
 
 <div class="viewcode-block" id="CliTask"><a class="viewcode-back" href="../../../development/api/kiwi.tasks.html#kiwi.tasks.base.CliTask">[docs]</a><span class="k">class</span> <span class="nc">CliTask</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -520,8 +522,6 @@
 <span class="sd">        * setup color output</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">should_perform_task_setup</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">..logger</span> <span class="k">import</span> <span class="n">log</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">cli</span> <span class="o">=</span> <span class="n">Cli</span><span class="p">()</span>
 
         <span class="c1"># initialize runtime checker</span>
@@ -596,8 +596,6 @@
 <span class="sd">        * :attr:`xml_state`</span>
 <span class="sd">            Instance of XMLState, stateful data</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">..logger</span> <span class="k">import</span> <span class="n">log</span>
-
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Loading XML description&#39;</span><span class="p">)</span>
         <span class="n">config_file</span> <span class="o">=</span> <span class="n">description_directory</span> <span class="o">+</span> <span class="s1">&#39;/config.xml&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_file</span><span class="p">):</span>

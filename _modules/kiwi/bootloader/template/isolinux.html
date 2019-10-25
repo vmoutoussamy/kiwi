@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.template.isolinux &mdash; kiwi 9.18.26 documentation</title>
+  <title>kiwi.bootloader.template.isolinux &mdash; kiwi 9.18.27 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.26</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.27</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -651,10 +651,11 @@
         <span class="k">if</span> <span class="n">terminal</span> <span class="ow">and</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial</span>
             <span class="n">with_theme</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="n">with_theme</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_theme</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_plain</span>
+        <span class="k">if</span> <span class="n">terminal</span> <span class="o">!=</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">with_theme</span><span class="p">:</span>
+                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_theme</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_plain</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry</span>
         <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_failsafe</span>
@@ -682,10 +683,11 @@
         <span class="k">if</span> <span class="n">terminal</span> <span class="ow">and</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial</span>
             <span class="n">with_theme</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="n">with_theme</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_theme</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_plain</span>
+        <span class="k">if</span> <span class="n">terminal</span> <span class="o">!=</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">with_theme</span><span class="p">:</span>
+                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_theme</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_plain</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_multiboot</span>
         <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_entry_failsafe_multiboot</span>
@@ -713,10 +715,11 @@
         <span class="k">if</span> <span class="n">terminal</span> <span class="ow">and</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial</span>
             <span class="n">with_theme</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="n">with_theme</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_theme</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_plain</span>
+        <span class="k">if</span> <span class="n">terminal</span> <span class="o">!=</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">with_theme</span><span class="p">:</span>
+                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_theme</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_plain</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_harddisk_entry</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_install_entry</span>
         <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>
@@ -743,10 +746,11 @@
         <span class="k">if</span> <span class="n">terminal</span> <span class="ow">and</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial</span>
             <span class="n">with_theme</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="n">with_theme</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_theme</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_plain</span>
+        <span class="k">if</span> <span class="n">terminal</span> <span class="o">!=</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">with_theme</span><span class="p">:</span>
+                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_theme</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_plain</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_harddisk_entry</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_install_entry_multiboot</span>
         <span class="k">if</span> <span class="n">failsafe</span><span class="p">:</span>

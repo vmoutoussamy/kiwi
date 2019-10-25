@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; kiwi 9.18.26 documentation</title>
+  <title>kiwi.system.setup &mdash; kiwi 9.18.27 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.26</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.27</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -490,6 +490,7 @@
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">platform</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
@@ -504,7 +505,6 @@
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
 <span class="kn">from</span> <span class="nn">kiwi.command_process</span> <span class="k">import</span> <span class="n">CommandProcess</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.sync</span> <span class="k">import</span> <span class="n">DataSync</span>
-<span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.users</span> <span class="k">import</span> <span class="n">Users</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.shell</span> <span class="k">import</span> <span class="n">Shell</span>
@@ -518,6 +518,8 @@
     <span class="n">KiwiImportDescriptionError</span><span class="p">,</span>
     <span class="n">KiwiScriptFailed</span>
 <span class="p">)</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;kiwi&#39;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="SystemSetup"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup">[docs]</a><span class="k">class</span> <span class="nc">SystemSetup</span><span class="p">:</span>
@@ -1248,10 +1250,11 @@
         <span class="k">if</span> <span class="n">user_realname</span><span class="p">:</span>
             <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">)</span>
             <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_realname</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">user_exists</span> <span class="ow">and</span> <span class="n">home_path</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user_exists</span><span class="p">:</span>
             <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-m&#39;</span><span class="p">)</span>
-            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">)</span>
-            <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">home_path</span><span class="p">:</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">options</span>
 
     <span class="k">def</span> <span class="nf">_import_cdroot_archive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

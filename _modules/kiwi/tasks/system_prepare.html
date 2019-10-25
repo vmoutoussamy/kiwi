@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.tasks.system_prepare &mdash; kiwi 9.18.26 documentation</title>
+  <title>kiwi.tasks.system_prepare &mdash; kiwi 9.18.27 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.26</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.27</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -559,6 +559,7 @@
 <span class="sd">        includes the key-file as a trusted key for package manager validations</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.tasks.base</span> <span class="k">import</span> <span class="n">CliTask</span>
@@ -568,8 +569,9 @@
 <span class="kn">from</span> <span class="nn">kiwi.system.setup</span> <span class="k">import</span> <span class="n">SystemSetup</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.profile</span> <span class="k">import</span> <span class="n">Profile</span>
-<span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.rpm</span> <span class="k">import</span> <span class="n">Rpm</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;kiwi&#39;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="SystemPrepareTask"><a class="viewcode-back" href="../../../development/api/kiwi.tasks.html#kiwi.tasks.system_prepare.SystemPrepareTask">[docs]</a><span class="k">class</span> <span class="nc">SystemPrepareTask</span><span class="p">(</span><span class="n">CliTask</span><span class="p">):</span>
