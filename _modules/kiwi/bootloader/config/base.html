@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.base &mdash; kiwi 9.18.31 documentation</title>
+  <title>kiwi.bootloader.config.base &mdash; kiwi 9.18.32 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.31</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.32</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -564,7 +564,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="BootLoaderConfigBase.setup_disk_image_config"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.base.BootLoaderConfigBase.setup_disk_image_config">[docs]</a>    <span class="k">def</span> <span class="nf">setup_disk_image_config</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">boot_uuid</span><span class="p">,</span> <span class="n">root_uuid</span><span class="p">,</span> <span class="n">hypervisor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">initrd</span><span class="p">,</span> <span class="n">boot_options</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">boot_uuid</span><span class="p">,</span> <span class="n">root_uuid</span><span class="p">,</span> <span class="n">hypervisor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">initrd</span><span class="p">,</span> <span class="n">boot_options</span><span class="o">=</span><span class="p">{}</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create boot config file to boot from disk.</span>
@@ -574,9 +574,15 @@
 <span class="sd">        :param string hypervisor: hypervisor name</span>
 <span class="sd">        :param string kernel: kernel name</span>
 <span class="sd">        :param string initrd: initrd name</span>
-<span class="sd">        :param string boot_options:</span>
-<span class="sd">            custom options required to setup the boot. The scope</span>
-<span class="sd">            of the options is specified in the implementation</span>
+<span class="sd">        :param dict boot_options:</span>
+<span class="sd">            custom options dictionary required to setup the bootloader.</span>
+<span class="sd">            The scope of the options covers all information needed</span>
+<span class="sd">            to setup and configure the bootloader and gets effective</span>
+<span class="sd">            in the individual implementation. boot_options should</span>
+<span class="sd">            not be mixed up with commandline options used at boot time.</span>
+<span class="sd">            This information is provided from the get_*_cmdline</span>
+<span class="sd">            methods. The contents of the dictionary can vary between</span>
+<span class="sd">            bootloaders or even not be needed</span>
 
 <span class="sd">        Implementation in specialized bootloader class required</span>
 <span class="sd">        &quot;&quot;&quot;</span>

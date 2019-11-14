@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config Package &mdash; kiwi 9.18.31 documentation</title>
+  <title>kiwi.bootloader.config Package &mdash; kiwi 9.18.32 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.31</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.18.32</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.18.31</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.18.32</a> &raquo;</li>
         
           <li><a href="kiwi.bootloader.html">kiwi.bootloader Package</a> &raquo;</li>
         
@@ -751,7 +751,7 @@ path on a filesystem.</p>
 
 <dl class="method">
 <dt id="kiwi.bootloader.config.base.BootLoaderConfigBase.setup_disk_image_config">
-<code class="sig-name descname">setup_disk_image_config</code><span class="sig-paren">(</span><em class="sig-param">boot_uuid</em>, <em class="sig-param">root_uuid</em>, <em class="sig-param">hypervisor</em>, <em class="sig-param">kernel</em>, <em class="sig-param">initrd</em>, <em class="sig-param">boot_options</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/base.html#BootLoaderConfigBase.setup_disk_image_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.base.BootLoaderConfigBase.setup_disk_image_config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setup_disk_image_config</code><span class="sig-paren">(</span><em class="sig-param">boot_uuid</em>, <em class="sig-param">root_uuid</em>, <em class="sig-param">hypervisor</em>, <em class="sig-param">kernel</em>, <em class="sig-param">initrd</em>, <em class="sig-param">boot_options={}</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/base.html#BootLoaderConfigBase.setup_disk_image_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.base.BootLoaderConfigBase.setup_disk_image_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create boot config file to boot from disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -761,8 +761,14 @@ path on a filesystem.</p>
 <li><p><strong>hypervisor</strong> (<em>string</em>) – hypervisor name</p></li>
 <li><p><strong>kernel</strong> (<em>string</em>) – kernel name</p></li>
 <li><p><strong>initrd</strong> (<em>string</em>) – initrd name</p></li>
-<li><p><strong>boot_options</strong> (<em>string</em>) – custom options required to setup the boot. The scope
-of the options is specified in the implementation</p></li>
+<li><p><strong>boot_options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom options dictionary required to setup the bootloader.
+The scope of the options covers all information needed
+to setup and configure the bootloader and gets effective
+in the individual implementation. boot_options should
+not be mixed up with commandline options used at boot time.
+This information is provided from the get_*_cmdline
+methods. The contents of the dictionary can vary between
+bootloaders or even not be needed</p></li>
 </ul>
 </dd>
 </dl>
@@ -918,7 +924,7 @@ the filesystem</p>
 <li><p><strong>hypervisor</strong> (<em>string</em>) – unused</p></li>
 <li><p><strong>kernel</strong> (<em>string</em>) – unused</p></li>
 <li><p><strong>initrd</strong> (<em>string</em>) – unused</p></li>
-<li><p><strong>boot_options</strong> (<em>string</em>) – <p>options dictionary that has to contain the root and boot
+<li><p><strong>boot_options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – <p>options dictionary that has to contain the root and boot
 device and optional volume configuration. KIWI has to
 mount the system prior to run grub2-mkconfig.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -1154,7 +1160,7 @@ a live system from an ISO image in BIOS boot mode</p>
 
 <dl class="method">
 <dt id="kiwi.bootloader.config.zipl.BootLoaderConfigZipl.setup_disk_image_config">
-<code class="sig-name descname">setup_disk_image_config</code><span class="sig-paren">(</span><em class="sig-param">boot_uuid=None</em>, <em class="sig-param">root_uuid=None</em>, <em class="sig-param">hypervisor=None</em>, <em class="sig-param">kernel=None</em>, <em class="sig-param">initrd=None</em>, <em class="sig-param">boot_options=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/zipl.html#BootLoaderConfigZipl.setup_disk_image_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.zipl.BootLoaderConfigZipl.setup_disk_image_config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setup_disk_image_config</code><span class="sig-paren">(</span><em class="sig-param">boot_uuid=None</em>, <em class="sig-param">root_uuid=None</em>, <em class="sig-param">hypervisor=None</em>, <em class="sig-param">kernel='image'</em>, <em class="sig-param">initrd='initrd'</em>, <em class="sig-param">boot_options={}</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/bootloader/config/zipl.html#BootLoaderConfigZipl.setup_disk_image_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.config.zipl.BootLoaderConfigZipl.setup_disk_image_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the zipl config in memory from a template suitable to
 boot from a disk image.</p>
 <dl class="field-list simple">
@@ -1165,7 +1171,7 @@ boot from a disk image.</p>
 <li><p><strong>hypervisor</strong> (<em>string</em>) – unused</p></li>
 <li><p><strong>kernel</strong> (<em>string</em>) – kernel name</p></li>
 <li><p><strong>initrd</strong> (<em>string</em>) – initrd name</p></li>
-<li><p><strong>boot_options</strong> (<em>string</em>) – kernel options as string</p></li>
+<li><p><strong>boot_options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – unused</p></li>
 </ul>
 </dd>
 </dl>
