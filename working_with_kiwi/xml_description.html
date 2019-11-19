@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Image Description &mdash; kiwi 9.18.32 documentation</title>
+  <title>The Image Description &mdash; kiwi 9.18.34 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.32</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.18.34</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1115,7 +1115,25 @@ removed), whose name is specified via the mandatory <code class="xref py py-obj 
 </pre></div>
 </div>
 <p>which adds the package <code class="xref py py-obj docutils literal notranslate"><span class="pre">udev</span></code> to the list of packages to be added to the
-initial filesystem.</p>
+initial filesystem. Note, that the value that you pass via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code>
+attribute is passed directly to the used package manager. Thus, if the
+package manager supports other means how packages can be specified, you may
+pass them in this context too. For example, RPM based package managers
+(like <strong class="command">dnf</strong> or <strong class="command">zypper</strong>) can install packages via their
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Provides:</span></code>. This can be used to add a package that provides a certain
+capability (e.g. <code class="xref py py-obj docutils literal notranslate"><span class="pre">Provides:</span> <span class="pre">/usr/bin/my-binary</span></code>) via:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- snip --&gt;</span>
+    <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;bootstrap&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;/usr/bin/my-binary&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/packages&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>Whether this works depends on the package manager and on the environment
+that is being used. In the Open Build Service, certain <code class="xref py py-obj docutils literal notranslate"><span class="pre">Provides</span></code> either
+are not visible or cannot be properly extracted from the KIWI
+description. Therefore, relying on <code class="xref py py-obj docutils literal notranslate"><span class="pre">Provides</span></code> is not recommended.</p>
 <p>Packages can also be included only on specific architectures via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code>
 attribute. KIWI compares the <code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code> attributes value with the output of
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">uname</span> <span class="pre">-m</span></code>.</p>
