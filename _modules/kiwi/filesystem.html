@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.filesystem &mdash; kiwi 9.18.35 documentation</title>
+  <title>kiwi.filesystem &mdash; kiwi 9.19.0 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.35</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -489,17 +489,18 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># project</span>
-<span class="kn">from</span> <span class="nn">.ext2</span> <span class="k">import</span> <span class="n">FileSystemExt2</span>
-<span class="kn">from</span> <span class="nn">.ext3</span> <span class="k">import</span> <span class="n">FileSystemExt3</span>
-<span class="kn">from</span> <span class="nn">.ext4</span> <span class="k">import</span> <span class="n">FileSystemExt4</span>
-<span class="kn">from</span> <span class="nn">.btrfs</span> <span class="k">import</span> <span class="n">FileSystemBtrfs</span>
-<span class="kn">from</span> <span class="nn">.xfs</span> <span class="k">import</span> <span class="n">FileSystemXfs</span>
-<span class="kn">from</span> <span class="nn">.fat16</span> <span class="k">import</span> <span class="n">FileSystemFat16</span>
-<span class="kn">from</span> <span class="nn">.fat32</span> <span class="k">import</span> <span class="n">FileSystemFat32</span>
-<span class="kn">from</span> <span class="nn">.squashfs</span> <span class="k">import</span> <span class="n">FileSystemSquashFs</span>
-<span class="kn">from</span> <span class="nn">.clicfs</span> <span class="k">import</span> <span class="n">FileSystemClicFs</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.ext2</span> <span class="k">import</span> <span class="n">FileSystemExt2</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.ext3</span> <span class="k">import</span> <span class="n">FileSystemExt3</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.ext4</span> <span class="k">import</span> <span class="n">FileSystemExt4</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.btrfs</span> <span class="k">import</span> <span class="n">FileSystemBtrfs</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.xfs</span> <span class="k">import</span> <span class="n">FileSystemXfs</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.fat16</span> <span class="k">import</span> <span class="n">FileSystemFat16</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.fat32</span> <span class="k">import</span> <span class="n">FileSystemFat32</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.squashfs</span> <span class="k">import</span> <span class="n">FileSystemSquashFs</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.clicfs</span> <span class="k">import</span> <span class="n">FileSystemClicFs</span>
+<span class="kn">from</span> <span class="nn">kiwi.filesystem.swap</span> <span class="k">import</span> <span class="n">FileSystemSwap</span>
 
-<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="k">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">KiwiFileSystemSetupError</span>
 <span class="p">)</span>
 
@@ -548,6 +549,10 @@
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;clicfs&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">FileSystemClicFs</span><span class="p">(</span>
+                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;swap&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FileSystemSwap</span><span class="p">(</span>
                 <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>

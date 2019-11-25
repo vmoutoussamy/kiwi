@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.18.35 &mdash; kiwi 9.18.35 documentation</title>
+  <title>API Documentation 9.19.0 &mdash; kiwi 9.19.0 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.18.35</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.19.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.18.35</li>
+      <li>API Documentation 9.19.0</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -477,7 +477,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.18.35<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.19.0<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -2301,6 +2301,12 @@ dependency and metadata resolution</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.defaults.Defaults.get_swapsize_mbytes">
+<em class="property">static </em><code class="sig-name descname">get_swapsize_mbytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_swapsize_mbytes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_swapsize_mbytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides swapsize in MB</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.defaults.Defaults.get_syslinux_modules">
 <em class="property">static </em><code class="sig-name descname">get_syslinux_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_syslinux_modules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_syslinux_modules" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns list of syslinux modules to include on ISO
@@ -4120,6 +4126,11 @@ allowed to specify one all size volume</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.runtime_checker.RuntimeChecker.check_volume_setup_defines_reserved_labels">
+<code class="sig-name descname">check_volume_setup_defines_reserved_labels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_volume_setup_defines_reserved_labels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_defines_reserved_labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="kiwi.runtime_checker.RuntimeChecker.check_volume_setup_has_no_root_definition">
 <code class="sig-name descname">check_volume_setup_has_no_root_definition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_volume_setup_has_no_root_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_has_no_root_definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>The root volume in a systemdisk setup is handled in a special
@@ -5175,6 +5186,22 @@ value if specified or None</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.xml_state.XMLState.get_oemconfig_swap_mbytes">
+<code class="sig-name descname">get_oemconfig_swap_mbytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/xml_state.html#XMLState.get_oemconfig_swap_mbytes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_oemconfig_swap_mbytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return swapsize in MB if requested or None</p>
+<p>Operates on the value of oem-swap and if set to true
+returns the given size or the default value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Content of &lt;oem-swapsize&gt; section value or default</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
 </dd>
 </dl>
 </dd></dl>

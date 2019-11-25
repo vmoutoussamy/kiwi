@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.profile &mdash; kiwi 9.18.35 documentation</title>
+  <title>kiwi.system.profile &mdash; kiwi 9.19.0 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.35</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -590,8 +590,16 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_swapsize</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemrootMB&#39;</span><span class="p">]</span> <span class="o">=</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_systemsize</span><span class="p">())</span>
+
+            <span class="c1"># kiwi_oemconfig is used in older boot code to run the swap</span>
+            <span class="c1"># creation and setup code at boot time. This version of kiwi</span>
+            <span class="c1"># handles swap as part of the build process and therefore</span>
+            <span class="c1"># has to disable swap handling such that we stay backward</span>
+            <span class="c1"># compatbile for some time.</span>
+            <span class="c1"># OBSOLETE: to be removed at: 2020-05-25</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemswap&#39;</span><span class="p">]</span> <span class="o">=</span> \
-                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_swap</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
             <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oempartition_install&#39;</span><span class="p">]</span> <span class="o">=</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_partition_install</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemdevicefilter&#39;</span><span class="p">]</span> <span class="o">=</span> \

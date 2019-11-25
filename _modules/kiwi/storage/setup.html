@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.setup &mdash; kiwi 9.18.35 documentation</title>
+  <title>kiwi.storage.setup &mdash; kiwi 9.19.0 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.18.35</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -512,6 +512,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml_state</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_overlay</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_overlayroot</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_oemconfig_swap_mbytes</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">configured_size</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_size</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">build_type_name</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_filesystem</span><span class="p">()</span>
@@ -535,7 +536,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">=</span> <span class="n">root_dir</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span> <span class="o">=</span> <span class="n">xml_state</span>
 
-<div class="viewcode-block" id="DiskSetup.get_disksize_mbytes"><a class="viewcode-back" href="../../../development/api/kiwi.storage.html#kiwi.storage.setup.DiskSetup.get_disksize_mbytes">[docs]</a>    <span class="k">def</span> <span class="nf">get_disksize_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DiskSetup.get_disksize_mbytes"><a class="viewcode-back" href="../../../development/api/kiwi.storage.html#kiwi.storage.setup.DiskSetup.get_disksize_mbytes">[docs]</a>    <span class="k">def</span> <span class="nf">get_disksize_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># noqa C901</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Precalculate disk size requirements in mbytes</span>
 
@@ -567,6 +568,11 @@
                 <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
                     <span class="s1">&#39;--&gt; volume(s) size setup adding </span><span class="si">%s</span><span class="s1"> MB&#39;</span><span class="p">,</span> <span class="n">volume_mbytes</span>
                 <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span><span class="p">:</span>
+            <span class="n">calculated_disk_mbytes</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;--&gt; swap partition adding </span><span class="si">%s</span><span class="s1"> MB&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span>
+            <span class="p">)</span>
 
         <span class="n">legacy_bios_mbytes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">get_legacy_bios_partition_size</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">legacy_bios_mbytes</span><span class="p">:</span>

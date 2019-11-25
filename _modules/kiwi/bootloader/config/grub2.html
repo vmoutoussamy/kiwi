@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.18.35 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; kiwi 9.19.0 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.18.35</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../development/api/kiwi.html">API Documentation 9.19.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -618,9 +618,10 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Write bootloader configuration</span>
 
-<span class="sd">        Writes grub.cfg template by KIWI if template system is used</span>
-<span class="sd">        Also copies grub config file to alternative boot path for</span>
-<span class="sd">        EFI systems in fallback mode</span>
+<span class="sd">        * writes grub.cfg template by KIWI if template system is used</span>
+<span class="sd">        * copies grub config file to alternative boot path for EFI systems</span>
+<span class="sd">          in fallback mode</span>
+<span class="sd">        * creates an embedded fat efi image for EFI ISO boot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Writing KIWI template grub.cfg file&#39;</span><span class="p">)</span>
@@ -633,14 +634,15 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_copy_grub_config_to_efi_path</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span><span class="p">,</span> <span class="n">config_file</span>
-                <span class="p">)</span></div>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_create_embedded_fat_efi_image</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="BootLoaderConfigGrub2.write_meta_data"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.write_meta_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_meta_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_uuid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">boot_options</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">iso_boot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="BootLoaderConfigGrub2.write_meta_data"><a class="viewcode-back" href="../../../../development/api/kiwi.bootloader.config.html#kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.write_meta_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_meta_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_uuid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">boot_options</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Write bootloader setup meta data files</span>
 
 <span class="sd">        * cmdline arguments initialization</span>
-<span class="sd">        * creation of embedded fat efi image for EFI ISO boot</span>
 <span class="sd">        * etc/default/grub setup file</span>
 <span class="sd">        * etc/sysconfig/bootloader</span>
 
@@ -654,10 +656,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">cmdline_failsafe</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cmdline</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_failsafe_kernel_options</span><span class="p">(),</span> <span class="n">boot_options</span><span class="p">]</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span> <span class="o">=</span> <span class="n">iso_boot</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_create_embedded_fat_efi_image</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_setup_default_grub</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_setup_sysconfig_bootloader</span><span class="p">()</span></div>
@@ -724,6 +722,7 @@
 <span class="sd">        :param string initrd: initrd name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating grub2 install config file from template&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;search_params&#39;</span><span class="p">:</span> <span class="s1">&#39;--file --set=root /boot/&#39;</span> <span class="o">+</span> <span class="n">mbrid</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span>
             <span class="s1">&#39;default_boot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_install_image_boot_default</span><span class="p">(),</span>
@@ -777,6 +776,7 @@
 <span class="sd">        :param string initrd: initrd name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating grub2 live ISO config file from template&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;search_params&#39;</span><span class="p">:</span> <span class="s1">&#39;--file --set=root /boot/&#39;</span> <span class="o">+</span> <span class="n">mbrid</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span>
             <span class="s1">&#39;default_boot&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_state &mdash; kiwi 9.18.35 documentation</title>
+  <title>kiwi.xml_state &mdash; kiwi 9.19.0 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.35</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1255,6 +1255,27 @@
         <span class="k">if</span> <span class="n">oemconfig</span> <span class="ow">and</span> <span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_multipath_scan</span><span class="p">():</span>
             <span class="k">return</span> <span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_multipath_scan</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span></div>
 
+<div class="viewcode-block" id="XMLState.get_oemconfig_swap_mbytes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_oemconfig_swap_mbytes">[docs]</a>    <span class="k">def</span> <span class="nf">get_oemconfig_swap_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return swapsize in MB if requested or None</span>
+
+<span class="sd">        Operates on the value of oem-swap and if set to true</span>
+<span class="sd">        returns the given size or the default value.</span>
+
+<span class="sd">        :return: Content of &lt;oem-swapsize&gt; section value or default</span>
+
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">oemconfig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_build_type_oemconfig_section</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">oemconfig</span> <span class="ow">and</span> <span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_swap</span><span class="p">():</span>
+            <span class="n">swap_requested</span> <span class="o">=</span> <span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_swap</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">swap_requested</span><span class="p">:</span>
+                <span class="n">swapsize</span> <span class="o">=</span> <span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_swapsize</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">swapsize</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">swapsize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_swapsize_mbytes</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="XMLState.get_build_type_containerconfig_section"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_containerconfig_section">[docs]</a>    <span class="k">def</span> <span class="nf">get_build_type_containerconfig_section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        First containerconfig section from the build type section</span>
@@ -1518,7 +1539,7 @@
 
         <span class="n">container_config_section</span><span class="o">.</span><span class="n">set_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="XMLState.get_volumes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_volumes">[docs]</a>    <span class="k">def</span> <span class="nf">get_volumes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="XMLState.get_volumes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_volumes">[docs]</a>    <span class="k">def</span> <span class="nf">get_volumes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># noqa C901</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        List of configured systemdisk volumes.</span>
 
@@ -1553,6 +1574,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">volume_type_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">systemdisk_section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_build_type_system_disk_section</span><span class="p">()</span>
+        <span class="n">swap_mbytes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_oemconfig_swap_mbytes</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">systemdisk_section</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">volume_type_list</span>
 
@@ -1654,6 +1676,19 @@
                     <span class="n">mountpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">realpath</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
                     <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">attributes</span><span class="o">=</span><span class="p">[]</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">swap_mbytes</span><span class="p">:</span>
+            <span class="n">volume_type_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">volume_type</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;LVSwap&#39;</span><span class="p">,</span>
+                    <span class="n">size</span><span class="o">=</span><span class="s1">&#39;size:</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">swap_mbytes</span><span class="p">),</span>
+                    <span class="n">fullsize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">mountpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">realpath</span><span class="o">=</span><span class="s1">&#39;swap&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SWAP&#39;</span><span class="p">,</span>
                     <span class="n">attributes</span><span class="o">=</span><span class="p">[]</span>
                 <span class="p">)</span>
             <span class="p">)</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.runtime_checker &mdash; kiwi 9.18.35 documentation</title>
+  <title>kiwi.runtime_checker &mdash; kiwi 9.19.0 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.18.35</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -612,6 +612,28 @@
                 <span class="k">if</span> <span class="n">volume</span><span class="o">.</span><span class="n">label</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
                         <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">volume_management</span><span class="p">)</span>
+                    <span class="p">)</span></div>
+
+<div class="viewcode-block" id="RuntimeChecker.check_volume_setup_defines_reserved_labels"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_defines_reserved_labels">[docs]</a>    <span class="k">def</span> <span class="nf">check_volume_setup_defines_reserved_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
+<span class="s1">            Reserved label name used in LVM volume setup</span>
+
+<span class="s1">            The label setup for volume </span><span class="si">{0}</span><span class="s1"> uses the reserved label </span><span class="si">{1}</span><span class="s1">.</span>
+<span class="s1">            Reserved labels used by KIWI internally are </span><span class="si">{2}</span><span class="s1">. Please</span>
+<span class="s1">            choose another label name for this volume.</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">reserved_labels</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_rootfs_label</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;ROOT&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SWAP&#39;</span><span class="p">,</span> <span class="s1">&#39;SPARE&#39;</span>
+        <span class="p">]</span>
+        <span class="n">volume_management</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_volume_management</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">volume_management</span> <span class="o">==</span> <span class="s1">&#39;lvm&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_volumes</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">volume</span><span class="o">.</span><span class="n">label</span> <span class="ow">and</span> <span class="n">volume</span><span class="o">.</span><span class="n">label</span> <span class="ow">in</span> <span class="n">reserved_labels</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
+                        <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">volume</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">volume</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">reserved_labels</span>
+                        <span class="p">)</span>
                     <span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeChecker.check_volume_setup_defines_multiple_fullsize_volumes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_volume_setup_defines_multiple_fullsize_volumes">[docs]</a>    <span class="k">def</span> <span class="nf">check_volume_setup_defines_multiple_fullsize_volumes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
