@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager Package &mdash; kiwi 9.19.1 documentation</title>
+  <title>kiwi.volume_manager Package &mdash; kiwi 9.19.2 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.19.1</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="kiwi.html">API Documentation 9.19.2</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kiwi.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-          <li><a href="kiwi.html">API Documentation 9.19.1</a> &raquo;</li>
+          <li><a href="kiwi.html">API Documentation 9.19.2</a> &raquo;</li>
         
       <li>kiwi.volume_manager Package</li>
     
@@ -487,15 +487,14 @@
 <span id="kiwi-volume-manager-base-module"></span><h2><a class="reference internal" href="#module-kiwi.volume_manager.base" title="kiwi.volume_manager.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.volume_manager.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.volume_manager.base" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="kiwi.volume_manager.base.VolumeManagerBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.volume_manager.base.</code><code class="sig-name descname">VolumeManagerBase</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">volumes</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/volume_manager/base.html#VolumeManagerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.base.VolumeManagerBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.volume_manager.base.</code><code class="sig-name descname">VolumeManagerBase</code><span class="sig-paren">(</span><em class="sig-param">device_map</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">volumes</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/volume_manager/base.html#VolumeManagerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.base.VolumeManagerBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="kiwi.storage.html#kiwi.storage.device_provider.DeviceProvider" title="kiwi.storage.device_provider.DeviceProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.device_provider.DeviceProvider</span></code></a></p>
 <p><strong>Implements base class for volume management interface</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mountpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – root mountpoint for volumes</p></li>
-<li><p><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of a <code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceProvider</span></code>
-subclass</p></li>
+<li><p><strong>device_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – dictionary of low level DeviceProvider intances</p></li>
 <li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – root directory path name</p></li>
 <li><p><strong>volumes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of volumes from <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState::get_volumes()</span></code></p></li>
 <li><p><strong>volume_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – volume group name</p></li>
@@ -555,10 +554,10 @@ the one eating all the rest space</p>
 <dl class="method">
 <dt id="kiwi.volume_manager.base.VolumeManagerBase.get_device">
 <code class="sig-name descname">get_device</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/volume_manager/base.html#VolumeManagerBase.get_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.base.VolumeManagerBase.get_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dictionary with instance of MappedDevice for the root device node</p>
+<dd><p>Return current DeviceProvider dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>root device map</p>
+<dd class="field-odd"><p>device_map</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
@@ -696,7 +695,7 @@ the mounts of all volumes</p>
 <span id="kiwi-volume-manager-btrfs-module"></span><h2><a class="reference internal" href="#module-kiwi.volume_manager.btrfs" title="kiwi.volume_manager.btrfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.volume_manager.btrfs</span></code></a> Module<a class="headerlink" href="#module-kiwi.volume_manager.btrfs" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="kiwi.volume_manager.btrfs.VolumeManagerBtrfs">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.volume_manager.btrfs.</code><code class="sig-name descname">VolumeManagerBtrfs</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">volumes</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/volume_manager/btrfs.html#VolumeManagerBtrfs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.btrfs.VolumeManagerBtrfs" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.volume_manager.btrfs.</code><code class="sig-name descname">VolumeManagerBtrfs</code><span class="sig-paren">(</span><em class="sig-param">device_map</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">volumes</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/volume_manager/btrfs.html#VolumeManagerBtrfs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.btrfs.VolumeManagerBtrfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.volume_manager.base.VolumeManagerBase" title="kiwi.volume_manager.base.VolumeManagerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.volume_manager.base.VolumeManagerBase</span></code></a></p>
 <p>Implements btrfs sub-volume management</p>
 <dl class="field-list simple">
@@ -830,7 +829,7 @@ into the first snapshot</p>
 <span id="kiwi-volume-manager-lvm-module"></span><h2><a class="reference internal" href="#module-kiwi.volume_manager.lvm" title="kiwi.volume_manager.lvm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.volume_manager.lvm</span></code></a> Module<a class="headerlink" href="#module-kiwi.volume_manager.lvm" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="kiwi.volume_manager.lvm.VolumeManagerLVM">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.volume_manager.lvm.</code><code class="sig-name descname">VolumeManagerLVM</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">volumes</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/volume_manager/lvm.html#VolumeManagerLVM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.lvm.VolumeManagerLVM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.volume_manager.lvm.</code><code class="sig-name descname">VolumeManagerLVM</code><span class="sig-paren">(</span><em class="sig-param">device_map</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">volumes</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/volume_manager/lvm.html#VolumeManagerLVM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.lvm.VolumeManagerLVM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.volume_manager.base.VolumeManagerBase" title="kiwi.volume_manager.base.VolumeManagerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.volume_manager.base.VolumeManagerBase</span></code></a></p>
 <p><strong>Implements LVM volume management</strong></p>
 <dl class="method">
@@ -954,7 +953,7 @@ initialized storage device</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – volume management name</p></li>
-<li><p><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of a class based on DeviceProvider</p></li>
+<li><p><strong>device_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – dictionary of low level DeviceProvider intances</p></li>
 <li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – root directory path name</p></li>
 <li><p><strong>volumes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of volumes from <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState::get_volumes()</span></code></p></li>
 <li><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – dictionary of custom volume manager arguments</p></li>

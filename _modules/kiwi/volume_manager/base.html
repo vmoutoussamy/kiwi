@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager.base &mdash; kiwi 9.19.1 documentation</title>
+  <title>kiwi.volume_manager.base &mdash; kiwi 9.19.2 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -499,7 +499,6 @@
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
 <span class="kn">from</span> <span class="nn">kiwi.storage.device_provider</span> <span class="k">import</span> <span class="n">DeviceProvider</span>
 <span class="kn">from</span> <span class="nn">kiwi.mount_manager</span> <span class="k">import</span> <span class="n">MountManager</span>
-<span class="kn">from</span> <span class="nn">kiwi.storage.mapped_device</span> <span class="k">import</span> <span class="n">MappedDevice</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.sync</span> <span class="k">import</span> <span class="n">DataSync</span>
 <span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.size</span> <span class="k">import</span> <span class="n">SystemSize</span>
@@ -517,8 +516,8 @@
 <span class="sd">    **Implements base class for volume management interface**</span>
 
 <span class="sd">    :param str mountpoint: root mountpoint for volumes</span>
-<span class="sd">    :param object device_provider: instance of a :class:`DeviceProvider`</span>
-<span class="sd">        subclass</span>
+<span class="sd">    :param object device_map:</span>
+<span class="sd">        dictionary of low level DeviceProvider intances</span>
 <span class="sd">    :param str root_dir: root directory path name</span>
 <span class="sd">    :param list volumes: list of volumes from :class:`XMLState::get_volumes()`</span>
 <span class="sd">    :param str volume_group: volume group name</span>
@@ -533,16 +532,19 @@
 
 <span class="sd">    :raises KiwiVolumeManagerSetupError: if the given root_dir doesn&#39;t exist</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">volumes</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device_map</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">volumes</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># all volumes are combined into one mountpoint. This is</span>
         <span class="c1"># needed at sync_data time. How to mount the volumes is</span>
         <span class="c1"># special to the volume management class</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">=</span> <span class="kc">None</span>
 
+        <span class="c1"># dictionary of mapped DeviceProviders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_map</span> <span class="o">=</span> <span class="n">device_map</span>
+
         <span class="c1"># bind the device providing class instance to this object.</span>
         <span class="c1"># This is done to guarantee the correct destructor order when</span>
         <span class="c1"># the device should be released.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">device_provider</span> <span class="o">=</span> <span class="n">device_provider</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_provider_root</span> <span class="o">=</span> <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">]</span>
 
         <span class="c1"># An indicator for the mount of the filesystem and its volumes</span>
         <span class="c1"># when mounted for the first time</span>
@@ -554,7 +556,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">volume_map</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mount_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_provider</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
+        <span class="c1"># Main device to operate on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_provider_root</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">KiwiVolumeManagerSetupError</span><span class="p">(</span>
@@ -668,21 +671,17 @@
 
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_provider</span><span class="o">.</span><span class="n">is_loop</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_provider_root</span><span class="o">.</span><span class="n">is_loop</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="VolumeManagerBase.get_device"><a class="viewcode-back" href="../../../development/api/kiwi.volume_manager.html#kiwi.volume_manager.base.VolumeManagerBase.get_device">[docs]</a>    <span class="k">def</span> <span class="nf">get_device</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Dictionary with instance of MappedDevice for the root device node</span>
+<span class="sd">        Return current DeviceProvider dictionary</span>
 
-<span class="sd">        :return: root device map</span>
+<span class="sd">        :return: device_map</span>
 
 <span class="sd">        :rtype: dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="s1">&#39;root&#39;</span><span class="p">:</span> <span class="n">MappedDevice</span><span class="p">(</span>
-                <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span>
-            <span class="p">)</span>
-        <span class="p">}</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_map</span></div>
 
 <div class="viewcode-block" id="VolumeManagerBase.create_volume_paths_in_root_dir"><a class="viewcode-back" href="../../../development/api/kiwi.volume_manager.html#kiwi.volume_manager.base.VolumeManagerBase.create_volume_paths_in_root_dir">[docs]</a>    <span class="k">def</span> <span class="nf">create_volume_paths_in_root_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
