@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.disk &mdash; kiwi 9.19.3 documentation</title>
+  <title>kiwi.builder.disk &mdash; kiwi 9.19.4 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.4</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1201,12 +1201,13 @@
             <span class="p">)</span>
             <span class="n">disksize_used_mbytes</span> <span class="o">+=</span> <span class="n">partition_mbsize</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager_name</span><span class="p">:</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; creating SWAP partition&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">disk</span><span class="o">.</span><span class="n">create_swap_partition</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span>
-            <span class="p">)</span>
-            <span class="n">disksize_used_mbytes</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager_name</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager_name</span> <span class="o">!=</span> <span class="s1">&#39;lvm&#39;</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; creating SWAP partition&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">disk</span><span class="o">.</span><span class="n">create_swap_partition</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span>
+                <span class="p">)</span>
+                <span class="n">disksize_used_mbytes</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_mbsize</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_is_last</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; creating spare partition&#39;</span><span class="p">)</span>
