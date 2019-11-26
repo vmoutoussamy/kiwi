@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.disk &mdash; kiwi 9.19.2 documentation</title>
+  <title>kiwi.builder.disk &mdash; kiwi 9.19.3 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1338,12 +1338,12 @@
             <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
             <span class="n">custom_root_mount_args</span><span class="p">,</span> <span class="n">fs_check_interval</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;spare&#39;</span> <span class="ow">in</span> <span class="n">device_map</span> <span class="ow">and</span> \
+        <span class="k">if</span> <span class="n">device_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;spare&#39;</span><span class="p">)</span> <span class="ow">and</span> \
            <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_fs</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_mountpoint</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_generic_fstab_entry</span><span class="p">(</span>
                 <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;spare&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_mountpoint</span>
             <span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;swap&#39;</span> <span class="ow">in</span> <span class="n">device_map</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">device_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;swap&#39;</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager_name</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_add_simple_fstab_entry</span><span class="p">(</span>
                     <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;swap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span> <span class="s1">&#39;swap&#39;</span><span class="p">,</span> <span class="s1">&#39;swap&#39;</span>
@@ -1352,7 +1352,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_add_generic_fstab_entry</span><span class="p">(</span>
                     <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;swap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span> <span class="s1">&#39;swap&#39;</span>
                 <span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;boot&#39;</span> <span class="ow">in</span> <span class="n">device_map</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">device_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;boot&#39;</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bootloader</span> <span class="o">==</span> <span class="s1">&#39;grub2_s390x_emu&#39;</span><span class="p">:</span>
                 <span class="n">boot_mount_point</span> <span class="o">=</span> <span class="s1">&#39;/boot/zipl&#39;</span>
             <span class="k">else</span><span class="p">:</span>
@@ -1360,7 +1360,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_generic_fstab_entry</span><span class="p">(</span>
                 <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;boot&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span> <span class="n">boot_mount_point</span>
             <span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;efi&#39;</span> <span class="ow">in</span> <span class="n">device_map</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">device_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;efi&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_generic_fstab_entry</span><span class="p">(</span>
                 <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span> <span class="s1">&#39;/boot/efi&#39;</span>
             <span class="p">)</span>
