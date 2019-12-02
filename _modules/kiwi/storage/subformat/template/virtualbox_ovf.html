@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.template.virtualbox_ovf &mdash; kiwi 9.19.4 documentation</title>
+  <title>kiwi.storage.subformat.template.virtualbox_ovf &mdash; kiwi 9.19.5 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../development/api/kiwi.html">API Documentation 9.19.4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../development/api/kiwi.html">API Documentation 9.19.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -491,7 +491,7 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 
-<span class="kn">from</span> <span class="nn">string</span> <span class="k">import</span> <span class="n">Template</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">Template</span>
 
 
 <div class="viewcode-block" id="VirtualboxOvfTemplate"><a class="viewcode-back" href="../../../../../development/api/kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate">[docs]</a><span class="k">class</span> <span class="nc">VirtualboxOvfTemplate</span><span class="p">:</span>
@@ -504,7 +504,7 @@
 <span class="sd">    Gompa.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># note: the OS ID is set to Other Linux 64</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">OVF_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="s2">&lt;Envelope ovf:version=&quot;1.0&quot; xml:lang=&quot;en-US&quot; xmlns=&quot;http://schemas.dmtf.org/ovf/envelope/1&quot; xmlns:ovf=&quot;http://schemas.dmtf.org/ovf/envelope/1&quot; xmlns:rasd=&quot;http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData&quot; xmlns:vssd=&quot;http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:vbox=&quot;http://www.virtualbox.org/ovf/machine&quot;&gt;</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.path &mdash; kiwi 9.19.4 documentation</title>
+  <title>kiwi.path &mdash; kiwi 9.19.5 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -493,8 +493,8 @@
 <span class="kn">import</span> <span class="nn">collections</span>
 
 <span class="c1"># project</span>
-<span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
-<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="n">KiwiFileAccessError</span>
+<span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="kn">import</span> <span class="n">Command</span>
+<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="kn">import</span> <span class="n">KiwiFileAccessError</span>
 
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;kiwi&#39;</span><span class="p">)</span>
 
@@ -632,10 +632,49 @@
                     <span class="p">[</span><span class="s1">&#39;rmdir&#39;</span><span class="p">,</span> <span class="s1">&#39;--ignore-fail-on-non-empty&#39;</span><span class="p">,</span> <span class="n">sub_path</span><span class="p">]</span>
                 <span class="p">)</span></div>
 
+<div class="viewcode-block" id="Path.move_to_root"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.move_to_root">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">move_to_root</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">elements</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Change the given path elements to a new root directory</span>
+
+<span class="sd">        :param str root: the root path to trim</span>
+<span class="sd">        :param list elements: list of path names</span>
+
+<span class="sd">        :return: changed elements</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+            <span class="n">normalized_element</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">normalized_element</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="Path.rebase_to_root"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.rebase_to_root">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">rebase_to_root</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">elements</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Include the root prefix for the given paths elements</span>
+
+<span class="sd">        :param str root: the new root path</span>
+<span class="sd">        :param list elements: list of path names</span>
+
+<span class="sd">        :return: changed elements</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">root</span><span class="p">,</span> <span class="n">element</span><span class="p">])))</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
 <div class="viewcode-block" id="Path.which"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.path.Path.which">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">which</span><span class="p">(</span>
         <span class="n">filename</span><span class="p">,</span> <span class="n">alternative_lookup_paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">custom_env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="kc">None</span>
+        <span class="n">custom_env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Lookup file name in PATH</span>
@@ -646,6 +685,7 @@
 <span class="sd">        :param int access_mode: one of the os access modes or a combination of</span>
 <span class="sd">         them (os.R_OK, os.W_OK and os.X_OK). If the provided access mode</span>
 <span class="sd">         does not match the file is considered not existing</span>
+<span class="sd">        :param str root_dir: the root path to look at</span>
 
 <span class="sd">        :return: absolute path to file or None</span>
 
@@ -662,6 +702,8 @@
             <span class="n">lookup_paths</span> <span class="o">=</span> <span class="n">system_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">alternative_lookup_paths</span><span class="p">:</span>
             <span class="n">lookup_paths</span> <span class="o">+=</span> <span class="n">alternative_lookup_paths</span>
+        <span class="k">if</span> <span class="n">root_dir</span><span class="p">:</span>
+            <span class="n">lookup_paths</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">rebase_to_root</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">lookup_paths</span><span class="p">)</span>
         <span class="n">multipart_message</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;in paths &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lookup_paths</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">lookup_paths</span><span class="p">:</span>
             <span class="n">location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>

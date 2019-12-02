@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; kiwi 9.19.4 documentation</title>
+  <title>Index &mdash; kiwi 9.19.5 documentation</title>
   
 
   
@@ -341,7 +341,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.19.4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/api/kiwi.html">API Documentation 9.19.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1373,6 +1373,8 @@
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_config_tool">get_grub_config_tool() (kiwi.defaults.Defaults static method)</a>
 </li>
+      <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_efi_font_directory">get_grub_efi_font_directory() (kiwi.defaults.Defaults static method)</a>
+</li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_efi_modules">get_grub_efi_modules() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_ofw_modules">get_grub_ofw_modules() (kiwi.defaults.Defaults static method)</a>
@@ -2393,10 +2395,10 @@
         <li><a href="development/api/kiwi.package_manager.html#kiwi.package_manager.zypper.PackageManagerZypper.match_package_installed">(kiwi.package_manager.zypper.PackageManagerZypper method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.utils.html#kiwi.utils.checksum.Checksum.matches">matches() (kiwi.utils.checksum.Checksum method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.utils.html#kiwi.utils.checksum.Checksum.md5">md5() (kiwi.utils.checksum.Checksum method)</a>
 </li>
       <li><a href="development/api/kiwi.html#kiwi.mount_manager.MountManager.mount">mount() (kiwi.mount_manager.MountManager method)</a>
@@ -2415,8 +2417,12 @@
       </ul></li>
       <li><a href="development/api/kiwi.html#kiwi.mount_manager.MountManager">MountManager (class in kiwi.mount_manager)</a>
 </li>
-      <li><a href="development/api/kiwi.system.html#kiwi.system.root_bind.RootBind.move_to_root">move_to_root() (kiwi.system.root_bind.RootBind method)</a>
+      <li><a href="development/api/kiwi.html#kiwi.path.Path.move_to_root">move_to_root() (kiwi.path.Path static method)</a>
+
+      <ul>
+        <li><a href="development/api/kiwi.system.html#kiwi.system.root_bind.RootBind.move_to_root">(kiwi.system.root_bind.RootBind method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -2664,6 +2670,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="development/api/kiwi.storage.html#kiwi.storage.raid_device.RaidDevice">RaidDevice (class in kiwi.storage.raid_device)</a>
+</li>
+      <li><a href="development/api/kiwi.html#kiwi.path.Path.rebase_to_root">rebase_to_root() (kiwi.path.Path static method)</a>
 </li>
       <li><a href="development/api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.relocate_boot_catalog">relocate_boot_catalog() (kiwi.iso_tools.iso.Iso static method)</a>
 </li>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation 9.19.4 &mdash; kiwi 9.19.4 documentation</title>
+  <title>API Documentation 9.19.5 &mdash; kiwi 9.19.5 documentation</title>
   
 
   
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.19.4</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Documentation 9.19.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kiwi.boot.html">kiwi.boot Package</a></li>
@@ -457,7 +457,7 @@
         
           <li><a href="../../development.html">Development and Contributing</a> &raquo;</li>
         
-      <li>API Documentation 9.19.4</li>
+      <li>API Documentation 9.19.5</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -477,7 +477,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="api-documentation-version">
-<h1>API Documentation 9.19.4<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
+<h1>API Documentation 9.19.5<a class="headerlink" href="#api-documentation-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -1828,6 +1828,23 @@ of the installed grub2 tools</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.defaults.Defaults.get_grub_efi_font_directory">
+<em class="property">static </em><code class="sig-name descname">get_grub_efi_font_directory</code><span class="sig-paren">(</span><em class="sig-param">root_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/defaults.html#Defaults.get_grub_efi_font_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_grub_efi_font_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides distribution specific EFI font directory used with grub.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root_path</strong> (<em>string</em>) – image root path</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>file path or None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3849,6 +3866,46 @@ is not accessible by the current user</p></li>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.path.Path.move_to_root">
+<em class="property">static </em><code class="sig-name descname">move_to_root</code><span class="sig-paren">(</span><em class="sig-param">root</em>, <em class="sig-param">elements</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/path.html#Path.move_to_root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.path.Path.move_to_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the given path elements to a new root directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – the root path to trim</p></li>
+<li><p><strong>elements</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of path names</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>changed elements</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.path.Path.rebase_to_root">
+<em class="property">static </em><code class="sig-name descname">rebase_to_root</code><span class="sig-paren">(</span><em class="sig-param">root</em>, <em class="sig-param">elements</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/path.html#Path.rebase_to_root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.path.Path.rebase_to_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include the root prefix for the given paths elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – the new root path</p></li>
+<li><p><strong>elements</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of path names</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>changed elements</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.path.Path.remove">
 <em class="property">static </em><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/path.html#Path.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.path.Path.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete empty path, causes an error if target is not empty</p>
@@ -3894,7 +3951,7 @@ ignore non empty or protected paths and leave them untouched</p>
 
 <dl class="method">
 <dt id="kiwi.path.Path.which">
-<em class="property">static </em><code class="sig-name descname">which</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">alternative_lookup_paths=None</em>, <em class="sig-param">custom_env=None</em>, <em class="sig-param">access_mode=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/path.html#Path.which"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.path.Path.which" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">which</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">alternative_lookup_paths=None</em>, <em class="sig-param">custom_env=None</em>, <em class="sig-param">access_mode=None</em>, <em class="sig-param">root_dir=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kiwi/path.html#Path.which"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.path.Path.which" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lookup file name in PATH</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3905,6 +3962,7 @@ ignore non empty or protected paths and leave them untouched</p>
 <li><p><strong>access_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – one of the os access modes or a combination of
 them (os.R_OK, os.W_OK and os.X_OK). If the provided access mode
 does not match the file is considered not existing</p></li>
+<li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – the root path to look at</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -5682,7 +5740,7 @@ is set the volume name is used as data path.</p></li>
         <span class="n">size</span><span class="o">=</span><span class="n">volume_size</span><span class="p">,</span>
         <span class="n">realpath</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
         <span class="n">mountpoint</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
-        <span class="n">fullsize</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+        <span class="n">fullsize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="n">volume_label</span><span class="p">,</span>
         <span class="n">attributes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;no-copy-on-write&#39;</span><span class="p">]</span>
     <span class="p">)</span>

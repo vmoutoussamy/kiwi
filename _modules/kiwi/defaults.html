@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; kiwi 9.19.4 documentation</title>
+  <title>kiwi.defaults &mdash; kiwi 9.19.5 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -490,18 +490,18 @@
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 <span class="kn">import</span> <span class="nn">platform</span>
-<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">resource_filename</span>
+<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="kn">import</span> <span class="n">resource_filename</span>
 
 <span class="c1"># project</span>
-<span class="kn">from</span> <span class="nn">.path</span> <span class="k">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">.version</span> <span class="k">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">.path</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">.version</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">__githash__</span><span class="p">,</span>
     <span class="n">__version__</span>
 <span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">KiwiBootLoaderGrubDataError</span>
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">KiwiBootLoaderGrubDataError</span>
 
 
 <div class="viewcode-block" id="Defaults"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults">[docs]</a><span class="k">class</span> <span class="nc">Defaults</span><span class="p">:</span>
@@ -510,7 +510,7 @@
 
 <span class="sd">    Provides static methods for default values and state information</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span>
             <span class="c1"># alignment in bytes</span>
             <span class="s1">&#39;kiwi_align&#39;</span><span class="p">:</span> <span class="mi">1048576</span><span class="p">,</span>
@@ -671,7 +671,7 @@
 
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">.cli</span> <span class="k">import</span> <span class="n">Cli</span>
+        <span class="kn">from</span> <span class="nn">.cli</span> <span class="kn">import</span> <span class="n">Cli</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
             <span class="n">Cli</span><span class="p">()</span><span class="o">.</span><span class="n">get_global_args</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;--shared-cache-dir&#39;</span><span class="p">)</span>
         <span class="p">))</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span></div>
@@ -1036,6 +1036,24 @@
         <span class="k">for</span> <span class="n">shim_file_pattern</span> <span class="ow">in</span> <span class="n">shim_file_patterns</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">shim_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="n">shim_file_pattern</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">shim_file</span></div>
+
+<div class="viewcode-block" id="Defaults.get_grub_efi_font_directory"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_efi_font_directory">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_efi_font_directory</span><span class="p">(</span><span class="n">root_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides distribution specific EFI font directory used with grub.</span>
+
+<span class="sd">        :param string root_path: image root path</span>
+
+<span class="sd">        :return: file path or None</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">font_dir_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/boot/efi/EFI/*/fonts&#39;</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">font_dir_pattern</span> <span class="ow">in</span> <span class="n">font_dir_patterns</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">font_dir</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="n">font_dir_pattern</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">font_dir</span></div>
 
 <div class="viewcode-block" id="Defaults.get_unsigned_grub_loader"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_unsigned_grub_loader">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_unsigned_grub_loader</span><span class="p">(</span><span class="n">root_path</span><span class="p">):</span>
