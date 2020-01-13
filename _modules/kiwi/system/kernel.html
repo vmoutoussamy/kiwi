@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.kernel &mdash; kiwi 9.19.7 documentation</title>
+  <title>kiwi.system.kernel &mdash; kiwi 9.19.10 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.7</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.10</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -489,6 +489,7 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
 <span class="c1"># project</span>
@@ -529,34 +530,19 @@
                 <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="n">kernel_name</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">kernel_file</span><span class="p">):</span>
-                <span class="n">kernel_file_for_version_check</span> <span class="o">=</span> \
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_get_kernel_name_for_version_lookup</span><span class="p">()</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">kernel_file_for_version_check</span><span class="p">:</span>
-                    <span class="c1"># The system does not provide a gzip compressed binary</span>
-                    <span class="c1"># of the kernel. Thus we try to fetch the version from</span>
-                    <span class="c1"># the arbitrary kernel image format. Please Note:</span>
-                    <span class="c1"># kernel images that contains the decompressor code</span>
-                    <span class="c1"># as part of the kernel could have been compressed by</span>
-                    <span class="c1"># any possible compression algorithm. For such kernels</span>
-                    <span class="c1"># the simple kversion utility will not be able to read</span>
-                    <span class="c1"># kernel version</span>
-                    <span class="n">kernel_file_for_version_check</span> <span class="o">=</span> <span class="n">kernel_file</span>
-
-                <span class="n">version</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;kversion&#39;</span><span class="p">,</span> <span class="n">kernel_file_for_version_check</span><span class="p">],</span>
-                    <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
-                <span class="p">)</span><span class="o">.</span><span class="n">output</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">version</span><span class="p">:</span>
-                    <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;no-version-found&#39;</span>
-                <span class="n">version</span> <span class="o">=</span> <span class="n">version</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-                <span class="n">kernel</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
-                    <span class="s1">&#39;kernel&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;version&#39;</span><span class="p">]</span>
+                <span class="n">version_match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
+                    <span class="s1">&#39;.*?-(.*)&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">kernel_file</span><span class="p">)</span>
                 <span class="p">)</span>
-                <span class="k">return</span> <span class="n">kernel</span><span class="p">(</span>
-                    <span class="n">name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">kernel_file</span><span class="p">)),</span>
-                    <span class="n">filename</span><span class="o">=</span><span class="n">kernel_file</span><span class="p">,</span>
-                    <span class="n">version</span><span class="o">=</span><span class="n">version</span>
-                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">version_match</span><span class="p">:</span>
+                    <span class="n">version</span> <span class="o">=</span> <span class="n">version_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="n">kernel</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+                        <span class="s1">&#39;kernel&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;version&#39;</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="k">return</span> <span class="n">kernel</span><span class="p">(</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">kernel_file</span><span class="p">)),</span>
+                        <span class="n">filename</span><span class="o">=</span><span class="n">kernel_file</span><span class="p">,</span>
+                        <span class="n">version</span><span class="o">=</span><span class="n">version</span>
+                    <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">raise_on_not_found</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiKernelLookupError</span><span class="p">(</span>
@@ -632,17 +618,16 @@
 
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">kernel_names</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="c1"># lookup for the symlink first</span>
-            <span class="s1">&#39;vmlinux&#39;</span><span class="p">,</span> <span class="s1">&#39;vmlinuz&#39;</span>
-        <span class="p">]</span>
-        <span class="n">kernel_dirs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;/lib/modules&#39;</span><span class="p">])))</span>
+        <span class="n">kernel_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">kernel_dirs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;/lib/modules&#39;</span><span class="p">]))</span>
+        <span class="p">)</span>
         <span class="k">if</span> <span class="n">kernel_dirs</span><span class="p">:</span>
             <span class="c1"># append lookup for the real kernel image names</span>
             <span class="c1"># depending on the arch and os they are different</span>
             <span class="c1"># in their prefix</span>
             <span class="n">kernel_prefixes</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="s1">&#39;uImage&#39;</span><span class="p">,</span> <span class="s1">&#39;Image&#39;</span><span class="p">,</span> <span class="s1">&#39;zImage&#39;</span><span class="p">,</span> <span class="s1">&#39;vmlinuz&#39;</span><span class="p">,</span> <span class="s1">&#39;vmlinux&#39;</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span>
+                <span class="s1">&#39;uImage&#39;</span><span class="p">,</span> <span class="s1">&#39;Image&#39;</span><span class="p">,</span> <span class="s1">&#39;zImage&#39;</span><span class="p">,</span> <span class="s1">&#39;vmlinuz&#39;</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span>
             <span class="p">]</span>
             <span class="n">kernel_name_pattern</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{prefix}</span><span class="s1">-</span><span class="si">{name}</span><span class="s1">&#39;</span>
             <span class="k">for</span> <span class="n">kernel_prefix</span> <span class="ow">in</span> <span class="n">kernel_prefixes</span><span class="p">:</span>
@@ -652,18 +637,7 @@
                             <span class="n">prefix</span><span class="o">=</span><span class="n">kernel_prefix</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">kernel_dir</span>
                         <span class="p">)</span>
                     <span class="p">)</span>
-        <span class="k">return</span> <span class="n">kernel_names</span>
-
-    <span class="k">def</span> <span class="nf">_get_kernel_name_for_version_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">vmlinux_kernel_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-            <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">kernel</span><span class="p">:</span> <span class="s1">&#39;vmlinux-&#39;</span> <span class="ow">in</span> <span class="n">kernel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_names</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">vmlinux_kernel_files</span><span class="p">:</span>
-            <span class="n">kernel_file_for_version_check</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="n">vmlinux_kernel_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.gz&#39;</span><span class="p">]</span>
-            <span class="p">)</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">kernel_file_for_version_check</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">kernel_file_for_version_check</span></div>
+        <span class="k">return</span> <span class="n">kernel_names</span></div>
 </pre></div>
 
            </div>
