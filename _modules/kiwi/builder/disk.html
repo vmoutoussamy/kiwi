@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.disk &mdash; kiwi 9.19.10 documentation</title>
+  <title>kiwi.builder.disk &mdash; kiwi 9.19.11 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.11</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1120,12 +1120,19 @@
     <span class="k">def</span> <span class="nf">_build_spare_filesystem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device_map</span><span class="p">):</span>
         <span class="k">if</span> <span class="s1">&#39;spare&#39;</span> <span class="ow">in</span> <span class="n">device_map</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_fs</span><span class="p">:</span>
             <span class="n">spare_part_data_path</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">spare_part_custom_parameters</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;fs_attributes&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_spare_part_fs_attributes</span><span class="p">()</span>
+            <span class="p">}</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_mountpoint</span><span class="p">:</span>
                 <span class="n">spare_part_data_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_mountpoint</span>
                 <span class="p">)</span>
             <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_fs</span><span class="p">,</span> <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;spare&#39;</span><span class="p">],</span> <span class="n">spare_part_data_path</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_fs</span><span class="p">,</span>
+                <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;spare&#39;</span><span class="p">],</span>
+                <span class="n">spare_part_data_path</span><span class="p">,</span>
+                <span class="n">spare_part_custom_parameters</span>
             <span class="p">)</span>
             <span class="n">filesystem</span><span class="o">.</span><span class="n">create_on_device</span><span class="p">(</span>
                 <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SPARE&#39;</span>

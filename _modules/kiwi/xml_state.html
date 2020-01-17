@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_state &mdash; kiwi 9.19.10 documentation</title>
+  <title>kiwi.xml_state &mdash; kiwi 9.19.11 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.19.11</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -1357,6 +1357,19 @@
         <span class="n">spare_part_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_spare_part</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">spare_part_size</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_mega_byte</span><span class="p">(</span><span class="n">spare_part_size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="XMLState.get_build_type_spare_part_fs_attributes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_spare_part_fs_attributes">[docs]</a>    <span class="k">def</span> <span class="nf">get_build_type_spare_part_fs_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build type specific list of filesystem attributes applied to</span>
+<span class="sd">        the spare partition.</span>
+
+<span class="sd">        :return: list of strings or empty list</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">spare_part_attributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_spare_part_fs_attributes</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">spare_part_attributes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">spare_part_attributes</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="XMLState.get_build_type_format_options"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.xml_state.XMLState.get_build_type_format_options">[docs]</a>    <span class="k">def</span> <span class="nf">get_build_type_format_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
