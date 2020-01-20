@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.disk &mdash; kiwi 9.19.11 documentation</title>
+  <title>kiwi.builder.disk &mdash; kiwi 9.19.13 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -810,9 +810,6 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">requested_filesystem</span>
             <span class="p">)</span>
             <span class="n">volume_manager</span><span class="o">.</span><span class="n">mount_volumes</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">generic_fstab_entries</span> <span class="o">+=</span> <span class="n">volume_manager</span><span class="o">.</span><span class="n">get_fstab</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">persistency_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">requested_filesystem</span>
-            <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">volume_manager</span>
             <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">volume_manager</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span>
             <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;swap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">volume_manager</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;swap&#39;</span><span class="p">)</span>
@@ -1346,6 +1343,13 @@
             <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
             <span class="n">custom_root_mount_args</span><span class="p">,</span> <span class="n">fs_check_interval</span>
         <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager_name</span><span class="p">:</span>
+            <span class="n">volume_fstab_entries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_fstab</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">persistency_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">requested_filesystem</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">volume_fstab_entry</span> <span class="ow">in</span> <span class="n">volume_fstab_entries</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">volume_fstab_entry</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_fstab_entries</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">generic_fstab_entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_fstab_entry</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">device_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;spare&#39;</span><span class="p">)</span> <span class="ow">and</span> \
            <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_fs</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_mountpoint</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_generic_fstab_entry</span><span class="p">(</span>
