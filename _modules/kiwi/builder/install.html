@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.install &mdash; kiwi 9.19.13 documentation</title>
+  <title>kiwi.builder.install &mdash; kiwi 9.19.14 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.13</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.14</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -807,6 +807,15 @@
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating pxe install boot image&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_create_pxe_install_kernel_and_initrd</span><span class="p">()</span>
 
+        <span class="c1"># create pxe image bound boot config file, contents can be</span>
+        <span class="c1"># changed but presence is required.</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating pxe install boot options file&#39;</span><span class="p">)</span>
+        <span class="n">configname</span> <span class="o">=</span> <span class="s1">&#39;pxeboot.</span><span class="si">{0}</span><span class="s1">.config.bootoptions&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pxename</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;config.bootoptions&#39;</span><span class="p">]),</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">pxe_dir</span><span class="p">,</span> <span class="n">configname</span><span class="p">])</span>
+        <span class="p">)</span>
+
         <span class="c1"># create pxe install tarball</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating pxe install archive&#39;</span><span class="p">)</span>
         <span class="n">archive</span> <span class="o">=</span> <span class="n">ArchiveTar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pxetarball</span><span class="p">)</span>
@@ -850,7 +859,6 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">omit_module</span><span class="p">(</span>
                     <span class="s1">&#39;multipath&#39;</span><span class="p">,</span> <span class="n">install_media</span><span class="o">=</span><span class="kc">True</span>
                 <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_add_system_image_boot_options_to_boot_image</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">create_initrd</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mbrid</span><span class="p">,</span> <span class="s1">&#39;initrd_kiwi_install&#39;</span><span class="p">,</span>
             <span class="n">install_initrd</span><span class="o">=</span><span class="kc">True</span>

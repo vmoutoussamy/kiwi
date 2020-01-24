@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; kiwi 9.19.13 documentation</title>
+  <title>kiwi.system.setup &mdash; kiwi 9.19.14 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.13</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.14</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -736,11 +736,8 @@
 <span class="sd">        If not present KIWI skips this step and continuous with a</span>
 <span class="sd">        warning.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">chkstat_search_env</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
         <span class="n">chkstat</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span>
-            <span class="s1">&#39;chkstat&#39;</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="n">chkstat_search_env</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">X_OK</span>
+            <span class="s1">&#39;chkstat&#39;</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">X_OK</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">chkstat</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Check/Fix File Permissions&#39;</span><span class="p">)</span>
@@ -905,11 +902,8 @@
 <span class="sd">        be found in the image root, it is assumed plymouth splash is in</span>
 <span class="sd">        use and the tool is called in a chroot operation</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">chroot_env</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;sbin&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
         <span class="n">theme_setup</span> <span class="o">=</span> <span class="s1">&#39;plymouth-set-default-theme&#39;</span>
-        <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">theme_setup</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="n">chroot_env</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">theme_setup</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">preferences</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_preferences_sections</span><span class="p">():</span>
                 <span class="n">splash_section_content</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_bootsplash_theme</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">splash_section_content</span><span class="p">:</span>
