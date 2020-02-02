@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository.dnf &mdash; kiwi 9.19.14 documentation</title>
+  <title>kiwi.repository.dnf &mdash; kiwi 9.19.15 documentation</title>
   
 
   
@@ -340,7 +340,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.14</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.19.15</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
@@ -672,6 +672,13 @@
         <span class="k">if</span> <span class="n">pkg_gpgcheck</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">repo_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
                 <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;gpgcheck&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span> <span class="k">if</span> <span class="n">pkg_gpgcheck</span> <span class="k">else</span> <span class="s1">&#39;0&#39;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">is_buildservice_worker</span><span class="p">():</span>
+            <span class="c1"># when building in the build service, modular metadata is inaccessible...</span>
+            <span class="c1"># in order to use modular content in the build service, we need to disable</span>
+            <span class="c1"># modular filtering, which is done with module_hotfixes option</span>
+            <span class="n">repo_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+                <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;module_hotfixes&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span>
             <span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">repo_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">repo</span><span class="p">:</span>
             <span class="n">repo_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span></div>
