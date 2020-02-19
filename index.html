@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>KIWI Documentation &mdash; kiwi 9.20.0 documentation</title>
+  <title>KIWI NG Documentation &mdash; KIWI NG 9.20.1 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> kiwi
+            <a href="#" class="icon icon-home"> KIWI NG
           
 
           
@@ -96,7 +96,17 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="working_with_kiwi.html">Working with KIWI</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview/workflow.html">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview/workflow.html#components-of-an-image-description">Components of an Image Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_kiwi.html">Concept and Workflow</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="working_with_kiwi/xml_description.html">The Image Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_kiwi/xml_description.html#the-image-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> Element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_kiwi/xml_description.html#the-description-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code> Element</a></li>
@@ -131,7 +141,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
-<li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi">Functions and Variables Provided by KIWI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
@@ -147,8 +157,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="working_with_kiwi/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_kiwi/legacy_kiwi.html">Legacy KIWI vs. KIWI Next Generation (KIWI NG)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/legacy_kiwi.html#when-do-i-need-to-use-kiwi-legacy">When Do I need to use KIWI Legacy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/legacy_kiwi.html#compatibility">Compatibility</a></li>
 </ul>
@@ -164,9 +174,9 @@
 <li class="toctree-l1"><a class="reference internal" href="working_with_images.html">Working with Images</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
-<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_setup_for_ec2.html">KIWI Image Description for Amazon EC2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_setup_for_azure.html">KIWI Image Description for Microsoft Azure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_setup_for_google.html">KIWI Image Description for Google Compute Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_setup_for_ec2.html">Image Description for Amazon EC2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_setup_for_azure.html">Image Description for Microsoft Azure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_setup_for_google.html">Image Description for Google Compute Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
@@ -186,7 +196,7 @@
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_vagrant_setup.html">KIWI Image Description for Vagrant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_vagrant_setup.html">Image Description for Vagrant</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
@@ -198,17 +208,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_setup_for_luks.html">KIWI Image Description Encrypted Disk</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview/workflow.html">Basic Workflow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview/workflow.html#components-of-an-image-description">Components of an Image Description</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#conceptual-overview">Conceptual Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#terminology">Terminology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_images/vmx_setup_for_luks.html">Image Description Encrypted Disk</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="building.html">Building Images</a><ul>
@@ -243,7 +243,7 @@
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#selecting-a-kiwi-template">Selecting a KIWI Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#selecting-a-template">Selecting a Template</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#the-dicefile">The Dicefile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#building-with-dice">Building with Dice</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
@@ -279,7 +279,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="commands.html">KIWI Commands</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command Line</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="commands/kiwi.html">kiwi</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="commands/kiwi.html#synopsis">SYNOPSIS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/kiwi.html#description">DESCRIPTION</a></li>
@@ -339,9 +339,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/schema_extensions.html">Extending KIWI NG with Custom Operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
 <li class="toctree-l3"><a class="reference internal" href="development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
 <li class="toctree-l3"><a class="reference internal" href="development/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
@@ -349,8 +349,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="development.html#the-basics">The Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#fork-the-upstream-repository">Fork the upstream repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#create-a-local-clone-of-the-forked-repository">Create a local clone of the forked repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development.html#install-required-operating-system-packages">Install Required Operating System Packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development.html#create-a-python-virtual-development-environment">Create a Python Virtual Development Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development.html#running-the-unit-tests">Running the Unit Tests</a></li>
@@ -367,8 +367,33 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Documentation 7.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">KIWI API</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Image Description XML Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/kiwi.html">kiwi Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.command_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.exceptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.firmware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.kiwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.logger_color_formatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger_color_formatter</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.logger_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger_filter</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.mount_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.privileges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.runtime_checker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.runtime_checker</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.runtime_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.runtime_config</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.xml_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.xml_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="api/kiwi.archive.html">kiwi.archive Package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/kiwi.archive.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/kiwi.archive.html#module-kiwi.archive.cpio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.archive.cpio</span></code> Module</a></li>
@@ -498,29 +523,6 @@
 <li class="toctree-l3"><a class="reference internal" href="api/kiwi.repository.template.html#module-kiwi.repository.template">Module Contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api/kiwi.html">API Documentation 9.20.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.app</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.cli</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.command</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.command_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.command_process</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.defaults</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.exceptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.firmware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.firmware</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.help</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.kiwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.mount_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.path</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.privileges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.privileges</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.runtime_checker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.runtime_checker</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.runtime_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.runtime_config</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.version</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.xml_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi.xml_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/kiwi.html#module-kiwi">Module Contents</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="api/kiwi.solver.repository.html">kiwi.solver.repository Package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/kiwi.solver.repository.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/kiwi.solver.repository.html#module-kiwi.solver.repository.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.solver.repository.base</span></code> Module</a></li>
@@ -633,7 +635,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">kiwi</a>
+          <a href="#">KIWI NG</a>
         
       </nav>
 
@@ -664,7 +666,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>KIWI Documentation</li>
+      <li>KIWI NG Documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -683,26 +685,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="kiwi-documentation">
-<h1>KIWI Documentation<a class="headerlink" href="#kiwi-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="kiwi-ng-documentation">
+<h1>KIWI NG Documentation<a class="headerlink" href="#kiwi-ng-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This documentation covers KIWI 9.20.0- the command line utility to
-build Linux system appliances. For versions of KIWI older or equal to
-v7.x.x please refer to <a class="reference external" href="https://doc.opensuse.org/projects/kiwi/doc">Legacy KIWI</a></p>
+<p>KIWI NG vs. KIWI Legacy</p>
+<p>This documentation covers KIWI Next Generation (KIWI NG) 9.20.1- the command line
+utility to build Linux system appliances. KIWI NG is stable and all
+new features, bugfixes, and improvements will be developed here.
+Versions older or equal to v7.x.x are out of maintenance and do
+not get any updates or bugfixes. If you still need this version,
+refer to the documentation for
+<a class="reference external" href="https://doc.opensuse.org/projects/kiwi/doc">KIWI Legacy</a></p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="working_with_kiwi.html">Working with KIWI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="working_with_images.html">Working with Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_kiwi.html">Concept and Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_images.html">Working with Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="building.html">Building Images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="commands.html">KIWI Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development and Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Documentation 7.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">KIWI API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Image Description XML Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python API</a></li>
 </ul>
 </div>
 <div class="sidebar">
@@ -728,10 +735,10 @@ v7.x.x please refer to <a class="reference external" href="https://doc.opensuse.
 a pre-configured application for a specific use case. The appliance is
 provided as an image file and needs to be deployed to, or activated in
 the target system or service.</p>
-<p>KIWI can create appliances in various forms: beside classical installation
+<p>KIWI NG can create appliances in various forms: beside classical installation
 ISOs and images for virtual machines it can also build images that boot via
 PXE or Vagrant boxes.</p>
-<p>In KIWI, the appliance is specified via a collection of human readable files
+<p>In KIWI NG, the appliance is specified via a collection of human readable files
 in a directory, also called the <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span> <span class="pre">description</span></code>. At least one XML file
 <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> or <code class="file docutils literal notranslate"><span class="pre">.kiwi</span></code> is required. In addition there may as
 well be other files like scripts or configuration data.</p>
@@ -743,19 +750,19 @@ below:</p>
 <ul class="simple">
 <li><p>You are a system administrator and wish to create a customized installer
 for your network that includes additional software and your organizations
-certificates? KIWI allows you to select which packages will be included
+certificates? KIWI NG allows you to select which packages will be included
 in the final image. On top of that you can add files to arbitrary
 locations in the filesystem, for example to include SSL or SSH keys. You
-can also tell KIWI to create an image that can be booted via PXE, so that
+can also tell KIWI NG to create an image that can be booted via PXE, so that
 you don’t even have to leave your desk to reinstall a system.</p></li>
 <li><p>You want to create a custom spin of your favorite Linux distribution with
 additional repositories and packages that are not present by default?
-With KIWI you can configure the repositories of your final image via the
+With KIWI NG you can configure the repositories of your final image via the
 image description and tweak the list of packages that are going to be
 installed to match your target audience.</p></li>
 <li><p>The Raspberry Pi that is coordinating your home’s Internet of Thing (IoT)
 devices got very popular among your friends and every single one of them
-wants a copy of that? KIWI will build you ready to deploy images for your
+wants a copy of that? KIWI NG will build you ready to deploy images for your
 Raspberry Pi, tweaked to your needs.</p></li>
 </ul>
 </div>
@@ -794,7 +801,7 @@ the supported <a class="reference external" href="https://matrix.org/docs/projec
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Marcus Schäfer
+        &copy; Copyright 2020, Marcus Schäfer
 
     </p>
   </div>

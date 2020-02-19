@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.privileges &mdash; KIWI NG 9.20.1 documentation</title>
+  <title>kiwi.logger_filter &mdash; KIWI NG 9.20.1 documentation</title>
   
 
   
@@ -667,7 +667,7 @@
         
           <li><a href="../index.html">Module code</a> &raquo;</li>
         
-      <li>kiwi.privileges</li>
+      <li>kiwi.logger_filter</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -682,7 +682,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for kiwi.privileges</h1><div class="highlight"><pre>
+  <h1>Source code for kiwi.logger_filter</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (c) 2015 SUSE Linux GmbH.  All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1"># This file is part of kiwi.</span>
@@ -700,33 +700,105 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="c1"># project</span>
-<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">KiwiPrivilegesError</span>
-<span class="p">)</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
 
-<div class="viewcode-block" id="Privileges"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.privileges.Privileges">[docs]</a><span class="k">class</span> <span class="nc">Privileges</span><span class="p">:</span>
+<div class="viewcode-block" id="LoggerSchedulerFilter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.LoggerSchedulerFilter">[docs]</a><span class="k">class</span> <span class="nc">LoggerSchedulerFilter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Filter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    **Implements check for root privileges**</span>
+<span class="sd">    **Extended standard logging Filter**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Privileges.check_for_root_permissions"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.privileges.Privileges.check_for_root_permissions">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">check_for_root_permissions</span><span class="p">():</span>
+<div class="viewcode-block" id="LoggerSchedulerFilter.filter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.LoggerSchedulerFilter.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Check if we are effectively root on the system. If not</span>
-<span class="sd">        an exception is thrown</span>
+<span class="sd">        Messages from apscheduler scheduler instances are filtered out</span>
+<span class="sd">        They conflict with console progress information</span>
 
-<span class="sd">        :return: True or raise an Exception</span>
+<span class="sd">        :param tuple record: logging message record</span>
 
-<span class="sd">        :rtype: bool</span>
+<span class="sd">        :return: record.name</span>
+
+<span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">geteuid</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">KiwiPrivilegesError</span><span class="p">(</span>
-                <span class="s1">&#39;operation requires root permissions&#39;</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div></div>
+        <span class="n">ignorables</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;apscheduler.scheduler&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;apscheduler.executors.default&#39;</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignorables</span></div></div>
+
+
+<div class="viewcode-block" id="InfoFilter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.InfoFilter">[docs]</a><span class="k">class</span> <span class="nc">InfoFilter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Filter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Extended standard logging Filter**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="InfoFilter.filter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.InfoFilter.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Only messages with record level INFO and WARNING can pass</span>
+<span class="sd">        for messages with another level an extra handler is used</span>
+
+<span class="sd">        :param tuple record: logging message record</span>
+
+<span class="sd">        :return: record.name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">levelno</span> <span class="o">==</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div></div>
+
+
+<div class="viewcode-block" id="DebugFilter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.DebugFilter">[docs]</a><span class="k">class</span> <span class="nc">DebugFilter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Filter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Extended standard debug logging Filter**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="DebugFilter.filter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.DebugFilter.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Only messages with record level DEBUG can pass</span>
+<span class="sd">        for messages with another level an extra handler is used</span>
+
+<span class="sd">        :param tuple record: logging message record</span>
+
+<span class="sd">        :return: record.name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">levelno</span> <span class="o">==</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div></div>
+
+
+<div class="viewcode-block" id="ErrorFilter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.ErrorFilter">[docs]</a><span class="k">class</span> <span class="nc">ErrorFilter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Filter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Extended standard error logging Filter**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ErrorFilter.filter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.ErrorFilter.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Only messages with record level DEBUG can pass</span>
+<span class="sd">        for messages with another level an extra handler is used</span>
+
+<span class="sd">        :param tuple record: logging message record</span>
+
+<span class="sd">        :return: record.name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">levelno</span> <span class="o">==</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div></div>
+
+
+<div class="viewcode-block" id="WarningFilter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.WarningFilter">[docs]</a><span class="k">class</span> <span class="nc">WarningFilter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Filter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Extended standard warning logging Filter**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="WarningFilter.filter"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.logger_filter.WarningFilter.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Only messages with record level WARNING can pass</span>
+<span class="sd">        for messages with another level an extra handler is used</span>
+
+<span class="sd">        :param tuple record: logging message record</span>
+
+<span class="sd">        :return: record.name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">levelno</span> <span class="o">==</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div></div>
 </pre></div>
 
            </div>
