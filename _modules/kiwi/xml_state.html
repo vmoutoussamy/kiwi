@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_state &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.xml_state &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -736,6 +741,7 @@
 <span class="sd">    :param object build_type: build &lt;type&gt; section reference</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml_data</span><span class="p">,</span> <span class="n">profiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">build_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_partition_uuid</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">host_architecture</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xml_data</span> <span class="o">=</span> <span class="n">xml_data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">profiles</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_used_profiles</span><span class="p">(</span><span class="n">profiles</span><span class="p">)</span>
@@ -2498,6 +2504,20 @@
 <span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
             <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uri</span><span class="p">))</span></div>
 
+<div class="viewcode-block" id="XMLState.set_root_partition_uuid"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.xml_state.XMLState.set_root_partition_uuid">[docs]</a>    <span class="k">def</span> <span class="nf">set_root_partition_uuid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uuid</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Store PARTUUID provided in uuid as state information</span>
+
+<span class="sd">        :param string uuid: PARTUUID</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_partition_uuid</span> <span class="o">=</span> <span class="n">uuid</span></div>
+
+<div class="viewcode-block" id="XMLState.get_root_partition_uuid"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.xml_state.XMLState.get_root_partition_uuid">[docs]</a>    <span class="k">def</span> <span class="nf">get_root_partition_uuid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return preserved PARTUUID</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_partition_uuid</span></div>
+
     <span class="k">def</span> <span class="nf">_used_profiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiles</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        return list of profiles to use. The method looks up the</span>
@@ -2669,6 +2689,15 @@
                 <span class="k">if</span> <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_author</span><span class="p">():</span>
                     <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> \
                         <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_launcher</span><span class="p">():</span>
+                    <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;launcher&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                        <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_launcher</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_application_id</span><span class="p">():</span>
+                    <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;application_id&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                        <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_application_id</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_package_version</span><span class="p">():</span>
+                    <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;package_version&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                        <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_package_version</span><span class="p">()</span>
                 <span class="n">container_history</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">][</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="o">=</span> \
                     <span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_valueOf_</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">container_history</span>

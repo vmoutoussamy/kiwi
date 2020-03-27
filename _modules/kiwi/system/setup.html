@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.system.setup &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -841,21 +846,6 @@
                 <span class="n">repo_sourcetype</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="SystemSetup.import_shell_environment"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_shell_environment">[docs]</a>    <span class="k">def</span> <span class="nf">import_shell_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Create profile environment to let scripts consume</span>
-<span class="sd">        information from the XML description.</span>
-
-<span class="sd">        :param object profile: instance of :class:`Profile`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">profile_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/.profile&#39;</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating .profile environment&#39;</span><span class="p">)</span>
-        <span class="n">profile_environment</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">profile_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">profile</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">profile_environment</span><span class="p">:</span>
-                <span class="n">profile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;--&gt; </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="SystemSetup.import_cdroot_files"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_cdroot_files">[docs]</a>    <span class="k">def</span> <span class="nf">import_cdroot_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Copy cdroot files from the image description to the</span>
@@ -1274,9 +1264,9 @@
             <span class="n">working_directory</span><span class="o">=</span><span class="n">working_directory</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="SystemSetup.create_fstab"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.create_fstab">[docs]</a>    <span class="k">def</span> <span class="nf">create_fstab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entries</span><span class="p">):</span>
+<div class="viewcode-block" id="SystemSetup.create_fstab"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.create_fstab">[docs]</a>    <span class="k">def</span> <span class="nf">create_fstab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fstab</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Create etc/fstab from given list of entries</span>
+<span class="sd">        Create etc/fstab from given Fstab object</span>
 
 <span class="sd">        Custom fstab modifications are possible and handled</span>
 <span class="sd">        in the following order:</span>
@@ -1297,17 +1287,17 @@
 <span class="sd">           file in the image rootfs. Once called the fstab.script</span>
 <span class="sd">           file will be deleted</span>
 
-<span class="sd">        :param list entries: list of line entries for fstab</span>
+<span class="sd">        :param list fstab: instance of Fstab</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">fstab_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/fstab&#39;</span>
         <span class="n">fstab_append_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/fstab.append&#39;</span>
         <span class="n">fstab_patch_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/fstab.patch&#39;</span>
         <span class="n">fstab_script_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/fstab.script&#39;</span>
 
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fstab_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fstab</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">:</span>
-                <span class="n">fstab</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">entry</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fstab_append_file</span><span class="p">):</span>
+        <span class="n">fstab</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">fstab_file</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fstab_append_file</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fstab_file</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fstab</span><span class="p">:</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fstab_append_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">append</span><span class="p">:</span>
                     <span class="n">fstab</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">append</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
                 <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">fstab_append_file</span><span class="p">)</span>

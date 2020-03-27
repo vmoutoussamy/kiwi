@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.tasks.base &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.tasks.base &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -776,7 +781,8 @@
             <span class="s1">&#39;check_dracut_module_for_disk_overlay_in_package_list&#39;</span><span class="p">:</span> <span class="p">[],</span>
             <span class="s1">&#39;check_dracut_module_for_disk_oem_in_package_list&#39;</span><span class="p">:</span> <span class="p">[],</span>
             <span class="s1">&#39;check_dracut_module_for_oem_install_in_package_list&#39;</span><span class="p">:</span> <span class="p">[],</span>
-            <span class="s1">&#39;check_architecture_supports_iso_firmware_setup&#39;</span><span class="p">:</span> <span class="p">[]</span>
+            <span class="s1">&#39;check_architecture_supports_iso_firmware_setup&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;check_appx_naming_conventions_valid&#39;</span><span class="p">:</span> <span class="p">[]</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checks_after_command_args</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;check_repositories_configured&#39;</span><span class="p">:</span> <span class="p">[],</span>

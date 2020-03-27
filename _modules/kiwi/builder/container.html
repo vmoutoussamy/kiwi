@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.container &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.builder.container &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -735,6 +740,7 @@
 <span class="sd">        * xz_options: string of XZ compression parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml_state</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">=</span> <span class="n">custom_args</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">=</span> <span class="n">root_dir</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target_dir</span> <span class="o">=</span> <span class="n">target_dir</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">container_config</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_container_config</span><span class="p">()</span>
@@ -742,8 +748,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">base_image</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base_image_md5</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">container_config</span><span class="p">[</span><span class="s1">&#39;xz_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;xz_options&#39;</span><span class="p">]</span> \
-            <span class="k">if</span> <span class="n">custom_args</span> <span class="ow">and</span> <span class="s1">&#39;xz_options&#39;</span> <span class="ow">in</span> <span class="n">custom_args</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">container_config</span><span class="p">[</span><span class="s1">&#39;xz_options&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;xz_options&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">container_config</span><span class="p">[</span><span class="s1">&#39;metadata_path&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_metadata_path</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_derived_from_image_uri</span><span class="p">():</span>
             <span class="c1"># The base image is expected to be unpacked by the kiwi</span>
@@ -776,7 +785,8 @@
                 <span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
                 <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">(),</span>
                 <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_image_version</span><span class="p">(),</span>
-                <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">requested_container_type</span><span class="p">,</span> <span class="s1">&#39;.tar&#39;</span>
+                <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">requested_container_type</span><span class="p">,</span>
+                <span class="s1">&#39;.tar&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">requested_container_type</span> <span class="o">!=</span> <span class="s1">&#39;appx&#39;</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
             <span class="p">]</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span><span class="n">xml_state</span><span class="p">)</span>
@@ -784,12 +794,14 @@
 
 <div class="viewcode-block" id="ContainerBuilder.create"><a class="viewcode-back" href="../../../api/kiwi.builder.html#kiwi.builder.container.ContainerBuilder.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Builds a container image which is usually a tarball including</span>
-<span class="sd">        container specific metadata.</span>
+<span class="sd">        Builds a container image which is usually a data archive</span>
+<span class="sd">        including container specific metadata.</span>
 
 <span class="sd">        Image types which triggers this builder are:</span>
 
 <span class="sd">        * image=&quot;docker&quot;</span>
+<span class="sd">        * image=&quot;oci&quot;</span>
+<span class="sd">        * image=&quot;appx&quot;</span>
 
 <span class="sd">        :return: result</span>
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system Package &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.system Package &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -237,6 +237,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -1034,14 +1039,11 @@ description</strong></p>
 
 <dl class="method">
 <dt id="kiwi.system.profile.Profile.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/profile.html#Profile.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.profile.Profile.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/profile.html#Profile.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.profile.Profile.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create bash quoted profile</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>profile dump for bash</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – file path name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1389,8 +1391,8 @@ required in the later image</p>
 
 <dl class="method">
 <dt id="kiwi.system.setup.SystemSetup.create_fstab">
-<code class="sig-name descname">create_fstab</code><span class="sig-paren">(</span><em class="sig-param">entries</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/setup.html#SystemSetup.create_fstab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.create_fstab" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create etc/fstab from given list of entries</p>
+<code class="sig-name descname">create_fstab</code><span class="sig-paren">(</span><em class="sig-param">fstab</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/setup.html#SystemSetup.create_fstab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.create_fstab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create etc/fstab from given Fstab object</p>
 <p>Custom fstab modifications are possible and handled
 in the following order:</p>
 <ol class="arabic simple">
@@ -1410,7 +1412,7 @@ file will be deleted</p></li>
 </ol>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of line entries for fstab</p>
+<dd class="field-odd"><p><strong>fstab</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – instance of Fstab</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1516,18 +1518,6 @@ precedence over the tarball</p>
 <dd><p>Those &lt;repository&gt; sections which are marked with the
 imageinclude attribute should be permanently added to
 the image repository configuration</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kiwi.system.setup.SystemSetup.import_shell_environment">
-<code class="sig-name descname">import_shell_environment</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/setup.html#SystemSetup.import_shell_environment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.import_shell_environment" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create profile environment to let scripts consume
-information from the XML description.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Profile</span></code></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="method">

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.install.grub2 &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.bootloader.install.grub2 &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -812,7 +817,7 @@
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="BootLoaderInstallGrub2.install"><a class="viewcode-back" href="../../../../api/kiwi.bootloader.install.html#kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.install">[docs]</a>    <span class="k">def</span> <span class="nf">install</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BootLoaderInstallGrub2.install"><a class="viewcode-back" href="../../../../api/kiwi.bootloader.install.html#kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.install">[docs]</a>    <span class="k">def</span> <span class="nf">install</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># noqa: C901</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Install bootloader on disk device</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -851,11 +856,19 @@
             <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;boot_device&#39;</span><span class="p">],</span>
             <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/boot&#39;</span>
         <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;efi_device&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
+                <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;efi_device&#39;</span><span class="p">],</span>
+                <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/boot/efi&#39;</span>
+            <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">boot_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">volumes</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">volume_path</span> <span class="ow">in</span> <span class="n">Path</span><span class="o">.</span><span class="n">sort_by_hierarchy</span><span class="p">(</span>
@@ -930,12 +943,6 @@
             <span class="c1"># has applied at the bootloader/config level and we expect</span>
             <span class="c1"># no further tool calls to be required</span>
             <span class="k">if</span> <span class="n">shim_install</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span> <span class="o">=</span> <span class="n">MountManager</span><span class="p">(</span>
-                    <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;efi_device&#39;</span><span class="p">],</span>
-                    <span class="n">mountpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/boot/efi&#39;</span>
-                <span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
-
                 <span class="c1"># Before we call shim-install, the grub installer binary is</span>
                 <span class="c1"># replaced by a noop. Actually there is no reason for</span>
                 <span class="c1"># shim-install to call the grub installer because it should</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image.dracut &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.boot.image.dracut &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -820,22 +825,18 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prepare dracut caller environment</span>
 
-<span class="sd">        * Create kiwi .profile environment to be included in dracut initrd</span>
 <span class="sd">        * Setup machine_id(s) to be generic and rebuild by dracut on boot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">profile</span> <span class="o">=</span> <span class="n">Profile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">)</span>
-        <span class="n">defaults</span> <span class="o">=</span> <span class="n">Defaults</span><span class="p">()</span>
-        <span class="n">defaults</span><span class="o">.</span><span class="n">to_profile</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
         <span class="n">setup</span> <span class="o">=</span> <span class="n">SystemSetup</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span>
         <span class="p">)</span>
-        <span class="n">setup</span><span class="o">.</span><span class="n">import_shell_environment</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">setup_machine_id</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dracut_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--install&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dracut_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/.profile&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BootImageDracut.create_initrd"><a class="viewcode-back" href="../../../../api/kiwi.boot.image.html#kiwi.boot.image.dracut.BootImageDracut.create_initrd">[docs]</a>    <span class="k">def</span> <span class="nf">create_initrd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mbrid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">basename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">install_initrd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create kiwi .profile environment to be included in dracut initrd.</span>
 <span class="sd">        Call dracut as chroot operation to create the initrd and move</span>
 <span class="sd">        the result into the image build target directory</span>
 
@@ -845,6 +846,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_prepared</span><span class="p">():</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating generic dracut initrd archive&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_create_profile_environment</span><span class="p">()</span>
             <span class="n">kernel_info</span> <span class="o">=</span> <span class="n">Kernel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">)</span>
             <span class="n">kernel_details</span> <span class="o">=</span> <span class="n">kernel_info</span><span class="o">.</span><span class="n">get_kernel</span><span class="p">(</span><span class="n">raise_on_not_found</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">basename</span><span class="p">:</span>
@@ -913,7 +915,15 @@
         <span class="k">if</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_modules</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">warn_msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">module</span><span class="p">))</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">_create_profile_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="n">Profile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">)</span>
+        <span class="n">defaults</span> <span class="o">=</span> <span class="n">Defaults</span><span class="p">()</span>
+        <span class="n">defaults</span><span class="o">.</span><span class="n">to_profile</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">Defaults</span><span class="o">.</span><span class="n">get_profile_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">)</span>
+        <span class="p">)</span></div>
 </pre></div>
 
            </div>

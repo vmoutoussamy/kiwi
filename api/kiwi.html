@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi Package &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi Package &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -237,6 +237,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -1650,6 +1655,23 @@ stores the EFI binaries for the desired architecture.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.defaults.Defaults.get_exclude_list_for_non_physical_devices">
+<code class="sig-name descname">get_exclude_list_for_non_physical_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_exclude_list_for_non_physical_devices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_exclude_list_for_non_physical_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides the list of folders that are not associated
+with a physical device. KIWI returns the basename of
+the folders typically used as mountpoint for those
+devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of file and directory names</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.defaults.Defaults.get_exclude_list_for_root_data_sync">
 <em class="property">static </em><code class="sig-name descname">get_exclude_list_for_root_data_sync</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_exclude_list_for_root_data_sync"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_exclude_list_for_root_data_sync" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides the list of files or folders that are created
@@ -2102,6 +2124,12 @@ buildservice repositories</p>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.defaults.Defaults.get_profile_file">
+<code class="sig-name descname">get_profile_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_profile_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_profile_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return name of profile file for given root directory</p>
 </dd></dl>
 
 <dl class="method">
@@ -3411,10 +3439,10 @@ dependant information</p>
 <dd><p>Check if EFI mode is requested</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>True or False</p>
+<dd class="field-odd"><p>The requested EFI mode or None if no EFI mode requested</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4198,6 +4226,13 @@ or boot problems early.</p>
 </dl>
 </li>
 </ul>
+<dl class="method">
+<dt id="kiwi.runtime_checker.RuntimeChecker.check_appx_naming_conventions_valid">
+<code class="sig-name descname">check_appx_naming_conventions_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_appx_naming_conventions_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_appx_naming_conventions_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>When building wsl images there are some naming conventions that
+must be fulfilled to run the container on Microsoft Windows</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="kiwi.runtime_checker.RuntimeChecker.check_architecture_supports_iso_firmware_setup">
 <code class="sig-name descname">check_architecture_supports_iso_firmware_setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/runtime_checker.html#RuntimeChecker.check_architecture_supports_iso_firmware_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.runtime_checker.RuntimeChecker.check_architecture_supports_iso_firmware_setup" title="Permalink to this definition">¶</a></dt>
@@ -5578,6 +5613,12 @@ image matching configured profiles.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kiwi.xml_state.XMLState.get_root_partition_uuid">
+<code class="sig-name descname">get_root_partition_uuid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_root_partition_uuid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_root_partition_uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return preserved PARTUUID</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kiwi.xml_state.XMLState.get_rpm_check_signatures">
 <code class="sig-name descname">get_rpm_check_signatures</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_rpm_check_signatures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_rpm_check_signatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the rpm-check-signatures configuration flag. Returns
@@ -6053,6 +6094,17 @@ must be already present in the image configuration</p>
 <li><p><strong>repo_imageinclude</strong> (<em>boolean</em>) – setup repository inside of the image</p></li>
 <li><p><strong>repo_package_gpgcheck</strong> (<em>boolean</em>) – enable/disable package gpg checks</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kiwi.xml_state.XMLState.set_root_partition_uuid">
+<code class="sig-name descname">set_root_partition_uuid</code><span class="sig-paren">(</span><em class="sig-param">uuid</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.set_root_partition_uuid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.set_root_partition_uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store PARTUUID provided in uuid as state information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uuid</strong> (<em>string</em>) – PARTUUID</p>
 </dd>
 </dl>
 </dd></dl>

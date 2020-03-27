@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image Package &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.boot.image Package &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -237,6 +237,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -915,7 +920,8 @@ recreation, thus this method is a noop in that case.</p>
 <dl class="method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.create_initrd">
 <code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param">mbrid=None</em>, <em class="sig-param">basename=None</em>, <em class="sig-param">install_initrd=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.create_initrd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Call dracut as chroot operation to create the initrd and move
+<dd><p>Create kiwi .profile environment to be included in dracut initrd.
+Call dracut as chroot operation to create the initrd and move
 the result into the image build target directory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -979,7 +985,6 @@ the result into the image build target directory</p>
 <code class="sig-name descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.prepare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.prepare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare dracut caller environment</p>
 <ul class="simple">
-<li><p>Create kiwi .profile environment to be included in dracut initrd</p></li>
 <li><p>Setup machine_id(s) to be generic and rebuild by dracut on boot</p></li>
 </ul>
 </dd></dl>

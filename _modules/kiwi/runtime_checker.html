@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.runtime_checker &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.runtime_checker &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -706,6 +711,7 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">platform</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
 
@@ -968,6 +974,42 @@
                 <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">):</span>
                 <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RuntimeChecker.check_appx_naming_conventions_valid"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_appx_naming_conventions_valid">[docs]</a>    <span class="k">def</span> <span class="nf">check_appx_naming_conventions_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        When building wsl images there are some naming conventions that</span>
+<span class="sd">        must be fulfilled to run the container on Microsoft Windows</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">launcher_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;[^</span><span class="se">\\</span><span class="s1">]+(\.[Ee][Xx][Ee])$&#39;</span>
+        <span class="n">message_container_launcher_invalid</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
+<span class="s1">            Invalid WSL launcher name: </span><span class="si">{0}</span><span class="s1"></span>
+
+<span class="s1">            WSL launcher name must match the pattern: </span><span class="si">{1}</span><span class="s1"></span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">id_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^[a-zA-Z0-9]+$&#39;</span>
+        <span class="n">message_container_id_invalid</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1"></span>
+<span class="s1">            Invalid WSL container application id: </span><span class="si">{0}</span><span class="s1"></span>
+
+<span class="s1">            WSL container id must match the pattern: </span><span class="si">{1}</span><span class="s1"></span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">build_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span>
+        <span class="n">container_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_container_config</span><span class="p">()</span>
+        <span class="n">container_history</span> <span class="o">=</span> <span class="n">container_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">build_type</span> <span class="o">==</span> <span class="s1">&#39;appx&#39;</span> <span class="ow">and</span> <span class="n">container_config</span><span class="p">:</span>
+            <span class="n">launcher</span> <span class="o">=</span> <span class="n">container_history</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;launcher&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">launcher</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">launcher_pattern</span><span class="p">,</span> <span class="n">launcher</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
+                    <span class="n">message_container_launcher_invalid</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">launcher</span><span class="p">,</span> <span class="n">launcher_pattern</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="n">application_id</span> <span class="o">=</span> <span class="n">container_history</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;application_id&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">application_id</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">id_pattern</span><span class="p">,</span> <span class="n">application_id</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">KiwiRuntimeError</span><span class="p">(</span>
+                    <span class="n">message_container_id_invalid</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">application_id</span><span class="p">,</span> <span class="n">id_pattern</span>
+                    <span class="p">)</span>
+                <span class="p">)</span></div>
 
 <div class="viewcode-block" id="RuntimeChecker.check_boot_description_exists"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_boot_description_exists">[docs]</a>    <span class="k">def</span> <span class="nf">check_boot_description_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

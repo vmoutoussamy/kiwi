@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.container &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.container &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -707,6 +712,7 @@
 <span class="c1">#</span>
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.container.oci</span> <span class="kn">import</span> <span class="n">ContainerImageOCI</span>
+<span class="kn">from</span> <span class="nn">kiwi.container.appx</span> <span class="kn">import</span> <span class="n">ContainerImageAppx</span>
 
 <span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">KiwiContainerImageSetupError</span>
@@ -730,9 +736,13 @@
             <span class="k">return</span> <span class="n">ContainerImageOCI</span><span class="p">(</span>
                 <span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;oci-archive&#39;</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="n">custom_args</span>
             <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;appx&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ContainerImageAppx</span><span class="p">(</span>
+                <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="n">custom_args</span>
+            <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiContainerImageSetupError</span><span class="p">(</span>
-                <span class="s1">&#39;Support for </span><span class="si">%s</span><span class="s1"> container not implemented&#39;</span> <span class="o">%</span> <span class="n">name</span>
+                <span class="s1">&#39;Support for </span><span class="si">{0}</span><span class="s1"> container not implemented&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
             <span class="p">)</span></div>
 </pre></div>
 

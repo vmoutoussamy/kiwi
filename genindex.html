@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>Index &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -236,6 +236,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -840,6 +845,8 @@
 </li>
       <li><a href="api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_image_script">call_image_script() (kiwi.system.setup.SystemSetup method)</a>
 </li>
+      <li><a href="api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_appx_naming_conventions_valid">check_appx_naming_conventions_valid() (kiwi.runtime_checker.RuntimeChecker method)</a>
+</li>
       <li><a href="api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_architecture_supports_iso_firmware_setup">check_architecture_supports_iso_firmware_setup() (kiwi.runtime_checker.RuntimeChecker method)</a>
 </li>
       <li><a href="api/kiwi.html#kiwi.runtime_checker.RuntimeChecker.check_boot_description_exists">check_boot_description_exists() (kiwi.runtime_checker.RuntimeChecker method)</a>
@@ -1024,12 +1031,8 @@
 </li>
       <li><a href="api/kiwi.bootloader.config.html#kiwi.bootloader.config.base.BootLoaderConfigBase.create_efi_path">create_efi_path() (kiwi.bootloader.config.base.BootLoaderConfigBase method)</a>
 </li>
-      <li><a href="api/kiwi.container.setup.html#kiwi.container.setup.base.ContainerSetupBase.create_fstab">create_fstab() (kiwi.container.setup.base.ContainerSetupBase method)</a>
-
-      <ul>
-        <li><a href="api/kiwi.system.html#kiwi.system.setup.SystemSetup.create_fstab">(kiwi.system.setup.SystemSetup method)</a>
+      <li><a href="api/kiwi.system.html#kiwi.system.setup.SystemSetup.create_fstab">create_fstab() (kiwi.system.setup.SystemSetup method)</a>
 </li>
-      </ul></li>
       <li><a href="api/kiwi.archive.html#kiwi.archive.tar.ArchiveTar.create_gnu_gzip_compressed">create_gnu_gzip_compressed() (kiwi.archive.tar.ArchiveTar method)</a>
 </li>
       <li><a href="api/kiwi.iso_tools.html#kiwi.iso_tools.iso.Iso.create_header_end_block">create_header_end_block() (kiwi.iso_tools.iso.Iso method)</a>
@@ -1574,6 +1577,8 @@
 </li>
       <li><a href="api/kiwi.html#kiwi.command_process.CommandIterator.get_error_output">get_error_output() (kiwi.command_process.CommandIterator method)</a>
 </li>
+      <li><a href="api/kiwi.html#kiwi.defaults.Defaults.get_exclude_list_for_non_physical_devices">get_exclude_list_for_non_physical_devices() (kiwi.defaults.Defaults method)</a>
+</li>
       <li><a href="api/kiwi.html#kiwi.defaults.Defaults.get_exclude_list_for_root_data_sync">get_exclude_list_for_root_data_sync() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="api/kiwi.html#kiwi.xml_description.XMLDescription.get_extension_xml_data">get_extension_xml_data() (kiwi.xml_description.XMLDescription method)</a>
@@ -1620,10 +1625,10 @@
 </li>
       <li><a href="api/kiwi.html#kiwi.defaults.Defaults.get_grub_efi_modules">get_grub_efi_modules() (kiwi.defaults.Defaults static method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/kiwi.html#kiwi.defaults.Defaults.get_grub_ofw_modules">get_grub_ofw_modules() (kiwi.defaults.Defaults static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/kiwi.html#kiwi.defaults.Defaults.get_grub_path">get_grub_path() (kiwi.defaults.Defaults static method)</a>
 </li>
       <li><a href="api/kiwi.repository.template.html#kiwi.repository.template.apt.PackageManagerTemplateAptGet.get_host_template">get_host_template() (kiwi.repository.template.apt.PackageManagerTemplateAptGet method)</a>
@@ -1746,6 +1751,8 @@
 </li>
       <li><a href="api/kiwi.html#kiwi.xml_state.XMLState.get_products">get_products() (kiwi.xml_state.XMLState method)</a>
 </li>
+      <li><a href="api/kiwi.html#kiwi.defaults.Defaults.get_profile_file">get_profile_file() (kiwi.defaults.Defaults method)</a>
+</li>
       <li><a href="api/kiwi.storage.html#kiwi.storage.disk.Disk.get_public_partition_id_map">get_public_partition_id_map() (kiwi.storage.disk.Disk method)</a>
 </li>
       <li><a href="api/kiwi.html#kiwi.defaults.Defaults.get_publisher">get_publisher() (kiwi.defaults.Defaults static method)</a>
@@ -1763,6 +1770,8 @@
       <li><a href="api/kiwi.system.html#kiwi.system.result.Result.get_results">get_results() (kiwi.system.result.Result method)</a>
 </li>
       <li><a href="api/kiwi.storage.html#kiwi.storage.setup.DiskSetup.get_root_label">get_root_label() (kiwi.storage.setup.DiskSetup method)</a>
+</li>
+      <li><a href="api/kiwi.html#kiwi.xml_state.XMLState.get_root_partition_uuid">get_root_partition_uuid() (kiwi.xml_state.XMLState method)</a>
 </li>
       <li><a href="api/kiwi.html#kiwi.xml_state.XMLState.get_rpm_check_signatures">get_rpm_check_signatures() (kiwi.xml_state.XMLState method)</a>
 </li>
@@ -1943,8 +1952,6 @@
       <li><a href="api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_overlay_files">import_overlay_files() (kiwi.system.setup.SystemSetup method)</a>
 </li>
       <li><a href="api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_repositories_marked_as_imageinclude">import_repositories_marked_as_imageinclude() (kiwi.system.setup.SystemSetup method)</a>
-</li>
-      <li><a href="api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_shell_environment">import_shell_environment() (kiwi.system.setup.SystemSetup method)</a>
 </li>
       <li><a href="api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.import_system_description_elements">import_system_description_elements() (kiwi.boot.image.base.BootImageBase method)</a>
 </li>
@@ -3059,6 +3066,8 @@
 </li>
       </ul></li>
       <li><a href="api/kiwi.html#kiwi.xml_state.XMLState.set_repository">set_repository() (kiwi.xml_state.XMLState method)</a>
+</li>
+      <li><a href="api/kiwi.html#kiwi.xml_state.XMLState.set_root_partition_uuid">set_root_partition_uuid() (kiwi.xml_state.XMLState method)</a>
 </li>
       <li><a href="api/kiwi.system.html#kiwi.system.setup.SystemSetup.set_selinux_file_contexts">set_selinux_file_contexts() (kiwi.system.setup.SystemSetup method)</a>
 </li>

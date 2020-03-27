@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.profile &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.system.profile &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -705,12 +710,16 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">NamedTemporaryFile</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.shell</span> <span class="kn">import</span> <span class="n">Shell</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="kn">import</span> <span class="n">Defaults</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;kiwi&#39;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="Profile"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.profile.Profile">[docs]</a><span class="k">class</span> <span class="nc">Profile</span><span class="p">:</span>
@@ -737,6 +746,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_strip_to_profile</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_oemconfig_to_profile</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_drivers_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root_partition_uuid_to_profile</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Profile.add"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.profile.Profile.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -751,13 +761,11 @@
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Profile.create"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.profile.Profile.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Profile.create"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.profile.Profile.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create bash quoted profile</span>
 
-<span class="sd">        :return: profile dump for bash</span>
-
-<span class="sd">        :rtype: str</span>
+<span class="sd">        :param str filename: file path name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sorted_profile</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">(</span>
             <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
@@ -769,7 +777,11 @@
                     <span class="n">profile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
                         <span class="nb">format</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
                     <span class="p">)</span>
-        <span class="k">return</span> <span class="n">Shell</span><span class="o">.</span><span class="n">quote_key_value_file</span><span class="p">(</span><span class="n">temp_profile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
+        <span class="n">profile_environment</span> <span class="o">=</span> <span class="n">Shell</span><span class="o">.</span><span class="n">quote_key_value_file</span><span class="p">(</span><span class="n">temp_profile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">profile</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">profile_environment</span><span class="p">:</span>
+                <span class="n">profile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;--&gt; </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line</span><span class="p">))</span></div>
 
     <span class="k">def</span> <span class="nf">_oemconfig_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># kiwi_oemvmcp_parmfile</span>
@@ -777,6 +789,7 @@
         <span class="c1"># kiwi_oemswapMB</span>
         <span class="c1"># kiwi_oemrootMB</span>
         <span class="c1"># kiwi_oemswap</span>
+        <span class="c1"># kiwi_oemresizeonce</span>
         <span class="c1"># kiwi_oempartition_install</span>
         <span class="c1"># kiwi_oemdevicefilter</span>
         <span class="c1"># kiwi_oemtitle</span>
@@ -817,6 +830,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemswap&#39;</span><span class="p">]</span> <span class="o">=</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemresizeonce&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_resize_once</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oempartition_install&#39;</span><span class="p">]</span> <span class="o">=</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_partition_install</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemdevicefilter&#39;</span><span class="p">]</span> <span class="o">=</span> \
@@ -1044,6 +1059,11 @@
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;cpio&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_cpio_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_iname&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_root_partition_uuid_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_rootpartuuid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_rootpartuuid&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_root_partition_uuid</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_content</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

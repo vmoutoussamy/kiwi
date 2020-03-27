@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; KIWI NG 9.20.4 documentation</title>
+  <title>kiwi.defaults &mdash; KIWI NG 9.20.5 documentation</title>
   
 
   
@@ -235,6 +235,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
@@ -908,6 +913,22 @@
             <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;.profile&#39;</span><span class="p">,</span> <span class="s1">&#39;.kconfig&#39;</span><span class="p">,</span>
             <span class="n">Defaults</span><span class="o">.</span><span class="n">get_buildservice_env_name</span><span class="p">(),</span>
             <span class="n">Defaults</span><span class="o">.</span><span class="n">get_shared_cache_location</span><span class="p">()</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">exclude_list</span></div>
+
+<div class="viewcode-block" id="Defaults.get_exclude_list_for_non_physical_devices"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_exclude_list_for_non_physical_devices">[docs]</a>    <span class="k">def</span> <span class="nf">get_exclude_list_for_non_physical_devices</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides the list of folders that are not associated</span>
+<span class="sd">        with a physical device. KIWI returns the basename of</span>
+<span class="sd">        the folders typically used as mountpoint for those</span>
+<span class="sd">        devices.</span>
+
+<span class="sd">        :return: list of file and directory names</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">exclude_list</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;proc&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;dev&#39;</span>
         <span class="p">]</span>
         <span class="k">return</span> <span class="n">exclude_list</span></div>
 
@@ -1770,7 +1791,7 @@
 
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;oci&#39;</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;oci&#39;</span><span class="p">,</span> <span class="s1">&#39;appx&#39;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Defaults.get_filesystem_image_types"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_filesystem_image_types">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_filesystem_image_types</span><span class="p">():</span>
@@ -2168,6 +2189,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaults</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaults</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_profile_file"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_profile_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_profile_file</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return name of profile file for given root directory</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/.profile&#39;</span></div>
 
 <div class="viewcode-block" id="Defaults.to_profile"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.to_profile">[docs]</a>    <span class="k">def</span> <span class="nf">to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
