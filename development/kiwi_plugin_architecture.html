@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Plugin Architecture &mdash; KIWI NG 9.20.5 documentation</title>
+  <title>Plugin Architecture &mdash; KIWI NG 9.20.6 documentation</title>
   
 
   
@@ -722,9 +722,10 @@ the plugin, KIWI NG expects an implementation of the
 </dd>
 <dt>Task Plugin Entry Point</dt><dd><p>Registration of the plugin must be done in <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code>
 using the <code class="docutils literal notranslate"><span class="pre">entry_points</span></code> concept from Python’s setuptools.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;entry_points&#39;</span><span class="p">:</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;packages&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;kiwi_plugin&#39;</span><span class="p">],</span>
+<span class="s1">&#39;entry_points&#39;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">&#39;kiwi.tasks&#39;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s1">&#39;service_command=kiwi.tasks.service_command&#39;</span>
+        <span class="s1">&#39;service_command=kiwi_plugin.tasks.service_command&#39;</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -741,21 +742,25 @@ which was set up according to the Python project rules
 and standards.</p>
 </div>
 <ol class="arabic">
-<li><p>Create the task plugin directory <code class="file docutils literal notranslate"><span class="pre">kiwi/tasks</span></code></p></li>
+<li><p>Assuming the project namespace is <strong>kiwi_relax_plugin</strong>.</p>
+<p>Create the task plugin directory <code class="file docutils literal notranslate"><span class="pre">kiwi_relax_plugin/tasks</span></code></p>
+</li>
 <li><p>Create the entry point in <strong class="command">setup.py</strong>.</p>
 <p>Assuming we want to create the service named <strong>relax</strong> providing
 the command <strong>justdoit</strong> this would be the following entry point
 definition in <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;entry_points&#39;</span><span class="p">:</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;packages&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;kiwi_relax_plugin&#39;</span><span class="p">],</span>
+<span class="s1">&#39;entry_points&#39;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">&#39;kiwi.tasks&#39;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s1">&#39;relax_justdoit=kiwi.tasks.relax_justdoit&#39;</span>
+        <span class="s1">&#39;relax_justdoit=kiwi_relax_plugin.tasks.relax_justdoit&#39;</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
-<li><p>Create the plugin code in the file <code class="file docutils literal notranslate"><span class="pre">kiwi/tasks/relax_justdoit.py</span></code>
-with the following content:</p>
+<li><p>Create the plugin code in the file
+<code class="file docutils literal notranslate"><span class="pre">kiwi_relax_plugin/tasks/relax_justdoit.py</span></code> with the following
+content:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">usage: kiwi-ng relax justdoit -h | --help</span>
 <span class="sd">       kiwi-ng relax justdoit --now</span>
@@ -775,7 +780,7 @@ with the following content:</p>
 <span class="kn">from</span> <span class="nn">kiwi.tasks.base</span> <span class="kn">import</span> <span class="n">CliTask</span>
 <span class="kn">from</span> <span class="nn">kiwi.help</span> <span class="kn">import</span> <span class="n">Help</span>
 
-<span class="k">class</span> <span class="nc">RelaxJustDoItTask</span><span class="p">(</span><span class="n">CliTask</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">RelaxJustdoitTask</span><span class="p">(</span><span class="n">CliTask</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">manual</span> <span class="o">=</span> <span class="n">Help</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>

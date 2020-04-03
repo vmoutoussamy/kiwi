@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview &mdash; KIWI NG 9.20.5 documentation</title>
+  <title>Overview &mdash; KIWI NG 9.20.6 documentation</title>
   
 
   
@@ -704,7 +704,7 @@
 <p>This document provides a conceptual overview about the steps
 of creating an image with KIWI NG. It also explains the terminology
 regarding the concept and process when building system images
-with KIWI NG 9.20.5.</p>
+with KIWI NG 9.20.6.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
@@ -749,9 +749,12 @@ build process or of the initial start-up behavior of the image.</p>
 <dt>Overlay Files</dt><dd><p>A directory structure with files and subdirectories stored as part
 of the Image Description. This directory structure is packaged as
 a file <code class="file docutils literal notranslate"><span class="pre">root.tar.gz</span></code> or stored inside a directory named
-<code class="file docutils literal notranslate"><span class="pre">root</span></code>. The content of the directory structure is copied on top of
-the the existing file system (overlayed) of the appliance root.
-This also includes permissions and attributes as a supplement.</p>
+<code class="file docutils literal notranslate"><span class="pre">root</span></code>. Additional overlay directories for selected profiles
+are supported too and are taken into account if the directory
+name matches the name of the profile. The content of each of the
+directory structures is copied on top of the the existing file
+system (overlayed) of the appliance root. This also includes
+permissions and attributes as a supplement.</p>
 </dd>
 <dt>KIWI NG</dt><dd><p>An OS appliance builder.</p>
 </dd>

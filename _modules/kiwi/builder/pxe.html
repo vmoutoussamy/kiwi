@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.pxe &mdash; KIWI NG 9.20.5 documentation</title>
+  <title>kiwi.builder.pxe &mdash; KIWI NG 9.20.6 documentation</title>
   
 
   
@@ -751,9 +751,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">compressed</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_compressed</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xen_server</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">is_xen_server</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_cmdline</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_kernelcmdline</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystemBuilder</span><span class="p">(</span>
-            <span class="n">xml_state</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">,</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span> <span class="o">=</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_filesystem</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystemBuilder</span><span class="p">(</span>
+                <span class="n">xml_state</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">,</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+            <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">system_setup</span> <span class="o">=</span> <span class="n">SystemSetup</span><span class="p">(</span>
             <span class="n">xml_state</span><span class="o">=</span><span class="n">xml_state</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="n">root_dir</span>
         <span class="p">)</span>
@@ -777,6 +779,7 @@
                 <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">xml_state</span><span class="o">.</span><span class="n">get_image_version</span><span class="p">()</span>
             <span class="p">]</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">append_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">image_name</span><span class="p">,</span> <span class="s1">&#39;.append&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">archive_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">image_name</span><span class="p">,</span> <span class="s1">&#39;.tar&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checksum_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">image_name</span><span class="p">,</span> <span class="s1">&#39;.md5&#39;</span><span class="p">])</span>
@@ -802,21 +805,22 @@
 
 <span class="sd">        :rtype: instance of :class:`Result`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating PXE root filesystem image&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_name</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_name</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">compressed</span><span class="p">:</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;xz compressing root filesystem image&#39;</span><span class="p">)</span>
-            <span class="n">compress</span> <span class="o">=</span> <span class="n">Compress</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
-            <span class="n">compress</span><span class="o">.</span><span class="n">xz</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xz_options</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">compress</span><span class="o">.</span><span class="n">compressed_filename</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating PXE root filesystem image&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_name</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_name</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">compressed</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;xz compressing root filesystem image&#39;</span><span class="p">)</span>
+                <span class="n">compress</span> <span class="o">=</span> <span class="n">Compress</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
+                <span class="n">compress</span><span class="o">.</span><span class="n">xz</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xz_options</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">compress</span><span class="o">.</span><span class="n">compressed_filename</span>
 
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating PXE root filesystem MD5 checksum&#39;</span><span class="p">)</span>
-        <span class="n">checksum</span> <span class="o">=</span> <span class="n">Checksum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">checksum</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checksum_name</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating PXE root filesystem MD5 checksum&#39;</span><span class="p">)</span>
+            <span class="n">checksum</span> <span class="o">=</span> <span class="n">Checksum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
+            <span class="n">checksum</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checksum_name</span><span class="p">)</span>
 
         <span class="c1"># prepare boot(initrd) root system</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating PXE boot image&#39;</span><span class="p">)</span>
@@ -874,7 +878,8 @@
 
         <span class="c1"># create pxe config append information</span>
         <span class="c1"># this information helps to configure the boot server correctly</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">root_uuid</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">root_uuid</span> \
+           <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
             <span class="n">cmdline</span> <span class="o">=</span> <span class="s1">&#39;root=UUID=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">root_uuid</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_cmdline</span><span class="p">:</span>
                 <span class="n">cmdline</span> <span class="o">+=</span> <span class="s1">&#39; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_cmdline</span><span class="p">)</span>
@@ -888,11 +893,14 @@
         <span class="n">pxe_tarball_files</span> <span class="o">=</span> <span class="p">[</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">kernel_filename</span><span class="p">,</span>
             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_image_task</span><span class="o">.</span><span class="n">initrd_filename</span><span class="p">),</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">),</span>
             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checksum_name</span><span class="p">),</span>
         <span class="p">]</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">root_uuid</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">:</span>
+            <span class="n">pxe_tarball_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem</span><span class="o">.</span><span class="n">root_uuid</span> \
+           <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
             <span class="n">pxe_tarball_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">append_file</span><span class="p">))</span>
 
         <span class="n">pxe_tarball</span> <span class="o">=</span> <span class="n">ArchiveTar</span><span class="p">(</span>

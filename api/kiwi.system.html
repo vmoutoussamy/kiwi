@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system Package &mdash; KIWI NG 9.20.5 documentation</title>
+  <title>kiwi.system Package &mdash; KIWI NG 9.20.6 documentation</title>
   
 
   
@@ -1501,7 +1501,17 @@ script helper methods</p>
 <dd><p>Copy overlay files from the image description to
 the image root tree. Supported are a root/ directory
 or a root.tar.gz tarball. The root/ directory takes
-precedence over the tarball</p>
+precedence over the tarball.</p>
+<p>In addition the method also supports profile specific
+overlay files which are searched in a directory of the
+same name as the profile name.</p>
+<p>The overall order for including overlay files is as
+follows:</p>
+<ol class="arabic simple">
+<li><p>root/ dir or root.tar.gz</p></li>
+<li><p>PROFILE_NAME/ dir(s) in the order of the selected
+profiles</p></li>
+</ol>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
