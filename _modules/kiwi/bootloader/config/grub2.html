@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.7 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.8 documentation</title>
   
 
   
@@ -930,7 +930,7 @@
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_mkconfig_tool</span><span class="p">(),</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_mkconfig_tool</span><span class="p">()),</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span>
                 <span class="n">config_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="p">]</span>
         <span class="p">)</span>
@@ -1572,8 +1572,7 @@
 
     <span class="k">def</span> <span class="nf">_get_grub2_mkconfig_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">grub_mkconfig_tool</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;grub2-mkconfig&#39;</span><span class="p">,</span> <span class="s1">&#39;grub-mkconfig&#39;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">grub_mkconfig_tool</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">grub_mkconfig_tool</span>
+            <span class="k">return</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">grub_mkconfig_tool</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_get_grub2_boot_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span>
