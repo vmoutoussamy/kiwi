@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.repository Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.repository Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.repository.base">
 <span id="kiwi-repository-base-module"></span><h2><a class="reference internal" href="#module-kiwi.repository.base" title="kiwi.repository.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.repository.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.repository.base.RepositoryBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.base.</code><code class="sig-name descname">RepositoryBase</code><span class="sig-paren">(</span><em class="sig-param">root_bind</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.base.</code><code class="sig-name descname">RepositoryBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_bind</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Implements base class for package manager repository handling</p>
 <p>Attributes</p>
@@ -721,9 +721,9 @@ and build system root</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.add_repo">
-<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type</em>, <em class="sig-param">prio</em>, <em class="sig-param">dist</em>, <em class="sig-param">components</em>, <em class="sig-param">user</em>, <em class="sig-param">secret</em>, <em class="sig-param">credentials_file</em>, <em class="sig-param">repo_gpgcheck</em>, <em class="sig-param">pkg_gpgcheck</em>, <em class="sig-param">sourcetype</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.add_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">repo_type</span></em>, <em class="sig-param"><span class="n">prio</span></em>, <em class="sig-param"><span class="n">dist</span></em>, <em class="sig-param"><span class="n">components</span></em>, <em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">secret</span></em>, <em class="sig-param"><span class="n">credentials_file</span></em>, <em class="sig-param"><span class="n">repo_gpgcheck</span></em>, <em class="sig-param"><span class="n">pkg_gpgcheck</span></em>, <em class="sig-param"><span class="n">sourcetype</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.add_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add repository</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
@@ -746,7 +746,7 @@ and build system root</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.cleanup_unused_repos">
 <code class="sig-name descname">cleanup_unused_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.cleanup_unused_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.cleanup_unused_repos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cleanup/Delete unused repositories</p>
@@ -755,16 +755,16 @@ are allowed to be active when building</p>
 <p>Implementation in specialized repository class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.delete_all_repos">
 <code class="sig-name descname">delete_all_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.delete_all_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.delete_all_repos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete all repositories</p>
 <p>Implementation in specialized repository class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.delete_repo">
-<code class="sig-name descname">delete_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.delete_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.delete_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete_repo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.delete_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.delete_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete repository</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
@@ -774,9 +774,9 @@ are allowed to be active when building</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.delete_repo_cache">
-<code class="sig-name descname">delete_repo_cache</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.delete_repo_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.delete_repo_cache" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete_repo_cache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.delete_repo_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.delete_repo_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete repository cache</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
@@ -786,9 +786,9 @@ are allowed to be active when building</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.import_trusted_keys">
-<code class="sig-name descname">import_trusted_keys</code><span class="sig-paren">(</span><em class="sig-param">signing_keys</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.import_trusted_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.import_trusted_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">import_trusted_keys</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signing_keys</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.import_trusted_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.import_trusted_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imports trusted keys into the image</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
@@ -798,9 +798,9 @@ are allowed to be active when building</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Implementation in specialized repository class</p>
 <dl class="field-list simple">
@@ -810,21 +810,21 @@ are allowed to be active when building</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.runtime_config">
 <code class="sig-name descname">runtime_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.runtime_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.runtime_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Repository runtime configuration and environment</p>
 <p>Implementation in specialized repository class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.setup_package_database_configuration">
 <code class="sig-name descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package database configuration</p>
 <p>Implementation in specialized repository class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.base.RepositoryBase.use_default_location">
 <code class="sig-name descname">use_default_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/base.html#RepositoryBase.use_default_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.base.RepositoryBase.use_default_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call repository operations with default repository manager setup</p>
@@ -836,9 +836,9 @@ are allowed to be active when building</p>
 </div>
 <div class="section" id="module-kiwi.repository.dnf">
 <span id="kiwi-repository-dnf-module"></span><h2><a class="reference internal" href="#module-kiwi.repository.dnf" title="kiwi.repository.dnf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.dnf</span></code></a> Module<a class="headerlink" href="#module-kiwi.repository.dnf" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.repository.dnf.RepositoryDnf">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.dnf.</code><code class="sig-name descname">RepositoryDnf</code><span class="sig-paren">(</span><em class="sig-param">root_bind</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.dnf.</code><code class="sig-name descname">RepositoryDnf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_bind</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.repository.base.RepositoryBase" title="kiwi.repository.base.RepositoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.repository.base.RepositoryBase</span></code></a></p>
 <p><strong>Implements repository handling for dnf package manager</strong></p>
 <dl class="field-list simple">
@@ -852,9 +852,9 @@ and build system root</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.add_repo">
-<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type='rpm-md'</em>, <em class="sig-param">prio=None</em>, <em class="sig-param">dist=None</em>, <em class="sig-param">components=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em>, <em class="sig-param">credentials_file=None</em>, <em class="sig-param">repo_gpgcheck=None</em>, <em class="sig-param">pkg_gpgcheck=None</em>, <em class="sig-param">sourcetype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.add_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">repo_type</span><span class="o">=</span><span class="default_value">'rpm-md'</span></em>, <em class="sig-param"><span class="n">prio</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dist</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">components</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">secret</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">credentials_file</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">repo_gpgcheck</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">pkg_gpgcheck</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sourcetype</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.add_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add dnf repository</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -876,7 +876,7 @@ and build system root</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.cleanup_unused_repos">
 <code class="sig-name descname">cleanup_unused_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.cleanup_unused_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.cleanup_unused_repos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete unused dnf repositories</p>
@@ -885,15 +885,15 @@ must be removed otherwise they are taken into account for
 the package installations</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.delete_all_repos">
 <code class="sig-name descname">delete_all_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.delete_all_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.delete_all_repos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete all dnf repositories</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.delete_repo">
-<code class="sig-name descname">delete_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.delete_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.delete_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete_repo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.delete_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.delete_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete dnf repository</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -902,9 +902,9 @@ the package installations</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.delete_repo_cache">
-<code class="sig-name descname">delete_repo_cache</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.delete_repo_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.delete_repo_cache" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete_repo_cache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.delete_repo_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.delete_repo_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete dnf repository cache</p>
 <p>The cache data for each repository is stored in a directory
 and additional files all starting with the repository name.
@@ -918,9 +918,9 @@ the cache information</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.import_trusted_keys">
-<code class="sig-name descname">import_trusted_keys</code><span class="sig-paren">(</span><em class="sig-param">signing_keys</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.import_trusted_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.import_trusted_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">import_trusted_keys</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signing_keys</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.import_trusted_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.import_trusted_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imports trusted keys into the image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -929,9 +929,9 @@ the cache information</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Store custom dnf arguments and create runtime configuration
 and environment</p>
@@ -942,7 +942,7 @@ and environment</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.runtime_config">
 <code class="sig-name descname">runtime_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.runtime_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.runtime_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>dnf runtime configuration and environment</p>
@@ -956,7 +956,7 @@ and environment</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.setup_package_database_configuration">
 <code class="sig-name descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup rpm macros for bootstrapping and image building</p>
@@ -969,7 +969,7 @@ image was already bootstrapped a compat link is created instead.</p></li>
 </ol>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.dnf.RepositoryDnf.use_default_location">
 <code class="sig-name descname">use_default_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/dnf.html#RepositoryDnf.use_default_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.dnf.RepositoryDnf.use_default_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup dnf repository operations to store all data
@@ -981,9 +981,9 @@ in the default places</p>
 </div>
 <div class="section" id="module-kiwi.repository.zypper">
 <span id="kiwi-repository-zypper-module"></span><h2><a class="reference internal" href="#module-kiwi.repository.zypper" title="kiwi.repository.zypper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.zypper</span></code></a> Module<a class="headerlink" href="#module-kiwi.repository.zypper" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.repository.zypper.RepositoryZypper">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.zypper.</code><code class="sig-name descname">RepositoryZypper</code><span class="sig-paren">(</span><em class="sig-param">root_bind</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.zypper.</code><code class="sig-name descname">RepositoryZypper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_bind</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.repository.base.RepositoryBase" title="kiwi.repository.base.RepositoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.repository.base.RepositoryBase</span></code></a></p>
 <p><strong>Implements repo handling for zypper package manager</strong></p>
 <dl class="field-list simple">
@@ -999,9 +999,9 @@ and build system root</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.add_repo">
-<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">uri</em>, <em class="sig-param">repo_type='rpm-md'</em>, <em class="sig-param">prio=None</em>, <em class="sig-param">dist=None</em>, <em class="sig-param">components=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em>, <em class="sig-param">credentials_file=None</em>, <em class="sig-param">repo_gpgcheck=None</em>, <em class="sig-param">pkg_gpgcheck=None</em>, <em class="sig-param">sourcetype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.add_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_repo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">repo_type</span><span class="o">=</span><span class="default_value">'rpm-md'</span></em>, <em class="sig-param"><span class="n">prio</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dist</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">components</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">secret</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">credentials_file</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">repo_gpgcheck</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">pkg_gpgcheck</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sourcetype</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.add_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.add_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add zypper repository</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1023,7 +1023,7 @@ and build system root</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.cleanup_unused_repos">
 <code class="sig-name descname">cleanup_unused_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.cleanup_unused_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.cleanup_unused_repos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete unused zypper repositories</p>
@@ -1036,15 +1036,15 @@ this build must be removed too, otherwise they are taken into
 account for the package installations</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.delete_all_repos">
 <code class="sig-name descname">delete_all_repos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.delete_all_repos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.delete_all_repos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete all zypper repositories</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.delete_repo">
-<code class="sig-name descname">delete_repo</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.delete_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.delete_repo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete_repo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.delete_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.delete_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete zypper repository</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1053,9 +1053,9 @@ account for the package installations</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.delete_repo_cache">
-<code class="sig-name descname">delete_repo_cache</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.delete_repo_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.delete_repo_cache" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete_repo_cache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.delete_repo_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.delete_repo_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete zypper repository cache</p>
 <p>The cache data for each repository is stored in a list of
 directories of the same name as the repository name. The method
@@ -1067,9 +1067,9 @@ deletes these directories to cleanup the cache information</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.import_trusted_keys">
-<code class="sig-name descname">import_trusted_keys</code><span class="sig-paren">(</span><em class="sig-param">signing_keys</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.import_trusted_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.import_trusted_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">import_trusted_keys</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signing_keys</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.import_trusted_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.import_trusted_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imports trusted keys into the image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1078,9 +1078,9 @@ deletes these directories to cleanup the cache information</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Store custom zypper arguments and create runtime configuration
 and environment</p>
@@ -1091,13 +1091,13 @@ and environment</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.runtime_config">
 <code class="sig-name descname">runtime_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.runtime_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.runtime_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>zypper runtime configuration and environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.setup_package_database_configuration">
 <code class="sig-name descname">setup_package_database_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.setup_package_database_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.setup_package_database_configuration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup rpm macros for bootstrapping and image building</p>
@@ -1111,7 +1111,7 @@ image was already bootstrapped a compat link is created instead.</p></li>
 </ol>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.repository.zypper.RepositoryZypper.use_default_location">
 <code class="sig-name descname">use_default_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/repository/zypper.html#RepositoryZypper.use_default_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.zypper.RepositoryZypper.use_default_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup zypper repository operations to store all data
@@ -1123,7 +1123,7 @@ in the default places</p>
 </div>
 <div class="section" id="module-kiwi.repository">
 <span id="module-contents"></span><span id="db-kiwi-repository-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.repository" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.repository.Repository">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.repository.</code><code class="sig-name descname">Repository</code><a class="reference internal" href="../_modules/kiwi/repository.html#Repository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.repository.Repository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

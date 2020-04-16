@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.boot.image Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.boot.image.base">
 <span id="kiwi-boot-image-base-module"></span><h2><a class="reference internal" href="#module-kiwi.boot.image.base" title="kiwi.boot.image.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.boot.image.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.boot.image.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.boot.image.base.BootImageBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.base.</code><code class="sig-name descname">BootImageBase</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">signing_keys=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.base.</code><code class="sig-name descname">BootImageBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">signing_keys</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class for boot image(initrd) task</strong></p>
 <dl class="field-list simple">
@@ -720,9 +720,9 @@
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.create_initrd">
-<code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param">mbrid=None</em>, <em class="sig-param">basename=None</em>, <em class="sig-param">install_initrd=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.create_initrd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mbrid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">basename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">install_initrd</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.create_initrd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements creation of the initrd</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -736,15 +736,15 @@
 <p>Implementation in specialized boot image class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.disable_cleanup">
 <code class="sig-name descname">disable_cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.disable_cleanup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.disable_cleanup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deactivate cleanup(deletion) of boot root directory</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.dump">
-<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.dump" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.dump" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pickle dump this instance to a file. If the object dump
 is requested the destructor code will also be disabled
 in order to preserve the generated data</p>
@@ -755,13 +755,13 @@ in order to preserve the generated data</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.enable_cleanup">
 <code class="sig-name descname">enable_cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.enable_cleanup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.enable_cleanup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Activate cleanup(deletion) of boot root directory</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.get_boot_description_directory">
 <code class="sig-name descname">get_boot_description_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.get_boot_description_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.get_boot_description_directory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide path to the boot image XML description</p>
@@ -775,7 +775,7 @@ in order to preserve the generated data</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.get_boot_names">
 <code class="sig-name descname">get_boot_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.get_boot_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.get_boot_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides kernel and initrd names for the boot image</p>
@@ -796,16 +796,16 @@ in order to preserve the generated data</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.import_system_description_elements">
 <code class="sig-name descname">import_system_description_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.import_system_description_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.import_system_description_elements" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copy information from the system image relevant to create the
 boot image to the boot image state XML description</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.include_file">
-<code class="sig-name descname">include_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.include_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.include_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">include_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">install_media</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.include_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.include_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Include file to boot image</p>
 <p>For kiwi boot images this is done by adding package or
 archive definitions with the bootinclude attribute. Thus
@@ -820,9 +820,9 @@ for kiwi boot images the method is a noop</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.include_module">
-<code class="sig-name descname">include_module</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.include_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.include_module" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">include_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em>, <em class="sig-param"><span class="n">install_media</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.include_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.include_module" title="Permalink to this definition">¶</a></dt>
 <dd><p>Include module to boot image</p>
 <p>For kiwi boot no modules configuration is required. Thus in
 such a case this method is a noop.</p>
@@ -836,7 +836,7 @@ such a case this method is a noop.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.is_prepared">
 <code class="sig-name descname">is_prepared</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.is_prepared"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.is_prepared" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if initrd system is prepared.</p>
@@ -850,16 +850,16 @@ such a case this method is a noop.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.load_boot_xml_description">
 <code class="sig-name descname">load_boot_xml_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.load_boot_xml_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.load_boot_xml_description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the boot image description referenced by the system image
 description boot attribute</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.omit_module">
-<code class="sig-name descname">omit_module</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.omit_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.omit_module" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">omit_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em>, <em class="sig-param"><span class="n">install_media</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.omit_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.omit_module" title="Permalink to this definition">¶</a></dt>
 <dd><p>Omit module to boot image</p>
 <p>For kiwi boot no modules configuration is required. Thus in
 such a case this method is a noop.</p>
@@ -873,14 +873,14 @@ such a case this method is a noop.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Implementation in specialized boot image class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.prepare">
 <code class="sig-name descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.prepare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.prepare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare new root system to create initrd from. Implementation
@@ -888,9 +888,9 @@ is only needed if there is no other root system available</p>
 <p>Implementation in specialized boot image class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.write_system_config_file">
-<code class="sig-name descname">write_system_config_file</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">config_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.write_system_config_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.write_system_config_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">write_system_config_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">config_file</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.write_system_config_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.write_system_config_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes relevant boot image configuration into configuration file
 that will be part of the system image.</p>
 <p>This is used to configure any further boot image rebuilds after
@@ -912,14 +912,14 @@ recreation, thus this method is a noop in that case.</p>
 </div>
 <div class="section" id="module-kiwi.boot.image.dracut">
 <span id="kiwi-boot-image-dracut-module"></span><h2><a class="reference internal" href="#module-kiwi.boot.image.dracut" title="kiwi.boot.image.dracut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.boot.image.dracut</span></code></a> Module<a class="headerlink" href="#module-kiwi.boot.image.dracut" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.boot.image.dracut.BootImageDracut">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.dracut.</code><code class="sig-name descname">BootImageDracut</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">signing_keys=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.dracut.</code><code class="sig-name descname">BootImageDracut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">signing_keys</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.boot.image.base.BootImageBase" title="kiwi.boot.image.base.BootImageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.boot.image.base.BootImageBase</span></code></a></p>
 <p><strong>Implements creation of dracut boot(initrd) images.</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.create_initrd">
-<code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param">mbrid=None</em>, <em class="sig-param">basename=None</em>, <em class="sig-param">install_initrd=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.create_initrd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mbrid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">basename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">install_initrd</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.create_initrd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create kiwi .profile environment to be included in dracut initrd.
 Call dracut as chroot operation to create the initrd and move
 the result into the image build target directory</p>
@@ -934,9 +934,9 @@ the result into the image build target directory</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.include_file">
-<code class="sig-name descname">include_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.include_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.include_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">include_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">install_media</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.include_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.include_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Include file to dracut boot image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -945,9 +945,9 @@ the result into the image build target directory</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.include_module">
-<code class="sig-name descname">include_module</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.include_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.include_module" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">include_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em>, <em class="sig-param"><span class="n">install_media</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.include_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.include_module" title="Permalink to this definition">¶</a></dt>
 <dd><p>Include module to dracut boot image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -959,9 +959,9 @@ the result into the image build target directory</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.omit_module">
-<code class="sig-name descname">omit_module</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">install_media=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.omit_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.omit_module" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">omit_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em>, <em class="sig-param"><span class="n">install_media</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.omit_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.omit_module" title="Permalink to this definition">¶</a></dt>
 <dd><p>Omit module to dracut boot image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -973,14 +973,14 @@ the result into the image build target directory</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Initialize empty list of dracut caller options</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.prepare">
 <code class="sig-name descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.prepare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.prepare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare dracut caller environment</p>
@@ -989,9 +989,9 @@ the result into the image build target directory</p>
 </ul>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.dracut.BootImageDracut.write_system_config_file">
-<code class="sig-name descname">write_system_config_file</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">config_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.write_system_config_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.write_system_config_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">write_system_config_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">config_file</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/dracut.html#BootImageDracut.write_system_config_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.dracut.BootImageDracut.write_system_config_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes modules configuration into a dracut configuration file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1008,17 +1008,17 @@ the result into the image build target directory</p>
 </div>
 <div class="section" id="module-kiwi.boot.image.builtin_kiwi">
 <span id="kiwi-boot-image-builtin-kiwi-module"></span><h2><a class="reference internal" href="#module-kiwi.boot.image.builtin_kiwi" title="kiwi.boot.image.builtin_kiwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.boot.image.builtin_kiwi</span></code></a> Module<a class="headerlink" href="#module-kiwi.boot.image.builtin_kiwi" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.boot.image.builtin_kiwi.BootImageKiwi">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.builtin_kiwi.</code><code class="sig-name descname">BootImageKiwi</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">signing_keys=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.builtin_kiwi.</code><code class="sig-name descname">BootImageKiwi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">signing_keys</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.boot.image.base.BootImageBase" title="kiwi.boot.image.base.BootImageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.boot.image.base.BootImageBase</span></code></a></p>
 <p><strong>Implements preparation and creation of kiwi boot(initrd) images</strong></p>
 <p>The kiwi initrd is a customized first boot initrd which allows
 to control the first boot an appliance. The kiwi initrd replaces
 itself after first boot by the result of dracut.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.builtin_kiwi.BootImageKiwi.create_initrd">
-<code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param">mbrid=None</em>, <em class="sig-param">basename=None</em>, <em class="sig-param">install_initrd=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi.create_initrd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mbrid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">basename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">install_initrd</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi.create_initrd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create initrd from prepared boot system tree and compress the result</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1031,7 +1031,7 @@ itself after first boot by the result of dracut.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.builtin_kiwi.BootImageKiwi.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
@@ -1040,7 +1040,7 @@ root filesystem which is a separate image to create
 the initrd from</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.boot.image.builtin_kiwi.BootImageKiwi.prepare">
 <code class="sig-name descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi.prepare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi.prepare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare new root system suitable to create a kiwi initrd from it</p>
@@ -1051,7 +1051,7 @@ the initrd from</p>
 </div>
 <div class="section" id="module-kiwi.boot.image">
 <span id="module-contents"></span><span id="db-kiwi-boot-image-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.boot.image" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.boot.image.BootImage">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.</code><code class="sig-name descname">BootImage</code><a class="reference internal" href="../_modules/kiwi/boot/image.html#BootImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.BootImage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

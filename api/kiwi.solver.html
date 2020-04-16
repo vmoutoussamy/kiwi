@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.solver Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.solver Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,15 +705,15 @@
 </div>
 <div class="section" id="module-kiwi.solver.sat">
 <span id="kiwi-solver-sat-module"></span><h2><a class="reference internal" href="#module-kiwi.solver.sat" title="kiwi.solver.sat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.solver.sat</span></code></a> Module<a class="headerlink" href="#module-kiwi.solver.sat" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.solver.sat.Sat">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.sat.</code><code class="sig-name descname">Sat</code><a class="reference internal" href="../_modules/kiwi/solver/sat.html#Sat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.sat.Sat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Sat Solver class to run package solver operations</strong></p>
 <p>The class uses SUSE’s libsolv sat plugin</p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.solver.sat.Sat.add_repository">
-<code class="sig-name descname">add_repository</code><span class="sig-paren">(</span><em class="sig-param">solver_repository</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/sat.html#Sat.add_repository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.sat.Sat.add_repository" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_repository</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">solver_repository</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/sat.html#Sat.add_repository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.sat.Sat.add_repository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a repository solvable to the pool. This basically add the
 required repository metadata which is needed to run a solver
 operation later.</p>
@@ -724,9 +724,9 @@ operation later.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.solver.sat.Sat.solve">
-<code class="sig-name descname">solve</code><span class="sig-paren">(</span><em class="sig-param">job_names</em>, <em class="sig-param">skip_missing=False</em>, <em class="sig-param">ignore_recommended=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/sat.html#Sat.solve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.sat.Sat.solve" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">solve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">job_names</span></em>, <em class="sig-param"><span class="n">skip_missing</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ignore_recommended</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/sat.html#Sat.solve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.sat.Sat.solve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solve dependencies for the given job list. The list is allowed
 to contain element names of the following format:</p>
 <ul class="simple">

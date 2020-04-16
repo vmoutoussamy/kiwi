@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.storage.subformat Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.storage.subformat.base">
 <span id="kiwi-storage-subformat-base-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.base" title="kiwi.storage.subformat.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.base.</code><code class="sig-name descname">DiskFormatBase</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.base.</code><code class="sig-name descname">DiskFormatBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class to create disk formats from a raw disk image</strong></p>
 <dl class="field-list simple">
@@ -721,16 +721,16 @@
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create disk format</p>
 <p>Implementation in specialized disk format class required</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase.get_qemu_option_list">
-<code class="sig-name descname">get_qemu_option_list</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.get_qemu_option_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.get_qemu_option_list" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_qemu_option_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.get_qemu_option_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.get_qemu_option_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create list of qemu options from custom_args dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -745,9 +745,9 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase.get_target_file_path_for_format">
-<code class="sig-name descname">get_target_file_path_for_format</code><span class="sig-paren">(</span><em class="sig-param">format_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.get_target_file_path_for_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.get_target_file_path_for_format" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_target_file_path_for_format</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.get_target_file_path_for_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.get_target_file_path_for_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create target file path name for specified format</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -762,7 +762,7 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase.has_raw_disk">
 <code class="sig-name descname">has_raw_disk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.has_raw_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.has_raw_disk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the base raw disk image exists</p>
@@ -776,9 +776,9 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Implementation in specialized disk format class if required</p>
 <dl class="field-list simple">
@@ -788,9 +788,9 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase.resize_raw_disk">
-<code class="sig-name descname">resize_raw_disk</code><span class="sig-paren">(</span><em class="sig-param">size_bytes</em>, <em class="sig-param">append=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.resize_raw_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.resize_raw_disk" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">resize_raw_disk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size_bytes</span></em>, <em class="sig-param"><span class="n">append</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.resize_raw_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.resize_raw_disk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize raw disk image to specified size. If the request
 would actually shrink the disk an exception is raised.
 If the disk got changed the method returns True, if
@@ -809,9 +809,9 @@ gets resized and the method returns False</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase.store_to_result">
-<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param">result</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.store_to_result" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">result</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase.store_to_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store result file of the format conversion into the
 provided result instance.</p>
 <p>By default only the converted image file will be stored
@@ -830,20 +830,20 @@ to overwrite this method</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.gce">
 <span id="kiwi-storage-subformat-gce-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.gce" title="kiwi.storage.subformat.gce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.gce</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.gce" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.gce.DiskFormatGce">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.gce.</code><code class="sig-name descname">DiskFormatGce</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.gce.</code><code class="sig-name descname">DiskFormatGce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p><strong>Create GCE - Google Compute Engine image format</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.gce.DiskFormatGce.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create GCE disk format and manifest</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.gce.DiskFormatGce.get_target_file_path_for_format">
-<code class="sig-name descname">get_target_file_path_for_format</code><span class="sig-paren">(</span><em class="sig-param">format_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce.get_target_file_path_for_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce.get_target_file_path_for_format" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_target_file_path_for_format</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce.get_target_file_path_for_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce.get_target_file_path_for_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Google requires the image name to follow their naming
 convetion. Therefore it’s required to provide a suitable
 name by overriding the base class method</p>
@@ -860,9 +860,9 @@ name by overriding the base class method</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.gce.DiskFormatGce.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>GCE disk format post initialization method</p>
 <p>Store disk tag from custom args</p>
 <dl class="field-list simple">
@@ -876,9 +876,9 @@ name by overriding the base class method</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.gce.DiskFormatGce.store_to_result">
-<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param">result</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce.store_to_result" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">result</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/gce.html#DiskFormatGce.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.gce.DiskFormatGce.store_to_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store result file of the gce format conversion into the
 provided result instance. In this case compression is unwanted
 because the gce tarball is already created as a compressed
@@ -895,21 +895,21 @@ archive</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.ova">
 <span id="kiwi-storage-subformat-ova-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.ova" title="kiwi.storage.subformat.ova"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.ova</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.ova" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.ova.DiskFormatOva">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.ova.</code><code class="sig-name descname">DiskFormatOva</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/ova.html#DiskFormatOva"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.ova.DiskFormatOva" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.ova.</code><code class="sig-name descname">DiskFormatOva</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/ova.html#DiskFormatOva"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.ova.DiskFormatOva" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p><strong>Create ova disk format, based on vmdk</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.ova.DiskFormatOva.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/ova.html#DiskFormatOva.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.ova.DiskFormatOva.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create ova disk format using ovftool from
 <a class="reference external" href="https://www.vmware.com/support/developer/ovf">https://www.vmware.com/support/developer/ovf</a></p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.ova.DiskFormatOva.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/ova.html#DiskFormatOva.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.ova.DiskFormatOva.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/ova.html#DiskFormatOva.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.ova.DiskFormatOva.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>vmdk disk format post initialization method</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
@@ -919,9 +919,9 @@ archive</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.ova.DiskFormatOva.store_to_result">
-<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param">result</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/ova.html#DiskFormatOva.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.ova.DiskFormatOva.store_to_result" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">result</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/ova.html#DiskFormatOva.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.ova.DiskFormatOva.store_to_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store the resulting ova file into the provided result instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -935,20 +935,20 @@ archive</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.qcow2">
 <span id="kiwi-storage-subformat-qcow2-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.qcow2" title="kiwi.storage.subformat.qcow2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.qcow2</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.qcow2" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.qcow2.DiskFormatQcow2">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.qcow2.</code><code class="sig-name descname">DiskFormatQcow2</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/qcow2.html#DiskFormatQcow2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.qcow2.DiskFormatQcow2" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.qcow2.</code><code class="sig-name descname">DiskFormatQcow2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/qcow2.html#DiskFormatQcow2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.qcow2.DiskFormatQcow2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p><strong>Create qcow2 disk format</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.qcow2.DiskFormatQcow2.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/qcow2.html#DiskFormatQcow2.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.qcow2.DiskFormatQcow2.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create qcow2 disk format</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.qcow2.DiskFormatQcow2.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/qcow2.html#DiskFormatQcow2.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.qcow2.DiskFormatQcow2.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/qcow2.html#DiskFormatQcow2.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.qcow2.DiskFormatQcow2.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>qcow2 disk format post initialization method</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
@@ -958,9 +958,9 @@ archive</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.qcow2.DiskFormatQcow2.store_to_result">
-<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param">result</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/qcow2.html#DiskFormatQcow2.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.qcow2.DiskFormatQcow2.store_to_result" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">result</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/qcow2.html#DiskFormatQcow2.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.qcow2.DiskFormatQcow2.store_to_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store result file of the format conversion into the
 provided result instance.</p>
 <p>In case of a qcow2 format we store the result uncompressed
@@ -979,9 +979,9 @@ result in the output format and can be taken one by one</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.vagrant_base">
 <span id="kiwi-storage-subformat-vagrant-base-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.vagrant_base" title="kiwi.storage.subformat.vagrant_base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_base</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.vagrant_base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vagrant_base.</code><code class="sig-name descname">DiskFormatVagrantBase</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vagrant_base.</code><code class="sig-name descname">DiskFormatVagrantBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p>Base class for creating vagrant boxes.</p>
 <p>The documentation of the vagrant box format can be found here:
@@ -1018,9 +1018,9 @@ registered to <a class="reference internal" href="kiwi.html#kiwi.defaults.Defaul
 <li><p><a class="reference internal" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_metadata" title="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_metadata"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_additional_metadata()</span></code></a></p></li>
 <li><p><a class="reference internal" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_vagrant_config_settings" title="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_vagrant_config_settings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_additional_vagrant_config_settings()</span></code></a></p></li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_box_img">
-<code class="sig-name descname">create_box_img</code><span class="sig-paren">(</span><em class="sig-param">temp_image_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.create_box_img"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_box_img" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_box_img</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">temp_image_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.create_box_img"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_box_img" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provider specific image creation step: this function creates the actual
 box image. It must be implemented by a child class.</p>
 <dl class="field-list simple">
@@ -1038,7 +1038,7 @@ and that should be included in the vagrant box</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a vagrant box for any provider. This includes:</p>
@@ -1050,7 +1050,7 @@ provided Vagrantfile)</p></li>
 </ul>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_metadata">
 <code class="sig-name descname">get_additional_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.get_additional_metadata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide <a class="reference internal" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_image_format" title="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.create_image_format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_image_format()</span></code></a> with additional metadata
@@ -1066,7 +1066,7 @@ that will be included in <code class="docutils literal notranslate"><span class=
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_vagrant_config_settings">
 <code class="sig-name descname">get_additional_vagrant_config_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.get_additional_vagrant_config_settings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.get_additional_vagrant_config_settings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Supply additional configuration settings for vagrant to be included in
@@ -1086,9 +1086,9 @@ parameter <code class="docutils literal notranslate"><span class="pre">custom_se
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>vagrant disk format post initialization method</p>
 <p>store vagrantconfig information provided via custom_args</p>
 <dl class="field-list simple">
@@ -1102,9 +1102,9 @@ parameter <code class="docutils literal notranslate"><span class="pre">custom_se
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.store_to_result">
-<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param">result</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.store_to_result" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">result</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.store_to_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store result file of the vagrant format conversion into the
 provided result instance. In this case compression is unwanted
 because the box is already created as a compressed tarball</p>
@@ -1115,7 +1115,7 @@ because the box is already created as a compressed tarball</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.vagrant_post_init">
 <code class="sig-name descname">vagrant_post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_base.html#DiskFormatVagrantBase.vagrant_post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase.vagrant_post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vagrant provider specific post initialization method</p>
@@ -1129,31 +1129,31 @@ make the this base class methods effective</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.vagrant_libvirt">
 <span id="kiwi-storage-subformat-vagrant-libvirt-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.vagrant_libvirt" title="kiwi.storage.subformat.vagrant_libvirt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_libvirt</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.vagrant_libvirt" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vagrant_libvirt.</code><code class="sig-name descname">DiskFormatVagrantLibVirt</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_libvirt.html#DiskFormatVagrantLibVirt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vagrant_libvirt.</code><code class="sig-name descname">DiskFormatVagrantLibVirt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_libvirt.html#DiskFormatVagrantLibVirt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase" title="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase</span></code></a></p>
 <p><strong>Create a vagrant box for the libvirt provider</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.create_box_img">
-<code class="sig-name descname">create_box_img</code><span class="sig-paren">(</span><em class="sig-param">temp_image_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_libvirt.html#DiskFormatVagrantLibVirt.create_box_img"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.create_box_img" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_box_img</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">temp_image_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_libvirt.html#DiskFormatVagrantLibVirt.create_box_img"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.create_box_img" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates the qcow2 disk image box for libvirt vagrant provider</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_metadata">
 <code class="sig-name descname">get_additional_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_libvirt.html#DiskFormatVagrantLibVirt.get_additional_metadata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing the virtual image format and the size
 of the image.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_vagrant_config_settings">
 <code class="sig-name descname">get_additional_vagrant_config_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_libvirt.html#DiskFormatVagrantLibVirt.get_additional_vagrant_config_settings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.get_additional_vagrant_config_settings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns settings for the libvirt provider telling vagrant to use kvm.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.vagrant_post_init">
 <code class="sig-name descname">vagrant_post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_libvirt.html#DiskFormatVagrantLibVirt.vagrant_post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_libvirt.DiskFormatVagrantLibVirt.vagrant_post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vagrant provider specific post initialization method</p>
@@ -1167,28 +1167,28 @@ make the this base class methods effective</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.vagrant_virtualbox">
 <span id="kiwi-storage-subformat-vagrant-virtualbox-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.vagrant_virtualbox" title="kiwi.storage.subformat.vagrant_virtualbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_virtualbox</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.vagrant_virtualbox" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vagrant_virtualbox.</code><code class="sig-name descname">DiskFormatVagrantVirtualBox</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vagrant_virtualbox.</code><code class="sig-name descname">DiskFormatVagrantVirtualBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase" title="kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_base.DiskFormatVagrantBase</span></code></a></p>
 <p><strong>Create a vagrant box for the virtualbox provider</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.create_box_img">
-<code class="sig-name descname">create_box_img</code><span class="sig-paren">(</span><em class="sig-param">temp_image_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox.create_box_img"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.create_box_img" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_box_img</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">temp_image_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox.create_box_img"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.create_box_img" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the virtual machine image for the Virtualbox vagrant provider.</p>
 <p>This function creates the vmdk disk image and the ovf file. The latter
 is created via the class
 <a class="reference internal" href="kiwi.storage.subformat.template.html#kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate" title="kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.virtualbox_ovf.VirtualboxOvfTemplate</span></code></a>.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.get_additional_vagrant_config_settings">
 <code class="sig-name descname">get_additional_vagrant_config_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox.get_additional_vagrant_config_settings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.get_additional_vagrant_config_settings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Configure the default shared folder to use rsync when guest additions
 are not present inside the box.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.vagrant_post_init">
 <code class="sig-name descname">vagrant_post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vagrant_virtualbox.html#DiskFormatVagrantVirtualBox.vagrant_post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vagrant_virtualbox.DiskFormatVagrantVirtualBox.vagrant_post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vagrant provider specific post initialization method</p>
@@ -1202,20 +1202,20 @@ make the this base class methods effective</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.vdi">
 <span id="kiwi-storage-subformat-vdi-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.vdi" title="kiwi.storage.subformat.vdi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vdi</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.vdi" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.vdi.DiskFormatVdi">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vdi.</code><code class="sig-name descname">DiskFormatVdi</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vdi.html#DiskFormatVdi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vdi.DiskFormatVdi" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vdi.</code><code class="sig-name descname">DiskFormatVdi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vdi.html#DiskFormatVdi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vdi.DiskFormatVdi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p><strong>Create vdi disk format</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vdi.DiskFormatVdi.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vdi.html#DiskFormatVdi.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vdi.DiskFormatVdi.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create vdi disk format</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vdi.DiskFormatVdi.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vdi.html#DiskFormatVdi.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vdi.DiskFormatVdi.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vdi.html#DiskFormatVdi.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vdi.DiskFormatVdi.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>vdi disk format post initialization method</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
@@ -1230,20 +1230,20 @@ make the this base class methods effective</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.vhd">
 <span id="kiwi-storage-subformat-vhd-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.vhd" title="kiwi.storage.subformat.vhd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vhd</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.vhd" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.vhd.DiskFormatVhd">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vhd.</code><code class="sig-name descname">DiskFormatVhd</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhd.html#DiskFormatVhd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhd.DiskFormatVhd" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vhd.</code><code class="sig-name descname">DiskFormatVhd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhd.html#DiskFormatVhd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhd.DiskFormatVhd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p><strong>Create vhd disk format</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vhd.DiskFormatVhd.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhd.html#DiskFormatVhd.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhd.DiskFormatVhd.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create vhd disk format</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vhd.DiskFormatVhd.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhd.html#DiskFormatVhd.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhd.DiskFormatVhd.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhd.html#DiskFormatVhd.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhd.DiskFormatVhd.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>vhd disk format post initialization method</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
@@ -1258,20 +1258,20 @@ make the this base class methods effective</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.vhdfixed">
 <span id="kiwi-storage-subformat-vhdfixed-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.vhdfixed" title="kiwi.storage.subformat.vhdfixed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vhdfixed</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.vhdfixed" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vhdfixed.</code><code class="sig-name descname">DiskFormatVhdFixed</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdfixed.html#DiskFormatVhdFixed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vhdfixed.</code><code class="sig-name descname">DiskFormatVhdFixed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdfixed.html#DiskFormatVhdFixed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p><strong>Create vhd image format in fixed subformat</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdfixed.html#DiskFormatVhdFixed.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create vhd fixed disk format</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdfixed.html#DiskFormatVhdFixed.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdfixed.html#DiskFormatVhdFixed.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>vhd disk format post initialization method</p>
 <p>Store qemu options as list from custom args dict
 Extract disk tag from custom args</p>
@@ -1286,9 +1286,9 @@ Extract disk tag from custom args</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.store_to_result">
-<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param">result</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdfixed.html#DiskFormatVhdFixed.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.store_to_result" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">result</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdfixed.html#DiskFormatVhdFixed.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdfixed.DiskFormatVhdFixed.store_to_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store result file of the vhdfixed format conversion into the
 provided result instance. In this case compressing the result
 is preferred as vhdfixed is not a compressed or dynamic format.</p>
@@ -1304,20 +1304,20 @@ is preferred as vhdfixed is not a compressed or dynamic format.</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.vhdx">
 <span id="kiwi-storage-subformat-vhdx-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.vhdx" title="kiwi.storage.subformat.vhdx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vhdx</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.vhdx" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.vhdx.DiskFormatVhdx">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vhdx.</code><code class="sig-name descname">DiskFormatVhdx</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdx.html#DiskFormatVhdx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdx.DiskFormatVhdx" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vhdx.</code><code class="sig-name descname">DiskFormatVhdx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdx.html#DiskFormatVhdx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdx.DiskFormatVhdx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p><strong>Create vhdx image format in dynamic subformat</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vhdx.DiskFormatVhdx.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdx.html#DiskFormatVhdx.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdx.DiskFormatVhdx.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create vhdx dynamic disk format</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vhdx.DiskFormatVhdx.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdx.html#DiskFormatVhdx.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdx.DiskFormatVhdx.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vhdx.html#DiskFormatVhdx.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vhdx.DiskFormatVhdx.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>vhdx disk format post initialization method</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
@@ -1332,20 +1332,20 @@ is preferred as vhdfixed is not a compressed or dynamic format.</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat.vmdk">
 <span id="kiwi-storage-subformat-vmdk-module"></span><h2><a class="reference internal" href="#module-kiwi.storage.subformat.vmdk" title="kiwi.storage.subformat.vmdk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vmdk</span></code></a> Module<a class="headerlink" href="#module-kiwi.storage.subformat.vmdk" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.vmdk.DiskFormatVmdk">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vmdk.</code><code class="sig-name descname">DiskFormatVmdk</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em>, <em class="sig-param">target_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vmdk.html#DiskFormatVmdk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vmdk.DiskFormatVmdk" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.vmdk.</code><code class="sig-name descname">DiskFormatVmdk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vmdk.html#DiskFormatVmdk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vmdk.DiskFormatVmdk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.storage.subformat.base.DiskFormatBase" title="kiwi.storage.subformat.base.DiskFormatBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base.DiskFormatBase</span></code></a></p>
 <p>Create vmdk disk format</p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vmdk.DiskFormatVmdk.create_image_format">
 <code class="sig-name descname">create_image_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vmdk.html#DiskFormatVmdk.create_image_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vmdk.DiskFormatVmdk.create_image_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create vmdk disk format and machine settings file</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vmdk.DiskFormatVmdk.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vmdk.html#DiskFormatVmdk.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vmdk.DiskFormatVmdk.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vmdk.html#DiskFormatVmdk.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vmdk.DiskFormatVmdk.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>vmdk disk format post initialization method</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
@@ -1355,9 +1355,9 @@ is preferred as vhdfixed is not a compressed or dynamic format.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.storage.subformat.vmdk.DiskFormatVmdk.store_to_result">
-<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param">result</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vmdk.html#DiskFormatVmdk.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vmdk.DiskFormatVmdk.store_to_result" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">store_to_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">result</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/vmdk.html#DiskFormatVmdk.store_to_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.vmdk.DiskFormatVmdk.store_to_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store result files of the vmdk format conversion into the
 provided result instance. This includes the vmdk image file
 and the VMware settings file</p>
@@ -1373,7 +1373,7 @@ and the VMware settings file</p>
 </div>
 <div class="section" id="module-kiwi.storage.subformat">
 <span id="module-contents"></span><span id="db-kiwi-storage-subformat-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.storage.subformat" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.storage.subformat.DiskFormat">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.</code><code class="sig-name descname">DiskFormat</code><a class="reference internal" href="../_modules/kiwi/storage/subformat.html#DiskFormat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.DiskFormat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.solver.repository Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.solver.repository Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.solver.repository.base">
 <span id="kiwi-solver-repository-base-module"></span><h2><a class="reference internal" href="#module-kiwi.solver.repository.base" title="kiwi.solver.repository.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.solver.repository.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.solver.repository.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.solver.repository.base.SolverRepositoryBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.base.</code><code class="sig-name descname">SolverRepositoryBase</code><span class="sig-paren">(</span><em class="sig-param">uri</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.base.</code><code class="sig-name descname">SolverRepositoryBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">secret</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class interface for SAT solvable creation.</strong></p>
 <dl class="field-list simple">
@@ -719,9 +719,9 @@
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.solver.repository.base.SolverRepositoryBase.create_repository_solvable">
-<code class="sig-name descname">create_repository_solvable</code><span class="sig-paren">(</span><em class="sig-param">target_dir='/var/tmp/kiwi/satsolver'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase.create_repository_solvable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase.create_repository_solvable" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_repository_solvable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target_dir</span><span class="o">=</span><span class="default_value">'/var/tmp/kiwi/satsolver'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase.create_repository_solvable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase.create_repository_solvable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create SAT solvable for this repository from previously
 created intermediate solvables by merge and store the
 result solvable in the specified target_dir</p>
@@ -738,9 +738,9 @@ result solvable in the specified target_dir</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.solver.repository.base.SolverRepositoryBase.download_from_repository">
-<code class="sig-name descname">download_from_repository</code><span class="sig-paren">(</span><em class="sig-param">repo_source</em>, <em class="sig-param">target</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase.download_from_repository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase.download_from_repository" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">download_from_repository</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">repo_source</span></em>, <em class="sig-param"><span class="n">target</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase.download_from_repository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase.download_from_repository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download given source file from the repository and store
 it as target file</p>
 <p>The repo_source location is used relative to the repository
@@ -759,9 +759,9 @@ location and will be part of a mime type source like:
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.solver.repository.base.SolverRepositoryBase.is_uptodate">
-<code class="sig-name descname">is_uptodate</code><span class="sig-paren">(</span><em class="sig-param">target_dir='/var/tmp/kiwi/satsolver'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase.is_uptodate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase.is_uptodate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_uptodate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target_dir</span><span class="o">=</span><span class="default_value">'/var/tmp/kiwi/satsolver'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase.is_uptodate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase.is_uptodate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if repository metadata is up to date</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -773,7 +773,7 @@ location and will be part of a mime type source like:
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.solver.repository.base.SolverRepositoryBase.timestamp">
 <code class="sig-name descname">timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/base.html#SolverRepositoryBase.timestamp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.base.SolverRepositoryBase.timestamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return repository timestamp</p>
@@ -791,12 +791,12 @@ to indicate there is no timestamp information available.</p>
 
 </dd></dl>
 
-<span class="target" id="module-kiwi.solver.repository.rpm_md"></span><dl class="class">
+<span class="target" id="module-kiwi.solver.repository.rpm_md"></span><dl class="py class">
 <dt id="kiwi.solver.repository.rpm_md.SolverRepositoryRpmMd">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.rpm_md.</code><code class="sig-name descname">SolverRepositoryRpmMd</code><span class="sig-paren">(</span><em class="sig-param">uri</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/rpm_md.html#SolverRepositoryRpmMd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.rpm_md.SolverRepositoryRpmMd" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.rpm_md.</code><code class="sig-name descname">SolverRepositoryRpmMd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">secret</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/rpm_md.html#SolverRepositoryRpmMd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.rpm_md.SolverRepositoryRpmMd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.solver.repository.base.SolverRepositoryBase" title="kiwi.solver.repository.base.SolverRepositoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.solver.repository.base.SolverRepositoryBase</span></code></a></p>
 <p><strong>Class for SAT solvable creation for rpm-md type repositories.</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.solver.repository.rpm_md.SolverRepositoryRpmMd.timestamp">
 <code class="sig-name descname">timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/rpm_md.html#SolverRepositoryRpmMd.timestamp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.rpm_md.SolverRepositoryRpmMd.timestamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get timestamp from the first primary metadata</p>
@@ -812,16 +812,16 @@ to indicate there is no timestamp information available.</p>
 
 </dd></dl>
 
-<span class="target" id="module-kiwi.solver.repository.rpm_dir"></span><dl class="class">
+<span class="target" id="module-kiwi.solver.repository.rpm_dir"></span><dl class="py class">
 <dt id="kiwi.solver.repository.rpm_dir.SolverRepositoryRpmDir">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.rpm_dir.</code><code class="sig-name descname">SolverRepositoryRpmDir</code><span class="sig-paren">(</span><em class="sig-param">uri</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/rpm_dir.html#SolverRepositoryRpmDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.rpm_dir.SolverRepositoryRpmDir" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.rpm_dir.</code><code class="sig-name descname">SolverRepositoryRpmDir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">secret</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/rpm_dir.html#SolverRepositoryRpmDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.rpm_dir.SolverRepositoryRpmDir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.solver.repository.base.SolverRepositoryBase" title="kiwi.solver.repository.base.SolverRepositoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.solver.repository.base.SolverRepositoryBase</span></code></a></p>
 <p><strong>Class for SAT solvable creation for rpm_dir type repositories.</strong></p>
 </dd></dl>
 
-<span class="target" id="module-kiwi.solver.repository.suse"></span><dl class="class">
+<span class="target" id="module-kiwi.solver.repository.suse"></span><dl class="py class">
 <dt id="kiwi.solver.repository.suse.SolverRepositorySUSE">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.suse.</code><code class="sig-name descname">SolverRepositorySUSE</code><span class="sig-paren">(</span><em class="sig-param">uri</em>, <em class="sig-param">user=None</em>, <em class="sig-param">secret=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/suse.html#SolverRepositorySUSE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.suse.SolverRepositorySUSE" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.suse.</code><code class="sig-name descname">SolverRepositorySUSE</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">secret</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/solver/repository/suse.html#SolverRepositorySUSE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.suse.SolverRepositorySUSE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.solver.repository.base.SolverRepositoryBase" title="kiwi.solver.repository.base.SolverRepositoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.solver.repository.base.SolverRepositoryBase</span></code></a></p>
 <p><strong>Class for SAT solvable creation for SUSE type repositories.</strong></p>
 </dd></dl>
@@ -829,7 +829,7 @@ to indicate there is no timestamp information available.</p>
 </div>
 <div class="section" id="module-kiwi.solver.repository">
 <span id="module-contents"></span><span id="db-kiwi-solver-repository-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.solver.repository" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.solver.repository.SolverRepository">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.solver.repository.</code><code class="sig-name descname">SolverRepository</code><a class="reference internal" href="../_modules/kiwi/solver/repository.html#SolverRepository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.solver.repository.SolverRepository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

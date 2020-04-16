@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.archive Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.archive Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.archive.cpio">
 <span id="kiwi-archive-cpio-module"></span><h2><a class="reference internal" href="#module-kiwi.archive.cpio" title="kiwi.archive.cpio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.archive.cpio</span></code></a> Module<a class="headerlink" href="#module-kiwi.archive.cpio" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.archive.cpio.ArchiveCpio">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.archive.cpio.</code><code class="sig-name descname">ArchiveCpio</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/cpio.html#ArchiveCpio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.cpio.ArchiveCpio" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.archive.cpio.</code><code class="sig-name descname">ArchiveCpio</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/cpio.html#ArchiveCpio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.cpio.ArchiveCpio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Extraction/Creation of cpio archives</strong></p>
 <dl class="field-list simple">
@@ -715,9 +715,9 @@
 <dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – filename to use for archive extraction or creation</p>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.archive.cpio.ArchiveCpio.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">source_dir</em>, <em class="sig-param">exclude=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/cpio.html#ArchiveCpio.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.cpio.ArchiveCpio.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/cpio.html#ArchiveCpio.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.cpio.ArchiveCpio.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create cpio archive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -729,9 +729,9 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.archive.cpio.ArchiveCpio.extract">
-<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param">dest_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/cpio.html#ArchiveCpio.extract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.cpio.ArchiveCpio.extract" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dest_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/cpio.html#ArchiveCpio.extract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.cpio.ArchiveCpio.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract cpio archive contents</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -745,9 +745,9 @@
 </div>
 <div class="section" id="module-kiwi.archive.tar">
 <span id="kiwi-archive-tar-module"></span><h2><a class="reference internal" href="#module-kiwi.archive.tar" title="kiwi.archive.tar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.archive.tar</span></code></a> Module<a class="headerlink" href="#module-kiwi.archive.tar" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.archive.tar.ArchiveTar">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.archive.tar.</code><code class="sig-name descname">ArchiveTar</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">create_from_file_list=True</em>, <em class="sig-param">file_list=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.archive.tar.</code><code class="sig-name descname">ArchiveTar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">create_from_file_list</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">file_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Extraction/Creation of tar archives</strong></p>
 <p>The tarfile python module is not used by that class,
@@ -764,9 +764,9 @@ Python v2.7.</p>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.archive.tar.ArchiveTar.append_files">
-<code class="sig-name descname">append_files</code><span class="sig-paren">(</span><em class="sig-param">source_dir</em>, <em class="sig-param">files_to_append</em>, <em class="sig-param">options=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.append_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.append_files" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">append_files</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em>, <em class="sig-param"><span class="n">files_to_append</span></em>, <em class="sig-param"><span class="n">options</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.append_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.append_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Append files to an already existing uncompressed tar archive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -779,9 +779,9 @@ Python v2.7.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.archive.tar.ArchiveTar.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">source_dir</em>, <em class="sig-param">exclude=None</em>, <em class="sig-param">options=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">options</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create uncompressed tar archive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -794,9 +794,9 @@ Python v2.7.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.archive.tar.ArchiveTar.create_gnu_gzip_compressed">
-<code class="sig-name descname">create_gnu_gzip_compressed</code><span class="sig-paren">(</span><em class="sig-param">source_dir</em>, <em class="sig-param">exclude=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.create_gnu_gzip_compressed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.create_gnu_gzip_compressed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_gnu_gzip_compressed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.create_gnu_gzip_compressed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.create_gnu_gzip_compressed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create gzip compressed tar archive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -808,9 +808,9 @@ Python v2.7.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.archive.tar.ArchiveTar.create_xz_compressed">
-<code class="sig-name descname">create_xz_compressed</code><span class="sig-paren">(</span><em class="sig-param">source_dir</em>, <em class="sig-param">exclude=None</em>, <em class="sig-param">options=None</em>, <em class="sig-param">xz_options=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.create_xz_compressed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.create_xz_compressed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_xz_compressed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">options</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xz_options</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.create_xz_compressed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.create_xz_compressed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create XZ compressed tar archive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -824,9 +824,9 @@ Python v2.7.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.archive.tar.ArchiveTar.extract">
-<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param">dest_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.extract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.extract" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dest_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/archive/tar.html#ArchiveTar.extract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.archive.tar.ArchiveTar.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract tar archive contents</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

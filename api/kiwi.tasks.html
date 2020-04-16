@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.tasks package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.tasks package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.tasks.base">
 <span id="kiwi-tasks-base-module"></span><h2><a class="reference internal" href="#module-kiwi.tasks.base" title="kiwi.tasks.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.tasks.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.tasks.base.CliTask">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.base.</code><code class="sig-name descname">CliTask</code><span class="sig-paren">(</span><em class="sig-param">should_perform_task_setup=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.base.</code><code class="sig-name descname">CliTask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">should_perform_task_setup</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class for all task classes, loads the task and provides
 the interface to the command options and the XML description</p>
@@ -723,9 +723,9 @@ which covers the following task configurations:
 </dl>
 </li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.base.CliTask.load_xml_description">
-<code class="sig-name descname">load_xml_description</code><span class="sig-paren">(</span><em class="sig-param">description_directory</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask.load_xml_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask.load_xml_description" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load_xml_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">description_directory</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask.load_xml_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask.load_xml_description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load, upgrade, validate XML description</p>
 <p>Attributes</p>
 <ul class="simple">
@@ -747,9 +747,9 @@ which covers the following task configurations:
 </ul>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.base.CliTask.quadruple_token">
-<code class="sig-name descname">quadruple_token</code><span class="sig-paren">(</span><em class="sig-param">option</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask.quadruple_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask.quadruple_token" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">quadruple_token</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">option</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask.quadruple_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask.quadruple_token" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper method for commandline options of the form –option a,b,c,d</p>
 <p>Make sure to provide a common result for option values which
 separates the information in a comma separated list of values</p>
@@ -763,9 +763,9 @@ separates the information in a comma separated list of values</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.base.CliTask.run_checks">
-<code class="sig-name descname">run_checks</code><span class="sig-paren">(</span><em class="sig-param">checks</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask.run_checks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask.run_checks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run_checks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">checks</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask.run_checks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask.run_checks" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method runs the given runtime checks excluding the ones disabled
 in the runtime configuration file.</p>
 <dl class="field-list simple">
@@ -776,9 +776,9 @@ and their arguments list as the values.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.base.CliTask.sextuple_token">
-<code class="sig-name descname">sextuple_token</code><span class="sig-paren">(</span><em class="sig-param">option</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask.sextuple_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask.sextuple_token" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sextuple_token</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">option</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/base.html#CliTask.sextuple_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.base.CliTask.sextuple_token" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper method for commandline options of the form –option a,b,c,d,e,f</p>
 <p>Make sure to provide a common result for option values which
 separates the information in a comma separated list of values</p>
@@ -797,9 +797,9 @@ separates the information in a comma separated list of values</p>
 </div>
 <div class="section" id="module-kiwi.tasks.result_bundle">
 <span id="kiwi-tasks-result-bundle-module"></span><h2><a class="reference internal" href="#module-kiwi.tasks.result_bundle" title="kiwi.tasks.result_bundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.result_bundle</span></code></a> Module<a class="headerlink" href="#module-kiwi.tasks.result_bundle" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.tasks.result_bundle.ResultBundleTask">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.result_bundle.</code><code class="sig-name descname">ResultBundleTask</code><span class="sig-paren">(</span><em class="sig-param">should_perform_task_setup=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/result_bundle.html#ResultBundleTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.result_bundle.ResultBundleTask" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.result_bundle.</code><code class="sig-name descname">ResultBundleTask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">should_perform_task_setup</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/result_bundle.html#ResultBundleTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.result_bundle.ResultBundleTask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.tasks.base.CliTask" title="kiwi.tasks.base.CliTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.tasks.base.CliTask</span></code></a></p>
 <p>Implements result bundler</p>
 <p>Attributes</p>
@@ -810,7 +810,7 @@ separates the information in a comma separated list of values</p>
 </dl>
 </li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.result_bundle.ResultBundleTask.process">
 <code class="sig-name descname">process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/result_bundle.html#ResultBundleTask.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.result_bundle.ResultBundleTask.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create result bundle from the image build results in the
@@ -825,9 +825,9 @@ and a sha sum will be created from every result image</p>
 </div>
 <div class="section" id="module-kiwi.tasks.result_list">
 <span id="kiwi-tasks-result-list-module"></span><h2><a class="reference internal" href="#module-kiwi.tasks.result_list" title="kiwi.tasks.result_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.result_list</span></code></a> Module<a class="headerlink" href="#module-kiwi.tasks.result_list" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.tasks.result_list.ResultListTask">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.result_list.</code><code class="sig-name descname">ResultListTask</code><span class="sig-paren">(</span><em class="sig-param">should_perform_task_setup=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/result_list.html#ResultListTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.result_list.ResultListTask" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.result_list.</code><code class="sig-name descname">ResultListTask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">should_perform_task_setup</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/result_list.html#ResultListTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.result_list.ResultListTask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.tasks.base.CliTask" title="kiwi.tasks.base.CliTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.tasks.base.CliTask</span></code></a></p>
 <p>Implements result listing</p>
 <p>Attributes</p>
@@ -838,7 +838,7 @@ and a sha sum will be created from every result image</p>
 </dl>
 </li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.result_list.ResultListTask.process">
 <code class="sig-name descname">process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/result_list.html#ResultListTask.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.result_list.ResultListTask.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>List result information from a previous system command</p>
@@ -849,9 +849,9 @@ and a sha sum will be created from every result image</p>
 </div>
 <div class="section" id="module-kiwi.tasks.system_build">
 <span id="kiwi-tasks-system-build-module"></span><h2><a class="reference internal" href="#module-kiwi.tasks.system_build" title="kiwi.tasks.system_build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.system_build</span></code></a> Module<a class="headerlink" href="#module-kiwi.tasks.system_build" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.tasks.system_build.SystemBuildTask">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.system_build.</code><code class="sig-name descname">SystemBuildTask</code><span class="sig-paren">(</span><em class="sig-param">should_perform_task_setup=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_build.html#SystemBuildTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_build.SystemBuildTask" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.system_build.</code><code class="sig-name descname">SystemBuildTask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">should_perform_task_setup</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_build.html#SystemBuildTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_build.SystemBuildTask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.tasks.base.CliTask" title="kiwi.tasks.base.CliTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.tasks.base.CliTask</span></code></a></p>
 <p>Implements building of system images</p>
 <p>Attributes</p>
@@ -862,7 +862,7 @@ and a sha sum will be created from every result image</p>
 </dl>
 </li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.system_build.SystemBuildTask.process">
 <code class="sig-name descname">process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_build.html#SystemBuildTask.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_build.SystemBuildTask.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a system image from the specified description. The
@@ -874,9 +874,9 @@ build command combines the prepare and create commands</p>
 </div>
 <div class="section" id="module-kiwi.tasks.system_create">
 <span id="kiwi-tasks-system-create-module"></span><h2><a class="reference internal" href="#module-kiwi.tasks.system_create" title="kiwi.tasks.system_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.system_create</span></code></a> Module<a class="headerlink" href="#module-kiwi.tasks.system_create" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.tasks.system_create.SystemCreateTask">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.system_create.</code><code class="sig-name descname">SystemCreateTask</code><span class="sig-paren">(</span><em class="sig-param">should_perform_task_setup=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_create.html#SystemCreateTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_create.SystemCreateTask" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.system_create.</code><code class="sig-name descname">SystemCreateTask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">should_perform_task_setup</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_create.html#SystemCreateTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_create.SystemCreateTask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.tasks.base.CliTask" title="kiwi.tasks.base.CliTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.tasks.base.CliTask</span></code></a></p>
 <p>Implements creation of system images</p>
 <p>Attributes</p>
@@ -887,7 +887,7 @@ build command combines the prepare and create commands</p>
 </dl>
 </li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.system_create.SystemCreateTask.process">
 <code class="sig-name descname">process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_create.html#SystemCreateTask.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_create.SystemCreateTask.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a system image from the specified root directory
@@ -900,9 +900,9 @@ command</p>
 </div>
 <div class="section" id="module-kiwi.tasks.system_prepare">
 <span id="kiwi-tasks-system-prepare-module"></span><h2><a class="reference internal" href="#module-kiwi.tasks.system_prepare" title="kiwi.tasks.system_prepare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.system_prepare</span></code></a> Module<a class="headerlink" href="#module-kiwi.tasks.system_prepare" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.tasks.system_prepare.SystemPrepareTask">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.system_prepare.</code><code class="sig-name descname">SystemPrepareTask</code><span class="sig-paren">(</span><em class="sig-param">should_perform_task_setup=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_prepare.html#SystemPrepareTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_prepare.SystemPrepareTask" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.system_prepare.</code><code class="sig-name descname">SystemPrepareTask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">should_perform_task_setup</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_prepare.html#SystemPrepareTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_prepare.SystemPrepareTask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.tasks.base.CliTask" title="kiwi.tasks.base.CliTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.tasks.base.CliTask</span></code></a></p>
 <p>Implements preparation and installation of a new root system</p>
 <p>Attributes</p>
@@ -913,7 +913,7 @@ command</p>
 </dl>
 </li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.system_prepare.SystemPrepareTask.process">
 <code class="sig-name descname">process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_prepare.html#SystemPrepareTask.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_prepare.SystemPrepareTask.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare and install a new system for chroot access</p>
@@ -924,9 +924,9 @@ command</p>
 </div>
 <div class="section" id="module-kiwi.tasks.system_update">
 <span id="kiwi-tasks-system-update-module"></span><h2><a class="reference internal" href="#module-kiwi.tasks.system_update" title="kiwi.tasks.system_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.system_update</span></code></a> Module<a class="headerlink" href="#module-kiwi.tasks.system_update" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.tasks.system_update.SystemUpdateTask">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.system_update.</code><code class="sig-name descname">SystemUpdateTask</code><span class="sig-paren">(</span><em class="sig-param">should_perform_task_setup=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_update.html#SystemUpdateTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_update.SystemUpdateTask" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.tasks.system_update.</code><code class="sig-name descname">SystemUpdateTask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">should_perform_task_setup</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_update.html#SystemUpdateTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_update.SystemUpdateTask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.tasks.base.CliTask" title="kiwi.tasks.base.CliTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.tasks.base.CliTask</span></code></a></p>
 <p>Implements update and maintenance of root systems</p>
 <p>Attributes</p>
@@ -937,7 +937,7 @@ command</p>
 </dl>
 </li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.tasks.system_update.SystemUpdateTask.process">
 <code class="sig-name descname">process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/tasks/system_update.html#SystemUpdateTask.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.tasks.system_update.SystemUpdateTask.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update root system with latest repository updates

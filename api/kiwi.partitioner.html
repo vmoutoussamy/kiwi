@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.partitioner Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.partitioner Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.partitioner.base">
 <span id="kiwi-partitioner-base-module"></span><h2><a class="reference internal" href="#module-kiwi.partitioner.base" title="kiwi.partitioner.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.partitioner.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.partitioner.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.partitioner.base.PartitionerBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.base.</code><code class="sig-name descname">PartitionerBase</code><span class="sig-paren">(</span><em class="sig-param">disk_provider</em>, <em class="sig-param">start_sector=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.base.</code><code class="sig-name descname">PartitionerBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">disk_provider</span></em>, <em class="sig-param"><span class="n">start_sector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class for partitioners</strong></p>
 <dl class="field-list simple">
@@ -718,9 +718,9 @@
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.base.PartitionerBase.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">mbsize</em>, <em class="sig-param">type_name</em>, <em class="sig-param">flags=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">mbsize</span></em>, <em class="sig-param"><span class="n">type_name</span></em>, <em class="sig-param"><span class="n">flags</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create partition</p>
 <p>Implementation in specialized partitioner class</p>
 <dl class="field-list simple">
@@ -735,7 +735,7 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.base.PartitionerBase.get_id">
 <code class="sig-name descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.get_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.get_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Current partition number</p>
@@ -750,16 +750,16 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.base.PartitionerBase.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Implementation in specialized partitioner class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.base.PartitionerBase.resize_table">
-<code class="sig-name descname">resize_table</code><span class="sig-paren">(</span><em class="sig-param">entries=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.resize_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.resize_table" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">resize_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entries</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.resize_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.resize_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize partition table</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -768,9 +768,9 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.base.PartitionerBase.set_flag">
-<code class="sig-name descname">set_flag</code><span class="sig-paren">(</span><em class="sig-param">partition_id</em>, <em class="sig-param">flag_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.set_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.set_flag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_flag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">partition_id</span></em>, <em class="sig-param"><span class="n">flag_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.set_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.set_flag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set partition flag</p>
 <p>Implementation in specialized partitioner class</p>
 <dl class="field-list simple">
@@ -783,14 +783,14 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.base.PartitionerBase.set_hybrid_mbr">
 <code class="sig-name descname">set_hybrid_mbr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.set_hybrid_mbr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.set_hybrid_mbr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turn partition table into hybrid table if supported</p>
 <p>Implementation in specialized partitioner class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.base.PartitionerBase.set_mbr">
 <code class="sig-name descname">set_mbr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase.set_mbr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase.set_mbr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turn partition table into MBR (msdos table)</p>
@@ -802,14 +802,14 @@
 </div>
 <div class="section" id="module-kiwi.partitioner.dasd">
 <span id="kiwi-partitioner-dasd-module"></span><h2><a class="reference internal" href="#module-kiwi.partitioner.dasd" title="kiwi.partitioner.dasd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.partitioner.dasd</span></code></a> Module<a class="headerlink" href="#module-kiwi.partitioner.dasd" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.partitioner.dasd.PartitionerDasd">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.dasd.</code><code class="sig-name descname">PartitionerDasd</code><span class="sig-paren">(</span><em class="sig-param">disk_provider</em>, <em class="sig-param">start_sector=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/dasd.html#PartitionerDasd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.dasd.PartitionerDasd" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.dasd.</code><code class="sig-name descname">PartitionerDasd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">disk_provider</span></em>, <em class="sig-param"><span class="n">start_sector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/dasd.html#PartitionerDasd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.dasd.PartitionerDasd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.partitioner.base.PartitionerBase" title="kiwi.partitioner.base.PartitionerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.partitioner.base.PartitionerBase</span></code></a></p>
 <p><strong>Implements DASD partition setup</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.dasd.PartitionerDasd.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">mbsize</em>, <em class="sig-param">type_name</em>, <em class="sig-param">flags=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/dasd.html#PartitionerDasd.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.dasd.PartitionerDasd.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">mbsize</span></em>, <em class="sig-param"><span class="n">type_name</span></em>, <em class="sig-param"><span class="n">flags</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/dasd.html#PartitionerDasd.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.dasd.PartitionerDasd.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create DASD partition</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -823,16 +823,16 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.dasd.PartitionerDasd.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/dasd.html#PartitionerDasd.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.dasd.PartitionerDasd.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Setup fdasd partition type/flag map</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.dasd.PartitionerDasd.resize_table">
-<code class="sig-name descname">resize_table</code><span class="sig-paren">(</span><em class="sig-param">entries=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/dasd.html#PartitionerDasd.resize_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.dasd.PartitionerDasd.resize_table" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">resize_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entries</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/dasd.html#PartitionerDasd.resize_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.dasd.PartitionerDasd.resize_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize partition table</p>
 <p>Nothing to be done here for DASD devices</p>
 <dl class="field-list simple">
@@ -847,14 +847,14 @@
 </div>
 <div class="section" id="module-kiwi.partitioner.gpt">
 <span id="kiwi-partitioner-gpt-module"></span><h2><a class="reference internal" href="#module-kiwi.partitioner.gpt" title="kiwi.partitioner.gpt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.partitioner.gpt</span></code></a> Module<a class="headerlink" href="#module-kiwi.partitioner.gpt" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.partitioner.gpt.PartitionerGpt">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.gpt.</code><code class="sig-name descname">PartitionerGpt</code><span class="sig-paren">(</span><em class="sig-param">disk_provider</em>, <em class="sig-param">start_sector=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.gpt.</code><code class="sig-name descname">PartitionerGpt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">disk_provider</span></em>, <em class="sig-param"><span class="n">start_sector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.partitioner.base.PartitionerBase" title="kiwi.partitioner.base.PartitionerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.partitioner.base.PartitionerBase</span></code></a></p>
 <p><strong>Implements GPT partition setup</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.gpt.PartitionerGpt.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">mbsize</em>, <em class="sig-param">type_name</em>, <em class="sig-param">flags=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">mbsize</span></em>, <em class="sig-param"><span class="n">type_name</span></em>, <em class="sig-param"><span class="n">flags</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create GPT partition</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -868,16 +868,16 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.gpt.PartitionerGpt.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Setup gdisk partition type/flag map</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.gpt.PartitionerGpt.resize_table">
-<code class="sig-name descname">resize_table</code><span class="sig-paren">(</span><em class="sig-param">entries=128</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.resize_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.resize_table" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">resize_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entries</span><span class="o">=</span><span class="default_value">128</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.resize_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.resize_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize partition table</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -886,9 +886,9 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.gpt.PartitionerGpt.set_flag">
-<code class="sig-name descname">set_flag</code><span class="sig-paren">(</span><em class="sig-param">partition_id</em>, <em class="sig-param">flag_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.set_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.set_flag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_flag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">partition_id</span></em>, <em class="sig-param"><span class="n">flag_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.set_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.set_flag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set GPT partition flag</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -900,13 +900,13 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.gpt.PartitionerGpt.set_hybrid_mbr">
 <code class="sig-name descname">set_hybrid_mbr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.set_hybrid_mbr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.set_hybrid_mbr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turn partition table into hybrid GPT/MBR table</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.gpt.PartitionerGpt.set_mbr">
 <code class="sig-name descname">set_mbr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/gpt.html#PartitionerGpt.set_mbr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.gpt.PartitionerGpt.set_mbr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turn partition table into MBR (msdos table)</p>
@@ -917,14 +917,14 @@
 </div>
 <div class="section" id="module-kiwi.partitioner.msdos">
 <span id="kiwi-partitioner-msdos-module"></span><h2><a class="reference internal" href="#module-kiwi.partitioner.msdos" title="kiwi.partitioner.msdos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.partitioner.msdos</span></code></a> Module<a class="headerlink" href="#module-kiwi.partitioner.msdos" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.partitioner.msdos.PartitionerMsDos">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.msdos.</code><code class="sig-name descname">PartitionerMsDos</code><span class="sig-paren">(</span><em class="sig-param">disk_provider</em>, <em class="sig-param">start_sector=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.msdos.</code><code class="sig-name descname">PartitionerMsDos</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">disk_provider</span></em>, <em class="sig-param"><span class="n">start_sector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.partitioner.base.PartitionerBase" title="kiwi.partitioner.base.PartitionerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.partitioner.base.PartitionerBase</span></code></a></p>
 <p><strong>Implement old style msdos partition setup</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.msdos.PartitionerMsDos.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">mbsize</em>, <em class="sig-param">type_name</em>, <em class="sig-param">flags=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">mbsize</span></em>, <em class="sig-param"><span class="n">type_name</span></em>, <em class="sig-param"><span class="n">flags</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create msdos partition</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -938,16 +938,16 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.msdos.PartitionerMsDos.post_init">
 <code class="sig-name descname">post_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Setup sfdisk partition type/flag map</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.msdos.PartitionerMsDos.resize_table">
-<code class="sig-name descname">resize_table</code><span class="sig-paren">(</span><em class="sig-param">entries=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos.resize_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos.resize_table" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">resize_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entries</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos.resize_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos.resize_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize partition table</p>
 <p>Nothing to be done here for msdos table</p>
 <dl class="field-list simple">
@@ -957,9 +957,9 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.partitioner.msdos.PartitionerMsDos.set_flag">
-<code class="sig-name descname">set_flag</code><span class="sig-paren">(</span><em class="sig-param">partition_id</em>, <em class="sig-param">flag_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos.set_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos.set_flag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_flag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">partition_id</span></em>, <em class="sig-param"><span class="n">flag_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/msdos.html#PartitionerMsDos.set_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.msdos.PartitionerMsDos.set_flag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set msdos partition flag</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -976,7 +976,7 @@
 </div>
 <div class="section" id="module-kiwi.partitioner">
 <span id="module-contents"></span><span id="db-kiwi-partitioner-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.partitioner" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.partitioner.Partitioner">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.</code><code class="sig-name descname">Partitioner</code><a class="reference internal" href="../_modules/kiwi/partitioner.html#Partitioner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.Partitioner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

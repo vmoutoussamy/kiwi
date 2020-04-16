@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.container.setup Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.container.setup Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.container.setup.base">
 <span id="kiwi-container-setup-base-module"></span><h2><a class="reference internal" href="#module-kiwi.container.setup.base" title="kiwi.container.setup.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.container.setup.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.container.setup.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.container.setup.base.ContainerSetupBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.container.setup.base.</code><code class="sig-name descname">ContainerSetupBase</code><span class="sig-paren">(</span><em class="sig-param">root_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.container.setup.base.</code><code class="sig-name descname">ContainerSetupBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class for setting up the root system to create
 a container image from for e.g docker. The methods here
@@ -726,7 +726,7 @@ and modern enough e.g based on systemd</p>
 </dl>
 </li>
 </ul>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.container.setup.base.ContainerSetupBase.deactivate_bootloader_setup">
 <code class="sig-name descname">deactivate_bootloader_setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.deactivate_bootloader_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.deactivate_bootloader_setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Container bootloader setup</p>
@@ -734,7 +734,7 @@ and modern enough e.g based on systemd</p>
 it needs to care for. A container does not boot</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.container.setup.base.ContainerSetupBase.deactivate_root_filesystem_check">
 <code class="sig-name descname">deactivate_root_filesystem_check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.deactivate_root_filesystem_check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.deactivate_root_filesystem_check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Container filesystem check setup</p>
@@ -744,9 +744,9 @@ for consistency as this is should be done by the container
 infrastructure</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.container.setup.base.ContainerSetupBase.deactivate_systemd_service">
-<code class="sig-name descname">deactivate_systemd_service</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.deactivate_systemd_service"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.deactivate_systemd_service" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">deactivate_systemd_service</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.deactivate_systemd_service"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.deactivate_systemd_service" title="Permalink to this definition">¶</a></dt>
 <dd><p>Container system services setup</p>
 <p>Init systems among others also controls services which
 starts at boot time. A container does not really boot.
@@ -758,7 +758,7 @@ Thus some services needs to be deactivated</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.container.setup.base.ContainerSetupBase.get_container_name">
 <code class="sig-name descname">get_container_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.get_container_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.get_container_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Container name</p>
@@ -772,9 +772,9 @@ Thus some services needs to be deactivated</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.container.setup.base.ContainerSetupBase.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Implementation in specialized container setup class</p>
 <dl class="field-list simple">
@@ -784,21 +784,21 @@ Thus some services needs to be deactivated</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.container.setup.base.ContainerSetupBase.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup container metadata</p>
 <p>Implementation in specialized bootloader class required</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.container.setup.base.ContainerSetupBase.setup_root_console">
 <code class="sig-name descname">setup_root_console</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.setup_root_console"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.setup_root_console" title="Permalink to this definition">¶</a></dt>
 <dd><p>Container console setup</p>
 <p>/dev/console should be allowed to login by root</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.container.setup.base.ContainerSetupBase.setup_static_device_nodes">
 <code class="sig-name descname">setup_static_device_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/base.html#ContainerSetupBase.setup_static_device_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.base.ContainerSetupBase.setup_static_device_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Container device node setup</p>
@@ -816,9 +816,9 @@ limitation of this method and considered harmless</p>
 </div>
 <div class="section" id="module-kiwi.container.setup.docker">
 <span id="kiwi-container-setup-docker-module"></span><h2><a class="reference internal" href="#module-kiwi.container.setup.docker" title="kiwi.container.setup.docker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.container.setup.docker</span></code></a> Module<a class="headerlink" href="#module-kiwi.container.setup.docker" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.container.setup.docker.ContainerSetupDocker">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.container.setup.docker.</code><code class="sig-name descname">ContainerSetupDocker</code><span class="sig-paren">(</span><em class="sig-param">root_dir</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/docker.html#ContainerSetupDocker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.docker.ContainerSetupDocker" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.container.setup.docker.</code><code class="sig-name descname">ContainerSetupDocker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/container/setup/docker.html#ContainerSetupDocker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.docker.ContainerSetupDocker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.container.setup.oci.ContainerSetupOCI</span></code></p>
 <p>Docker container setup</p>
 </dd></dl>
@@ -826,7 +826,7 @@ limitation of this method and considered harmless</p>
 </div>
 <div class="section" id="module-kiwi.container.setup">
 <span id="module-contents"></span><span id="db-kiwi-container-setup-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.container.setup" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.container.setup.ContainerSetup">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.container.setup.</code><code class="sig-name descname">ContainerSetup</code><a class="reference internal" href="../_modules/kiwi/container/setup.html#ContainerSetup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.container.setup.ContainerSetup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

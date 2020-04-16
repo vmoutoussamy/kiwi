@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.filesystem Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.filesystem Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.filesystem.base">
 <span id="kiwi-filesystem-base-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.base" title="kiwi.filesystem.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.base.FileSystemBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.base.</code><code class="sig-name descname">FileSystemBase</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.base.</code><code class="sig-name descname">FileSystemBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implements base class for filesystem interface</strong></p>
 <dl class="field-list simple">
@@ -721,9 +721,9 @@ creation. In most cases the DeviceProvider is a LoopDevice</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.base.FileSystemBase.create_on_device">
-<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase.create_on_device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase.create_on_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create filesystem on block device</p>
 <p>Implement in specialized filesystem class for filesystems which
 requires a block device for creation, e.g ext4.</p>
@@ -734,9 +734,9 @@ requires a block device for creation, e.g ext4.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.base.FileSystemBase.create_on_file">
-<code class="sig-name descname">create_on_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">label=None</em>, <em class="sig-param">exclude=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase.create_on_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase.create_on_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase.create_on_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase.create_on_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create filesystem from root data tree</p>
 <p>Implement in specialized filesystem class for filesystems which
 requires a data tree for creation, e.g squashfs.</p>
@@ -751,9 +751,9 @@ requires a data tree for creation, e.g squashfs.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.base.FileSystemBase.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Store dictionary of custom arguments if not empty. This
 overrides the default custom argument hash</p>
@@ -774,9 +774,9 @@ overrides the default custom argument hash</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.base.FileSystemBase.sync_data">
-<code class="sig-name descname">sync_data</code><span class="sig-paren">(</span><em class="sig-param">exclude=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase.sync_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase.sync_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sync_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/base.html#FileSystemBase.sync_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.base.FileSystemBase.sync_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copy root data tree into filesystem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -790,14 +790,14 @@ overrides the default custom argument hash</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.btrfs">
 <span id="kiwi-filesystem-btrfs-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.btrfs" title="kiwi.filesystem.btrfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.btrfs</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.btrfs" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.btrfs.FileSystemBtrfs">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.btrfs.</code><code class="sig-name descname">FileSystemBtrfs</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/btrfs.html#FileSystemBtrfs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.btrfs.FileSystemBtrfs" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.btrfs.</code><code class="sig-name descname">FileSystemBtrfs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/btrfs.html#FileSystemBtrfs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.btrfs.FileSystemBtrfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of btrfs filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.btrfs.FileSystemBtrfs.create_on_device">
-<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/btrfs.html#FileSystemBtrfs.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.btrfs.FileSystemBtrfs.create_on_device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/btrfs.html#FileSystemBtrfs.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.btrfs.FileSystemBtrfs.create_on_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create btrfs filesystem on block device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -811,14 +811,14 @@ overrides the default custom argument hash</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.clicfs">
 <span id="kiwi-filesystem-clicfs-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.clicfs" title="kiwi.filesystem.clicfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.clicfs</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.clicfs" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.clicfs.FileSystemClicFs">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.clicfs.</code><code class="sig-name descname">FileSystemClicFs</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/clicfs.html#FileSystemClicFs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.clicfs.FileSystemClicFs" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.clicfs.</code><code class="sig-name descname">FileSystemClicFs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/clicfs.html#FileSystemClicFs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.clicfs.FileSystemClicFs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of clicfs filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.clicfs.FileSystemClicFs.create_on_file">
-<code class="sig-name descname">create_on_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">label=None</em>, <em class="sig-param">exclude=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/clicfs.html#FileSystemClicFs.create_on_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.clicfs.FileSystemClicFs.create_on_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/clicfs.html#FileSystemClicFs.create_on_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.clicfs.FileSystemClicFs.create_on_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create clicfs filesystem from data tree</p>
 <p>There is no label which could be set for clicfs
 thus this parameter is not used</p>
@@ -835,9 +835,9 @@ thus this parameter is not used</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.clicfs.FileSystemClicFs.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/clicfs.html#FileSystemClicFs.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.clicfs.FileSystemClicFs.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/clicfs.html#FileSystemClicFs.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.clicfs.FileSystemClicFs.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Initialize temporary container_dir directory to store
 clicfs embeded filesystem</p>
@@ -853,14 +853,14 @@ clicfs embeded filesystem</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.ext2">
 <span id="kiwi-filesystem-ext2-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.ext2" title="kiwi.filesystem.ext2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.ext2</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.ext2" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.ext2.FileSystemExt2">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.ext2.</code><code class="sig-name descname">FileSystemExt2</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext2.html#FileSystemExt2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext2.FileSystemExt2" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.ext2.</code><code class="sig-name descname">FileSystemExt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext2.html#FileSystemExt2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext2.FileSystemExt2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of ext2 filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.ext2.FileSystemExt2.create_on_device">
-<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext2.html#FileSystemExt2.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext2.FileSystemExt2.create_on_device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext2.html#FileSystemExt2.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext2.FileSystemExt2.create_on_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create ext2 filesystem on block device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -874,14 +874,14 @@ clicfs embeded filesystem</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.ext3">
 <span id="kiwi-filesystem-ext3-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.ext3" title="kiwi.filesystem.ext3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.ext3</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.ext3" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.ext3.FileSystemExt3">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.ext3.</code><code class="sig-name descname">FileSystemExt3</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext3.html#FileSystemExt3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext3.FileSystemExt3" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.ext3.</code><code class="sig-name descname">FileSystemExt3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext3.html#FileSystemExt3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext3.FileSystemExt3" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of ext3 filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.ext3.FileSystemExt3.create_on_device">
-<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext3.html#FileSystemExt3.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext3.FileSystemExt3.create_on_device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext3.html#FileSystemExt3.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext3.FileSystemExt3.create_on_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create ext3 filesystem on block device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -895,14 +895,14 @@ clicfs embeded filesystem</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.ext4">
 <span id="kiwi-filesystem-ext4-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.ext4" title="kiwi.filesystem.ext4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.ext4</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.ext4" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.ext4.FileSystemExt4">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.ext4.</code><code class="sig-name descname">FileSystemExt4</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext4.html#FileSystemExt4"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext4.FileSystemExt4" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.ext4.</code><code class="sig-name descname">FileSystemExt4</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext4.html#FileSystemExt4"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext4.FileSystemExt4" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of ext4 filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.ext4.FileSystemExt4.create_on_device">
-<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext4.html#FileSystemExt4.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext4.FileSystemExt4.create_on_device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/ext4.html#FileSystemExt4.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.ext4.FileSystemExt4.create_on_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create ext4 filesystem on block device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -916,14 +916,14 @@ clicfs embeded filesystem</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.fat16">
 <span id="kiwi-filesystem-fat16-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.fat16" title="kiwi.filesystem.fat16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.fat16</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.fat16" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.fat16.FileSystemFat16">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.fat16.</code><code class="sig-name descname">FileSystemFat16</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/fat16.html#FileSystemFat16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.fat16.FileSystemFat16" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.fat16.</code><code class="sig-name descname">FileSystemFat16</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/fat16.html#FileSystemFat16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.fat16.FileSystemFat16" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of fat16 filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.fat16.FileSystemFat16.create_on_device">
-<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/fat16.html#FileSystemFat16.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.fat16.FileSystemFat16.create_on_device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/fat16.html#FileSystemFat16.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.fat16.FileSystemFat16.create_on_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create fat16 filesystem on block device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -937,14 +937,14 @@ clicfs embeded filesystem</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.fat32">
 <span id="kiwi-filesystem-fat32-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.fat32" title="kiwi.filesystem.fat32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.fat32</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.fat32" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.fat32.FileSystemFat32">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.fat32.</code><code class="sig-name descname">FileSystemFat32</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/fat32.html#FileSystemFat32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.fat32.FileSystemFat32" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.fat32.</code><code class="sig-name descname">FileSystemFat32</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/fat32.html#FileSystemFat32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.fat32.FileSystemFat32" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of fat16 filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.fat32.FileSystemFat32.create_on_device">
-<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/fat32.html#FileSystemFat32.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.fat32.FileSystemFat32.create_on_device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/fat32.html#FileSystemFat32.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.fat32.FileSystemFat32.create_on_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create fat32 filesystem on block device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -958,14 +958,14 @@ clicfs embeded filesystem</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.isofs">
 <span id="kiwi-filesystem-isofs-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.isofs" title="kiwi.filesystem.isofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.isofs</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.isofs" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.isofs.FileSystemIsoFs">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.isofs.</code><code class="sig-name descname">FileSystemIsoFs</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/isofs.html#FileSystemIsoFs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.isofs.FileSystemIsoFs" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.isofs.</code><code class="sig-name descname">FileSystemIsoFs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/isofs.html#FileSystemIsoFs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.isofs.FileSystemIsoFs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of iso filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.isofs.FileSystemIsoFs.create_on_file">
-<code class="sig-name descname">create_on_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">label=None</em>, <em class="sig-param">exclude=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/isofs.html#FileSystemIsoFs.create_on_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.isofs.FileSystemIsoFs.create_on_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/isofs.html#FileSystemIsoFs.create_on_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.isofs.FileSystemIsoFs.create_on_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create iso filesystem from data tree</p>
 <p>There is no label which could be set for iso filesystem
 thus this parameter is not used</p>
@@ -985,9 +985,9 @@ thus this parameter is not used</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.setup">
 <span id="kiwi-filesystem-setup-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.setup" title="kiwi.filesystem.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.setup</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.setup" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.setup.FileSystemSetup">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.setup.</code><code class="sig-name descname">FileSystemSetup</code><span class="sig-paren">(</span><em class="sig-param">xml_state</em>, <em class="sig-param">root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/setup.html#FileSystemSetup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.setup.FileSystemSetup" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.setup.</code><code class="sig-name descname">FileSystemSetup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/setup.html#FileSystemSetup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.setup.FileSystemSetup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implement filesystem setup methods</strong></p>
 <p>Methods from this class provides information
@@ -1001,9 +1001,9 @@ filesystem image</p>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.setup.FileSystemSetup.get_size_mbytes">
-<code class="sig-name descname">get_size_mbytes</code><span class="sig-paren">(</span><em class="sig-param">filesystem=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/setup.html#FileSystemSetup.get_size_mbytes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.setup.FileSystemSetup.get_size_mbytes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_size_mbytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filesystem</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/setup.html#FileSystemSetup.get_size_mbytes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.setup.FileSystemSetup.get_size_mbytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Precalculate the requires size in mbytes to store all data
 from the root directory in the requested filesystem. Return
 the configured value if present, if not return the calculated
@@ -1026,14 +1026,14 @@ result</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.squashfs">
 <span id="kiwi-filesystem-squashfs-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.squashfs" title="kiwi.filesystem.squashfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.squashfs</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.squashfs" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.squashfs.FileSystemSquashFs">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.squashfs.</code><code class="sig-name descname">FileSystemSquashFs</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/squashfs.html#FileSystemSquashFs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.squashfs.FileSystemSquashFs" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.squashfs.</code><code class="sig-name descname">FileSystemSquashFs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/squashfs.html#FileSystemSquashFs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.squashfs.FileSystemSquashFs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of squashfs filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.squashfs.FileSystemSquashFs.create_on_file">
-<code class="sig-name descname">create_on_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">label=None</em>, <em class="sig-param">exclude=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/squashfs.html#FileSystemSquashFs.create_on_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.squashfs.FileSystemSquashFs.create_on_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/squashfs.html#FileSystemSquashFs.create_on_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.squashfs.FileSystemSquashFs.create_on_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create squashfs filesystem from data tree</p>
 <p>There is no label which could be set for squashfs
 thus this parameter is not used</p>
@@ -1053,14 +1053,14 @@ thus this parameter is not used</p>
 </div>
 <div class="section" id="module-kiwi.filesystem.xfs">
 <span id="kiwi-filesystem-xfs-module"></span><h2><a class="reference internal" href="#module-kiwi.filesystem.xfs" title="kiwi.filesystem.xfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.xfs</span></code></a> Module<a class="headerlink" href="#module-kiwi.filesystem.xfs" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.xfs.FileSystemXfs">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.xfs.</code><code class="sig-name descname">FileSystemXfs</code><span class="sig-paren">(</span><em class="sig-param">device_provider</em>, <em class="sig-param">root_dir=None</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/xfs.html#FileSystemXfs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.xfs.FileSystemXfs" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.xfs.</code><code class="sig-name descname">FileSystemXfs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/xfs.html#FileSystemXfs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.xfs.FileSystemXfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.filesystem.base.FileSystemBase" title="kiwi.filesystem.base.FileSystemBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.filesystem.base.FileSystemBase</span></code></a></p>
 <p><strong>Implements creation of xfs filesystem</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.filesystem.xfs.FileSystemXfs.create_on_device">
-<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/xfs.html#FileSystemXfs.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.xfs.FileSystemXfs.create_on_device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_on_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/filesystem/xfs.html#FileSystemXfs.create_on_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.xfs.FileSystemXfs.create_on_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create xfs filesystem on block device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1074,7 +1074,7 @@ thus this parameter is not used</p>
 </div>
 <div class="section" id="module-kiwi.filesystem">
 <span id="module-contents"></span><span id="db-kiwi-filesystem-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.filesystem" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.filesystem.FileSystem">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.filesystem.</code><code class="sig-name descname">FileSystem</code><a class="reference internal" href="../_modules/kiwi/filesystem.html#FileSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.filesystem.FileSystem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

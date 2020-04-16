@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat.qcow2 &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.storage.subformat.qcow2 &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -711,7 +711,7 @@
 <span class="c1">#</span>
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
-
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">NamedTemporaryFile</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.storage.subformat.base</span> <span class="kn">import</span> <span class="n">DiskFormatBase</span>
@@ -737,11 +737,19 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create qcow2 disk format</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">intermediate</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">()</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
-                <span class="s1">&#39;qemu-img&#39;</span><span class="p">,</span> <span class="s1">&#39;convert&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">diskname</span><span class="p">,</span>
+                <span class="s1">&#39;qemu-img&#39;</span><span class="p">,</span> <span class="s1">&#39;convert&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">diskname</span><span class="p">,</span>
                 <span class="s1">&#39;-O&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span>
             <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="n">intermediate</span><span class="o">.</span><span class="n">name</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">&#39;qemu-img&#39;</span><span class="p">,</span> <span class="s1">&#39;convert&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span><span class="p">,</span>
+                <span class="n">intermediate</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;-O&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">get_target_file_path_for_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image_format</span><span class="p">)</span>
             <span class="p">]</span>
         <span class="p">)</span></div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.install Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.bootloader.install Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.bootloader.install.base">
 <span id="kiwi-bootloader-install-base-module"></span><h2><a class="reference internal" href="#module-kiwi.bootloader.install.base" title="kiwi.bootloader.install.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.install.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.bootloader.install.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.bootloader.install.base.BootLoaderInstallBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.base.</code><code class="sig-name descname">BootLoaderInstallBase</code><span class="sig-paren">(</span><em class="sig-param">root_dir</em>, <em class="sig-param">device_provider</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/base.html#BootLoaderInstallBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.base.BootLoaderInstallBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.base.</code><code class="sig-name descname">BootLoaderInstallBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/base.html#BootLoaderInstallBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.base.BootLoaderInstallBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class for bootloader installation on device</strong></p>
 <dl class="field-list simple">
@@ -719,23 +719,23 @@
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.base.BootLoaderInstallBase.install">
 <code class="sig-name descname">install</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/base.html#BootLoaderInstallBase.install"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.base.BootLoaderInstallBase.install" title="Permalink to this definition">¶</a></dt>
-<dd><p>Istall bootloader on self.device</p>
+<dd><p>Install bootloader on self.device</p>
 <p>Implementation in specialized bootloader install class required</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.base.BootLoaderInstallBase.install_required">
 <code class="sig-name descname">install_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/base.html#BootLoaderInstallBase.install_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.base.BootLoaderInstallBase.install_required" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if bootloader needs to be installed</p>
 <p>Implementation in specialized bootloader install class required</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.base.BootLoaderInstallBase.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/base.html#BootLoaderInstallBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.base.BootLoaderInstallBase.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/base.html#BootLoaderInstallBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.base.BootLoaderInstallBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Store custom arguments by default</p>
 <dl class="field-list simple">
@@ -750,18 +750,18 @@
 </div>
 <div class="section" id="module-kiwi.bootloader.install.grub2">
 <span id="kiwi-bootloader-install-grub2-module"></span><h2><a class="reference internal" href="#module-kiwi.bootloader.install.grub2" title="kiwi.bootloader.install.grub2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.install.grub2</span></code></a> Module<a class="headerlink" href="#module-kiwi.bootloader.install.grub2" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.bootloader.install.grub2.BootLoaderInstallGrub2">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.grub2.</code><code class="sig-name descname">BootLoaderInstallGrub2</code><span class="sig-paren">(</span><em class="sig-param">root_dir</em>, <em class="sig-param">device_provider</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/grub2.html#BootLoaderInstallGrub2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.grub2.BootLoaderInstallGrub2" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.grub2.</code><code class="sig-name descname">BootLoaderInstallGrub2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/grub2.html#BootLoaderInstallGrub2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.grub2.BootLoaderInstallGrub2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.bootloader.install.base.BootLoaderInstallBase" title="kiwi.bootloader.install.base.BootLoaderInstallBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.bootloader.install.base.BootLoaderInstallBase</span></code></a></p>
 <p><strong>grub2 bootloader installation</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.install">
 <code class="sig-name descname">install</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/grub2.html#BootLoaderInstallGrub2.install"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.install" title="Permalink to this definition">¶</a></dt>
 <dd><p>Install bootloader on disk device</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.install_required">
 <code class="sig-name descname">install_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/grub2.html#BootLoaderInstallGrub2.install_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.install_required" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if grub2 has to be installed</p>
@@ -777,9 +777,9 @@ bootloader code in a boot record is required</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/grub2.html#BootLoaderInstallGrub2.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/grub2.html#BootLoaderInstallGrub2.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.grub2.BootLoaderInstallGrub2.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>grub2 post initialization method</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -804,18 +804,18 @@ bootloader code in a boot record is required</p>
 </div>
 <div class="section" id="module-kiwi.bootloader.install.zipl">
 <span id="kiwi-bootloader-install-zipl-module"></span><h2><a class="reference internal" href="#module-kiwi.bootloader.install.zipl" title="kiwi.bootloader.install.zipl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.install.zipl</span></code></a> Module<a class="headerlink" href="#module-kiwi.bootloader.install.zipl" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.bootloader.install.zipl.BootLoaderInstallZipl">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.zipl.</code><code class="sig-name descname">BootLoaderInstallZipl</code><span class="sig-paren">(</span><em class="sig-param">root_dir</em>, <em class="sig-param">device_provider</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/zipl.html#BootLoaderInstallZipl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.zipl.BootLoaderInstallZipl" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.zipl.</code><code class="sig-name descname">BootLoaderInstallZipl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/zipl.html#BootLoaderInstallZipl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.zipl.BootLoaderInstallZipl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.bootloader.install.base.BootLoaderInstallBase" title="kiwi.bootloader.install.base.BootLoaderInstallBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.bootloader.install.base.BootLoaderInstallBase</span></code></a></p>
 <p><strong>zipl bootloader installation</strong></p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.zipl.BootLoaderInstallZipl.install">
 <code class="sig-name descname">install</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/zipl.html#BootLoaderInstallZipl.install"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.zipl.BootLoaderInstallZipl.install" title="Permalink to this definition">¶</a></dt>
 <dd><p>Install bootloader on self.device</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.zipl.BootLoaderInstallZipl.install_required">
 <code class="sig-name descname">install_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/zipl.html#BootLoaderInstallZipl.install_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.zipl.BootLoaderInstallZipl.install_required" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if zipl has to be installed</p>
@@ -830,9 +830,9 @@ bootloader code in a boot record is required</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.bootloader.install.zipl.BootLoaderInstallZipl.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/zipl.html#BootLoaderInstallZipl.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.zipl.BootLoaderInstallZipl.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/zipl.html#BootLoaderInstallZipl.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.zipl.BootLoaderInstallZipl.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>zipl post initialization method</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -850,7 +850,7 @@ bootloader code in a boot record is required</p>
 </div>
 <div class="section" id="module-kiwi.bootloader.install">
 <span id="module-contents"></span><span id="db-kiwi-bootloader-install-contents"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.bootloader.install" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.bootloader.install.BootLoaderInstall">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.</code><code class="sig-name descname">BootLoaderInstall</code><a class="reference internal" href="../_modules/kiwi/bootloader/install.html#BootLoaderInstall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.BootLoaderInstall" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

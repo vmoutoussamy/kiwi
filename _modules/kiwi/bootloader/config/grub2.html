@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -712,6 +712,7 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">Template</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -721,6 +722,7 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 
 <span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.command_capabilities</span> <span class="kn">import</span> <span class="n">CommandCapabilities</span>
 <span class="kn">from</span> <span class="nn">kiwi.bootloader.config.base</span> <span class="kn">import</span> <span class="n">BootLoaderConfigBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.bootloader.template.grub2</span> <span class="kn">import</span> <span class="n">BootLoaderTemplateGrub2</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="kn">import</span> <span class="n">Command</span>
@@ -836,7 +838,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">root_reference</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cmdline</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">shim_fallback_setup</span> <span class="o">=</span> <span class="kc">False</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shim_fallback_setup</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_use_of_linuxefi</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="BootLoaderConfigGrub2.write"><a class="viewcode-back" href="../../../../api/kiwi.bootloader.config.html#kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -931,6 +934,41 @@
                 <span class="n">config_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="p">]</span>
         <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_use_of_linuxefi</span><span class="p">:</span>
+            <span class="c1"># On systems that uses GRUB_USE_LINUXEFI with grub2 version</span>
+            <span class="c1"># less than 2.04 there is no support for dynamic EFI</span>
+            <span class="c1"># environment checking. In this condition we change the</span>
+            <span class="c1"># grub config to add this support as follows:</span>
+            <span class="c1">#</span>
+            <span class="c1"># * Apply only on grub &lt; 2.04</span>
+            <span class="c1">#    1. Modify grub.cfg to set linux/initrd as variables</span>
+            <span class="c1">#    2. Prepend hybrid setup to select linux vs. linuxefi on demand</span>
+            <span class="c1">#</span>
+            <span class="c1"># Please note this is a one time modification done by kiwi</span>
+            <span class="c1"># Any subsequent call of the grub config tool will overwrite</span>
+            <span class="c1"># the setup and disables dynamic EFI environment checking</span>
+            <span class="c1"># at boot time</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">CommandCapabilities</span><span class="o">.</span><span class="n">check_version</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_mkconfig_tool</span><span class="p">(),</span>
+                <span class="n">version_waterline</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">):</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>
+                    <span class="n">grub_config</span> <span class="o">=</span> <span class="n">grub_config_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="n">grub_config</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+                        <span class="sa">r</span><span class="s1">&#39;([ \t]+)linux[efi]*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$linux\2&#39;</span><span class="p">,</span>
+                        <span class="n">grub_config</span>
+                    <span class="p">)</span>
+                    <span class="n">grub_config</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+                        <span class="sa">r</span><span class="s1">&#39;([ \t]+)initrd[efi]*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$initrd\2&#39;</span><span class="p">,</span>
+                        <span class="n">grub_config</span>
+                    <span class="p">)</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>
+                    <span class="n">grub_config_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                        <span class="n">Template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grub2</span><span class="o">.</span><span class="n">header_hybrid</span><span class="p">)</span><span class="o">.</span><span class="n">substitute</span><span class="p">()</span>
+                    <span class="p">)</span>
+                    <span class="n">grub_config_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">grub_config</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_reference</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_overlay</span> <span class="ow">or</span> \
                <span class="n">Defaults</span><span class="o">.</span><span class="n">is_buildservice_worker</span><span class="p">():</span>
@@ -1272,12 +1310,13 @@
                 <span class="n">use_linuxefi_implemented</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
                     <span class="p">[</span>
                         <span class="s1">&#39;grep&#39;</span><span class="p">,</span> <span class="s1">&#39;-q&#39;</span><span class="p">,</span> <span class="s1">&#39;GRUB_USE_LINUXEFI&#39;</span><span class="p">,</span>
-                        <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_config_tool</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_mkconfig_tool</span><span class="p">()</span>
                     <span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
                 <span class="p">)</span>
                 <span class="k">if</span> <span class="n">use_linuxefi_implemented</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_LINUXEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
                     <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_INITRDEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">validate_use_of_linuxefi</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_btrfs_root_is_snapshot</span><span class="p">():</span>
             <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;SUSE_BTRFS_SNAPSHOT_BOOTING&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;boot_is_crypto&#39;</span><span class="p">):</span>
@@ -1286,7 +1325,7 @@
         <span class="n">enable_blscfg_implemented</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;grep&#39;</span><span class="p">,</span> <span class="s1">&#39;-q&#39;</span><span class="p">,</span> <span class="s1">&#39;GRUB_ENABLE_BLSCFG&#39;</span><span class="p">,</span>
-                <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_config_tool</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_mkconfig_tool</span><span class="p">()</span>
             <span class="p">],</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">enable_blscfg_implemented</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.iso_tools Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.iso_tools Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.iso_tools.base">
 <span id="kiwi-iso-tools-base-module"></span><h2><a class="reference internal" href="#module-kiwi.iso_tools.base" title="kiwi.iso_tools.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.iso_tools.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.iso_tools.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.iso_tools.base.IsoToolsBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.iso_tools.base.</code><code class="sig-name descname">IsoToolsBase</code><span class="sig-paren">(</span><em class="sig-param">source_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.iso_tools.base.</code><code class="sig-name descname">IsoToolsBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base Class for Parameter API for iso creation tools</strong></p>
 <dl class="field-list simple">
@@ -720,16 +720,16 @@
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.base.IsoToolsBase.add_efi_loader_parameters">
 <code class="sig-name descname">add_efi_loader_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.add_efi_loader_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.add_efi_loader_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add ISO creation parameters to embed the EFI loader</p>
 <p>Implementation in specialized tool class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.base.IsoToolsBase.create_iso">
-<code class="sig-name descname">create_iso</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">hidden_files=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.create_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.create_iso" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_iso</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">hidden_files</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.create_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.create_iso" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create iso file</p>
 <p>Implementation in specialized tool class</p>
 <dl class="field-list simple">
@@ -742,7 +742,7 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.base.IsoToolsBase.get_tool_name">
 <code class="sig-name descname">get_tool_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.get_tool_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.get_tool_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return caller name for iso creation tool</p>
@@ -757,7 +757,7 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.base.IsoToolsBase.has_iso_hybrid_capability">
 <code class="sig-name descname">has_iso_hybrid_capability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.has_iso_hybrid_capability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.has_iso_hybrid_capability" title="Permalink to this definition">¶</a></dt>
 <dd><p>Indicate if the iso tool has the capability to embed
@@ -766,9 +766,9 @@ used as both; an iso and a disk</p>
 <p>Implementation in specialized tool class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.base.IsoToolsBase.init_iso_creation_parameters">
-<code class="sig-name descname">init_iso_creation_parameters</code><span class="sig-paren">(</span><em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.init_iso_creation_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.init_iso_creation_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">init_iso_creation_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.init_iso_creation_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.init_iso_creation_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a set of standard parameters for the main isolinux loader</p>
 <p>Implementation in specialized tool class</p>
 <dl class="field-list simple">
@@ -778,9 +778,9 @@ used as both; an iso and a disk</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.base.IsoToolsBase.list_iso">
-<code class="sig-name descname">list_iso</code><span class="sig-paren">(</span><em class="sig-param">isofile</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.list_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.list_iso" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">list_iso</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isofile</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.list_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.list_iso" title="Permalink to this definition">¶</a></dt>
 <dd><p>List contents of an ISO image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -789,9 +789,9 @@ used as both; an iso and a disk</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.base.IsoToolsBase.setup_media_loader_directory">
-<em class="property">static </em><code class="sig-name descname">setup_media_loader_directory</code><span class="sig-paren">(</span><em class="sig-param">lookup_path</em>, <em class="sig-param">media_path</em>, <em class="sig-param">boot_theme</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.setup_media_loader_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.setup_media_loader_directory" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">setup_media_loader_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lookup_path</span></em>, <em class="sig-param"><span class="n">media_path</span></em>, <em class="sig-param"><span class="n">boot_theme</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/base.html#IsoToolsBase.setup_media_loader_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.base.IsoToolsBase.setup_media_loader_directory" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -799,15 +799,15 @@ used as both; an iso and a disk</p>
 </div>
 <div class="section" id="module-kiwi.iso_tools.cdrtools">
 <span id="kiwi-iso-tools-cdrtools-module"></span><h2><a class="reference internal" href="#module-kiwi.iso_tools.cdrtools" title="kiwi.iso_tools.cdrtools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.iso_tools.cdrtools</span></code></a> Module<a class="headerlink" href="#module-kiwi.iso_tools.cdrtools" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.iso_tools.cdrtools.IsoToolsCdrTools">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.iso_tools.cdrtools.</code><code class="sig-name descname">IsoToolsCdrTools</code><span class="sig-paren">(</span><em class="sig-param">source_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.iso_tools.cdrtools.</code><code class="sig-name descname">IsoToolsCdrTools</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.iso_tools.base.IsoToolsBase" title="kiwi.iso_tools.base.IsoToolsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.iso_tools.base.IsoToolsBase</span></code></a></p>
 <p><strong>cdrkit/cdrtools wrapper class</strong></p>
 <p>Implementation of Parameter API for iso creation tools using
 the cdrkit/cdrtools projects. Addressed here are the option
 compatible tools mkisofs and genisoimage</p>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.cdrtools.IsoToolsCdrTools.add_efi_loader_parameters">
 <code class="sig-name descname">add_efi_loader_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.add_efi_loader_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.add_efi_loader_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add ISO creation parameters to embed the EFI loader</p>
@@ -819,9 +819,9 @@ file refer to _create_embedded_fat_efi_image() from
 bootloader/config/grub2.py</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.cdrtools.IsoToolsCdrTools.create_iso">
-<code class="sig-name descname">create_iso</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">hidden_files=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.create_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.create_iso" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_iso</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">hidden_files</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.create_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.create_iso" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates the iso file with the given filename using cdrtools</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -833,7 +833,7 @@ bootloader/config/grub2.py</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.cdrtools.IsoToolsCdrTools.get_tool_name">
 <code class="sig-name descname">get_tool_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.get_tool_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.get_tool_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>There are tools by J.Schilling and tools from the community
@@ -852,7 +852,7 @@ mkisofs is preferred over genisoimage</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.cdrtools.IsoToolsCdrTools.has_iso_hybrid_capability">
 <code class="sig-name descname">has_iso_hybrid_capability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.has_iso_hybrid_capability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.has_iso_hybrid_capability" title="Permalink to this definition">¶</a></dt>
 <dd><p>Indicate if the iso tool has the capability to embed a
@@ -868,9 +868,9 @@ used as both; an iso and a disk</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.cdrtools.IsoToolsCdrTools.init_iso_creation_parameters">
-<code class="sig-name descname">init_iso_creation_parameters</code><span class="sig-paren">(</span><em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.init_iso_creation_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.init_iso_creation_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">init_iso_creation_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.init_iso_creation_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.init_iso_creation_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a set of standard parameters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -879,9 +879,9 @@ used as both; an iso and a disk</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.cdrtools.IsoToolsCdrTools.list_iso">
-<code class="sig-name descname">list_iso</code><span class="sig-paren">(</span><em class="sig-param">isofile</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.list_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.list_iso" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">list_iso</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isofile</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/cdrtools.html#IsoToolsCdrTools.list_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.cdrtools.IsoToolsCdrTools.list_iso" title="Permalink to this definition">¶</a></dt>
 <dd><p>List contents of an ISO image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -901,9 +901,9 @@ used as both; an iso and a disk</p>
 </div>
 <div class="section" id="module-kiwi.iso_tools.iso">
 <span id="kiwi-iso-tools-iso-module"></span><h2><a class="reference internal" href="#module-kiwi.iso_tools.iso" title="kiwi.iso_tools.iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.iso_tools.iso</span></code></a> Module<a class="headerlink" href="#module-kiwi.iso_tools.iso" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.iso_tools.iso.Iso">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.iso_tools.iso.</code><code class="sig-name descname">Iso</code><span class="sig-paren">(</span><em class="sig-param">source_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.iso_tools.iso.</code><code class="sig-name descname">Iso</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implements helper methods around the creation of ISO filesystems</strong></p>
 <dl class="field-list simple">
@@ -916,9 +916,9 @@ used as both; an iso and a disk</p>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.iso.Iso.create_header_end_block">
-<code class="sig-name descname">create_header_end_block</code><span class="sig-paren">(</span><em class="sig-param">isofile</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.create_header_end_block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.create_header_end_block" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_header_end_block</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isofile</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.create_header_end_block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.create_header_end_block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find offset address of file containing the header_id and
 replace it by a list of 2k blocks in range 0 - offset + 1
 This is the required preparation to support hybrid ISO
@@ -939,7 +939,7 @@ images, meaning to let isohybrid work correctly</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.iso.Iso.create_header_end_marker">
 <code class="sig-name descname">create_header_end_marker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.create_header_end_marker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.create_header_end_marker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare iso file to become a hybrid iso image.</p>
@@ -949,9 +949,9 @@ file named ‘header_end’ is created and will show up as last
 file in the block.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.iso.Iso.create_hybrid">
-<em class="property">static </em><code class="sig-name descname">create_hybrid</code><span class="sig-paren">(</span><em class="sig-param">offset</em>, <em class="sig-param">mbrid</em>, <em class="sig-param">isofile</em>, <em class="sig-param">efi_mode=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.create_hybrid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.create_hybrid" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">create_hybrid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em>, <em class="sig-param"><span class="n">mbrid</span></em>, <em class="sig-param"><span class="n">isofile</span></em>, <em class="sig-param"><span class="n">efi_mode</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.create_hybrid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.create_hybrid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create hybrid ISO</p>
 <p>A hybrid ISO embeds both, an isolinux signature as well as a
 disk signature. kiwi always adds an msdos and a GPT table for
@@ -968,9 +968,9 @@ the disk signatures</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.iso.Iso.fix_boot_catalog">
-<em class="property">static </em><code class="sig-name descname">fix_boot_catalog</code><span class="sig-paren">(</span><em class="sig-param">isofile</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.fix_boot_catalog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.fix_boot_catalog" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">fix_boot_catalog</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isofile</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.fix_boot_catalog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.fix_boot_catalog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fixup inconsistencies in boot catalog</p>
 <p>Make sure all catalog entries are in correct order and provide
 complete metadata information e.g catalog name</p>
@@ -981,9 +981,9 @@ complete metadata information e.g catalog name</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.iso.Iso.relocate_boot_catalog">
-<em class="property">static </em><code class="sig-name descname">relocate_boot_catalog</code><span class="sig-paren">(</span><em class="sig-param">isofile</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.relocate_boot_catalog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.relocate_boot_catalog" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">relocate_boot_catalog</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isofile</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.relocate_boot_catalog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.relocate_boot_catalog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move ISO boot catalog to the standardized place</p>
 <p>Check location of the boot catalog and move it to the place where
 all BIOS and firwmare implementations expects it</p>
@@ -994,9 +994,9 @@ all BIOS and firwmare implementations expects it</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.iso.Iso.set_media_tag">
-<em class="property">static </em><code class="sig-name descname">set_media_tag</code><span class="sig-paren">(</span><em class="sig-param">isofile</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.set_media_tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.set_media_tag" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">set_media_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isofile</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.set_media_tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.set_media_tag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Include checksum tag in the ISO so it can be verified with
 the mediacheck program.</p>
 <dl class="field-list simple">
@@ -1006,7 +1006,7 @@ the mediacheck program.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.iso_tools.iso.Iso.setup_isolinux_boot_path">
 <code class="sig-name descname">setup_isolinux_boot_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/iso_tools/iso.html#Iso.setup_isolinux_boot_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.iso.Iso.setup_isolinux_boot_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write the base boot path into the isolinux loader binary</p>
@@ -1022,7 +1022,7 @@ the mediacheck program.</p>
 </div>
 <div class="section" id="module-kiwi.iso_tools">
 <span id="module-contents"></span><span id="db-kiwi-iso-tools-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.iso_tools" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.iso_tools.IsoTools">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.iso_tools.</code><code class="sig-name descname">IsoTools</code><a class="reference internal" href="../_modules/kiwi/iso_tools.html#IsoTools"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.iso_tools.IsoTools" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

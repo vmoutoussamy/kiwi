@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.package_manager Package &mdash; KIWI NG 9.20.6 documentation</title>
+  <title>kiwi.package_manager Package &mdash; KIWI NG 9.20.7 documentation</title>
   
 
   
@@ -705,9 +705,9 @@
 </div>
 <div class="section" id="module-kiwi.package_manager.base">
 <span id="kiwi-package-manager-base-module"></span><h2><a class="reference internal" href="#module-kiwi.package_manager.base" title="kiwi.package_manager.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.package_manager.base</span></code></a> Module<a class="headerlink" href="#module-kiwi.package_manager.base" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.package_manager.base.PackageManagerBase">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.package_manager.base.</code><code class="sig-name descname">PackageManagerBase</code><span class="sig-paren">(</span><em class="sig-param">repository</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.package_manager.base.</code><code class="sig-name descname">PackageManagerBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">repository</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Implements base class for installation/deletion of
 packages and collections using a package manager</strong></p>
@@ -722,27 +722,27 @@ packages and collections using a package manager</strong></p>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.cleanup_requests">
 <code class="sig-name descname">cleanup_requests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.cleanup_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.cleanup_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cleanup request queues</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.database_consistent">
 <code class="sig-name descname">database_consistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.database_consistent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.database_consistent" title="Permalink to this definition">¶</a></dt>
 <dd><p>OBSOLETE: Will be removed 2019-06-05</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.dump_reload_package_database">
-<code class="sig-name descname">dump_reload_package_database</code><span class="sig-paren">(</span><em class="sig-param">version=45</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.dump_reload_package_database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.dump_reload_package_database" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dump_reload_package_database</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">version</span><span class="o">=</span><span class="default_value">45</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.dump_reload_package_database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.dump_reload_package_database" title="Permalink to this definition">¶</a></dt>
 <dd><p>OBSOLETE: Will be removed 2019-06-05</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.has_failed">
-<code class="sig-name descname">has_failed</code><span class="sig-paren">(</span><em class="sig-param">returncode</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.has_failed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.has_failed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">has_failed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">returncode</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.has_failed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.has_failed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate given result return code</p>
 <p>Any returncode != 0 is considered an error unless
 overwritten in specialized package manager class</p>
@@ -759,9 +759,9 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.match_package_deleted">
-<code class="sig-name descname">match_package_deleted</code><span class="sig-paren">(</span><em class="sig-param">package_list</em>, <em class="sig-param">log_line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.match_package_deleted" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">match_package_deleted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_list</span></em>, <em class="sig-param"><span class="n">log_line</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.match_package_deleted" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match expression to indicate a package has been deleted</p>
 <p>Implementation in specialized package manager class</p>
 <dl class="field-list simple">
@@ -774,9 +774,9 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.match_package_installed">
-<code class="sig-name descname">match_package_installed</code><span class="sig-paren">(</span><em class="sig-param">package_list</em>, <em class="sig-param">log_line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.match_package_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.match_package_installed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">match_package_installed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_list</span></em>, <em class="sig-param"><span class="n">log_line</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.match_package_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.match_package_installed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match expression to indicate a package has been installed</p>
 <p>Implementation in specialized package manager class</p>
 <dl class="field-list simple">
@@ -789,9 +789,9 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Implementation in specialized package manager class</p>
 <dl class="field-list simple">
@@ -801,16 +801,16 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.post_process_install_requests_bootstrap">
 <code class="sig-name descname">post_process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.post_process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.post_process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process extra code required after bootstrapping</p>
 <p>Implementation in specialized package manager class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.process_delete_requests">
-<code class="sig-name descname">process_delete_requests</code><span class="sig-paren">(</span><em class="sig-param">force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.process_delete_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.process_delete_requests" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">process_delete_requests</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.process_delete_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.process_delete_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package delete requests (chroot)</p>
 <p>Implementation in specialized package manager class</p>
 <dl class="field-list simple">
@@ -820,37 +820,37 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.process_install_requests">
 <code class="sig-name descname">process_install_requests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.process_install_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.process_install_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package install requests for image phase (chroot)</p>
 <p>Implementation in specialized package manager class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.process_install_requests_bootstrap">
 <code class="sig-name descname">process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package install requests for bootstrap phase (no chroot)</p>
 <p>Implementation in specialized package manager class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.process_only_required">
 <code class="sig-name descname">process_only_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.process_only_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.process_only_required" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package processing only for required packages</p>
 <p>Implementation in specialized package manager class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.process_plus_recommended">
 <code class="sig-name descname">process_plus_recommended</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.process_plus_recommended"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.process_plus_recommended" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package processing to also include recommended dependencies</p>
 <p>Implementation in specialized package manager class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.request_collection">
-<code class="sig-name descname">request_collection</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_collection" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_collection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package collection</p>
 <p>Implementation in specialized package manager class</p>
 <dl class="field-list simple">
@@ -860,9 +860,9 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.request_package">
-<code class="sig-name descname">request_package</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_package" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_package</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_package" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package request</p>
 <p>Implementation in specialized package manager class</p>
 <dl class="field-list simple">
@@ -872,9 +872,9 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.request_package_exclusion">
-<code class="sig-name descname">request_package_exclusion</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_package_exclusion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_package_exclusion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_package_exclusion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_package_exclusion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_package_exclusion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package exclusion(skip) request</p>
 <p>Implementation in specialized package manager class</p>
 <dl class="field-list simple">
@@ -884,17 +884,17 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.request_package_lock">
-<code class="sig-name descname">request_package_lock</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_package_lock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_package_lock" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_package_lock</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_package_lock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_package_lock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package exclusion(skip) request</p>
 <p>OBSOLETE: Will be removed 2019-06-05</p>
 <p>Kept for API compatbility Method calls: request_package_exclusion</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.request_product">
-<code class="sig-name descname">request_product</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_product" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_product</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.request_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.request_product" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a product request</p>
 <p>Implementation in specialized package manager class</p>
 <dl class="field-list simple">
@@ -904,7 +904,7 @@ overwritten in specialized package manager class</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.base.PackageManagerBase.update">
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/base.html#PackageManagerBase.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.base.PackageManagerBase.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package update requests (chroot)</p>
@@ -916,9 +916,9 @@ overwritten in specialized package manager class</p>
 </div>
 <div class="section" id="module-kiwi.package_manager.dnf">
 <span id="kiwi-package-manager-dnf-module"></span><h2><a class="reference internal" href="#module-kiwi.package_manager.dnf" title="kiwi.package_manager.dnf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.package_manager.dnf</span></code></a> Module<a class="headerlink" href="#module-kiwi.package_manager.dnf" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.package_manager.dnf.</code><code class="sig-name descname">PackageManagerDnf</code><span class="sig-paren">(</span><em class="sig-param">repository</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.package_manager.dnf.</code><code class="sig-name descname">PackageManagerDnf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">repository</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.package_manager.base.PackageManagerBase" title="kiwi.package_manager.base.PackageManagerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.package_manager.base.PackageManagerBase</span></code></a></p>
 <p><strong>*Implements base class for installation/deletion of
 packages and collections using dnf*</strong></p>
@@ -931,9 +931,9 @@ configuration</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.match_package_deleted">
-<code class="sig-name descname">match_package_deleted</code><span class="sig-paren">(</span><em class="sig-param">package_name</em>, <em class="sig-param">dnf_output</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.match_package_deleted" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">match_package_deleted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span></em>, <em class="sig-param"><span class="n">dnf_output</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.match_package_deleted" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match expression to indicate a package has been deleted</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -951,9 +951,9 @@ configuration</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.match_package_installed">
-<code class="sig-name descname">match_package_installed</code><span class="sig-paren">(</span><em class="sig-param">package_name</em>, <em class="sig-param">dnf_output</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.match_package_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.match_package_installed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">match_package_installed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span></em>, <em class="sig-param"><span class="n">dnf_output</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.match_package_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.match_package_installed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match expression to indicate a package has been installed</p>
 <p>This match for the package to be installed in the output
 of the dnf command is not 100% accurate. There might
@@ -975,9 +975,9 @@ the same base package name</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -986,16 +986,16 @@ the same base package name</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.post_process_install_requests_bootstrap">
 <code class="sig-name descname">post_process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.post_process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.post_process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move the rpm database to the place as it is expected by the
 rpm package installed during bootstrap phase</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_delete_requests">
-<code class="sig-name descname">process_delete_requests</code><span class="sig-paren">(</span><em class="sig-param">force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_delete_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_delete_requests" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">process_delete_requests</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_delete_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_delete_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package delete requests (chroot)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1014,7 +1014,7 @@ installed.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests">
 <code class="sig-name descname">process_install_requests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_install_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package install requests for image phase (chroot)</p>
@@ -1028,7 +1028,7 @@ installed.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests_bootstrap">
 <code class="sig-name descname">process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package install requests for bootstrap phase (no chroot)</p>
@@ -1042,21 +1042,21 @@ installed.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_only_required">
 <code class="sig-name descname">process_only_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_only_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_only_required" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package processing only for required packages</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.process_plus_recommended">
 <code class="sig-name descname">process_plus_recommended</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.process_plus_recommended"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.process_plus_recommended" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package processing to also include recommended dependencies.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.request_collection">
-<code class="sig-name descname">request_collection</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_collection" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_collection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a collection request</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1065,9 +1065,9 @@ installed.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.request_package">
-<code class="sig-name descname">request_package</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_package" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_package</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_package" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package request</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1076,9 +1076,9 @@ installed.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.request_package_exclusion">
-<code class="sig-name descname">request_package_exclusion</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_package_exclusion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_package_exclusion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_package_exclusion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_package_exclusion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_package_exclusion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package exclusion(skip) request</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1087,9 +1087,9 @@ installed.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.request_product">
-<code class="sig-name descname">request_product</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_product" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_product</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.request_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.request_product" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a product request</p>
 <p>There is no product definition in the fedora repo data</p>
 <dl class="field-list simple">
@@ -1099,7 +1099,7 @@ installed.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.dnf.PackageManagerDnf.update">
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/dnf.html#PackageManagerDnf.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.dnf.PackageManagerDnf.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package update requests (chroot)</p>
@@ -1118,9 +1118,9 @@ installed.</p>
 </div>
 <div class="section" id="module-kiwi.package_manager.zypper">
 <span id="kiwi-package-manager-zypper-module"></span><h2><a class="reference internal" href="#module-kiwi.package_manager.zypper" title="kiwi.package_manager.zypper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.package_manager.zypper</span></code></a> Module<a class="headerlink" href="#module-kiwi.package_manager.zypper" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper">
-<em class="property">class </em><code class="sig-prename descclassname">kiwi.package_manager.zypper.</code><code class="sig-name descname">PackageManagerZypper</code><span class="sig-paren">(</span><em class="sig-param">repository</em>, <em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">kiwi.package_manager.zypper.</code><code class="sig-name descname">PackageManagerZypper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">repository</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.package_manager.base.PackageManagerBase" title="kiwi.package_manager.base.PackageManagerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.package_manager.base.PackageManagerBase</span></code></a></p>
 <p><strong>Implements base class for installation/deletion of
 packages and collections using zypper</strong></p>
@@ -1134,9 +1134,9 @@ runtime configuration</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.has_failed">
-<code class="sig-name descname">has_failed</code><span class="sig-paren">(</span><em class="sig-param">returncode</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.has_failed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.has_failed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">has_failed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">returncode</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.has_failed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.has_failed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate given result return code</p>
 <p>In zypper any return code == 0 or &gt;= 100 is considered success.
 Any return code different from 0 and &lt; 100 is treated as an
@@ -1156,9 +1156,9 @@ we don’t care in the scope of image building</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.match_package_deleted">
-<code class="sig-name descname">match_package_deleted</code><span class="sig-paren">(</span><em class="sig-param">package_name</em>, <em class="sig-param">zypper_output</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.match_package_deleted" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">match_package_deleted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span></em>, <em class="sig-param"><span class="n">zypper_output</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.match_package_deleted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.match_package_deleted" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match expression to indicate a package has been deleted</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1176,9 +1176,9 @@ we don’t care in the scope of image building</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.match_package_installed">
-<code class="sig-name descname">match_package_installed</code><span class="sig-paren">(</span><em class="sig-param">package_name</em>, <em class="sig-param">zypper_output</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.match_package_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.match_package_installed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">match_package_installed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span></em>, <em class="sig-param"><span class="n">zypper_output</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.match_package_installed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.match_package_installed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match expression to indicate a package has been installed</p>
 <p>This match for the package to be installed in the output
 of the zypper command is not 100% accurate. There might
@@ -1200,9 +1200,9 @@ the same base package name</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.post_init">
-<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param">custom_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.post_init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.post_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.post_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post initialization method</p>
 <p>Store custom zypper arguments</p>
 <dl class="field-list simple">
@@ -1212,16 +1212,16 @@ the same base package name</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.post_process_install_requests_bootstrap">
 <code class="sig-name descname">post_process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.post_process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.post_process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move the rpm database to the place as it is expected by the
 rpm package installed during bootstrap phase</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.process_delete_requests">
-<code class="sig-name descname">process_delete_requests</code><span class="sig-paren">(</span><em class="sig-param">force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.process_delete_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.process_delete_requests" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">process_delete_requests</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.process_delete_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.process_delete_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package delete requests (chroot)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1240,7 +1240,7 @@ installed</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.process_install_requests">
 <code class="sig-name descname">process_install_requests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.process_install_requests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.process_install_requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package install requests for image phase (chroot)</p>
@@ -1254,7 +1254,7 @@ installed</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.process_install_requests_bootstrap">
 <code class="sig-name descname">process_install_requests_bootstrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.process_install_requests_bootstrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.process_install_requests_bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package install requests for bootstrap phase (no chroot)</p>
@@ -1268,21 +1268,21 @@ installed</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.process_only_required">
 <code class="sig-name descname">process_only_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.process_only_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.process_only_required" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package processing only for required packages</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.process_plus_recommended">
 <code class="sig-name descname">process_plus_recommended</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.process_plus_recommended"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.process_plus_recommended" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup package processing to also include recommended dependencies.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.request_collection">
-<code class="sig-name descname">request_collection</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.request_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.request_collection" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_collection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.request_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.request_collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a collection request</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1291,9 +1291,9 @@ installed</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.request_package">
-<code class="sig-name descname">request_package</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.request_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.request_package" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_package</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.request_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.request_package" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package request</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1302,9 +1302,9 @@ installed</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.request_package_exclusion">
-<code class="sig-name descname">request_package_exclusion</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.request_package_exclusion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.request_package_exclusion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_package_exclusion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.request_package_exclusion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.request_package_exclusion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a package exclusion(skip) request</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1313,9 +1313,9 @@ installed</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.request_product">
-<code class="sig-name descname">request_product</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.request_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.request_product" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">request_product</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.request_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.request_product" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue a product request</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1324,7 +1324,7 @@ installed</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="kiwi.package_manager.zypper.PackageManagerZypper.update">
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/package_manager/zypper.html#PackageManagerZypper.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.zypper.PackageManagerZypper.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process package update requests (chroot)</p>
@@ -1343,7 +1343,7 @@ installed</p>
 </div>
 <div class="section" id="module-kiwi.package_manager">
 <span id="module-contents"></span><span id="db-kiwi-package-manager-content"></span><h2>Module Contents<a class="headerlink" href="#module-kiwi.package_manager" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="kiwi.package_manager.PackageManager">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.package_manager.</code><code class="sig-name descname">PackageManager</code><a class="reference internal" href="../_modules/kiwi/package_manager.html#PackageManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.package_manager.PackageManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
