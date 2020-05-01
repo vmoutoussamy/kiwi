@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Booting a Live ISO Image from Network &mdash; KIWI NG 9.20.9 documentation</title>
+  <title>Building in the Open Build Service &mdash; KIWI NG 9.20.10 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Deploy and Run System in a RamDisk" href="oem_ramdisk_deployment.html" />
-    <link rel="prev" title="Image Description for Vagrant" href="vmx_vagrant_setup.html" /> 
+    <link rel="next" title="Build PXE Root File System Image for the legacy netboot infrastructure" href="legacy_netboot_root_filesystem.html" />
+    <link rel="prev" title="Building Images with Profiles" href="build_with_profiles.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,6 +95,28 @@
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-pypi">Installation from PyPI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../self_contained.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#selecting-a-template">Selecting a Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id1">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id2">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
@@ -178,30 +200,16 @@
 <li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_ec2.html">Image Description for Amazon EC2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_azure.html">Image Description for Microsoft Azure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_google.html">Image Description for Google Compute Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_network_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="setup_network_bootserver.html#installing-and-configuring-dhcp-and-tftp-with-dnsmasq">Installing and Configuring DHCP and TFTP with dnsmasq</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="setup_yast_on_first_boot.html">Setting Up YaST at First Boot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="vmx_vagrant_setup.html">Image Description for Vagrant</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_partitions.html">Custom Disk Partitions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
@@ -210,6 +218,38 @@
 <li class="toctree-l2"><a class="reference internal" href="custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_luks.html">Image Description Encrypted Disk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_with_profiles.html">Building Images with Profiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build_with_profiles.html#local-builds">Local Builds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="legacy_netboot_root_filesystem.html">Build PXE Root File System Image for the legacy netboot infrastructure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="legacy_netboot_root_filesystem.html#pxe-client-setup-configuration">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../building.html">Building Images</a><ul>
@@ -235,51 +275,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_docker_container.html">Build a Docker Container Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id1">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id2">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id3">The Vagrantfile</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_with_profiles.html">Building Images with Profiles</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_with_profiles.html#local-builds">Local Builds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#image-types">Image Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
@@ -461,7 +463,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.filesystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.filesystem</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.install"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.install</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.live"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.live</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.pxe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.pxe</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.kis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.kis</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder">Module Contents</a></li>
 </ul>
 </li>
@@ -679,13 +681,13 @@
         
           <li><a href="../working_with_images.html">Working with Images</a> &raquo;</li>
         
-      <li>Booting a Live ISO Image from Network</li>
+      <li>Building in the Open Build Service</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/working_with_images/pxe_live_iso_boot.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/working_with_images/build_in_buildservice.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -698,106 +700,288 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="booting-a-live-iso-image-from-network">
-<span id="pxe-live-boot"></span><h1>Booting a Live ISO Image from Network<a class="headerlink" href="#booting-a-live-iso-image-from-network" title="Permalink to this headline">¶</a></h1>
-<div class="sidebar">
-<p class="sidebar-title">Abstract</p>
-<p>This page provides further information for handling
-ISO images built with KIWI NG and references the following
-articles:</p>
+  <div class="section" id="building-in-the-open-build-service">
+<h1>Building in the Open Build Service<a class="headerlink" href="#building-in-the-open-build-service" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Abstract</strong></p>
+<p>This document gives a brief overview how to build images with
+KIWI NG in version 9.20.10 inside of the Open Build Service.
+A tutorial on the Open Buildservice itself can be found here:
+<a class="reference external" href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial">https://en.opensuse.org/openSUSE:Build_Service_Tutorial</a></p>
+</div>
+<p>The next generation KIWI NG is fully integrated with the Open Build Service.
+In order to start it’s best to checkout one of the integration test
+image build projects from the base Testing project
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Images:Testing_$ARCH:$DISTRO</span></code> at:</p>
+<p><a class="reference external" href="https://build.opensuse.org">https://build.opensuse.org</a></p>
+<p>For example the test images for SUSE on x86 can be found <a class="reference external" href="https://build.opensuse.org/project/show/Virtualization:Appliances:Images:Testing_x86:suse">here</a>.</p>
+<div class="section" id="advantages-of-using-the-open-build-service-obs">
+<h2>Advantages of using the Open Build Service (OBS)<a class="headerlink" href="#advantages-of-using-the-open-build-service-obs" title="Permalink to this headline">¶</a></h2>
+<p>The Open Build Service offers multiple advantages over running KIWI NG
+locally:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../building/build_live_iso.html#hybrid-iso"><span class="std std-ref">Build an ISO Hybrid Live Image</span></a></p></li>
+<li><p>OBS will host the latest successful build for you without having to setup
+a server yourself.</p></li>
+<li><p>As KIWI NG is fully integrated into OBS, OBS will automatically rebuild your
+images if one of the included packages or one of its dependencies or KIWI NG
+itself get updated.</p></li>
+<li><p>The builds will no longer have to be executed on your own machine, but
+will run on OBS, thereby saving you resources. Nevertheless, if a build
+fails, you get a notification via email (if enabled in your user’s
+preferences).</p></li>
 </ul>
 </div>
-<p>In KIWI NG, live ISO images can be configured to boot via PXE.
-This functionality requires a network boot server setup on the
-system. Details how to setup such a server can be found in
-<a class="reference internal" href="setup_pxe_bootserver.html#pxe-boot-server"><span class="std std-ref">Setting Up a Network Boot Server</span></a>.</p>
-<p>After the live ISO was built as shown in <a class="reference internal" href="../building/build_live_iso.html#hybrid-iso"><span class="std std-ref">Build an ISO Hybrid Live Image</span></a>,
-the following configuration steps are required to boot from
-the network:</p>
+<div class="section" id="differences-between-building-locally-and-on-obs">
+<h2>Differences Between Building Locally and on OBS<a class="headerlink" href="#differences-between-building-locally-and-on-obs" title="Permalink to this headline">¶</a></h2>
+<p>Note, there is a number of differences when building images with KIWI NG using
+the Open Build Service. Your image that build locally just fine, might not
+build without modifications.</p>
+<p>The notable differences to running KIWI NG locally include:</p>
+<ul>
+<li><p>OBS will pick the KIWI NG package from the repositories configured in your
+project, which will most likely not be the same version that you are
+running locally.
+This is especially relevant when building images for older versions like
+SUSE Linux Enterprise. Therefore, include the custom appliances
+repository as described in the following section:
+<a class="reference internal" href="#obs-recommended-settings"><span class="std std-ref">Recommendations</span></a>.</p></li>
+<li><p>When KIWI NG runs on OBS, OBS will extract the list of packages from
+<code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> and use it to create a build root. In contrast to a
+local build (where your distributions package manager will resolve the
+dependencies and install the packages), OBS will <strong>not</strong> build your image
+if there are multiple packages that could be chosen to satisfy the
+dependencies of your packages <a class="footnote-reference brackets" href="#f1" id="id1">1</a>. This shows errors like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unresolvable: have choice <span class="k">for</span> SOMEPACKAGE: SOMEPAKAGE_1 SOMEPACKAGE_2
+</pre></div>
+</div>
+<p>This can be solved by explicitly specifying one of the two packages in
+the project configuration via the following setting:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Prefer: SOMEPACKAGE_1
+</pre></div>
+</div>
+<p>Place the above line into the project configuration, which can be
+accessed either via the web interface (click on the tab <code class="docutils literal notranslate"><span class="pre">Project</span>
+<span class="pre">Config</span></code> on your project’s main page) or via <code class="docutils literal notranslate"><span class="pre">osc</span> <span class="pre">meta</span> <span class="pre">-e</span> <span class="pre">prjconf</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We strongly encourage you to remove your repositories from
+<code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> and move them to the repository configuration in
+your project’s settings. This usually prevents the issue of having the
+choice for multiple package version and results in a much smoother
+experience when using OBS.</p>
+</div>
+</li>
+<li><p>By default, OBS builds only a single build type and the default
+profile. If your appliance uses multiple build types, put
+each build type into a profile, as OBS cannot handle multiple build
+types.</p>
+<p>There are two options to build multiple profiles on OBS:</p>
 <ol class="arabic">
-<li><p>Extract initrd/kernel From Live ISO</p>
-<p>The PXE boot process loads the configured kernel and initrd from
-the PXE server. For this reason, those two files must be extracted
-from the live ISO image and copied to the PXE server as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mount LimeJeOS-Leap-15.1.x86_64-1.15.1.iso /mnt
-$ cp /mnt/boot/x86_64/loader/initrd /srv/tftpboot/boot/initrd
-$ cp /mnt/boot/x86_64/loader/linux /srv/tftpboot/boot/linux
-$ umount /mnt
+<li><p>Use the <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image&gt;</span></code> element and add it bellow the XML
+declaration (<code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;?xml</span> <span class="pre">..?&gt;</span></code>):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+<span class="c">&lt;!-- OBS-Profiles: foo_profile bar_profile --&gt;</span>
+
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- image description with the profiles foo_profile and bar_profile</span>
+<span class="c">&lt;/image&gt;</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This step must be repeated with any new build of the live ISO image</p>
 </div>
 </li>
-<li><p>Export Live ISO To The Network</p>
-<p>Access to the live ISO file is implemented using the AoE protocol
-in KIWI NG. This requires the export of the live ISO file as remote
-block device which is typically done with the <strong class="command">vblade</strong>
-toolkit. Install the following package on the system which is
-expected to export the live ISO image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ zypper in vblade
+<li><p>Use the <a class="reference external" href="https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.multibuild.html">multibuild</a> feature.</p></li>
+</ol>
+<p>The first option is simpler to use, but has the disadvantage that your
+appliances are built sequentially. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">multibuild</span></code> feature allows to
+build each profile as a single package, thereby enabling parallel execution,
+but requires an additional <code class="file docutils literal notranslate"><span class="pre">_multibuild</span></code> file. For the above example
+<code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> would have to be adapted as follows:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+<span class="c">&lt;!-- OBS-Profiles: @BUILD_FLAVOR@ --&gt;</span>
+
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- image description with the profiles foo_profile and bar_profile</span>
+<span class="c">&lt;/image&gt;</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Not all versions of AoE are compatible with any kernel. This
-means the kernel on the system exporting the live ISO image
-must provide a compatible aoe kernel module compared to the
-kernel used in the live ISO image.</p>
-</div>
-<p>Once done, export the live ISO image as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vbladed <span class="m">0</span> <span class="m">1</span> INTERFACE LimeJeOS-Leap-15.1.x86_64-1.15.1.iso
+<p>The file <code class="file docutils literal notranslate"><span class="pre">_multibuild</span></code> would have the following contents:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;multibuild&gt;</span>
+  <span class="nt">&lt;flavor&gt;</span>foo_profile<span class="nt">&lt;/flavor&gt;</span>
+  <span class="nt">&lt;flavor&gt;</span>bar_profile<span class="nt">&lt;/flavor&gt;</span>
+<span class="nt">&lt;/multibuild&gt;</span>
 </pre></div>
-</div>
-<p>The above command exports the given ISO file as a block storage
-device to the network of the given INTERFACE. On any machine
-except the one exporting the file, it will appear as
-<code class="file docutils literal notranslate"><span class="pre">/dev/etherd/e0.1</span></code> once the <strong class="command">aoe</strong> kernel module
-was loaded. The two numbers, 0 and 1 in the above example, classifies
-a major and minor number which is used in the device node name
-on the reading side, in this case <code class="file docutils literal notranslate"><span class="pre">e0.1</span></code>. The numbers given
-at export time must match the AOEINTERFACE name as described in
-the next step.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Only machines in the same network of the given INTERFACE
-can see the exported live ISO image. If virtual machines
-are the target to boot the live ISO image they could all
-be connected through a bridge. In this case INTERFACE
-is the bridge device. The availability scope of the live
-ISO image on the network is in general not influenced
-by KIWI NG and is a task for the network administrators.</p>
 </div>
 </li>
-<li><p>Setup live ISO boot entry in PXE configuration</p>
-<p>Edit the file <code class="file docutils literal notranslate"><span class="pre">/srv/tftpboot/pxelinux.cfg/default</span></code> and create
-a boot entry of the form:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>LABEL Live-Boot
-    kernel boot/linux
-    append <span class="nv">initrd</span><span class="o">=</span>boot/initrd rd.kiwi.live.pxe <span class="nv">root</span><span class="o">=</span>live:AOEINTERFACE<span class="o">=</span>e0.1
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>The boot parameter <code class="xref py py-obj docutils literal notranslate"><span class="pre">rd.kiwi.live.pxe</span></code> tells the KIWI NG boot process to
-setup the network and to load the required <code class="xref py py-mod docutils literal notranslate"><span class="pre">aoe</span></code> kernel module.</p></li>
-<li><p>The boot parameter <code class="xref py py-obj docutils literal notranslate"><span class="pre">root=live:AOEINTERFACE=e0.1</span></code> specifies the
-interface name as it was exported by the <strong class="command">vbladed</strong> command
-from the last step. Currently only AoE (Ata Over Ethernet)
-is supported.</p></li>
+<li><p>Subfolders in OBS projects are ignored by default by <strong class="command">osc</strong> and
+must be explicitly added via <strong class="command">osc add $FOLDER</strong> <a class="footnote-reference brackets" href="#f2" id="id2">2</a>. Bear that
+in mind when adding the overlay files inside the <code class="file docutils literal notranslate"><span class="pre">root/</span></code> directory
+to your project.</p></li>
+<li><p>OBS ignores file permissions. Therefore <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> and
+<code class="file docutils literal notranslate"><span class="pre">images.sh</span></code> will <strong>always</strong> be executed through BASH (see also:
+<a class="reference internal" href="../working_with_kiwi/shell_scripts.html#working-with-kiwi-user-defined-scripts"><span class="std std-ref">User Defined Scripts</span></a>).</p></li>
 </ul>
-</li>
-<li><p>Boot from the Network</p>
-<p>Within the network which has access to the PXE server and the
-exported live ISO image, any network client can now boot the
-live system. A test based on QEMU is done as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ qemu -boot n
+</div>
+<div class="section" id="recommendations">
+<span id="obs-recommended-settings"></span><h2>Recommendations<a class="headerlink" href="#recommendations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="working-with-obs">
+<h3>Working with OBS<a class="headerlink" href="#working-with-obs" title="Permalink to this headline">¶</a></h3>
+<p>Although OBS is an online service, it is not necessary to test every change
+by uploading it. OBS will use the same process as <code class="docutils literal notranslate"><span class="pre">osc</span> <span class="pre">build</span></code> does, so if
+your image builds locally via <code class="docutils literal notranslate"><span class="pre">osc</span> <span class="pre">build</span></code> it should also build online on
+OBS.</p>
+</div>
+<div class="section" id="repository-configuration">
+<h3>Repository Configuration<a class="headerlink" href="#repository-configuration" title="Permalink to this headline">¶</a></h3>
+<p>When setting up the project, enable the <code class="xref py py-obj docutils literal notranslate"><span class="pre">images</span></code> repository: the <code class="xref py py-obj docutils literal notranslate"><span class="pre">images</span></code>
+repository’s checkbox can be found at the bottom of the selection screen
+that appears when clicking <code class="xref py py-obj docutils literal notranslate"><span class="pre">Add</span> <span class="pre">from</span> <span class="pre">a</span> <span class="pre">Distribution</span></code> in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">Repositories</span></code>
+tab. Or specify it manually in the project configuration (it can be
+accessed via <code class="docutils literal notranslate"><span class="pre">osc</span> <span class="pre">meta</span> <span class="pre">-e</span> <span class="pre">prj</span></code>):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repository</span> <span class="na">name=</span><span class="s">&quot;images&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
+<span class="nt">&lt;/repository&gt;</span>
 </pre></div>
 </div>
+<p>Furthermore, OBS requires additional repositories from which it obtains
+your dependent packages. These repositories can be provided in two ways:</p>
+<ol class="arabic">
+<li><p>Add the repositories to the project configuration on OBS and omit them
+from <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>. Provide only the following repository inside
+the image description:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;rpm-md&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;obsrepositories:/&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/repository&gt;</span>
+</pre></div>
+</div>
+<p>This instructs OBS to inject the repositories from your project into
+your appliance.</p>
+<p>Additional repositories can be added by invoking <code class="docutils literal notranslate"><span class="pre">osc</span> <span class="pre">meta</span> <span class="pre">-e</span> <span class="pre">prj</span></code> and
+adding a line of the following form as a child of <code class="docutils literal notranslate"><span class="pre">&lt;repository</span>
+<span class="pre">name=&quot;images&quot;&gt;</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;path</span> <span class="na">project=</span><span class="s">&quot;$OBS_PROJECT&quot;</span> <span class="na">repository=</span><span class="s">&quot;$REPOSITORY_NAME&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>The order in which you add repositories matters: if a package is present
+in multiple repositories, then it is taken from the <strong>first</strong>
+repository. The <strong>last</strong> repository is subject to path expansion: its
+repository paths are included as well.</p>
+<p>Don’t forget to add the repository from the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Builder</span></code> project, providing the latest stable
+version of KIWI NG (which you are very likely using for your local builds).</p>
+<p>The following example repository configuration <a class="footnote-reference brackets" href="#f3" id="id3">3</a> adds the
+repositories from the <code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Builder</span></code> project and
+those from the latest snapshot of openSUSE Tumbleweed:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&quot;Virtualization:Appliances:Images:openSUSE-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>JeOS for Tumbleweed <span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;description&gt;</span>Host JeOS images for Tumbleweed<span class="nt">&lt;/description&gt;</span>
+  <span class="nt">&lt;repository</span> <span class="na">name=</span><span class="s">&quot;images&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;path</span> <span class="na">project=</span><span class="s">&quot;Virtualization:Appliances:Builder&quot;</span> <span class="na">repository=</span><span class="s">&quot;Factory&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;path</span> <span class="na">project=</span><span class="s">&quot;openSUSE:Factory&quot;</span> <span class="na">repository=</span><span class="s">&quot;snapshot&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
+  <span class="nt">&lt;/repository&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</pre></div>
+</div>
+<p>The above can be simplified further using the path expansion of the last
+repository to:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&quot;Virtualization:Appliances:Images:openSUSE-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>JeOS for Tumbleweed <span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;description&gt;</span>Host JeOS images for Tumbleweed<span class="nt">&lt;/description&gt;</span>
+  <span class="nt">&lt;repository</span> <span class="na">name=</span><span class="s">&quot;images&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;path</span> <span class="na">project=</span><span class="s">&quot;Virtualization:Appliances:Builder&quot;</span> <span class="na">repository=</span><span class="s">&quot;Factory&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
+  <span class="nt">&lt;/repository&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</pre></div>
+</div>
+<p>Now <code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Builder</span></code> is the last repository, which’
+repositories are included into the search path. As
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">openSUSE:Factory/snapshot</span></code> is among these, it can be omitted from the
+repository list.</p>
+</li>
+<li><p>Keep the repositories in your <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> configuration file. If
+you have installed the latest stable KIWI NG as described in
+<a class="reference internal" href="../installation.html#kiwi-installation"><span class="std std-ref">Installation</span></a> then you should add the following repository to
+your projects configuration (accessible via <strong class="command">osc meta -e
+prjconf</strong>), so that OBS will pick the latest stable KIWI NG version too:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repository</span> <span class="na">name=</span><span class="s">&quot;images&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;path</span> <span class="na">project=</span><span class="s">&quot;Virtualization:Appliances:Builder&quot;</span> <span class="na">repository=</span><span class="s">&quot;$DISTRO&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
+<span class="nt">&lt;/repository&gt;</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">$DISTRO</span></code> with the appropriate name for the distribution that
+you are currently building and optionally adjust the architecture.</p>
 </li>
 </ol>
+<p>We recommend to use the first method, as it integrates better into
+OBS. Note that your image description will then no longer build outside of
+OBS though. If building locally is required, use the second method.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Adding the repositories to project’s configuration makes it impossible
+to build images for different distributions from the same project.</p>
+<p>Since the repositories are added for every package in your project, all
+your image builds will share the same repositories, thereby resulting in
+conflicts for different distributions.</p>
+<p>We recommend to create a separate project for each distribution. If that
+is impossible, you can keep all your repositories (including
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Builder</span></code>) in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>. That however
+usually requires a large number of workarounds via <code class="xref py py-obj docutils literal notranslate"><span class="pre">Prefer:</span></code> settings in
+the project configuration and is thus <strong>not</strong> recommended.</p>
+</div>
+</div>
+<div class="section" id="project-configuration">
+<h3>Project Configuration<a class="headerlink" href="#project-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The Open Build Service will by default create the same output file as KIWI NG
+when run locally, but with a custom filename ending (that is unfortunately
+unpredictable). This has the consequence that the download URL of your
+image will change with every rebuild (and thus break automated
+scripts). OBS can create symbolic links with static names to the latest
+build by adding the following line to the project configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Repotype: staticlinks
+</pre></div>
+</div>
+<p>If build Vagrant images (see <a class="reference internal" href="vmx_vagrant_setup.html#setup-vagrant"><span class="std std-ref">Image Description for Vagrant</span></a>) add the repository-type
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">vagrant</span></code>. OBS creates a <code class="xref py py-obj docutils literal notranslate"><span class="pre">boxes/</span></code> subdirectory in your download
+repositories, which contains JSON files for Vagrant <a class="footnote-reference brackets" href="#f4" id="id4">4</a>.</p>
+<p>If you have added your repositories to <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>, you probably see
+errors of the following type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unresolvable: have choice <span class="k">for</span> SOMEPACKAGE: SOMEPAKAGE_1 SOMEPACKAGE_2
+</pre></div>
+</div>
+<p>Instead of starting from scratch and manually adding <code class="docutils literal notranslate"><span class="pre">Prefer:</span></code> statements
+to the project configuration, we recommend to copy the current project
+configuration of the testing project
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Virtualization:Appliances:Images:Testing_$ARCH:$DISTRO</span></code> into your own project.
+It provides a good starting point and can be adapted to your OBS project.</p>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>This is a design decision made by OBS: as it’s purpose is to build
+packages in a reproducible fashion it cannot make a decision which
+package to choose from multiple available ones. A package manager build
+for end-users on the other hand <strong>must</strong> make an a choice, as it would
+be otherwise hardly usable.</p>
+</dd>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p><code class="file docutils literal notranslate"><span class="pre">osc</span></code> compresses added folders into a <a class="reference external" href="https://en.wikipedia.org/wiki/Cpio">cpio</a> archive and decompresses it
+before running your builds. The only downside of this is, that the
+contents of your overlay is not conveniently visible via the web
+interface.</p>
+</dd>
+<dt class="label" id="f3"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Taken from the project
+<a class="reference external" href="https://build.opensuse.org/project/show/Virtualization:Appliances:Images:openSUSE-Tumbleweed">Virtualization:Appliances:Images:openSUSE-Tumbleweed</a></p>
+</dd>
+<dt class="label" id="f4"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>Vagrant uses these JSON files for automatic updates of your
+Vagrant boxes.</p>
+</dd>
+</dl>
+</div>
+</div>
 </div>
 
 
@@ -808,10 +992,10 @@ live system. A test based on QEMU is done as follows:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="oem_ramdisk_deployment.html" class="btn btn-neutral float-right" title="Deploy and Run System in a RamDisk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="legacy_netboot_root_filesystem.html" class="btn btn-neutral float-right" title="Build PXE Root File System Image for the legacy netboot infrastructure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vmx_vagrant_setup.html" class="btn btn-neutral float-left" title="Image Description for Vagrant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="build_with_profiles.html" class="btn btn-neutral float-left" title="Building Images with Profiles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

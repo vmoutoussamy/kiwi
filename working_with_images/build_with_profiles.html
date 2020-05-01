@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PXE Client Setup Configuration &mdash; KIWI NG 9.20.9 documentation</title>
+  <title>Building Images with Profiles &mdash; KIWI NG 9.20.10 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Image Description for Vagrant" href="vmx_vagrant_setup.html" />
-    <link rel="prev" title="Setting Up YaST at First Boot" href="setup_yast_on_first_boot.html" /> 
+    <link rel="next" title="Building in the Open Build Service" href="build_in_buildservice.html" />
+    <link rel="prev" title="Image Description Encrypted Disk" href="vmx_setup_for_luks.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,6 +95,28 @@
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-pypi">Installation from PyPI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../self_contained.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#selecting-a-template">Selecting a Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id1">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id2">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
@@ -178,30 +200,16 @@
 <li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_ec2.html">Image Description for Amazon EC2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_azure.html">Image Description for Microsoft Azure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_google.html">Image Description for Google Compute Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_network_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="setup_network_bootserver.html#installing-and-configuring-dhcp-and-tftp-with-dnsmasq">Installing and Configuring DHCP and TFTP with dnsmasq</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="setup_yast_on_first_boot.html">Setting Up YaST at First Boot</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PXE Client Setup Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="vmx_vagrant_setup.html">Image Description for Vagrant</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_partitions.html">Custom Disk Partitions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
@@ -210,6 +218,38 @@
 <li class="toctree-l2"><a class="reference internal" href="custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_luks.html">Image Description Encrypted Disk</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building Images with Profiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#local-builds">Local Builds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-with-the-open-build-service">Building with the Open Build Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="legacy_netboot_root_filesystem.html">Build PXE Root File System Image for the legacy netboot infrastructure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="legacy_netboot_root_filesystem.html#pxe-client-setup-configuration">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../building.html">Building Images</a><ul>
@@ -235,51 +275,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_docker_container.html">Build a Docker Container Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id1">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id2">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id3">The Vagrantfile</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_with_profiles.html">Building Images with Profiles</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_with_profiles.html#local-builds">Local Builds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#image-types">Image Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
@@ -461,7 +463,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.filesystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.filesystem</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.install"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.install</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.live"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.live</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.pxe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.pxe</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.kis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.kis</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder">Module Contents</a></li>
 </ul>
 </li>
@@ -679,13 +681,13 @@
         
           <li><a href="../working_with_images.html">Working with Images</a> &raquo;</li>
         
-      <li>PXE Client Setup Configuration</li>
+      <li>Building Images with Profiles</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/working_with_images/pxe_client_configuration.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/working_with_images/build_with_profiles.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -698,228 +700,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pxe-client-setup-configuration">
-<span id="pxe-client-config"></span><h1>PXE Client Setup Configuration<a class="headerlink" href="#pxe-client-setup-configuration" title="Permalink to this headline">¶</a></h1>
-<div class="sidebar">
-<p class="sidebar-title">Abstract</p>
-<p>This page provides further information for handling
-PXE images built with KIWI NG and references the following
-articles:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../building/build_pxe_root_filesystem.html#build-pxe"><span class="std std-ref">Build a PXE Root File System Image</span></a></p></li>
-</ul>
-</div>
-<p>All PXE boot based deployment methods are controlled by configuration files
-located in <code class="file docutils literal notranslate"><span class="pre">/srv/tftpboot/KIWI</span></code> on the PXE server. Such a configuration
-file can either be client-specific (config.MAC_ADDRESS, for example
-config.00.AB.F3.11.73.C8), or generic (config.default).</p>
-<p>In an environment
-with heterogeneous clients, this allows to have a default configuration
-suitable for the majority of clients, to have configurations suitable
-for a group of clients (for example machines with similar or identical
-hardware), and individual configurations for selected machines.</p>
-<p>The configuration file contains data about the image and about
-configuration, synchronization, and partition parameters.
-The configuration file has got the following general format:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">IMAGE</span><span class="o">=</span><span class="s2">&quot;device;name;version;srvip;bsize;compressed,...,&quot;</span>
-
-<span class="nv">DISK</span><span class="o">=</span><span class="s2">&quot;device&quot;</span>
-<span class="nv">PART</span><span class="o">=</span><span class="s2">&quot;size;id;Mount,...,size;id;Mount&quot;</span>
-<span class="nv">RAID</span><span class="o">=</span><span class="s2">&quot;raid-level;device1;device2;...&quot;</span>
-
-<span class="nv">AOEROOT</span><span class="o">=</span>ro-device<span class="o">[</span>,rw-device<span class="o">]</span>
-<span class="nv">NBDROOT</span><span class="o">=</span><span class="s2">&quot;ip-address;export-name;device;swap-export-name;swap-device;write-export-name;write-device&quot;</span>
-<span class="nv">NFSROOT</span><span class="o">=</span><span class="s2">&quot;ip-address;path&quot;</span>
-
-<span class="nv">UNIONFS_CONFIGURATION</span><span class="o">=</span><span class="s2">&quot;rw-partition,compressed-partition,overlayfs&quot;</span>
-
-<span class="nv">CONF</span><span class="o">=</span><span class="s2">&quot;src;dest;srvip;bsize;[hash],...,src;dest;srvip;bsize;[hash]&quot;</span>
-
-<span class="nv">KIWI_BOOT_TIMEOUT</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span>
-<span class="nv">KIWI_KERNEL_OPTIONS</span><span class="o">=</span><span class="s2">&quot;opt1 opt2 ...&quot;</span>
-
-<span class="nv">REBOOT_IMAGE</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">RELOAD_CONFIG</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">RELOAD_IMAGE</span><span class="o">=</span><span class="m">1</span>
+  <div class="section" id="building-images-with-profiles">
+<span id="building-build-with-profiles"></span><h1>Building Images with Profiles<a class="headerlink" href="#building-images-with-profiles" title="Permalink to this headline">¶</a></h1>
+<p>KIWI NG supports so-called <em>profiles</em> inside the XML image description. Profiles
+act as namespaces for additional settings to be applied on top of the
+defaults. For further details, see <a class="reference internal" href="../working_with_kiwi/xml_description.html#image-profiles"><span class="std std-ref">Image Profiles</span></a>.</p>
+<div class="section" id="local-builds">
+<h2>Local Builds<a class="headerlink" href="#local-builds" title="Permalink to this headline">¶</a></h2>
+<p>To execute local KIWI NG builds with a specific, selected profile, add the
+command line flag <code class="xref py py-obj docutils literal notranslate"><span class="pre">--profile=$PROFILE_NAME</span></code>:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo kiwi-ng --type iso system build <span class="se">\</span>
+      --profile<span class="o">=</span>workstation <span class="se">\</span>
+      --description kiwi-descriptions/suse/x86_64/suse-leap-15.1-JeOS <span class="se">\</span>
+      --target-dir /tmp/myimage
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Quoting the Values</p>
-<p>The configuration file is sourced by Bash, so the same quoting
-rules as for Bash apply.</p>
+<p>Consult the manual page of <code class="file docutils literal notranslate"><span class="pre">kiwi</span></code> for further details:
+<a class="reference internal" href="../commands/kiwi.html#db-commands-kiwi-synopsis"><span class="std std-ref">SYNOPSIS</span></a>.</p>
 </div>
-<p>Not all configuration options needs to be specified. It depends on the
-setup of the client which configuration values are required. The
-following is a collection of client setup examples which covers all
-supported PXE client configurations.</p>
-<div class="section" id="setup-client-with-remote-root">
-<h2>Setup Client with Remote Root<a class="headerlink" href="#setup-client-with-remote-root" title="Permalink to this headline">¶</a></h2>
-<p>To serve the image from a remote location and redirect all
-write operations on a tmpfs, the following setup is required:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># When using AoE, see vblade toolchain for image export</span>
-
-<span class="nv">AOEROOT</span><span class="o">=</span>/dev/etherd/e0.1
-<span class="nv">UNIONFS_CONFIG</span><span class="o">=</span>tmpfs,aoe,overlay
-
-<span class="c1"># When using NFS, see exports manual page for image export</span>
-
-<span class="nv">NFSROOT</span><span class="o">=</span><span class="s2">&quot;192.168.100.2;/srv/tftpboot/image/root&quot;</span>
-<span class="nv">UNIONFS_CONFIG</span><span class="o">=</span>tmpfs,nfs,overlay
-
-<span class="c1"># When using NBD, see nbd-server manual page for image export</span>
-
-<span class="nv">NBDROOT</span><span class="o">=</span><span class="m">192</span>.168.100.2<span class="p">;</span>root_export<span class="p">;</span>/dev/nbd0
-<span class="nv">UNIONFS_CONFIG</span><span class="o">=</span>tmpfs,nbd,overlay
+<div class="section" id="building-with-the-open-build-service">
+<h2>Building with the Open Build Service<a class="headerlink" href="#building-with-the-open-build-service" title="Permalink to this headline">¶</a></h2>
+<p>The Open Build Service (OBS) support profiles via the <a class="reference external" href="https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.multibuild.html">multibuild</a>
+feature. An example project using this feature is the
+<a class="reference external" href="https://build.opensuse.org/package/show/openSUSE:Factory/openSUSE-Tumbleweed-JeOS">openSUSE-Tumbleweed-JeOS</a>
+image.</p>
+<p>To enable and use the profiles, follow these steps:</p>
+<ol class="arabic">
+<li><p>Add the following XML comment to your <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- OBS-Profiles: @BUILD_FLAVOR@ --&gt;</span>
 </pre></div>
 </div>
-<p>The above setup shows the most common use case where the image built
-with KIWI NG is populated over the network using either AoE, NBD or NFS
-in combination with overlayfs which redirects all write operations
-to be local to the client. In any case a setup of either AoE, NBD or
-NFS on the image server is required beforehand.</p>
-</div>
-<div class="section" id="setup-client-with-system-on-local-disk">
-<h2>Setup Client with System on Local Disk<a class="headerlink" href="#setup-client-with-system-on-local-disk" title="Permalink to this headline">¶</a></h2>
-<p>To deploy the image on a local disk the following setup
-is required:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In the referenced suse-leap-15.1-JeOS XML description the <code class="docutils literal notranslate"><span class="pre">pxe</span></code>
-type must be changed as follows and the image needs to be
-rebuild:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;pxe&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext3&quot;</span> <span class="na">boot=</span><span class="s">&quot;netboot/suse-leap15.1&quot;</span><span class="nt">/&gt;</span>
+<p>It must be added before the opening <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image&gt;</span></code> element and after the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;?xml?&gt;</span></code> element, e.g.:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="c">&lt;!-- OBS-Profiles: @BUILD_FLAVOR@ --&gt;</span>
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- snip --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">IMAGE</span><span class="o">=</span><span class="s2">&quot;/dev/sda2;LimeJeOS-Leap-15.1.x86_64;1.15.1;192.168.100.2;4096&quot;</span>
-<span class="nv">DISK</span><span class="o">=</span><span class="s2">&quot;/dev/sda&quot;</span>
-<span class="nv">PART</span><span class="o">=</span><span class="s2">&quot;5;S;X,X;L;/&quot;</span>
+</li>
+<li><p>Add a file <code class="file docutils literal notranslate"><span class="pre">_multibuild</span></code> into your package’s repository with the
+following contents:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;multibuild&gt;</span>
+  <span class="nt">&lt;flavor&gt;</span>profile_1<span class="nt">&lt;/flavor&gt;</span>
+  <span class="nt">&lt;flavor&gt;</span>profile_2<span class="nt">&lt;/flavor&gt;</span>
+<span class="nt">&lt;/multibuild&gt;</span>
 </pre></div>
 </div>
-<p>The setup above will create a partition table on sda with a 5MB swap
-partition (no mountpoint) and the rest of the disk will be a Linux(L)
-partition with <code class="file docutils literal notranslate"><span class="pre">/</span></code> as mountpoint. The (<code class="docutils literal notranslate"><span class="pre">X</span></code>) in the PART setup specifies
-a place holder to indicate the default behaviour.</p>
-</div>
-<div class="section" id="setup-client-with-system-on-local-md-raid-disk">
-<h2>Setup Client with System on Local MD RAID Disk<a class="headerlink" href="#setup-client-with-system-on-local-md-raid-disk" title="Permalink to this headline">¶</a></h2>
-<p>To deploy the image on a local disk with prior software RAID
-configuration, the following setup is required:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In the referenced suse-leap-15.1-JeOS XML description the <code class="docutils literal notranslate"><span class="pre">pxe</span></code>
-type must be changed as follows and the image needs to be
-rebuild:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;pxe&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext3&quot;</span> <span class="na">boot=</span><span class="s">&quot;netboot/suse-leap15.1&quot;</span><span class="nt">/&gt;</span>
+<p>Add a line <code class="docutils literal notranslate"><span class="pre">&lt;flavor&gt;$PROFILE&lt;/flavor&gt;</span></code> for each profile that
+you want OBS to build.</p>
+</li>
+</ol>
+<p>Note, by default, OBS excludes the build <strong>without</strong> any profile
+enabled.</p>
+<p>Running a build of a multibuild enabled repository via <code class="file docutils literal notranslate"><span class="pre">osc</span></code> can be
+achieved via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">-M</span> <span class="pre">$PROFILE</span></code> flag:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> osc build -M <span class="nv">$PROFILE</span>
 </pre></div>
-</div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">RAID</span><span class="o">=</span><span class="s2">&quot;1;/dev/sda;/dev/sdb&quot;</span>
-<span class="nv">IMAGE</span><span class="o">=</span><span class="s2">&quot;/dev/md1;LimeJeOS-Leap-15.1.x86_64;1.15.1;192.168.100.2;4096&quot;</span>
-<span class="nv">PART</span><span class="o">=</span><span class="s2">&quot;5;S;x,x;L;/&quot;</span>
-</pre></div>
-</div>
-<p>The first parameter of the RAID line is the RAID level. So far only raid1
-(mirroring) is supported. The second and third parameter specifies the
-raid disk devices which make up the array. If a RAID line is present
-all partitions in <code class="docutils literal notranslate"><span class="pre">PART</span></code> will be created as RAID partitions. The first
-RAID is named <code class="docutils literal notranslate"><span class="pre">md0</span></code>, the second one <code class="docutils literal notranslate"><span class="pre">md1</span></code> and so on. It is required to
-specify the correct RAID partition in the <code class="docutils literal notranslate"><span class="pre">IMAGE</span></code> line according to the
-<code class="docutils literal notranslate"><span class="pre">PART</span></code> setup. In this case <code class="docutils literal notranslate"><span class="pre">md0</span></code> is reserved for the SWAP space and <code class="docutils literal notranslate"><span class="pre">md1</span></code>
-is reserved for the system.</p>
-</div>
-<div class="section" id="setup-loading-of-custom-configuration-file-s">
-<h2>Setup Loading of Custom Configuration File(s)<a class="headerlink" href="#setup-loading-of-custom-configuration-file-s" title="Permalink to this headline">¶</a></h2>
-<p>In order to load for example a custom <code class="file docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file on the client,
-the following setup is required:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CONF</span><span class="o">=</span><span class="s2">&quot;hosts;/etc/hosts;192.168.1.2;4096;ffffffff&quot;</span>
-</pre></div>
-</div>
-<p>On boot of the client KIWI NG’s boot code will fetch the <code class="file docutils literal notranslate"><span class="pre">hosts</span></code> file
-from the root of the server (192.168.1.2) with 4k blocksize and deploy
-it as <code class="file docutils literal notranslate"><span class="pre">/etc/hosts</span></code> on the client. The protocol is by default tftp
-but can be changed via the <code class="docutils literal notranslate"><span class="pre">kiwiservertype</span></code> kernel commandline option.
-For details, see <a class="reference internal" href="#custom-download-server"><span class="std std-ref">Setup a Different Download Protocol and Server</span></a></p>
-</div>
-<div class="section" id="setup-client-to-force-reload-image">
-<h2>Setup Client to Force Reload Image<a class="headerlink" href="#setup-client-to-force-reload-image" title="Permalink to this headline">¶</a></h2>
-<p>To force the reload of the system image even if the image on
-the disk is up-to-date, the following setup is required:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">RELOAD_IMAGE</span><span class="o">=</span><span class="m">1</span>
-</pre></div>
-</div>
-<p>The option only applies to configurations with a DISK/PART setup</p>
-</div>
-<div class="section" id="setup-client-to-force-reload-configuration-files">
-<h2>Setup Client to Force Reload Configuration Files<a class="headerlink" href="#setup-client-to-force-reload-configuration-files" title="Permalink to this headline">¶</a></h2>
-<p>To force the reload of all configuration files specified in
-CONF, the following setup is required:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">RELOAD_CONFIG</span><span class="o">=</span><span class="m">1</span>
-</pre></div>
-</div>
-<p>By default only configuration files which has changed according to
-their md5sum value will be reloaded. With the above setup all files
-will be reloaded from the PXE server. The option only applies to
-configurations with a DISK/PART setup</p>
-</div>
-<div class="section" id="setup-client-for-reboot-after-deployment">
-<h2>Setup Client for Reboot After Deployment<a class="headerlink" href="#setup-client-for-reboot-after-deployment" title="Permalink to this headline">¶</a></h2>
-<p>To reboot the system after the initial deployment process is
-done the following setup is required:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">REBOOT_IMAGE</span><span class="o">=</span><span class="m">1</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="setup-custom-kernel-boot-options">
-<h2>Setup custom kernel boot options<a class="headerlink" href="#setup-custom-kernel-boot-options" title="Permalink to this headline">¶</a></h2>
-<p>To deactivate the kernel mode setting on local
-boot of the client the following setup is required:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">KIWI_KERNEL_OPTIONS</span><span class="o">=</span><span class="s2">&quot;nomodeset&quot;</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This does not influence the kernel options passed to the client
-if it boots from the network. In order to setup those the PXE
-configuration on the PXE server needs to be changed</p>
-</div>
-</div>
-<div class="section" id="setup-a-custom-boot-timeout">
-<h2>Setup a Custom Boot Timeout<a class="headerlink" href="#setup-a-custom-boot-timeout" title="Permalink to this headline">¶</a></h2>
-<p>To setup a 10sec custom timeout for the local boot of the client
-the following setup is required.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">KIWI_BOOT_TIMEOUT</span><span class="o">=</span><span class="s2">&quot;10&quot;</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This does not influence the boot timeout if the client boots off
-from the network.</p>
-</div>
-</div>
-<div class="section" id="setup-a-different-download-protocol-and-server">
-<span id="custom-download-server"></span><h2>Setup a Different Download Protocol and Server<a class="headerlink" href="#setup-a-different-download-protocol-and-server" title="Permalink to this headline">¶</a></h2>
-<p>By default all downloads controlled by the KIWI NG linuxrc code are
-performed by an atftp call using the TFTP protocol. With PXE the download
-protocol is fixed and thus you cannot change the way how the kernel and
-the boot image (<code class="file docutils literal notranslate"><span class="pre">initrd</span></code>) is downloaded. As soon as Linux takes over, the
-download protocols http, https and ftp are supported too. KIWI NG uses
-the curl program to support the additional protocols.</p>
-<p>To select one of the additional download protocols the following
-kernel parameters need to be specified</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">kiwiserver</span><span class="o">=</span><span class="m">192</span>.168.1.1 <span class="nv">kiwiservertype</span><span class="o">=</span>ftp
-</pre></div>
-</div>
-<p>To set up this parameters edit the file
-<code class="file docutils literal notranslate"><span class="pre">/srv/tftpboot/pxelinux.cfg/default</span></code> on your PXE boot server and change
-the append line accordingly.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Once configured all downloads except for kernel and initrd are
-now controlled by the given server and protocol. You need to make
-sure that this server provides the same directory and file structure
-as initially provided by the <code class="docutils literal notranslate"><span class="pre">kiwi-pxeboot</span></code> package</p>
 </div>
 </div>
 </div>
@@ -932,10 +770,10 @@ as initially provided by the <code class="docutils literal notranslate"><span cl
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="vmx_vagrant_setup.html" class="btn btn-neutral float-right" title="Image Description for Vagrant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="build_in_buildservice.html" class="btn btn-neutral float-right" title="Building in the Open Build Service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="setup_yast_on_first_boot.html" class="btn btn-neutral float-left" title="Setting Up YaST at First Boot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vmx_setup_for_luks.html" class="btn btn-neutral float-left" title="Image Description Encrypted Disk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

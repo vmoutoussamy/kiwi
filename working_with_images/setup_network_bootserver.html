@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build a PXE Root File System Image &mdash; KIWI NG 9.20.9 documentation</title>
+  <title>Setting Up a Network Boot Server &mdash; KIWI NG 9.20.10 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Build a Docker Container Image" href="build_docker_container.html" />
-    <link rel="prev" title="Build an OEM Expandable Disk Image" href="build_oem_disk.html" /> 
+    <link rel="next" title="Setting Up YaST at First Boot" href="setup_yast_on_first_boot.html" />
+    <link rel="prev" title="Image Description for Google Compute Engine" href="vmx_setup_for_google.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,6 +95,28 @@
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-pypi">Installation from PyPI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../self_contained.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#selecting-a-template">Selecting a Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id1">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id2">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id3">The Vagrantfile</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
@@ -172,98 +194,30 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_setup_for_ec2.html">Image Description for Amazon EC2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_setup_for_azure.html">Image Description for Microsoft Azure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_setup_for_google.html">Image Description for Google Compute Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_ec2.html">Image Description for Amazon EC2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_azure.html">Image Description for Microsoft Azure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_google.html">Image Description for Google Compute Engine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-and-configuring-dhcp-and-tftp-with-dnsmasq">Installing and Configuring DHCP and TFTP with dnsmasq</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/setup_yast_on_first_boot.html">Setting Up YaST at First Boot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_yast_on_first_boot.html">Setting Up YaST at First Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmx_vagrant_setup.html">Image Description for Vagrant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_vagrant_setup.html">Image Description for Vagrant</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_partitions.html">Custom Disk Partitions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/custom_partitions.html">Custom Disk Partitions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_images/custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_setup_for_luks.html">Image Description Encrypted Disk</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="reference internal" href="../building.html">Building Images</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="build_vmx_disk.html">Build a Virtual Disk Image</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="build_vmx_disk.html#modifying-the-size-of-the-image">Modifying the Size of the Image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_vmx_disk.html#customizing-the-virtual-machine">Customizing the Virtual Machine</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="build_vmx_disk.html#modifying-the-vm-configuration-directly">Modifying the VM Configuration Directly</a></li>
-<li class="toctree-l4"><a class="reference internal" href="build_vmx_disk.html#adding-network-interfaces-to-the-vm">Adding Network Interfaces to the VM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="build_vmx_disk.html#specifying-disks-and-disk-controllers">Specifying Disks and Disk Controllers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="build_vmx_disk.html#adding-cd-dvd-drives">Adding CD/DVD Drives</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#network-deployment">Network Deployment</a></li>
-</ul>
-</li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Build a PXE Root File System Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_docker_container.html">Build a Docker Container Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_wsl_container.html">Build a WSL Container Image</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="build_containerized.html">Building in a Self-Contained Environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#id1">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#id2">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l3"><a class="reference internal" href="build_containerized.html#id3">The Vagrantfile</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmx_setup_for_luks.html">Image Description Encrypted Disk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build_with_profiles.html">Building Images with Profiles</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="build_with_profiles.html#local-builds">Local Builds</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
@@ -280,6 +234,54 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="legacy_netboot_root_filesystem.html">Build PXE Root File System Image for the legacy netboot infrastructure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="legacy_netboot_root_filesystem.html#pxe-client-setup-configuration">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="legacy_netboot_root_filesystem.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../building.html">Building Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_vmx_disk.html">Build a Virtual Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_vmx_disk.html#modifying-the-size-of-the-image">Modifying the Size of the Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_vmx_disk.html#customizing-the-virtual-machine">Customizing the Virtual Machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_vmx_disk.html#modifying-the-vm-configuration-directly">Modifying the VM Configuration Directly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_vmx_disk.html#adding-network-interfaces-to-the-vm">Adding Network Interfaces to the VM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_vmx_disk.html#specifying-disks-and-disk-controllers">Specifying Disks and Disk Controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/build_vmx_disk.html#adding-cd-dvd-drives">Adding CD/DVD Drives</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#image-types">Image Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
@@ -461,7 +463,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.filesystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.filesystem</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.install"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.install</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.live"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.live</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.pxe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.pxe</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.kis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.kis</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder">Module Contents</a></li>
 </ul>
 </li>
@@ -677,15 +679,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../building.html">Building Images</a> &raquo;</li>
+          <li><a href="../working_with_images.html">Working with Images</a> &raquo;</li>
         
-      <li>Build a PXE Root File System Image</li>
+      <li>Setting Up a Network Boot Server</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/building/build_pxe_root_filesystem.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/working_with_images/setup_network_bootserver.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -698,128 +700,123 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="build-a-pxe-root-file-system-image">
-<span id="build-pxe"></span><h1>Build a PXE Root File System Image<a class="headerlink" href="#build-a-pxe-root-file-system-image" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="setting-up-a-network-boot-server">
+<span id="network-boot-server"></span><h1>Setting Up a Network Boot Server<a class="headerlink" href="#setting-up-a-network-boot-server" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar">
 <p class="sidebar-title">Abstract</p>
-<p>This page explains how to build a file system image for use with
-KIWI NG’s PXE boot infrastructure. It contains:</p>
-<ul class="simple">
-<li><p>how to build a PXE file system image</p></li>
-<li><p>how to setup the PXE file system image on the PXE server</p></li>
-<li><p>how to run it with QEMU</p></li>
-</ul>
+<p>This page provides general information how to setup
+a network boot server that provides all services
+needed for the PXE boot protocol</p>
 </div>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Preboot_Execution_Environment">PXE</a> is a network boot protocol that is shipped with most BIOS
-implementations. The protocol sends a DHCP request to get an IP
-address. When an IP address is assigned, it uses the <a class="reference external" href="https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol">TFTP</a> protocol
-to download a Kernel and boot instructions. Contrary to other images
-built with KIWI NG, a PXE image consists of separate boot, kernel and root
-filesystem images, since those images need to be made available in
-different locations on the PXE boot server.</p>
-<p>A root filesystem image which can be deployed via KIWI NG’s PXE
-netboot infrastructure represents the system rootfs in a linux
-filesystem. A user could loop mount the image and access the
-contents of the root filesystem. The image does not contain
-any information about the system disk its partitions or the
-bootloader setup. All of these information is provided by a
-client configuration file on the PXE server which controlls
-how the root filesystem image should be deployed.</p>
-<p>Many different deployment strategies are possible, e.g root over
-<a class="reference external" href="https://en.wikipedia.org/wiki/Network_block_device">NBD</a> (network block device), <a class="reference external" href="https://en.wikipedia.org/wiki/ATA_over_Ethernet">AoE</a> (ATA over Ethernet), or
-NFS for diskless and diskfull clients. This particular
-example shows how to build an overlayfs-based union system based
-on openSUSE Leap for a diskless client which receives the squashfs
-compressed root file system image in a ramdisk overlayed via
-overlayfs and writes new data into another ramdisk on the same
-system. As diskless client, a QEMU virtual machine is used.</p>
-<div class="compound">
-<p class="compound-first"><strong>Things to know before</strong></p>
-<ul class="compound-last simple">
-<li><p>To use the image, all image parts need to be copied to the PXE boot
-server. If you have not set up such a server, refer to
-<a class="reference internal" href="../working_with_images/setup_pxe_bootserver.html#pxe-boot-server"><span class="std std-ref">Setting Up a Network Boot Server</span></a> for instructions.</p></li>
-<li><p>The following example assumes you will create the PXE image
-on the PXE boot server itself (if not, use <strong class="command">scp</strong> to copy the files
-on the remote host).</p></li>
-<li><p>To let QEMU connect to the network, we recommend to
-setup a network bridge on the host system and let QEMU connect
-to it via a custom <code class="file docutils literal notranslate"><span class="pre">/etc/qemu-ifup</span></code>. For details, see
-<a class="reference external" href="https://en.wikibooks.org/wiki/QEMU/Networking">https://en.wikibooks.org/wiki/QEMU/Networking</a></p></li>
-<li><p>The PXE root filesystem image approach is considered to be a
-legacy setup. The required netboot initrd code will be maintained
-outside of the KIWI NG appliance builder code base. If possible,
-we recommend to switch to the OEM disk image deployment via
-PXE.</p></li>
-</ul>
-</div>
+<p>To be able to deploy a system through the PXE boot protocol, you need
+to set up a network boot server providing the services DHCP and tftp.
+With <code class="xref py py-obj docutils literal notranslate"><span class="pre">dnsmasq</span></code> an utility exists which allows to setup all needed
+services at once:</p>
+<div class="section" id="installing-and-configuring-dhcp-and-tftp-with-dnsmasq">
+<h2>Installing and Configuring DHCP and TFTP with dnsmasq<a class="headerlink" href="#installing-and-configuring-dhcp-and-tftp-with-dnsmasq" title="Permalink to this headline">¶</a></h2>
+<p>The following instructions can only serve as an example. Depending on your
+network structure, the IP addresses, ranges and domain settings needs to
+be adapted to allow the DHCP server to work within your network. If you
+already have a DHCP server running in your network, make sure that the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">filename</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">next-server</span></code> directives are correctly set on this server.</p>
+<p>The following steps describe how to set up dnsmasq to work as
+DHCP and TFTP server.</p>
 <ol class="arabic">
-<li><p>Make sure you have checked out the example image descriptions,
-see <a class="reference internal" href="../installation.html#example-descriptions"><span class="std std-ref">Example Appliance Descriptions</span></a>.</p></li>
-<li><p>Build the image with KIWI NG:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo kiwi-ng --type pxe system build <span class="se">\</span>
-    --description kiwi-descriptions/suse/x86_64/suse-leap-15.1-JeOS <span class="se">\</span>
-    --target-dir /tmp/mypxe-result
-</pre></div>
-</div>
-</li>
-<li><p>Change into the build directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp/mypxe-result
-</pre></div>
-</div>
-</li>
-<li><p>Copy the initrd and the kernel to <code class="file docutils literal notranslate"><span class="pre">/srv/tftpboot/boot</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp *.initrd.xz /srv/tftpboot/boot/initrd
-$ cp *.kernel /srv/tftpboot/boot/linux
-</pre></div>
-</div>
-</li>
-<li><p>Copy the system image and its MD5 sum to <code class="file docutils literal notranslate"><span class="pre">/srv/tftpboot/image</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp LimeJeOS-Leap-15.1.x86_64-1.15.1/srv/tftpboot/image
-$ cp LimeJeOS-Leap-15.1.x86_64-1.15.1.md5 /srv/tftpboot/image
-</pre></div>
-</div>
-</li>
-<li><p>Adjust the PXE configuration file.
-The configuration file controls which kernel and initrd is
-loaded and which kernel parameters are set. A template has been installed
-at <code class="file docutils literal notranslate"><span class="pre">/srv/tftpboot/pxelinux.cfg/default</span></code> from the <code class="docutils literal notranslate"><span class="pre">kiwi-pxeboot</span></code> package.
-The minimal configuration required to boot the example image looks
-like to following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   DEFAULT KIWI-Boot
+<li><p>Install the <code class="xref py py-obj docutils literal notranslate"><span class="pre">dnsmasq</span></code> package.</p></li>
+<li><p>Create the file <code class="file docutils literal notranslate"><span class="pre">/etc/dnsmasq.conf</span></code> and insert the following content</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t function as a DNS server.</span>
+<span class="nv">port</span><span class="o">=</span><span class="m">0</span>
 
-   LABEL KIWI-Boot
-       kernel boot/linux
-       append <span class="nv">initrd</span><span class="o">=</span>boot/initrd
-       IPAPPEND <span class="m">2</span>
+<span class="c1"># Log information about DHCP transactions.</span>
+log-dhcp
 
-Additional configuration files can be found at :ref:<span class="sb">`</span>pxe_client_config<span class="sb">`</span>.
+<span class="c1"># Set the root directory for files available via FTP,</span>
+<span class="c1"># usually &quot;/srv/tftpboot&quot;:</span>
+tftp-root<span class="o">=</span>TFTP_ROOT_DIR
+
+enable-tftp
+
+dhcp-range<span class="o">=</span>BOOT_SERVER_IP,proxy
 </pre></div>
 </div>
+<p>In the next step it’s required to decide for the boot method. There
+is the PXE loader provided via pxelinux.0 from the syslinux package
+and there is the GRUB loader provided via the grub package.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Placeholders</p>
+<p>Replace all placeholders (written in uppercase) with data fitting
+your network setup.</p>
+</div>
 </li>
-<li><p>Create the image client configuration file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi /srv/tftpboot/KIWI/config.default
+</ol>
+<p>2.1. insert the following content to use pxelinux.0:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The boot filename, Server name, Server Ip Address</span>
+dhcp-boot<span class="o">=</span>pxelinux.0,,BOOT_SERVER_IP
 
-<span class="nv">IMAGE</span><span class="o">=</span>/dev/ram1<span class="p">;</span>LimeJeOS-Leap-15.1.x86_64<span class="p">;</span><span class="m">1</span>.15.1<span class="p">;</span><span class="m">192</span>.168.100.2<span class="p">;</span><span class="m">4096</span>
-<span class="nv">UNIONFS_CONFIG</span><span class="o">=</span>/dev/ram2,/dev/ram1,overlay
+<span class="c1"># Disable re-use of the DHCP servername and filename fields as extra</span>
+<span class="c1"># option space. That&#39;s to avoid confusing some old or broken</span>
+<span class="c1"># DHCP clients.</span>
+dhcp-no-override
+
+<span class="c1"># PXE menu.  The first part is the text displayed to the user.</span>
+<span class="c1"># The second is the timeout, in seconds.</span>
+pxe-prompt<span class="o">=</span><span class="s2">&quot;Booting FOG Client&quot;</span>, <span class="m">1</span>
+
+<span class="c1"># The known types are x86PC, PC98, IA64_EFI, Alpha, Arc_x86,</span>
+<span class="c1"># Intel_Lean_Client, IA32_EFI, BC_EFI, Xscale_EFI and X86-64_EFI</span>
+<span class="c1"># This option is first and will be the default if there is no input</span>
+<span class="c1"># from the user.</span>
+pxe-service<span class="o">=</span>X86PC, <span class="s2">&quot;Boot to FOG&quot;</span>, pxelinux.0
+pxe-service<span class="o">=</span>X86-64_EFI, <span class="s2">&quot;Boot to FOG UEFI&quot;</span>, ipxe
+pxe-service<span class="o">=</span>BC_EFI, <span class="s2">&quot;Boot to FOG UEFI PXE-BC&quot;</span>, ipxe
 </pre></div>
 </div>
-<p>All PXE boot based deployment methods are controlled by a client
-configuration file. The above configuration tells the client where
-to find the image and how to activate it. In this case the image
-will be deployed into a ramdisk (ram1) and overlay mounted such
-that all write operations will land in another ramdisk (ram2).
-KIWI NG supports a variety of different deployment strategies based
-on the rootfs image created beforehand. For details, refer
-to <a class="reference internal" href="../working_with_images/pxe_client_configuration.html#pxe-client-config"><span class="std std-ref">PXE Client Setup Configuration</span></a></p>
-</li>
-<li><p>Connect the client to the network and boot. This can also be done
-in a virtualized environment using QEMU as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ qemu -boot n -m <span class="m">4096</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On boot of a network client with that configuration the default
+pxelinux.0 config file is expected at
+<code class="file docutils literal notranslate"><span class="pre">TFTP_ROOT_DIR/pxelinux.cfg/default</span></code></p>
+</div>
+</div></blockquote>
+<p>2.2. insert the following content to use grub:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The boot filename, Server name, Server Ip Address</span>
+dhcp-boot<span class="o">=</span>boot/grub2/i386-pc/core.0,,BOOT_SERVER_IP
+</pre></div>
+</div>
+<p>When using grub the referenced dhcp-boot grub module must be genereated.
+To do this change the directory to <code class="file docutils literal notranslate"><span class="pre">TFTP_ROOT_DIR</span></code> and create
+the <code class="file docutils literal notranslate"><span class="pre">setvars.conf</span></code> with the following content:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="nv">root</span><span class="o">=(</span>tftp<span class="o">)</span>
+<span class="nb">set</span> <span class="nv">net_default_server</span><span class="o">=</span>BOOT_SERVER_IP
+<span class="nb">set</span> <span class="nv">prefix</span><span class="o">=</span>boot/grub2
+</pre></div>
+</div>
+<p>Now call the following commands to create the grub module</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grub2-mknetdir --net-directory<span class="o">=</span>TFTP_ROOT_DIR --subdir<span class="o">=</span>boot/grub2
+$ grub2-mkimage -O i386-pc-pxe <span class="se">\</span>
+    --output boot/grub2/i386-pc/core.0 <span class="se">\</span>
+    --prefix<span class="o">=</span>/boot/grub2 <span class="se">\</span>
+    -c setvars.conf <span class="se">\</span>
+  pxe tftp
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On boot of a network client with that configuration the grub
+config file is expected at <code class="file docutils literal notranslate"><span class="pre">TFTP_ROOT_DIR/boot/grub2/grub.cfg</span></code></p>
+</div>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>Run the dnsmasq server by calling:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl start dnsmasq
 </pre></div>
 </div>
 </li>
 </ol>
+</div>
 </div>
 
 
@@ -830,10 +827,10 @@ in a virtualized environment using QEMU as follows:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="build_docker_container.html" class="btn btn-neutral float-right" title="Build a Docker Container Image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="setup_yast_on_first_boot.html" class="btn btn-neutral float-right" title="Setting Up YaST at First Boot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="build_oem_disk.html" class="btn btn-neutral float-left" title="Build an OEM Expandable Disk Image" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vmx_setup_for_google.html" class="btn btn-neutral float-left" title="Image Description for Google Compute Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.container.setup.docker &mdash; KIWI NG 9.20.9 documentation</title>
+  <title>kiwi.container.setup.docker &mdash; KIWI NG 9.20.10 documentation</title>
   
 
   
@@ -95,6 +95,28 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../self_contained.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#selecting-a-template">Selecting a Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#id1">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#id2">The Dicefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../self_contained.html#id3">The Vagrantfile</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../overview/workflow.html">Basic Workflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a></li>
@@ -176,30 +198,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/vmx_setup_for_ec2.html">Image Description for Amazon EC2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/vmx_setup_for_azure.html">Image Description for Microsoft Azure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/vmx_setup_for_google.html">Image Description for Google Compute Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/setup_network_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/setup_network_bootserver.html#installing-and-configuring-dhcp-and-tftp-with-dnsmasq">Installing and Configuring DHCP and TFTP with dnsmasq</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/setup_yast_on_first_boot.html">Setting Up YaST at First Boot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/vmx_vagrant_setup.html">Image Description for Vagrant</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/pxe_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/network_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/custom_partitions.html">Custom Disk Partitions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
@@ -208,6 +216,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/vmx_setup_for_luks.html">Image Description Encrypted Disk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/build_with_profiles.html">Building Images with Profiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/build_with_profiles.html#local-builds">Local Builds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html">Build PXE Root File System Image for the legacy netboot infrastructure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#pxe-client-setup-configuration">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_images/legacy_netboot_root_filesystem.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../building.html">Building Images</a><ul>
@@ -233,51 +273,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building/build_wsl_container.html">Build a WSL Container Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#id1">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#id2">The Dicefile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_containerized.html#id3">The Vagrantfile</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../building/build_with_profiles.html">Building Images with Profiles</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_with_profiles.html#local-builds">Local Builds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../building/build_in_buildservice.html">Building in the Open Build Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../building/build_in_buildservice.html#recommendations">Recommendations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../building/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../building/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../building/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../building/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building.html#image-types">Image Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
@@ -459,7 +461,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/kiwi.builder.html#module-kiwi.builder.filesystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.filesystem</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/kiwi.builder.html#module-kiwi.builder.install"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.install</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/kiwi.builder.html#module-kiwi.builder.live"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.live</span></code> Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../api/kiwi.builder.html#module-kiwi.builder.pxe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.pxe</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/kiwi.builder.html#module-kiwi.builder.kis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.kis</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/kiwi.builder.html#module-kiwi.builder">Module Contents</a></li>
 </ul>
 </li>
