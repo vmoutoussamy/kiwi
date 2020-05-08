@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; KIWI NG 9.20.11 documentation</title>
+  <title>kiwi.system.setup &mdash; KIWI NG 9.20.12 documentation</title>
   
 
   
@@ -97,24 +97,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../self_contained.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#id1">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#id2">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#id3">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#building-with-the-boxbuild-command">Building with the boxbuild command</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
@@ -1195,6 +1178,9 @@
             <span class="k">return</span> <span class="n">filename</span>
         <span class="k">elif</span> <span class="n">packager</span> <span class="o">==</span> <span class="s1">&#39;dpkg&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_export_deb_package_list</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">filename</span>
+        <span class="k">elif</span> <span class="n">packager</span> <span class="o">==</span> <span class="s1">&#39;pacman&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_export_pacman_package_list</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">filename</span></div>
 
 <div class="viewcode-block" id="SystemSetup.export_package_verification"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.export_package_verification">[docs]</a>    <span class="k">def</span> <span class="nf">export_package_verification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">):</span>
@@ -1712,6 +1698,19 @@
                 <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()))</span>
             <span class="p">)</span>
             <span class="n">packages</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_export_pacman_package_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Export pacman packages metadata&#39;</span><span class="p">)</span>
+        <span class="n">query_call</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;pacman&#39;</span><span class="p">,</span> <span class="s1">&#39;-Qe&#39;</span><span class="p">])</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">packages</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+                <span class="n">package</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">version_release</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">version</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">release</span> <span class="o">=</span> <span class="n">version_release</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+                <span class="n">packages</span><span class="o">.</span><span class="n">writelines</span><span class="p">([</span>
+                    <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">|None|</span><span class="si">{1}</span><span class="s1">|</span><span class="si">{2}</span><span class="s1">|None|None|None</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">package</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">release</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+                    <span class="p">)</span>
+                <span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">_export_rpm_package_verification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Export rpm verification metadata&#39;</span><span class="p">)</span>

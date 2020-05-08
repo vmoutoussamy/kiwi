@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi Package &mdash; KIWI NG 9.20.11 documentation</title>
+  <title>kiwi Package &mdash; KIWI NG 9.20.12 documentation</title>
   
 
   
@@ -99,24 +99,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../self_contained.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../self_contained.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id1">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id2">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#id3">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-boxbuild-command">Building with the boxbuild command</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
@@ -1981,17 +1964,17 @@ in BIOS mode if isolinux.bin should not be used</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="kiwi.defaults.Defaults.get_live_dracut_module_from_flag">
-<em class="property">static </em><code class="sig-name descname">get_live_dracut_module_from_flag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flag_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_live_dracut_module_from_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_live_dracut_module_from_flag" title="Permalink to this definition">¶</a></dt>
-<dd><p>Provides flag_name to dracut module name map</p>
+<dt id="kiwi.defaults.Defaults.get_live_dracut_modules_from_flag">
+<em class="property">static </em><code class="sig-name descname">get_live_dracut_modules_from_flag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flag_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_live_dracut_modules_from_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_live_dracut_modules_from_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides flag_name to dracut modules name map</p>
 <p>Depending on the value of the flag attribute in the KIWI image
-description a specific dracut module needs to be selected</p>
+description specific dracut modules need to be selected</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>dracut module name</p>
+<dd class="field-odd"><p>dracut module names as list</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
 </dd>
 </dl>
 </dd></dl>

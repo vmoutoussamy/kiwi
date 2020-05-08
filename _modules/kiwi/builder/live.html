@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.live &mdash; KIWI NG 9.20.11 documentation</title>
+  <title>kiwi.builder.live &mdash; KIWI NG 9.20.12 documentation</title>
   
 
   
@@ -97,24 +97,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../self_contained.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#id1">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#id2">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#id3">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../self_contained.html#building-with-the-boxbuild-command">Building with the boxbuild command</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
@@ -884,15 +867,16 @@
 
         <span class="c1"># create dracut initrd for live image</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating live ISO boot image&#39;</span><span class="p">)</span>
-        <span class="n">live_dracut_module</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_live_dracut_module_from_flag</span><span class="p">(</span>
+        <span class="n">live_dracut_modules</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_live_dracut_modules_from_flag</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">live_type</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">include_module</span><span class="p">(</span><span class="s1">&#39;pollcdrom&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">include_module</span><span class="p">(</span><span class="n">live_dracut_module</span><span class="p">)</span>
+        <span class="n">live_dracut_modules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;pollcdrom&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">dracut_module</span> <span class="ow">in</span> <span class="n">live_dracut_modules</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">include_module</span><span class="p">(</span><span class="n">dracut_module</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">omit_module</span><span class="p">(</span><span class="s1">&#39;multipath&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_image</span><span class="o">.</span><span class="n">write_system_config_file</span><span class="p">(</span>
             <span class="n">config</span><span class="o">=</span><span class="p">{</span>
-                <span class="s1">&#39;modules&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;pollcdrom&#39;</span><span class="p">,</span> <span class="n">live_dracut_module</span><span class="p">],</span>
+                <span class="s1">&#39;modules&#39;</span><span class="p">:</span> <span class="n">live_dracut_modules</span><span class="p">,</span>
                 <span class="s1">&#39;omit_modules&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;multipath&#39;</span><span class="p">]</span>
             <span class="p">},</span>
             <span class="n">config_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/dracut.conf.d/02-livecd.conf&#39;</span>

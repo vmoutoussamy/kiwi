@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; KIWI NG 9.20.11 documentation</title>
+  <title>kiwi.defaults &mdash; KIWI NG 9.20.12 documentation</title>
   
 
   
@@ -97,24 +97,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../self_contained.html">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#id1">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#id2">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#id3">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../self_contained.html#building-with-the-boxbuild-command">Building with the boxbuild command</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
@@ -1369,6 +1352,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span>
             <span class="s1">&#39;/usr/share/syslinux&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/usr/lib/syslinux/bios&#39;</span><span class="p">,</span>
             <span class="s1">&#39;/usr/lib/syslinux/modules/bios&#39;</span><span class="p">,</span>
             <span class="s1">&#39;/usr/lib/ISOLINUX&#39;</span>
         <span class="p">]</span></div>
@@ -1834,26 +1818,26 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s1">&#39;/etc/dracut.conf.d/02-kiwi.conf&#39;</span></div>
 
-<div class="viewcode-block" id="Defaults.get_live_dracut_module_from_flag"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_live_dracut_module_from_flag">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">get_live_dracut_module_from_flag</span><span class="p">(</span><span class="n">flag_name</span><span class="p">):</span>
+<div class="viewcode-block" id="Defaults.get_live_dracut_modules_from_flag"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_live_dracut_modules_from_flag">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_live_dracut_modules_from_flag</span><span class="p">(</span><span class="n">flag_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Provides flag_name to dracut module name map</span>
+<span class="sd">        Provides flag_name to dracut modules name map</span>
 
 <span class="sd">        Depending on the value of the flag attribute in the KIWI image</span>
-<span class="sd">        description a specific dracut module needs to be selected</span>
+<span class="sd">        description specific dracut modules need to be selected</span>
 
-<span class="sd">        :return: dracut module name</span>
+<span class="sd">        :return: dracut module names as list</span>
 
-<span class="sd">        :rtype: str</span>
+<span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">live_modules</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;overlay&#39;</span><span class="p">:</span> <span class="s1">&#39;kiwi-live&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;dmsquash&#39;</span><span class="p">:</span> <span class="s1">&#39;dmsquash-live livenet&#39;</span>
+            <span class="s1">&#39;overlay&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;kiwi-live&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;dmsquash&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dmsquash-live&#39;</span><span class="p">,</span> <span class="s1">&#39;livenet&#39;</span><span class="p">]</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="n">flag_name</span> <span class="ow">in</span> <span class="n">live_modules</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">live_modules</span><span class="p">[</span><span class="n">flag_name</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;kiwi-live&#39;</span></div>
+            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;kiwi-live&#39;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Defaults.get_default_live_iso_root_filesystem"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_default_live_iso_root_filesystem">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_default_live_iso_root_filesystem</span><span class="p">():</span>
@@ -2166,7 +2150,9 @@
         <span class="k">if</span> <span class="n">package_manager</span> <span class="ow">in</span> <span class="n">rpm_based</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;rpm&#39;</span>
         <span class="k">elif</span> <span class="n">package_manager</span> <span class="ow">in</span> <span class="n">deb_based</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;dpkg&#39;</span></div>
+            <span class="k">return</span> <span class="s1">&#39;dpkg&#39;</span>
+        <span class="k">elif</span> <span class="n">package_manager</span> <span class="o">==</span> <span class="s1">&#39;pacman&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;pacman&#39;</span></div>
 
 <div class="viewcode-block" id="Defaults.get"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

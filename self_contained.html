@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building in a Self-Contained Environment &mdash; KIWI NG 9.20.11 documentation</title>
+  <title>Building in a Self-Contained Environment &mdash; KIWI NG 9.20.12 documentation</title>
   
 
   
@@ -99,24 +99,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Building in a Self-Contained Environment</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuring-dice">Configuring Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#selecting-a-template">Selecting a Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-dicefile">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#building-with-dice">Building with Dice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#buildsystem-backends">Buildsystem Backends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">The Dicefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-vagrantfile">The Vagrantfile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-vagrant-build-box">The Vagrant Build Box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">The Vagrantfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-with-the-boxbuild-command">Building with the boxbuild command</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
@@ -711,351 +694,58 @@ to build an image matching one of the following criteria:</p>
 no KIWI NG packages exists.</p></li>
 <li><p>build happens on an incompatible host system distribution
 compared to the target image distribution. For example
-the host system rpm database is incompatible with the image
-rpm database and a dump/reload cycle is not possible
-between the two versions. Ideally the host system distribution
-is the same as the target image distribution.</p></li>
+building an apt/dpkg  based system on an rpm based system.</p></li>
+<li><p>run more than one build process at the same time on the
+same host.</p></li>
 </ul>
 <p>This document describes how to perform the build process in
-a Docker container using the Dice containment build system
-written for KIWI NG in order to address the issues listed above.</p>
+a self contained environment using fast booting virtual
+machines to address the issues listed above.</p>
 <p>The changes on the machine to become a build host will
-be reduced to the requirements of Dice and Docker.</p>
+be reduced to the requirements of the KIWI NG <code class="xref py py-obj docutils literal notranslate"><span class="pre">boxed</span> <span class="pre">plugin</span></code></p>
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>The following components needs to be installed on the build system:</p>
-<ul class="simple">
-<li><p>Dice - a containment build system for KIWI NG.</p></li>
-<li><p>Docker - a container framework based on the Linux
-container support in the kernel.</p></li>
-<li><p>Docker Image - a docker build container for KIWI NG.</p></li>
-<li><p>optionally Vagrant - a framework to run, provision and control
-virtual machines and container instances. Vagrant has a very nice
-interface to provision a machine prior to running the actual build.
-It also supports docker as a provider which makes it a perfect fit
-for complex provisioning tasks in combination with the Docker
-container system.</p></li>
-<li><p>optionally libvirt - Toolkit to interact with the virtualization
-capabilities of Linux. In combination with vagrant, libvirt can
-be used as provider for provision and control full virtual
-instances running via qemu. As docker shares the host system
-kernel and thus any device, because KIWI NG needs to use privileged
-docker containers for building images, the more secure but less
-performant solution is to use virtual machines to run the KIWI NG
-build.</p></li>
-</ul>
-</div>
-<div class="section" id="installing-and-setting-up-dice">
-<h2>Installing and Setting up Dice<a class="headerlink" href="#installing-and-setting-up-dice" title="Permalink to this headline">¶</a></h2>
-<p>The Dice packages and sources are available at the following locations:</p>
-<ul class="simple">
-<li><p>Build service project:
-<a class="reference external" href="http://download.opensuse.org/repositories/Virtualization:/Appliances:/ContainerBuilder">http://download.opensuse.org/repositories/Virtualization:/Appliances:/ContainerBuilder</a></p></li>
-<li><p>Sources: <a class="reference external" href="https://github.com/OSInside/dice">https://github.com/OSInside/dice</a></p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo zypper in ruby<span class="o">[</span>VERSION<span class="o">]</span>-rubygem-dice
+<p>Add the KIWI NG repo from the Open Build Service. For details see
+<a class="reference internal" href="installation.html#installation-from-obs"><span class="std std-ref">Installation from OBS</span></a>. The following KIWI NG plugin needs to be
+installed on the build system:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo zypper in python3-kiwi_boxed_plugin
 </pre></div>
 </div>
 </div>
-<div class="section" id="installing-and-setting-up-docker">
-<h2>Installing and Setting up Docker<a class="headerlink" href="#installing-and-setting-up-docker" title="Permalink to this headline">¶</a></h2>
-<p>Docker packages are usually available with the used distribution.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo zypper in docker
-</pre></div>
-</div>
-<p>Make sure that the user, who is intended to build images, is a member
-of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span></code> group. Run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo useradd -G docker &lt;builduser&gt;
-</pre></div>
-</div>
-<p>It is required to logout and login again to let this change
-become active.</p>
-<p>Once this is done you need to setup the Docker storage backend.
-By default Docker uses the device mapper to manage the storage for
-the containers it starts. Unfortunately, this does not work if the
-container is supposed to build images because it runs into conflicts
-with tools like <strong class="command">kpartx</strong> which itself maps devices using
-the device mapper.</p>
-<p>Fortunately, there is a solution for Docker which allows us to use
-Btrfs as the storage backend. The following is only required if your
-host system root filesystem is not btrfs:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo qemu-img create /var/lib/docker-storage.btrfs 20g
-$ sudo mkfs.btrfs /var/lib/docker-storage.btrfs
-$ sudo mkdir -p /var/lib/docker
-$ sudo mount /var/lib/docker-storage.btrfs /var/lib/docker
-
-$ sudo vi /etc/fstab
-
-  /var/lib/docker-storage.btrfs /var/lib/docker btrfs defaults <span class="m">0</span> <span class="m">0</span>
-
-$ sudo vi /etc/sysconfig/docker
-
-  <span class="nv">DOCKER_OPTS</span><span class="o">=</span><span class="s2">&quot;-s btrfs&quot;</span>
-</pre></div>
-</div>
-<p>Finally start the docker service:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl restart docker
-</pre></div>
-</div>
-</div>
-<div class="section" id="installing-and-setting-up-the-build-container">
-<h2>Installing and Setting up the Build Container<a class="headerlink" href="#installing-and-setting-up-the-build-container" title="Permalink to this headline">¶</a></h2>
-<p>In order to build in a contained environment Docker has to start a
-privileged system container. Such a container must be imported before
-Docker can use it. The build container is provided to you as a
-service and build with KIWI NG in the project
-at <a class="reference external" href="http://download.opensuse.org/repositories/Virtualization:/Appliances:/Images">http://download.opensuse.org/repositories/Virtualization:/Appliances:/Images</a>.
-The result image is pushed to <a class="reference external" href="https://hub.docker.com/r/opensuse/dice">https://hub.docker.com/r/opensuse/dice</a>.</p>
-<p>When building with Dice, the container will be automatically fetched
-from the docker registry. However this step can also be done prior to
-calling <strong class="command">dice</strong> as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker pull opensuse/dice:latest
+<div class="section" id="building-with-the-boxbuild-command">
+<h2>Building with the boxbuild command<a class="headerlink" href="#building-with-the-boxbuild-command" title="Permalink to this headline">¶</a></h2>
+<p>The installation of the KIWI NG boxed plugin has registered a new kiwi
+command named <code class="xref py py-obj docutils literal notranslate"><span class="pre">boxbuild</span></code>. The command implementation uses KVM as
+virtualization technology and runs the KIWI NG <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code> command inside of
+a KVM controlled virtual machine. For running the build process in a
+virtual machine it’s required to provide VM images that are suitable
+to perform this job. We call the VM images <code class="xref py py-obj docutils literal notranslate"><span class="pre">boxes</span></code> and they contain
+kiwi itself as well as all other components needed to build appliances.
+Those boxes are hosted in the Open Build Service and are publicly
+available at the <code class="xref py py-obj docutils literal notranslate"><span class="pre">Subprojects</span></code> tab in the: <a class="reference external" href="https://build.opensuse.org/project/show/Virtualization:Appliances:SelfContained">Virtualization:Appliances:SelfContained</a>
+project.</p>
+<p>As a user you don’t need to work with the boxes because this is all done
+by the plugin and provided as a service by the KIWI NG team. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">boxbuild</span></code>
+command knows where to fetch the box and also cares for an update of the
+box when it has changed.</p>
+<p>Building an image with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">boxbuild</span></code> command is similar to building with
+the <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code> command. The plugin validates the given command call with the
+capabilities of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code> command. Thus one part of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">boxbuild</span></code> command
+is exactly the same as with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code> command. The separation between
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">boxbuild</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code> options is done using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">--</span></code> separator like
+shown in the following example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo kiwi-ng --type iso system boxbuild --box suse -- <span class="se">\</span>
+      --description kiwi-descriptions/suse/x86_64/suse-leap-15.1-JeOS <span class="se">\</span>
+      --target-dir /tmp/myimage
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Optional step</p>
-<p>If a custom or newer version of the Build Container should be used,
-it is required to update the registry. This is because Dice always
-fetches the latest version of the Build Container from the registry.</p>
-<ol class="arabic simple">
-<li><p>Download the .tar.bz2 file which starts with <code class="file docutils literal notranslate"><span class="pre">Docker-Tumbleweed</span></code></p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget http://download.opensuse.org/repositories/Virtualization:/Appliances:/Images/images/Docker-Tumbleweed.XXXXXXX.docker.tar.xz
-</pre></div>
+<p>The provided <code class="xref py py-obj docutils literal notranslate"><span class="pre">--description</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">--target-dir</span></code> options are
+setup as shared folders between the host and the guest. No other
+data will be shared with the host.</p>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Import the downloaded tarball with the command <strong class="command">docker</strong>:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker load -i Docker-Tumbleweed.XXXXXXX.docker.tar
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
-<li><p>Tag the container and push back to the registry</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker push opensuse/dice:latest
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="installing-and-setting-up-vagrant">
-<h2>Installing and Setting up Vagrant<a class="headerlink" href="#installing-and-setting-up-vagrant" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Optional step</p>
-<p>By default Dice shares the KIWI NG image description directory with
-the Docker instance. If more data from the host should be shared
-with the Docker instance we recommend to use Vagrant for this
-provision tasks.</p>
-</div>
-<p>Installing Vagrant is well documented at
-<a class="reference external" href="https://www.vagrantup.com/docs/installation/index.html">https://www.vagrantup.com/docs/installation/index.html</a></p>
-<p>Access to a machine started by Vagrant is done through SSH exclusively.
-Because of that an initial key setup is required in the Docker image vagrant
-should start. The KIWI NG Docker image includes the public key of the Vagrant
-key pair and thus allows access. It is important to understand that the
-private Vagrant key is not a secure key because the private key is not
-protected.</p>
-<p>However, this is not a problem because Vagrant creates a new
-key pair for each machine it starts. In order to allow Vagrant the initial
-access and the creation of a new key pair, it’s required to provide access
-to the insecure Vagrant private key. The following commands should not be
-executed as root, but as the intended user to build images.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir -p ~/.dice/key
-$ cp -a /usr/share/doc/packages/ruby*-rubygem-dice/key ~/.dice/key
-</pre></div>
-</div>
-</div>
-<div class="section" id="configuring-dice">
-<h2>Configuring Dice<a class="headerlink" href="#configuring-dice" title="Permalink to this headline">¶</a></h2>
-<p>If you build in a contained environment, there is no need to have KIWI NG
-installed on the host system. KIWI NG is part of the container and is only
-called there. However, a KIWI NG image description and some metadata
-defining how to run the container are required as input data.</p>
-</div>
-<div class="section" id="selecting-a-template">
-<h2>Selecting a Template<a class="headerlink" href="#selecting-a-template" title="Permalink to this headline">¶</a></h2>
-<p>If you don’t have a KIWI NG description select one from the templates
-provided at the GitHub project hosting example appliance descriptions.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/OSInside/kiwi-descriptions
-</pre></div>
-</div>
-<p>The descriptions hosted here also provides a default <code class="file docutils literal notranslate"><span class="pre">Dicefile</span></code>
-as part of each image description.</p>
-</div>
-<div class="section" id="the-dicefile">
-<h2>The Dicefile<a class="headerlink" href="#the-dicefile" title="Permalink to this headline">¶</a></h2>
-<p>The Dicefile is the configuration file for the dice buildsystem backend.
-All it needs to know for a plain docker based build process is the
-selection of the buildhost to be a Docker container. The Dicefile’s
-found in the above mentioned appliance descriptions look all like the
-following:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Dice</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-  <span class="n">config</span><span class="o">.</span><span class="n">buildhost</span> <span class="o">=</span> <span class="ss">:DOCKER</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="building-with-dice">
-<h2>Building with Dice<a class="headerlink" href="#building-with-dice" title="Permalink to this headline">¶</a></h2>
-<p>If you have choosen to just use the default Dice configuration as
-provided with the example appliance descriptions, the following example
-command will build the image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;git-clone-result-kiwi-descriptions&gt;
-
-$ dice build suse/x86_64/suse-leap-15.1-JeOS
-$ dice status suse/x86_64/suse-leap-15.1-JeOS
-</pre></div>
-</div>
-</div>
-<div class="section" id="buildsystem-backends">
-<h2>Buildsystem Backends<a class="headerlink" href="#buildsystem-backends" title="Permalink to this headline">¶</a></h2>
-<p>Dice currently supports three build system backends:</p>
-<ol class="arabic simple">
-<li><p>Host buildsystem - Dice builds on the host like if you would call
-KIWI NG on the host directly.</p></li>
-<li><p>Vagrant Buildsystem - Dice uses Vagrant to run a virtual system which
-could also be a container and build the image on this machine.</p></li>
-<li><p>Docker buildsystem - Dice uses Docker directly to run the build in
-a container</p></li>
-</ol>
-<p>The use of the Docker buildsystem has been already explained in the
-above chapters. The following sections explains the pros and cons of
-the other two available Buildsystem Backends.</p>
-</div>
-<div class="section" id="building-with-the-host-buildsystem">
-<h2>Building with the Host Buildsystem<a class="headerlink" href="#building-with-the-host-buildsystem" title="Permalink to this headline">¶</a></h2>
-<p>Using the Host Buildsystem basically tells Dice to ssh into the
-specified machine with the specified user and run KIWI NG. This is
-also the information which needs to be provided in a Dicefile.
-Using the Host Buildsystem is recommended if there are dedicated
-build machines available to take over KIWI NG build jobs.</p>
-</div>
-<div class="section" id="id1">
-<h2>The Dicefile<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Dice</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-  <span class="n">config</span><span class="o">.</span><span class="n">buildhost</span> <span class="o">=</span> <span class="s2">&quot;full-qualified-dns-name-or-ip-address&quot;</span>
-  <span class="n">config</span><span class="o">.</span><span class="n">ssh_user</span> <span class="o">=</span> <span class="s2">&quot;vagrant&quot;</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-<p>After these changes a <strong class="command">dice build</strong> command will make use
-of the Host Buildsystem and starts the KIWI NG build process there.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Provisioning of the Host Buildsystem</p>
-<p>There is no infrastructure in place which manages the machine
-specified as config.buildhost. This means it is currently in the
-responsibility of the user to make sure the specified machine
-exists and is accessible via the configured user. For the future
-we plan to implement a Public Cloud Buildsystem which then will
-allow provisioning and management of a public cloud instance
-e.g on Amazon EC2 in order to run the build. However we are
-not there yet.</p>
-</div>
-</div>
-<div class="section" id="building-with-the-vagrant-buildsystem">
-<h2>Building with the Vagrant Buildsystem<a class="headerlink" href="#building-with-the-vagrant-buildsystem" title="Permalink to this headline">¶</a></h2>
-<p>Using the Vagrant Buildsystem should be considered if one or both of the
-following use cases applies:</p>
-<ol class="arabic simple">
-<li><p>The build task requires additional content or logic before the build
-can start. Vagrant serves as provisioning system to share data
-from the host with the guest containers.</p></li>
-<li><p>The build task should run in a completely isolated virtual machine
-environment. Vagrant in combination with the libvirt provider serves
-as both; The tool to interact with the virtualization capabilities
-to run and manage virtual machine instances and as provisioning system
-to share data from the host with the virtual machines.</p></li>
-</ol>
-</div>
-<div class="section" id="id2">
-<h2>The Dicefile<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>The Dicefile in the context of Vagrant needs to know the user name to
-access the instance. The reason for this is, in Vagrant access to the
-system is handled over SSH.</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Dice</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-  <span class="n">config</span><span class="o">.</span><span class="n">ssh_user</span> <span class="o">=</span> <span class="s2">&quot;vagrant&quot;</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="the-vagrant-setup-for-the-docker-provider">
-<h2>The Vagrant setup for the Docker Provider<a class="headerlink" href="#the-vagrant-setup-for-the-docker-provider" title="Permalink to this headline">¶</a></h2>
-<p>The following is an example for the first use case and describes how
-to configure Dice to use Docker in combination with Vagrant as
-provisioning system.</p>
-</div>
-<div class="section" id="the-vagrantfile">
-<h2>The Vagrantfile<a class="headerlink" href="#the-vagrantfile" title="Permalink to this headline">¶</a></h2>
-<p>The existence of a Vagrantfile tells Dice to use Vagrant as Buildsystem.
-Once you call <strong class="command">dice</strong> to build the image it will
-call <strong class="command">vagrant</strong> to bring up the container. In order to allow this,
-we have to tell Vagrant to use Docker for this task and provide parameters
-on how to run the container. At the same place the Dicefile exists we create
-the Vagrantfile with the following content:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">VAGRANTFILE_API_VERSION</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
-
-<span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="no">VAGRANTFILE_API_VERSION</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="s2">&quot;docker&quot;</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span>
-    <span class="n">d</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="s2">&quot;opensuse/dice:latest&quot;</span>
-    <span class="n">d</span><span class="o">.</span><span class="n">create_args</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;-privileged=true&quot;</span><span class="p">,</span> <span class="s2">&quot;-i&quot;</span><span class="p">,</span> <span class="s2">&quot;-t&quot;</span><span class="o">]</span>
-    <span class="c1"># start the sshd in foreground to keep the container in running state</span>
-    <span class="n">d</span><span class="o">.</span><span class="n">cmd</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;/usr/sbin/sshd&quot;</span><span class="p">,</span> <span class="s2">&quot;-D&quot;</span><span class="o">]</span>
-    <span class="n">d</span><span class="o">.</span><span class="n">has_ssh</span> <span class="o">=</span> <span class="kp">true</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-<p>After these changes a <strong class="command">dice build</strong> command will make use
-of the Vagrant build system and offers a nice way to provision
-the Docker container instances prior to the actual KIWI NG build process.
-Vagrant will take over the task to run and manage the docker container
-via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span></code> tool chain.</p>
-</div>
-<div class="section" id="the-vagrant-setup-for-the-libvirt-provider">
-<h2>The Vagrant setup for the libvirt Provider<a class="headerlink" href="#the-vagrant-setup-for-the-libvirt-provider" title="Permalink to this headline">¶</a></h2>
-<p>The following sections are an example for the second use case and describes
-how to configure Dice to use libvirt in combination with Vagrant as
-provisioning and virtualization system.</p>
-</div>
-<div class="section" id="the-vagrant-build-box">
-<h2>The Vagrant Build Box<a class="headerlink" href="#the-vagrant-build-box" title="Permalink to this headline">¶</a></h2>
-<p>Apart from the Docker build container the Dice infrastructure also
-provides a virtual machine image also known as vagrant box which
-contains a system ready to build images with KIWI NG.</p>
-<p>Download the Vagrant build box which starts with
-<code class="file docutils literal notranslate"><span class="pre">Vagrant-Libvirt-Tumbleweed</span></code> from the Open BuildService and add
-the box to vagrant as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget http://download.opensuse.org/repositories/Virtualization:/Appliances:/Images/images/Vagrant-Libvirt-Tumbleweed.XXXXXXX.vagrant.libvirt.box
-
-$ vagrant box add --provider libvirt --name kiwi-build-box Vagrant-Libvirt-Tumbleweed.XXXXXXX.vagrant.libvirt.box
-
-$ <span class="nb">export</span> <span class="nv">VAGRANT_DEFAULT_PROVIDER</span><span class="o">=</span>libvirt
-</pre></div>
-</div>
-<p>The command <strong class="command">vagrant box list</strong> must list the box with
-name <code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi-build-box</span></code> as referenced in the following Vagrantfile setup.</p>
-</div>
-<div class="section" id="id3">
-<h2>The Vagrantfile<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">VAGRANTFILE_API_VERSION</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
-
-<span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="no">VAGRANTFILE_API_VERSION</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">&quot;kiwi-build-box&quot;</span>
-
-  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="s2">&quot;libvirt&quot;</span> <span class="k">do</span> <span class="o">|</span><span class="n">lv</span><span class="o">|</span>
-    <span class="n">lv</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="s2">&quot;1024&quot;</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-<p>After these changes a <strong class="command">dice build</strong> command will make use
-of the Vagrant build system and offers a nice way to provision
-fully isolated qemu instances via libvirt prior to the actual KIWI NG
-build process. Vagrant will take over the task to run and manage the
-virtual machines via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">libvirt</span></code> tool chain.</p>
 </div>
 </div>
 
