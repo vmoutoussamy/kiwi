@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -117,6 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -701,7 +702,6 @@
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">platform</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
@@ -744,16 +744,16 @@
 <span class="sd">                {&#39;grub_directory_name&#39;: &#39;grub|grub2&#39;}</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span> <span class="o">=</span> <span class="n">custom_args</span>
-        <span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
+        <span class="n">arch</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_platform_name</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span>
             <span class="c1"># grub2 support for bios and efi systems</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">arch</span>
         <span class="k">elif</span> <span class="n">arch</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;ppc64&#39;</span><span class="p">):</span>
             <span class="c1"># grub2 support for ofw and opal systems</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">arch</span>
-        <span class="k">elif</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i686&#39;</span> <span class="ow">or</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i586&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;ix86&#39;</span><span class="p">:</span>
             <span class="c1"># grub2 support for bios systems</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="s1">&#39;ix86&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">arch</span>
         <span class="k">elif</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;aarch64&#39;</span> <span class="ow">or</span> <span class="n">arch</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;arm&#39;</span><span class="p">):</span>
             <span class="c1"># grub2 support for efi systems</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">arch</span>
@@ -767,11 +767,15 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span> <span class="o">=</span> <span class="s1">&#39;grub&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_bootloader_console</span><span class="p">()</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_bootloader_console</span><span class="p">()</span> \
             <span class="ow">or</span> <span class="s1">&#39;gfxterm&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gfxmode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_gfxmode</span><span class="p">(</span><span class="s1">&#39;grub2&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_theme</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_timeout_seconds</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_bootloader_timeout_style</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial_line_setup</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_bootloader_serial_line_setup</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">continue_on_timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_continue_on_timeout</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">failsafe_boot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">failsafe_boot_entry_requested</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mediacheck_boot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_mediacheck</span><span class="p">()</span>
@@ -1005,6 +1009,8 @@
             <span class="s1">&#39;gfxmode&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gfxmode</span><span class="p">,</span>
             <span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">,</span>
             <span class="s1">&#39;boot_timeout&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+            <span class="s1">&#39;boot_timeout_style&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span> <span class="ow">or</span> <span class="s1">&#39;menu&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;serial_line_setup&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial_line_setup</span> <span class="ow">or</span> <span class="s1">&#39;serial&#39;</span><span class="p">,</span>
             <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_menu_entry_install_title</span><span class="p">(),</span>
             <span class="s1">&#39;bootpath&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">(</span><span class="s1">&#39;iso&#39;</span><span class="p">),</span>
             <span class="s1">&#39;boot_directory_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span>
@@ -1059,6 +1065,8 @@
             <span class="s1">&#39;gfxmode&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gfxmode</span><span class="p">,</span>
             <span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">,</span>
             <span class="s1">&#39;boot_timeout&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+            <span class="s1">&#39;boot_timeout_style&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span> <span class="ow">or</span> <span class="s1">&#39;menu&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;serial_line_setup&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial_line_setup</span> <span class="ow">or</span> <span class="s1">&#39;serial&#39;</span><span class="p">,</span>
             <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_menu_entry_title</span><span class="p">(</span><span class="n">plain</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
             <span class="s1">&#39;bootpath&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boot_path</span><span class="p">(</span><span class="s1">&#39;iso&#39;</span><span class="p">),</span>
             <span class="s1">&#39;boot_directory_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">boot_directory_name</span><span class="p">,</span>
@@ -1247,6 +1255,7 @@
 <span class="sd">        according to the root filesystem setup</span>
 
 <span class="sd">        * GRUB_TIMEOUT</span>
+<span class="sd">        * GRUB_TIMEOUT_STYLE</span>
 <span class="sd">        * SUSE_BTRFS_SNAPSHOT_BOOTING</span>
 <span class="sd">        * GRUB_BACKGROUND</span>
 <span class="sd">        * GRUB_THEME</span>
@@ -1262,18 +1271,16 @@
             <span class="s1">&#39;GRUB_GFXMODE&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gfxmode</span><span class="p">,</span>
             <span class="s1">&#39;GRUB_TERMINAL&#39;</span><span class="p">:</span> <span class="s1">&#39;&quot;</span><span class="si">{0}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="p">)</span>
         <span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span><span class="p">:</span>
+            <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_TIMEOUT_STYLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmdline</span><span class="p">:</span>
             <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_CMDLINE_LINUX_DEFAULT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&quot;</span><span class="si">{0}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;root=.* |root=.*$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmdline</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="ow">and</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="p">:</span>
-            <span class="n">serial_format</span> <span class="o">=</span> <span class="s1">&#39;&quot;serial </span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1"> </span><span class="si">{2}</span><span class="s1"> </span><span class="si">{3}</span><span class="s1"> </span><span class="si">{4}</span><span class="s1">&quot;&#39;</span>
-            <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_SERIAL_COMMAND&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">serial_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="s1">&#39;--speed=38400&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;--unit=0&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;--word=8&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;--parity=no&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;--stop=1&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="ow">and</span> <span class="s1">&#39;serial&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="ow">and</span> \
+           <span class="bp">self</span><span class="o">.</span><span class="n">serial_line_setup</span><span class="p">:</span>
+            <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_SERIAL_COMMAND&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&quot;</span><span class="si">{0}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">serial_line_setup</span>
             <span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="p">:</span>
             <span class="n">theme_setup</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">/theme.txt&#39;</span>

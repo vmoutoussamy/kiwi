@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system Package &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>kiwi.system Package &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -1315,8 +1316,7 @@ the desired image type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>arch</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – platform.machine. The 32bit x86 platform is
-handled as ‘ix86’</p></li>
+<li><p><strong>arch</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Defaults.get_platform_name</p></li>
 <li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
 <li><p><strong>description_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path to image description directory</p></li>
 <li><p><strong>derived_description_dir</strong> – path to derived_description_dir

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.template.grub2 &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>kiwi.bootloader.template.grub2 &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -117,6 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -722,6 +723,10 @@
 <span class="s1">            set timeout=$</span><span class="si">{boot_timeout}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            set timeout_style=$</span><span class="si">{boot_timeout_style}</span><span class="s1"></span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">header_hybrid</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            set linux=linux</span>
 <span class="s1">            set initrd=initrd</span>
@@ -741,7 +746,7 @@
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">header_serial</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            serial --speed=9600 --unit=0 --word=8 --parity=no --stop=1</span>
+<span class="s1">            $</span><span class="si">{serial_line_setup}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">header_terminal_setup</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
@@ -997,6 +1002,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
+        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span>
         <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_hybrid</span>
         <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
@@ -1039,6 +1045,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
         <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
+        <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span>
         <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme_iso</span>
@@ -1073,6 +1080,7 @@
         <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
         <span class="k">if</span> <span class="n">with_timeout</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
+            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span>
         <span class="k">if</span> <span class="n">hybrid</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_hybrid</span>
         <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
@@ -1112,6 +1120,7 @@
         <span class="n">template_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
         <span class="k">if</span> <span class="n">with_timeout</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
+            <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout_style</span>
         <span class="k">if</span> <span class="s1">&#39;gfxterm&#39;</span> <span class="ow">in</span> <span class="n">terminal</span><span class="p">:</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_gfxterm</span>
             <span class="n">template_data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header_theme_iso</span>

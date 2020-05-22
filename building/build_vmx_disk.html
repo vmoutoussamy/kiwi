@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build a Virtual Disk Image &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>Build a Virtual Disk Image &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -701,12 +702,11 @@ Microsoft Azure.</p>
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">image=&quot;vmx&quot;</span></code> in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>. An example configuration for a 42 GB
 large VMDK image with 512 MB RAM, an IDE controller and a bridged network
 interface is shown below:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- snip --&gt;</span>
   <span class="nt">&lt;preferences&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span>
-          <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span> <span class="na">boottimeout=</span><span class="s">&quot;0&quot;</span>
-          <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;bootloader</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span> <span class="na">timeout=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;size</span> <span class="na">unit=</span><span class="s">&quot;G&quot;</span><span class="nt">&gt;</span>42<span class="nt">&lt;/size&gt;</span>
       <span class="nt">&lt;machine</span> <span class="na">memory=</span><span class="s">&quot;512&quot;</span> <span class="na">guestOS=</span><span class="s">&quot;suse&quot;</span> <span class="na">HWversion=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;vmdisk</span> <span class="na">id=</span><span class="s">&quot;0&quot;</span> <span class="na">controller=</span><span class="s">&quot;ide&quot;</span><span class="nt">/&gt;</span>
@@ -764,7 +764,7 @@ framework see:</p>
 <p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code> child element of <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> specifies the size of the resulting
 disk image. The following example shows a image description where 20 GB are
 added to the virtual machine image of which 5 GB are left unpartitioned:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- snip --&gt;</span>
   <span class="nt">&lt;preferences&gt;</span>
     <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span><span class="nt">&gt;</span>
@@ -838,11 +838,11 @@ order. Note, that KIWI NG does not check the entries for correctness. KIWI NG on
 forwards them.</p>
 <p>The following example adds the two entries <code class="xref py py-obj docutils literal notranslate"><span class="pre">numvcpus</span> <span class="pre">=</span> <span class="pre">&quot;4&quot;</span></code> and
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">cpuid.coresPerSocket</span> <span class="pre">=</span> <span class="pre">&quot;2&quot;</span></code> into the VM configuration file:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-15.1&quot;</span> <span class="na">displayname=</span><span class="s">&quot;Bob&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-15.1&quot;</span> <span class="na">displayname=</span><span class="s">&quot;Bob&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;preferences&gt;</span>
     <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span>
-          <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span>
-          <span class="na">bootpartition=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+          <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span> <span class="na">bootpartition=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;bootloader</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;machine</span> <span class="na">memory=</span><span class="s">&quot;512&quot;</span> <span class="na">guestOS=</span><span class="s">&quot;suse&quot;</span> <span class="na">HWversion=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;vmconfig-entry&gt;</span>numvcpus = &quot;4&quot;<span class="nt">&lt;/vmconfig-entry&gt;</span>
         <span class="nt">&lt;vmconfig-entry&gt;</span>cpuid.coresPerSocket = &quot;2&quot;<span class="nt">&lt;/vmconfig-entry&gt;</span>
@@ -861,10 +861,10 @@ to specify the driver which is being used.</p>
 <p>Note, that this element is only used for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdk</span></code> image format.</p>
 <p>In the following example we add a bridged network interface using the
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">e1000</span></code> driver:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-15.1&quot;</span> <span class="na">displayname=</span><span class="s">&quot;Bob&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-15.1&quot;</span> <span class="na">displayname=</span><span class="s">&quot;Bob&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;preferences&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;btrfs&quot;</span>
-          <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;btrfs&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;bootloader</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;machine</span> <span class="na">memory=</span><span class="s">&quot;4096&quot;</span> <span class="na">guestOS=</span><span class="s">&quot;suse&quot;</span> <span class="na">HWversion=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;vmnic</span> <span class="na">driver=</span><span class="s">&quot;e1000&quot;</span> <span class="na">interface=</span><span class="s">&quot;0&quot;</span> <span class="na">mode=</span><span class="s">&quot;bridged&quot;</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;/machine&gt;</span>
@@ -891,11 +891,11 @@ controllers for the virtual machine. This element can be specified multiple
 times, each time for each disk or disk controller present.</p>
 <p>Note that this element is only used for <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdk</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">ova</span></code> image formats.</p>
 <p>The following example adds a disk with the ID 0 using an IDE controller:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-15.1&quot;</span> <span class="na">displayname=</span><span class="s">&quot;Bob&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-15.1&quot;</span> <span class="na">displayname=</span><span class="s">&quot;Bob&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;preferences&gt;</span>
     <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span>
-          <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span>
-          <span class="na">bootpartition=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+          <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span> <span class="na">bootpartition=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;bootloader</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;machine</span> <span class="na">memory=</span><span class="s">&quot;512&quot;</span> <span class="na">guestOS=</span><span class="s">&quot;suse&quot;</span> <span class="na">HWversion=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;vmdisk</span> <span class="na">id=</span><span class="s">&quot;0&quot;</span> <span class="na">controller=</span><span class="s">&quot;ide&quot;</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;/machine&gt;</span>
@@ -926,10 +926,10 @@ only). Supported values are: <code class="xref py py-obj docutils literal notran
 machine using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdvd</span></code> element for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdk</span></code> image format. In the
 following example we add two drives: one with a SCSCI and another with a
 IDE controller:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-15.1&quot;</span> <span class="na">displayname=</span><span class="s">&quot;Bob&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-15.1&quot;</span> <span class="na">displayname=</span><span class="s">&quot;Bob&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;preferences&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span>
-          <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;splash&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;bootloader</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;machine</span> <span class="na">memory=</span><span class="s">&quot;512&quot;</span> <span class="na">xen_loader=</span><span class="s">&quot;hvmloader&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;vmdvd</span> <span class="na">id=</span><span class="s">&quot;0&quot;</span> <span class="na">controller=</span><span class="s">&quot;scsi&quot;</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;vmdvd</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span> <span class="na">controller=</span><span class="s">&quot;ide&quot;</span><span class="nt">/&gt;</span>

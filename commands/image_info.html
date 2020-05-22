@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi-ng image info &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>kiwi-ng image info &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -694,6 +695,7 @@ kiwi-ng image info --description<span class="o">=</span>&lt;directory&gt;
     <span class="o">[</span>--resolve-package-list<span class="o">]</span>
     <span class="o">[</span>--ignore-repos<span class="o">]</span>
     <span class="o">[</span>--add-repo<span class="o">=</span>&lt;source,type,alias,priority&gt;...<span class="o">]</span>
+    <span class="o">[</span>--print-xml<span class="p">|</span>--print-yaml<span class="o">]</span>
 kiwi-ng image info <span class="nb">help</span>
 </pre></div>
 </div>
@@ -730,6 +732,30 @@ to an error.</p>
 <dd><p>Solve package dependencies and return a list of all
 packages including their attributes e.g size,
 shasum, and more.</p>
+</dd>
+<dt><kbd><span class="option">--print-xml</span></kbd></dt>
+<dd><p>Print image description in XML format. The given image
+description is read in, transformed internally to XML and
+send to the XSLT stylesheet processor. From there the result
+gets validated using the RelaxNG schema and the schematron
+rules. This result data will then be displayed. The typical
+use case for this command is to turn an old image description
+to the latest schema.</p>
+</dd>
+<dt><kbd><span class="option">--print-yaml</span></kbd></dt>
+<dd><p>Behaves the same like <code class="xref py py-obj docutils literal notranslate"><span class="pre">--print-xml</span></code> except that after
+validation the result data will be transformed into the
+YAML format and displayed. Due to this processing the
+command can be used for different operations:</p>
+<ul class="simple">
+<li><p>Conversion of a given image description from or into
+different formats. It’s required to install the <code class="xref py py-obj docutils literal notranslate"><span class="pre">anymarkup</span></code>
+python module for this to work. The module is not a
+hard requirement and loaded on demand. If not available
+and a request to convert into a format different from XML
+is made an exception will be thrown.</p></li>
+<li><p>Update of an old image description to the latest schema</p></li>
+</ul>
 </dd>
 </dl>
 </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>kiwi.defaults &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -117,6 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -773,6 +774,13 @@
             <span class="s1">&#39;--threads=0&#39;</span>
         <span class="p">]</span></div>
 
+<div class="viewcode-block" id="Defaults.get_platform_name"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_platform_name">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_platform_name</span><span class="p">():</span>
+        <span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i686&#39;</span> <span class="ow">or</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i586&#39;</span><span class="p">:</span>
+            <span class="n">arch</span> <span class="o">=</span> <span class="s1">&#39;ix86&#39;</span>
+        <span class="k">return</span> <span class="n">arch</span></div>
+
 <div class="viewcode-block" id="Defaults.is_x86_arch"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.is_x86_arch">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">is_x86_arch</span><span class="p">(</span><span class="n">arch</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -784,7 +792,10 @@
 
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span> <span class="ow">or</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i686&#39;</span> <span class="ow">or</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i586&#39;</span><span class="p">:</span>
+        <span class="n">x86_arch_names</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;x86_64&#39;</span><span class="p">,</span> <span class="s1">&#39;i686&#39;</span><span class="p">,</span> <span class="s1">&#39;i586&#39;</span><span class="p">,</span> <span class="s1">&#39;ix86&#39;</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">arch</span> <span class="ow">in</span> <span class="n">x86_arch_names</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -1028,6 +1039,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s1">&#39;auto&#39;</span></div>
 
+<div class="viewcode-block" id="Defaults.get_default_bootloader"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_default_bootloader">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_bootloader</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return default bootloader name which is grub2</span>
+
+<span class="sd">        :return: bootloader name</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;grub2&#39;</span></div>
+
 <div class="viewcode-block" id="Defaults.get_grub_boot_directory_name"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_grub_boot_directory_name">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_grub_boot_directory_name</span><span class="p">(</span><span class="n">lookup_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1110,7 +1132,7 @@
 
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">host_architecture</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
+        <span class="n">host_architecture</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_platform_name</span><span class="p">()</span>
         <span class="n">modules</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_basic_modules</span><span class="p">(</span><span class="n">multiboot</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span>
             <span class="s1">&#39;part_gpt&#39;</span><span class="p">,</span>
             <span class="s1">&#39;part_msdos&#39;</span><span class="p">,</span>
@@ -1555,6 +1577,7 @@
             <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">,</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span> <span class="s1">&#39;ec2hvm&#39;</span><span class="p">,</span> <span class="s1">&#39;ec2&#39;</span><span class="p">],</span>
             <span class="s1">&#39;i586&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;bios&#39;</span><span class="p">],</span>
             <span class="s1">&#39;i686&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;bios&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;ix86&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;bios&#39;</span><span class="p">],</span>
             <span class="s1">&#39;aarch64&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
             <span class="s1">&#39;arm64&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
             <span class="s1">&#39;armv5el&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
@@ -1575,7 +1598,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Provides default firmware for specified architecture</span>
 
-<span class="sd">        :param string arch: platform.machine</span>
+<span class="sd">        :param string arch: machine architecture name</span>
 
 <span class="sd">        :return: firmware name</span>
 
@@ -1585,6 +1608,7 @@
             <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span>
             <span class="s1">&#39;i586&#39;</span><span class="p">:</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span>
             <span class="s1">&#39;i686&#39;</span><span class="p">:</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ix86&#39;</span><span class="p">:</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span>
             <span class="s1">&#39;ppc&#39;</span><span class="p">:</span> <span class="s1">&#39;ofw&#39;</span><span class="p">,</span>
             <span class="s1">&#39;ppc64&#39;</span><span class="p">:</span> <span class="s1">&#39;ofw&#39;</span><span class="p">,</span>
             <span class="s1">&#39;ppc64le&#39;</span><span class="p">:</span> <span class="s1">&#39;ofw&#39;</span><span class="p">,</span>
@@ -1631,7 +1655,7 @@
 <span class="sd">        Provides architecture specific EFI directory name which</span>
 <span class="sd">        stores the EFI binaries for the desired architecture.</span>
 
-<span class="sd">        :param string arch: platform.machine</span>
+<span class="sd">        :param string arch: machine architecture name</span>
 
 <span class="sd">        :return: directory name</span>
 
@@ -1671,7 +1695,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Provides architecture specific EFI boot binary name</span>
 
-<span class="sd">        :param string arch: platform.machine</span>
+<span class="sd">        :param string arch: machine architecture name</span>
 
 <span class="sd">        :return: name</span>
 
@@ -2005,10 +2029,9 @@
 
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i686&#39;</span> <span class="ow">or</span> <span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i586&#39;</span><span class="p">:</span>
-            <span class="n">arch</span> <span class="o">=</span> <span class="s1">&#39;ix86&#39;</span>
-        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="n">arch</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="s1">&#39;boot&#39;</span><span class="p">,</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_platform_name</span><span class="p">()]</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Defaults.get_iso_tool_category"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_iso_tool_category">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_iso_tool_category</span><span class="p">():</span>

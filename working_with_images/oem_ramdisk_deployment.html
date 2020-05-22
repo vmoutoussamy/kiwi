@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Deploy and Run System in a RamDisk &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>Deploy and Run System in a RamDisk &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -700,7 +701,8 @@ the image into a ramdisk serves this purpose. KIWI NG allows
 to create a bootable ISO image which deploys the image
 into a ramdisk and activates that image with the following
 oem type definition:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;oem&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">installiso=</span><span class="s">&quot;true&quot;</span> <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span> <span class="na">initrd_system=</span><span class="s">&quot;dracut&quot;</span> <span class="na">installboot=</span><span class="s">&quot;install&quot;</span> <span class="na">boottimeout=</span><span class="s">&quot;1&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;rd.kiwi.ramdisk ramdisk_size=2048000&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;oem&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">installiso=</span><span class="s">&quot;true&quot;</span> <span class="na">initrd_system=</span><span class="s">&quot;dracut&quot;</span> <span class="na">installboot=</span><span class="s">&quot;install&quot;</span> <span class="na">kernelcmdline=</span><span class="s">&quot;rd.kiwi.ramdisk ramdisk_size=2048000&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;bootloader</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span> <span class="na">timeout=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;oemconfig&gt;</span>
         <span class="nt">&lt;oem-skip-verify&gt;</span>true<span class="nt">&lt;/oem-skip-verify&gt;</span>
         <span class="nt">&lt;oem-unattended&gt;</span>true<span class="nt">&lt;/oem-unattended&gt;</span>

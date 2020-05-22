@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building in the Open Build Service &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>Building in the Open Build Service &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -689,7 +690,7 @@
 <p class="admonition-title">Note</p>
 <p><strong>Abstract</strong></p>
 <p>This document gives a brief overview how to build images with
-KIWI NG in version 9.20.12 inside of the Open Build Service.
+KIWI NG in version 9.20.13 inside of the Open Build Service.
 A tutorial on the Open Buildservice itself can be found here:
 <a class="reference external" href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial">https://en.opensuse.org/openSUSE:Build_Service_Tutorial</a></p>
 </div>
@@ -767,7 +768,7 @@ declaration (<code class="xref py py-obj docutils literal notranslate"><span cla
 
 <span class="c">&lt;!-- OBS-Profiles: foo_profile bar_profile --&gt;</span>
 
-<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- image description with the profiles foo_profile and bar_profile</span>
 <span class="c">&lt;/image&gt;</span>
 </pre></div>
@@ -784,7 +785,7 @@ but requires an additional <code class="file docutils literal notranslate"><span
 
 <span class="c">&lt;!-- OBS-Profiles: @BUILD_FLAVOR@ --&gt;</span>
 
-<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.1&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- image description with the profiles foo_profile and bar_profile</span>
 <span class="c">&lt;/image&gt;</span>
 </pre></div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Image Description for Microsoft Azure &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>Image Description for Microsoft Azure &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -722,14 +723,13 @@ on other distributions.</p>
 <p>Update the vmx image type setup as follows</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span>
       <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span>
-      <span class="na">boottimeout=</span><span class="s">&quot;1&quot;</span>
       <span class="na">kernelcmdline=</span><span class="s">&quot;console=ttyS0 rootdelay=300 net.ifnames=0&quot;</span>
       <span class="na">devicepersistency=</span><span class="s">&quot;by-uuid&quot;</span>
       <span class="na">format=</span><span class="s">&quot;vhd-fixed&quot;</span>
       <span class="na">formatoptions=</span><span class="s">&quot;force_size&quot;</span>
-      <span class="na">bootloader=</span><span class="s">&quot;grub2&quot;</span>
       <span class="na">bootpartition=</span><span class="s">&quot;true&quot;</span>
       <span class="na">bootpartsize=</span><span class="s">&quot;1024&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;bootloader</span> <span class="na">name=</span><span class="s">&quot;grub2&quot;</span> <span class="na">timeout=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;size</span> <span class="na">unit=</span><span class="s">&quot;M&quot;</span><span class="nt">&gt;</span>30720<span class="nt">&lt;/size&gt;</span>
 <span class="nt">&lt;/type&gt;</span>
 </pre></div>

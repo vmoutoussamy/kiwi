@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi Package &mdash; KIWI NG 9.20.12 documentation</title>
+  <title>kiwi Package &mdash; KIWI NG 9.20.13 documentation</title>
   
 
   
@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/xml_description.html#the-preferences-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">preferences</span></code> Element</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#build-types">Build Types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-type-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-attributes-of-the-bootloader-element">Common attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code> element</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/xml_description.html#common-elements">Common Elements</a></li>
@@ -1283,6 +1284,20 @@ in the custom rpm macros path</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="kiwi.defaults.Defaults.get_default_bootloader">
+<em class="property">static </em><code class="sig-name descname">get_default_bootloader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_default_bootloader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_default_bootloader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return default bootloader name which is grub2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bootloader name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="kiwi.defaults.Defaults.get_default_container_created_by">
 <em class="property">static </em><code class="sig-name descname">get_default_container_created_by</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_default_container_created_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_default_container_created_by" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides the default ‘created by’ history entry for containers.</p>
@@ -1387,7 +1402,7 @@ partition.</p>
 <dd><p>Provides default firmware for specified architecture</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>arch</strong> (<em>string</em>) – platform.machine</p>
+<dd class="field-odd"><p><strong>arch</strong> (<em>string</em>) – machine architecture name</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>firmware name</p>
@@ -1612,7 +1627,7 @@ bootable disk image</p>
 <dd><p>Provides architecture specific EFI boot binary name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>arch</strong> (<em>string</em>) – platform.machine</p>
+<dd class="field-odd"><p><strong>arch</strong> (<em>string</em>) – machine architecture name</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>name</p>
@@ -1630,7 +1645,7 @@ bootable disk image</p>
 stores the EFI binaries for the desired architecture.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>arch</strong> (<em>string</em>) – platform.machine</p>
+<dd class="field-odd"><p><strong>arch</strong> (<em>string</em>) – machine architecture name</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>directory name</p>
@@ -2086,6 +2101,11 @@ buildservice repositories</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="kiwi.defaults.Defaults.get_platform_name">
+<em class="property">static </em><code class="sig-name descname">get_platform_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_platform_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_platform_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt id="kiwi.defaults.Defaults.get_preparer">
 <em class="property">static </em><code class="sig-name descname">get_preparer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_preparer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_preparer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides ISO preparer name</p>
@@ -2486,6 +2506,13 @@ to the specified instance of a Profile class</p>
 </div>
 <div class="section" id="module-kiwi.exceptions">
 <span id="kiwi-exceptions-module"></span><h2><a class="reference internal" href="#module-kiwi.exceptions" title="kiwi.exceptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.exceptions</span></code></a> Module<a class="headerlink" href="#module-kiwi.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="kiwi.exceptions.KiwiAnyMarkupPluginError">
+<em class="property">exception </em><code class="sig-prename descclassname">kiwi.exceptions.</code><code class="sig-name descname">KiwiAnyMarkupPluginError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/exceptions.html#KiwiAnyMarkupPluginError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiAnyMarkupPluginError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
+<p>Exception raised if the python anymarkup module failed to load.</p>
+</dd></dl>
+
 <dl class="py exception">
 <dt id="kiwi.exceptions.KiwiArchiveSetupError">
 <em class="property">exception </em><code class="sig-prename descclassname">kiwi.exceptions.</code><code class="sig-name descname">KiwiArchiveSetupError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/exceptions.html#KiwiArchiveSetupError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiArchiveSetupError" title="Permalink to this definition">¶</a></dt>
@@ -2985,6 +3012,13 @@ setup the luks encryption on the given device.</p>
 <em class="property">exception </em><code class="sig-prename descclassname">kiwi.exceptions.</code><code class="sig-name descname">KiwiMappedDeviceError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/exceptions.html#KiwiMappedDeviceError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiMappedDeviceError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
 <p>Exception raised if the device to become mapped does not exist.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="kiwi.exceptions.KiwiMarkupConversionError">
+<em class="property">exception </em><code class="sig-prename descclassname">kiwi.exceptions.</code><code class="sig-name descname">KiwiMarkupConversionError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/exceptions.html#KiwiMarkupConversionError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.exceptions.KiwiMarkupConversionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kiwi.exceptions.KiwiError" title="kiwi.exceptions.KiwiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">kiwi.exceptions.KiwiError</span></code></a></p>
+<p>Exception raised if the markup format conversion is not possible.</p>
 </dd></dl>
 
 <dl class="py exception">
@@ -4622,7 +4656,10 @@ Defaults class is returned</p>
 <dt id="kiwi.xml_description.XMLDescription">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.xml_description.</code><code class="sig-name descname">XMLDescription</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">derived_from</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xml_content</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_description.html#XMLDescription"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_description.XMLDescription" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p><strong>Implements data management for the XML description</strong></p>
+<p><strong>Implements data management for the image description</strong></p>
+<p>Supported description markup languages are XML, YAML, JSON and INI.
+The provided input file is converted into XML, transformed to the
+current RelaxNG schema via XSLT and validated against this result.</p>
 <ul class="simple">
 <li><p>XSLT Style Sheet processing to apply on this version of kiwi</p></li>
 <li><p>Schema Validation based on RelaxNG schema</p></li>
@@ -4632,8 +4669,8 @@ Defaults class is returned</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>description</strong> (<em>string</em>) – path to XML description file</p></li>
-<li><p><strong>derived_from</strong> (<em>string</em>) – path to base XML description file</p></li>
+<li><p><strong>description</strong> (<em>string</em>) – path to description file</p></li>
+<li><p><strong>derived_from</strong> (<em>string</em>) – path to base description file</p></li>
 <li><p><strong>xml_content</strong> (<em>string</em>) – XML description data as content string</p></li>
 </ul>
 </dd>
@@ -4658,8 +4695,8 @@ Defaults class is returned</p>
 <dl class="py method">
 <dt id="kiwi.xml_description.XMLDescription.load">
 <code class="sig-name descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_description.html#XMLDescription.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_description.XMLDescription.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read XML description, pass it along to the XSLT processor,
-validate it against the schema and finally pass it to the
+<dd><p>Read XML description, validate it against the schema
+and the schematron rules and pass it to the
 autogenerated(generateDS) parser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -4756,6 +4793,17 @@ section in the target xml state</p>
 target xml state. The package will also be removed from the
 packages type=delete section in the target xml state if
 present there</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – XMLState instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.xml_state.XMLState.copy_bootloader_section">
+<code class="sig-name descname">copy_bootloader_section</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target_state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.copy_bootloader_section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.copy_bootloader_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy bootloader section from this xml state to the target xml state</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>target_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – XMLState instance</p>
@@ -4985,6 +5033,107 @@ matching type=”bootstrap”</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.xml_state.XMLState.get_build_type_bootloader_console">
+<code class="sig-name descname">get_build_type_bootloader_console</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_build_type_bootloader_console"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_build_type_bootloader_console" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bootloader console setting for selected build type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>console string</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.xml_state.XMLState.get_build_type_bootloader_name">
+<code class="sig-name descname">get_build_type_bootloader_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_build_type_bootloader_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_build_type_bootloader_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bootloader name for selected build type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bootloader name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.xml_state.XMLState.get_build_type_bootloader_section">
+<code class="sig-name descname">get_build_type_bootloader_section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_build_type_bootloader_section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_build_type_bootloader_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>First bootloader section from the build type section</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>&lt;bootloader&gt; section reference</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>xml_parse::bootloader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.xml_state.XMLState.get_build_type_bootloader_serial_line_setup">
+<code class="sig-name descname">get_build_type_bootloader_serial_line_setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_build_type_bootloader_serial_line_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_build_type_bootloader_serial_line_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bootloader serial line setup parameters for the
+selected build type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>serial line setup</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.xml_state.XMLState.get_build_type_bootloader_targettype">
+<code class="sig-name descname">get_build_type_bootloader_targettype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_build_type_bootloader_targettype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_build_type_bootloader_targettype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bootloader target type setting. Only relevant for
+the zipl bootloader because zipl is installed differently
+depending on the storage target it runs later</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>target type string</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.xml_state.XMLState.get_build_type_bootloader_timeout">
+<code class="sig-name descname">get_build_type_bootloader_timeout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_build_type_bootloader_timeout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_build_type_bootloader_timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bootloader timeout setting for selected build type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>timeout string</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.xml_state.XMLState.get_build_type_bootloader_timeout_style">
+<code class="sig-name descname">get_build_type_bootloader_timeout_style</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/xml_state.html#XMLState.get_build_type_bootloader_timeout_style"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.xml_state.XMLState.get_build_type_bootloader_timeout_style" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bootloader timeout style setting for selected build type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>timeout_style string</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
 </dd>
 </dl>
 </dd></dl>
