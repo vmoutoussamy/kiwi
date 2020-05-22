@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.xml_description &mdash; KIWI NG 9.20.14 documentation</title>
+  <title>kiwi.xml_description &mdash; KIWI NG 9.20.15 documentation</title>
   
 
   
@@ -750,6 +750,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">markup</span> <span class="o">=</span> <span class="n">Markup</span><span class="p">(</span><span class="n">description</span> <span class="ow">or</span> <span class="n">xml_content</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">markup</span><span class="o">.</span><span class="n">get_xml_description</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">derived_from</span> <span class="o">=</span> <span class="n">derived_from</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description_origin</span> <span class="o">=</span> <span class="n">description</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">extension_data</span> <span class="o">=</span> <span class="p">{}</span>
 
 <div class="viewcode-block" id="XMLDescription.load"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.xml_description.XMLDescription.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># noqa C901</span>
@@ -909,8 +910,8 @@
             <span class="n">parse</span> <span class="o">=</span> <span class="n">xml_parse</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="kc">True</span>
             <span class="p">)</span>
-            <span class="n">parse</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
+            <span class="n">parse</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_origin</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">description_origin</span>
             <span class="p">)</span>
             <span class="n">parse</span><span class="o">.</span><span class="n">derived_description_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">derived_from</span>
             <span class="k">return</span> <span class="n">parse</span>
