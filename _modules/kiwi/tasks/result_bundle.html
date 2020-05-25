@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.tasks.result_bundle &mdash; KIWI NG 9.20.16 documentation</title>
+  <title>kiwi.tasks.result_bundle &mdash; KIWI NG 9.20.17 documentation</title>
   
 
   
@@ -845,9 +845,10 @@
                     <span class="n">checksum</span> <span class="o">=</span> <span class="n">Checksum</span><span class="p">(</span><span class="n">bundle_file</span><span class="p">)</span>
                     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">bundle_file</span> <span class="o">+</span> <span class="s1">&#39;.sha256&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">shasum</span><span class="p">:</span>
                         <span class="n">shasum</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                            <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">  </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">  </span><span class="si">{1}{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                                 <span class="n">checksum</span><span class="o">.</span><span class="n">sha256</span><span class="p">(),</span>
-                                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">bundle_file</span><span class="p">)</span>
+                                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">bundle_file</span><span class="p">),</span>
+                                <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
                             <span class="p">)</span>
                         <span class="p">)</span></div>
 

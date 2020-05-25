@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; KIWI NG 9.20.16 documentation</title>
+  <title>kiwi.defaults &mdash; KIWI NG 9.20.17 documentation</title>
   
 
   
@@ -1414,6 +1414,36 @@
         <span class="k">for</span> <span class="n">signed_grub_pattern</span> <span class="ow">in</span> <span class="n">signed_grub_file_patterns</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">signed_grub</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="n">signed_grub_pattern</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">signed_grub</span></div>
+
+<div class="viewcode-block" id="Defaults.get_efi_vendor_directory"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_efi_vendor_directory">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_efi_vendor_directory</span><span class="p">(</span><span class="n">efi_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides EFI vendor directory if present</span>
+
+<span class="sd">        Looks up distribution specific EFI vendor directory</span>
+
+<span class="sd">        :param string root_path: path to efi mountpoint</span>
+
+<span class="sd">        :return: directory path or None</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">efi_vendor_directories</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;EFI/fedora&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;EFI/opensuse&#39;</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">efi_vendor_directory</span> <span class="ow">in</span> <span class="n">efi_vendor_directories</span><span class="p">:</span>
+            <span class="n">efi_vendor_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">efi_path</span><span class="p">,</span> <span class="n">efi_vendor_directory</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">efi_vendor_directory</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">efi_vendor_directory</span></div>
+
+<div class="viewcode-block" id="Defaults.get_vendor_grubenv"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_vendor_grubenv">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_vendor_grubenv</span><span class="p">(</span><span class="n">efi_path</span><span class="p">):</span>
+        <span class="n">efi_vendor_directory</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_efi_vendor_directory</span><span class="p">(</span><span class="n">efi_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">efi_vendor_directory</span><span class="p">:</span>
+            <span class="n">grubenv</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">efi_vendor_directory</span><span class="p">,</span> <span class="s1">&#39;grubenv&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">grubenv</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">grubenv</span></div>
 
 <div class="viewcode-block" id="Defaults.get_shim_vendor_directory"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_shim_vendor_directory">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_shim_vendor_directory</span><span class="p">(</span><span class="n">root_path</span><span class="p">):</span>

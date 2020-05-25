@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.16 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.17 documentation</title>
   
 
   
@@ -827,8 +827,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">root_reference</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cmdline</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iso_boot</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">shim_fallback_setup</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">validate_use_of_linuxefi</span> <span class="o">=</span> <span class="kc">False</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shim_fallback_setup</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="BootLoaderConfigGrub2.write"><a class="viewcode-back" href="../../../../api/kiwi.bootloader.config.html#kiwi.bootloader.config.grub2.BootLoaderConfigGrub2.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -924,11 +923,11 @@
             <span class="p">]</span>
         <span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_use_of_linuxefi</span><span class="p">:</span>
-            <span class="c1"># On systems that uses GRUB_USE_LINUXEFI with grub2 version</span>
-            <span class="c1"># less than 2.04 there is no support for dynamic EFI</span>
-            <span class="c1"># environment checking. In this condition we change the</span>
-            <span class="c1"># grub config to add this support as follows:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
+            <span class="c1"># On systems that are configured to use EFI with a grub2</span>
+            <span class="c1"># version less than 2.04 there is no support for dynamic</span>
+            <span class="c1"># EFI environment checking. In this condition we change</span>
+            <span class="c1"># the grub config to add this support as follows:</span>
             <span class="c1">#</span>
             <span class="c1"># * Apply only on grub &lt; 2.04</span>
             <span class="c1">#    1. Modify grub.cfg to set linux/initrd as variables</span>
@@ -976,6 +975,21 @@
                     <span class="p">)</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>
                     <span class="n">grub_config_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">grub_config</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
+                    <span class="n">vendor_grubenv_file</span> <span class="o">=</span> \
+                        <span class="n">Defaults</span><span class="o">.</span><span class="n">get_vendor_grubenv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">efi_mount</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">vendor_grubenv_file</span><span class="p">:</span>
+                        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">vendor_grubenv_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">vendor_grubenv</span><span class="p">:</span>
+                            <span class="n">grubenv</span> <span class="o">=</span> <span class="n">vendor_grubenv</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                            <span class="n">grubenv</span> <span class="o">=</span> <span class="n">grubenv</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                                <span class="s1">&#39;root=</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">boot_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                                    <span class="s1">&#39;root_device&#39;</span><span class="p">)</span>
+                                <span class="p">),</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">root_reference</span>
+                            <span class="p">)</span>
+                        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">vendor_grubenv_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vendor_grubenv</span><span class="p">:</span>
+                            <span class="n">vendor_grubenv</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">grubenv</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_copy_grub_config_to_efi_path</span><span class="p">(</span>
@@ -1306,7 +1320,6 @@
                 <span class="k">if</span> <span class="n">use_linuxefi_implemented</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_LINUXEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
                     <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;GRUB_USE_INITRDEFI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">validate_use_of_linuxefi</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_btrfs_root_is_snapshot</span><span class="p">():</span>
             <span class="n">grub_default_entries</span><span class="p">[</span><span class="s1">&#39;SUSE_BTRFS_SNAPSHOT_BOOTING&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;boot_is_crypto&#39;</span><span class="p">):</span>

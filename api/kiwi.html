@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi Package &mdash; KIWI NG 9.20.16 documentation</title>
+  <title>kiwi Package &mdash; KIWI NG 9.20.17 documentation</title>
   
 
   
@@ -1657,6 +1657,24 @@ stores the EFI binaries for the desired architecture.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="kiwi.defaults.Defaults.get_efi_vendor_directory">
+<em class="property">static </em><code class="sig-name descname">get_efi_vendor_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">efi_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_efi_vendor_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_efi_vendor_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides EFI vendor directory if present</p>
+<p>Looks up distribution specific EFI vendor directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root_path</strong> (<em>string</em>) – path to efi mountpoint</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>directory path or None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="kiwi.defaults.Defaults.get_exclude_list_for_non_physical_devices">
 <code class="sig-name descname">get_exclude_list_for_non_physical_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_exclude_list_for_non_physical_devices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_exclude_list_for_non_physical_devices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides the list of folders that are not associated
@@ -2373,6 +2391,11 @@ vagrant box</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.defaults.Defaults.get_vendor_grubenv">
+<em class="property">static </em><code class="sig-name descname">get_vendor_grubenv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">efi_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_vendor_grubenv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_vendor_grubenv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt id="kiwi.defaults.Defaults.get_video_mode_map">
