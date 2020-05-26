@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.17 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.20.18 documentation</title>
   
 
   
@@ -944,11 +944,11 @@
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>
                     <span class="n">grub_config</span> <span class="o">=</span> <span class="n">grub_config_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
                     <span class="n">grub_config</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-                        <span class="sa">r</span><span class="s1">&#39;([ \t]+)linux[efi]*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$linux\2&#39;</span><span class="p">,</span>
+                        <span class="sa">r</span><span class="s1">&#39;([ \t]+)linux(efi|16)*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$linux\3&#39;</span><span class="p">,</span>
                         <span class="n">grub_config</span>
                     <span class="p">)</span>
                     <span class="n">grub_config</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-                        <span class="sa">r</span><span class="s1">&#39;([ \t]+)initrd[efi]*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$initrd\2&#39;</span><span class="p">,</span>
+                        <span class="sa">r</span><span class="s1">&#39;([ \t]+)initrd(efi|16)*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$initrd\3&#39;</span><span class="p">,</span>
                         <span class="n">grub_config</span>
                     <span class="p">)</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>

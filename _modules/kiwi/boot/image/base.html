@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image.base &mdash; KIWI NG 9.20.17 documentation</title>
+  <title>kiwi.boot.image.base &mdash; KIWI NG 9.20.18 documentation</title>
   
 
   
@@ -702,6 +702,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
 <span class="c1"># project</span>
@@ -879,7 +880,9 @@
                 <span class="s1">&#39;No kernel in boot image tree </span><span class="si">%s</span><span class="s1"> found&#39;</span> <span class="o">%</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span>
             <span class="p">)</span>
-        <span class="n">dracut_output_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_boot_image_output_file_format</span><span class="p">()</span>
+        <span class="n">dracut_output_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_boot_image_output_file_format</span><span class="p">(</span>
+            <span class="n">kernel_info</span><span class="o">.</span><span class="n">version</span>
+        <span class="p">)</span>
         <span class="k">return</span> <span class="n">boot_names_type</span><span class="p">(</span>
             <span class="n">kernel_name</span><span class="o">=</span><span class="n">kernel_info</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="n">initrd_name</span><span class="o">=</span><span class="n">dracut_output_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -1063,15 +1066,24 @@
                     <span class="n">boot_description</span>
             <span class="k">return</span> <span class="n">boot_description</span></div>
 
-    <span class="k">def</span> <span class="nf">_get_boot_image_output_file_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_get_boot_image_output_file_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_version</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The initrd output file format varies between</span>
 <span class="sd">        the different Linux distributions. Tools like lsinitrd, and also</span>
 <span class="sd">        grub2 rely on the initrd output file to be in that format. Thus</span>
 <span class="sd">        kiwi should use the same file format to stay compatible</span>
-<span class="sd">        with the distributions. The format is determined by the</span>
-<span class="sd">        outfile format used in the dracut initrd tool which is the</span>
-<span class="sd">        standard on all major linux distributions.</span>
+<span class="sd">        with the distributions. The format is determined in three</span>
+<span class="sd">        stages:</span>
+
+<span class="sd">        a) check for an existing initrd file and use this naming schema</span>
+<span class="sd">        b) if no initrd file is found check the dracut binary for its</span>
+<span class="sd">           default output file name schema</span>
+<span class="sd">        c) if no output file schema could be detected from the dracut</span>
+<span class="sd">           binary return a default output file format which is</span>
+<span class="sd">           initramfs-{kernel_version}.img</span>
+
+<span class="sd">        Let&#39;s hope all this mess can be deleted once all distros just</span>
+<span class="sd">        can agree on one initrd file name schema</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_initrd_system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">:</span>
             <span class="c1"># The custom kiwi initrd system is used only on SUSE systems.</span>
@@ -1083,6 +1095,27 @@
             <span class="n">default_outfile_format</span> <span class="o">=</span> <span class="s1">&#39;initrd-</span><span class="si">{kernel_version}</span><span class="s1">&#39;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">default_outfile_format</span> <span class="o">=</span> <span class="s1">&#39;initramfs-</span><span class="si">{kernel_version}</span><span class="s1">.img&#39;</span>
+
+        <span class="n">outfile_format</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_boot_image_output_file_format_from_existing_file</span><span class="p">(</span>
+                <span class="n">kernel_version</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">outfile_format</span><span class="p">:</span>
+            <span class="n">outfile_format</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_boot_image_output_file_format_from_dracut_code</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">outfile_format</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">outfile_format</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Could not detect dracut output file format&#39;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s1">&#39;Using default initrd file name format </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">default_outfile_format</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">default_outfile_format</span>
+
+    <span class="k">def</span> <span class="nf">_get_boot_image_output_file_format_from_dracut_code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">dracut_tool</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span>
             <span class="s1">&#39;dracut&#39;</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span><span class="p">,</span> <span class="n">access_mode</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">X_OK</span>
         <span class="p">)</span>
@@ -1093,11 +1126,14 @@
                 <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$kernel&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{kernel_version}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Could not detect dracut output file format&#39;</span><span class="p">)</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Using default initrd file name format </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">default_outfile_format</span>
-        <span class="p">))</span>
-        <span class="k">return</span> <span class="n">default_outfile_format</span>
+    <span class="k">def</span> <span class="nf">_get_boot_image_output_file_format_from_existing_file</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">kernel_version</span>
+    <span class="p">):</span>
+        <span class="k">for</span> <span class="n">initrd_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span> <span class="o">+</span> <span class="s1">&#39;/init*&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">initrd_file</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">initrd_file</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                    <span class="n">kernel_version</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{kernel_version}</span><span class="s1">&#39;</span>
+                <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">call_destructor</span><span class="p">:</span>
