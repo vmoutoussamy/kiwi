@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image.base &mdash; KIWI NG 9.20.18 documentation</title>
+  <title>kiwi.boot.image.base &mdash; KIWI NG 9.20.19 documentation</title>
   
 
   
@@ -1129,7 +1129,7 @@
     <span class="k">def</span> <span class="nf">_get_boot_image_output_file_format_from_existing_file</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">kernel_version</span>
     <span class="p">):</span>
-        <span class="k">for</span> <span class="n">initrd_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span> <span class="o">+</span> <span class="s1">&#39;/init*&#39;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">initrd_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span> <span class="o">+</span> <span class="s1">&#39;/boot/init*&#39;</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">initrd_file</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">initrd_file</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
                     <span class="n">kernel_version</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{kernel_version}</span><span class="s1">&#39;</span>
