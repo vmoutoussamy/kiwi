@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.system.setup &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -141,16 +141,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -699,11 +696,14 @@
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">NamedTemporaryFile</span>
 
 <span class="c1"># project</span>
+<span class="kn">import</span> <span class="nn">kiwi.defaults</span> <span class="k">as</span> <span class="nn">defaults</span>
+
 <span class="kn">from</span> <span class="nn">kiwi.mount_manager</span> <span class="kn">import</span> <span class="n">MountManager</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.uri</span> <span class="kn">import</span> <span class="n">Uri</span>
 <span class="kn">from</span> <span class="nn">kiwi.repository</span> <span class="kn">import</span> <span class="n">Repository</span>
@@ -720,6 +720,7 @@
 <span class="kn">from</span> <span class="nn">kiwi.utils.compress</span> <span class="kn">import</span> <span class="n">Compress</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.command_capabilities</span> <span class="kn">import</span> <span class="n">CommandCapabilities</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.rpm_database</span> <span class="kn">import</span> <span class="n">RpmDataBase</span>
+<span class="kn">from</span> <span class="nn">kiwi.system.profile</span> <span class="kn">import</span> <span class="n">Profile</span>
 
 <span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">KiwiImportDescriptionError</span><span class="p">,</span>
@@ -765,9 +766,15 @@
 <span class="sd">        script helper methods</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Importing Image description to system tree&#39;</span><span class="p">)</span>
-        <span class="n">description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/config.xml&#39;</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Importing state XML description as image/config.xml&#39;</span><span class="p">)</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image&#39;</span><span class="p">)</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span><span class="p">,</span> <span class="s1">&#39;config.xml&#39;</span>
+        <span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s1">&#39;--&gt; Importing state XML description to </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span><span class="p">)</span>
+        <span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
             <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">outfile</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -776,12 +783,23 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_import_custom_archives</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_import_cdroot_archive</span><span class="p">()</span></div>
 
+<div class="viewcode-block" id="SystemSetup.script_exists"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.script_exists">[docs]</a>    <span class="k">def</span> <span class="nf">script_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if provided script base name exists in the image description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span></div>
+
 <div class="viewcode-block" id="SystemSetup.cleanup"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete all traces of a kiwi description which are not</span>
 <span class="sd">        required in the later image</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;/.kconfig&#39;</span><span class="p">,</span> <span class="s1">&#39;/image&#39;</span><span class="p">])</span></div>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+                <span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="s1">&#39;.kconfig&#39;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span>
+            <span class="p">]</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemSetup.import_repositories_marked_as_imageinclude"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_repositories_marked_as_imageinclude">[docs]</a>    <span class="k">def</span> <span class="nf">import_repositories_marked_as_imageinclude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -816,10 +834,10 @@
             <span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">repo_alias</span><span class="p">:</span>
                 <span class="n">repo_alias</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up image repository </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_source</span><span class="p">)</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Type: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">)</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Translated: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_source_translated</span><span class="p">)</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Alias: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_alias</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up image repository </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_source</span><span class="p">))</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Type: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_type</span><span class="p">))</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Translated: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_source_translated</span><span class="p">))</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Alias: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">repo_alias</span><span class="p">))</span>
             <span class="n">repo</span><span class="o">.</span><span class="n">add_repo</span><span class="p">(</span>
                 <span class="n">repo_alias</span><span class="p">,</span> <span class="n">repo_source_translated</span><span class="p">,</span>
                 <span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_priority</span><span class="p">,</span> <span class="n">repo_dist</span><span class="p">,</span> <span class="n">repo_components</span><span class="p">,</span>
@@ -882,8 +900,8 @@
             <span class="n">archive</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">profile</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">profiles</span><span class="p">:</span>
-            <span class="n">overlay_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span><span class="p">,</span> <span class="n">profile</span><span class="p">]</span>
+            <span class="n">overlay_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span><span class="p">,</span> <span class="n">profile</span>
             <span class="p">)</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">overlay_directory</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_sync_overlay_files</span><span class="p">(</span>
@@ -908,8 +926,8 @@
 <span class="sd">        Deleting the machine-id without the dracut initrd</span>
 <span class="sd">        creating a new one produces an inconsistent system</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">machine_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;etc&#39;</span><span class="p">,</span> <span class="s1">&#39;machine-id&#39;</span><span class="p">]</span>
+        <span class="n">machine_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;etc&#39;</span><span class="p">,</span> <span class="s1">&#39;machine-id&#39;</span>
         <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">machine_id</span><span class="p">):</span>
@@ -951,7 +969,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s1">&#39;keytable&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="s1">&#39;Setting up keytable: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;keytable&#39;</span><span class="p">]</span>
+                <span class="s1">&#39;Setting up keytable: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;keytable&#39;</span><span class="p">])</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">CommandCapabilities</span><span class="o">.</span><span class="n">has_option_in_help</span><span class="p">(</span>
                 <span class="s1">&#39;systemd-firstboot&#39;</span><span class="p">,</span> <span class="s1">&#39;--keymap&#39;</span><span class="p">,</span>
@@ -986,7 +1004,9 @@
                 <span class="n">locale</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">.UTF-8&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;locale&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="p">)</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up locale: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;locale&#39;</span><span class="p">])</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;Setting up locale: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;locale&#39;</span><span class="p">])</span>
+            <span class="p">)</span>
             <span class="k">if</span> <span class="n">CommandCapabilities</span><span class="o">.</span><span class="n">has_option_in_help</span><span class="p">(</span>
                 <span class="s1">&#39;systemd-firstboot&#39;</span><span class="p">,</span> <span class="s1">&#39;--locale&#39;</span><span class="p">,</span>
                 <span class="n">root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
@@ -1010,7 +1030,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s1">&#39;timezone&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="s1">&#39;Setting up timezone: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;timezone&#39;</span><span class="p">]</span>
+                <span class="s1">&#39;Setting up timezone: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;timezone&#39;</span><span class="p">])</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">CommandCapabilities</span><span class="o">.</span><span class="n">has_option_in_help</span><span class="p">(</span>
                 <span class="s1">&#39;systemd-firstboot&#39;</span><span class="p">,</span> <span class="s1">&#39;--timezone&#39;</span><span class="p">,</span>
@@ -1037,7 +1057,7 @@
         <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_users</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_user_groups</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">get_name</span><span class="p">()):</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">system_users</span><span class="o">.</span><span class="n">group_exists</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
-                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Adding group </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Adding group </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">group</span><span class="p">))</span>
                     <span class="n">system_users</span><span class="o">.</span><span class="n">group_add</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="p">[])</span></div>
 
 <div class="viewcode-block" id="SystemSetup.setup_users"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_users">[docs]</a>    <span class="k">def</span> <span class="nf">setup_users</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1047,7 +1067,7 @@
         <span class="n">system_users</span> <span class="o">=</span> <span class="n">Users</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_users</span><span class="p">():</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up user </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up user </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
             <span class="n">password</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_password</span><span class="p">()</span>
             <span class="n">password_format</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_pwdformat</span><span class="p">()</span>
             <span class="n">home_path</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_home</span><span class="p">()</span>
@@ -1080,7 +1100,7 @@
                 <span class="n">system_users</span><span class="o">.</span><span class="n">user_add</span><span class="p">(</span><span class="n">user_name</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">home_path</span><span class="p">:</span>
                     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                        <span class="s1">&#39;--&gt; Setting permissions for </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">home_path</span>
+                        <span class="s1">&#39;--&gt; Setting permissions for </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span>
                     <span class="p">)</span>
                     <span class="c1"># Emtpy group string assumes the login or default group</span>
                     <span class="n">system_users</span><span class="o">.</span><span class="n">setup_home_for_user</span><span class="p">(</span>
@@ -1115,9 +1135,13 @@
         <span class="n">image_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">image_id</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc&#39;</span><span class="p">):</span>
             <span class="n">image_id_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/ImageID&#39;</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating identifier: </span><span class="si">%s</span><span class="s1"> as </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">image_id</span><span class="p">,</span> <span class="n">image_id_file</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;Creating image identifier: </span><span class="si">{0}</span><span class="s1"> in </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">image_id</span><span class="p">,</span> <span class="n">image_id_file</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">image_id_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">identifier</span><span class="p">:</span>
-                <span class="n">identifier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">image_id</span><span class="p">)</span></div>
+                <span class="n">identifier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image_id</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="SystemSetup.set_selinux_file_contexts"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.set_selinux_file_contexts">[docs]</a>    <span class="k">def</span> <span class="nf">set_selinux_file_contexts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">security_context_file</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1206,17 +1230,29 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_export_deb_package_verification</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">filename</span></div>
 
+<div class="viewcode-block" id="SystemSetup.call_disk_script"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_disk_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_disk_script</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Call disk.sh script chrooted</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">post_disk_sync_script_name</span>
+        <span class="p">)</span></div>
+
 <div class="viewcode-block" id="SystemSetup.call_config_script"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_config_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_config_script</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Call config.sh script chrooted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span><span class="s1">&#39;config.sh&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">post_prepare_script_name</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemSetup.call_image_script"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_image_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_image_script</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Call images.sh script chrooted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span><span class="s1">&#39;images.sh&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">pre_create_script_name</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemSetup.call_edit_boot_config_script"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_edit_boot_config_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_edit_boot_config_script</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">,</span> <span class="n">boot_part_id</span><span class="p">,</span> <span class="n">working_directory</span><span class="o">=</span><span class="kc">None</span>
@@ -1232,7 +1268,7 @@
 <span class="sd">        :param str working_directory: directory name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call_script_no_chroot</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;edit_boot_config.sh&#39;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">edit_boot_config_script_name</span><span class="p">,</span>
             <span class="n">option_list</span><span class="o">=</span><span class="p">[</span><span class="n">filesystem</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">boot_part_id</span><span class="p">)],</span>
             <span class="n">working_directory</span><span class="o">=</span><span class="n">working_directory</span>
         <span class="p">)</span></div>
@@ -1251,7 +1287,7 @@
 <span class="sd">        :param str working_directory: directory name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call_script_no_chroot</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;edit_boot_install.sh&#39;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">edit_boot_install_script_name</span><span class="p">,</span>
             <span class="n">option_list</span><span class="o">=</span><span class="p">[</span><span class="n">diskname</span><span class="p">,</span> <span class="n">boot_device_node</span><span class="p">],</span>
             <span class="n">working_directory</span><span class="o">=</span><span class="n">working_directory</span>
         <span class="p">)</span></div>
@@ -1366,9 +1402,9 @@
         <span class="c1"># recovery.tar.filesystem</span>
         <span class="n">recovery_filesystem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_filesystem</span><span class="p">()</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;partition_filesystem&#39;</span><span class="p">],</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">partfs</span><span class="p">:</span>
-            <span class="n">partfs</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">recovery_filesystem</span><span class="p">)</span>
+            <span class="n">partfs</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recovery_filesystem</span><span class="p">))</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="s1">&#39;--&gt; Recovery partition filesystem: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">recovery_filesystem</span>
+            <span class="s1">&#39;--&gt; Recovery partition filesystem: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recovery_filesystem</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="c1"># recovery.tar.files</span>
         <span class="n">bash_comand</span> <span class="o">=</span> <span class="p">[</span>
@@ -1379,17 +1415,18 @@
         <span class="p">)</span>
         <span class="n">tar_files_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tar_files_call</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_filecount&#39;</span><span class="p">],</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">files</span><span class="p">:</span>
-            <span class="n">files</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">tar_files_count</span><span class="p">)</span>
+            <span class="n">files</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tar_files_count</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">))</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="s1">&#39;--&gt; Recovery file count: </span><span class="si">%d</span><span class="s1"> files&#39;</span><span class="p">,</span> <span class="n">tar_files_count</span>
+            <span class="s1">&#39;--&gt; Recovery file count: </span><span class="si">{0}</span><span class="s1"> files&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tar_files_count</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="c1"># recovery.tar.size</span>
         <span class="n">recovery_archive_size_bytes</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_name&#39;</span><span class="p">])</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_size&#39;</span><span class="p">],</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">size</span><span class="p">:</span>
-            <span class="n">size</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">recovery_archive_size_bytes</span><span class="p">)</span>
+            <span class="n">size</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recovery_archive_size_bytes</span><span class="p">))</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="s1">&#39;--&gt; Recovery uncompressed size: </span><span class="si">%d</span><span class="s1"> mbytes&#39;</span><span class="p">,</span>
-            <span class="nb">int</span><span class="p">(</span><span class="n">recovery_archive_size_bytes</span> <span class="o">/</span> <span class="mi">1048576</span><span class="p">)</span>
+            <span class="s1">&#39;--&gt; Recovery uncompressed size: </span><span class="si">{0}</span><span class="s1"> mbytes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">recovery_archive_size_bytes</span> <span class="o">/</span> <span class="mi">1048576</span><span class="p">)</span>
+            <span class="p">)</span>
         <span class="p">)</span>
         <span class="c1"># recovery.tar.gz</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Compressing recovery archive&#39;</span><span class="p">)</span>
@@ -1402,10 +1439,11 @@
         <span class="n">recovery_partition_mbytes</span> <span class="o">=</span> <span class="n">recovery_archive_gz_size_mbytes</span> \
             <span class="o">+</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_recovery_spare_mbytes</span><span class="p">()</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;partition_size&#39;</span><span class="p">],</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">gzsize</span><span class="p">:</span>
-            <span class="n">gzsize</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">recovery_partition_mbytes</span><span class="p">)</span>
+            <span class="n">gzsize</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recovery_partition_mbytes</span><span class="p">))</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="s1">&#39;--&gt; Recovery partition size: </span><span class="si">%d</span><span class="s1"> mbytes&#39;</span><span class="p">,</span>
-            <span class="n">recovery_partition_mbytes</span>
+            <span class="s1">&#39;--&gt; Recovery partition size: </span><span class="si">{0}</span><span class="s1"> mbytes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">recovery_partition_mbytes</span>
+            <span class="p">)</span>
         <span class="p">)</span>
         <span class="c1"># delete recovery archive if inplace recovery is requested</span>
         <span class="c1"># In this mode the recovery archive is created at install time</span>
@@ -1453,13 +1491,16 @@
     <span class="k">def</span> <span class="nf">_import_cdroot_archive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">glob_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/config-cdroot.tar*&#39;</span>
         <span class="k">for</span> <span class="n">cdroot_archive</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">glob_match</span><span class="p">)):</span>
+            <span class="n">archive_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span>
+            <span class="p">)</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="s1">&#39;--&gt; Importing </span><span class="si">{0}</span><span class="s1"> archive as /image/</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">cdroot_archive</span>
+                <span class="s1">&#39;--&gt; Importing </span><span class="si">{0}</span><span class="s1"> archive to </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">cdroot_archive</span><span class="p">,</span> <span class="n">archive_file</span>
                 <span class="p">)</span>
             <span class="p">)</span>
             <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">cdroot_archive</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/&#39;</span><span class="p">]</span>
+                <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">cdroot_archive</span><span class="p">,</span> <span class="n">archive_file</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="k">break</span>
 
@@ -1475,14 +1516,16 @@
         <span class="k">if</span> <span class="n">bootstrap_archives</span><span class="p">:</span>
             <span class="n">archive_list</span> <span class="o">+=</span> <span class="n">bootstrap_archives</span>
 
-        <span class="n">description_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/&#39;</span>
+        <span class="n">archive_target_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span>
+        <span class="p">)</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span>
 
         <span class="k">for</span> <span class="n">archive</span> <span class="ow">in</span> <span class="n">archive_list</span><span class="p">:</span>
-            <span class="n">archive_is_absolute</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+            <span class="n">archive_is_absolute</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">archive_is_absolute</span><span class="p">:</span>
                 <span class="n">archive_file</span> <span class="o">=</span> <span class="n">archive</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">archive_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">archive</span>
+                <span class="n">archive_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span><span class="p">,</span> <span class="n">archive</span><span class="p">)</span>
 
             <span class="n">archive_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">archive_file</span><span class="p">)</span>
 
@@ -1493,15 +1536,16 @@
 
             <span class="k">if</span> <span class="n">archive_exists</span><span class="p">:</span>
                 <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                    <span class="s1">&#39;--&gt; Importing </span><span class="si">%s</span><span class="s1"> archive as </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
-                    <span class="n">archive_file</span><span class="p">,</span> <span class="s1">&#39;image/&#39;</span> <span class="o">+</span> <span class="n">archive</span>
+                    <span class="s1">&#39;--&gt; Importing </span><span class="si">{0}</span><span class="s1"> archive to </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">archive_file</span><span class="p">,</span> <span class="n">archive_target_dir</span>
+                    <span class="p">)</span>
                 <span class="p">)</span>
                 <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">archive_file</span><span class="p">,</span> <span class="n">description_target</span><span class="p">]</span>
+                    <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">archive_file</span><span class="p">,</span> <span class="n">archive_target_dir</span><span class="p">]</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">KiwiImportDescriptionError</span><span class="p">(</span>
-                    <span class="s1">&#39;Specified archive </span><span class="si">%s</span><span class="s1"> does not exist&#39;</span> <span class="o">%</span> <span class="n">archive_file</span>
+                    <span class="s1">&#39;Specified archive </span><span class="si">{0}</span><span class="s1"> does not exist&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">archive_file</span><span class="p">)</span>
                 <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_import_custom_scripts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1519,19 +1563,23 @@
             <span class="s1">&#39;script_type&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;filepath&#39;</span><span class="p">,</span> <span class="s1">&#39;raise_if_not_exists&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="n">custom_scripts</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;config.sh&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
-                <span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;config.sh&#39;</span><span class="p">,</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">post_prepare_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">post_prepare_script_name</span><span class="p">,</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">),</span>
-            <span class="s1">&#39;images.sh&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
-                <span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;images.sh&#39;</span><span class="p">,</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">pre_create_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">pre_create_script_name</span><span class="p">,</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">),</span>
-            <span class="s1">&#39;edit_boot_config.sh&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">post_disk_sync_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">post_disk_sync_script_name</span><span class="p">,</span>
+                <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">),</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">edit_boot_config_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
                 <span class="n">filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_editbootconfig</span><span class="p">(),</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">True</span>
             <span class="p">),</span>
-            <span class="s1">&#39;edit_boot_install.sh&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">edit_boot_install_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
                 <span class="n">filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_editbootinstall</span><span class="p">(),</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">True</span>
             <span class="p">)</span>
@@ -1540,7 +1588,9 @@
             <span class="nb">sorted</span><span class="p">(</span><span class="n">custom_scripts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
         <span class="p">)</span>
 
-        <span class="n">description_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/&#39;</span>
+        <span class="n">script_target_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span>
+        <span class="p">)</span>
         <span class="n">need_script_helper_functions</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">script</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorted_custom_scripts</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
@@ -1548,19 +1598,27 @@
                 <span class="k">if</span> <span class="n">script</span><span class="o">.</span><span class="n">filepath</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">):</span>
                     <span class="n">script_file</span> <span class="o">=</span> <span class="n">script</span><span class="o">.</span><span class="n">filepath</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">script_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">script</span><span class="o">.</span><span class="n">filepath</span>
+                    <span class="n">script_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span><span class="p">,</span> <span class="n">script</span><span class="o">.</span><span class="n">filepath</span>
+                    <span class="p">)</span>
                 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">script_file</span><span class="p">):</span>
+                    <span class="n">script_target_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="n">script_target_dir</span><span class="p">,</span> <span class="n">name</span>
+                    <span class="p">)</span>
                     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                        <span class="s1">&#39;--&gt; Importing </span><span class="si">%s</span><span class="s1"> script as </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
-                        <span class="n">script</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;image/&#39;</span> <span class="o">+</span> <span class="n">name</span>
+                        <span class="s1">&#39;--&gt; Importing </span><span class="si">{0}</span><span class="s1"> script to </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">script</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="n">script_target_file</span>
+                        <span class="p">)</span>
                     <span class="p">)</span>
                     <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                        <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">script_file</span><span class="p">,</span> <span class="n">description_target</span> <span class="o">+</span> <span class="n">name</span><span class="p">]</span>
+                        <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">script_file</span><span class="p">,</span> <span class="n">script_target_file</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="n">need_script_helper_functions</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">elif</span> <span class="n">script</span><span class="o">.</span><span class="n">raise_if_not_exists</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">KiwiImportDescriptionError</span><span class="p">(</span>
-                        <span class="s1">&#39;Specified script </span><span class="si">%s</span><span class="s1"> does not exist&#39;</span> <span class="o">%</span> <span class="n">script_file</span>
+                        <span class="s1">&#39;Specified script </span><span class="si">{0}</span><span class="s1"> does not exist&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">script_file</span>
+                        <span class="p">)</span>
                     <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">need_script_helper_functions</span><span class="p">:</span>
@@ -1573,21 +1631,28 @@
                 <span class="p">]</span>
             <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_call_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_call_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">option_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">script_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">script_path</span><span class="p">):</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="n">option_list</span> <span class="ow">or</span> <span class="p">[]</span>
             <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">]</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">):</span>
-                <span class="n">command</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">]</span>
-            <span class="n">command</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;/image/&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">]</span>
-            <span class="n">config_script</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+                <span class="n">command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;bash&#39;</span><span class="p">)</span>
+            <span class="n">command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">command</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+            <span class="n">profile</span> <span class="o">=</span> <span class="n">Profile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">)</span>
+            <span class="n">caller_environment</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
+            <span class="n">caller_environment</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get_settings</span><span class="p">())</span>
+            <span class="n">config_script</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">caller_environment</span><span class="p">)</span>
             <span class="n">process</span> <span class="o">=</span> <span class="n">CommandProcess</span><span class="p">(</span>
                 <span class="n">command</span><span class="o">=</span><span class="n">config_script</span><span class="p">,</span> <span class="n">log_topic</span><span class="o">=</span><span class="s1">&#39;Calling &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; script&#39;</span>
             <span class="p">)</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">poll_and_watch</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">KiwiScriptFailed</span><span class="p">(</span>
-                    <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">))</span>
+                    <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> failed: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
                 <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_call_script_no_chroot</span><span class="p">(</span>
@@ -1612,7 +1677,7 @@
             <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">poll_and_watch</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">KiwiScriptFailed</span><span class="p">(</span>
-                    <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">))</span>
+                    <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> failed: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
                 <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_create_passwd_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>

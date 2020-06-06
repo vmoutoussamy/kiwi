@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Concept and Workflow &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>Concept and Workflow &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -143,16 +143,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -688,7 +685,7 @@
 <p class="admonition-title">Note</p>
 <p><strong>Abstract</strong></p>
 <p>The following sections describe the concept and general workflow
-of building appliances with KIWI NG 9.20.19.</p>
+of building appliances with KIWI NG 9.20.20.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
@@ -835,8 +832,8 @@ target root tree.</p>
 <p>At the end of the preparation stage the script <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> is
 executed (if present). It is run in the top level directory of the
 target root tree. The script’s primary function is to complete the
-system configuration, for example, to activate services. See
-<a class="reference internal" href="working_with_kiwi/shell_scripts.html#image-customization-config-sh"><span class="std std-ref">Image Customization via the config.sh Shell Script</span></a> section for further details.</p>
+system configuration. For more details about custom scripts
+see <a class="reference internal" href="working_with_kiwi/shell_scripts.html#working-with-kiwi-user-defined-scripts"><span class="std std-ref">User Defined Scripts</span></a></p>
 </li>
 <li><p><strong>Modify the Root Tree</strong></p>
 <p>The unpacked image tree is now finished to be converted into the final
@@ -883,12 +880,8 @@ prerequisite is that both image types are specified in <code class="file docutil
 <ol class="arabic">
 <li><p><strong>Execute the User-defined Script</strong> <code class="file docutils literal notranslate"><span class="pre">images.sh</span></code></p>
 <p>At the beginning of the image creation process the script named
-<code class="file docutils literal notranslate"><span class="pre">images.sh</span></code> is executed (if present). It is run in the top level
-directory of the unpacked root tree. The script is usually used to
-remove files that are no needed in the final image. For example, if an
-appliance is being built for a specific hardware, unnecessary kernel
-drivers can be removed using this script.</p>
-<p>See <a class="reference internal" href="working_with_kiwi/shell_scripts.html#image-customization-images-sh"><span class="std std-ref">Image Customization via the images.sh Shell Script</span></a> for further details.</p>
+<code class="file docutils literal notranslate"><span class="pre">images.sh</span></code> is executed (if present). For more details about
+custom scripts see <a class="reference internal" href="working_with_kiwi/shell_scripts.html#working-with-kiwi-user-defined-scripts"><span class="std std-ref">User Defined Scripts</span></a></p>
 </li>
 <li><p><strong>Create the Requested Image Type</strong></p>
 <p>KIWI NG converts the unpacked root into an output format appropriate for

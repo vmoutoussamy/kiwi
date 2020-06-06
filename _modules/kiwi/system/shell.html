@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.shell &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.system.shell &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -141,16 +141,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -697,10 +694,14 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">NamedTemporaryFile</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="kn">import</span> <span class="n">Command</span>
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="kn">import</span> <span class="n">Defaults</span>
+
+<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="kn">import</span> <span class="n">KiwiShellVariableValueError</span>
 
 
 <div class="viewcode-block" id="Shell"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.shell.Shell">[docs]</a><span class="k">class</span> <span class="nc">Shell</span><span class="p">:</span>
@@ -764,7 +765,39 @@
                     <span class="p">]</span>
                 <span class="p">)</span>
             <span class="p">]</span>
-        <span class="p">)</span></div></div>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Shell.format_to_variable_value"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.shell.Shell.format_to_variable_value">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">format_to_variable_value</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Format given variable value to return a string value</span>
+<span class="sd">        representation that can be sourced by shell scripts.</span>
+<span class="sd">        If the provided value is not representable as a string</span>
+<span class="sd">        (list, dict, tuple etc) an exception is raised</span>
+
+<span class="sd">        :param any value: a python variable</span>
+
+<span class="sd">        :raises KiwiShellVariableValueError: if value is an iterable</span>
+
+<span class="sd">        :return: string value representation</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">format</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">):</span>
+            <span class="c1"># we will have a hard time to turn an iterable (list, dict ...)</span>
+            <span class="c1"># into a useful string</span>
+            <span class="k">raise</span> <span class="n">KiwiShellVariableValueError</span><span class="p">(</span>
+                <span class="s1">&#39;Value cannot be </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

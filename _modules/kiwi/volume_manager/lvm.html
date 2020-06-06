@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager.lvm &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.volume_manager.lvm &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -141,16 +141,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -764,7 +761,7 @@
                 <span class="c1"># the same key to put them on the same level</span>
                 <span class="n">volume_name</span> <span class="o">=</span> <span class="s1">&#39;swap&#39;</span>
             <span class="n">device_map</span><span class="p">[</span><span class="n">volume_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">MappedDevice</span><span class="p">(</span>
-                <span class="n">device</span><span class="o">=</span><span class="n">volume_node</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span>
+                <span class="n">device</span><span class="o">=</span><span class="n">volume_node</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device_provider_root</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">device_map</span></div>
 
@@ -979,7 +976,7 @@
         <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">filesystem_name</span><span class="p">,</span>
             <span class="n">device_provider</span><span class="o">=</span><span class="n">MappedDevice</span><span class="p">(</span>
-                <span class="n">device</span><span class="o">=</span><span class="n">device_node</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span>
+                <span class="n">device</span><span class="o">=</span><span class="n">device_node</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device_provider_root</span>
             <span class="p">),</span>
             <span class="n">custom_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_filesystem_args</span>
         <span class="p">)</span>
@@ -1036,7 +1033,9 @@
                 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
                     <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                         <span class="s1">&#39;volume group </span><span class="si">%s</span><span class="s1"> still busy&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_group</span>
-                    <span class="p">)</span></div>
+                    <span class="p">)</span>
+                    <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup_tempdirs</span><span class="p">()</span></div>
 </pre></div>
 
            </div>

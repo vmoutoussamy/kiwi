@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.profile &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.system.profile &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -141,16 +141,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -734,6 +731,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_drivers_to_profile</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_root_partition_uuid_to_profile</span><span class="p">()</span>
 
+<div class="viewcode-block" id="Profile.get_settings"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.profile.Profile.get_settings">[docs]</a>    <span class="k">def</span> <span class="nf">get_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return all profile elements that has a value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="n">profile</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">Shell</span><span class="o">.</span><span class="n">format_to_variable_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="nb">sorted</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="p">)</span></div>
+
 <div class="viewcode-block" id="Profile.add"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.profile.Profile.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add key/value pair to profile dictionary</span>
@@ -753,16 +761,13 @@
 
 <span class="sd">        :param str filename: file path name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">sorted_profile</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">(</span>
-            <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="p">)</span>
+        <span class="n">sorted_profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
         <span class="n">temp_profile</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">()</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_profile</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">profile</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorted_profile</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-                <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
-                    <span class="n">profile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                        <span class="nb">format</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-                    <span class="p">)</span>
+                <span class="n">profile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">=</span><span class="si">{1}{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
+                <span class="p">)</span>
         <span class="n">profile_environment</span> <span class="o">=</span> <span class="n">Shell</span><span class="o">.</span><span class="n">quote_key_value_file</span><span class="p">(</span><span class="n">temp_profile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">profile</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">profile_environment</span><span class="p">:</span>
@@ -1062,17 +1067,7 @@
             <span class="k">if</span> <span class="n">content</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">return</span> <span class="s1">&#39;true&#39;</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">content</span>
-
-    <span class="k">def</span> <span class="nf">_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Helper method to format bool profile values in the way</span>
-<span class="sd">        the boot code expects them</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;true&#39;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+                <span class="k">return</span> <span class="n">content</span></div>
 </pre></div>
 
            </div>

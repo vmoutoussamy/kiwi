@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image Package &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.boot.image Package &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -143,16 +143,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -707,6 +704,12 @@
 </dd>
 </dl>
 <dl class="py method">
+<dt id="kiwi.boot.image.base.BootImageBase.cleanup">
+<code class="sig-name descname">cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.cleanup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleanup temporary boot image data if any</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.create_initrd">
 <code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mbrid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">basename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">install_initrd</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.create_initrd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements creation of the initrd</p>
@@ -723,12 +726,6 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="kiwi.boot.image.base.BootImageBase.disable_cleanup">
-<code class="sig-name descname">disable_cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.disable_cleanup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.disable_cleanup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deactivate cleanup(deletion) of boot root directory</p>
-</dd></dl>
-
-<dl class="py method">
 <dt id="kiwi.boot.image.base.BootImageBase.dump">
 <code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.dump" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pickle dump this instance to a file. If the object dump
@@ -739,12 +736,6 @@ in order to preserve the generated data</p>
 <dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – file path name</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="kiwi.boot.image.base.BootImageBase.enable_cleanup">
-<code class="sig-name descname">enable_cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase.enable_cleanup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase.enable_cleanup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Activate cleanup(deletion) of boot root directory</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1002,6 +993,12 @@ the result into the image build target directory</p>
 <p>The kiwi initrd is a customized first boot initrd which allows
 to control the first boot an appliance. The kiwi initrd replaces
 itself after first boot by the result of dracut.</p>
+<dl class="py method">
+<dt id="kiwi.boot.image.builtin_kiwi.BootImageKiwi.cleanup">
+<code class="sig-name descname">cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi.cleanup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi.cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleanup temporary boot image data if any</p>
+</dd></dl>
+
 <dl class="py method">
 <dt id="kiwi.boot.image.builtin_kiwi.BootImageKiwi.create_initrd">
 <code class="sig-name descname">create_initrd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mbrid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">basename</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">install_initrd</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/builtin_kiwi.html#BootImageKiwi.create_initrd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.builtin_kiwi.BootImageKiwi.create_initrd" title="Permalink to this definition">¶</a></dt>

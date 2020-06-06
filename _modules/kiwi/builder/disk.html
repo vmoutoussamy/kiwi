@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.disk &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.builder.disk &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -141,16 +141,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -704,6 +701,8 @@
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">NamedTemporaryFile</span>
 
 <span class="c1"># project</span>
+<span class="kn">import</span> <span class="nn">kiwi.defaults</span> <span class="k">as</span> <span class="nn">defaults</span>
+
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="kn">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.bootloader.config</span> <span class="kn">import</span> <span class="n">BootLoaderConfig</span>
 <span class="kn">from</span> <span class="nn">kiwi.bootloader.install</span> <span class="kn">import</span> <span class="n">BootLoaderInstall</span>
@@ -917,13 +916,13 @@
 
         <span class="c1"># create the disk</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating raw disk image </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">diskname</span><span class="p">)</span>
-        <span class="n">loop_provider</span> <span class="o">=</span> <span class="n">LoopDevice</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop_provider</span> <span class="o">=</span> <span class="n">LoopDevice</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">diskname</span><span class="p">,</span> <span class="n">disksize_mbytes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocksize</span>
         <span class="p">)</span>
-        <span class="n">loop_provider</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop_provider</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">disk</span> <span class="o">=</span> <span class="n">Disk</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">get_partition_table_type</span><span class="p">(),</span> <span class="n">loop_provider</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">get_partition_table_type</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop_provider</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_disk_start_sector</span><span class="p">()</span>
         <span class="p">)</span>
 
@@ -932,7 +931,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">bootloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
             <span class="n">boot_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="p">{</span>
                 <span class="s1">&#39;targetbase&#39;</span><span class="p">:</span>
-                    <span class="n">loop_provider</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">loop_provider</span><span class="o">.</span><span class="n">get_device</span><span class="p">(),</span>
                 <span class="s1">&#39;grub_directory_name&#39;</span><span class="p">:</span>
                     <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_boot_directory_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">),</span>
                 <span class="s1">&#39;boot_is_crypto&#39;</span><span class="p">:</span>
@@ -1003,22 +1002,22 @@
                 <span class="s1">&#39;image_type&#39;</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span>
             <span class="p">}</span>
-            <span class="n">volume_manager</span> <span class="o">=</span> <span class="n">VolumeManager</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager</span> <span class="o">=</span> <span class="n">VolumeManager</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager_name</span><span class="p">,</span> <span class="n">device_map</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">volumes</span><span class="p">,</span>
                 <span class="n">volume_manager_custom_parameters</span>
             <span class="p">)</span>
-            <span class="n">volume_manager</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">volume_group_name</span>
             <span class="p">)</span>
-            <span class="n">volume_manager</span><span class="o">.</span><span class="n">create_volumes</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager</span><span class="o">.</span><span class="n">create_volumes</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">requested_filesystem</span>
             <span class="p">)</span>
-            <span class="n">volume_manager</span><span class="o">.</span><span class="n">mount_volumes</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">volume_manager</span>
-            <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">volume_manager</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span>
-            <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;swap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">volume_manager</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;swap&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager</span><span class="o">.</span><span class="n">mount_volumes</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager</span>
+            <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span>
+            <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;swap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_manager</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;swap&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
                 <span class="s1">&#39;Creating root(</span><span class="si">%s</span><span class="s1">) filesystem on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -1141,6 +1140,17 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_get_exclude_list_for_root_data_sync</span><span class="p">(</span><span class="n">device_map</span><span class="p">)</span>
             <span class="p">)</span>
+
+        <span class="c1"># run post sync script hook</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_setup</span><span class="o">.</span><span class="n">script_exists</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">post_disk_sync_script_name</span>
+        <span class="p">):</span>
+            <span class="n">disk_system</span> <span class="o">=</span> <span class="n">SystemSetup</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_mountpoint</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="n">disk_system</span><span class="o">.</span><span class="n">import_description</span><span class="p">()</span>
+            <span class="n">disk_system</span><span class="o">.</span><span class="n">call_disk_script</span><span class="p">()</span>
+            <span class="n">disk_system</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
 
         <span class="c1"># install boot loader</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_install_bootloader</span><span class="p">(</span><span class="n">device_map</span><span class="p">)</span>
@@ -1286,7 +1296,6 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">boot_image_dump_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">boot_image_dump</span><span class="p">:</span>
                 <span class="n">boot_image</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">boot_image_dump</span><span class="p">)</span>
-            <span class="n">boot_image</span><span class="o">.</span><span class="n">enable_cleanup</span><span class="p">()</span>
             <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">boot_image_dump_file</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiInstallMediaError</span><span class="p">(</span>

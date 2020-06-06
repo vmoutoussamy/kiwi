@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager.btrfs &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.volume_manager.btrfs &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -141,16 +141,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -705,6 +702,7 @@
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">xml.etree</span> <span class="kn">import</span> <span class="n">ElementTree</span>
 <span class="kn">from</span> <span class="nn">xml.dom</span> <span class="kn">import</span> <span class="n">minidom</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="c1"># project</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="kn">import</span> <span class="n">Command</span>
@@ -775,7 +773,7 @@
         <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;btrfs&#39;</span><span class="p">,</span>
             <span class="n">device_provider</span><span class="o">=</span><span class="n">MappedDevice</span><span class="p">(</span>
-                <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span>
+                <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device_provider_root</span>
             <span class="p">),</span>
             <span class="n">custom_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_filesystem_args</span>
         <span class="p">)</span>
@@ -970,6 +968,21 @@
 
         <span class="k">return</span> <span class="n">all_volumes_umounted</span></div>
 
+<div class="viewcode-block" id="VolumeManagerBtrfs.get_mountpoint"><a class="viewcode-back" href="../../../api/kiwi.volume_manager.html#kiwi.volume_manager.btrfs.VolumeManagerBtrfs.get_mountpoint">[docs]</a>    <span class="k">def</span> <span class="nf">get_mountpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides btrfs root mount point directory</span>
+
+<span class="sd">        Effective use of the directory is guaranteed only after sync_data</span>
+
+<span class="sd">        :return: directory path name</span>
+
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sync_target</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;root_is_snapshot&#39;</span><span class="p">):</span>
+            <span class="n">sync_target</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;.snapshots&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;snapshot&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">sync_target</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="VolumeManagerBtrfs.sync_data"><a class="viewcode-back" href="../../../api/kiwi.volume_manager.html#kiwi.volume_manager.btrfs.VolumeManagerBtrfs.sync_data">[docs]</a>    <span class="k">def</span> <span class="nf">sync_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sync data into btrfs filesystem</span>
@@ -980,9 +993,8 @@
 <span class="sd">        :param list exclude: files to exclude from sync</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">toplevel_mount</span><span class="p">:</span>
-            <span class="n">sync_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/@&#39;</span>
+            <span class="n">sync_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_mountpoint</span><span class="p">()</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;root_is_snapshot&#39;</span><span class="p">]:</span>
-                <span class="n">sync_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mountpoint</span> <span class="o">+</span> <span class="s1">&#39;/@/.snapshots/1/snapshot&#39;</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_create_snapshot_info</span><span class="p">(</span>
                     <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">,</span> <span class="s1">&#39;/@/.snapshots/1/info.xml&#39;</span><span class="p">])</span>
                 <span class="p">)</span>
@@ -992,7 +1004,7 @@
                 <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;quota_groups&#39;</span><span class="p">]</span> <span class="ow">and</span> \
-                    <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;root_is_snapshot&#39;</span><span class="p">]:</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;root_is_snapshot&#39;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_create_snapper_quota_configuration</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="VolumeManagerBtrfs.set_property_readonly_root"><a class="viewcode-back" href="../../../api/kiwi.volume_manager.html#kiwi.volume_manager.btrfs.VolumeManagerBtrfs.set_property_readonly_root">[docs]</a>    <span class="k">def</span> <span class="nf">set_property_readonly_root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1106,8 +1118,11 @@
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">toplevel_mount</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Cleaning up </span><span class="si">%s</span><span class="s1"> instance&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">umount_volumes</span><span class="p">():</span>
-                <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">)</span></div>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">umount_volumes</span><span class="p">():</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Subvolumes still busy&#39;</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mountpoint</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup_tempdirs</span><span class="p">()</span></div>
 </pre></div>
 
            </div>

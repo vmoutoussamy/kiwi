@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system Package &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.system Package &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -143,16 +143,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -1046,6 +1043,12 @@ description</strong></p>
 <code class="sig-name descname">delete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/profile.html#Profile.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.profile.Profile.delete" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt id="kiwi.system.profile.Profile.get_settings">
+<code class="sig-name descname">get_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/profile.html#Profile.get_settings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.profile.Profile.get_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all profile elements that has a value</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -1335,6 +1338,12 @@ image archives, overlay files</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt id="kiwi.system.setup.SystemSetup.call_disk_script">
+<code class="sig-name descname">call_disk_script</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/setup.html#SystemSetup.call_disk_script"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.call_disk_script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call disk.sh script chrooted</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="kiwi.system.setup.SystemSetup.call_edit_boot_config_script">
 <code class="sig-name descname">call_edit_boot_config_script</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filesystem</span></em>, <em class="sig-param"><span class="n">boot_part_id</span></em>, <em class="sig-param"><span class="n">working_directory</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/setup.html#SystemSetup.call_edit_boot_config_script"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.call_edit_boot_config_script" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call configured editbootconfig script _NON_ chrooted</p>
@@ -1523,6 +1532,12 @@ the image repository configuration</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="kiwi.system.setup.SystemSetup.script_exists">
+<code class="sig-name descname">script_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/setup.html#SystemSetup.script_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.script_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if provided script base name exists in the image description</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="kiwi.system.setup.SystemSetup.set_selinux_file_contexts">
 <code class="sig-name descname">set_selinux_file_contexts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">security_context_file</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/setup.html#SystemSetup.set_selinux_file_contexts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.setup.SystemSetup.set_selinux_file_contexts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the security context fields (extended attributes)
@@ -1616,6 +1631,29 @@ use and the tool is called in a chroot operation</p>
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.system.shell.</code><code class="sig-name descname">Shell</code><a class="reference internal" href="../_modules/kiwi/system/shell.html#Shell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Special character handling for shell evaluated code</strong></p>
+<dl class="py method">
+<dt id="kiwi.system.shell.Shell.format_to_variable_value">
+<em class="property">static </em><code class="sig-name descname">format_to_variable_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a><a class="reference internal" href="../_modules/kiwi/system/shell.html#Shell.format_to_variable_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell.format_to_variable_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format given variable value to return a string value
+representation that can be sourced by shell scripts.
+If the provided value is not representable as a string
+(list, dict, tuple etc) an exception is raised</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>any</em>) – a python variable</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="kiwi.html#kiwi.exceptions.KiwiShellVariableValueError" title="kiwi.exceptions.KiwiShellVariableValueError"><strong>KiwiShellVariableValueError</strong></a> – if value is an iterable</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>string value representation</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="kiwi.system.shell.Shell.quote">
 <em class="property">static </em><code class="sig-name descname">quote</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/system/shell.html#Shell.quote"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.system.shell.Shell.quote" title="Permalink to this definition">¶</a></dt>

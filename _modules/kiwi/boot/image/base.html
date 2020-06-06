@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image.base &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.boot.image.base &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -141,16 +141,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -739,8 +736,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">initrd_filename</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_xml_state</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setup</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">temp_directories</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">call_destructor</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">signing_keys</span> <span class="o">=</span> <span class="n">signing_keys</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boot_root_directory</span> <span class="o">=</span> <span class="n">root_dir</span>
 
@@ -834,23 +829,10 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">boot_image</span><span class="p">:</span>
                 <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boot_image</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">disable_cleanup</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiBootImageDumpError</span><span class="p">(</span>
                 <span class="s1">&#39;Failed to pickle dump boot image: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
             <span class="p">)</span></div>
-
-<div class="viewcode-block" id="BootImageBase.disable_cleanup"><a class="viewcode-back" href="../../../../api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.disable_cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">disable_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Deactivate cleanup(deletion) of boot root directory</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">call_destructor</span> <span class="o">=</span> <span class="kc">False</span></div>
-
-<div class="viewcode-block" id="BootImageBase.enable_cleanup"><a class="viewcode-back" href="../../../../api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.enable_cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">enable_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Activate cleanup(deletion) of boot root directory</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">call_destructor</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="BootImageBase.get_boot_names"><a class="viewcode-back" href="../../../../api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.get_boot_names">[docs]</a>    <span class="k">def</span> <span class="nf">get_boot_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1066,6 +1048,12 @@
                     <span class="n">boot_description</span>
             <span class="k">return</span> <span class="n">boot_description</span></div>
 
+<div class="viewcode-block" id="BootImageBase.cleanup"><a class="viewcode-back" href="../../../../api/kiwi.boot.image.html#kiwi.boot.image.base.BootImageBase.cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Cleanup temporary boot image data if any</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
     <span class="k">def</span> <span class="nf">_get_boot_image_output_file_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_version</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The initrd output file format varies between</span>
@@ -1133,14 +1121,7 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">initrd_file</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">initrd_file</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
                     <span class="n">kernel_version</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{kernel_version}</span><span class="s1">&#39;</span>
-                <span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">call_destructor</span><span class="p">:</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Cleaning up </span><span class="si">%s</span><span class="s1"> instance&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_directories</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">directory</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
-                    <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div>
+                <span class="p">)</span></div>
 </pre></div>
 
            </div>

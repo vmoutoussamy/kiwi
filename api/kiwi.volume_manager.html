@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager Package &mdash; KIWI NG 9.20.19 documentation</title>
+  <title>kiwi.volume_manager Package &mdash; KIWI NG 9.20.20 documentation</title>
   
 
   
@@ -142,16 +142,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html">User Defined Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#image-customization-via-the-config-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">config.sh</span></code> Shell Script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#image-customization-via-the-images-sh-shell-script">Image Customization via the <code class="docutils literal notranslate"><span class="pre">images.sh</span></code> Shell Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#provided-functions">Provided Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_kiwi/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../working_with_kiwi/runtime_configuration.html">The Runtime Configuration File</a></li>
@@ -786,6 +783,21 @@ return a list of fstab compatible entries</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="kiwi.volume_manager.base.VolumeManagerBase.get_mountpoint">
+<code class="sig-name descname">get_mountpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/volume_manager/base.html#VolumeManagerBase.get_mountpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.base.VolumeManagerBase.get_mountpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides mount point directory</p>
+<p>Effective use of the directory is guaranteed only after sync_data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>directory path name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="kiwi.volume_manager.base.VolumeManagerBase.get_volume_mbsize">
 <code class="sig-name descname">get_volume_mbsize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">volume</span></em>, <em class="sig-param"><span class="n">all_volumes</span></em>, <em class="sig-param"><span class="n">filesystem_name</span></em>, <em class="sig-param"><span class="n">image_type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/volume_manager/base.html#VolumeManagerBase.get_volume_mbsize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.base.VolumeManagerBase.get_volume_mbsize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements size lookup for the given path and desired
@@ -942,6 +954,21 @@ returns a list of fstab compatible entries</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kiwi.volume_manager.btrfs.VolumeManagerBtrfs.get_mountpoint">
+<code class="sig-name descname">get_mountpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a><a class="reference internal" href="../_modules/kiwi/volume_manager/btrfs.html#VolumeManagerBtrfs.get_mountpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.btrfs.VolumeManagerBtrfs.get_mountpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides btrfs root mount point directory</p>
+<p>Effective use of the directory is guaranteed only after sync_data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>directory path name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
 </dd>
 </dl>
 </dd></dl>
