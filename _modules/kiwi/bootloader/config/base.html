@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.base &mdash; KIWI NG 9.21.1 documentation</title>
+  <title>kiwi.bootloader.config.base &mdash; KIWI NG 9.21.2 documentation</title>
   
 
   
@@ -696,6 +696,7 @@
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
@@ -954,7 +955,7 @@
         <span class="k">if</span> <span class="n">custom_cmdline</span><span class="p">:</span>
             <span class="n">cmdline</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">custom_cmdline</span>
         <span class="n">custom_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_root_cmdline_parameter</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">custom_root</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">custom_root</span> <span class="ow">and</span> <span class="n">custom_root</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cmdline</span><span class="p">:</span>
             <span class="n">cmdline</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">custom_root</span>
         <span class="k">return</span> <span class="n">cmdline</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
 
@@ -1228,7 +1229,9 @@
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
                 <span class="s1">&#39;Kernel root device explicitly set via kernelcmdline&#39;</span>
             <span class="p">)</span>
-            <span class="k">return</span> <span class="kc">None</span>
+            <span class="n">root_search</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(root=(.*)[ ]+|root=(.*)$)&#39;</span><span class="p">,</span> <span class="n">cmdline</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">root_search</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">root_search</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="n">want_root_cmdline_parameter</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">firmware</span> <span class="ow">and</span> <span class="s1">&#39;ec2&#39;</span> <span class="ow">in</span> <span class="n">firmware</span><span class="p">:</span>
