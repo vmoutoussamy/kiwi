@@ -1,15 +1,19 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.setup &mdash; KIWI NG 9.21.2 documentation</title>
+  <title>kiwi.system.setup &mdash; KIWI NG 9.21.3 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
 
   
   
@@ -17,7 +21,9 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,11 +35,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -49,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> KIWI NG
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> KIWI NG
           
 
           
@@ -72,6 +73,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -618,6 +620,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -656,7 +659,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -749,6 +752,7 @@
 <span class="sd">        image archives, overlay files</span>
 <span class="sd">    :param str root_dir: root directory path name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml_state</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_platform_name</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span> <span class="o">=</span> <span class="n">xml_state</span>
@@ -767,13 +771,13 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Importing Image description to system tree&#39;</span><span class="p">)</span>
         <span class="n">description</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span><span class="p">,</span> <span class="s1">&#39;config.xml&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">IMAGE_METADATA_DIR</span><span class="p">,</span> <span class="s1">&#39;config.xml&#39;</span>
         <span class="p">)</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="s1">&#39;--&gt; Importing state XML description to </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">IMAGE_METADATA_DIR</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
             <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#39;</span><span class="p">)</span>
@@ -797,7 +801,7 @@
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
-                <span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="s1">&#39;.kconfig&#39;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span>
+                <span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="s1">&#39;.kconfig&#39;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">IMAGE_METADATA_DIR</span>
             <span class="p">]</span>
         <span class="p">)</span></div>
 
@@ -1015,14 +1019,7 @@
                 <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
                     <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;systemd-firstboot&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;--locale=&#39;</span> <span class="o">+</span> <span class="n">locale</span>
-                <span class="p">])</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/sysconfig/language&#39;</span><span class="p">):</span>
-                <span class="n">Shell</span><span class="o">.</span><span class="n">run_common_function</span><span class="p">(</span>
-                    <span class="s1">&#39;baseUpdateSysConfig&#39;</span><span class="p">,</span> <span class="p">[</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/sysconfig/language&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;RC_LANG&#39;</span><span class="p">,</span> <span class="n">locale</span>
-                    <span class="p">]</span>
-                <span class="p">)</span></div>
+                <span class="p">])</span></div>
 
 <div class="viewcode-block" id="SystemSetup.setup_timezone"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_timezone">[docs]</a>    <span class="k">def</span> <span class="nf">setup_timezone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1235,7 +1232,7 @@
 <span class="sd">        Call disk.sh script chrooted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span>
-            <span class="n">defaults</span><span class="o">.</span><span class="n">post_disk_sync_script_name</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">POST_DISK_SYNC_SCRIPT</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemSetup.call_config_script"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_config_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_config_script</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1243,7 +1240,7 @@
 <span class="sd">        Call config.sh script chrooted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span>
-            <span class="n">defaults</span><span class="o">.</span><span class="n">post_prepare_script_name</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">POST_PREPARE_SCRIPT</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemSetup.call_image_script"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_image_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_image_script</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1251,7 +1248,7 @@
 <span class="sd">        Call images.sh script chrooted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span>
-            <span class="n">defaults</span><span class="o">.</span><span class="n">pre_create_script_name</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">PRE_CREATE_SCRIPT</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SystemSetup.call_edit_boot_config_script"><a class="viewcode-back" href="../../../api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_edit_boot_config_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_edit_boot_config_script</span><span class="p">(</span>
@@ -1268,7 +1265,7 @@
 <span class="sd">        :param str working_directory: directory name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call_script_no_chroot</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">edit_boot_config_script_name</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">EDIT_BOOT_CONFIG_SCRIPT</span><span class="p">,</span>
             <span class="n">option_list</span><span class="o">=</span><span class="p">[</span><span class="n">filesystem</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">boot_part_id</span><span class="p">)],</span>
             <span class="n">working_directory</span><span class="o">=</span><span class="n">working_directory</span>
         <span class="p">)</span></div>
@@ -1287,7 +1284,7 @@
 <span class="sd">        :param str working_directory: directory name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call_script_no_chroot</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">edit_boot_install_script_name</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">EDIT_BOOT_INSTALL_SCRIPT</span><span class="p">,</span>
             <span class="n">option_list</span><span class="o">=</span><span class="p">[</span><span class="n">diskname</span><span class="p">,</span> <span class="n">boot_device_node</span><span class="p">],</span>
             <span class="n">working_directory</span><span class="o">=</span><span class="n">working_directory</span>
         <span class="p">)</span></div>
@@ -1492,7 +1489,7 @@
         <span class="n">glob_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/config-cdroot.tar*&#39;</span>
         <span class="k">for</span> <span class="n">cdroot_archive</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">glob_match</span><span class="p">)):</span>
             <span class="n">archive_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">IMAGE_METADATA_DIR</span>
             <span class="p">)</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
                 <span class="s1">&#39;--&gt; Importing </span><span class="si">{0}</span><span class="s1"> archive to </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -1517,7 +1514,7 @@
             <span class="n">archive_list</span> <span class="o">+=</span> <span class="n">bootstrap_archives</span>
 
         <span class="n">archive_target_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">IMAGE_METADATA_DIR</span>
         <span class="p">)</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span>
 
         <span class="k">for</span> <span class="n">archive</span> <span class="ow">in</span> <span class="n">archive_list</span><span class="p">:</span>
@@ -1563,23 +1560,23 @@
             <span class="s1">&#39;script_type&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;filepath&#39;</span><span class="p">,</span> <span class="s1">&#39;raise_if_not_exists&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="n">custom_scripts</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">defaults</span><span class="o">.</span><span class="n">post_prepare_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
-                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">post_prepare_script_name</span><span class="p">,</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">POST_PREPARE_SCRIPT</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">POST_PREPARE_SCRIPT</span><span class="p">,</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">),</span>
-            <span class="n">defaults</span><span class="o">.</span><span class="n">pre_create_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
-                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">pre_create_script_name</span><span class="p">,</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">PRE_CREATE_SCRIPT</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">PRE_CREATE_SCRIPT</span><span class="p">,</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">),</span>
-            <span class="n">defaults</span><span class="o">.</span><span class="n">post_disk_sync_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
-                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">post_disk_sync_script_name</span><span class="p">,</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">POST_DISK_SYNC_SCRIPT</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">POST_DISK_SYNC_SCRIPT</span><span class="p">,</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">),</span>
-            <span class="n">defaults</span><span class="o">.</span><span class="n">edit_boot_config_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">EDIT_BOOT_CONFIG_SCRIPT</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
                 <span class="n">filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_editbootconfig</span><span class="p">(),</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">True</span>
             <span class="p">),</span>
-            <span class="n">defaults</span><span class="o">.</span><span class="n">edit_boot_install_script_name</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">EDIT_BOOT_INSTALL_SCRIPT</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
                 <span class="n">filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_editbootinstall</span><span class="p">(),</span>
                 <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">True</span>
             <span class="p">)</span>
@@ -1589,7 +1586,7 @@
         <span class="p">)</span>
 
         <span class="n">script_target_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">IMAGE_METADATA_DIR</span>
         <span class="p">)</span>
         <span class="n">need_script_helper_functions</span> <span class="o">=</span> <span class="kc">False</span>
 
@@ -1639,7 +1636,7 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">):</span>
                 <span class="n">command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;bash&#39;</span><span class="p">)</span>
             <span class="n">command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">defaults</span><span class="o">.</span><span class="n">image_metadata_directory</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">defaults</span><span class="o">.</span><span class="n">IMAGE_METADATA_DIR</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
             <span class="p">)</span>
             <span class="n">command</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
             <span class="n">profile</span> <span class="o">=</span> <span class="n">Profile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="p">)</span>
@@ -1850,11 +1847,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Marcus Schäfer
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1865,7 +1870,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

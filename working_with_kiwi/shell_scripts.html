@@ -1,15 +1,19 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User Defined Scripts &mdash; KIWI NG 9.21.2 documentation</title>
+  <title>User Defined Scripts &mdash; KIWI NG 9.21.3 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -17,7 +21,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,11 +35,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The Runtime Configuration File" href="runtime_configuration.html" />
@@ -51,7 +52,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> KIWI NG
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> KIWI NG
           
 
           
@@ -74,6 +75,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -620,6 +622,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -658,7 +661,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../working_with_kiwi.html">Concept and Workflow</a> &raquo;</li>
         
@@ -891,6 +894,30 @@ with <code class="xref py py-obj docutils literal notranslate"><span class="pre"
 <div class="section" id="configuration-tips">
 <h2>Configuration Tips<a class="headerlink" href="#configuration-tips" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
+<li><p><strong>Locale configuration:</strong></p></li>
+</ol>
+<blockquote>
+<div><p>KIWI in order to set the locale relies on <strong class="command">systemd-firstboot</strong>,
+which in turn writes the locale configuration file <code class="file docutils literal notranslate"><span class="pre">/etc/locale.conf</span></code>.
+The values for the locale settings are taken from the description XML
+file in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;locale&gt;</span></code> element under <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;preferences&gt;</span></code>.</p>
+<p>KIWI assumes systemd adoption to handle these locale settings, in case the
+build distribution does not honor <code class="xref py py-obj docutils literal notranslate"><span class="pre">/etc/locale.conf</span></code> this is likely to not
+produce any effect on the locale settings. As an example, in SLE12
+distribution the locale configuration is already possible by using the
+systemd toolchain, however this approach overlaps with SUSE specific
+managers such as YaST. In that case using <strong class="command">systemd-firstboot</strong>
+is only effective if locales in <code class="file docutils literal notranslate"><span class="pre">/etc/sysconfig/language</span></code> are
+not set or if the file does not exist at all. In SLE12
+<code class="file docutils literal notranslate"><span class="pre">/etc/sysconfig/language</span></code> has precendence over
+<code class="file docutils literal notranslate"><span class="pre">/etc/locale.conf</span></code> for compatibility reasons and management tools
+could still relay on <a class="reference external" href="https://docs.python.org/3/library/sysconfig.html#module-sysconfig" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sysconfig</span></code></a> files for locale settings.</p>
+<p>In any case the configuration is still possible in KIWI by using
+any distribution specific way to configure the locale setting inside the
+<code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> script or by adding any additional configuration file
+as part of the overlay root-tree.</p>
+</div></blockquote>
+<ol class="arabic simple">
 <li><p><strong>Stateless systemd UUIDs:</strong></p></li>
 </ol>
 <blockquote>
@@ -958,11 +985,19 @@ ln -s /etc/machine-id /var/lib/dbus/machine-id
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Marcus Schäfer
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -973,7 +1008,6 @@ ln -s /etc/machine-id /var/lib/dbus/machine-id
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
