@@ -1,0 +1,1567 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Image Description Elements &mdash; KIWI NG 9.21.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Building Images for Supported Types" href="../building_images.html" />
+    <link rel="prev" title="Image Description" href="../image_description.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> KIWI NG
+          
+
+          
+            
+            <img src="../_static/kiwi-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/workflow.html">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-obs">Installation from OBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-your-distribution-s-repositories">Installation from your distribution’s repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-from-pypi">Installation from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">Working from the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commands/kiwi.html">kiwi-ng</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#example">EXAMPLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/result_list.html">kiwi-ng result list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/result_bundle.html">kiwi-ng result bundle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_prepare.html">kiwi-ng system prepare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_update.html">kiwi-ng system update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_build.html">kiwi-ng system build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#options">OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#uri-types">URI_TYPES</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_create.html">kiwi-ng system create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/image_resize.html">kiwi-ng image resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/image_info.html">kiwi-ng image info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#options">OPTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../self_contained.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../self_contained.html#building-with-the-boxbuild-command">Building with the boxbuild command</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../concept_and_workflow.html">Concept and Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow/repository_setup.html">Setting up Repositories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/repository_setup.html#adding-repositories">Adding repositories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../concept_and_workflow/repository_setup.html#supported-repository-paths">Supported repository paths</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow/packages.html">Adding and Removing Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/packages.html#the-package-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/packages.html#the-archive-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">archive</span></code> element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/packages.html#uninstall-system-packages">Uninstall System Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/packages.html#the-product-and-namedcollection-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">namedCollection</span></code> element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/packages.html#the-ignore-element">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore</span></code> element</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow/profiles.html">Image Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow/users.html">Adding Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow/shell_scripts.html">User Defined Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/shell_scripts.html#script-template-for-config-sh-images-sh">Script Template for config.sh / images.sh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/shell_scripts.html#functions-and-variables-provided-by-kiwi-ng">Functions and Variables Provided by KIWI NG</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../concept_and_workflow/shell_scripts.html#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../concept_and_workflow/shell_scripts.html#profile-environment-variables">Profile Environment Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/shell_scripts.html#configuration-tips">Configuration Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow/runtime_configuration.html">The Runtime Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow/customize_the_boot_process.html">Customizing the Boot Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/customize_the_boot_process.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/customize_the_boot_process.html#boot-image-parameters">Boot Image Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../concept_and_workflow/customize_the_boot_process.html#boot-debugging">Boot Debugging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow/legacy_kiwi.html">Legacy KIWI vs. KIWI Next Generation (KIWI NG)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/legacy_kiwi.html#when-do-i-need-to-use-kiwi-legacy">When Do I need to use KIWI Legacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concept_and_workflow.html#image-building-process">Image Building Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow.html#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concept_and_workflow.html#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../image_description.html">Image Description</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Image Description Elements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image">&lt;image&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">&lt;description&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preferences">&lt;preferences&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-version">&lt;preferences&gt;&lt;version&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-packagemanager">&lt;preferences&gt;&lt;packagemanager&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-rpm-locale-filtering">&lt;preferences&gt;&lt;rpm-locale-filtering&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-rpm-check-signatures">&lt;preferences&gt;&lt;rpm-check-signatures&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-rpm-excludedocs">&lt;preferences&gt;&lt;rpm-excludedocs&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-keytable">&lt;preferences&gt;&lt;keytable&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-timezone">&lt;preferences&gt;&lt;timezone&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-locale">&lt;preferences&gt;&lt;locale&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-bootsplash-theme">&lt;preferences&gt;&lt;bootsplash-theme&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-bootloader-theme">&lt;preferences&gt;&lt;bootloader-theme&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-type">&lt;preferences&gt;&lt;type&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-type-bootloader">&lt;preferences&gt;&lt;type&gt;&lt;bootloader&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-type-containerconfig">&lt;preferences&gt;&lt;type&gt;&lt;containerconfig&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-type-vagrantconfig">&lt;preferences&gt;&lt;type&gt;&lt;vagrantconfig&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-type-systemdisk">&lt;preferences&gt;&lt;type&gt;&lt;systemdisk&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-type-oemconfig">&lt;preferences&gt;&lt;type&gt;&lt;oemconfig&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-type-size">&lt;preferences&gt;&lt;type&gt;&lt;size&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preferences-type-machine">&lt;preferences&gt;&lt;type&gt;&lt;machine&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#repository">&lt;repository&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#repository-source">&lt;repository&gt;&lt;source&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#packages">&lt;packages&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#packages-package">&lt;packages&gt;&lt;package&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packages-namedcollection">&lt;packages&gt;&lt;namedCollection&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packages-archive">&lt;packages&gt;&lt;archive&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packages-ignore">&lt;packages&gt;&lt;ignore&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packages-product">&lt;packages&gt;&lt;product&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#users">&lt;users&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#profiles">&lt;profiles&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../image_description.html#main-root">Main Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-identity">Image Identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-preferences">Image Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-software-sources">Image Software Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-content-setup">Image Content Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-users">Image Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building_images/build_vmx_disk.html">Build a Virtual Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_vmx_disk.html#setting-up-the-bootloader-of-the-image">Setting up the Bootloader of the Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_vmx_disk.html#modifying-the-size-of-the-image">Modifying the Size of the Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_vmx_disk.html#customizing-the-virtual-machine">Customizing the Virtual Machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building_images/build_vmx_disk.html#modifying-the-vm-configuration-directly">Modifying the VM Configuration Directly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building_images/build_vmx_disk.html#adding-network-interfaces-to-the-vm">Adding Network Interfaces to the VM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building_images/build_vmx_disk.html#specifying-disks-and-disk-controllers">Specifying Disks and Disk Controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building_images/build_vmx_disk.html#adding-cd-dvd-drives">Adding CD/DVD Drives</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building_images/build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_oem_disk.html#network-deployment">Network Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_oem_disk.html#oem-customization">OEM Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building_images/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_images/build_wsl_container.html">Build a WSL Container Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_wsl_container.html#setup-of-the-wsl-distrolauncher">Setup of the WSL-DistroLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building_images/build_wsl_container.html#testing-the-wsl-image">Testing the WSL image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/iso_to_usb_stick_file_based_deployment.html">Deploy ISO Image as File on a FAT32 Formated USB Stick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_setup_for_ec2.html">Image Description for Amazon EC2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_setup_for_azure.html">Image Description for Microsoft Azure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_setup_for_google.html">Image Description for Google Compute Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/setup_network_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/setup_network_bootserver.html#installing-and-configuring-dhcp-and-tftp-with-dnsmasq">Installing and Configuring DHCP and TFTP with dnsmasq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/setup_yast_on_first_boot.html">Setting Up YaST at First Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_vagrant_setup.html">Image Description for Vagrant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/vmx_vagrant_setup.html#customizing-the-embedded-vagrantfile">Customizing the embedded Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/network_live_iso_boot.html">Booting a Live ISO Image from Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/oem_ramdisk_deployment.html">Deploy and Run System in a RamDisk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/custom_partitions.html">Custom Disk Partitions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/custom_partitions.html#custom-partitioning-at-boot-time">Custom Partitioning at Boot Time</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/custom_volumes.html">Custom Disk Volumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/custom_fstab_extension.html">Add or Update the Fstab File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/vmx_setup_for_luks.html">Image Description Encrypted Disk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/build_with_profiles.html">Building Images with Profiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/build_with_profiles.html#local-builds">Local Builds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/build_with_profiles.html#building-with-the-open-build-service">Building with the Open Build Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/build_in_buildservice.html">Building in the Open Build Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/build_in_buildservice.html#advantages-of-using-the-open-build-service-obs">Advantages of using the Open Build Service (OBS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/build_in_buildservice.html#differences-between-building-locally-and-on-obs">Differences Between Building Locally and on OBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/build_in_buildservice.html#recommendations">Recommendations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/build_in_buildservice.html#working-with-obs">Working with OBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/build_in_buildservice.html#repository-configuration">Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/build_in_buildservice.html#project-configuration">Project Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html">Build PXE Root File System Image for the legacy netboot infrastructure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#pxe-client-setup-configuration">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working_with_images/legacy_netboot_root_filesystem.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/kiwi_plugin_architecture.html">Plugin Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing/kiwi_plugin_architecture.html#naming-conventions">Naming Conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing/kiwi_plugin_architecture.html#example-plugin">Example Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/schema_extensions.html">Extending KIWI NG with Custom Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing/schema_extensions.html#using-the-extension">Using the Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#the-basics">The Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#fork-the-upstream-repository">Fork the upstream repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#create-a-local-clone-of-the-forked-repository">Create a local clone of the forked repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#install-required-operating-system-packages">Install Required Operating System Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#create-a-python-virtual-development-environment">Create a Python Virtual Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#running-the-unit-tests">Running the Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#create-a-branch-for-each-feature-or-bugfix">Create a Branch for each Feature or Bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#coding-style">Coding Style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#additional-information">Additional Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#signing-git-patches">Signing Git Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#bumping-the-version">Bumping the Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#creating-a-rpm-package">Creating a RPM Package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.html">kiwi Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.command_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.exceptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.firmware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.kiwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.logger_color_formatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger_color_formatter</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.logger_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.logger_filter</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.mount_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.privileges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.runtime_checker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.runtime_checker</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.runtime_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.runtime_config</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.xml_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi.xml_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.archive.html">kiwi.archive Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.archive.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.archive.html#module-kiwi.archive.cpio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.archive.cpio</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.archive.html#module-kiwi.archive.tar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.archive.tar</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.archive.html#module-kiwi.archive">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.boot.image.html">kiwi.boot.image Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.boot.image.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.boot.image.html#module-kiwi.boot.image.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.boot.image.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.boot.image.html#module-kiwi.boot.image.dracut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.boot.image.dracut</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.boot.image.html#module-kiwi.boot.image.builtin_kiwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.boot.image.builtin_kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.boot.image.html#module-kiwi.boot.image">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.bootloader.config.html">kiwi.bootloader.config Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.config.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.config.html#module-kiwi.bootloader.config.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.config.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.config.html#module-kiwi.bootloader.config.grub2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.config.grub2</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.config.html#module-kiwi.bootloader.config.isolinux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.config.isolinux</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.config.html#module-kiwi.bootloader.config.zipl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.config.zipl</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.config.html#module-kiwi.bootloader.config">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.bootloader.install.html">kiwi.bootloader.install Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.install.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.install.html#module-kiwi.bootloader.install.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.install.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.install.html#module-kiwi.bootloader.install.grub2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.install.grub2</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.install.html#module-kiwi.bootloader.install.zipl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.install.zipl</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.install.html#module-kiwi.bootloader.install">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.bootloader.html">kiwi.bootloader Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.html#module-kiwi.bootloader">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.bootloader.template.html">kiwi.bootloader.template Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.template.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.template.html#module-kiwi.bootloader.template.grub2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.template.grub2</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.template.html#module-kiwi.bootloader.template.isolinux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.template.isolinux</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.template.html#module-kiwi.bootloader.template.zipl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.bootloader.template.zipl</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.bootloader.template.html#module-kiwi.bootloader.template">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.boot.html">kiwi.boot Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.boot.html#module-kiwi.boot">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.builder.html">kiwi.builder Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.archive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.archive</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.container"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.container</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.disk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.disk</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.filesystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.filesystem</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.install"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.install</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.live"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.live</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder.kis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.builder.kis</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.builder.html#module-kiwi.builder">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.container.html">kiwi.container Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.container.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.container.html#module-kiwi.container.oci"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.container.oci</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.container.html#module-kiwi.container">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.container.setup.html">kiwi.container.setup Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.container.setup.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.container.setup.html#module-kiwi.container.setup.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.container.setup.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.container.setup.html#module-kiwi.container.setup.docker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.container.setup.docker</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.container.setup.html#module-kiwi.container.setup">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.filesystem.html">kiwi.filesystem Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.btrfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.btrfs</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.clicfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.clicfs</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.ext2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.ext2</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.ext3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.ext3</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.ext4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.ext4</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.fat16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.fat16</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.fat32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.fat32</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.isofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.isofs</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.setup</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.squashfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.squashfs</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem.xfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.filesystem.xfs</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.filesystem.html#module-kiwi.filesystem">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.iso_tools.html">kiwi.iso_tools Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.iso_tools.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.iso_tools.html#module-kiwi.iso_tools.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.iso_tools.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.iso_tools.html#module-kiwi.iso_tools.cdrtools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.iso_tools.cdrtools</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.iso_tools.html#module-kiwi.iso_tools.iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.iso_tools.iso</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.iso_tools.html#module-kiwi.iso_tools">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.package_manager.html">kiwi.package_manager Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.package_manager.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.package_manager.html#module-kiwi.package_manager.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.package_manager.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.package_manager.html#module-kiwi.package_manager.dnf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.package_manager.dnf</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.package_manager.html#module-kiwi.package_manager.zypper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.package_manager.zypper</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.package_manager.html#module-kiwi.package_manager">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.partitioner.html">kiwi.partitioner Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.partitioner.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.partitioner.html#module-kiwi.partitioner.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.partitioner.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.partitioner.html#module-kiwi.partitioner.dasd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.partitioner.dasd</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.partitioner.html#module-kiwi.partitioner.gpt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.partitioner.gpt</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.partitioner.html#module-kiwi.partitioner.msdos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.partitioner.msdos</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.partitioner.html#module-kiwi.partitioner">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.repository.html">kiwi.repository Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.repository.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.repository.html#module-kiwi.repository.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.repository.html#module-kiwi.repository.dnf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.dnf</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.repository.html#module-kiwi.repository.zypper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.zypper</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.repository.html#module-kiwi.repository">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.repository.template.html">kiwi.repository.template Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.repository.template.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.repository.template.html#module-kiwi.repository.template.apt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.repository.template.apt</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.repository.template.html#module-kiwi.repository.template">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.solver.repository.html">kiwi.solver.repository Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.solver.repository.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.solver.repository.html#module-kiwi.solver.repository.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.solver.repository.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.solver.repository.html#module-kiwi.solver.repository">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.solver.html">kiwi.solver Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.solver.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.solver.html#module-kiwi.solver.sat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.solver.sat</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.solver.html#module-kiwi.solver">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.storage.html">kiwi.storage Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#module-kiwi.storage.device_provider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.device_provider</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#module-kiwi.storage.disk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.disk</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#module-kiwi.storage.loop_device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.loop_device</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#module-kiwi.storage.luks_device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.luks_device</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#module-kiwi.storage.mapped_device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.mapped_device</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#module-kiwi.storage.raid_device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.raid_device</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#module-kiwi.storage.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.setup</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.html#module-kiwi.storage">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.storage.subformat.html">kiwi.storage.subformat Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.gce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.gce</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.ova"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.ova</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.qcow2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.qcow2</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_libvirt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_libvirt</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vagrant_virtualbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vagrant_virtualbox</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vdi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vdi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vhd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vhd</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vhdfixed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vhdfixed</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vhdx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vhdx</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat.vmdk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.vmdk</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.html#module-kiwi.storage.subformat">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.storage.subformat.template.html">kiwi.storage.subformat.template Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.template.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vmware_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.vmware_settings</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.vagrant_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.vagrant_config</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template.virtualbox_ovf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.storage.subformat.template.virtualbox_ovf</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.storage.subformat.template.html#module-kiwi.storage.subformat.template">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.system.html">kiwi.system Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.identifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.identifier</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.kernel</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.prepare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.prepare</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.profile</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.result"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.result</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.root_bind"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.root_bind</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.root_init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.root_init</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.setup</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.shell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.shell</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.size</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.uri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.uri</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system.users"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.system.users</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.system.html#module-kiwi.system">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.tasks.html">kiwi.tasks package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#module-kiwi.tasks.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#module-kiwi.tasks.result_bundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.result_bundle</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#module-kiwi.tasks.result_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.result_list</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#module-kiwi.tasks.system_build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.system_build</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#module-kiwi.tasks.system_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.system_create</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#module-kiwi.tasks.system_prepare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.system_prepare</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#module-kiwi.tasks.system_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.tasks.system_update</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.tasks.html#module-kiwi.tasks">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.utils.html">kiwi.utils Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.utils.html#module-kiwi.utils.block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.utils.checksum</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.utils.html#module-kiwi.utils.checksum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.utils.block</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.utils.html#module-kiwi.utils.compress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.utils.compress</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.utils.html#module-kiwi.utils.sync"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.utils.sync</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.utils.html#module-kiwi.utils.sysconfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.utils.sysconfig</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.utils.html#module-kiwi.utils">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/kiwi.volume_manager.html">kiwi.volume_manager Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.volume_manager.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.volume_manager.html#module-kiwi.volume_manager.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.volume_manager.base</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.volume_manager.html#module-kiwi.volume_manager.btrfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.volume_manager.btrfs</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.volume_manager.html#module-kiwi.volume_manager.lvm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kiwi.volume_manager.lvm</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/kiwi.volume_manager.html#module-kiwi.volume_manager">Module Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KIWI NG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../image_description.html">Image Description</a> &raquo;</li>
+        
+      <li>Image Description Elements</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/image_description/elements.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="image-description-elements">
+<span id="id1"></span><h1>Image Description Elements<a class="headerlink" href="#image-description-elements" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document provides a reference for the elements
+and attributes of the KIWI NG XML document in version 9.21.4</p>
+</div>
+<div class="section" id="image">
+<span id="sec-image"></span><h2>&lt;image&gt;<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h2>
+<p>The toplevel of any KIWI NG image description</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;LimeJeOS-Leap-15.1&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- descendants --&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>The image definition starts with an image tag and requires the schema
+format at version 7.2. The attribute name specifies the name
+of the image which is also used for the filenames created by KIWI. Because
+we don’t want spaces in filenames the name attribute must not have any
+spaces in its name.</p>
+<p>The following optional attributes can be inserted in the image tag:</p>
+<dl class="simple">
+<dt>displayname</dt><dd><p>Allows setup of the boot menu title for the selected boot loader. So
+you can have <em>suse-SLED-foo</em> as the image name but a different name
+as the boot display name. Spaces are not allowed in the display name
+because it causes problems for some boot loaders and kiwi did not
+take the effort to separate the ones which can display them correctly
+from the ones which can’t</p>
+</dd>
+<dt>id</dt><dd><p>sets an identification number which appears as file <code class="docutils literal notranslate"><span class="pre">/etc/ImageID</span></code>
+within the image.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="description">
+<span id="sec-description"></span><h2>&lt;description&gt;<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Provide an image identity.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description</span> <span class="na">type=</span><span class="s">&quot;system&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;author&gt;</span>name<span class="nt">&lt;/author&gt;</span>
+  <span class="nt">&lt;contact&gt;</span>contact<span class="nt">&lt;/contact&gt;</span>
+  <span class="nt">&lt;specification&gt;</span>text<span class="nt">&lt;/specification&gt;</span>
+<span class="nt">&lt;/description&gt;</span>
+</pre></div>
+</div>
+<p>The mandatory description section contains information about the creator
+of this image description. The attribute type could be either of the
+value <code class="xref py py-obj docutils literal notranslate"><span class="pre">system</span></code> which indicates this is a system image description or at
+value <code class="xref py py-obj docutils literal notranslate"><span class="pre">boot</span></code> for custom kiwi boot image descriptions.</p>
+<p>The following optional sub sections can be inserted below the description tag:</p>
+<dl class="simple">
+<dt>license</dt><dd><p>Specifies the license name which applies to this image description.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="preferences">
+<span id="sec-preferences"></span><h2>&lt;preferences&gt;<a class="headerlink" href="#preferences" title="Permalink to this headline">¶</a></h2>
+<p>Setup image type and layout.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.2.3<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;packagemanager</span> <span class="na">name=</span><span class="s">&quot;zypper&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;tbz&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+<p>The mandatory preferences section contains information about the
+supported image type(s), the used package manager, the version of this
+image, and further optional elements.</p>
+<div class="section" id="preferences-version">
+<h3>&lt;preferences&gt;&lt;version&gt;<a class="headerlink" href="#preferences-version" title="Permalink to this headline">¶</a></h3>
+<p>The mandatory image version must be a three-part version number of the
+format: <strong>Major</strong>.<strong>Minor</strong>.<strong>Release</strong>. In case of changes to
+the image description the following rules should apply:</p>
+<ul class="simple">
+<li><p>For smaller image modifications that do not add or remove any new
+packages, only the release number is incremented. The XML description
+file(<code class="docutils literal notranslate"><span class="pre">config.xml</span></code>) remains unchanged.</p></li>
+<li><p>For image changes that involve the addition or removal of packages
+the minor number is incremented and the release number is reset.</p></li>
+<li><p>For image changes that changes the behavior or geometry of the
+image file the major number is incremented.</p></li>
+</ul>
+</div>
+<div class="section" id="preferences-packagemanager">
+<h3>&lt;preferences&gt;&lt;packagemanager&gt;<a class="headerlink" href="#preferences-packagemanager" title="Permalink to this headline">¶</a></h3>
+<p>The mandatory packagemanager element specifies which package manager
+should be used to handle software packages. The packagemanager setup
+is connected to the distribution used to build the image. The following
+table shows which package manager is connected to which distributor:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Distributor</p></th>
+<th class="head"><p>Package Manager</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SUSE</p></td>
+<td><p>zypper</p></td>
+</tr>
+<tr class="row-odd"><td><p>RedHat</p></td>
+<td><p>dnf</p></td>
+</tr>
+<tr class="row-even"><td><p>Debian Based</p></td>
+<td><p>apt-get</p></td>
+</tr>
+<tr class="row-odd"><td><p>Arch Linux</p></td>
+<td><p>pacman</p></td>
+</tr>
+</tbody>
+</table>
+<p>In general the specification of one preferences section is sufficient.
+However, it’s possible to specify multiple preferences sections and
+distinguish between the sections via the profiles attribute.</p>
+<p>In combination with the above the preferences element supports the
+following optional elements:</p>
+</div>
+<div class="section" id="preferences-rpm-locale-filtering">
+<h3>&lt;preferences&gt;&lt;rpm-locale-filtering&gt;<a class="headerlink" href="#preferences-rpm-locale-filtering" title="Permalink to this headline">¶</a></h3>
+<p>locale-filtering can be set to “true” or “false”. If set to “true” it
+sets the install_lang macro for RPM based installations to the RPM
+configured locale list. This results in language specific files to
+become filtered out by <code class="xref py py-obj docutils literal notranslate"><span class="pre">rpm</span></code> if they don’t match the configured list.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;rpm-locale-filtering&gt;</span>true<span class="nt">&lt;/rpm-locale-filtering&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It depends on the individual package design if the install_lang
+macro contents apply to the package or not.</p>
+</div>
+</div>
+<div class="section" id="preferences-rpm-check-signatures">
+<h3>&lt;preferences&gt;&lt;rpm-check-signatures&gt;<a class="headerlink" href="#preferences-rpm-check-signatures" title="Permalink to this headline">¶</a></h3>
+<p>Specifies whether package signatures should be checked or not</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;rpm-check-signatures&gt;</span>true<span class="nt">&lt;/rpm-check-signatures&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preferences-rpm-excludedocs">
+<h3>&lt;preferences&gt;&lt;rpm-excludedocs&gt;<a class="headerlink" href="#preferences-rpm-excludedocs" title="Permalink to this headline">¶</a></h3>
+<p>Specifies whether files marked as documentation should be skipped
+during installation</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;rpm-excludedocs&gt;</span>true<span class="nt">&lt;/rpm-excludedocs&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preferences-keytable">
+<h3>&lt;preferences&gt;&lt;keytable&gt;<a class="headerlink" href="#preferences-keytable" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the name of the console keymap to use. The value
+corresponds to a map file in <code class="docutils literal notranslate"><span class="pre">/usr/share/kbd/keymaps/xkb</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;keytable&gt;</span>us<span class="nt">&lt;/keytable&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preferences-timezone">
+<h3>&lt;preferences&gt;&lt;timezone&gt;<a class="headerlink" href="#preferences-timezone" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the time zone. Available time zones are located in the
+<code class="docutils literal notranslate"><span class="pre">/usr/share/zoneinfo</span></code> directory. Specify the attribute value
+relative to <code class="docutils literal notranslate"><span class="pre">/usr/share/zoneinfo</span></code>. For example, specify
+Europe/Berlin for <code class="docutils literal notranslate"><span class="pre">/usr/share/zoneinfo/Europe/Berlin</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;keytable&gt;</span>Europe/Berlin<span class="nt">&lt;/keytable&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preferences-locale">
+<h3>&lt;preferences&gt;&lt;locale&gt;<a class="headerlink" href="#preferences-locale" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the name of the UTF-8 locale to use, which defines the
+contents of the RC_LANG system environment variable used in the
+image and to run the custom scripts specified as part of the
+KIWI NG image description. Please note only UTF-8 locales are
+supported here which also means that the encoding must <em>not</em> be part
+of the locale information. This means you need to specify the
+locale using the 4-digit name like the following example: en_US or
+en_US,de_DE</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;locale&gt;</span>en_US<span class="nt">&lt;/locale&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preferences-bootsplash-theme">
+<h3>&lt;preferences&gt;&lt;bootsplash-theme&gt;<a class="headerlink" href="#preferences-bootsplash-theme" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the name of the plymouth bootsplash theme to use</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;bootsplash-theme&gt;</span>bgrt<span class="nt">&lt;/bootsplash-theme&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preferences-bootloader-theme">
+<h3>&lt;preferences&gt;&lt;bootloader-theme&gt;<a class="headerlink" href="#preferences-bootloader-theme" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the name of the bootloader theme to use if that used
+bootloader has theme support.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;bootloader-theme&gt;</span>openSUSE<span class="nt">&lt;/bootloader-theme&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+<p>Along with the version and the packagemanager at least one image type
+element must be specified to indicate which image type should be build.</p>
+</div>
+<div class="section" id="preferences-type">
+<h3>&lt;preferences&gt;&lt;type&gt;<a class="headerlink" href="#preferences-type" title="Permalink to this headline">¶</a></h3>
+<p>At least one type element must be configured. It is possible to
+specify multiple type elements in a preferences block. To set a given
+type description as the default image use the boolean attribute primary
+and set its value to true:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;typename&quot;</span> <span class="na">primary=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+<p>The image type to be created is determined by the value of the image
+attribute. The following list describes the supported types and
+possible values of the image attribute:</p>
+<dl class="simple">
+<dt>image=”tbz”</dt><dd><p>A simple tar archive image. The tbz type packs the contents of
+the image root tree into a xz compressed tarball.</p>
+</dd>
+<dt>image=”btrfs|ext2|ext3|ext4|squashfs|xfs”</dt><dd><p>A filesystem image. The image root tree data is packed into a
+filesystem image of the given type. An image of that type can
+be loop mounted and accessed according to the capabiities of
+the selected filesystem.</p>
+</dd>
+<dt>image=”iso”</dt><dd><p>An iso image which can be dumped on a CD/DVD or USB stick
+and boots off from this media without interfering with other
+system storage components. A useful pocket system for testing
+and demo and debugging purposes.</p>
+</dd>
+<dt>image=”vmx”</dt><dd><p>An image representing the system disk, useful for cloud frameworks
+like Amazon EC2, Google Compute Engine or Microsoft Azure.</p>
+</dd>
+<dt>image=”oem”</dt><dd><p>An image representing an expandable system disk. This means after
+deployment the system can resize itself to the new disk geometry.
+The resize operation is configurable as part of the image description
+and an installation image for CD/DVD, USB stick and Network deployment
+can be created in addition.</p>
+</dd>
+<dt>image=”docker”</dt><dd><p>An archive image suitable for the docker container engine.
+The image can be loaded via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span> <span class="pre">load</span></code> command and
+works within the scope of the container engine</p>
+</dd>
+<dt>image=”oci”</dt><dd><p>An archive image that builds a container matching the OCI
+(Open Container Interface) standard. The container should be
+able to run with any oci compliant container engine.</p>
+</dd>
+<dt>image=”appx”</dt><dd><p>An archive image suitable for the Windows Subsystem For Linux
+container engine. The image can be loaded From a Windows System
+that has support for WSL activated.</p>
+</dd>
+<dt>image=”kis”</dt><dd><p>An optional root filesystem image associated with a kernel and initrd.
+The use case for this component image type is highly customizable.
+Many different deployment strategies are possible.</p>
+</dd>
+</dl>
+<p>For completion of a type description, there could be several other
+optional attributes and child elements. The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element supports a
+plethora of optional attributes, some of these are only relevant for
+certain build types and will be covered in extra chapters that describes
+the individual image types more detailed. Certain attributes are however
+useful for nearly all build types and will be covered next:</p>
+<dl>
+<dt>bootpartition=”true|false”:</dt><dd><p>Boolean parameter notifying KIWI NG whether an extra boot
+partition should be used or not (the default depends on the current
+layout). This will override KIWI NG’s default layout.</p>
+</dd>
+<dt>btrfs_quota_groups=”true|false”:</dt><dd><p>Boolean parameter to activate filesystem quotas if
+the filesystem is <code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs</span></code>. By default quotas are inactive.</p>
+</dd>
+<dt>btrfs_root_is_snapshot=”true|false”:</dt><dd><p>Boolean parameter that tells KIWI NG to install
+the system into a btrfs snapshot. The snapshot layout is compatible with
+snapper. By default snapshots are turned off.</p>
+</dd>
+<dt>btrfs_root_is_readonly_snapshot=”true|false”:</dt><dd><p>Boolean parameter notifying KIWI NG that
+the btrfs root filesystem snapshot has to made read-only. if this option
+is set to true, the root filesystem snapshot it will be turned into
+read-only mode, once all data has been placed to it. The option is only
+effective if <code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs_root_is_snapshot</span></code> is also set to true. By default the
+root filesystem snapshot is writable.</p>
+</dd>
+<dt>compressed=”true|false”:</dt><dd><p>Specifies whether the image output file should be
+compressed or not. This option is only used for filesystem only images or
+for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">pxe</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">cpio</span></code> types.</p>
+</dd>
+<dt>editbootconfig=”file_path”:</dt><dd><p>Specifies the path to a script which is called right
+before the bootloader is installed. The script runs relative to the
+directory which contains the image structure.</p>
+</dd>
+<dt>editbootinstall=”file_path”:</dt><dd><p>Specifies the path to a script which is called right
+after the bootloader is installed. The script runs relative to the
+directory which contains the image structure.</p>
+</dd>
+<dt>filesystem=”btrfs|ext2|ext3|ext4|squashfs|xfs”</dt><dd><p>The root filesystem</p>
+</dd>
+<dt>firmware=”efi|uefi”</dt><dd><p>Specifies the boot firmware of the appliance, supported
+options are: <code class="xref py py-obj docutils literal notranslate"><span class="pre">bios</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ec2</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">efi</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">uefi</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ofw</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">opal</span></code>.
+This attribute is used to differentiate the image according to the
+firmware which boots up the system. It mostly impacts the disk
+layout and the partition table type. By default <code class="xref py py-obj docutils literal notranslate"><span class="pre">bios</span></code> is used on x86,
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">ofw</span></code> on PowerPC and <code class="xref py py-obj docutils literal notranslate"><span class="pre">efi</span></code> on ARM.</p>
+</dd>
+<dt>force_mbr=”true|false”:</dt><dd><p>Boolean parameter to force the usage of a MBR partition
+table even if the system would default to GPT. This is occasionally
+required on ARM systems that use a EFI partition layout but which must
+not be stored in a GPT. Note that forcing a MBR partition table incurs
+limitations with respect to the number of available partitions and their
+sizes.</p>
+</dd>
+<dt>fsmountoptions=”option_string”:</dt><dd><p>Specifies the filesystem mount options which are passed
+via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">-o</span></code> flag to <strong class="command">mount</strong> and are included in
+<code class="file docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.</p>
+</dd>
+<dt>fscreateoptions=”option_string”:</dt><dd><p>Specifies the filesystem options used to create the
+filesystem. In KIWI NG the filesystem utility to create a filesystem is
+called without any custom options. The default options are filesystem
+specific and are provided along with the package that provides the
+filesystem utility. For the Linux <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext[234]</span></code> filesystem, the default
+options can be found in the <code class="file docutils literal notranslate"><span class="pre">/etc/mke2fs.conf</span></code> file. Other
+filesystems provides this differently and documents information
+about options and their defaults in the respective manual page, e.g
+<strong class="command">man mke2fs</strong>. With the <code class="xref py py-obj docutils literal notranslate"><span class="pre">fscreateoptions</span></code> attribute it’s possible
+to directly influence how the filesystem will be created. The options
+provided as a string are passed to the command that creates the
+filesystem without any further validation by KIWI NG. For example, to turn
+off the journal on creation of an ext4 filesystem the following option
+would be required:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;type</span> <span class="na">fscreateoptions=</span><span class="s">&quot;-O ^has_journal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt>kernelcmdline=”string”:</dt><dd><p>Additional kernel parameters passed to the kernel by the
+bootloader.</p>
+</dd>
+<dt>luks=”passphrase”:</dt><dd><p>Supplying a value will trigger the encryption of the partitions
+using the LUKS extension and using the provided string as the
+password. Note that the password must be entered when booting the
+appliance!</p>
+</dd>
+<dt>target_blocksize=”number”</dt><dd><p>Specifies the image blocksize in bytes which has to
+match the logical blocksize of the target storage device. By default 512
+Bytes is used, which works on many disks. You can obtain the blocksize
+from the <code class="xref py py-obj docutils literal notranslate"><span class="pre">SSZ</span></code> column in the output of the following command:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">blockdev --report $DEVICE</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>The following sections shows the supported child elements of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>
+element including references to their usage in a detailed type setup:</p>
+</div>
+<div class="section" id="preferences-type-bootloader">
+<h3>&lt;preferences&gt;&lt;type&gt;&lt;bootloader&gt;<a class="headerlink" href="#preferences-type-bootloader" title="Permalink to this headline">¶</a></h3>
+<p>Used to describe the bootloader setup in vmx or oem disk image types.
+For details see: <a class="reference internal" href="../building_images/build_vmx_disk.html#vmx-bootloader"><span class="std std-ref">Setting up the Bootloader of the Image</span></a></p>
+</div>
+<div class="section" id="preferences-type-containerconfig">
+<h3>&lt;preferences&gt;&lt;type&gt;&lt;containerconfig&gt;<a class="headerlink" href="#preferences-type-containerconfig" title="Permalink to this headline">¶</a></h3>
+<p>Used to describe the container configuration metadata in docker or wsl
+image types. For details see: <a class="reference internal" href="../building_images/build_docker_container.html#building-docker-build"><span class="std std-ref">Build a Docker Container Image</span></a> and:
+<a class="reference internal" href="../building_images/build_wsl_container.html#building-wsl-build"><span class="std std-ref">Build a WSL Container Image</span></a></p>
+</div>
+<div class="section" id="preferences-type-vagrantconfig">
+<h3>&lt;preferences&gt;&lt;type&gt;&lt;vagrantconfig&gt;<a class="headerlink" href="#preferences-type-vagrantconfig" title="Permalink to this headline">¶</a></h3>
+<p>Used to describe vagrant configuration metadata in vmx disk image
+that is being used as a vagrant box. For details see: <a class="reference internal" href="../working_with_images/vmx_vagrant_setup.html#setup-vagrant"><span class="std std-ref">Image Description for Vagrant</span></a></p>
+</div>
+<div class="section" id="preferences-type-systemdisk">
+<h3>&lt;preferences&gt;&lt;type&gt;&lt;systemdisk&gt;<a class="headerlink" href="#preferences-type-systemdisk" title="Permalink to this headline">¶</a></h3>
+<p>Used to describe the geometry, partitions and volumes, in a vmx or oem
+disk image. For details see: <a class="reference internal" href="../working_with_images/custom_volumes.html#custom-volumes"><span class="std std-ref">Custom Disk Volumes</span></a></p>
+</div>
+<div class="section" id="preferences-type-oemconfig">
+<h3>&lt;preferences&gt;&lt;type&gt;&lt;oemconfig&gt;<a class="headerlink" href="#preferences-type-oemconfig" title="Permalink to this headline">¶</a></h3>
+<p>Used to customize the deployment process in an oem disk image.
+For details see: <a class="reference internal" href="../building_images/build_oem_disk.html#oem-customize"><span class="std std-ref">OEM Customization</span></a></p>
+</div>
+<div class="section" id="preferences-type-size">
+<h3>&lt;preferences&gt;&lt;type&gt;&lt;size&gt;<a class="headerlink" href="#preferences-type-size" title="Permalink to this headline">¶</a></h3>
+<p>Used to customize the size of the resulting disk image in a vmx or
+oem image. For details see: <a class="reference internal" href="../building_images/build_vmx_disk.html#vmx-the-size-element"><span class="std std-ref">Modifying the Size of the Image</span></a></p>
+</div>
+<div class="section" id="preferences-type-machine">
+<h3>&lt;preferences&gt;&lt;type&gt;&lt;machine&gt;<a class="headerlink" href="#preferences-type-machine" title="Permalink to this headline">¶</a></h3>
+<p>Used to customize the virtual machine configuration which describes
+the components of an emulated hardware.
+For details see: <a class="reference internal" href="../building_images/build_vmx_disk.html#vmx-the-machine-element"><span class="std std-ref">Customizing the Virtual Machine</span></a></p>
+</div>
+</div>
+<div class="section" id="repository">
+<span id="sec-repository"></span><h2>&lt;repository&gt;<a class="headerlink" href="#repository" title="Permalink to this headline">¶</a></h2>
+<p>Setup software sources for the image.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repository&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;uri&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/repository&gt;</span>
+</pre></div>
+</div>
+<p>The mandatory repository element specifies the location and type of a
+repository to be used by the package manager as a package installation
+source. KIWI NG supports apt, dnf, pacman and zypper as package managers,
+specified with the packagemanager element. The repository element has
+the following optional attributes:</p>
+<dl>
+<dt>alias=”name”</dt><dd><p>Specifies an alternative name for the configured repository. If the
+attribute is not specified KIWI NG will generate a random alias name
+for the repository.</p>
+</dd>
+<dt>components=”name”</dt><dd><p>Used for Debian (apt) based repositories only. Specifies the
+component name that should be used from the repository. By default
+the <code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code> component is used</p>
+</dd>
+<dt>distribution=”name”</dt><dd><p>Used for Debian (apt) based repositories only. Specifies the
+distribution name to be used on call of <code class="xref py py-obj docutils literal notranslate"><span class="pre">debootstrap</span></code></p>
+</dd>
+<dt>imageonly=”true|false”</dt><dd><p>Specifies whether or not this repository should be configured in
+the resulting image without using it at build time. By default
+the value is set to false</p>
+</dd>
+<dt>repository_gpgcheck=”true|false”</dt><dd><p>Specifies whether or not this specific repository is configured to
+to run repository signature validation. If not set, no value is
+appended into the repository configuration file. If set the
+relevant key information needs to be provided on the KIWI NG
+commandline using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">--signing-key</span></code> option</p>
+</dd>
+<dt>imageinclude=”true|false”</dt><dd><p>Specifies whether the given repository should be configured as a
+repository in the image or not. The default behavior is that
+repositories used to build an image are not configured as a
+repository inside the image. This feature allows you to change the
+behavior by setting the value to true.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Scope of repository uri’s</p>
+<p>The repository is configured in the image according to the source
+path as specified with the path attribute of the source element.
+Therefore, if the path is not a fully qualified URL, you may need
+to adjust the repository file in the image to accommodate the
+expected location. It is recommended that you use the alias
+attribute in combination with the imageinclude attribute to
+avoid having unpredictable random names assigned to the
+repository you wish to include in the image.</p>
+</div>
+</dd>
+<dt>password=”string”</dt><dd><p>Specifies a password for the given repository. The password attribute
+must be used in combination with the username attribute. Dependent on
+the repository location this information may not be used.</p>
+</dd>
+<dt>username=”name”</dt><dd><p>Specifies a user name for the given repository. The username
+attribute must be used in combination with the password attribute.
+Dependent on the repository location this information may not be
+used.</p>
+</dd>
+<dt>prefer-license=”true|false”</dt><dd><p>The repository providing this attribute will be used primarily to
+install the license tarball if found on that repository. If no
+repository with a preferred license attribute exists, the search
+happens over all repositories. It’s not guaranteed in that case that
+the search order follows the repository order like they are written
+into the XML description.</p>
+</dd>
+<dt>priority=”number”</dt><dd><p>Specifies the repository priority for this given repository. Priority
+values are treated differently by different package managers.
+Repository priorities allow the package management system to
+disambiguate packages that may be contained in more than one of the
+configured repositories. The zypper package manager for example
+prefers packages from a repository with a <em>lower</em> priority over
+packages from a repository with higher priority values.
+The value 99 means “no priority is set”. For other package managers
+please refer to the individual documentation about repository priorities.</p>
+</dd>
+<dt>sourcetype=”baseurl|metalink|mirrorlist”</dt><dd><p>Specifies the source type of the repository path. Depending on if the
+source path is a simple url or a pointer to a metadata file or mirror
+list, the configured package manager needs to be setup appropriately.
+By default the source is expected to be a simple repository baseurl.</p>
+</dd>
+</dl>
+<div class="section" id="repository-source">
+<h3>&lt;repository&gt;&lt;source&gt;<a class="headerlink" href="#repository-source" title="Permalink to this headline">¶</a></h3>
+<p>The location of a repository is specified by the path attribute of the
+mandatory source child element:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repository</span> <span class="na">alias=</span><span class="s">&quot;kiwi&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;obs://Virtualization:Appliances:Builder/openSUSE_Leap_15.1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/repository&gt;</span>
+</pre></div>
+</div>
+<p>The location specification may include
+the <code class="xref py py-obj docutils literal notranslate"><span class="pre">%arch</span></code> macro which will expand to the architecture of the image
+building host. The value for the path attribute may begin with any of
+the following location indicators:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dir:///local/path</span></code>
+An absolute path to a directory accessible through the local file system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ftp://&lt;ftp://&gt;</span></code>
+A ftp protocol based network location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://&lt;http://&gt;</span></code>
+A http protocol based network location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://&lt;https://&gt;</span></code>
+A https protocol based network location.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>https repositories</p>
+<p>When specifying a https location for a repository it is generally
+necessary to include the openssl certificates and a cracklib word
+dictionary as package entries in the bootstrap section of the
+image configuration. The names of the packages to include are
+individual to the used distribution. On SUSE systems as one example
+this would be <code class="xref py py-obj docutils literal notranslate"><span class="pre">openssl-certs</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">cracklib-dict-full</span></code></p>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso://&lt;iso://&gt;</span></code>
+An absolute path to an .iso file accessible via the local file
+system. KIWI NG will loop mount the the .iso file to a temporary
+directory with a generated name. The generated path is provided to
+the specified package manager as a directory based repository location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs://Open:Build:Service:Project:Name</span></code>
+A reference to a project in the Open Build Service (OBS). KIWI NG
+translates the given project path into a remote url at which
+the given project hosts the packages.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obsrepositories:/</span></code>
+A placeholder for the Open Build Service (OBS) to indicate that all
+repositories are taken from the project configuration in OBS.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="packages">
+<span id="sec-packages"></span><h2>&lt;packages&gt;<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>Setup software components to be installed in the image.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;type&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>The mandatory packages element specifies the setup of a packages
+group for the given type. The value of the type attribute specifies
+at which state in the build process the packages group gets handled,
+supported values are as follows:</p>
+<dl class="simple">
+<dt>type=”bootstrap”</dt><dd><p>Bootstrap packages, list of packages to be installed first into
+a new (empty) root tree. The packages list the required components
+to support a chroot environment from which further software
+components can be installed</p>
+</dd>
+<dt>type=”image”</dt><dd><p>Image packages, list of packages to be installed as part of a chroot
+operation inside of the new root tree.</p>
+</dd>
+<dt>type=”uninstall|delete”</dt><dd><p>Packages to be uninstalled or deleted. For further details
+see <a class="reference internal" href="../concept_and_workflow/packages.html#uninstall-system-packages"><span class="std std-ref">Uninstall System Packages</span></a></p>
+</dd>
+<dt>type=”<em>image_type_name</em>”</dt><dd><p>Packages to be installed for the given image type name. For example
+if set to type=”iso”, the packages in this group will only be
+installed if the iso image type is build.</p>
+</dd>
+</dl>
+<p>The packages element must contain at least one child element of the
+following list to provide specific configuration information for the
+specified packages group:</p>
+<div class="section" id="packages-package">
+<h3>&lt;packages&gt;&lt;package&gt;<a class="headerlink" href="#packages-package" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">arch=</span><span class="s">&quot;arch&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>The package element installs the given package name. The optional
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code> attribute can be used to limit the installation of the package
+to the host architecture from which KIWI NG is called. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code>
+attribute is also available in all of the following elements.</p>
+</div>
+<div class="section" id="packages-namedcollection">
+<h3>&lt;packages&gt;&lt;namedCollection&gt;<a class="headerlink" href="#packages-namedcollection" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">patternType=</span><span class="s">&quot;onlyRequired&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;namedCollection</span> <span class="na">name=</span><span class="s">&quot;base&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>The namedCollection element is used to install a number of packages
+grouped together under a name. This is a feature of the individual
+distribution and used in the implementation of the KIWI NG package
+manager backend. At the moment collections are only supported for
+SUSE and RedHat based distributions. The optional <code class="xref py py-obj docutils literal notranslate"><span class="pre">patternType</span></code> attribute
+is used to control the behavior of the dependency resolution of
+the package collection. <code class="xref py py-obj docutils literal notranslate"><span class="pre">onlyRequired</span></code> installs only the collection
+and its required packages. <code class="xref py py-obj docutils literal notranslate"><span class="pre">plusRecommended</span></code> installs the collection,
+any of its required packages and any recommended packages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Collections on SUSE</p>
+<p>On SUSE based distributions collections are names patterns and are
+just simple packages. To get the names of the patterns such that
+they can be used in a namedCollection type the following command:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">$</span> <span class="pre">zypper</span> <span class="pre">patterns</span></code>. If for some reason the collection name cannot
+be used it is also possible to add the name of the package that
+provides the collection as part of a <code class="xref py py-obj docutils literal notranslate"><span class="pre">package</span></code> element. To get the
+names of the pattern packages type the following command:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">$</span> <span class="pre">zypper</span> <span class="pre">search</span> <span class="pre">patterns</span></code>. By convention all packages that starts
+with the name “patterns-” are representing a pattern package.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Collections on RedHat</p>
+<p>On RedHat based distributions collections are named groups and are
+extra metadata. To get the names of these groups type the following
+command: <code class="xref py py-obj docutils literal notranslate"><span class="pre">$</span> <span class="pre">dnf</span> <span class="pre">group</span> <span class="pre">list</span></code>. Please note that group names are allowed
+to contain whitespace characters.</p>
+</div>
+</div>
+<div class="section" id="packages-archive">
+<h3>&lt;packages&gt;&lt;archive&gt;<a class="headerlink" href="#packages-archive" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>The archive element takes the <code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code> attribute and looks up the
+given name as file on the system. If specified relative KIWI NG
+looks up the name in the image description directory. The archive
+is installed using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">tar</span></code> program. Thus the file name is
+expected to be a tar archive. The compression of the archive is
+detected automatically by the tar program.</p>
+</div>
+<div class="section" id="packages-ignore">
+<h3>&lt;packages&gt;&lt;ignore&gt;<a class="headerlink" href="#packages-ignore" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ignore</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>The ignore element instructs the used package manager to ignore the
+given package name at installation time. Please note whether or not
+the package can be ignored is up to the package manager. Packages
+that are hard required by other packages in the install procedure
+cannot be ignored and the package manager will simply ignore the
+request.</p>
+</div>
+<div class="section" id="packages-product">
+<h3>&lt;packages&gt;&lt;product&gt;<a class="headerlink" href="#packages-product" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;product</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>The product element instructs the used package manager to install
+the given product. What installation of a product means is up to
+the package manager and also distribution specific. This feature
+currently only works on SUSE based distributions</p>
+</div>
+</div>
+<div class="section" id="users">
+<span id="sec-users"></span><h2>&lt;users&gt;<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h2>
+<p>Setup image users.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;users&gt;</span>
+  <span class="nt">&lt;user</span>
+    <span class="na">name=</span><span class="s">&quot;user&quot;</span>
+    <span class="na">groups=</span><span class="s">&quot;group_list&quot;</span>
+    <span class="na">home=</span><span class="s">&quot;dir&quot;</span>
+    <span class="na">id=</span><span class="s">&quot;number&quot;</span>
+    <span class="na">password=</span><span class="s">&quot;text&quot;</span>
+    <span class="na">pwdformat=</span><span class="s">&quot;encrypted|plain&quot;</span>
+    <span class="na">realname=</span><span class="s">&quot;name&quot;</span>
+    <span class="na">shell=</span><span class="s">&quot;path&quot;</span>
+  <span class="nt">/&gt;</span>
+<span class="nt">&lt;/users&gt;</span>
+</pre></div>
+</div>
+<p>The optional users element contains the user setup KIWI NG should create
+in the system. At least one user child element must be specified as
+part of the users element. Multiple user elements may be specified.</p>
+<p>Each <code class="xref py py-obj docutils literal notranslate"><span class="pre">user</span></code> element represents a specific user that is added or
+modified. The following attributes are mandatory:</p>
+<dl class="simple">
+<dt>name=”name”:</dt><dd><p>the UNIX username</p>
+</dd>
+<dt>home=”path”:</dt><dd><p>The path to the user’s home directory</p>
+</dd>
+</dl>
+<p>Additionally, the following optional attributes can be specified:</p>
+<dl>
+<dt>groups=”group_a,group_b”:</dt><dd><p>A comma separated list of UNIX groups. The first element of the
+list is used as the user’s primary group. The remaining elements are
+appended to the user’s supplementary groups. When no groups are assigned
+then the system’s default primary group will be used.</p>
+</dd>
+<dt>id=”number”:</dt><dd><p>The numeric user id of this account.</p>
+</dd>
+<dt>pwdformat=”plain|encrypted”:</dt><dd><p>The format in which <code class="xref py py-obj docutils literal notranslate"><span class="pre">password</span></code> is provided. The default if not
+specified is <code class="xref py py-obj docutils literal notranslate"><span class="pre">encrypted</span></code>.</p>
+</dd>
+<dt>password=”string”</dt><dd><p>The password for this user account. It can be provided either
+in cleartext form or encrypted. An encrypted password can be created
+using <code class="xref py py-obj docutils literal notranslate"><span class="pre">openssl</span></code> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ openssl passwd -1 -salt xyz PASSWORD
+</pre></div>
+</div>
+<p>It is also possible to specify the password as a non encrypted string
+by using the pwdformat attribute and setting it’s value to <code class="xref py py-obj docutils literal notranslate"><span class="pre">plain</span></code>.
+KIWI NG will then encrypt the password prior to the user being added
+to the system.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>plain text passwords</p>
+<p>We do not recommend plain passwords as they will be readable in
+the image configuration in plain text</p>
+</div>
+<p>All specified users and groups will be created if they do not already
+exist. The defined users will be part of the group(s) specified
+with the groups attribute or belong to the default group as configured
+in the system. If specified the first entry in the groups list is used
+as the login group.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="profiles">
+<span id="sec-profiles"></span><h2>&lt;profiles&gt;<a class="headerlink" href="#profiles" title="Permalink to this headline">¶</a></h2>
+<p>Manage image namespace(s).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profiles&gt;</span>
+  <span class="nt">&lt;profile</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">description=</span><span class="s">&quot;text&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/profiles&gt;</span>
+</pre></div>
+</div>
+<p>The optional profiles section lets you maintain one image description
+while allowing for variation of other sections that are included. A
+separate profile element must be specified for each variation. The
+profile child element, which has name and description attributes,
+specifies an alias name used to mark sections as belonging to a profile,
+and a short description explaining what this profile does.</p>
+<p>For example to mark a set of packages as belonging to a profile, simply
+annotate them with the profiles attribute as shown below:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">profiles=</span><span class="s">&quot;profile_name&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>It is also possible to mark sections as belonging to multiple profiles
+by separating the names in the profiles attribute with a comma:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">profiles=</span><span class="s">&quot;profile_A,profile_B&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>If a section tag does not have a profiles attribute, it is globally
+present in the configuration. If global sections and profiled sections
+contains the same sub-sections, the profiled sections will overwrite
+the global sections in the order of the provided profiles. For a better
+overview of the result configuration when profiles are used we
+recommend to put data that applies in any case to non profiled (global)
+sections and only extend those global sections with profiled data.
+For example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.2.3<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;packagemanager</span> <span class="na">name=</span><span class="s">&quot;zypper&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+
+<span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;vmx_qcow_format&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;qcow2&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+
+<span class="nt">&lt;preferences</span> <span class="na">profiles=</span><span class="s">&quot;vmx_vmdk_format&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">filesystem=</span><span class="s">&quot;ext4&quot;</span> <span class="na">format=</span><span class="s">&quot;vmdk&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/preferences&gt;</span>
+</pre></div>
+</div>
+<p>The above example configures two version of the same vmx type.
+One builds a disk in qcow2 format the other builds a disk in
+vmdk format. The global preferences section without a profile
+assigned will be used in any case and defines those preferences
+settings that are common to any build process. A user can
+select both profiles at a time but that will result in building
+the disk format that is specified last because one is overwriting
+the other.</p>
+<p>Use of one or more profile(s) during image generation is triggered
+by the use of the <code class="docutils literal notranslate"><span class="pre">--profile</span></code> command line argument. multiple profiles
+can be selected by passing this option multiple times.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../building_images.html" class="btn btn-neutral float-right" title="Building Images for Supported Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../image_description.html" class="btn btn-neutral float-left" title="Image Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Marcus Schäfer
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
