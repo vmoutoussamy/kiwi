@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager.lvm &mdash; KIWI NG 9.21.4 documentation</title>
+  <title>kiwi.volume_manager.lvm &mdash; KIWI NG 9.21.5 documentation</title>
   
 
   
@@ -306,6 +306,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-types">Image Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-results">Image Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
@@ -1015,7 +1016,7 @@
             <span class="c1"># perform a second lookup of a label specified via the</span>
             <span class="c1"># rootfs_label from the type setup</span>
             <span class="n">volume_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;root_label&#39;</span><span class="p">]</span>
-        <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
+        <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">filesystem_name</span><span class="p">,</span>
             <span class="n">device_provider</span><span class="o">=</span><span class="n">MappedDevice</span><span class="p">(</span>
                 <span class="n">device</span><span class="o">=</span><span class="n">device_node</span><span class="p">,</span> <span class="n">device_provider</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device_provider_root</span>

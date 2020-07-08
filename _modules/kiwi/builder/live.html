@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.live &mdash; KIWI NG 9.21.4 documentation</title>
+  <title>kiwi.builder.live &mdash; KIWI NG 9.21.5 documentation</title>
   
 
   
@@ -306,6 +306,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-types">Image Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-results">Image Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
@@ -950,7 +951,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_target_blocksize</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="n">loop_provider</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
-        <span class="n">live_filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
+        <span class="n">live_filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">root_filesystem</span><span class="p">,</span>
             <span class="n">device_provider</span><span class="o">=</span><span class="n">loop_provider</span><span class="p">,</span>
             <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span>
@@ -973,7 +974,7 @@
         <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
             <span class="n">root_image</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_container_dir</span> <span class="o">+</span> <span class="s1">&#39;/LiveOS/rootfs.img&#39;</span>
         <span class="p">)</span>
-        <span class="n">live_container_image</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
+        <span class="n">live_container_image</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;squashfs&#39;</span><span class="p">,</span>
             <span class="n">device_provider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">live_container_dir</span><span class="p">,</span>

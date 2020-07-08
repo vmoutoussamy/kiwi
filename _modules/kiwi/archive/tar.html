@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.archive.tar &mdash; KIWI NG 9.21.4 documentation</title>
+  <title>kiwi.archive.tar &mdash; KIWI NG 9.21.5 documentation</title>
   
 
   
@@ -306,6 +306,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-types">Image Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-results">Image Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
@@ -867,7 +868,7 @@
                 <span class="n">source_dir</span><span class="p">,</span> <span class="n">exclude_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_list</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_archive_exclude_list</span><span class="p">(</span><span class="n">exclude_list</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_archive_exclude_list</span><span class="p">(</span><span class="n">exclude_list</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_get_archive_content_list</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">source_dir</span><span class="p">,</span> <span class="n">exclude_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_list</span><span class="o">=</span><span class="kc">None</span>

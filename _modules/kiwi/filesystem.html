@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.filesystem &mdash; KIWI NG 9.21.4 documentation</title>
+  <title>kiwi.filesystem &mdash; KIWI NG 9.21.5 documentation</title>
   
 
   
@@ -306,6 +306,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../building_images.html#image-types">Image Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building_images.html#image-results">Image Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../building_images.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
@@ -735,24 +736,18 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <span class="c1">#</span>
-<span class="c1"># project</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.ext2</span> <span class="kn">import</span> <span class="n">FileSystemExt2</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.ext3</span> <span class="kn">import</span> <span class="n">FileSystemExt3</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.ext4</span> <span class="kn">import</span> <span class="n">FileSystemExt4</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.btrfs</span> <span class="kn">import</span> <span class="n">FileSystemBtrfs</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.xfs</span> <span class="kn">import</span> <span class="n">FileSystemXfs</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.fat16</span> <span class="kn">import</span> <span class="n">FileSystemFat16</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.fat32</span> <span class="kn">import</span> <span class="n">FileSystemFat32</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.squashfs</span> <span class="kn">import</span> <span class="n">FileSystemSquashFs</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.clicfs</span> <span class="kn">import</span> <span class="n">FileSystemClicFs</span>
-<span class="kn">from</span> <span class="nn">kiwi.filesystem.swap</span> <span class="kn">import</span> <span class="n">FileSystemSwap</span>
-
-<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">KiwiFileSystemSetupError</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ABCMeta</span><span class="p">,</span>
+    <span class="n">abstractmethod</span>
 <span class="p">)</span>
 
+<span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="kn">import</span> <span class="n">KiwiFileSystemSetupError</span>
 
-<div class="viewcode-block" id="FileSystem"><a class="viewcode-back" href="../../api/kiwi.filesystem.html#kiwi.filesystem.FileSystem">[docs]</a><span class="k">class</span> <span class="nc">FileSystem</span><span class="p">:</span>
+
+<div class="viewcode-block" id="FileSystem"><a class="viewcode-back" href="../../api/kiwi.filesystem.html#kiwi.filesystem.FileSystem">[docs]</a><span class="k">class</span> <span class="nc">FileSystem</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    **FileSystem factory**</span>
 
@@ -761,51 +756,40 @@
 <span class="sd">    :param string root_dir: root directory path name</span>
 <span class="sd">    :param dict custom_args: dict of custom filesystem arguments</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">custom_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;ext2&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemExt2</span><span class="p">(</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="FileSystem.new"><a class="viewcode-back" href="../../api/kiwi.filesystem.html#kiwi.filesystem.FileSystem.new">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">device_provider</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+        <span class="n">root_dir</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">custom_args</span><span class="p">:</span> <span class="n">Dict</span><span class="o">=</span><span class="kc">None</span>  <span class="c1"># noqa: E252</span>
+    <span class="p">):</span>
+        <span class="n">name_map</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;ext2&#39;</span><span class="p">:</span> <span class="s1">&#39;Ext2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ext3&#39;</span><span class="p">:</span> <span class="s1">&#39;Ext3&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ext4&#39;</span><span class="p">:</span> <span class="s1">&#39;Ext4&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;btrfs&#39;</span><span class="p">:</span> <span class="s1">&#39;Btrfs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;xfs&#39;</span><span class="p">:</span> <span class="s1">&#39;Xfs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;fat16&#39;</span><span class="p">:</span> <span class="s1">&#39;Fat16&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;fat32&#39;</span><span class="p">:</span> <span class="s1">&#39;Fat32&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;squashfs&#39;</span><span class="p">:</span> <span class="s1">&#39;SquashFs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;clicfs&#39;</span><span class="p">:</span> <span class="s1">&#39;ClicFs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;swap&#39;</span><span class="p">:</span> <span class="s1">&#39;Swap&#39;</span>
+        <span class="p">}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span>
+                <span class="s1">&#39;kiwi.filesystem.</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">filesystem</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;FileSystem</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name_map</span><span class="p">[</span><span class="n">name</span><span class="p">])](</span>
                 <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
             <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;ext3&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemExt3</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;ext4&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemExt4</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;btrfs&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemBtrfs</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;xfs&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemXfs</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;fat16&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemFat16</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;fat32&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemFat32</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;squashfs&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemSquashFs</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;clicfs&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemClicFs</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;swap&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">FileSystemSwap</span><span class="p">(</span>
-                <span class="n">device_provider</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">custom_args</span>
-            <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">issue</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiwiFileSystemSetupError</span><span class="p">(</span>
-                <span class="s1">&#39;Support for </span><span class="si">%s</span><span class="s1"> filesystem not implemented&#39;</span> <span class="o">%</span> <span class="n">name</span>
-            <span class="p">)</span></div>
+                <span class="s1">&#39;Support for </span><span class="si">{0}</span><span class="s1"> filesystem not implemented: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">name</span><span class="p">,</span> <span class="n">issue</span>
+                <span class="p">)</span>
+            <span class="p">)</span></div></div>
 </pre></div>
 
            </div>

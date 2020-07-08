@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.disk &mdash; KIWI NG 9.21.4 documentation</title>
+  <title>kiwi.builder.disk &mdash; KIWI NG 9.21.5 documentation</title>
   
 
   
@@ -306,6 +306,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-types">Image Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-results">Image Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
@@ -1070,7 +1071,7 @@
                 <span class="s1">&#39;mount_options&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_root_mount_args</span><span class="p">,</span>
                 <span class="s1">&#39;create_options&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_root_creation_args</span>
             <span class="p">}</span>
-            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
+            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">requested_filesystem</span><span class="p">,</span> <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">],</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
                 <span class="n">filesystem_custom_parameters</span>
@@ -1082,7 +1083,7 @@
 
         <span class="c1"># create swap on current root device if requested</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_mbytes</span><span class="p">:</span>
-            <span class="n">swap</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
+            <span class="n">swap</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
                 <span class="s1">&#39;swap&#39;</span><span class="p">,</span> <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;swap&#39;</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="n">swap</span><span class="o">.</span><span class="n">create_on_device</span><span class="p">(</span>
@@ -1391,7 +1392,7 @@
                 <span class="n">spare_part_data_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_mountpoint</span>
                 <span class="p">)</span>
-            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
+            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">spare_part_fs</span><span class="p">,</span>
                 <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;spare&#39;</span><span class="p">],</span>
                 <span class="n">spare_part_data_path</span><span class="p">,</span>
@@ -1408,7 +1409,7 @@
                 <span class="s1">&#39;Creating EFI(fat16) filesystem on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
                 <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
             <span class="p">)</span>
-            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
+            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
                 <span class="s1">&#39;fat16&#39;</span><span class="p">,</span> <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/boot/efi/&#39;</span>
             <span class="p">)</span>
             <span class="n">filesystem</span><span class="o">.</span><span class="n">create_on_device</span><span class="p">(</span>
@@ -1428,7 +1429,7 @@
                 <span class="s1">&#39;Creating boot(</span><span class="si">%s</span><span class="s1">) filesystem on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
                 <span class="n">boot_filesystem</span><span class="p">,</span> <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;boot&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
             <span class="p">)</span>
-            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">(</span>
+            <span class="n">filesystem</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
                 <span class="n">boot_filesystem</span><span class="p">,</span> <span class="n">device_map</span><span class="p">[</span><span class="s1">&#39;boot&#39;</span><span class="p">],</span> <span class="n">boot_directory</span>
             <span class="p">)</span>
             <span class="n">filesystem</span><span class="o">.</span><span class="n">create_on_device</span><span class="p">(</span>

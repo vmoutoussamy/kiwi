@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building Images for Supported Types &mdash; KIWI NG 9.21.4 documentation</title>
+  <title>Building Images for Supported Types &mdash; KIWI NG 9.21.5 documentation</title>
   
 
   
@@ -308,6 +308,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#image-types">Image Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-results">Image Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
@@ -767,6 +768,122 @@ that has support for WSL activated.</p>
 <dt>KIS Root File System Image</dt><dd><p>An optional root filesystem image associated with a kernel and initrd.
 The use case for this component image type is highly customizable.
 Many different deployment strategies are possible.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="image-results">
+<h2>Image Results<a class="headerlink" href="#image-results" title="Permalink to this headline">¶</a></h2>
+<p>KIWI NG execution results in an appliance image after a successful run of
+<a class="reference internal" href="commands/system_build.html#kiwi-system-build"><span class="std std-ref">kiwi-ng system build</span></a> or <a class="reference internal" href="commands/system_create.html#kiwi-system-create"><span class="std std-ref">kiwi-ng system create</span></a> command.
+The result is the image binary in addition a couple of metadata files that can
+be handy to describe or identify the resulting image. The output files follow
+this naming convention:</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;.&lt;arch&gt;-&lt;version&gt;.&lt;extension&gt;</span></code></p>
+<p>where <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;</span></code> is the name stated in the <a class="reference internal" href="image_description.html#image-description"><span class="std std-ref">Image Description</span></a> as an
+attribute of the <a class="reference internal" href="image_description/elements.html#sec-image"><span class="std std-ref">&lt;image&gt;</span></a> element. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;arch&gt;</span></code> is the CPU
+architecture used for the build, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> is the image version defined in
+<a class="reference internal" href="image_description/elements.html#sec-preferences"><span class="std std-ref">&lt;version&gt;</span></a> element of the image description
+and the <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;extension&gt;</span></code> is dependent on the image type and its definition.</p>
+<p>Any KIWI NG appliance build results in, at least, the following output files:</p>
+<ol class="arabic">
+<li><p>The image binary, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;.&lt;arch&gt;-&lt;version&gt;.&lt;image-extension&gt;</span></code>:</p>
+<p>This is the file containig the actual image binary, depending
+on the image type and its definition it can be a virtual disk image
+file, and ISO image, a tarball, etc.</p>
+</li>
+<li><p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;.&lt;arch&gt;-&lt;version&gt;.packages</span></code> file:</p>
+<p>This file includes a sorted list of the packages
+that are included into the image. In fact this is normalized dump of the
+package manager database. It follows the following cvs format where each
+line is represented by:</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;name&gt;|&lt;epoch&gt;|&lt;version&gt;|&lt;release&gt;|&lt;arch&gt;|&lt;disturl&gt;|&lt;license&gt;</span></code></p>
+<p>The values represented here are mainly based on RPM packages metadata.
+Other package managers may not provide all of these values, in such cases
+the format is the same and the fields that cannot be provided are set as
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> value. This list can be used to track changes across multiple
+builds of the same image description over time by diffing the
+packages installed.</p>
+</li>
+<li><p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;.&lt;arch&gt;-&lt;version&gt;.verified</span></code> file:</p>
+<p>This file is the output of a verification done by the package manager
+against the package data base. More specific it is the output of
+the <strong class="command">rpm</strong> verification process or <strong class="command">dpkg</strong> verification
+depending on the packaging technology selected for the image.
+In both cases the output follows the RPM verification syntax. This
+provides an overview of all packages status right before any boot of
+the image.</p>
+</li>
+</ol>
+<p>More specific  the result files for a given image name and version such
+as <code class="xref py py-obj docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">1.15.1</span></code> will be:</p>
+<ul class="simple">
+<li><p><strong>image packages</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.packages</span></code></p></li>
+<li><p><strong>image verified</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.verified</span></code></p></li>
+</ul>
+<p>In addition to the image binaries itself that depend on the image type:</p>
+<dl class="simple">
+<dt>image=”tbz”</dt><dd><p>For this image type the result is mainly a root tree packed in a tarball:</p>
+<ul class="simple">
+<li><p><strong>root archive</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.tar.xz</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”btrfs|ext2|ext3|ext4|squashfs|xfs”</dt><dd><p>The image root tree data is packed into a filesystem image of the given
+type, hence the resutl for an <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext4</span></code> image would be:</p>
+<ul class="simple">
+<li><p><strong>filesystem image</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.ext4</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”iso”</dt><dd><p>The image result is an ISO file:</p>
+<ul class="simple">
+<li><p><strong>live image</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.iso</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”vmx”</dt><dd><p>An image representing the system disk. The disk format can be
+defined in <a class="reference internal" href="image_description/elements.html#sec-preferences"><span class="std std-ref">&lt;preferences&gt;&lt;type&gt;</span></a> element as
+documented in <a class="reference internal" href="building_images/build_vmx_disk.html#vmx"><span class="std std-ref">Build a Virtual Disk Image</span></a>. For a <code class="xref py py-obj docutils literal notranslate"><span class="pre">format=&quot;qcow2&quot;</span></code> the result is:</p>
+<ul class="simple">
+<li><p><strong>disk image</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.qcow2</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”oem”</dt><dd><p>An image representing an expandable system disk. As for <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmx</span></code> type this
+results in a disk image. In addition to the <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmx</span></code> type <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code> has a couple
+of optional additional installation images. KIWI NG can produce an
+installation ISO (by setting <code class="xref py py-obj docutils literal notranslate"><span class="pre">installiso=&quot;true&quot;</span></code> in
+<a class="reference internal" href="image_description/elements.html#sec-preferences"><span class="std std-ref">&lt;preferences&gt;&lt;type&gt;</span></a>) or a tarball including
+the artifacts for a network deployment (by setting <code class="xref py py-obj docutils literal notranslate"><span class="pre">installiso=&quot;true&quot;</span></code> in
+<a class="reference internal" href="image_description/elements.html#sec-preferences"><span class="std std-ref">&lt;preferences&gt;&lt;type&gt;</span></a>), see
+<a class="reference internal" href="building_images/build_oem_disk.html#oem"><span class="std std-ref">OEM example</span></a> for further details. The results for <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code> can be:</p>
+<ul class="simple">
+<li><p><strong>disk image</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.raw</span></code></p></li>
+<li><p><strong>installation image (optional)</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.install.iso</span></code></p></li>
+<li><p><strong>installation pxe archive (optional)</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.install.tar</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”docker”</dt><dd><p>An archive image suitable for the docker container engine. The result is
+a loadable (<strong class="command">docker load -i &lt;image&gt;</strong>) tarball:</p>
+<ul class="simple">
+<li><p><strong>container</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.docker.tar.xz</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”oci”</dt><dd><p>An archive image that builds a container matching the OCI
+(Open Container Interface) standard. The result is a tarball matching OCI
+standards:</p>
+<ul class="simple">
+<li><p><strong>container</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.oci.tar.xz</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”appx”</dt><dd><p>An archive image suitable for the Windows Subsystem For Linux
+container engine. The result is an <code class="xref py py-obj docutils literal notranslate"><span class="pre">appx</span></code> binary file:</p>
+<ul class="simple">
+<li><p><strong>container</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.appx</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”kis”</dt><dd><p>An optional root filesystem image associated with a kernel and initrd.
+All three binaries are packed in a tarball, see <a class="reference internal" href="building_images/build_kis.html#kis"><span class="std std-ref">Build KIS Image (Kernel, Initrd, System)</span></a> for further
+details about the kis archive:</p>
+<ul class="simple">
+<li><p><strong>kis archive</strong>: <code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.tar.xz</span></code></p></li>
+</ul>
 </dd>
 </dl>
 </div>

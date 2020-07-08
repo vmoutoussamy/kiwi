@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.builder.archive &mdash; KIWI NG 9.21.4 documentation</title>
+  <title>kiwi.builder.archive &mdash; KIWI NG 9.21.5 documentation</title>
   
 
   
@@ -306,6 +306,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-types">Image Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#image-results">Image Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-distributions">Supported Distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
@@ -743,7 +744,6 @@
 <span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="kn">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.archive.tar</span> <span class="kn">import</span> <span class="n">ArchiveTar</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.setup</span> <span class="kn">import</span> <span class="n">SystemSetup</span>
-<span class="kn">from</span> <span class="nn">kiwi.utils.checksum</span> <span class="kn">import</span> <span class="n">Checksum</span>
 <span class="kn">from</span> <span class="nn">kiwi.system.result</span> <span class="kn">import</span> <span class="n">Result</span>
 <span class="kn">from</span> <span class="nn">kiwi.runtime_config</span> <span class="kn">import</span> <span class="n">RuntimeConfig</span>
 
@@ -774,7 +774,6 @@
             <span class="n">xml_state</span><span class="o">=</span><span class="n">xml_state</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_file_for</span><span class="p">(</span><span class="s1">&#39;tar.xz&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">checksum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_file_for</span><span class="p">(</span><span class="s1">&#39;md5&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xz_options</span> <span class="o">=</span> <span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;xz_options&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">custom_args</span> \
             <span class="ow">and</span> <span class="s1">&#39;xz_options&#39;</span> <span class="ow">in</span> <span class="n">custom_args</span> <span class="k">else</span> <span class="kc">None</span>
 
@@ -809,9 +808,6 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">xz_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xz_options</span><span class="p">,</span>
                 <span class="n">exclude</span><span class="o">=</span><span class="n">Defaults</span><span class="o">.</span><span class="n">get_exclude_list_for_root_data_sync</span><span class="p">()</span>
             <span class="p">)</span>
-            <span class="n">checksum</span> <span class="o">=</span> <span class="n">Checksum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Creating archive checksum&#39;</span><span class="p">)</span>
-            <span class="n">checksum</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checksum</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">verify_image_size</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">runtime_config</span><span class="o">.</span><span class="n">get_max_size_constraint</span><span class="p">(),</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">filename</span>
@@ -822,11 +818,6 @@
                 <span class="n">use_for_bundle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">compress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="n">shasum</span><span class="o">=</span><span class="kc">True</span>
-            <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-                <span class="n">key</span><span class="o">=</span><span class="s1">&#39;root_archive_md5&#39;</span><span class="p">,</span>
-                <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">checksum</span><span class="p">,</span>
-                <span class="n">use_for_bundle</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
                 <span class="n">key</span><span class="o">=</span><span class="s1">&#39;image_packages&#39;</span><span class="p">,</span>
