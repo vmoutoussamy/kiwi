@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.install Package &mdash; KIWI NG 9.21.6 documentation</title>
+  <title>kiwi.bootloader.install Package &mdash; KIWI NG 9.21.7 documentation</title>
   
 
   
@@ -734,14 +734,14 @@
 <dl class="py class">
 <dt id="kiwi.bootloader.install.base.BootLoaderInstallBase">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.base.</code><code class="sig-name descname">BootLoaderInstallBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install/base.html#BootLoaderInstallBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.base.BootLoaderInstallBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>Base class for bootloader installation on device</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>root_dir</strong> (<em>string</em>) – root directory path name</p></li>
-<li><p><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceProvider</span></code></p></li>
-<li><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom arguments dictionary</p></li>
+<li><p><strong>device_provider</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceProvider</span></code></p></li>
+<li><p><strong>custom_args</strong> (<em>dict</em>) – custom arguments dictionary</p></li>
 </ul>
 </dd>
 </dl>
@@ -766,7 +766,7 @@
 <p>Store custom arguments by default</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom bootloader arguments</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – custom bootloader arguments</p>
 </dd>
 </dl>
 </dd></dl>
@@ -798,7 +798,7 @@ bootloader code in a boot record is required</p>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -809,7 +809,7 @@ bootloader code in a boot record is required</p>
 <dd><p>grub2 post initialization method</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – <p>Contains custom grub2 bootloader arguments</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – <p>Contains custom grub2 bootloader arguments</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s1">&#39;target_removable&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="s1">&#39;system_volumes&#39;</span><span class="p">:</span> <span class="n">list_of_volumes</span><span class="p">,</span>
@@ -851,7 +851,7 @@ bootloader code in a boot record is required</p>
 <dd class="field-odd"><p>True</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -862,7 +862,7 @@ bootloader code in a boot record is required</p>
 <dd><p>zipl post initialization method</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – <p>Contains custom zipl bootloader arguments</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – <p>Contains custom zipl bootloader arguments</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;boot_device&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -879,15 +879,15 @@ bootloader code in a boot record is required</p>
 <dl class="py class">
 <dt id="kiwi.bootloader.install.BootLoaderInstall">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.bootloader.install.</code><code class="sig-name descname">BootLoaderInstall</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">device_provider</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/bootloader/install.html#BootLoaderInstall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.bootloader.install.BootLoaderInstall" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>BootLoaderInstall Factory</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>string</em>) – bootloader name</p></li>
 <li><p><strong>root_dir</strong> (<em>string</em>) – root directory path name</p></li>
-<li><p><strong>device_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceProvider</span></code></p></li>
-<li><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom arguments dictionary</p></li>
+<li><p><strong>device_provider</strong> (<em>object</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceProvider</span></code></p></li>
+<li><p><strong>custom_args</strong> (<em>dict</em>) – custom arguments dictionary</p></li>
 </ul>
 </dd>
 </dl>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build an ISO Hybrid Live Image &mdash; KIWI NG 9.21.6 documentation</title>
+  <title>Build an ISO Hybrid Live Image &mdash; KIWI NG 9.21.7 documentation</title>
   
 
   
@@ -738,7 +738,7 @@
 Once built and deployed it boots off from this media without interfering
 with other system storage components making it a useful pocket system for
 testing and demo- and debugging-purposes.</p>
-<p>To add a live ISO build to your appliance, create a <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element with
+<p>To add a live ISO build to your appliance, create a <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element with
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">iso</span></code> in your <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> as shown below:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;6.9&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- snip --&gt;</span>
@@ -750,7 +750,7 @@ testing and demo- and debugging-purposes.</p>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
-<p>The following attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element are relevant when building
+<p>The following attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element are relevant when building
 live ISO images:</p>
 <ul>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code>: Specifies the live ISO technology and dracut module to use, can

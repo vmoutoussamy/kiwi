@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager Package &mdash; KIWI NG 9.21.6 documentation</title>
+  <title>kiwi.volume_manager Package &mdash; KIWI NG 9.21.7 documentation</title>
   
 
   
@@ -738,17 +738,17 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mountpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – root mountpoint for volumes</p></li>
-<li><p><strong>device_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – dictionary of low level DeviceProvider intances</p></li>
-<li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – root directory path name</p></li>
-<li><p><strong>volumes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of volumes from <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState::get_volumes()</span></code></p></li>
-<li><p><strong>volume_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – volume group name</p></li>
+<li><p><strong>mountpoint</strong> (<em>str</em>) – root mountpoint for volumes</p></li>
+<li><p><strong>device_map</strong> (<em>object</em>) – dictionary of low level DeviceProvider intances</p></li>
+<li><p><strong>root_dir</strong> (<em>str</em>) – root directory path name</p></li>
+<li><p><strong>volumes</strong> (<em>list</em>) – list of volumes from <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState::get_volumes()</span></code></p></li>
+<li><p><strong>volume_group</strong> (<em>str</em>) – volume group name</p></li>
 <li><p><strong>volume_map</strong> (<em>map</em>) – map volume name to device node</p></li>
-<li><p><strong>mount_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of volume MountManager’s</p></li>
-<li><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – storage device node name</p></li>
-<li><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom volume manager arguments for all
+<li><p><strong>mount_list</strong> (<em>list</em>) – list of volume MountManager’s</p></li>
+<li><p><strong>device</strong> (<em>str</em>) – storage device node name</p></li>
+<li><p><strong>custom_args</strong> (<em>dict</em>) – custom volume manager arguments for all
 volume manager and filesystem specific tasks</p></li>
-<li><p><strong>custom_filesystem_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – custom filesystem creation and mount
+<li><p><strong>custom_filesystem_args</strong> (<em>list</em>) – custom filesystem creation and mount
 arguments, subset of the custom_args information suitable to
 be passed to a FileSystem instance</p></li>
 </ul>
@@ -775,7 +775,7 @@ be passed to a FileSystem instance</p></li>
 <p>Implementation in specialized volume manager class required</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filesystem_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>filesystem_name</strong> (<em>str</em>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -791,7 +791,7 @@ the one eating all the rest space</p>
 <dd class="field-odd"><p>list of canonical_volume_type tuples</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+<dd class="field-even"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -805,7 +805,7 @@ the one eating all the rest space</p>
 <dd class="field-odd"><p>device_map</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -818,8 +818,8 @@ return a list of fstab compatible entries</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>persistency_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>filesystem_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
+<li><p><strong>persistency_type</strong> (<em>str</em>) – unused</p></li>
+<li><p><strong>filesystem_name</strong> (<em>str</em>) – unused</p></li>
 </ul>
 </dd>
 </dl>
@@ -848,9 +848,9 @@ filesystem according to the specified size type</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>volume</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – volume to check size for</p></li>
-<li><p><strong>all_volumes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of all volume tuples</p></li>
-<li><p><strong>filesystem_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – filesystem name</p></li>
+<li><p><strong>volume</strong> (<em>tuple</em>) – volume to check size for</p></li>
+<li><p><strong>all_volumes</strong> (<em>list</em>) – list of all volume tuples</p></li>
+<li><p><strong>filesystem_name</strong> (<em>str</em>) – filesystem name</p></li>
 <li><p><strong>image_type</strong> – build type name</p></li>
 </ul>
 </dd>
@@ -858,7 +858,7 @@ filesystem according to the specified size type</p>
 <dd class="field-even"><p>mbsize</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -881,7 +881,7 @@ the storage provider is loop based the volume manager is it too</p>
 <dd class="field-odd"><p>True of False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -900,7 +900,7 @@ the storage provider is loop based the volume manager is it too</p>
 <p>Implementation in specialized volume manager class if required</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -918,7 +918,7 @@ the storage provider is loop based the volume manager is it too</p>
 <p>Implementation in specialized volume manager class required</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -936,7 +936,7 @@ the mounts of all volumes</p>
 <dd><p>Implements sync of root directory to mounted volumes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – file patterns to exclude</p>
+<dd class="field-odd"><p><strong>exclude</strong> (<em>list</em>) – file patterns to exclude</p>
 </dd>
 </dl>
 </dd></dl>
@@ -961,8 +961,8 @@ the mounts of all volumes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>subvol_mount_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of mounted btrfs subvolumes</p></li>
-<li><p><strong>toplevel_mount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">MountManager</span></code> for root mountpoint</p></li>
+<li><p><strong>subvol_mount_list</strong> (<em>list</em>) – list of mounted btrfs subvolumes</p></li>
+<li><p><strong>toplevel_mount</strong> (<em>object</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">MountManager</span></code> for root mountpoint</p></li>
 </ul>
 </dd>
 </dl>
@@ -996,14 +996,14 @@ returns a list of fstab compatible entries</p>
 <dd class="field-even"><p>list of fstab entries</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="kiwi.volume_manager.btrfs.VolumeManagerBtrfs.get_mountpoint">
-<code class="sig-name descname">get_mountpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a><a class="reference internal" href="../_modules/kiwi/volume_manager/btrfs.html#VolumeManagerBtrfs.get_mountpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.btrfs.VolumeManagerBtrfs.get_mountpoint" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_mountpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../_modules/kiwi/volume_manager/btrfs.html#VolumeManagerBtrfs.get_mountpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.btrfs.VolumeManagerBtrfs.get_mountpoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides btrfs root mount point directory</p>
 <p>Effective use of the directory is guaranteed only after sync_data</p>
 <dl class="field-list simple">
@@ -1025,7 +1025,7 @@ returns a list of fstab compatible entries</p>
 <dd class="field-odd"><p>volumes dictionary</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1043,7 +1043,7 @@ returns a list of fstab compatible entries</p>
 <p>Store custom btrfs initialization arguments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – custom btrfs volume manager arguments</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<em>list</em>) – custom btrfs volume manager arguments</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1078,7 +1078,7 @@ the name argument is not used for btrfs</p>
 into the first snapshot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – files to exclude from sync</p>
+<dd class="field-odd"><p><strong>exclude</strong> (<em>list</em>) – files to exclude from sync</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1092,7 +1092,7 @@ into the first snapshot</p>
 <dd class="field-odd"><p>True if all subvolumes are successfully unmounted</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1114,7 +1114,7 @@ into the first snapshot</p>
 <p>All volumes receive the same filesystem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filesystem_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – volumes filesystem name</p>
+<dd class="field-odd"><p><strong>filesystem_name</strong> (<em>str</em>) – volumes filesystem name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1129,7 +1129,7 @@ into the first snapshot</p>
 <dd class="field-odd"><p>root plus volume device map</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1142,15 +1142,15 @@ returns a list of fstab compatible entries</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>persistency_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – unused</p></li>
-<li><p><strong>filesystem_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – volumes filesystem name</p></li>
+<li><p><strong>persistency_type</strong> (<em>str</em>) – unused</p></li>
+<li><p><strong>filesystem_name</strong> (<em>str</em>) – volumes filesystem name</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>fstab entries</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1164,7 +1164,7 @@ returns a list of fstab compatible entries</p>
 <dd class="field-odd"><p>volumes dictionary</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1182,7 +1182,7 @@ returns a list of fstab compatible entries</p>
 <p>Store custom lvm initialization arguments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – custom lvm volume manager arguments</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<em>list</em>) – custom lvm volume manager arguments</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1195,7 +1195,7 @@ returns a list of fstab compatible entries</p>
 initialized storage device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – volume group name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – volume group name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1209,7 +1209,7 @@ initialized storage device</p>
 <dd class="field-odd"><p>True if all subvolumes are successfully unmounted</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1222,16 +1222,16 @@ initialized storage device</p>
 <dl class="py class">
 <dt id="kiwi.volume_manager.VolumeManager">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.volume_manager.</code><code class="sig-name descname">VolumeManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">device_map</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">volumes</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/volume_manager.html#VolumeManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.volume_manager.VolumeManager" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>VolumeManager factory</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – volume management name</p></li>
-<li><p><strong>device_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – dictionary of low level DeviceProvider intances</p></li>
-<li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – root directory path name</p></li>
-<li><p><strong>volumes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of volumes from <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState::get_volumes()</span></code></p></li>
-<li><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – dictionary of custom volume manager arguments</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – volume management name</p></li>
+<li><p><strong>device_map</strong> (<em>dict</em>) – dictionary of low level DeviceProvider intances</p></li>
+<li><p><strong>root_dir</strong> (<em>str</em>) – root directory path name</p></li>
+<li><p><strong>volumes</strong> (<em>list</em>) – list of volumes from <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState::get_volumes()</span></code></p></li>
+<li><p><strong>custom_args</strong> (<em>dict</em>) – dictionary of custom volume manager arguments</p></li>
 </ul>
 </dd>
 </dl>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.partitioner Package &mdash; KIWI NG 9.21.6 documentation</title>
+  <title>kiwi.partitioner Package &mdash; KIWI NG 9.21.7 documentation</title>
   
 
   
@@ -734,13 +734,13 @@
 <dl class="py class">
 <dt id="kiwi.partitioner.base.PartitionerBase">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.base.</code><code class="sig-name descname">PartitionerBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">disk_provider</span></em>, <em class="sig-param"><span class="n">start_sector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner/base.html#PartitionerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.base.PartitionerBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>Base class for partitioners</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>disk_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of DeviceProvider</p></li>
-<li><p><strong>start_sector</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – sector number</p></li>
+<li><p><strong>disk_provider</strong> (<em>object</em>) – Instance of DeviceProvider</p></li>
+<li><p><strong>start_sector</strong> (<em>int</em>) – sector number</p></li>
 </ul>
 </dd>
 </dl>
@@ -753,9 +753,9 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>string</em>) – unused</p></li>
-<li><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – unused</p></li>
+<li><p><strong>mbsize</strong> (<em>int</em>) – unused</p></li>
 <li><p><strong>type_name</strong> (<em>string</em>) – unused</p></li>
-<li><p><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – unused</p></li>
+<li><p><strong>flags</strong> (<em>list</em>) – unused</p></li>
 </ul>
 </dd>
 </dl>
@@ -771,7 +771,7 @@
 <dd class="field-odd"><p>partition number</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+<dd class="field-even"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -789,7 +789,7 @@
 <dd><p>Resize partition table</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>entries</strong> (<em>int</em>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -802,7 +802,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>partition_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – unused</p></li>
+<li><p><strong>partition_id</strong> (<em>int</em>) – unused</p></li>
 <li><p><strong>flag_name</strong> (<em>string</em>) – unused</p></li>
 </ul>
 </dd>
@@ -841,9 +841,9 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>string</em>) – partition name</p></li>
-<li><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p></li>
+<li><p><strong>mbsize</strong> (<em>int</em>) – partition size</p></li>
 <li><p><strong>type_name</strong> (<em>string</em>) – unused</p></li>
-<li><p><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – unused</p></li>
+<li><p><strong>flags</strong> (<em>list</em>) – unused</p></li>
 </ul>
 </dd>
 </dl>
@@ -863,7 +863,7 @@
 <p>Nothing to be done here for DASD devices</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>entries</strong> (<em>int</em>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -886,9 +886,9 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>string</em>) – partition name</p></li>
-<li><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p></li>
+<li><p><strong>mbsize</strong> (<em>int</em>) – partition size</p></li>
 <li><p><strong>type_name</strong> (<em>string</em>) – partition type</p></li>
-<li><p><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – additional flags</p></li>
+<li><p><strong>flags</strong> (<em>list</em>) – additional flags</p></li>
 </ul>
 </dd>
 </dl>
@@ -907,7 +907,7 @@
 <dd><p>Resize partition table</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – number of default entries</p>
+<dd class="field-odd"><p><strong>entries</strong> (<em>int</em>) – number of default entries</p>
 </dd>
 </dl>
 </dd></dl>
@@ -919,7 +919,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>partition_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition number</p></li>
+<li><p><strong>partition_id</strong> (<em>int</em>) – partition number</p></li>
 <li><p><strong>flag_name</strong> (<em>string</em>) – name from flag map</p></li>
 </ul>
 </dd>
@@ -956,9 +956,9 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>string</em>) – partition name</p></li>
-<li><p><strong>mbsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition size</p></li>
+<li><p><strong>mbsize</strong> (<em>int</em>) – partition size</p></li>
 <li><p><strong>type_name</strong> (<em>string</em>) – partition type</p></li>
-<li><p><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – additional flags</p></li>
+<li><p><strong>flags</strong> (<em>list</em>) – additional flags</p></li>
 </ul>
 </dd>
 </dl>
@@ -978,7 +978,7 @@
 <p>Nothing to be done here for msdos table</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entries</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – unused</p>
+<dd class="field-odd"><p><strong>entries</strong> (<em>int</em>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -990,7 +990,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>partition_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – partition number</p></li>
+<li><p><strong>partition_id</strong> (<em>int</em>) – partition number</p></li>
 <li><p><strong>flag_name</strong> (<em>string</em>) – name from flag map</p></li>
 </ul>
 </dd>
@@ -1005,14 +1005,14 @@
 <dl class="py class">
 <dt id="kiwi.partitioner.Partitioner">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.partitioner.</code><code class="sig-name descname">Partitioner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">table_type</span></em>, <em class="sig-param"><span class="n">storage_provider</span></em>, <em class="sig-param"><span class="n">start_sector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/partitioner.html#Partitioner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.partitioner.Partitioner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>Partitioner factory</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>table_type</strong> (<em>string</em>) – Table type name</p></li>
-<li><p><strong>storage_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of class based on DeviceProvider</p></li>
-<li><p><strong>start_sector</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – sector number</p></li>
+<li><p><strong>storage_provider</strong> (<em>object</em>) – Instance of class based on DeviceProvider</p></li>
+<li><p><strong>start_sector</strong> (<em>int</em>) – sector number</p></li>
 </ul>
 </dd>
 </dl>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.boot.image Package &mdash; KIWI NG 9.21.6 documentation</title>
+  <title>kiwi.boot.image Package &mdash; KIWI NG 9.21.7 documentation</title>
   
 
   
@@ -734,15 +734,15 @@
 <dl class="py class">
 <dt id="kiwi.boot.image.base.BootImageBase">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.base.</code><code class="sig-name descname">BootImageBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">signing_keys</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image/base.html#BootImageBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.base.BootImageBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>Base class for boot image(initrd) task</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
+<li><p><strong>xml_state</strong> (<em>object</em>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
 <li><p><strong>target_dir</strong> (<em>string</em>) – target dir to store the initrd</p></li>
 <li><p><strong>root_dir</strong> (<em>string</em>) – system image root directory</p></li>
-<li><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of package signing keys</p></li>
+<li><p><strong>signing_keys</strong> (<em>list</em>) – list of package signing keys</p></li>
 </ul>
 </dd>
 </dl>
@@ -759,9 +759,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of ImageIdentifier</p></li>
+<li><p><strong>mbrid</strong> (<em>object</em>) – instance of ImageIdentifier</p></li>
 <li><p><strong>basename</strong> (<em>string</em>) – base initrd file name</p></li>
-<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – installation media initrd</p></li>
+<li><p><strong>install_initrd</strong> (<em>bool</em>) – installation media initrd</p></li>
 </ul>
 </dd>
 </dl>
@@ -790,7 +790,7 @@ in order to preserve the generated data</p>
 <dd class="field-odd"><p>path name</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -811,7 +811,7 @@ in order to preserve the generated data</p>
 </p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
+<dd class="field-even"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
@@ -834,7 +834,7 @@ for kiwi boot images the method is a noop</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename</strong> (<em>string</em>) – file path name</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – include also for installation media initrd</p></li>
+<li><p><strong>install_media</strong> (<em>bool</em>) – include also for installation media initrd</p></li>
 </ul>
 </dd>
 </dl>
@@ -850,7 +850,7 @@ such a case this method is a noop.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module</strong> (<em>string</em>) – module to include</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – include the module for install initrds</p></li>
+<li><p><strong>install_media</strong> (<em>bool</em>) – include the module for install initrds</p></li>
 </ul>
 </dd>
 </dl>
@@ -865,7 +865,7 @@ such a case this method is a noop.</p>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -887,7 +887,7 @@ such a case this method is a noop.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module</strong> (<em>string</em>) – module to omit</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – omit the module for install initrds</p></li>
+<li><p><strong>install_media</strong> (<em>bool</em>) – omit the module for install initrds</p></li>
 </ul>
 </dd>
 </dl>
@@ -920,7 +920,7 @@ recreation, thus this method is a noop in that case.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – dictonary including configuration parameters</p></li>
+<li><p><strong>config</strong> (<em>dict</em>) – dictonary including configuration parameters</p></li>
 <li><p><strong>config_file</strong> (<em>string</em>) – configuration file to write</p></li>
 </ul>
 </dd>
@@ -946,9 +946,9 @@ the result into the image build target directory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – unused</p></li>
+<li><p><strong>mbrid</strong> (<em>object</em>) – unused</p></li>
 <li><p><strong>basename</strong> (<em>string</em>) – base initrd file name</p></li>
-<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – installation media initrd</p></li>
+<li><p><strong>install_initrd</strong> (<em>bool</em>) – installation media initrd</p></li>
 </ul>
 </dd>
 </dl>
@@ -973,7 +973,7 @@ the result into the image build target directory</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module</strong> (<em>string</em>) – module to include</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – include the module for install initrds</p></li>
+<li><p><strong>install_media</strong> (<em>bool</em>) – include the module for install initrds</p></li>
 </ul>
 </dd>
 </dl>
@@ -987,7 +987,7 @@ the result into the image build target directory</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module</strong> (<em>string</em>) – module to omit</p></li>
-<li><p><strong>install_media</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – omit the module for install initrds</p></li>
+<li><p><strong>install_media</strong> (<em>bool</em>) – omit the module for install initrds</p></li>
 </ul>
 </dd>
 </dl>
@@ -1016,7 +1016,7 @@ the result into the image build target directory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – a dictionary containing the modules to add and omit</p></li>
+<li><p><strong>config</strong> (<em>dict</em>) – a dictionary containing the modules to add and omit</p></li>
 <li><p><strong>conf_file</strong> (<em>string</em>) – configuration file to write</p></li>
 </ul>
 </dd>
@@ -1049,9 +1049,9 @@ itself after first boot by the result of dracut.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mbrid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – instance of ImageIdentifier</p></li>
+<li><p><strong>mbrid</strong> (<em>object</em>) – instance of ImageIdentifier</p></li>
 <li><p><strong>basename</strong> (<em>string</em>) – base initrd file name</p></li>
-<li><p><strong>install_initrd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – installation media initrd</p></li>
+<li><p><strong>install_initrd</strong> (<em>bool</em>) – installation media initrd</p></li>
 </ul>
 </dd>
 </dl>
@@ -1080,15 +1080,15 @@ the initrd from</p>
 <dl class="py class">
 <dt id="kiwi.boot.image.BootImage">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.boot.image.</code><code class="sig-name descname">BootImage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">signing_keys</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/boot/image.html#BootImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.boot.image.BootImage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>BootImge Factory</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
+<li><p><strong>xml_state</strong> (<em>object</em>) – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">XMLState</span></code></p></li>
 <li><p><strong>target_dir</strong> (<em>string</em>) – target dir to store the initrd</p></li>
 <li><p><strong>root_dir</strong> (<em>string</em>) – system image root directory</p></li>
-<li><p><strong>signing_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of package signing keys</p></li>
+<li><p><strong>signing_keys</strong> (<em>list</em>) – list of package signing keys</p></li>
 </ul>
 </dd>
 </dl>

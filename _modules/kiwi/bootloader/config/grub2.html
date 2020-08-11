@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.21.6 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.21.7 documentation</title>
   
 
   
@@ -1264,14 +1264,15 @@
         <span class="n">grub_config_file_for_efi_boot</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="n">efi_boot_path</span><span class="p">,</span> <span class="s1">&#39;grub.cfg&#39;</span><span class="p">]</span>
         <span class="p">)</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="s1">&#39;Copying </span><span class="si">{0}</span><span class="s1"> -&gt; </span><span class="si">{1}</span><span class="s1"> to be found by EFI&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="k">if</span> <span class="n">config_file</span> <span class="o">!=</span> <span class="n">grub_config_file_for_efi_boot</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;Copying </span><span class="si">{0}</span><span class="s1"> -&gt; </span><span class="si">{1}</span><span class="s1"> to be found by EFI&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">config_file</span><span class="p">,</span> <span class="n">grub_config_file_for_efi_boot</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
                 <span class="n">config_file</span><span class="p">,</span> <span class="n">grub_config_file_for_efi_boot</span>
             <span class="p">)</span>
-        <span class="p">)</span>
-        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
-            <span class="n">config_file</span><span class="p">,</span> <span class="n">grub_config_file_for_efi_boot</span>
-        <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_supports_bios_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;ix86&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span>
