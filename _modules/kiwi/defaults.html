@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.defaults &mdash; KIWI NG 9.21.5 documentation</title>
+  <title>kiwi.defaults &mdash; KIWI NG 9.21.6 documentation</title>
   
 
   
@@ -943,6 +943,17 @@
             <span class="n">Cli</span><span class="p">()</span><span class="o">.</span><span class="n">get_global_args</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;--shared-cache-dir&#39;</span><span class="p">)</span>
         <span class="p">))</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Defaults.get_sync_options"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_sync_options">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_sync_options</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides list of default data sync options</span>
+
+<span class="sd">        :return: list of rsync options</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;-H&#39;</span><span class="p">,</span> <span class="s1">&#39;-X&#39;</span><span class="p">,</span> <span class="s1">&#39;-A&#39;</span><span class="p">,</span> <span class="s1">&#39;--one-file-system&#39;</span><span class="p">,</span> <span class="s1">&#39;--inplace&#39;</span><span class="p">]</span></div>
+
 <div class="viewcode-block" id="Defaults.get_exclude_list_for_root_data_sync"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.defaults.Defaults.get_exclude_list_for_root_data_sync">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_exclude_list_for_root_data_sync</span><span class="p">():</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1480,6 +1491,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">efi_vendor_directories</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s1">&#39;EFI/fedora&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;EFI/redhat&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;EFI/centos&#39;</span><span class="p">,</span>
             <span class="s1">&#39;EFI/opensuse&#39;</span>
         <span class="p">]</span>
         <span class="k">for</span> <span class="n">efi_vendor_directory</span> <span class="ow">in</span> <span class="n">efi_vendor_directories</span><span class="p">:</span>
@@ -1511,8 +1524,8 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">shim_vendor_patterns</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;/boot/efi/EFI/*/shim.efi&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;/EFI/*/shim.efi&#39;</span>
+            <span class="s1">&#39;/boot/efi/EFI/*/shim*.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/EFI/*/shim*.efi&#39;</span>
         <span class="p">]</span>
         <span class="k">for</span> <span class="n">shim_vendor_pattern</span> <span class="ow">in</span> <span class="n">shim_vendor_patterns</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">shim_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="n">shim_vendor_pattern</span><span class="p">):</span>

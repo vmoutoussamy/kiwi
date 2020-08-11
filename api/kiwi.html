@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi Package &mdash; KIWI NG 9.21.5 documentation</title>
+  <title>kiwi Package &mdash; KIWI NG 9.21.6 documentation</title>
   
 
   
@@ -2367,6 +2367,20 @@ dependency and metadata resolution</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="kiwi.defaults.Defaults.get_sync_options">
+<em class="property">static </em><code class="sig-name descname">get_sync_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_sync_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_sync_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides list of default data sync options</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of rsync options</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="kiwi.defaults.Defaults.get_syslinux_modules">
 <em class="property">static </em><code class="sig-name descname">get_syslinux_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/defaults.html#Defaults.get_syslinux_modules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.defaults.Defaults.get_syslinux_modules" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns list of syslinux modules to include on ISO
@@ -4190,12 +4204,16 @@ is not accessible by the current user</p></li>
 
 <dl class="py method">
 <dt id="kiwi.path.Path.remove_hierarchy">
-<em class="property">static </em><code class="sig-name descname">remove_hierarchy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/path.html#Path.remove_hierarchy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.path.Path.remove_hierarchy" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">remove_hierarchy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span></em>, <em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/path.html#Path.remove_hierarchy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.path.Path.remove_hierarchy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recursively remove an empty path and its sub directories
-ignore non empty or protected paths and leave them untouched</p>
+starting at a given root directory. Ignore non empty or
+protected paths and leave them untouched</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>string</em>) – path name</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<em>string</em>) – start at directory</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – path name below root</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

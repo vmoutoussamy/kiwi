@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.system.root_bind &mdash; KIWI NG 9.21.5 documentation</title>
+  <title>kiwi.system.root_bind &mdash; KIWI NG 9.21.6 documentation</title>
   
 
   
@@ -1005,7 +1005,7 @@
     <span class="k">def</span> <span class="nf">_cleanup_dir_stack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_stack</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">Path</span><span class="o">.</span><span class="n">remove_hierarchy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="n">location</span><span class="p">)</span>
+                <span class="n">Path</span><span class="o">.</span><span class="n">remove_hierarchy</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">location</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                     <span class="s1">&#39;Failed to remove directory hierarchy </span><span class="si">{0}</span><span class="s1">: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>

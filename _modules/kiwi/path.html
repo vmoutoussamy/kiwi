@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.path &mdash; KIWI NG 9.21.5 documentation</title>
+  <title>kiwi.path &mdash; KIWI NG 9.21.6 documentation</title>
   
 
   
@@ -854,15 +854,20 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Path.remove_hierarchy"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.path.Path.remove_hierarchy">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">remove_hierarchy</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">remove_hierarchy</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Recursively remove an empty path and its sub directories</span>
-<span class="sd">        ignore non empty or protected paths and leave them untouched</span>
+<span class="sd">        starting at a given root directory. Ignore non empty or</span>
+<span class="sd">        protected paths and leave them untouched</span>
 
-<span class="sd">        :param string path: path name</span>
+<span class="sd">        :param string root: start at directory</span>
+<span class="sd">        :param string path: path name below root</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;rmdir&#39;</span><span class="p">,</span> <span class="s1">&#39;--ignore-fail-on-non-empty&#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">]</span>
+            <span class="p">[</span>
+                <span class="s1">&#39;rmdir&#39;</span><span class="p">,</span> <span class="s1">&#39;--ignore-fail-on-non-empty&#39;</span><span class="p">,</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">root</span><span class="p">,</span> <span class="n">path</span><span class="p">]))</span>
+            <span class="p">]</span>
         <span class="p">)</span>
         <span class="n">path_elements</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
         <span class="n">protected_elements</span> <span class="o">=</span> <span class="p">[</span>
@@ -874,12 +879,15 @@
                 <span class="k">if</span> <span class="n">path_elements</span><span class="p">[</span><span class="n">path_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">protected_elements</span><span class="p">:</span>
                     <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                         <span class="s1">&#39;remove_hierarchy: path </span><span class="si">{0}</span><span class="s1"> is protected&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                            <span class="n">sub_path</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">root</span><span class="p">,</span> <span class="n">sub_path</span><span class="p">]))</span>
                         <span class="p">)</span>
                     <span class="p">)</span>
                     <span class="k">return</span>
                 <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;rmdir&#39;</span><span class="p">,</span> <span class="s1">&#39;--ignore-fail-on-non-empty&#39;</span><span class="p">,</span> <span class="n">sub_path</span><span class="p">]</span>
+                    <span class="p">[</span>
+                        <span class="s1">&#39;rmdir&#39;</span><span class="p">,</span> <span class="s1">&#39;--ignore-fail-on-non-empty&#39;</span><span class="p">,</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">root</span><span class="p">,</span> <span class="n">sub_path</span><span class="p">]))</span>
+                    <span class="p">]</span>
                 <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Path.move_to_root"><a class="viewcode-back" href="../../api/kiwi.html#kiwi.path.Path.move_to_root">[docs]</a>    <span class="nd">@staticmethod</span>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.install.grub2 &mdash; KIWI NG 9.21.5 documentation</title>
+  <title>kiwi.bootloader.install.grub2 &mdash; KIWI NG 9.21.6 documentation</title>
   
 
   
@@ -1020,7 +1020,7 @@
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">grub2_install_backup</span><span class="p">):</span>
                 <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">grub2_install_backup</span><span class="p">,</span> <span class="n">grub2_install</span><span class="p">]</span>
+                    <span class="p">[</span><span class="s1">&#39;mv&#39;</span><span class="p">,</span> <span class="n">grub2_install_backup</span><span class="p">,</span> <span class="n">grub2_install</span><span class="p">]</span>
                 <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_get_grub2_install_tool_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">):</span>

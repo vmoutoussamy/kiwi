@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.volume_manager.btrfs &mdash; KIWI NG 9.21.5 documentation</title>
+  <title>kiwi.volume_manager.btrfs &mdash; KIWI NG 9.21.6 documentation</title>
   
 
   
@@ -1043,8 +1043,7 @@
                 <span class="p">)</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">DataSync</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">sync_target</span><span class="p">)</span>
             <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
-                <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;-H&#39;</span><span class="p">,</span> <span class="s1">&#39;-X&#39;</span><span class="p">,</span> <span class="s1">&#39;-A&#39;</span><span class="p">,</span> <span class="s1">&#39;--one-file-system&#39;</span><span class="p">],</span>
-                <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">Defaults</span><span class="o">.</span><span class="n">get_sync_options</span><span class="p">(),</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;quota_groups&#39;</span><span class="p">]</span> <span class="ow">and</span> \
                <span class="bp">self</span><span class="o">.</span><span class="n">custom_args</span><span class="p">[</span><span class="s1">&#39;root_is_snapshot&#39;</span><span class="p">]:</span>

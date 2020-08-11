@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.filesystem.base &mdash; KIWI NG 9.21.5 documentation</title>
+  <title>kiwi.filesystem.base &mdash; KIWI NG 9.21.6 documentation</title>
   
 
   
@@ -743,6 +743,7 @@
 <span class="kn">import</span> <span class="nn">copy</span>
 
 <span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="kn">import</span> <span class="n">Defaults</span>
 <span class="kn">from</span> <span class="nn">kiwi.utils.sync</span> <span class="kn">import</span> <span class="n">DataSync</span>
 <span class="kn">from</span> <span class="nn">kiwi.mount_manager</span> <span class="kn">import</span> <span class="n">MountManager</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="kn">import</span> <span class="n">Command</span>
@@ -883,8 +884,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem_mount</span><span class="o">.</span><span class="n">mountpoint</span>
         <span class="p">)</span>
         <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
-            <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;-H&#39;</span><span class="p">,</span> <span class="s1">&#39;-X&#39;</span><span class="p">,</span> <span class="s1">&#39;-A&#39;</span><span class="p">,</span> <span class="s1">&#39;--one-file-system&#39;</span><span class="p">],</span>
-            <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span>
+            <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">Defaults</span><span class="o">.</span><span class="n">get_sync_options</span><span class="p">()</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="FileSystemBase.umount"><a class="viewcode-back" href="../../../api/kiwi.filesystem.html#kiwi.filesystem.base.FileSystemBase.umount">[docs]</a>    <span class="k">def</span> <span class="nf">umount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
