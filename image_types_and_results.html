@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; KIWI NG 9.21.8 documentation</title>
+  <title>Image Types &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Working from the Command Line" href="commands.html" />
-    <link rel="prev" title="Installation" href="installation.html" /> 
+    <link rel="next" title="Building Images for Supported Types" href="building_images.html" />
+    <link rel="prev" title="Image Description Elements" href="image_description/elements.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,12 +101,12 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#before-you-start">Before you start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#choose-a-first-image">Choose a First Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build-your-first-image">Build your First Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-your-image">Run your Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#choose-a-first-image">Choose a First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-your-first-image">Build your First Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-your-image">Run your Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#tweak-and-customize-your-image">Tweak and Customize your Image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Working from the Command Line</a><ul>
@@ -275,10 +275,10 @@
 <li class="toctree-l2"><a class="reference internal" href="image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="image_types_and_results.html">Image Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="image_types_and_results.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_types_and_results.html#architectures">Architectures</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architectures">Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="building_images.html">Building Images for Supported Types</a><ul>
@@ -705,13 +705,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Quick Start</li>
+      <li>Image Types</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/quickstart.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/image_types_and_results.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -724,69 +724,250 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quick-start">
-<span id="id1"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="image-types">
+<span id="id1"></span><h1>Image Types<a class="headerlink" href="#image-types" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Abstract</strong></p>
-<p>This document describes how to start working with KIWI NG, an OS appliance
-builder.
-This description applies for version 9.21.8.</p>
+<p>Before building an image with KIWI NG it’s important to understand
+the different image types and their meaning. This document provides
+an overview about the supported KIWI NG image types, their results
+and some words about the environment to run the build.</p>
 </div>
-<div class="section" id="before-you-start">
-<h2>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>ISO Hybrid Live Image</dt><dd><p>An iso image which can be dumped on a CD/DVD or USB stick
+and boots off from this media without interfering with other
+system storage components. A useful pocket system for testing
+and demo and debugging purposes. For further details refer
+to <a class="reference internal" href="building_images/build_live_iso.html#hybrid-iso"><span class="std std-ref">Build an ISO Hybrid Live Image</span></a></p>
+</dd>
+<dt>Virtual Disk Image</dt><dd><p>An image representing the system disk, useful for cloud frameworks
+like Amazon EC2, Google Compute Engine or Microsoft Azure.
+For further details refer to <a class="reference internal" href="building_images/build_vmx_disk.html#vmx"><span class="std std-ref">Build a Virtual Disk Image</span></a></p>
+</dd>
+<dt>OEM Expandable Disk Image</dt><dd><p>An image representing an expandable system disk. This means after
+deployment the system can resize itself to the new disk geometry.
+The resize operation is configurable as part of the image description
+and an installation image for CD/DVD, USB stick and Network deployment
+can be created in addition. For further details refer to: <a class="reference internal" href="building_images/build_oem_disk.html#oem"><span class="std std-ref">Build an OEM Expandable Disk Image</span></a></p>
+</dd>
+<dt>Docker Container Image</dt><dd><p>An archive image suitable for the docker container engine.
+The image can be loaded via the <code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span> <span class="pre">load</span></code> command and
+works within the scope of the container engine.
+For further details refer to: <a class="reference internal" href="building_images/build_docker_container.html#building-docker-build"><span class="std std-ref">Build a Docker Container Image</span></a></p>
+</dd>
+<dt>WSL Container Image</dt><dd><p>An archive image suitable for the Windows Subsystem For Linux
+container engine. The image can be loaded From a Windows System
+that has support for WSL activated. For further details refer
+to: <a class="reference internal" href="building_images/build_wsl_container.html#building-wsl-build"><span class="std std-ref">Build a WSL Container Image</span></a></p>
+</dd>
+<dt>KIS Root File System Image</dt><dd><p>An optional root filesystem image associated with a kernel and initrd.
+The use case for this component image type is highly customizable.
+Many different deployment strategies are possible.
+For further details refer to: <a class="reference internal" href="building_images/build_kis.html#kis"><span class="std std-ref">Build KIS Image (Kernel, Initrd, System)</span></a></p>
+</dd>
+</dl>
+<div class="section" id="image-results">
+<h2>Image Results<a class="headerlink" href="#image-results" title="Permalink to this headline">¶</a></h2>
+<p>KIWI NG execution results in an appliance image after a successful run of
+<a class="reference internal" href="commands/system_build.html#kiwi-system-build"><span class="std std-ref">kiwi-ng system build</span></a> or <a class="reference internal" href="commands/system_create.html#kiwi-system-create"><span class="std std-ref">kiwi-ng system create</span></a> command.
+The result is the image binary in addition a couple of metadata files that can
+be handy to describe or identify the resulting image. The output files follow
+this naming convention:</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;.&lt;arch&gt;-&lt;version&gt;.&lt;extension&gt;</span></code></p>
+<p>where <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;</span></code> is the name stated in the <a class="reference internal" href="image_description.html#image-description"><span class="std std-ref">Image Description</span></a> as an
+attribute of the <a class="reference internal" href="image_description/elements.html#sec-image"><span class="std std-ref">&lt;image&gt;</span></a> element. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;arch&gt;</span></code> is the CPU
+architecture used for the build, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> is the image version defined in
+<a class="reference internal" href="image_description/elements.html#sec-preferences"><span class="std std-ref">&lt;version&gt;</span></a> element of the image description
+and the <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;extension&gt;</span></code> is dependent on the image type and its definition.</p>
+<p>Any KIWI NG appliance build results in, at least, the following output files:</p>
 <ol class="arabic">
-<li><p>Install KIWI NG first, either via your distributions’ package manager (see
-<a class="reference internal" href="installation.html#kiwi-installation"><span class="std std-ref">Installation</span></a>) or via:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install kiwi
-</pre></div>
-</div>
+<li><p>The image binary, <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;.&lt;arch&gt;-&lt;version&gt;.&lt;image-extension&gt;</span></code>:</p>
+<p>This is the file containig the actual image binary, depending
+on the image type and its definition it can be a virtual disk image
+file, and ISO image, a tarball, etc.</p>
 </li>
-<li><p>Clone the repository containing example appliances (see
-<a class="reference internal" href="installation.html#example-descriptions"><span class="std std-ref">Example Appliance Descriptions</span></a>):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/OSInside/kiwi-descriptions
-</pre></div>
-</div>
+<li><p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;.&lt;arch&gt;-&lt;version&gt;.packages</span></code> file:</p>
+<p>This file includes a sorted list of the packages
+that are included into the image. In fact this is normalized dump of the
+package manager database. It follows the following cvs format where each
+line is represented by:</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;name&gt;|&lt;epoch&gt;|&lt;version&gt;|&lt;release&gt;|&lt;arch&gt;|&lt;disturl&gt;|&lt;license&gt;</span></code></p>
+<p>The values represented here are mainly based on RPM packages metadata.
+Other package managers may not provide all of these values, in such cases
+the format is the same and the fields that cannot be provided are set as
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> value. This list can be used to track changes across multiple
+builds of the same image description over time by diffing the
+packages installed.</p>
+</li>
+<li><p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">&lt;image-name&gt;.&lt;arch&gt;-&lt;version&gt;.verified</span></code> file:</p>
+<p>This file is the output of a verification done by the package manager
+against the package data base. More specific it is the output of
+the <strong class="command">rpm</strong> verification process or <strong class="command">dpkg</strong> verification
+depending on the packaging technology selected for the image.
+In both cases the output follows the RPM verification syntax. This
+provides an overview of all packages status right before any boot of
+the image.</p>
 </li>
 </ol>
+<p>More specific  the result files for a given image name and version such
+as <code class="xref py py-obj docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">1.15.1</span></code> will be:</p>
+<ul class="simple">
+<li><p><strong>image packages</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.packages</span></code></p></li>
+<li><p><strong>image verified</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.verified</span></code></p></li>
+</ul>
+<p>In addition to the image binaries itself that depend on the image type:</p>
+<dl class="simple">
+<dt>image=”tbz”</dt><dd><p>For this image type the result is mainly a root tree packed in a tarball:</p>
+<ul class="simple">
+<li><p><strong>root archive</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.tar.xz</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”btrfs|ext2|ext3|ext4|squashfs|xfs”</dt><dd><p>The image root tree data is packed into a filesystem image of the given
+type, hence the resutl for an <code class="xref py py-obj docutils literal notranslate"><span class="pre">ext4</span></code> image would be:</p>
+<ul class="simple">
+<li><p><strong>filesystem image</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.ext4</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”iso”</dt><dd><p>The image result is an ISO file:</p>
+<ul class="simple">
+<li><p><strong>live image</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.iso</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”vmx”</dt><dd><p>An image representing the system disk. The disk format can be
+defined in <a class="reference internal" href="image_description/elements.html#sec-preferences"><span class="std std-ref">&lt;preferences&gt;&lt;type&gt;</span></a> element as
+documented in <a class="reference internal" href="building_images/build_vmx_disk.html#vmx"><span class="std std-ref">Build a Virtual Disk Image</span></a>. For a <code class="xref py py-obj docutils literal notranslate"><span class="pre">format=&quot;qcow2&quot;</span></code> the result is:</p>
+<ul class="simple">
+<li><p><strong>disk image</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.qcow2</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”oem”</dt><dd><p>An image representing an expandable system disk. As for <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmx</span></code> type this
+results in a disk image. In addition to the <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmx</span></code> type <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code> has a couple
+of optional additional installation images. KIWI NG can produce an
+installation ISO (by setting <code class="xref py py-obj docutils literal notranslate"><span class="pre">installiso=&quot;true&quot;</span></code> in
+<a class="reference internal" href="image_description/elements.html#sec-preferences"><span class="std std-ref">&lt;preferences&gt;&lt;type&gt;</span></a>) or a tarball including
+the artifacts for a network deployment (by setting <code class="xref py py-obj docutils literal notranslate"><span class="pre">installiso=&quot;true&quot;</span></code> in
+<a class="reference internal" href="image_description/elements.html#sec-preferences"><span class="std std-ref">&lt;preferences&gt;&lt;type&gt;</span></a>), see
+<a class="reference internal" href="building_images/build_oem_disk.html#oem"><span class="std std-ref">OEM example</span></a> for further details. The results for <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code> can be:</p>
+<ul class="simple">
+<li><p><strong>disk image</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.raw</span></code></p></li>
+<li><p><strong>installation image (optional)</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.install.iso</span></code></p></li>
+<li><p><strong>installation pxe archive (optional)</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.install.tar</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”docker”</dt><dd><p>An archive image suitable for the docker container engine. The result is
+a loadable (<strong class="command">docker load -i &lt;image&gt;</strong>) tarball:</p>
+<ul class="simple">
+<li><p><strong>container</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.docker.tar.xz</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”oci”</dt><dd><p>An archive image that builds a container matching the OCI
+(Open Container Interface) standard. The result is a tarball matching OCI
+standards:</p>
+<ul class="simple">
+<li><p><strong>container</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.oci.tar.xz</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”appx”</dt><dd><p>An archive image suitable for the Windows Subsystem For Linux
+container engine. The result is an <code class="xref py py-obj docutils literal notranslate"><span class="pre">appx</span></code> binary file:</p>
+<ul class="simple">
+<li><p><strong>container</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.appx</span></code></p></li>
+</ul>
+</dd>
+<dt>image=”kis”</dt><dd><p>An optional root filesystem image associated with a kernel and initrd.
+All three binaries are packed in a tarball, see <a class="reference internal" href="building_images/build_kis.html#kis"><span class="std std-ref">Build KIS Image (Kernel, Initrd, System)</span></a> for further
+details about the kis archive:</p>
+<ul class="simple">
+<li><p><strong>kis archive</strong>:
+<code class="file docutils literal notranslate"><span class="pre">LimeJeOS-Leap-15.1.x86_64-1.15.1.tar.xz</span></code></p></li>
+</ul>
+</dd>
+</dl>
 </div>
-<div class="section" id="choose-a-first-image">
-<h2>Choose a First Image<a class="headerlink" href="#choose-a-first-image" title="Permalink to this headline">¶</a></h2>
-<p>Take a look which images are available in the example appliances repository
-and select one that matches your desired image as close as possible. Or
-just use the one given in the examples below.</p>
+<div class="section" id="build-host-constraints">
+<span id="supported-distributions"></span><h2>Build Host Constraints<a class="headerlink" href="#build-host-constraints" title="Permalink to this headline">¶</a></h2>
+<p>For building images a host system is required that runs the build process.
+Tools to create the image are used from that host and this creates an
+indirect dependency to the target image. For example; Building an
+Ubuntu image requires the apt and dpkg tools and metadata to be available
+and functional on the host to build an Ubuntu image. There are many more
+of those host vs. image dependencies and not all of them can be resolved
+in a clear and clean way.</p>
+<p>The most compatible environment is provided if the build host is of the same
+distribution than the target image. This always applies for the Open Build
+Service (OBS). In other cases our recommendation is that the build host
+is of the same distribution than the target and near to the major
+version (+-1) compared to the target.</p>
+<p>In general, our goal is to support any major distribution with KIWI NG. However
+for building images we rely on core tools which are not under our control.
+Also several design aspects of distributions like <strong>secure boot</strong> and working
+with <strong>upstream projects</strong> are different and not influenced by us. There
+are many side effects that can be annoying especially if the build host
+is not of the same distribution vendor than the image target.</p>
 </div>
-<div class="section" id="build-your-first-image">
-<h2>Build your First Image<a class="headerlink" href="#build-your-first-image" title="Permalink to this headline">¶</a></h2>
-<p>Your first image will be a simple system disk image which can run
-in any full virtualization system like QEMU. Invoke the following KIWI NG
-command in order to build it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo kiwi-ng --type vmx system build <span class="se">\</span>
-    --description kiwi-descriptions/suse/x86_64/suse-leap-15.1-JeOS <span class="se">\</span>
-    --target-dir /tmp/myimage
-</pre></div>
+<div class="section" id="architectures">
+<h2>Architectures<a class="headerlink" href="#architectures" title="Permalink to this headline">¶</a></h2>
+<p>As described in the section above one requirement between the build host
+and the image when it comes to architecture support is, that the image
+architecture should match the build host architecture. Cross arch building
+would require any core tool that is used to build an image to be cross
+arch capable. To patch e.g an x86_64 system such that it can build an
+aarch64 image would require some work on binutils and hacks as well as
+performance tweaks which is all not worth the effort and still can lead
+to broken results. Thus we recommend to provide native systems for the
+target architecture and build there. One possible alternative is to
+use the kiwi boxed plugin as documented here: <a class="reference internal" href="self_contained.html#self-contained"><span class="std std-ref">Building in a Self-Contained Environment</span></a>
+together with a box created for the desired architecture. However keep
+in mind the performance problematic when running a VM of a different
+architecture.</p>
+<p>The majority of the image builds are based on the x86 architecture.
+As mentioned KIWI NG also supports other architectures, shown in the
+table below:</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Architecture</p></th>
+<th class="head"><p>Supported</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>x86_64</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>ix86</p></td>
+<td><p>yes <strong>note:distro</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>s390/s390x</p></td>
+<td><p>yes <strong>note:distro</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>arm/aarch64</p></td>
+<td><p>yes <strong>note:distro</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>ppc64</p></td>
+<td><p>no (alpha-phase)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-distro admonition">
+<p class="admonition-title">distro</p>
+<p>The support status for an architecture depends on the distribution.
+If the distribution does not build its packages for the desired
+architecture, KIWI NG will not be able to build an image for it</p>
 </div>
-<p>The resulting image will be placed into the folder <code class="file docutils literal notranslate"><span class="pre">/tmp/myimage</span></code>
-with the suffix <code class="file docutils literal notranslate"><span class="pre">.raw</span></code>.</p>
-<p>If you don’t wish to create a openSUSE Leap 15.1 image,
-substitute the folder following the <code class="docutils literal notranslate"><span class="pre">--description</span></code> option with another
-folder that contains the image description which you selected.</p>
-</div>
-<div class="section" id="run-your-image">
-<h2>Run your Image<a class="headerlink" href="#run-your-image" title="Permalink to this headline">¶</a></h2>
-<p>Running an image actually means booting the operating system. In order to
-do that attach the disk image to a virtual system. In this example we use
-QEMU and boot it as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ qemu -boot c <span class="se">\</span>
-    -drive <span class="nv">file</span><span class="o">=</span>LimeJeOS-Leap-15.1.x86_64-1.15.1.raw,format<span class="o">=</span>raw,if<span class="o">=</span>virtio <span class="se">\</span>
-    -m <span class="m">4096</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="tweak-and-customize-your-image">
-<h2>Tweak and Customize your Image<a class="headerlink" href="#tweak-and-customize-your-image" title="Permalink to this headline">¶</a></h2>
-<p>Now that you have successfully built and started your first image, you can
-start tweaking it to match your needs.</p>
 </div>
 </div>
 
@@ -798,10 +979,10 @@ start tweaking it to match your needs.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="commands.html" class="btn btn-neutral float-right" title="Working from the Command Line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="building_images.html" class="btn btn-neutral float-right" title="Building Images for Supported Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="image_description/elements.html" class="btn btn-neutral float-left" title="Image Description Elements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

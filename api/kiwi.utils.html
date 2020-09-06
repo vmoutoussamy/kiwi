@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.utils Package &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>kiwi.utils Package &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
@@ -734,11 +736,11 @@
 <dl class="py class">
 <dt id="kiwi.utils.block.BlockID">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.utils.block.</code><code class="sig-name descname">BlockID</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/utils/block.html#BlockID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.utils.block.BlockID" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Get information from a block device</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>device</strong> (<em>str</em>) – block device node name name</p>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – block device node name name</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -753,7 +755,7 @@
 <dd class="field-even"><p>ID of the block device</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -767,7 +769,7 @@
 <dd class="field-odd"><p>filesystem type</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -781,7 +783,7 @@
 <dd class="field-odd"><p>block device label</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -795,7 +797,7 @@
 <dd class="field-odd"><p>uuid for the filesystem of the block device</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -808,13 +810,13 @@
 <dl class="py class">
 <dt id="kiwi.utils.checksum.Checksum">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.utils.checksum.</code><code class="sig-name descname">Checksum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/utils/checksum.html#Checksum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.utils.checksum.Checksum" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Manage checksum creation for files</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>source_filename</strong> (<em>str</em>) – source file name to build checksum for</p></li>
-<li><p><strong>checksum_filename</strong> (<em>str</em>) – target file with checksum information</p></li>
+<li><p><strong>source_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – source file name to build checksum for</p></li>
+<li><p><strong>checksum_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – target file with checksum information</p></li>
 </ul>
 </dd>
 </dl>
@@ -827,15 +829,15 @@ method returns True, or False in case it does not match</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>checksum</strong> (<em>str</em>) – checksum string to compare</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – filename containing checksum</p></li>
+<li><p><strong>checksum</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checksum string to compare</p></li>
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – filename containing checksum</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>True or False</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -846,13 +848,13 @@ method returns True, or False in case it does not match</p>
 <dd><p>Create md5 checksum</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – filename for checksum</p>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – filename for checksum</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>checksum</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -863,7 +865,7 @@ method returns True, or False in case it does not match</p>
 <dd><p>Create sha256 checksum</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – filename for checksum</p>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – filename for checksum</p>
 </dd>
 </dl>
 </dd></dl>
@@ -876,17 +878,17 @@ method returns True, or False in case it does not match</p>
 <dl class="py class">
 <dt id="kiwi.utils.compress.Compress">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.utils.compress.</code><code class="sig-name descname">Compress</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_filename</span></em>, <em class="sig-param"><span class="n">keep_source_on_compress</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/utils/compress.html#Compress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.utils.compress.Compress" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>File compression / decompression</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>keep_source</strong> (<em>bool</em>) – Request to keep the uncompressed source</p></li>
-<li><p><strong>source_filename</strong> (<em>str</em>) – Source file name to compress</p></li>
-<li><p><strong>supported_zipper</strong> (<em>list</em>) – List of supported compression tools</p></li>
-<li><p><strong>compressed_filename</strong> (<em>str</em>) – Compressed file name path with
+<li><p><strong>keep_source</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Request to keep the uncompressed source</p></li>
+<li><p><strong>source_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Source file name to compress</p></li>
+<li><p><strong>supported_zipper</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – List of supported compression tools</p></li>
+<li><p><strong>compressed_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Compressed file name path with
 compression suffix</p></li>
-<li><p><strong>uncompressed_filename</strong> (<em>str</em>) – Uncompressed file name path</p></li>
+<li><p><strong>uncompressed_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Uncompressed file name path</p></li>
 </ul>
 </dd>
 </dl>
@@ -899,7 +901,7 @@ compression suffix</p></li>
 <dd class="field-odd"><p>compression format name or None if it couldn’t be inferred</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Optional[str]</p>
+<dd class="field-even"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -919,7 +921,7 @@ the uncompressed variant. If temporary is set to True
 a temporary file is created instead</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>temporary</strong> (<em>bool</em>) – uncompress to a temporary file</p>
+<dd class="field-odd"><p><strong>temporary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – uncompress to a temporary file</p>
 </dd>
 </dl>
 </dd></dl>
@@ -930,7 +932,7 @@ a temporary file is created instead</p>
 <dd><p>Create XZ compressed file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>options</strong> (<em>list</em>) – custom xz compression options</p>
+<dd class="field-odd"><p><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – custom xz compression options</p>
 </dd>
 </dl>
 </dd></dl>
@@ -943,14 +945,14 @@ a temporary file is created instead</p>
 <dl class="py class">
 <dt id="kiwi.utils.sync.DataSync">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.utils.sync.</code><code class="sig-name descname">DataSync</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/utils/sync.html#DataSync"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.utils.sync.DataSync" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Sync data from a source directory to a target directory
 using the rsync protocol</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>source_dir</strong> (<em>str</em>) – source directory path name</p></li>
-<li><p><strong>target_dir</strong> (<em>str</em>) – target directory path name</p></li>
+<li><p><strong>source_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – source directory path name</p></li>
+<li><p><strong>target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – target directory path name</p></li>
 </ul>
 </dd>
 </dl>
@@ -961,8 +963,8 @@ using the rsync protocol</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>options</strong> (<em>list</em>) – rsync options</p></li>
-<li><p><strong>exclude</strong> (<em>list</em>) – file patterns to exclude</p></li>
+<li><p><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – rsync options</p></li>
+<li><p><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – file patterns to exclude</p></li>
 </ul>
 </dd>
 </dl>
@@ -978,7 +980,7 @@ attributes</p>
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -991,11 +993,11 @@ attributes</p>
 <dl class="py class">
 <dt id="kiwi.utils.sysconfig.SysConfig">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.utils.sysconfig.</code><code class="sig-name descname">SysConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_file</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/utils/sysconfig.html#SysConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.utils.sysconfig.SysConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Read and Write sysconfig style files</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>source_file</strong> (<em>str</em>) – source file path</p>
+<dd class="field-odd"><p><strong>source_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – source file path</p>
 </dd>
 </dl>
 <dl class="py method">

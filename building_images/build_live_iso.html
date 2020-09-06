@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build an ISO Hybrid Live Image &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>Build an ISO Hybrid Live Image &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
@@ -738,7 +740,7 @@
 Once built and deployed it boots off from this media without interfering
 with other system storage components making it a useful pocket system for
 testing and demo- and debugging-purposes.</p>
-<p>To add a live ISO build to your appliance, create a <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element with
+<p>To add a live ISO build to your appliance, create a <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element with
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code> set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">iso</span></code> in your <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code> as shown below:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;6.9&quot;</span> <span class="na">name=</span><span class="s">&quot;JeOS-Tumbleweed&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- snip --&gt;</span>
@@ -750,7 +752,7 @@ testing and demo- and debugging-purposes.</p>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
-<p>The following attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element are relevant when building
+<p>The following attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element are relevant when building
 live ISO images:</p>
 <ul>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code>: Specifies the live ISO technology and dracut module to use, can

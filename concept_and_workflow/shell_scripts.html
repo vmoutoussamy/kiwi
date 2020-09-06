@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User Defined Scripts &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>User Defined Scripts &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
@@ -904,7 +906,7 @@ set to 1.</p>
 <p>The <code class="file docutils literal notranslate"><span class="pre">.profile</span></code> environment file is created by KIWI NG and contains a
 specific set of variables which are listed below.</p>
 <dl class="simple">
-<dt>$kiwi_compressed</dt><dd><p>The value of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">compressed</span></code> attribute set in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element in
+<dt>$kiwi_compressed</dt><dd><p>The value of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">compressed</span></code> attribute set in the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element in
 <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>.</p>
 </dd>
 <dt>$kiwi_delete</dt><dd><p>A list of all packages which are children of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> element
@@ -925,7 +927,7 @@ with <code class="xref py py-obj docutils literal notranslate"><span class="pre"
 </dd>
 <dt>$kiwi_timezone</dt><dd><p>The contents of the timezone setup as done in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>.</p>
 </dd>
-<dt>$kiwi_type</dt><dd><p>The image type as extracted from the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element in
+<dt>$kiwi_type</dt><dd><p>The image type as extracted from the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element in
 <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>.</p>
 </dd>
 </dl>
@@ -951,7 +953,7 @@ is only effective if locales in <code class="file docutils literal notranslate">
 not set or if the file does not exist at all. In SLE12
 <code class="file docutils literal notranslate"><span class="pre">/etc/sysconfig/language</span></code> has precendence over
 <code class="file docutils literal notranslate"><span class="pre">/etc/locale.conf</span></code> for compatibility reasons and management tools
-could still relay on <code class="xref py py-obj docutils literal notranslate"><span class="pre">sysconfig</span></code> files for locale settings.</p>
+could still relay on <a class="reference external" href="https://docs.python.org/3/library/sysconfig.html#module-sysconfig" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sysconfig</span></code></a> files for locale settings.</p>
 <p>In any case the configuration is still possible in KIWI by using
 any distribution specific way to configure the locale setting inside the
 <code class="file docutils literal notranslate"><span class="pre">config.sh</span></code> script or by adding any additional configuration file

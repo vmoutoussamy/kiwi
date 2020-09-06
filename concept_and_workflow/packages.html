@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Adding and Removing Packages &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>Adding and Removing Packages &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
@@ -748,7 +750,7 @@ that instruct KIWI NG when and how to perform package installation or
 removal. Each <code class="xref py py-obj docutils literal notranslate"><span class="pre">packages</span></code> element acts as a group, whose behavior can be
 configured via the following attributes:</p>
 <ul>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code>: either <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootstrap</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">uninstall</span></code> or one of the
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>: either <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootstrap</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">image</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">uninstall</span></code> or one of the
 following build types: <code class="xref py py-obj docutils literal notranslate"><span class="pre">docker</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">iso</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">kis</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmx</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">oci</span></code>.</p>
 <p>Packages for <code class="xref py py-obj docutils literal notranslate"><span class="pre">type=&quot;bootstrap&quot;</span></code> are pre-installed to populate the images’
 root file system before chrooting into it.</p>

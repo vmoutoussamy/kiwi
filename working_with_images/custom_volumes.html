@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Custom Disk Volumes &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>Custom Disk Volumes &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul class="current">
@@ -735,7 +737,7 @@ or subvolumes definitions for disk images using KIWI NG.</p>
 (LVM) for the Linux kernel or by setting volumes at filesystem level when
 filesystem supports it (e.g. btrfs).</p>
 <p>Volumes are defined in the KIWI NG description file <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>,
-using <code class="xref py py-obj docutils literal notranslate"><span class="pre">systemdisk</span></code>. This element is a child of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code>.
+using <code class="xref py py-obj docutils literal notranslate"><span class="pre">systemdisk</span></code>. This element is a child of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>.
 Volumes themselves are added via (multiple) <code class="xref py py-obj docutils literal notranslate"><span class="pre">volume</span></code> child
 elements of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">systemdisk</span></code> element:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;7.2&quot;</span> <span class="na">name=</span><span class="s">&quot;openSUSE-Leap-15.1&quot;</span><span class="nt">&gt;</span>

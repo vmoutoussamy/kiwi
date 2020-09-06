@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Adding Users &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>Adding Users &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
@@ -755,11 +757,11 @@ modified. The following attributes are mandatory:</p>
 list is used as the user’s primary group. The remaining elements are
 appended to the user’s supplementary groups. When no groups are assigned
 then the system’s default primary group will be used.</p></li>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code>: The numeric user id of this account.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#id" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a>: The numeric user id of this account.</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat</span></code>: The format in which <code class="xref py py-obj docutils literal notranslate"><span class="pre">password</span></code> is provided, either <code class="xref py py-obj docutils literal notranslate"><span class="pre">plain</span></code>
 or <code class="xref py py-obj docutils literal notranslate"><span class="pre">encrypted</span></code> (the latter is the default).</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">password</span></code>: The password for this user account. It can be provided either
-in cleartext form (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat=&quot;plain&quot;</span></code>) or in <code class="xref py py-obj docutils literal notranslate"><span class="pre">crypt</span></code>’ed form
+in cleartext form (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat=&quot;plain&quot;</span></code>) or in <a class="reference external" href="https://docs.python.org/3/library/crypt.html#module-crypt" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crypt</span></code></a>’ed form
 (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pwdformat=&quot;encrypted&quot;</span></code>). Plain passwords are discouraged, as everyone
 with access to the image description would know the password. It is
 recommended to generate a hash of your password using <code class="xref py py-obj docutils literal notranslate"><span class="pre">openssl</span></code> as

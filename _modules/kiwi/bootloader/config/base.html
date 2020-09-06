@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.base &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>kiwi.bootloader.config.base &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -273,6 +273,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../building_images.html">Building Images for Supported Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -305,10 +311,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../working_with_images.html">Working with Images</a><ul>
@@ -1265,8 +1267,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">proc_mount</span><span class="o">.</span><span class="n">bind_mount</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_get_root_cmdline_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uuid</span><span class="p">):</span>
-        <span class="n">firmware</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_firmware</span><span class="p">()</span>
-        <span class="n">initrd_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_initrd_system</span><span class="p">()</span>
         <span class="n">cmdline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_kernelcmdline</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">cmdline</span> <span class="ow">and</span> <span class="s1">&#39;root=&#39;</span> <span class="ow">in</span> <span class="n">cmdline</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
@@ -1276,28 +1276,14 @@
             <span class="k">if</span> <span class="n">root_search</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">root_search</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-        <span class="n">want_root_cmdline_parameter</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="n">firmware</span> <span class="ow">and</span> <span class="s1">&#39;ec2&#39;</span> <span class="ow">in</span> <span class="n">firmware</span><span class="p">:</span>
-            <span class="c1"># EC2 requires to specifiy the root device in the bootloader</span>
-            <span class="c1"># configuration. This is because the used pvgrub or hvmloader</span>
-            <span class="c1"># reads this information and passes it to the guest configuration</span>
-            <span class="c1"># which has an impact on the devices attached to the guest.</span>
-            <span class="n">want_root_cmdline_parameter</span> <span class="o">=</span> <span class="kc">True</span>
-
-        <span class="k">if</span> <span class="n">initrd_system</span> <span class="o">==</span> <span class="s1">&#39;dracut&#39;</span><span class="p">:</span>
-            <span class="c1"># When using a dracut initrd we have to specify the location</span>
-            <span class="c1"># of the root device</span>
-            <span class="n">want_root_cmdline_parameter</span> <span class="o">=</span> <span class="kc">True</span>
-
-        <span class="k">if</span> <span class="n">want_root_cmdline_parameter</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">uuid</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_overlayroot</span><span class="p">():</span>
-                <span class="k">return</span> <span class="s1">&#39;root=overlay:UUID=</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">uuid</span><span class="p">:</span>
-                <span class="k">return</span> <span class="s1">&#39;root=UUID=</span><span class="si">{0}</span><span class="s1"> rw&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                    <span class="s1">&#39;root=UUID=&lt;uuid&gt; setup requested, but uuid is not provided&#39;</span>
-                <span class="p">)</span>
+        <span class="k">if</span> <span class="n">uuid</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_overlayroot</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s1">&#39;root=overlay:UUID=</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">uuid</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;root=UUID=</span><span class="si">{0}</span><span class="s1"> rw&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s1">&#39;root=UUID=&lt;uuid&gt; setup requested, but uuid is not provided&#39;</span>
+            <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Cleaning up </span><span class="si">%s</span><span class="s1"> instance&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>

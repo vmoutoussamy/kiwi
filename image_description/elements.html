@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Image Description Elements &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>Image Description Elements &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Building Images for Supported Types" href="../building_images.html" />
+    <link rel="next" title="Image Types" href="../image_types_and_results.html" />
     <link rel="prev" title="Image Description" href="../image_description.html" /> 
 </head>
 
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
@@ -729,7 +731,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This document provides a reference for the elements
-and attributes of the KIWI NG XML document in version 9.21.7</p>
+and attributes of the KIWI NG XML document in version 9.21.8</p>
 </div>
 <div class="section" id="image">
 <span id="sec-image"></span><h2>&lt;image&gt;<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h2>
@@ -993,7 +995,7 @@ Many different deployment strategies are possible.</p>
 </dd>
 </dl>
 <p>For completion of a type description, there could be several other
-optional attributes and child elements. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element supports a
+optional attributes and child elements. The <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element supports a
 plethora of optional attributes, some of these are only relevant for
 certain build types and will be covered in extra chapters that describes
 the individual image types more detailed. Certain attributes are however
@@ -1086,7 +1088,7 @@ from the <code class="xref py py-obj docutils literal notranslate"><span class="
 </div>
 </dd>
 </dl>
-<p>The following sections shows the supported child elements of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code>
+<p>The following sections shows the supported child elements of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>
 element including references to their usage in a detailed type setup:</p>
 </div>
 <div class="section" id="preferences-type-bootloader">
@@ -1517,7 +1519,7 @@ can be selected by passing this option multiple times.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../building_images.html" class="btn btn-neutral float-right" title="Building Images for Supported Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../image_types_and_results.html" class="btn btn-neutral float-right" title="Image Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../image_description.html" class="btn btn-neutral float-left" title="Image Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

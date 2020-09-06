@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build a Virtual Disk Image &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>Build a Virtual Disk Image &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
@@ -738,7 +740,7 @@
 <p>A Virtual Disk Image is a compressed system disk with additional metadata
 useful for cloud frameworks like Amazon EC2, Google Compute Engine, or
 Microsoft Azure.</p>
-<p>To instruct KIWI NG to build a VMX image add a <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element with
+<p>To instruct KIWI NG to build a VMX image add a <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element with
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">image=&quot;vmx&quot;</span></code> in <code class="file docutils literal notranslate"><span class="pre">config.xml</span></code>. An example configuration for a 42 GB
 large VMDK image with 512 MB RAM, an IDE controller and a bridged network
 interface is shown below:</p>
@@ -759,10 +761,10 @@ interface is shown below:</p>
 <span class="nt">&lt;/image&gt;</span>
 </pre></div>
 </div>
-<p>The following attributes of the <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> element are of special interest
+<p>The following attributes of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> element are of special interest
 when building VMX images:</p>
 <ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code>: Specifies the format of the virtual disk, possible values are:
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#format" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code></a>: Specifies the format of the virtual disk, possible values are:
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">gce</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ova</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">qcow2</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vagrant</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdk</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vdi</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vhd</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vhdx</span></code> and
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">vhd-fixed</span></code>.</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatoptions</span></code>: Specifies additional format options passed to
@@ -771,7 +773,7 @@ specific options in a <code class="docutils literal notranslate"><span class="pr
 expects it. KIWI NG will forward the settings from this attribute as a
 parameter to the <code class="xref py py-obj docutils literal notranslate"><span class="pre">-o</span></code> option in the <strong class="command">qemu-img</strong> call.</p></li>
 </ul>
-<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">machine</span></code> child-elements of <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> can be
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">bootloader</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">machine</span></code> child-elements of <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> can be
 used to customize the virtual machine image further. We describe them in
 the following sections: <a class="reference internal" href="#vmx-bootloader"><span class="std std-ref">Setting up the Bootloader of the Image</span></a>, <a class="reference internal" href="#vmx-the-size-element"><span class="std std-ref">Modifying the Size of the Image</span></a>
 and <a class="reference internal" href="#vmx-the-machine-element"><span class="std std-ref">Customizing the Virtual Machine</span></a></p>
@@ -844,7 +846,7 @@ zipl loader only</p>
 </div>
 <div class="section" id="modifying-the-size-of-the-image">
 <span id="vmx-the-size-element"></span><h2>Modifying the Size of the Image<a class="headerlink" href="#modifying-the-size-of-the-image" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code> child element of <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> specifies the size of the resulting
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code> child element of <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> specifies the size of the resulting
 disk image. The following example shows a image description where 20 GB are
 added to the virtual machine image of which 5 GB are left unpartitioned:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;preferences&gt;</span>
@@ -870,7 +872,7 @@ partitioned. This value uses the same unit as defined in the attribute
 </div>
 <div class="section" id="customizing-the-virtual-machine">
 <span id="vmx-the-machine-element"></span><h2>Customizing the Virtual Machine<a class="headerlink" href="#customizing-the-virtual-machine" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">machine</span></code> child element of <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code> can be used to customize the virtual
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">machine</span></code> child element of <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> can be used to customize the virtual
 machine configuration which is used when the image is run, like the number
 of CPUs or the connected network interfaces.</p>
 <p>The following attributes are supported by the <code class="xref py py-obj docutils literal notranslate"><span class="pre">machine</span></code> element:</p>
@@ -984,7 +986,7 @@ only). Supported values are: <code class="xref py py-obj docutils literal notran
 <a class="reference external" href="https://www.vmware.com/support/developer/converter-sdk/conv60_apireference/vim.OvfManager.CreateImportSpecParams.DiskProvisioningType.html">https://www.vmware.com/support/developer/converter-sdk/conv60_apireference/vim.OvfManager.CreateImportSpecParams.DiskProvisioningType.html</a>).</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">disktype</span></code>: The type of the disk as it is internally handled by the VM
 (<code class="xref py py-obj docutils literal notranslate"><span class="pre">ova</span></code> format only). This attribute is currently unused.</p></li>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code>: The disk ID of the VM disk (<code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdk</span></code> format only).</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#id" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a>: The disk ID of the VM disk (<code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdk</span></code> format only).</p></li>
 </ul>
 </div>
 <div class="section" id="adding-cd-dvd-drives">
@@ -1005,7 +1007,7 @@ IDE controller:</p>
 </div>
 <p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">vmdvd</span></code> element features just these two <strong>mandatory</strong> attributes:</p>
 <ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code>: The CD/DVD ID of the drive</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#id" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a>: The CD/DVD ID of the drive</p></li>
 <li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">controller</span></code>: The CD/DVD controller used for the VM guest, supported
 values are <code class="xref py py-obj docutils literal notranslate"><span class="pre">ide</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">scsi</span></code>.</p></li>
 </ul>

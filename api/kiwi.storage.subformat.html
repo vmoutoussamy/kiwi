@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.storage.subformat Package &mdash; KIWI NG 9.21.7 documentation</title>
+  <title>kiwi.storage.subformat Package &mdash; KIWI NG 9.21.8 documentation</title>
   
 
   
@@ -275,6 +275,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../image_description.html#image-namespace">Image Namespace</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../image_types_and_results.html">Image Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#image-results">Image Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#build-host-constraints">Build Host Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_types_and_results.html#architectures">Architectures</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../building_images.html">Building Images for Supported Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_live_iso.html">Build an ISO Hybrid Live Image</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../building_images/build_live_iso.html#decision-for-a-live-iso-technology">Decision for a live ISO technology</a></li>
@@ -307,10 +313,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../building_images/build_kis.html">Build KIS Image (Kernel, Initrd, System)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-types">Image Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#image-results">Image Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-distributions">Supported Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_images.html#supported-platforms-and-architectures">Supported Platforms and Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul>
@@ -734,16 +736,16 @@
 <dl class="py class">
 <dt id="kiwi.storage.subformat.base.DiskFormatBase">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.base.</code><code class="sig-name descname">DiskFormatBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em>, <em class="sig-param"><span class="n">custom_args</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat/base.html#DiskFormatBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.base.DiskFormatBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>Base class to create disk formats from a raw disk image</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xml_state</strong> (<em>object</em>) – Instance of XMLState</p></li>
+<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of XMLState</p></li>
 <li><p><strong>root_dir</strong> (<em>string</em>) – root directory path name</p></li>
 <li><p><strong>arch</strong> (<em>string</em>) – Defaults.get_platform_name</p></li>
 <li><p><strong>target_dir</strong> (<em>string</em>) – target directory path name</p></li>
-<li><p><strong>custom_args</strong> (<em>dict</em>) – custom format options dictionary</p></li>
+<li><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom format options dictionary</p></li>
 </ul>
 </dd>
 </dl>
@@ -760,13 +762,13 @@
 <dd><p>Create list of qemu options from custom_args dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – arguments</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – arguments</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>qemu option list</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -783,7 +785,7 @@
 <dd class="field-even"><p>file path name</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -797,7 +799,7 @@
 <dd class="field-odd"><p>True or False</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -809,7 +811,7 @@
 <p>Implementation in specialized disk format class if required</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>list</em>) – unused</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – unused</p>
 </dd>
 </dl>
 </dd></dl>
@@ -824,13 +826,13 @@ the new size is the same as the current size nothing
 gets resized and the method returns False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>size</strong> (<em>int</em>) – size in bytes</p>
+<dd class="field-odd"><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – size in bytes</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>True or False</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -846,7 +848,7 @@ metadata files or want to use other result flags needs
 to overwrite this method</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>result</strong> (<em>object</em>) – Instance of Result</p>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of Result</p>
 </dd>
 </dl>
 </dd></dl>
@@ -881,7 +883,7 @@ name by overriding the base class method</p>
 <dd class="field-even"><p>file path name</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -893,7 +895,7 @@ name by overriding the base class method</p>
 <p>Store disk tag from custom args</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – <p>custom gce argument dictionary</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – <p>custom gce argument dictionary</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;--tag&#39;</span><span class="p">:</span> <span class="s1">&#39;billing_code&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -911,7 +913,7 @@ because the gce tarball is already created as a compressed
 archive</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>result</strong> (<em>object</em>) – Instance of Result</p>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of Result</p>
 </dd>
 </dl>
 </dd></dl>
@@ -940,7 +942,7 @@ archive</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – custom qemu arguments dictionary</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom qemu arguments dictionary</p>
 </dd>
 </dl>
 </dd></dl>
@@ -951,7 +953,7 @@ archive</p>
 <dd><p>Store the resulting ova file into the provided result instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>result</strong> (<em>object</em>) – Instance of Result</p>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of Result</p>
 </dd>
 </dl>
 </dd></dl>
@@ -979,7 +981,7 @@ archive</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – custom qemu arguments dictionary</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom qemu arguments dictionary</p>
 </dd>
 </dl>
 </dd></dl>
@@ -995,7 +997,7 @@ account such that the sparseness of the raw disk will not
 result in the output format and can be taken one by one</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>result</strong> (<em>object</em>) – Instance of Result</p>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of Result</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1051,7 +1053,7 @@ registered to <a class="reference internal" href="kiwi.html#kiwi.defaults.Defaul
 box image. It must be implemented by a child class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>temp_image_dir</strong> (<em>str</em>) – path to a temporary directory inside which the image
+<dd class="field-odd"><p><strong>temp_image_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path to a temporary directory inside which the image
 should be built</p>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1059,7 +1061,7 @@ should be built</p>
 and that should be included in the vagrant box</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1087,7 +1089,7 @@ that will be included in <code class="docutils literal notranslate"><span class=
 <dd class="field-odd"><p>A dictionary that is serializable to JSON</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1107,7 +1109,7 @@ parameter <code class="docutils literal notranslate"><span class="pre">custom_se
 <dd class="field-odd"><p>additional vagrant settings</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1119,7 +1121,7 @@ parameter <code class="docutils literal notranslate"><span class="pre">custom_se
 <p>store vagrantconfig information provided via custom_args</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – <p>Contains instance of xml_parse::vagrantconfig</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – <p>Contains instance of xml_parse::vagrantconfig</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;vagrantconfig&#39;</span><span class="p">:</span> <span class="nb">object</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -1136,7 +1138,7 @@ provided result instance. In this case compression is unwanted
 because the box is already created as a compressed tarball</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>result</strong> (<em>object</em>) – Instance of Result</p>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of Result</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1246,7 +1248,7 @@ make the this base class methods effective</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – custom qemu arguments dictionary</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom qemu arguments dictionary</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1274,7 +1276,7 @@ make the this base class methods effective</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – custom qemu arguments dictionary</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom qemu arguments dictionary</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1303,7 +1305,7 @@ make the this base class methods effective</p>
 Extract disk tag from custom args</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – <p>custom vhdfixed and qemu argument dictionary</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – <p>custom vhdfixed and qemu argument dictionary</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;--tag&#39;</span><span class="p">:</span> <span class="s1">&#39;billing_code&#39;</span><span class="p">,</span> <span class="s1">&#39;--qemu-opt&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -1320,7 +1322,7 @@ provided result instance. In this case compressing the result
 is preferred as vhdfixed is not a compressed or dynamic format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>result</strong> (<em>object</em>) – Instance of Result</p>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of Result</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1348,7 +1350,7 @@ is preferred as vhdfixed is not a compressed or dynamic format.</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – custom qemu arguments dictionary</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom qemu arguments dictionary</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1376,7 +1378,7 @@ is preferred as vhdfixed is not a compressed or dynamic format.</p>
 <p>Store qemu options as list from custom args dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>custom_args</strong> (<em>dict</em>) – custom qemu arguments dictionary</p>
+<dd class="field-odd"><p><strong>custom_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – custom qemu arguments dictionary</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1389,7 +1391,7 @@ provided result instance. This includes the vmdk image file
 and the VMware settings file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>result</strong> (<em>object</em>) – Instance of Result</p>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of Result</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1402,13 +1404,13 @@ and the VMware settings file</p>
 <dl class="py class">
 <dt id="kiwi.storage.subformat.DiskFormat">
 <em class="property">class </em><code class="sig-prename descclassname">kiwi.storage.subformat.</code><code class="sig-name descname">DiskFormat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">xml_state</span></em>, <em class="sig-param"><span class="n">root_dir</span></em>, <em class="sig-param"><span class="n">target_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kiwi/storage/subformat.html#DiskFormat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kiwi.storage.subformat.DiskFormat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p><strong>DiskFormat factory</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>string</em>) – Format name</p></li>
-<li><p><strong>xml_state</strong> (<em>object</em>) – Instance of XMLState</p></li>
+<li><p><strong>xml_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – Instance of XMLState</p></li>
 <li><p><strong>root_dir</strong> (<em>string</em>) – root directory path name</p></li>
 <li><p><strong>target_dir</strong> (<em>string</em>) – target directory path name</p></li>
 </ul>
