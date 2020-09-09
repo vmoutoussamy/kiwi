@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.21.8 documentation</title>
+  <title>kiwi.bootloader.config.grub2 &mdash; KIWI NG 9.21.9 documentation</title>
   
 
   
@@ -749,7 +749,6 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 
 <span class="c1"># project</span>
-<span class="kn">from</span> <span class="nn">kiwi.utils.command_capabilities</span> <span class="kn">import</span> <span class="n">CommandCapabilities</span>
 <span class="kn">from</span> <span class="nn">kiwi.bootloader.config.base</span> <span class="kn">import</span> <span class="n">BootLoaderConfigBase</span>
 <span class="kn">from</span> <span class="nn">kiwi.bootloader.template.grub2</span> <span class="kn">import</span> <span class="n">BootLoaderTemplateGrub2</span>
 <span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="kn">import</span> <span class="n">Command</span>
@@ -961,12 +960,12 @@
         <span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">firmware</span><span class="o">.</span><span class="n">efi_mode</span><span class="p">():</span>
-            <span class="c1"># On systems that are configured to use EFI with a grub2</span>
-            <span class="c1"># version less than 2.04 there is no support for dynamic</span>
-            <span class="c1"># EFI environment checking. In this condition we change</span>
-            <span class="c1"># the grub config to add this support as follows:</span>
+            <span class="c1"># On systems that are configured to use EFI with grub2</span>
+            <span class="c1"># there is no support for dynamic EFI environment checking.</span>
+            <span class="c1"># In this condition we change the grub config to add this</span>
+            <span class="c1"># support as follows:</span>
             <span class="c1">#</span>
-            <span class="c1"># * Apply only on grub &lt; 2.04</span>
+            <span class="c1"># * Apply on grub with EFI</span>
             <span class="c1">#    1. Modify grub.cfg to set linux/initrd as variables</span>
             <span class="c1">#    2. Prepend hybrid setup to select linux vs. linuxefi on demand</span>
             <span class="c1">#</span>
@@ -974,25 +973,21 @@
             <span class="c1"># Any subsequent call of the grub config tool will overwrite</span>
             <span class="c1"># the setup and disables dynamic EFI environment checking</span>
             <span class="c1"># at boot time</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">CommandCapabilities</span><span class="o">.</span><span class="n">check_version</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_get_grub2_mkconfig_tool</span><span class="p">(),</span>
-                <span class="n">version_waterline</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
-            <span class="p">):</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>
-                    <span class="n">grub_config</span> <span class="o">=</span> <span class="n">grub_config_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-                    <span class="n">grub_config</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-                        <span class="sa">r</span><span class="s1">&#39;([ \t]+)linux(efi|16)*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$linux\3&#39;</span><span class="p">,</span>
-                        <span class="n">grub_config</span>
-                    <span class="p">)</span>
-                    <span class="n">grub_config</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-                        <span class="sa">r</span><span class="s1">&#39;([ \t]+)initrd(efi|16)*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$initrd\3&#39;</span><span class="p">,</span>
-                        <span class="n">grub_config</span>
-                    <span class="p">)</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>
-                    <span class="n">grub_config_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                        <span class="n">Template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grub2</span><span class="o">.</span><span class="n">header_hybrid</span><span class="p">)</span><span class="o">.</span><span class="n">substitute</span><span class="p">()</span>
-                    <span class="p">)</span>
-                    <span class="n">grub_config_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">grub_config</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>
+                <span class="n">grub_config</span> <span class="o">=</span> <span class="n">grub_config_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="n">grub_config</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+                    <span class="sa">r</span><span class="s1">&#39;([ \t]+)linux(efi|16)*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$linux\3&#39;</span><span class="p">,</span>
+                    <span class="n">grub_config</span>
+                <span class="p">)</span>
+                <span class="n">grub_config</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+                    <span class="sa">r</span><span class="s1">&#39;([ \t]+)initrd(efi|16)*([ \t]+)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1$initrd\3&#39;</span><span class="p">,</span>
+                    <span class="n">grub_config</span>
+                <span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">grub_config_file</span><span class="p">:</span>
+                <span class="n">grub_config_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="n">Template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grub2</span><span class="o">.</span><span class="n">header_hybrid</span><span class="p">)</span><span class="o">.</span><span class="n">substitute</span><span class="p">()</span>
+                <span class="p">)</span>
+                <span class="n">grub_config_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">grub_config</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_reference</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_filesystem_is_overlay</span> <span class="ow">or</span> \

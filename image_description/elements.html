@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Image Description Elements &mdash; KIWI NG 9.21.8 documentation</title>
+  <title>Image Description Elements &mdash; KIWI NG 9.21.9 documentation</title>
   
 
   
@@ -731,7 +731,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This document provides a reference for the elements
-and attributes of the KIWI NG XML document in version 9.21.8</p>
+and attributes of the KIWI NG XML document in version 9.21.9</p>
 </div>
 <div class="section" id="image">
 <span id="sec-image"></span><h2>&lt;image&gt;<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h2>
@@ -1005,6 +1005,18 @@ useful for nearly all build types and will be covered next:</p>
 partition should be used or not (the default depends on the current
 layout). This will override KIWI NG’s default layout.</p>
 </dd>
+<dt>bootpartsize=”nonNegativeInteger”:</dt><dd><p>For images with a separate boot partition this attribute
+specifies the size in MB. If not set the boot partition
+size is set to 200 MB</p>
+</dd>
+<dt>efipartsize=”nonNegativeInteger”:</dt><dd><p>For images with an EFI fat partition this attribute
+specifies the size in MB. If not set the EFI partition
+size is set to 20 MB</p>
+</dd>
+<dt>efiparttable=”msdos|gpt”:</dt><dd><p>For images with an EFI firmware specifies the partition
+table type to use. If not set defaults to the GPT partition
+table type</p>
+</dd>
 <dt>btrfs_quota_groups=”true|false”:</dt><dd><p>Boolean parameter to activate filesystem quotas if
 the filesystem is <code class="xref py py-obj docutils literal notranslate"><span class="pre">btrfs</span></code>. By default quotas are inactive.</p>
 </dd>
@@ -1031,9 +1043,9 @@ directory which contains the image structure.</p>
 after the bootloader is installed. The script runs relative to the
 directory which contains the image structure.</p>
 </dd>
-<dt>filesystem=”btrfs|ext2|ext3|ext4|squashfs|xfs”</dt><dd><p>The root filesystem</p>
+<dt>filesystem=”btrfs|ext2|ext3|ext4|squashfs|xfs”:</dt><dd><p>The root filesystem</p>
 </dd>
-<dt>firmware=”efi|uefi”</dt><dd><p>Specifies the boot firmware of the appliance, supported
+<dt>firmware=”efi|uefi”:</dt><dd><p>Specifies the boot firmware of the appliance, supported
 options are: <code class="xref py py-obj docutils literal notranslate"><span class="pre">bios</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ec2</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">efi</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">uefi</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ofw</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">opal</span></code>.
 This attribute is used to differentiate the image according to the
 firmware which boots up the system. It mostly impacts the disk
@@ -1079,13 +1091,162 @@ using the LUKS extension and using the provided string as the
 password. Note that the password must be entered when booting the
 appliance!</p>
 </dd>
-<dt>target_blocksize=”number”</dt><dd><p>Specifies the image blocksize in bytes which has to
+<dt>target_blocksize=”number”:</dt><dd><p>Specifies the image blocksize in bytes which has to
 match the logical blocksize of the target storage device. By default 512
 Bytes is used, which works on many disks. You can obtain the blocksize
 from the <code class="xref py py-obj docutils literal notranslate"><span class="pre">SSZ</span></code> column in the output of the following command:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">blockdev --report $DEVICE</span>
 </pre></div>
 </div>
+</dd>
+<dt>target_removable=”true|false”:</dt><dd><p>Indicate if the target disk for oem images is deployed
+to a removable device e.g a USB stick or not. This only
+affects the EFI setup if requested and in the end avoids
+the creation of a custom boot menu entry in the firmware
+of the target machine. By default the target disk is
+expected to be non-removable</p>
+</dd>
+<dt>spare_part=”number”:</dt><dd><p>Request a spare partition right before the root partition
+of the requested size. The attribute takes a size value
+and allows a unit in MB or GB, e.g 200M. If no unit is given
+the value is considered to be mbytes. A spare partition
+can only be configured for the disk image types oem and vmx</p>
+</dd>
+<dt>spare_part_mountpoint=”dir_path”:</dt><dd><p>Specify mount point for spare partition in the system.
+Can only be configured for the disk image types oem and vmx</p>
+</dd>
+<dt>spare_part_fs=”btrfs|ext2|ext3|ext4|xfs”:</dt><dd><p>Specify filesystem for spare partition in the system.
+Can only be configured for the disk image types oem and vmx</p>
+</dd>
+<dt>spare_part_fs_attributes=”attribute_list”:</dt><dd><p>Specify filesystem attributes for the spare partition.
+Attributes can be specified as comma separated list.
+Currently the attributes <code class="xref py py-obj docutils literal notranslate"><span class="pre">no-copy-on-write</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">synchronous-updates</span></code>
+are available. Can only be configured for the disk image
+types oem and vmx</p>
+</dd>
+<dt>spare_part_is_last=”true|false”:</dt><dd><p>Specify if the spare partition should be the last one in
+the partition table. Can only be configured for the vmx
+disk image type. By default the root partition is the last
+one and the spare partition lives before it. With this
+attribute that setup can be toggled.</p>
+</dd>
+<dt>devicepersistency=”by-uuid|by-label|by-path”:</dt><dd><p>Specifies which method to use for persistent device names.
+This will affect all files written by kiwi that includes
+device references for example <code class="xref py py-obj docutils literal notranslate"><span class="pre">etc/fstab</span></code> or the <code class="xref py py-obj docutils literal notranslate"><span class="pre">root=</span></code>
+parameter in the kernel commandline. By default by-uuid
+is used</p>
+</dd>
+<dt>squashfscompression=”uncompressed|gzip|lzo|lz4|xz|zstd”:</dt><dd><p>Specifies the compression type for mksquashfs</p>
+</dd>
+<dt>overlayroot=”true|false”</dt><dd><p>Specifies to use an overlay root system consisting
+out of a squashfs compressed read-only root system
+overlayed using the overlayfs filesystem into an
+extra read-write partition. Available for the disk
+image types, vmx and oem</p>
+</dd>
+<dt>bootfilesystem=”ext2|ext3|ext4|fat32|fat16”:</dt><dd><p>If an extra boot partition is required this attribute
+specify which filesystem should be used for it. The
+type of the selected bootloader might overwrite this
+setting if there is no alternative possible though.</p>
+</dd>
+<dt>flags=”overlay|dmsquash”</dt><dd><p>For the iso image type specifies the live iso technology and
+dracut module to use. If set to overlay the kiwi-live dracut
+module will be used to support a live iso system based on
+squashfs+overlayfs. If set to dmsquash the dracut standard
+dmsquash-live module will be used to support a live iso
+system based on the capabilities of the upstream dracut
+module.</p>
+</dd>
+<dt>format=”gce|ova|qcow2|vagrant|vmdk|vdi|vhd|vhdx|vhd-fixed”:</dt><dd><p>For disk image types vmx and oem, specifies the format of
+the virtual disk such that it can run on the desired target
+virtualization platform.</p>
+</dd>
+<dt>formatoptions=”string”:</dt><dd><p>Specifies additional format options passed on to qemu-img
+formatoptions is a comma separated list of format specific
+options in a name=value format like qemu-img expects it.
+kiwi will take the information and pass it as parameter to
+the -o option in the qemu-img call</p>
+</dd>
+<dt>fsmountoptions=”string”:</dt><dd><p>Specifies the filesystem mount options which also ends up in fstab
+The string given here is passed as value to the -o option of mount</p>
+</dd>
+<dt>fscreateoptions=”string”:</dt><dd><p>Specifies options to use at creation time of the filesystem</p>
+</dd>
+<dt>force_mbr=”true|false”:</dt><dd><p>Force use of MBR (msdos table) partition table even if the
+use of the GPT would be the natural choice. On e.g some
+arm systems an EFI partition layout is required but must
+not be stored in a GPT. For those rare cases this attribute
+allows to force the use of the msdos table including all
+its restrictions in max partition size and amount of
+partitions</p>
+</dd>
+<dt>gpt_hybrid_mbr=”true|false”:</dt><dd><p>For GPT disk types only: Create a hybrid GPT/MBR partition table</p>
+</dd>
+<dt>hybridpersistent=”true|false”:</dt><dd><p>For the live ISO type, triggers the creation of a partition for
+a COW file to keep data persistent over a reboot</p>
+</dd>
+<dt>hybridpersistent_filesystem=”ext4|xfs”:</dt><dd><p>For the live ISO type, set the filesystem to use for persistent
+writing if a hybrid image is used as disk on e.g a USB Stick.
+By default the ext4 filesystem is used.</p>
+</dd>
+<dt>initrd_system=”kiwi|dracut”:</dt><dd><p>Specify which initrd builder to use, default is set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">dracut</span></code></p>
+</dd>
+<dt>metadata_path=”dir_path”:</dt><dd><p>Specifies a path to additional metadata required for the selected
+image type or its tools used to create that image type.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently this is only effective for the appx container image type.</p>
+</div>
+</dd>
+<dt>installboot=”failsafe-install|harddisk|install”:</dt><dd><p>Specifies the bootloader default boot entry for the initial
+boot of a KIWI NG install image.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This value is only evaluated for grub</p>
+</div>
+</dd>
+<dt>install_continue_on_timeout=”true|false”:</dt><dd><p>Specifies the boot timeout handling for the KIWI NG
+install image. If set to “true” the configured timeout
+or its default value applies. If set to “false” no
+timeout applies in the boot menu of the install image.</p>
+</dd>
+<dt>installprovidefailsafe=”true|false”:</dt><dd><p>Specifies if the bootloader menu should provide an
+failsafe entry with special kernel parameters or not</p>
+</dd>
+<dt>installiso=”true|false”</dt><dd><p>Specifies if an install iso image should be created.
+This attribute is only available for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code> type.
+The generated ISO image is an hybrid ISO which can be
+used as disk on e.g a USB stick or as ISO.</p>
+</dd>
+<dt>installpxe=”true|false”:</dt><dd><p>Specifies if a tarball that contains all data for a pxe network
+installation should be created. This attribute is only available
+for the <code class="xref py py-obj docutils literal notranslate"><span class="pre">oem</span></code> type.</p>
+</dd>
+<dt>mediacheck=”true|false”:</dt><dd><p>For ISO images, specifies if the bootloader menu should provide an
+mediacheck entry to verify ISO integrity or not. Disabled by default
+and only available for the x86 arch family.</p>
+</dd>
+<dt>mdraid=”mirroring|striping”:</dt><dd><p>Setup software raid in degraded mode with one disk
+Thus only mirroring and striping is possible</p>
+</dd>
+<dt>primary=”true|false”:</dt><dd><p>Specifies this type to be the primary type. If no type option
+is given on the commandline, KIWI NG will build this type</p>
+</dd>
+<dt>ramonly=”true|false”:</dt><dd><p>For all images that are configured to use the overlay filesystem
+this setting forces any COW(Copy-On-Write) action to happen in RAM.</p>
+</dd>
+<dt>rootfs_label=”string”:</dt><dd><p>Label name to set for the root filesystem. By default <code class="xref py py-obj docutils literal notranslate"><span class="pre">ROOT</span></code> is used</p>
+</dd>
+<dt>volid=”string”:</dt><dd><p>For the ISO type only, specifies the volume ID (volume name or label)
+to be written into the master block. There is space for 32 characters.</p>
+</dd>
+<dt>vhdfixedtag=”GUID_string”:</dt><dd><p>For the VHD disk format, specifies the GUID</p>
+</dd>
+<dt>derived_from=”string”:</dt><dd><p>For container images, specifies the image URI of the container image.
+The image created by KIWI NG will use the specified container as the
+base root to work on.</p>
+</dd>
+<dt>publisher=”string”:</dt><dd><p>For ISO images, specifies the publisher name of the ISO.</p>
 </dd>
 </dl>
 <p>The following sections shows the supported child elements of the <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>
