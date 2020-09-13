@@ -585,6 +585,41 @@ class RuntimeChecker:
                     message.format(firmware, arch)
                 )
 
+    def check_oem_resize_inactive_if_spare_part_is_last(self):
+        """
+        OEM images with activated root partition resize only works
+        if an optionally configured spare partition is not setup
+        to live at the end of the partition table. In this case the
+        root partition could not be resized because the spare part
+        would block it.
+        """
+        message = dedent('''\n
+            Requested root partition resize conflicts with spare partition
+
+            The spare partition is requested to be the last partition
+            via the spare_part_is_last attribute. This conflicts with
+            the also requested(default setting) root partition resize.
+            There can be only one partition to be the last one and
+            eligible to become resized. Therefore either the root
+            partition resize needs to be switched off via:
+
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+
+            or the spare partition must not be configured to live
+            at the end of the disk via:
+
+            spare_part_is_last="false"
+        ''')
+        disk_resize_requested = self.xml_state.get_oemconfig_oem_resize()
+        build_type = self.xml_state.get_build_type_name()
+        spare_part_is_last_requested = \
+            self.xml_state.build_type.get_spare_part_is_last()
+        if build_type == 'oem' and disk_resize_requested and \
+           spare_part_is_last_requested:
+            raise KiwiRuntimeError(message)
+
     def check_dracut_module_for_disk_oem_in_package_list(self):
         """
         OEM images if configured to use dracut as initrd system
@@ -605,8 +640,10 @@ class RuntimeChecker:
         ''')
         required_dracut_package = 'dracut-kiwi-oem-repart'
         initrd_system = self.xml_state.get_initrd_system()
+        disk_resize_requested = self.xml_state.get_oemconfig_oem_resize()
         build_type = self.xml_state.get_build_type_name()
-        if build_type == 'oem' and initrd_system == 'dracut':
+        if build_type == 'oem' and initrd_system == 'dracut' and \
+           disk_resize_requested:
             package_names = \
                 self.xml_state.get_bootstrap_packages() + \
                 self.xml_state.get_system_packages()

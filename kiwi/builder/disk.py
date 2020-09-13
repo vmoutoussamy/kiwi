@@ -107,6 +107,8 @@ class DiskBuilder:
         self.target_removable = xml_state.build_type.get_target_removable()
         self.root_filesystem_is_multipath = \
             xml_state.get_oemconfig_oem_multipath_scan()
+        self.disk_resize_requested = \
+            xml_state.get_oemconfig_oem_resize()
         self.swap_mbytes = xml_state.get_oemconfig_swap_mbytes()
         self.disk_setup = DiskSetup(
             xml_state, root_dir
@@ -320,8 +322,8 @@ class DiskBuilder:
                     self.xml_state.build_type.get_btrfs_root_is_readonly_snapshot(),
                 'quota_groups':
                     self.xml_state.build_type.get_btrfs_quota_groups(),
-                'image_type':
-                    self.xml_state.get_build_type_name()
+                'resize_on_boot':
+                    self.disk_resize_requested
             }
             self.volume_manager = VolumeManager(
                 self.volume_manager_name, device_map,
@@ -403,7 +405,7 @@ class DiskBuilder:
                 self.boot_image.write_system_config_file(
                     config={'modules': ['kiwi-overlay']}
                 )
-            if self.build_type_name == 'oem':
+            if self.build_type_name == 'oem' and self.disk_resize_requested:
                 self.boot_image.include_module('kiwi-repart')
 
         # create initrd cpio archive
@@ -785,7 +787,8 @@ class DiskBuilder:
             )
             disksize_used_mbytes += squashed_rootfs_mbsize
 
-        if self.spare_part_mbsize and self.spare_part_is_last:
+        if self.spare_part_mbsize and self.spare_part_is_last and not \
+           self.disk_resize_requested:
             rootfs_mbsize = disksize_mbytes - disksize_used_mbytes - \
                 self.spare_part_mbsize - Defaults.get_min_partition_mbytes()
         else:
@@ -803,7 +806,8 @@ class DiskBuilder:
             log.info('--> creating root partition')
             self.disk.create_root_partition(rootfs_mbsize)
 
-        if self.spare_part_mbsize and self.spare_part_is_last:
+        if self.spare_part_mbsize and self.spare_part_is_last and not \
+           self.disk_resize_requested:
             log.info('--> creating spare partition')
             self.disk.create_spare_partition(
                 'all_free'

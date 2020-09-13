@@ -125,3 +125,6 @@
 
 #      # verify WSL naming conventions
 #      - check_appx_naming_conventions_valid
+
+#      # verify consistent use of spare_part_is_last
+#      - check_oem_resize_inactive_if_spare_part_is_last

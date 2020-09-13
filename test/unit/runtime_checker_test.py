@@ -68,7 +68,7 @@ class TestRuntimeChecker:
 
     def test_check_volume_setup_defines_reserved_labels(self):
         xml_state = XMLState(
-            self.description.load(), ['vmxFlavour'], 'vmx'
+            self.description.load(), ['vmxSimpleFlavour'], 'oem'
         )
         runtime_checker = RuntimeChecker(xml_state)
         with raises(KiwiRuntimeError):
@@ -306,7 +306,7 @@ class TestRuntimeChecker:
 
     def test_check_preferences_data_no_packagemanager(self):
         xml_state = XMLState(
-            self.description.load(), ['xenFlavour'], 'vmx'
+            self.description.load(), ['xenDom0Flavour'], 'oem'
         )
         runtime_checker = RuntimeChecker(xml_state)
         with raises(KiwiRuntimeError):
@@ -324,7 +324,7 @@ class TestRuntimeChecker:
         with raises(KiwiRuntimeError):
             runtime_checker.check_architecture_supports_iso_firmware_setup()
         xml_state = XMLState(
-            self.description.load(), ['xenFlavour'], 'oem'
+            self.description.load(), ['xenDom0Flavour'], 'oem'
         )
         runtime_checker = RuntimeChecker(xml_state)
         with raises(KiwiRuntimeError):
@@ -344,11 +344,22 @@ class TestRuntimeChecker:
         with raises(KiwiRuntimeError):
             runtime_checker.check_syslinux_installed_if_isolinux_is_used()
         xml_state = XMLState(
-            self.description.load(), ['xenFlavour'], 'oem'
+            self.description.load(), ['xenDom0Flavour'], 'oem'
         )
         runtime_checker = RuntimeChecker(xml_state)
         with raises(KiwiRuntimeError):
             runtime_checker.check_syslinux_installed_if_isolinux_is_used()
+
+    def test_check_oem_resize_inactive_if_spare_part_is_last(self):
+        description = XMLDescription(
+            '../data/example_disk_spare_part_config.xml'
+        )
+        xml_state = XMLState(
+            description.load(), ['Invalid'], 'oem'
+        )
+        runtime_checker = RuntimeChecker(xml_state)
+        with raises(KiwiRuntimeError):
+            runtime_checker.check_oem_resize_inactive_if_spare_part_is_last()
 
     def teardown(self):
         sys.argv = argv_kiwi_tests

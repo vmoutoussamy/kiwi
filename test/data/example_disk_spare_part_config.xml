@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="7.3" name="LimeJeOS-openSUSE-13.2">
+<image schemaversion="7.3" name="LimeJeOS">
     <description type="system">
         <author>Marcus Schäfer</author>
         <contact>ms@suse.com</contact>
         <specification>
-            openSUSE 13.2 JeOS, is a small text based image
+            Unit testing for spare_part_is_last in combination with root resize
         </specification>
     </description>
+    <profiles>
+        <profile name="Invalid" description="Invalid setup"/>
+        <profile name="OK" description="Good setup"/>
+    </profiles>
     <preferences>
         <version>1.13.2</version>
         <packagemanager>zypper</packagemanager>
         <locale>en_US</locale>
         <keytable>us.map.gz</keytable>
         <timezone>Europe/Berlin</timezone>
-        <rpm-excludedocs>true</rpm-excludedocs>
-        <rpm-check-signatures>false</rpm-check-signatures>
-        <bootsplash-theme>openSUSE</bootsplash-theme>
-        <bootloader-theme>openSUSE</bootloader-theme>
-        <type image="oem" filesystem="btrfs" spare_part="42M"/>
+    </preferences>
+    <preferences profiles="Invalid">
+        <type image="oem" filesystem="ext4" spare_part_is_last="true"/>
+    </preferences>
+    <preferences profiles="OK">
+        <type image="oem" filesystem="ext4" spare_part_is_last="true">
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+        </type>
     </preferences>
     <repository>
         <source path="obs://13.2/repo/oss"/>
